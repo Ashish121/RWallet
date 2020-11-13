@@ -1,0 +1,20 @@
+.loginContainer{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    
+}
+.logoContainer{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loginPageWrapper{
+    flex:2;
+    padding:20px
+}
+.logo{
+    font-size: 30px;
+    font-weight: bold;
+}
