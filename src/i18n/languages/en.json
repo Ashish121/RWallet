@@ -1,0 +1,8 @@
+{ 
+       "login.siginPageLabel" : "Royality Wallet",
+        "login.emailLabel" : "Mobile / Email",
+        "login.passwordLabel": "Password",
+        "login.signInLabel" : "SIGN IN",
+        "login.welcomeText" : "Welcome to"
+ 
+}
