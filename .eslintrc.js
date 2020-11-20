@@ -4,7 +4,7 @@ module.exports = {
     "rules": {
         "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
         "indent": ["error", "tab"],
-        "no-console": ["error"],
+        "no-console":  ["error", { allow: ["log"] }],
         'no-duplicate-imports': 2,
         'indent': [2,  2],
         'semi': [2, 'always'],

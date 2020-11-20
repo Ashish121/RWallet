@@ -1,5 +1,6 @@
 import React from 'react';
 import { IonApp } from '@ionic/react';
+import { Plugins, StatusBarStyle } from '@capacitor/core';
 import Home from './pages/Home';
 
 /* Core CSS required for Ionic components to work properly */
@@ -21,10 +22,20 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 // import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
-    <Home/>
-  </IonApp>
-);
+import { IntlProvider } from 'react-intl';
+import { English } from './i18n/languages';
+
+let lang: any = English;
+const App: React.FC = () => {
+  const { StatusBar } = Plugins;
+  StatusBar.setStyle({ style: StatusBarStyle.Dark });
+  return  <IntlProvider locale="en" messages={lang}>
+    <IonApp>
+      <Home/>
+    </IonApp>
+  </IntlProvider>;
+};
+ 
+
 
 export default App;

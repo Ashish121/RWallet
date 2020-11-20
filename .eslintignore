@@ -1,3 +1,7 @@
 node_modules/**
 .eslintrc.js
 src/serviceWorker.ts
+ios
+build
+android
+.gradle

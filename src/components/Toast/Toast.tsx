@@ -1,6 +1,7 @@
 import React from 'react';
-import './Spinner.css';
 import { IonToast, IonContent } from '@ionic/react';
+import './Toast.css';
+
 interface ToastProps {
     OnDismissToast: Function,
     showToast: boolean,
