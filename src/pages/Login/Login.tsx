@@ -40,6 +40,10 @@ const LoginPage: React.FC = () => {
     const toggleStatus = !toggleEyeText ;
     setToggleEyeText(toggleStatus);
   }
+  function navigateToRegister() {
+    console.log('Navigating to registration');
+    history.push('/register');
+  }
   const inputIconRenderer = () => {
     return (<IonIcon icon={eyeOffOutline} color="light" style={{fontSize : '18px',marginTop:'35px'}} onClick={togglePassword} slot="end"/>);
   };
@@ -61,13 +65,12 @@ const LoginPage: React.FC = () => {
                 </IonRow>
               </IonGrid>
               <div className='loginPageWrapper'>
-                <InputText inputType="email" labelText="Mobile number / Email id" labelType="floating" color="light" labelColor="light" onChange={updateEmail}>
-                  <span>Hello</span>
-                </InputText>
+                <InputText inputType="email" labelText="login.emailLabel" labelType="floating" color="light" labelColor="light" onChange={updateEmail}/>
                 <InputText inputType={toggleEyeText ? 'text' : 'password'} labelText="Password" labelType="floating" color="light" labelColor="light" ChildElem = {inputIconRenderer()} onChange={updatePassword}/>
                 <div  className='ion-padding-top' style={{marginTop: '40px'}}>
                   <ButtonConmponent buttonLabel='login.signInLabel' size='full' clickHandler={loginHandler}/>
                 </div>
+                <a ion-text color="light" onClick={navigateToRegister} className='linkText'><Translate message='login.linkText'/></a>
               </div>
             </div>
           </IonContent>

@@ -1,8 +1,17 @@
-{ 
-       "login.siginPageLabel" : "Royality Wallet",
-        "login.emailLabel" : "Mobile / Email",
+
+{       
+        "login.siginPageLabel" : "Royality Wallet",
+        "login.emailLabel" : "Mobile number/Email id",
         "login.passwordLabel": "Password",
-        "login.signInLabel" : "SIGN IN",
-        "login.welcomeText" : "Welcome to"
- 
+        "login.signInLabel" : "LOGIN",
+        "login.welcomeText" : "Welcome to",
+        "login.linkText": "Forgot Passwod ?" ,
+        
+        "signup.fullName" : "Full name",
+        "signup.gender" : "Gender",
+        "signup.mobileNo" : "Mobile no",
+        "signup.passwordLabel" : "Password",
+        "signup.confirmPassword": "Confirm password",
+        "signup.register" :"REGISTER"
+        
 }

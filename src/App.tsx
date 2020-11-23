@@ -27,8 +27,13 @@ import { English } from './i18n/languages';
 
 let lang: any = English;
 const App: React.FC = () => {
-  const { StatusBar } = Plugins;
+  const { StatusBar, SplashScreen } = Plugins;
   StatusBar.setStyle({ style: StatusBarStyle.Dark });
+  // Show the splash for two seconds and then auto hide:
+  SplashScreen.show({
+    showDuration: 5000,
+    autoHide: true
+  });
   return  <IntlProvider locale="en" messages={lang}>
     <IonApp>
       <Home/>
