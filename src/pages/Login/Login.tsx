@@ -70,7 +70,7 @@ const LoginPage: React.FC = () => {
                 <div  className='ion-padding-top' style={{marginTop: '40px'}}>
                   <ButtonConmponent buttonLabel='login.signInLabel' size='full' clickHandler={loginHandler}/>
                 </div>
-                <a ion-text color="light" onClick={navigateToRegister} className='linkText'><Translate message='login.linkText'/></a>
+                <a ion-text="true" color="light" onClick={navigateToRegister} className='linkText'><Translate message='login.linkText'/></a>
               </div>
             </div>
           </IonContent>

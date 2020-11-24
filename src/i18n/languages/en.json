@@ -12,6 +12,8 @@
         "signup.mobileNo" : "Mobile no",
         "signup.passwordLabel" : "Password",
         "signup.confirmPassword": "Confirm password",
-        "signup.register" :"REGISTER"
+        "signup.register" :"REGISTER",
+        "signup.checkboxTermsText": "I accept terms & conditions and privacy policy",
+        "signup.loginLinkText" : "Already have an account ?"
         
 }

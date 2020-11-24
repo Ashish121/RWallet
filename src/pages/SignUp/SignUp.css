@@ -8,6 +8,7 @@
 .page-wrapper{
     flex:10;
     padding:30px;
+    background-color: #3182B9;
 }
 .body-header-wrapper {
     display: flex;
@@ -34,5 +35,19 @@
 }
 .container .list-md .list-ios {
     background: none;
+}
+.login-link-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.account-exists-text {
+    color : #FFFFFF;
+    font-size: 12px;
+    margin-top:10px;
+}
+.login-link-text {
+    color : #004777;
+    font-weight: bold;
 }
 
