@@ -1,19 +1,14 @@
-.loginContainer{
+.container{
     display: flex;
     height: 100%;
     flex-direction: column;
     background-color: #3182B9;
-    
 }
-.logoContainer{
-    flex:1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.loginPageWrapper{
-    flex:2;
+
+.page-wrapper{
+    flex:10;
     padding:30px;
+    background-color: #3182B9;
 }
 .body-header-wrapper {
     display: flex;
@@ -38,13 +33,21 @@
 .header-grid {
     width:100%;
 }
-.linkText {
-   font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 15px;
-    color: #FFFFFF;
-    float:right;
-    margin-right: 5px;
-    margin-top:8px;
+.container .list-md .list-ios {
+    background: none;
 }
+.login-link-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.account-exists-text {
+    color : #FFFFFF;
+    font-size: 12px;
+    margin-top:10px;
+}
+.login-link-text {
+    color : #004777;
+    font-weight: bold;
+}
+

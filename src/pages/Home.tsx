@@ -4,6 +4,7 @@ import { IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { LoginPage } from './Login';
 import { DashboardPage }  from './Dashboard';
+import { SignUpPage } from './SignUp/SignUp';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -11,9 +12,10 @@ const Home: React.FC = () => {
   return (
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/login" component={isAuthed ? DashboardPage : LoginPage} />
-        <Redirect exact from="/" to="/login" />
+        <Route path="/register" component={isAuthed ? DashboardPage : SignUpPage} />
+        <Redirect exact from="/" to="/register"/>
         <Route path="/dashboard" component={DashboardPage} />
+        <Route path="/login" component={LoginPage} />
         {/* <Redirect exact from="/login" to="/dashboard" /> */}
       </IonRouterOutlet>
     </IonReactRouter>

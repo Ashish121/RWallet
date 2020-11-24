@@ -1,0 +1,30 @@
+import React from 'react';
+import { IonItem, IonCheckbox, IonLabel, IonList } from '@ionic/react';
+import   { Translate   } from '../../i18n/formatMessages';
+import './Checkbox.css';
+
+
+interface checkboxProps {
+    onCheckboxToggle:Function,
+    checkboxLabel?:string
+}
+
+const CheckboxComponent: React.FC<checkboxProps> = ({onCheckboxToggle,checkboxLabel}) => {
+    
+  const  checked = true ;
+  const setChecked = (value: boolean) => {
+    onCheckboxToggle?.(value);
+  };
+  return (
+    <div className="inputWrapper">
+      <IonList className="ion-margin-top">
+        <IonItem className="ion-no-padding" lines="none">
+          <IonLabel className="terms-label"><Translate message={checkboxLabel || ''}/></IonLabel>
+          <IonCheckbox slot='start' checked={checked} onIonChange={e => setChecked(e.detail.checked)} />
+        </IonItem>
+      </IonList>
+    </div>
+  );
+};
+
+export default CheckboxComponent;

@@ -1,0 +1,16 @@
+.wrapper .list-wrapper .gender-label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+
+ion-select::part(text) {
+    color: #FFFFFF;
+}
+ion-select::part(icon) {
+    color: #FFFFFF;
+    opacity: 0.8;
+}

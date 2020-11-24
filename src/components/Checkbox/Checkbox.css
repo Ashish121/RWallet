@@ -1,0 +1,17 @@
+.inputWrapper .terms-label {
+    font-weight: normal;
+    font-size: 12px;
+    color: #FFFFFF;
+    margin-left: 10px;
+}
+.inputWrapper ion-checkbox {
+    --border-radius : 0px;
+    margin: 0px;
+    width: 18px;
+    height: 18px; 
+    --background-checked : #FFFFFF; 
+    --checkmark-color:#3182B9;
+    --checkmark-width :3px;
+    --border-color-checked : #FFFFFF;
+    --border-color : #FFFFFF;        
+}
