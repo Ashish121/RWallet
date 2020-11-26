@@ -1,53 +1,52 @@
-.container{
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    background-color: #3182B9;
+.container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  background-color: #3182b9;
 }
 
-.page-wrapper{
-    flex:10;
-    padding:30px;
-    background-color: #3182B9;
+.page-wrapper {
+  flex: 10;
+  padding: 30px;
+  background-color: #3182b9;
 }
 .body-header-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .body-header-wrapper .body-header-text-wrapper {
-    color:#FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
 }
 .body-header-wrapper .body-header-text-wrapper .header-bold {
-    font-size: 18px;
-    font-weight: 500;
-    padding-left: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 5px;
 }
-.body-header-wrapper .body-header-text-wrapper  .welcome_text {
-    font-size: 14px;
+.body-header-wrapper .body-header-text-wrapper .welcome_text {
+  font-size: 14px;
 }
 .header-grid {
-    width:100%;
+  width: 100%;
 }
 .container .list-md .list-ios {
-    background: none;
+  background: none;
 }
 .login-link-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .account-exists-text {
-    color : #FFFFFF;
-    font-size: 12px;
-    margin-top:10px;
+  color: #ffffff;
+  font-size: 12px;
+  margin-top: 10px;
 }
 .login-link-text {
-    color : #004777;
-    font-weight: bold;
+  color: #004777;
+  font-weight: bold;
 }
-
