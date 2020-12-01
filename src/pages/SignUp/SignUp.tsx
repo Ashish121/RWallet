@@ -43,6 +43,7 @@ const SignUpPage: React.FC = () => {
   }
   function handleRegistration() {
     console.log('Handling registration');
+    history.push('/otp');
   }
   function onGenderSelect(gender:string) {
     console.log('Selected: ',gender);
