@@ -14,6 +14,18 @@
         "signup.confirmPassword": "Confirm password",
         "signup.register" :"REGISTER",
         "signup.checkboxTermsText": "I accept terms & conditions and privacy policy",
-        "signup.loginLinkText" : "Already have an account ?"
+        "signup.loginLinkText" : "Already have an account ?",
+
+        "otp.pageHeader" : "Verification code",
+        "otp.pageSubHeader" : "Please type the verification code sent to +91 8892050268",
+        "otp.resendText"     : "Didn't receive OTP.",
+        "otp.resendLinkText"     : "Resend OTP",
+        "otp.verify"            : " VERIFY"    ,
+        
+        "mpin.mpinField" : "New MPIN",
+        "mpin.confirmMpin" : "Confirm MPIN",
+        "mpin.pageHeader" : "Create MPIN",
+        "mpin.subHeader" : "MPIN allows you hassle free login even if you forgot password",
+        "mpin.done" : "DONE"
         
 }

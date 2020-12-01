@@ -15,6 +15,8 @@ interface inputTextProps {
     labelText?:any,
     inputType?:any,
     ChildElem?:any,
+    maxLen?:any,
+    pattern?:any,
 }
 
 /**
@@ -30,19 +32,24 @@ const InputText: React.FC<inputTextProps> = ({
   labelText,
   inputType,
   labelColor,
-  ChildElem
+  ChildElem,
+  maxLen,
 }) => {
     
   const onInpuTextChange = debounce((event) => {
         onChange?.(event.target.value);
   },100);
-    
+  
   return (
     <div className="inputWrapper">
+      
       <IonList className="login-fileds-list-wrapper">
         <IonItem class="ion-no-padding">
-          <IonLabel position={labelType || 'fixed'} className="input-floating-label" color={labelColor || ''} font-size={fontSize}><Translate message={labelText}/></IonLabel>
-          <IonInput type={inputType || 'text'}  color={color} onIonChange={(e)=> onInpuTextChange(e)}/>
+          {
+            labelText &&
+             <IonLabel position={labelType || 'fixed'} className="input-floating-label" color={labelColor || ''} font-size={fontSize}><Translate message={labelText}/></IonLabel>
+          }
+          <IonInput maxlength={maxLen} type={inputType || 'text'}  color={color} onIonChange={(e)=> onInpuTextChange(e)}/>
           {ChildElem}
         </IonItem>
       </IonList>
