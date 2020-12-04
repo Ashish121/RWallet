@@ -34,6 +34,30 @@
         "mpin.subHeader" : "MPIN allows you hassle free login even if you forgot password",
         "mpin.done" : "DONE",
 
+     
+
+        "account.LableText" : "Fill up your details",
+        "account.fullName" : "Full name",
+        "account.fatherName" : "Father name",
+        "account.motherName" : "Mother name",
+        "account.dateofBirth" : "Date of Birth",
+        "account.bsad" : "BS/AD",
+        "account.gender" : "Gender",
+        "account.currentAddress" : "Current Address",
+        "account.permanentAddress" : "Permanent Address",
+        "account.country" : "Country",
+        "account.state" : "State",
+        "account.municipality": "Municipality",
+        "account.district": "District",
+        "account.province" : "Province",
+        "account.proceed" : "PROCEED",
+
+        "account.lableTexttop" : "Select your account type",
+        "account.saving" : "SAVING",
+        "account.fixed" : "FIXED",
+        "account.current" : "CURRENT",
+        "account.labelmore" : "Know more about each account",
+
         "account.fixedPageHeader" : "Fixed Account - {accountNo}",
         "account.depositeAmount" : "Amount of deposite",
         "account.investmentPeriod" : "Investment period",

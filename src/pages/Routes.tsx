@@ -9,9 +9,12 @@ import {
   MpinPage,
   FixedAccountPage,
   TabViewPage,
-  ResetPassword
+  ResetPassword,
+  AccountUser,
+  AccountPage
 } from './index';
 import './Routes.scss';
+
 
 
 const Routes: React.FC = () => {
@@ -23,6 +26,8 @@ const Routes: React.FC = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/otp" component={OtpPage} />
         <Route path="/mpin" component={MpinPage} />
+        <Route path="/accountuser" component={AccountUser}/>
+        <Route path="/accountpage" component={AccountPage}/>
         <Route path="/account/fixed" component={FixedAccountPage} />
         <Route path="/tabs" component={isTabView ? TabViewPage : TabViewPage} />
         <Redirect exact from="/" to="/register" />
