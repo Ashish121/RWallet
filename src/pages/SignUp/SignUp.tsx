@@ -87,10 +87,10 @@ const SignUpPage: React.FC = () => {
                   <CheckboxComponent onCheckboxToggle={setToggleTerms} checkboxLabel='signup.checkboxTermsText'/>
                 </div>
                 <div style={{marginTop: '10px'}}>
-                  <ButtonConmponent buttonLabel='signup.register' size='full' clickHandler={handleRegistration}/>
+                  <ButtonConmponent buttonLabel='signup.register' size='block' clickHandler={handleRegistration}/>
                 </div>
                 <div className="login-link-wrapper">
-                  <span className="account-exists-text"><Translate message="signup.loginLinkText"/> <a ion-text="true" onClick={navigateToLogin} className="login-link-text"><Translate message="login.signInLabel"/></a> </span>
+                  <span className="account-exists-text"><Translate message="signup.loginLinkText"/> <a ion-text="true" onClick={navigateToLogin} className="login-link-text"><Translate message="signup.loginTextLink"/></a> </span>
                 </div>
               </div>
             </div>

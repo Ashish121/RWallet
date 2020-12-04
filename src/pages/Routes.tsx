@@ -9,8 +9,10 @@ import {
   MpinPage,
   FixedAccountPage,
   TabViewPage,
+  ResetPassword
 } from './index';
 import './Routes.scss';
+
 
 const Routes: React.FC = () => {
   const isTabView = true;
@@ -24,7 +26,7 @@ const Routes: React.FC = () => {
         <Route path="/account/fixed" component={FixedAccountPage} />
         <Route path="/tabs" component={isTabView ? TabViewPage : TabViewPage} />
         <Redirect exact from="/" to="/register" />
-
+        <Route path="/reset" component={ResetPassword}/>
         {/* <Redirect exact from="/login" to="/dashboard" /> */}
       </IonRouterOutlet>
     </IonReactRouter>
