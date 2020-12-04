@@ -17,6 +17,10 @@
         "signup.loginLinkText" : "Already have an account ?",
         "signup.loginTextLink" : "Login",
 
+        "reset.pageHeader" : "Password reset",
+        "reset.pageSubHeader" : "Enter your registered mobile number and an OTP will be reset your password",
+        "reset.continue" : "CONTINUE",
+        
         "otp.pageHeader" : "Verification code",
         "otp.pageSubHeader" : "Please type the verification code sent to +91 8892050268",
         "otp.resendText"     : "Didn't receive OTP.",
