@@ -18,14 +18,15 @@ interface inputTextProps {
 const ButtonConmponent: React.FC<inputTextProps> = ({
   buttonLabel,
   clickHandler,
-  size
+  size,
+  ...props
 }) => {
   function handleButtonClick() {
     clickHandler?.();
   }
   return (
     <div className="buttonWrapper">
-      <IonButton expand={size}  onClick={ () => handleButtonClick()} className='btn-elem'><Translate message={buttonLabel}/></IonButton>
+      <IonButton expand={size}  onClick={ () => handleButtonClick()} className='btn-elem' {...props}><Translate message={buttonLabel}/></IonButton>
     </div>
   );
 };

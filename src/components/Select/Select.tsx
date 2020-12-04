@@ -16,7 +16,8 @@ interface SelectGenderProps {
 const SelectMenu: React.FC<SelectGenderProps> = ({
   onSelect,
   placeholderLabel,
-  label
+  label,
+  ...props
 }) => {
   const gender = '';
   const handleSelect = debounce((value) => {
@@ -31,7 +32,7 @@ const SelectMenu: React.FC<SelectGenderProps> = ({
           <IonSelect
             value={gender}
             placeholder={placeholderLabel}
-            onIonChange={e => handleSelect(e.detail.value)}>
+            onIonChange={e => handleSelect(e.detail.value)} {...props}>
             <IonSelectOption value="male">Male</IonSelectOption>
             <IonSelectOption value="female">Female</IonSelectOption>
           </IonSelect>

@@ -1,26 +1,26 @@
 import React from 'react';
 import { IonItem, IonInput, IonLabel, IonList } from '@ionic/react';
 import debounce from 'lodash.debounce';
-import   { Translate   } from '../../i18n/formatMessages';
+import { Translate } from '../../i18n/formatMessages';
 import './InputText.css';
 
-
 interface inputTextProps {
-    label?: string,
-    onChange?: Function,
-    labelType?: any,
-    labelColor?:string;
-    color?:string,
-    fontSize?:any,
-    labelText?:any,
-    inputType?:any,
-    ChildElem?:any,
-    maxLen?:any,
-    pattern?:any,
+  label?: string;
+  onChange?: Function;
+  labelType?: any;
+  labelColor?: string;
+  color?: string;
+  fontSize?: any;
+  labelText?: any;
+  inputType?: any;
+  ChildElem?: any;
+  maxLen?: any;
+  pattern?: any;
+  placeholderText?: any;
 }
 
 /**
- * 
+ *
  * <InputText labelText="Type your mail" onChange="callbackFn" ...otherProps/>
  */
 
@@ -34,22 +34,33 @@ const InputText: React.FC<inputTextProps> = ({
   labelColor,
   ChildElem,
   maxLen,
+  placeholderText,
 }) => {
-    
   const onInpuTextChange = debounce((event) => {
-        onChange?.(event.target.value);
-  },100);
-  
+    onChange?.(event.target.value);
+  }, 100);
+
   return (
     <div className="inputWrapper">
-      
       <IonList className="login-fileds-list-wrapper">
         <IonItem class="ion-no-padding">
-          {
-            labelText &&
-             <IonLabel position={labelType || 'fixed'} className="input-floating-label" color={labelColor || ''} font-size={fontSize}><Translate message={labelText}/></IonLabel>
-          }
-          <IonInput maxlength={maxLen} type={inputType || 'text'}  color={color} onIonChange={(e)=> onInpuTextChange(e)}/>
+          {labelText && (
+            <IonLabel
+              position={labelType || 'fixed'}
+              className="input-floating-label"
+              color={labelColor || ''}
+              font-size={fontSize}
+            >
+              <Translate message={labelText} />
+            </IonLabel>
+          )}
+          <IonInput
+            maxlength={maxLen}
+            type={inputType || 'text'}
+            color={color}
+            onIonChange={(e) => onInpuTextChange(e)}
+            placeholder={!labelText ? placeholderText : ''}
+          />
           {ChildElem}
         </IonItem>
       </IonList>

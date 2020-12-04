@@ -7,7 +7,7 @@ interface LoaderProps {
     loaderMessage: string
 }
 
-const LoaderComponent: React.FC<LoaderProps> = ({ showLoading, loaderMessage }) => {
+const LoaderComponent: React.FC<LoaderProps> = ({ showLoading, loaderMessage, ...props }) => {
   return (
     <IonContent>
       <div className="loaderWrapper">
@@ -15,6 +15,7 @@ const LoaderComponent: React.FC<LoaderProps> = ({ showLoading, loaderMessage }) 
           cssClass='my-custom-class'
           isOpen={showLoading}
           message={loaderMessage}
+          {...props}
         />
       </div>
     </IonContent>

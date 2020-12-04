@@ -1,7 +1,6 @@
 import React from 'react';
-import { IonApp } from '@ionic/react';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
-import Home from './pages/Home';
+import Routes from './pages/Routes';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -35,9 +34,7 @@ const App: React.FC = () => {
     autoHide: true
   });
   return  <IntlProvider locale="en" messages={lang}>
-    <IonApp>
-      <Home/>
-    </IonApp>
+    <Routes/>
   </IntlProvider>;
 };
  

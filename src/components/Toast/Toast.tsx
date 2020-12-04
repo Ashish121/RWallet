@@ -3,12 +3,17 @@ import { IonToast, IonContent } from '@ionic/react';
 import './Toast.css';
 
 interface ToastProps {
-    OnDismissToast: Function,
-    showToast: boolean,
-    toastMessage: string
+  OnDismissToast: Function;
+  showToast: boolean;
+  toastMessage: string;
 }
 
-const ToastComponent: React.FC<ToastProps> = ({ OnDismissToast , showToast, toastMessage}) => {
+const ToastComponent: React.FC<ToastProps> = ({
+  OnDismissToast,
+  showToast,
+  toastMessage,
+  ...props
+}) => {
   return (
     <IonContent>
       <IonToast
@@ -16,6 +21,7 @@ const ToastComponent: React.FC<ToastProps> = ({ OnDismissToast , showToast, toas
         onDidDismiss={() => OnDismissToast}
         message={toastMessage}
         duration={500}
+        {...props}
       />
     </IonContent>
   );
