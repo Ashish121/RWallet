@@ -24,6 +24,7 @@
     "ionicons": "^5.0.0",
     "lodash.debounce": "^4.0.8",
     "native-run": "^1.2.2",
+    "node-sass": "4.14.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-intl": "^5.10.1",

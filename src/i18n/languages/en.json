@@ -1,5 +1,6 @@
 
 {       
+        "common.header" : "ROYALITY WALLET",
         "login.siginPageLabel" : "Royality Wallet",
         "login.emailLabel" : "Mobile number/Email id",
         "login.passwordLabel": "Password",
@@ -26,6 +27,11 @@
         "mpin.confirmMpin" : "Confirm MPIN",
         "mpin.pageHeader" : "Create MPIN",
         "mpin.subHeader" : "MPIN allows you hassle free login even if you forgot password",
-        "mpin.done" : "DONE"
+        "mpin.done" : "DONE",
+
+        "account.fixedPageHeader" : "Fixed Account - {accountNo}",
+        "account.depositeAmount" : "Amount of deposite",
+        "account.investmentPeriod" : "Investment period",
+        "account.openAccount"   : "OPEN ACCOUNT"
         
 }

@@ -9,7 +9,7 @@ interface checkboxProps {
     checkboxLabel?:string
 }
 
-const CheckboxComponent: React.FC<checkboxProps> = ({onCheckboxToggle,checkboxLabel}) => {
+const CheckboxComponent: React.FC<checkboxProps> = ({onCheckboxToggle,checkboxLabel, ...props}) => {
     
   const  checked = true ;
   const setChecked = (value: boolean) => {
@@ -20,7 +20,7 @@ const CheckboxComponent: React.FC<checkboxProps> = ({onCheckboxToggle,checkboxLa
       <IonList className="ion-margin-top">
         <IonItem className="ion-no-padding" lines="none">
           <IonLabel className="terms-label"><Translate message={checkboxLabel || ''}/></IonLabel>
-          <IonCheckbox slot='start' checked={checked} onIonChange={e => setChecked(e.detail.checked)} />
+          <IonCheckbox slot='start' checked={checked} onIonChange={e => setChecked(e.detail.checked)} {...props}/>
         </IonItem>
       </IonList>
     </div>

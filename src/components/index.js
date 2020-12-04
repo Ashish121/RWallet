@@ -4,6 +4,9 @@ import LoaderComponent from './Spinner/Spinner';
 import ToastComponent from './Toast/Toast';
 import SelectMenu from './Select/Select';
 import CheckboxComponent from './Checkbox/Checkbox';
+import RadioComponent from './Radio/Radio';
+import HeaderComponent from './Header/Header';
+import MenuComponent from './Menu/SideMenu';
 
 export {
   InputText,
@@ -11,5 +14,8 @@ export {
   LoaderComponent,
   ButtonConmponent,
   SelectMenu,
-  CheckboxComponent
+  CheckboxComponent,
+  RadioComponent,
+  HeaderComponent,
+  MenuComponent
 };

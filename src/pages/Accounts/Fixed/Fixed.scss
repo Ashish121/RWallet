@@ -1,0 +1,27 @@
+.ion-page {
+    background-color: #3182B9;
+}
+.fixed-account-wrapper {
+    .page-wrapper{
+        background-color: #3182B9;
+        height:100%;
+        .page-inner-wrapper{
+            .page-header-label{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .account-no-text {
+                    color:#ffffff;
+                    margin-top:20px;
+                }
+            }
+        }
+        .page-content-wrapper{
+            padding : 30px;
+            
+            .section-1, .section-2 {
+                margin-top: 20px;
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@ import { eyeOffOutline } from 'ionicons/icons';
 import   { Translate   } from '../../i18n/formatMessages';
 // import LoaderComponent from '../../components/Spinner/Spinner';
 import { InputText, ButtonConmponent, SelectMenu, CheckboxComponent } from '../../components';
-import './SignUp.css';
+import './SignUp.scss';
 
 const SignUpPage: React.FC = () => {
   const history = useHistory();
