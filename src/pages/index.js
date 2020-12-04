@@ -6,10 +6,11 @@ import { MpinPage } from './Mpin/Mpin';
 
 
 
+
 export {
   DashboardPage,
   LoginPage,
   SignUpPage,
   OtpPage,
-  MpinPage
+  MpinPage,
 };

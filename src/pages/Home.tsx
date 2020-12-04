@@ -5,6 +5,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { LoginPage, DashboardPage, SignUpPage, OtpPage, MpinPage } from './index';
 import './Home.css';
 
+
 const Home: React.FC = () => {
   const isAuthed = false ;
   return (
@@ -16,6 +17,8 @@ const Home: React.FC = () => {
         <Route path="/login" component={LoginPage} />
         <Route path="/otp" component={OtpPage} />
         <Route path="/mpin" component={MpinPage}/>
+       
+
         {/* <Redirect exact from="/login" to="/dashboard" /> */}
       </IonRouterOutlet>
     </IonReactRouter>
