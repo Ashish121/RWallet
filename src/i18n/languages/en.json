@@ -15,6 +15,7 @@
         "signup.register" :"REGISTER",
         "signup.checkboxTermsText": "I accept terms & conditions and privacy policy",
         "signup.loginLinkText" : "Already have an account ?",
+        "signup.loginTextLink" : "Login",
 
         "otp.pageHeader" : "Verification code",
         "otp.pageSubHeader" : "Please type the verification code sent to +91 8892050268",
