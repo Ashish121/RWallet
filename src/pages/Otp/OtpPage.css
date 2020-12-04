@@ -1,0 +1,81 @@
+.container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    background-color: #3182B9;
+    padding-top: 30px;
+}
+.container .page-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    font-size: 14px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.0025em;
+    color: #FFFFFF;
+}
+
+.container .page-sub-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+.container .page-sub-header .innercontainer {
+    width: 220px;
+    text-align: center;
+}
+.container .field-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+.container  input[type=tel] {
+    height: 45px;
+    width: 45px;
+    font-size: 25px;
+    text-align: center;
+    border: 1px solid #000000;
+    margin: 10px;
+    height: 45px;
+    width: 45px;
+    font-size: 25px;
+    text-align: center;
+    border: 1px solid #000000;
+    margin-top: 20px;
+    background-color: #5195C4;
+    border: none;
+    width: 27px;
+    height: 27px;
+    font-size: 13px;
+    color : #FFFFFF;
+}
+.container  input[type=number] :focus {
+    border: none;
+}
+.container .resend-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#ffff;
+    margin-top:100px;
+}
+.container .resend-link-container a {
+    color :#ffff;
+    font-weight: 600;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+
