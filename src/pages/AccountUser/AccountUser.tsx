@@ -15,10 +15,7 @@ const AccountUser: React.FC = () => {
   function onGenderSelect(gender:string) {
     console.log('Selected: ',gender);
   }
- 
-
-  // setUserGender('male');
-
+  
   return (
     <>
       
