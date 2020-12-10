@@ -26,7 +26,7 @@ const ButtonConmponent: React.FC<inputTextProps> = ({
   }
   return (
     <div className="buttonWrapper">
-      <IonButton expand={size}  onClick={ () => handleButtonClick()} className='btn-elem' {...props}><Translate message={buttonLabel}/></IonButton>
+      <IonButton expand={size} shape="round"  onClick={ () => handleButtonClick()} className='btn-elem' {...props}><Translate message={buttonLabel}/></IonButton>
     </div>
   );
 };

@@ -1,5 +1,14 @@
 .radio-wrapper {
     ion-radio {
         --color-checked : #ffffff; 
+        --color: #ffffff;
+        
     }
+    ion-text{
+        color: #ffffff;
+    }
+    ion-item{
+        --padding-start:0px;
+    }
+    
 }

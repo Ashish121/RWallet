@@ -5,6 +5,7 @@ import {
   IonText,
   IonApp,
   IonRadioGroup,
+  IonLabel,
 } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
 import {
@@ -15,9 +16,9 @@ import {
   ButtonConmponent,
 } from '../../../components';
 
-import './Fixed.scss';
+import './Current.scss';
 
-const FixedAccountPage: React.FC = () => {
+const CurrentAccountPage: React.FC = () => {
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
@@ -27,13 +28,13 @@ const FixedAccountPage: React.FC = () => {
       <IonApp>
         <IonPage>
           <HeaderComponent headerLable="common.header" />
-          <IonContent className="fixed-account-wrapper">
+          <IonContent className="current-account-wrapper">
             <div className="page-wrapper">
               <div className="page-inner-wrapper">
                 <div className="page-header-label">
-                  <IonText className="account-no-text ion-text-left">
+                  <IonText className="account-no-text">
                     <Translate
-                      message="account.fixedPageHeader"
+                      message="account.currentPageHeader"
                       value={{ accountNo: '07601402201' }}
                     />
                   </IonText>
@@ -46,40 +47,30 @@ const FixedAccountPage: React.FC = () => {
                 />
                 <div className="section-1">
                   <IonText className="sections-heading">
-                    <Translate message="account.investmentPeriod" />
+                    <Translate message="account.minimumBalance" />
                   </IonText>
                   <div className="fixed-radio-options">
                     <IonRadioGroup>
                       <div className="options-section1">
-                        <RadioComponent label="18 Months and 5.00%"/>
+                        <RadioComponent label="Rs 5000 per quarter for non-rural" />
                       </div>
                       <div className="options-section1">
-                        <RadioComponent label="12 Months and 4.90%" />
-                      </div>
-                      <div className="options-section1">
-                        <RadioComponent label="06 Months and 3.50%" />
+                        <RadioComponent label="Rs 2500 per quarter for rural" />
                       </div>
                     </IonRadioGroup>
                   </div>
                 </div>
-                <div className="section-2">
-                  <IonText className="sections-heading">
-                    <Translate message="account.interestPayout" />
+                <div className="section-2 ">
+                  <IonText className="sections-heading ion-padding-top ion-padding-bottom">
+                    <Translate message="account.withdrawLimit" />
                   </IonText>
                   <div className="fixed-radio-options">
-                    <IonRadioGroup>
-                      <div className="options-section1">
-                        <RadioComponent label="Monthly" />
-                      </div>
-                      <div className="options-section1">
-                        <RadioComponent label="Quarterly" />
-                      </div>
-                      <div className="options-section1">
-                        <RadioComponent label="On maturity" />
-                      </div>
-                    </IonRadioGroup>
+                    <IonLabel style={{color: '#fff'}}>
+                      <Translate message="account.withdrawText" />
+                    </IonLabel>
                   </div>
                 </div>
+                
                 <div className="terms-select-wrapper">
                   <CheckboxComponent
                     onCheckboxToggle={setToggleTerms}
@@ -109,4 +100,4 @@ const FixedAccountPage: React.FC = () => {
   );
 };
 
-export { FixedAccountPage };
+export { CurrentAccountPage };

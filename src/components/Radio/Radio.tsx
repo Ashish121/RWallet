@@ -13,8 +13,8 @@ const RadioComponent: React.FC<radioTypeProps> = ({label}) => {
  
   return (
     <div className="radio-wrapper">
-      <IonList>
-        <IonItem>
+      <IonList lines="none">
+        <IonItem lines="none">
           <IonRadio mode='md'/><IonText className='ion-margin-start'><Translate message={label}/></IonText>
         </IonItem>
             

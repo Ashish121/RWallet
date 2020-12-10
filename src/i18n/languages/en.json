@@ -35,8 +35,17 @@
         "mpin.done" : "DONE",
 
         "account.fixedPageHeader" : "Fixed Account - {accountNo}",
-        "account.depositeAmount" : "Amount of deposite",
+        "account.savingPageHeader" : "Saving Account- {accountNo}",
+        "account.depositeAmount" : "Amount of deposit",
         "account.investmentPeriod" : "Investment period",
+        "account.interestPayout" : "Interest payout",
+        "account.rateOfInterest" : "Rate of Interest",
+        "account.deposit" : "Deposit",
+        "account.savingPeriod" : "Savings period",
+        "account.currentPageHeader": "Current Account-{accountNo}",
+        "account.minimumBalance": "Minimum account balance",
+        "account.withdrawLimit": "Cash withdraw limit",
+        "account.withdrawText": "Unlimited withdrawl",
         "account.openAccount"   : "OPEN ACCOUNT"
         
 }

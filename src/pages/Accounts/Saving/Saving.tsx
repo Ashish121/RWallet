@@ -15,9 +15,9 @@ import {
   ButtonConmponent,
 } from '../../../components';
 
-import './Fixed.scss';
+import './Saving.scss';
 
-const FixedAccountPage: React.FC = () => {
+const SavingAccountPage: React.FC = () => {
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
@@ -27,13 +27,13 @@ const FixedAccountPage: React.FC = () => {
       <IonApp>
         <IonPage>
           <HeaderComponent headerLable="common.header" />
-          <IonContent className="fixed-account-wrapper">
+          <IonContent className="saving-account-wrapper">
             <div className="page-wrapper">
               <div className="page-inner-wrapper">
                 <div className="page-header-label">
-                  <IonText className="account-no-text ion-text-left">
+                  <IonText className="account-no-text">
                     <Translate
-                      message="account.fixedPageHeader"
+                      message="account.savingPageHeader"
                       value={{ accountNo: '07601402201' }}
                     />
                   </IonText>
@@ -42,40 +42,52 @@ const FixedAccountPage: React.FC = () => {
               <div className="page-content-wrapper">
                 <InputText
                   inputType="tel"
-                  placeholderText="Amount of deposit"
+                  placeholderText="Enter the amount"
                 />
                 <div className="section-1">
                   <IonText className="sections-heading">
-                    <Translate message="account.investmentPeriod" />
+                    <Translate message="account.rateOfInterest" />
                   </IonText>
                   <div className="fixed-radio-options">
                     <IonRadioGroup>
                       <div className="options-section1">
-                        <RadioComponent label="18 Months and 5.00%"/>
+                        <RadioComponent label="3.50% on balance below Rs 50 lakh" />
                       </div>
                       <div className="options-section1">
-                        <RadioComponent label="12 Months and 4.90%" />
-                      </div>
-                      <div className="options-section1">
-                        <RadioComponent label="06 Months and 3.50%" />
+                        <RadioComponent label="3.75% on balance above Rs 50 lakh" />
                       </div>
                     </IonRadioGroup>
                   </div>
                 </div>
                 <div className="section-2">
                   <IonText className="sections-heading">
-                    <Translate message="account.interestPayout" />
+                    <Translate message="account.deposit" />
                   </IonText>
                   <div className="fixed-radio-options">
                     <IonRadioGroup>
                       <div className="options-section1">
-                        <RadioComponent label="Monthly" />
+                        <RadioComponent label="Daily basis" />
                       </div>
                       <div className="options-section1">
-                        <RadioComponent label="Quarterly" />
+                        <RadioComponent label="Monthly basis" />
+                      </div>
+                    </IonRadioGroup>
+                  </div>
+                </div>
+                <div className="section-3">
+                  <IonText className="sections-heading">
+                    <Translate message="account.savingPeriod" />
+                  </IonText>
+                  <div className="fixed-radio-options">
+                    <IonRadioGroup>
+                      <div className="options-section1">
+                        <RadioComponent label="18 months" />
                       </div>
                       <div className="options-section1">
-                        <RadioComponent label="On maturity" />
+                        <RadioComponent label="12 months" />
+                      </div>
+                      <div className="options-section1">
+                        <RadioComponent label="06 months" />
                       </div>
                     </IonRadioGroup>
                   </div>
@@ -109,4 +121,4 @@ const FixedAccountPage: React.FC = () => {
   );
 };
 
-export { FixedAccountPage };
+export { SavingAccountPage };
