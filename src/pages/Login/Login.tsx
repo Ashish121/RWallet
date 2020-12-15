@@ -42,7 +42,7 @@ const LoginPage: React.FC = () => {
   }
   function navigateToRegister() {
     console.log('Navigating to registration');
-    history.push('/register');
+    history.push('/reset');
   }
   const inputIconRenderer = () => {
     return (<IonIcon icon={eyeOffOutline} color="light" style={{fontSize : '18px',marginTop:'35px'}} onClick={togglePassword} slot="end"/>);

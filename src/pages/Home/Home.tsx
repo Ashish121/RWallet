@@ -31,7 +31,7 @@ const HomePage: React.FC = () => {
     setExpandOptions(!expandOptions);
   };
   return (
-    <IonApp className="page-wrapper">
+    <IonApp className="home-wrapper">
       <IonPage>
         <HeaderComponent
           headerLable={'common.header'}

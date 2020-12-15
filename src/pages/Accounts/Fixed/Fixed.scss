@@ -1,27 +1,34 @@
 .ion-page {
-    background-color: #3182B9;
+  background-color: #3182b9;
+}
+
+.list-md {
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 .fixed-account-wrapper {
-    .page-wrapper{
-        background-color: #3182B9;
-        height:100%;
-        .page-inner-wrapper{
-            .page-header-label{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                .account-no-text {
-                    color:#ffffff;
-                    margin-top:20px;
-                }
-            }
+  .page-wrapper {
+    background-color: #3182b9;
+    height: 100%;
+    .page-inner-wrapper {
+      .page-header-label {
+        padding-top: 20px;
+        padding-left: 30px;
+        .account-no-text {
+          color: #ffffff;
+          margin-top: 20px;
         }
-        .page-content-wrapper{
-            padding : 30px;
-            
-            .section-1, .section-2 {
-                margin-top: 20px;
-            }
-        }
+      }
     }
+    .page-content-wrapper {
+      padding: 30px;
+      background-color: #3182b9;
+      color: #ffffff;
+
+      .section-1,
+      .section-2 {
+        margin-top: 20px;
+      }
+    }
+  }
 }

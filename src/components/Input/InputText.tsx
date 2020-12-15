@@ -17,6 +17,8 @@ interface inputTextProps {
   maxLen?: any;
   pattern?: any;
   placeholderText?: any;
+ 
+  
 }
 
 /**
@@ -33,6 +35,7 @@ const InputText: React.FC<inputTextProps> = ({
   inputType,
   labelColor,
   ChildElem,
+ 
   maxLen,
   placeholderText,
 }) => {
@@ -58,6 +61,7 @@ const InputText: React.FC<inputTextProps> = ({
             maxlength={maxLen}
             type={inputType || 'text'}
             color={color}
+            
             onIonChange={(e) => onInpuTextChange(e)}
             placeholder={!labelText ? placeholderText : ''}
           />
