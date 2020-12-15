@@ -7,6 +7,10 @@ import CheckboxComponent from './Checkbox/Checkbox';
 import RadioComponent from './Radio/Radio';
 import HeaderComponent from './Header/Header';
 import MenuComponent from './Menu/SideMenu';
+import SlidesComponent from './Slides/Slides';
+import ShoppingSection from './Shopping/Shopping';
+import LoanSection from './Loans/Loans';
+import UtilitiesSection from './Utilities/Utilities';
 
 export {
   InputText,
@@ -17,5 +21,9 @@ export {
   CheckboxComponent,
   RadioComponent,
   HeaderComponent,
-  MenuComponent
+  MenuComponent,
+  SlidesComponent,
+  ShoppingSection,
+  LoanSection,
+  UtilitiesSection,
 };
