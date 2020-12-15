@@ -6,6 +6,7 @@ import './Radio.scss';
 interface radioTypeProps {
     label?: any,
     clickHandler?: Function,
+    color?: any
 }
 
 const RadioComponent: React.FC<radioTypeProps> = ({label}) => {
@@ -15,7 +16,7 @@ const RadioComponent: React.FC<radioTypeProps> = ({label}) => {
     <div className="radio-wrapper">
       <IonList>
         <IonItem>
-          <IonRadio mode='md'/><IonText className='ion-margin-start'><Translate message={label}/></IonText>
+          <IonRadio  mode='md'/><IonText className='ion-margin-start'><Translate message={label}/></IonText>
         </IonItem>
             
       </IonList>
