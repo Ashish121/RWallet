@@ -6,11 +6,12 @@ import {
   IonBackButton,
   IonButtons,
   IonText,
-  IonMenuButton,
 } from '@ionic/react';
+import { menuController } from '@ionic/core';
 import { Translate } from '../../i18n/formatMessages';
 import './Header.scss';
 import { MenuComponent } from '../index';
+import { SideMenuIcon } from '../../assets/Icons';
 
 interface headerProps {
   headerLable: any;
@@ -26,6 +27,9 @@ const HeaderComponent: React.FC<headerProps> = ({
   showMenu,
   enableBackNavigation = false,
 }) => {
+  const toggleSideMenu = () => {
+    menuController.toggle();
+  };
   return (
     <>
       {showMenu && <MenuComponent />}
@@ -38,13 +42,13 @@ const HeaderComponent: React.FC<headerProps> = ({
             </IonButtons>
           )}
           {showMenu && (
-            <IonMenuButton
-              autoHide={false}
-              slot="start"
-              color="light"
-              type="button"
-              menu="menu"
-            />
+            <button
+              className="iconButtons"
+              style={{ backgroundColor: 'transparent' }}
+              onClick={toggleSideMenu}
+            >
+              <SideMenuIcon width="20" height="20" />
+            </button>
           )}
           <IonTitle>
             <IonText>
