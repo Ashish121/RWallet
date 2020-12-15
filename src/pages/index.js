@@ -8,7 +8,15 @@ import { MpinPage } from './Mpin/Mpin';
 import { AccountUser } from './AccountUser/AccountUser';
 import { FixedAccountPage } from './Accounts/Fixed/Fixed';
 import { TabViewPage } from './TabView/TabView';
-
+import { Reset } from './Reset/Reset';
+import { Fund } from './Fund/Fund';
+import {Bank} from './Bank/Bank';
+import {Agent} from './Agent/Agent';
+import {CoOperative} from './CoOperative/CoOperative';
+import {BankS} from './BankS/BankS';
+import {AgentS} from './AgentS/AgentS';
+import {CoOperativeS} from './CoOperativeS/CoOperativeS';
+import {ConfirmPage} from './ConfirmPage/ConfirmPage';
 
 
 export {
@@ -22,5 +30,14 @@ export {
   TabViewPage,
   AccountUser,
   AccountPage,
+  Reset,
+  Fund,
+  Bank,
+  Agent,
+  CoOperative,
+  BankS,
+  AgentS,
+  CoOperativeS,
+  ConfirmPage
 
 };

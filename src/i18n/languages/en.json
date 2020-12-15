@@ -21,6 +21,9 @@
         "reset.pageHeader" : "Password reset",
         "reset.pageSubHeader" : "Enter your registered mobile number and an OTP will be reset your password",
         "reset.continue" : "CONTINUE",
+        "rest.newpassword":"Enter your new password",
+        "rest.new": "New password",
+        "rest.newConfirm":"Confirm password",
         
         "otp.pageHeader" : "Verification code",
         "otp.pageSubHeader" : "Please type the verification code sent to +91 8892050268",
@@ -59,8 +62,52 @@
         "account.labelmore" : "Know more about each account",
 
         "account.fixedPageHeader" : "Fixed Account - {accountNo}",
-        "account.depositeAmount" : "Amount of deposite",
+        "account.depositeAmount" : "Amount of deposit",
         "account.investmentPeriod" : "Investment period",
-        "account.openAccount"   : "OPEN ACCOUNT"
+        "account.openAccount"   : "OPEN ACCOUNT",
+
+        "fund.fundpage": "FUND TRANSFER",
+        "fund.bankTrasfer": "BANK TRANSFER",
+        "fund.coTransfer": "CO-OPERATIVE TRANSFER",
+        "fund.agent": "AGENT FUND TRANSFER",
+
+        "bank.destination":"Destination bank",
+        "bank.holderName":"Account Holder name",
+        "bank.number":"Account number",
+        "bank.mobile":"Mobile number",
+        "bank.amount":"Amount",
+        "bank.remark":"Remark/purpose",
+        "bank.clear":"CLEAR",
+        "bank.proceed":"PROCEED",
+
+        "coOperative.text":"CO-OPERATIVE TRANSFER",
+        "coOperative.province":"Province",
+        "coOperative.district":"District",
+        "coOperative.name":"Co-operative name",
+        "coOperative.holder":"Account holder name",
+        "coOperative.number":"Account number",
+        "coOperative.mob":"Mobile number",
+        "coOperative.amount":"Amount",
+        "coOperative.remark":"Remarks/purpose",
+
+        
+        "agent.text":"AGENT TRANSFER",
+        "agent.country":"Select country",
+        "agent.code":"Agent code",
+        "agent.holder":"Account holder name",
+        "agent.number":"Account number",
+        "agent.mob":"Mobile number",
+        "agent.amount":"Amount",
+        "agent.remark":"Remarks/purpose",
+        "agent.conform":"CONFIRM"
+
+        
+
+
+
+
+
+
+      
         
 }

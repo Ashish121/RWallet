@@ -93,7 +93,7 @@ const FixedAccountPage: React.FC = () => {
                 >
                   <ButtonConmponent
                     buttonLabel="account.openAccount"
-                    size="full"
+                    size="block"
                   />
                 </div>
               </div>

@@ -5,6 +5,7 @@ import   { Translate   } from '../../i18n/formatMessages';
 import { InputText, ButtonConmponent, SelectMenu, HeaderComponent} from '../../components';
 import './AccountUser.scss';
 
+
 const AccountUser: React.FC = () => {
   const history = useHistory();
 
@@ -15,6 +16,8 @@ const AccountUser: React.FC = () => {
   function onGenderSelect(gender:string) {
     console.log('Selected: ',gender);
   }
+
+ 
   
   return (
     <>
