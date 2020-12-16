@@ -18,14 +18,12 @@ import {
   Agent,
   BankS,
   AgentS,
+  ConfirmPage,
   CoOperativeS,
-  ConfirmPage
+  CoOperative
 
 } from './index';
 import './Routes.scss';
-import { CoOperative } from './CoOperative/CoOperative';
-
-
 
 const Routes: React.FC = () => {
   const isTabView = true;
@@ -45,10 +43,10 @@ const Routes: React.FC = () => {
         <Route path="/pass" component={Reset}/>
         <Route path="/fund" component={Fund}/>
         <Route path="/bank" component={Bank}/>
-        <Route path="/cop" component={CoOperative}/>
         <Route path="/agent" component={Agent}/>
         <Route path="/bankS" component={BankS}/>
-        <Route path="/copS" component={CoOperativeS}/>
+        <Route path="/cops" component={CoOperativeS}/>
+        <Route path="/cop" component={CoOperative}/>
         <Route path="/agentS" component={AgentS}/>
         <Route path="/confirm" component={ConfirmPage}/>
 

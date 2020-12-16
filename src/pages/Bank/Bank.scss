@@ -2,7 +2,6 @@
   display: flex;
   display: flex;
   height: 100%;
-
   flex-direction: column;
   background-color: #3182b9;
 }
@@ -13,8 +12,10 @@
   margin-top: 20px;
   color: #ffffff;
 }
-.page-wrapper {
+.container .bank-wrapper {
   margin-top: 30px;
+  padding: 30px;
+  background-color: #3182b9;
 }
 .header-text-bottom {
   display: flex;

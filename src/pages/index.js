@@ -15,9 +15,8 @@ import {Agent} from './Agent/Agent';
 import {CoOperative} from './CoOperative/CoOperative';
 import {BankS} from './BankS/BankS';
 import {AgentS} from './AgentS/AgentS';
-import {CoOperativeS} from './CoOperativeS/CoOperativeS';
 import {ConfirmPage} from './ConfirmPage/ConfirmPage';
-
+import {CoOperativeS} from './CoOperativeS/CoOperativeS';
 
 export {
   HomePage,
@@ -34,10 +33,11 @@ export {
   Fund,
   Bank,
   Agent,
-  CoOperative,
   BankS,
   AgentS,
+  ConfirmPage,
   CoOperativeS,
-  ConfirmPage
+  CoOperative
+
 
 };

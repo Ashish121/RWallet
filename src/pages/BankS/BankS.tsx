@@ -15,7 +15,7 @@ const BankS: React.FC = () => {
               <IonText className="header-text-area">
                 <Translate  message="fund.bankTrasfer"/>
               </IonText>
-              <div className='page-wrapper'>
+              <div className='bank-wrapper'>
                 <InputText inputType="text" labelText="bank.destination" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="bank.holderName" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="bank.number" labelType="floating" color="light" labelColor="light"/>

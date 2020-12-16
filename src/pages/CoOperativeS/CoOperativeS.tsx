@@ -3,7 +3,7 @@ import React from 'react';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import   { Translate   } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText, HeaderComponent} from '../../components';
-import './CoOperative.scss';
+import './CoOperativeS.scss';
 
 const CoOperativeS: React.FC = () => {
 
@@ -17,7 +17,7 @@ const CoOperativeS: React.FC = () => {
               <IonText className="header-text-area">
                 <Translate  message="coOperative.text"/>
               </IonText>
-              <div className='page-wrapper'>
+              <div className='cops-wrapper'>
             
                 <InputText inputType="text" labelText="coOperative.province" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="coOperative.district" labelType="floating" color="light" labelColor="light"/>
