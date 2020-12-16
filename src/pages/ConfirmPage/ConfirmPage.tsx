@@ -15,7 +15,7 @@ const ConfirmPage: React.FC = () => {
               <IonCard>
               
               </IonCard>
-              <div className='page-wrapper'>
+              <div className='confirm-wrapper'>
                 <IonCardHeader>
                   
                   <IonCardTitle>sucess</IonCardTitle>

@@ -36,7 +36,7 @@ const Fund: React.FC = () => {
               <IonText className="header-text-area">
                 <Translate  message="fund.fundpage"/>
               </IonText>
-              <div className='page-wrapper'>
+              <div className='fund-wrapper'>
                 <div style={{marginTop: '13px'}}>
                   <ButtonConmponent buttonLabel='fund.bankTrasfer' size='block' clickHandler={handleBank}/>
                 </div>
@@ -46,9 +46,7 @@ const Fund: React.FC = () => {
                 <div style={{marginTop: '13px'}}>
                   <ButtonConmponent buttonLabel='fund.agent' size='block' clickHandler={handleAgent}/>
                 </div>
-
               </div>
-              
             </div>
           </IonContent>
         </IonPage>

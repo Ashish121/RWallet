@@ -28,7 +28,7 @@ const FixedAccountPage: React.FC = () => {
         <IonPage>
           <HeaderComponent headerLable="common.header" />
           <IonContent className="fixed-account-wrapper">
-            <div className="page-wrapper">
+            <div className="fixed-wrapper">
               <div className="page-inner-wrapper">
                 <div className="page-header-label">
                   <IonText className="account-no-text">
@@ -39,7 +39,7 @@ const FixedAccountPage: React.FC = () => {
                   </IonText>
                 </div>
               </div>
-              <div className="page-content-wrapper">
+              <div className="fixed-content-wrapper">
                 <InputText
                   inputType="tel"
                   placeholderText="Amount of deposite"

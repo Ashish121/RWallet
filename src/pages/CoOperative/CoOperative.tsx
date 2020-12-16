@@ -1,10 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp,IonGrid, IonCol,IonRow} from '@ionic/react';
 import   { Translate   } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText, HeaderComponent} from '../../components';
 import './CoOperative.scss';
 
 const CoOperative: React.FC = () => {
+  const history = useHistory();
+
+  function handleproceed() {
+    console.log('Handling registration');
+    history.push('/cops');
+  }
+
   return (
     <>
       <IonApp>
@@ -15,16 +23,17 @@ const CoOperative: React.FC = () => {
               <IonText className="header-text-area">
                 <Translate  message="coOperative.text"/>
               </IonText>
-              <div className='page-wrapper'>
-            
+              <div className='cop-wrapper'>
+                
                 <InputText inputType="text" labelText="coOperative.province" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="coOperative.district" labelType="floating" color="light" labelColor="light"/>
+                <InputText inputType="text" labelText="coOperative.province" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="coOperative.name" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="coOperative.holder" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="bank.number" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="bank.mobile" labelType="floating" color="light" labelColor="light"/>
-                <InputText inputType="text" labelText="bank.amount" labelType="floating" color="light" labelColor="light"/>
-                <InputText inputType="text" labelText="bank.remark" labelType="floating" color="light" labelColor="light"/>
+                <InputText inputType="text" labelText="coOperative.amount" labelType="floating" color="light" labelColor="light"/>
+                <InputText inputType="text" labelText="coOperative.remark" labelType="floating" color="light" labelColor="light"/>
                 <div className="clear-button">
                   <IonGrid className="header-grid">
                     <IonRow>
@@ -34,7 +43,7 @@ const CoOperative: React.FC = () => {
                 
                         </div>
                         <div className="button-line" style={{marginTop: '10px'}}>
-                          <ButtonConmponent buttonLabel='bank.proceed' size='block' />
+                          <ButtonConmponent buttonLabel='bank.proceed' size='block' clickHandler={handleproceed} />
                         </div>
                       </IonCol>
                     </IonRow>
@@ -49,4 +58,4 @@ const CoOperative: React.FC = () => {
   );
 };
 
-export { CoOperative };
+export {CoOperative };

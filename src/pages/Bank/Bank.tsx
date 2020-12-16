@@ -1,10 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp,IonGrid, IonCol,IonRow} from '@ionic/react';
 import   { Translate   } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText, HeaderComponent} from '../../components';
 import './Bank.scss';
 
 const Bank: React.FC = () => {
+  const history = useHistory();
+
+  function handleproceed() {
+    console.log('Handling registration');
+    history.push('/banks');
+  }
+
   return (
     <>
       <IonApp>
@@ -13,9 +21,9 @@ const Bank: React.FC = () => {
           <IonContent>
             <div className="container">
               <IonText className="header-text-area">
-                <Translate  message="fund.fundpage"/>
+                <Translate  message="fund.bankTrasfer"/>
               </IonText>
-              <div className='page-wrapper'>
+              <div className='bank-wrapper'>
                 <InputText inputType="text" labelText="bank.destination" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="bank.holderName" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="bank.number" labelType="floating" color="light" labelColor="light"/>
@@ -31,7 +39,7 @@ const Bank: React.FC = () => {
                 
                         </div>
                         <div className="button-line" style={{marginTop: '10px'}}>
-                          <ButtonConmponent buttonLabel='bank.proceed' size='block' />
+                          <ButtonConmponent buttonLabel='bank.proceed' size='block' clickHandler={handleproceed} />
                         </div>
                       </IonCol>
                     </IonRow>
