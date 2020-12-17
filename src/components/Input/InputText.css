@@ -15,4 +15,8 @@ ion-item {
   font-size: 14px;
   line-height: 17px;
   color: #ffffff;
+  font-family: "Montserrat" !important;
+}
+ion-input {
+  font-family: "Montserrat" !important;
 }

@@ -17,8 +17,6 @@ interface inputTextProps {
   maxLen?: any;
   pattern?: any;
   placeholderText?: any;
- 
-  
 }
 
 /**
@@ -35,7 +33,7 @@ const InputText: React.FC<inputTextProps> = ({
   inputType,
   labelColor,
   ChildElem,
- 
+
   maxLen,
   placeholderText,
 }) => {
@@ -57,14 +55,24 @@ const InputText: React.FC<inputTextProps> = ({
               <Translate message={labelText} />
             </IonLabel>
           )}
-          <IonInput
-            maxlength={maxLen}
-            type={inputType || 'text'}
-            color={color}
-            
-            onIonChange={(e) => onInpuTextChange(e)}
-            placeholder={!labelText ? placeholderText : ''}
-          />
+          {!placeholderText && (
+            <IonInput
+              maxlength={maxLen}
+              type={inputType || 'text'}
+              color={color}
+              onIonChange={(e) => onInpuTextChange(e)}
+            />
+          )}
+
+          {placeholderText && (
+            <IonInput
+              maxlength={maxLen}
+              type={inputType || 'text'}
+              color={color}
+              onIonChange={(e) => onInpuTextChange(e)}
+              placeholder={placeholderText}
+            />
+          )}
           {ChildElem}
         </IonItem>
       </IonList>

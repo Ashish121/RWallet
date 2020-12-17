@@ -22,6 +22,7 @@ import { WifiIcon } from './WifiIcon';
 import { CreditCardIcon } from './CreditCardIcon';
 import { InsuranceIcon } from './InsuranceIcon';
 import { AntivirusIcon } from './AntivirusIcon';
+import { OrderConfirmIcon } from './OrderConfirmIcon';
 
 export {
   SmartphoneIcon,
@@ -48,4 +49,5 @@ export {
   CreditCardIcon,
   InsuranceIcon,
   AntivirusIcon,
+  OrderConfirmIcon,
 };

@@ -17,11 +17,11 @@ import {
   Agent,
   BankS,
   AgentS,
-  CoOperativeS,
   ConfirmPage,
+  CoOperativeS,
+  CoOperative,
 } from './index';
 import './Routes.scss';
-import { CoOperative } from './CoOperative/CoOperative';
 
 const Routes: React.FC = () => {
   const isTabView = true;

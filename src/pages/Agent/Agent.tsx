@@ -1,10 +1,17 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp,IonGrid, IonCol,IonRow} from '@ionic/react';
 import   { Translate   } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText, HeaderComponent} from '../../components';
 import './Agent.scss';
 
 const Agent: React.FC = () => {
+  const history = useHistory();
+
+  function handleproceed() {
+    console.log('Handling registration');
+    history.push('/agentS');
+  }
 
   return (
     <>
@@ -34,7 +41,7 @@ const Agent: React.FC = () => {
                 
                         </div>
                         <div className="button-line" style={{marginTop: '10px'}}>
-                          <ButtonConmponent buttonLabel='bank.proceed' size='block' />
+                          <ButtonConmponent buttonLabel='bank.proceed' size='block' clickHandler={handleproceed}/>
                         </div>
                       </IonCol>
                     </IonRow>

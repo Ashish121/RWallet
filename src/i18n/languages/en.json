@@ -94,6 +94,9 @@
   "account.depositeAmount": "Amount of deposit",
   "account.investmentPeriod": "Investment period",
   "account.openAccount": "OPEN ACCOUNT",
+  "account.successText": "SUCCESS",
+  "account.accountNoText": "Account created :",
+  "account.continue": "CONTINUE",
 
   "fund.fundpage": "FUND TRANSFER",
   "fund.bankTrasfer": "BANK TRANSFER",
