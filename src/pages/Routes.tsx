@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import {
@@ -13,15 +13,13 @@ import {
   AccountUser,
   AccountPage,
   Reset,
-  Fund,
   Bank,
   Agent,
   BankS,
   AgentS,
   ConfirmPage,
   CoOperativeS,
-  CoOperative
-
+  CoOperative,
 } from './index';
 import './Routes.scss';
 
@@ -30,25 +28,30 @@ const Routes: React.FC = () => {
   return (
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/register" component={SignUpPage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/otp" component={OtpPage} />
-        <Route path="/mpin" component={MpinPage} />
-        <Route path="/accountuser" component={AccountUser}/>
-        <Route path="/accountpage" component={AccountPage}/>
-        <Route path="/account/fixed" component={FixedAccountPage} />
-        <Route path="/tabs" component={isTabView ? TabViewPage : TabViewPage} />
-        <Redirect exact from="/" to="/register" />
-        <Route path="/reset" component={ResetPassword}/>
-        <Route path="/pass" component={Reset}/>
-        <Route path="/fund" component={Fund}/>
-        <Route path="/bank" component={Bank}/>
-        <Route path="/agent" component={Agent}/>
-        <Route path="/bankS" component={BankS}/>
-        <Route path="/cops" component={CoOperativeS}/>
-        <Route path="/cop" component={CoOperative}/>
-        <Route path="/agentS" component={AgentS}/>
-        <Route path="/confirm" component={ConfirmPage}/>
+        <Switch>
+          <Route path="/register" exact component={SignUpPage} />
+          <Route path="/login" exact component={LoginPage} />
+          <Route path="/otp" exact component={OtpPage} />
+          <Route path="/mpin" exact component={MpinPage} />
+          <Route path="/accountuser" exact component={AccountUser} />
+          <Route path="/accountpage" exact component={AccountPage} />
+          <Route path="/account/fixed" exact component={FixedAccountPage} />
+          <Route
+            path="/tabs"
+            component={isTabView ? TabViewPage : TabViewPage}
+          />
+          <Redirect exact from="/" to="/register" />
+          <Route path="/reset" exact component={ResetPassword} />
+          <Route path="/pass" exact component={Reset} />
+          {/* <Route path="/fundTransfer" component={Fund} /> */}
+          <Route path="/bank" exact component={Bank} />
+          <Route path="/cop" exact component={CoOperative} />
+          <Route path="/agent" exact component={Agent} />
+          <Route path="/bankS" exact component={BankS} />
+          <Route path="/copS" exact component={CoOperativeS} />
+          <Route path="/agentS" exact component={AgentS} />
+          <Route path="/confirm" exact component={ConfirmPage} />
+        </Switch>
 
         {/* <Redirect exact from="/login" to="/dashboard" /> */}
       </IonRouterOutlet>

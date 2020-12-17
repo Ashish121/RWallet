@@ -1,3 +1,42 @@
-.confirm-wrapper {
-  color: #ffffff;
+.ion-page {
+  background-color: #3182b9;
+}
+.confirm-page-wrapper {
+  ion-card {
+    width: 100%;
+    ion-card-content {
+      padding: 0;
+      height: 100%;
+    }
+  }
+  .card-wrapper {
+    display: flex;
+    justify-content: center;
+    height: calc(100% - 120px);
+    .icon-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100% - 100px);
+    }
+
+    ion-toolbar {
+      --background: #004777;
+      height: 100px;
+    }
+  }
+  .continue-btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    .buttonWrapper {
+      width: 100%;
+      ion-button {
+        width: 100%;
+      }
+    }
+  }
 }

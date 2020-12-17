@@ -39,6 +39,25 @@ const HomePage: React.FC = () => {
           showNotification={true}
         />
         <IonContent>
+          {/* <div
+            className="checkBalanceSection"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div className="balance-section" style={{ display: "flex" }}>
+              <div style={{ backgroundColor: "#ffffff" }}>
+                <IonText>Balance</IonText>
+              </div>
+              <div className="triangle-left"></div>
+              <div style={{ backgroundColor: "#004777" }}>
+                <IonText>29900</IonText>
+              </div>
+            </div>
+          </div> */}
+
           <SlidesComponent />
           <div
             className={

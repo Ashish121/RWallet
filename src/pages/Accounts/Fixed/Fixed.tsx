@@ -6,6 +6,7 @@ import {
   IonApp,
   IonRadioGroup,
 } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import { Translate } from '../../../i18n/formatMessages';
 import {
   HeaderComponent,
@@ -18,8 +19,12 @@ import {
 import './Fixed.scss';
 
 const FixedAccountPage: React.FC = () => {
+  const history = useHistory();
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
+  }
+  function navigateToConfirm() {
+    history.push('/confirm');
   }
 
   return (
@@ -94,6 +99,7 @@ const FixedAccountPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="account.openAccount"
                     size="block"
+                    clickHandler={navigateToConfirm}
                   />
                 </div>
               </div>

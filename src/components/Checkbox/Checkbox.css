@@ -1,7 +1,7 @@
 .inputWrapper .terms-label {
   font-weight: normal;
-  font-size: 12px;
-  --font-family: "Montserrat";
+  font-size: 14px;
+  font-family: "Montserrat" !important;
   color: #ffffff;
   margin-left: 10px;
 }

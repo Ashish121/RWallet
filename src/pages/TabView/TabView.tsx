@@ -1,5 +1,5 @@
-import React  from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import {
   IonTabs,
   IonTabBar,
@@ -14,15 +14,26 @@ import {
   mapOutline,
   timerOutline,
 } from 'ionicons/icons';
-import { HomePage } from '../index';
+import { HomePage, Fund } from '../index';
 import './TabView.scss';
 
 const TabViewPage: React.FC = () => {
+  function handleTabClick(event: any) {
+    console.log('Tab clocled', event);
+  }
+
   return (
-    <IonTabs>
+    <IonTabs onIonTabsDidChange={handleTabClick}>
       <IonRouterOutlet>
-        <Redirect exact path="/tabs" to="/tabs/home" />
-        <Route path="/tabs/home" render={() => <HomePage />} exact={true} />
+        <Switch>
+          <Route path="/tabs/home" component={HomePage} exact />
+          <Route path="/tabs/transfer" component={Fund} exact />
+          <Route
+            path="/tabs"
+            render={() => <Redirect to="/tabs/home" />}
+            exact
+          />
+        </Switch>
       </IonRouterOutlet>
 
       <IonTabBar slot="bottom">
@@ -31,7 +42,7 @@ const TabViewPage: React.FC = () => {
           <IonLabel>Home</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="transfer" disabled={true}>
+        <IonTabButton tab="transfer" href="/tabs/transfer">
           <IonIcon icon={cashOutline} />
           <IonLabel>Transfer</IonLabel>
         </IonTabButton>
