@@ -1,9 +1,12 @@
 ion-tab-bar {
-    --background : #004777;
+  --background: #004777;
 }
 ion-tab-button {
-    --color : #ffffff;
-    font-size: 15px;
-    --color-selected:#ffffff;
-    padding:5px
+  --color: #ffffff;
+  font-size: 15px;
+  --color-selected: #ffffff;
+  ion-icon {
+    width: 20px;
+    height: 20px;
+  }
 }

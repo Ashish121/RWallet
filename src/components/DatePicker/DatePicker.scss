@@ -1,0 +1,11 @@
+.date-picker-container {
+  position: relative;
+  ion-item {
+    --padding-start: 0px;
+    .date-picker-label {
+      font-size: 15px;
+      color: #ffffff;
+      font-family: "Montserrat";
+    }
+  }
+}

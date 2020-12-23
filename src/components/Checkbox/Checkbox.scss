@@ -1,0 +1,26 @@
+.checkbox-wrapper {
+  .terms-label {
+    font-weight: normal;
+    font-size: 14px;
+    font-family: "Montserrat" !important;
+    color: #ffffff;
+    margin-left: 10px;
+  }
+  ion-checkbox {
+    --border-radius: 0px;
+    margin: 0px;
+    width: 18px;
+    height: 18px;
+    --background-checked: #ffffff;
+    --checkmark-color: #3182b9;
+    --checkmark-width: 3px;
+    --border-color-checked: #ffffff;
+    --border-color: #ffffff;
+    --font-family: "Montserrat";
+  }
+
+  .ion-margin-top {
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+}

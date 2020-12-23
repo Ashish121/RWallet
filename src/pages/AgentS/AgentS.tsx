@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import   { Translate   } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, HeaderComponent} from '../../components';
+import { Translate } from '../../i18n/formatMessages';
+import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
 import './AgentS.scss';
 
 const AgentS: React.FC = () => {
@@ -13,22 +13,65 @@ const AgentS: React.FC = () => {
           <IonContent>
             <div className="container">
               <IonText className="header-text-area">
-                <Translate  message="agent.text"/>
+                <Translate message="agent.text" />
               </IonText>
-              <div className='page-wrapper'>
-            
-                <InputText inputType="text" labelText="agent.country" labelType="floating" color="light" labelColor="light"/>
-                <InputText inputType="text" labelText="bank.code" labelType="floating" color="light" labelColor="light"/>
-                <InputText inputType="text" labelText="bank.holderName" labelType="floating" color="light" labelColor="light"/>
-                <InputText inputType="text" labelText="bank.number" labelType="floating" color="light" labelColor="light"/>
-                <InputText inputType="text" labelText="bank.mobile" labelType="floating" color="light" labelColor="light"/>
-                <InputText inputType="text" labelText="bank.amount" labelType="floating" color="light" labelColor="light"/>
-                <InputText inputType="text" labelText="bank.remark" labelType="floating" color="light" labelColor="light"/>
+              <div className="page-wrapper">
+                <InputText
+                  inputType="text"
+                  labelText="agent.country"
+                  labelType="floating"
+                  color="light"
+                  labelColor="light"
+                />
+                <InputText
+                  inputType="text"
+                  labelText="bank.code"
+                  labelType="floating"
+                  color="light"
+                  labelColor="light"
+                />
+                <InputText
+                  inputType="text"
+                  labelText="bank.holderName"
+                  labelType="floating"
+                  color="light"
+                  labelColor="light"
+                />
+                <InputText
+                  inputType="text"
+                  labelText="bank.number"
+                  labelType="floating"
+                  color="light"
+                  labelColor="light"
+                />
+                <InputText
+                  inputType="text"
+                  labelText="bank.mobile"
+                  labelType="floating"
+                  color="light"
+                  labelColor="light"
+                />
+                <InputText
+                  inputType="text"
+                  labelText="bank.amount"
+                  labelType="floating"
+                  color="light"
+                  labelColor="light"
+                />
+                <InputText
+                  inputType="text"
+                  labelText="bank.remark"
+                  labelType="floating"
+                  color="light"
+                  labelColor="light"
+                />
                 <div className="clear-button">
-                  <div style={{marginTop: '13px'}}>
-                    <ButtonConmponent buttonLabel='agent.conform' size='block'/>
+                  <div style={{ marginTop: '13px' }}>
+                    <ButtonConmponent
+                      buttonLabel="agent.conform"
+                      size="block"
+                    />
                   </div>
-
                 </div>
               </div>
             </div>

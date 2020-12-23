@@ -1,4 +1,11 @@
-.header-text {
-  padding: 25px;
-  color: #ffffff;
+.user-details-container {
+  font-family: "Montserrat";
+  padding: 30px;
+  .page-header-text {
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+  }
 }

@@ -1,0 +1,24 @@
+.select-menu-wrapper {
+  ion-item {
+    --border-color: #ffffff;
+  }
+  .list-wrapper .gender-label {
+    font-style: normal;
+    font-weight: normal;
+    font-family: "Montserrat";
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+  }
+  .list-wrapper {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  ion-select::part(text) {
+    color: #ffffff;
+  }
+  ion-select::part(icon) {
+    color: #ffffff;
+    opacity: 0.8;
+  }
+}

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IonItem, IonInput, IonLabel, IonList } from '@ionic/react';
 import debounce from 'lodash.debounce';
 import { Translate } from '../../i18n/formatMessages';
-import './InputText.css';
+import './InputText.scss';
+import { EyeDisabledIcon, EyeEnabledIcon } from '../../assets/Icons';
 
 interface inputTextProps {
   label?: string;
@@ -13,10 +14,10 @@ interface inputTextProps {
   fontSize?: any;
   labelText?: any;
   inputType?: any;
-  ChildElem?: any;
   maxLen?: any;
   pattern?: any;
   placeholderText?: any;
+  showPasswordMode?: boolean;
 }
 
 /**
@@ -32,14 +33,20 @@ const InputText: React.FC<inputTextProps> = ({
   labelText,
   inputType,
   labelColor,
-  ChildElem,
-
+  showPasswordMode = false,
   maxLen,
   placeholderText,
 }) => {
+  const [toggleEyeOn, setToggleEyeOn] = useState(false);
   const onInpuTextChange = debounce((event) => {
     onChange?.(event.target.value);
   }, 100);
+
+  function toggleEye(event: any) {
+    event.stopPropagation();
+    console.log('Hello');
+    setToggleEyeOn(!toggleEyeOn);
+  }
 
   return (
     <div className="inputWrapper">
@@ -58,7 +65,7 @@ const InputText: React.FC<inputTextProps> = ({
           {!placeholderText && (
             <IonInput
               maxlength={maxLen}
-              type={inputType || 'text'}
+              type={toggleEyeOn ? 'text' : inputType || 'text'}
               color={color}
               onIonChange={(e) => onInpuTextChange(e)}
             />
@@ -67,13 +74,18 @@ const InputText: React.FC<inputTextProps> = ({
           {placeholderText && (
             <IonInput
               maxlength={maxLen}
-              type={inputType || 'text'}
+              type={toggleEyeOn ? 'text' : inputType || 'text'}
               color={color}
               onIonChange={(e) => onInpuTextChange(e)}
               placeholder={placeholderText}
             />
           )}
-          {ChildElem}
+          {showPasswordMode && (
+            <button type="button" className="eye-btn" onClick={toggleEye}>
+              {toggleEyeOn && <EyeEnabledIcon />}
+              {!toggleEyeOn && <EyeDisabledIcon />}
+            </button>
+          )}
         </IonItem>
       </IonList>
     </div>

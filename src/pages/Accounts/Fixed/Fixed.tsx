@@ -24,11 +24,14 @@ const FixedAccountPage: React.FC = () => {
     console.log('value: ', value);
   }
   function navigateToConfirm() {
-    history.push('/confirm');
+    // console.log("history: ", history);
+    // console.log("Router.History", Router.History);
+    // history.replaceState("/confirm");
+    history.replace('/confirm');
   }
 
   return (
-    <div>
+    <>
       <IonApp>
         <IonPage>
           <HeaderComponent headerLable="common.header" />
@@ -50,7 +53,7 @@ const FixedAccountPage: React.FC = () => {
                   placeholderText="Amount of deposite"
                 />
                 <div className="section-1">
-                  <IonText>
+                  <IonText className="section-header">
                     <Translate message="account.investmentPeriod" />
                   </IonText>
                   <IonRadioGroup>
@@ -66,7 +69,7 @@ const FixedAccountPage: React.FC = () => {
                   </IonRadioGroup>
                 </div>
                 <div className="section-2">
-                  <IonText>
+                  <IonText className="section-header">
                     <Translate message="account.investmentPeriod" />
                   </IonText>
                   <IonRadioGroup>
@@ -107,7 +110,7 @@ const FixedAccountPage: React.FC = () => {
           </IonContent>
         </IonPage>
       </IonApp>
-    </div>
+    </>
   );
 };
 

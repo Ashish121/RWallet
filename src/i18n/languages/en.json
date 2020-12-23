@@ -1,5 +1,8 @@
 {
   "common.header": "ROYALITY WALLET",
+  "common.confirmBtnText": "CONFIRM",
+  "common.continue": "CONTINUE",
+
   "login.siginPageLabel": "Royality Wallet",
   "login.emailLabel": "Mobile number/Email id",
   "login.passwordLabel": "Password",
@@ -48,6 +51,7 @@
   "home.antivirus": "Antivirus",
   "home.seeAll": "See all",
   "home.collapse": "Collapse all",
+  "home.balanceLabel": "BALANCE",
 
   "reset.pageHeader": "Password reset",
   "reset.pageSubHeader": "Enter your registered mobile number and an OTP will be reset your password",

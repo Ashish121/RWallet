@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp, IonIcon } from '@ionic/react';
-import { eyeOffOutline } from 'ionicons/icons';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 // import LoaderComponent from '../../components/Spinner/Spinner';
 import {
@@ -15,45 +13,7 @@ import './SignUp.scss';
 
 const SignUpPage: React.FC = () => {
   const history = useHistory();
-  // const dispatch = useDispatch();
-  const [toggleEyeText, setToggleEyeText] = useState(false);
-  // const [fullName, setFullName] = useState('');
-  // const [gender, setGender] = useState('');
-  // const [mobileNo, setMobileNo] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
-  const inputIconRenderer = () => {
-    return (
-      <IonIcon
-        icon={eyeOffOutline}
-        color="light"
-        style={{ fontSize: '18px', marginTop: '35px' }}
-        onClick={togglePassword}
-        slot="end"
-      />
-    );
-  };
-  // function setUserFullName(value: any) {
-  //   setFullName(value);
-  // }
-  // function setUserGender(value: any) {
-  //   setGender(value);
-  // }
-  // function setUserMobileNo(value: any) {
-  //   setMobileNo(value);
-  // }
-  // function setUserPassword(value: any) {
-  //   setPassword(value);
-  // }
-  // function setUserConfirmedPassword(value: any) {
-  //   setConfirmPassword(value);
-  // }
 
-  function togglePassword(event: any) {
-    event.preventDefault();
-    const toggleStatus = !toggleEyeText;
-    setToggleEyeText(toggleStatus);
-  }
   function handleRegistration() {
     console.log('Handling registration');
     history.push('/otp');
@@ -69,31 +29,13 @@ const SignUpPage: React.FC = () => {
 
     history.push('/login');
   }
-  // setUserGender('male');
 
   return (
     <>
-      {/* <LoaderComponent showLoading={isAuthenticating} loaderMessage={'Authenticating'} /> */}
       <IonApp>
         <IonPage>
           <IonContent>
             <div className="signup-container">
-              {/* <IonGrid className="header-grid">
-                <IonRow>
-                  <IonCol className="ion-text-center">
-                    <div className="body-header-wrapper ion-margin-top">
-                      <IonText className="body-header-text-wrapper">
-                        <span className="welcome_text">
-                          <Translate message="login.welcomeText" />
-                        </span>
-                        <span className="header-bold ion-text-uppercase">
-                          <Translate message="login.siginPageLabel" />
-                        </span>
-                      </IonText>
-                    </div>
-                  </IonCol>
-                </IonRow>
-              </IonGrid> */}
               <div className="royality-text-header">
                 <IonText className="body-header-text-wrapper">
                   <Translate message="login.welcomeText" />
@@ -110,7 +52,7 @@ const SignUpPage: React.FC = () => {
                   color="light"
                   labelColor="light"
                 />
-                <div className="ion-margin-top">
+                <div>
                   <SelectMenu label="signup.gender" onSelect={onGenderSelect} />
                 </div>
                 <InputText
@@ -121,20 +63,20 @@ const SignUpPage: React.FC = () => {
                   labelColor="light"
                 />
                 <InputText
-                  inputType={toggleEyeText ? 'text' : 'password'}
+                  inputType="password"
                   labelText="signup.passwordLabel"
                   labelType="floating"
                   color="light"
                   labelColor="light"
-                  ChildElem={inputIconRenderer()}
+                  showPasswordMode={true}
                 />
                 <InputText
-                  inputType={toggleEyeText ? 'text' : 'password'}
+                  inputType="password"
                   labelText="signup.confirmPassword"
                   labelType="floating"
                   color="light"
                   labelColor="light"
-                  ChildElem={inputIconRenderer()}
+                  showPasswordMode={true}
                 />
                 <div className="terms-select-wrapper">
                   <CheckboxComponent

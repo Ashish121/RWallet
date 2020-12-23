@@ -1,0 +1,17 @@
+.splash-wrapper {
+  .ion-page {
+    background-color: #ffffff;
+  }
+  ion-app {
+    --background-color: #ffffff;
+  }
+  ion-content {
+    --overflow: "hidden";
+    --ion-background-color: #ffffff;
+    .video-player {
+      height: 100%;
+      width: 100%;
+      background-color: #ffffff;
+    }
+  }
+}

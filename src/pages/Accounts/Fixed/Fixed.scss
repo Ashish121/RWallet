@@ -12,8 +12,8 @@
     height: 100%;
     .page-inner-wrapper {
       .page-header-label {
-        padding-top: 20px;
-        padding-left: 30px;
+        padding-left: 20px;
+        padding-top: 25px;
         .account-no-text {
           color: #ffffff;
           margin-top: 20px;
@@ -21,13 +21,25 @@
       }
     }
     .fixed-content-wrapper {
-      padding: 30px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 25px;
       background-color: #3182b9;
       color: #ffffff;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
 
       .section-1,
       .section-2 {
         margin-top: 20px;
+        .section-header {
+          font-family: Montserrat;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 17px;
+        }
       }
     }
   }

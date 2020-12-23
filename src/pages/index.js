@@ -10,13 +10,14 @@ import { FixedAccountPage } from './Accounts/Fixed/Fixed';
 import { TabViewPage } from './TabView/TabView';
 import { Reset } from './Reset/Reset';
 import { Fund } from './Fund/Fund';
-import {Bank} from './Bank/Bank';
-import {Agent} from './Agent/Agent';
-import {CoOperative} from './CoOperative/CoOperative';
-import {BankS} from './BankS/BankS';
-import {AgentS} from './AgentS/AgentS';
-import {ConfirmPage} from './ConfirmPage/ConfirmPage';
-import {CoOperativeS} from './CoOperativeS/CoOperativeS';
+import { Bank } from './Bank/Bank';
+import { Agent } from './Agent/Agent';
+import { CoOperative } from './CoOperative/CoOperative';
+import { BankS } from './BankS/BankS';
+import { AgentS } from './AgentS/AgentS';
+import { ConfirmPage } from './ConfirmPage/ConfirmPage';
+import { CoOperativeS } from './CoOperativeS/CoOperativeS';
+import { SplashScreenPlayer } from './SplashScreen/Splash';
 
 export {
   HomePage,
@@ -37,7 +38,6 @@ export {
   AgentS,
   ConfirmPage,
   CoOperativeS,
-  CoOperative
-
-
+  CoOperative,
+  SplashScreenPlayer,
 };
