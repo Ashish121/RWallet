@@ -1,13 +1,10 @@
-import React  from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText } from '../../components';
 
-import './OtpPage.css';
-
-
-
+import './OtpPage.scss';
 
 const OtpPage: React.FC = () => {
   const history = useHistory();
@@ -19,35 +16,44 @@ const OtpPage: React.FC = () => {
       <IonApp>
         <IonPage>
           <IonContent>
-            <div className="container">
+            <div className="otp-container">
               <div className="page-header">
                 <IonText>
-                  <Translate message='otp.pageHeader'/>
+                  <Translate message="otp.pageHeader" />
                 </IonText>
               </div>
               <div className="page-sub-header">
                 <div className="innercontainer">
                   <IonText>
-                    <Translate message='otp.pageSubHeader'  value={{contact:'8892050268'}}/>
+                    <Translate
+                      message="otp.pageSubHeader"
+                      value={{ contact: '8892050268' }}
+                    />
                   </IonText>
                 </div>
-                   
               </div>
               <div className="field-container">
-                <InputText  inputType="tel" maxLen={1}/>
-                <InputText  inputType="tel" maxLen={1}/>
-                <InputText  inputType="tel" maxLen={1}/>
-                <InputText  inputType="tel" maxLen={1}/>
+                <InputText inputType="tel" maxLen={1} />
+                <InputText inputType="tel" maxLen={1} />
+                <InputText inputType="tel" maxLen={1} />
+                <InputText inputType="tel" maxLen={1} />
               </div>
               <div className="resend-link-container">
-                <IonText><Translate message='otp.resendText'/><a><Translate message='otp.resendLinkText'/></a></IonText>
+                <IonText>
+                  <Translate message="otp.resendText" />
+                  <a>
+                    <Translate message="otp.resendLinkText" />
+                  </a>
+                </IonText>
               </div>
               <div className="confirm-btn-wrapper">
-                <ButtonConmponent buttonLabel="otp.verify" size="block" clickHandler={handleVerifyOtp}/>
+                <ButtonConmponent
+                  buttonLabel="common.continue"
+                  size="block"
+                  clickHandler={handleVerifyOtp}
+                />
               </div>
-               
             </div>
-            
           </IonContent>
         </IonPage>
       </IonApp>

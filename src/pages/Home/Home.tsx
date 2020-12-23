@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IonPage,
   IonContent,
@@ -6,12 +6,11 @@ import {
   IonCard,
   IonCardContent,
   IonGrid,
-  IonRow,
-  IonCol,
   IonIcon,
   IonButton,
+  IonText,
 } from '@ionic/react';
-import { caretDownOutline } from 'ionicons/icons';
+import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 import {
   HeaderComponent,
   SlidesComponent,
@@ -22,14 +21,20 @@ import {
 
 import './Home.scss';
 import { Translate } from '../../i18n/formatMessages';
+import { CloseBarIcon } from '../../assets/Icons';
 
 const HomePage: React.FC = () => {
+  const [balance, setBalance] = useState(0);
   const [expandOptions, setExpandOptions] = useState(false);
+
+  useEffect(() => {
+    setBalance(22090);
+  }, []);
   const toggleExpandOptions = () => {
     console.log('Hello');
-
     setExpandOptions(!expandOptions);
   };
+
   return (
     <IonApp className="home-wrapper">
       <IonPage>
@@ -38,27 +43,40 @@ const HomePage: React.FC = () => {
           showMenu={true}
           showNotification={true}
         />
-        <IonContent>
-          {/* <div
-            className="checkBalanceSection"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div className="balance-section" style={{ display: "flex" }}>
-              <div style={{ backgroundColor: "#ffffff" }}>
-                <IonText>Balance</IonText>
-              </div>
-              <div className="triangle-left"></div>
-              <div style={{ backgroundColor: "#004777" }}>
-                <IonText>29900</IonText>
-              </div>
+        <IonContent className="home-wrapper">
+          <div className="balance-check-section">
+            <div
+              className="common-ion-text"
+              style={{
+                backgroundColor: '#ffffff',
+                borderRadius: '7px 0px 0px 7px',
+              }}
+            >
+              <IonText
+                className="balance-wrapper-text"
+                style={{ color: '#000000' }}
+              >
+                <Translate message="home.balanceLabel" />
+              </IonText>
             </div>
-          </div> */}
-
+            <div className="arrow_box"></div>
+            <div
+              className="common-ion-text"
+              style={{
+                backgroundColor: '#004777',
+                borderRadius: '0px 7px 7px 0px',
+              }}
+            >
+              <IonText
+                className="balance-wrapper-text"
+                style={{ color: '#ffffff' }}
+              >
+                {balance}
+              </IonText>
+            </div>
+          </div>
           <SlidesComponent />
+
           <div
             className={
               expandOptions
@@ -75,25 +93,31 @@ const HomePage: React.FC = () => {
               <IonCardContent
                 style={{ paddingBottom: '0px', paddingTop: '0px' }}
               >
+                {expandOptions && (
+                  <div className="close-bar-icon">
+                    <button onClick={toggleExpandOptions}>
+                      <CloseBarIcon />
+                    </button>
+                  </div>
+                )}
+
                 <IonGrid>
                   <ShoppingSection expanded={expandOptions} />
-                  <hr />
+
                   <LoanSection expanded={expandOptions} />
-                  <hr />
                   <UtilitiesSection expanded={expandOptions} />
                   <div className="see-more-section">
-                    <IonRow>
-                      <IonCol>
-                        <IonButton onClick={toggleExpandOptions}>
-                          <IonIcon slot="end" icon={caretDownOutline} />
-                          {!expandOptions ? (
-                            <Translate message="home.seeAll" />
-                          ) : (
-                            <Translate message="home.collapse" />
-                          )}
-                        </IonButton>
-                      </IonCol>
-                    </IonRow>
+                    <IonButton onClick={toggleExpandOptions}>
+                      <IonIcon
+                        slot="end"
+                        icon={expandOptions ? caretUpOutline : caretDownOutline}
+                      />
+                      {!expandOptions ? (
+                        <Translate message="home.seeAll" />
+                      ) : (
+                        <Translate message="home.collapse" />
+                      )}
+                    </IonButton>
                   </div>
                 </IonGrid>
               </IonCardContent>

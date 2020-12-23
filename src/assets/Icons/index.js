@@ -23,6 +23,19 @@ import { CreditCardIcon } from './CreditCardIcon';
 import { InsuranceIcon } from './InsuranceIcon';
 import { AntivirusIcon } from './AntivirusIcon';
 import { OrderConfirmIcon } from './OrderConfirmIcon';
+import { EyeDisabledIcon } from './EyeDisabledIcon';
+import { EyeEnabledIcon } from './EyeEnabledIcon';
+import { CalenderIcon } from './CalenderIcon';
+import { NotificationBell } from './NotificationBell';
+import { HomeActive } from './HomeActive';
+import { HomeInactive } from './HomeInactive';
+import { TransferActive } from './TransferActive';
+import { TransferInactive } from './TransferInactive';
+import { MapActive } from './MapActive';
+import { MapInactive } from './MapInactive';
+import { HistoryActive } from './HistoryActive';
+import { HistoryInactive } from './HistoryInactive';
+import { CloseBarIcon } from './CloseBarIcon';
 
 export {
   SmartphoneIcon,
@@ -50,4 +63,17 @@ export {
   InsuranceIcon,
   AntivirusIcon,
   OrderConfirmIcon,
+  EyeDisabledIcon,
+  EyeEnabledIcon,
+  CalenderIcon,
+  NotificationBell,
+  HomeActive,
+  HomeInactive,
+  TransferActive,
+  TransferInactive,
+  MapActive,
+  MapInactive,
+  HistoryActive,
+  HistoryInactive,
+  CloseBarIcon,
 };

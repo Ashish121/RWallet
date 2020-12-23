@@ -11,6 +11,7 @@ import SlidesComponent from './Slides/Slides';
 import ShoppingSection from './Shopping/Shopping';
 import LoanSection from './Loans/Loans';
 import UtilitiesSection from './Utilities/Utilities';
+import DatePickerComponent from './DatePicker/DatePicker';
 
 export {
   InputText,
@@ -26,4 +27,5 @@ export {
   ShoppingSection,
   LoanSection,
   UtilitiesSection,
+  DatePickerComponent,
 };

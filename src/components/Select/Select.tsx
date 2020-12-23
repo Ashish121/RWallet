@@ -1,38 +1,43 @@
 import React from 'react';
-import { IonItem, IonSelect, IonLabel, IonList, IonSelectOption } from '@ionic/react';
+import {
+  IonItem,
+  IonSelect,
+  IonLabel,
+  IonList,
+  IonSelectOption,
+} from '@ionic/react';
 import debounce from 'lodash.debounce';
-import   { Translate   } from '../../i18n/formatMessages';
-import './Select.css';
-
+import { Translate } from '../../i18n/formatMessages';
+import './Select.scss';
 
 interface SelectGenderProps {
-    onSelect?: Function,
-    placeholderLabel?:string,
-    label?:any
+  onSelect?: Function;
+  placeholderLabel?: string;
+  label?: any;
 }
-    
-
 
 const SelectMenu: React.FC<SelectGenderProps> = ({
   onSelect,
   placeholderLabel,
   label,
-  ...props
 }) => {
   const gender = '';
   const handleSelect = debounce((value) => {
-        onSelect?.(value);
-  },100);
+    onSelect?.(value);
+  }, 100);
 
   return (
-    <div className="wrapper">
+    <div className="select-menu-wrapper">
       <IonList className="list-wrapper">
         <IonItem className="ion-no-padding">
-          <IonLabel className='gender-label'><Translate message={label}/></IonLabel>
+          <IonLabel className="gender-label" position="floating">
+            <Translate message={label} />
+          </IonLabel>
           <IonSelect
             value={gender}
             placeholder={placeholderLabel}
-            onIonChange={e => handleSelect(e.detail.value)} {...props}>
+            onIonChange={(e) => handleSelect(e.detail.value)}
+          >
             <IonSelectOption value="male">Male</IonSelectOption>
             <IonSelectOption value="female">Female</IonSelectOption>
           </IonSelect>

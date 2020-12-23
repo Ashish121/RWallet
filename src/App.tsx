@@ -30,14 +30,14 @@ const App: React.FC = () => {
   StatusBar.setStyle({ style: StatusBarStyle.Dark });
   // Show the splash for two seconds and then auto hide:
   SplashScreen.show({
-    showDuration: 5000,
-    autoHide: true
+    showDuration: 2,
+    autoHide: true,
   });
-  return  <IntlProvider locale="en" messages={lang}>
-    <Routes/>
-  </IntlProvider>;
+  return (
+    <IntlProvider locale="en" messages={lang}>
+      <Routes />
+    </IntlProvider>
+  );
 };
- 
-
 
 export default App;

@@ -10,7 +10,7 @@ const slideOpts = {
 
 const SlidesComponent: React.FC<any> = () => {
   return (
-    <IonSlides pager={true} options={slideOpts} style={{ marginTop: '120px' }}>
+    <IonSlides pager={true} options={slideOpts}>
       <IonSlide>
         <IonCard>
           <IonCardContent>

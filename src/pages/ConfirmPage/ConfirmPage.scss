@@ -2,8 +2,12 @@
   background-color: #3182b9;
 }
 .confirm-page-wrapper {
+  padding: 10px;
   ion-card {
     width: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border-radius: 20px;
     ion-card-content {
       padding: 0;
       height: 100%;
@@ -12,7 +16,7 @@
   .card-wrapper {
     display: flex;
     justify-content: center;
-    height: calc(100% - 120px);
+    height: calc(100% - 180px);
     .icon-wrapper {
       width: 100%;
       display: flex;
@@ -32,6 +36,7 @@
     justify-content: center;
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 30px;
     .buttonWrapper {
       width: 100%;
       ion-button {

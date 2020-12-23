@@ -11,7 +11,7 @@ import { menuController } from '@ionic/core';
 import { Translate } from '../../i18n/formatMessages';
 import './Header.scss';
 import { MenuComponent } from '../index';
-import { SideMenuIcon } from '../../assets/Icons';
+import { SideMenuIcon, NotificationBell } from '../../assets/Icons';
 
 interface headerProps {
   headerLable: any;
@@ -19,13 +19,12 @@ interface headerProps {
   notificationHandler?: any;
   showMenu?: boolean;
   showNotification?: boolean;
-  enableBackNavigation?: boolean;
 }
 
 const HeaderComponent: React.FC<headerProps> = ({
   headerLable,
   showMenu,
-  enableBackNavigation = false,
+  showNotification,
 }) => {
   const toggleSideMenu = () => {
     menuController.toggle();
@@ -34,21 +33,29 @@ const HeaderComponent: React.FC<headerProps> = ({
     <>
       {showMenu && <MenuComponent />}
 
-      <IonHeader className="header-wrapper">
+      <IonHeader className="header-wrapper" style={{ backgroundImage: 'none' }}>
         <IonToolbar className="header">
-          {enableBackNavigation && (
+          {!showMenu && (
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/" />
+              <IonBackButton defaultHref="/" text="" />
+            </IonButtons>
+          )}
+          {showNotification && (
+            <IonButtons
+              slot="end"
+              style={{ position: 'absolute', right: '15px' }}
+            >
+              <NotificationBell width="20" height="20" />
             </IonButtons>
           )}
           {showMenu && (
-            <button
-              className="iconButtons"
-              style={{ backgroundColor: 'transparent' }}
+            <IonButtons
+              slot="start"
               onClick={toggleSideMenu}
+              style={{ position: 'absolute', left: '15px' }}
             >
               <SideMenuIcon width="20" height="20" />
-            </button>
+            </IonButtons>
           )}
           <IonTitle>
             <IonText>
