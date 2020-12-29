@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACH,WAAW,EAAE,YAAY;CAC1B",
+    "sources": [
+        "../../src/pages/Routes.scss"
+    ],
+    "names": [],
+    "file": "Routes.min.css"
+}

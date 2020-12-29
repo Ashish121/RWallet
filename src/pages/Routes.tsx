@@ -13,15 +13,20 @@ import {
   AccountUser,
   AccountPage,
   Reset,
-  Bank,
-  Agent,
-  BankS,
-  AgentS,
-  ConfirmPage,
-  CoOperativeS,
-  CoOperative,
+  Fund,
+  BankTransferPage,
+  BankDetails,
+  AgentTransferPage,
+  AgentDetailsPage,
+  SucessPage,
+  CoOperativeDetailsPage,
+  CoOperativeTransferPage,
+  NotificationPage,
+  ProfilePage,
+
 } from './index';
 import './Routes.scss';
+import { TransactionHistory } from './TransactionHistory/TransactionHistory';
 
 const Routes: React.FC = () => {
   const isTabView = true;
@@ -43,14 +48,17 @@ const Routes: React.FC = () => {
           <Redirect exact from="/" to="/register" />
           <Route path="/reset" exact component={ResetPassword} />
           <Route path="/pass" exact component={Reset} />
-          {/* <Route path="/fundTransfer" component={Fund} /> */}
-          <Route path="/bank" exact component={Bank} />
-          <Route path="/cop" exact component={CoOperative} />
-          <Route path="/agent" exact component={Agent} />
-          <Route path="/bankS" exact component={BankS} />
-          <Route path="/copS" exact component={CoOperativeS} />
-          <Route path="/agentS" exact component={AgentS} />
-          <Route path="/confirm" exact component={ConfirmPage} />
+          <Route path="/fund" component={Fund} />
+          <Route path="/bankTransferPage" exact component={BankTransferPage} />
+          <Route path="/bankDetails" exact component={BankDetails} />
+          <Route path="/coOperativeTransferPage" exact component={CoOperativeTransferPage} />
+          <Route path="/coOperativeDetails" exact component={CoOperativeDetailsPage} />
+          <Route path="/agentTransferPage" exact component={AgentTransferPage} />
+          <Route path="/agentDetails" exact component={AgentDetailsPage} />
+          <Route path="/sucessPage" exact component={SucessPage} />
+          <Route path="/notification" exact component={NotificationPage} />
+          <Route path="/profilePage" exact component={ProfilePage} />
+          <Route path="/transactionHistory" exact component={TransactionHistory} />
         </Switch>
 
         {/* <Redirect exact from="/login" to="/dashboard" /> */}

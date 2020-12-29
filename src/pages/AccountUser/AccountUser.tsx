@@ -26,12 +26,11 @@ const AccountUser: React.FC = () => {
         <IonPage>
           <HeaderComponent headerLable="common.header" />
           <IonContent>
-            <div className="container">
-              <IonText className="header-text">
+            <div className="accountUser-container">
+              <IonText className="accountUser-header-text">
                 <Translate  message="account.LableText"/>
               </IonText>
-
-              <div className='page-wrapper'>
+              <div className='accountUser-wrapper'>
                 <InputText inputType="text" labelText="account.fullName" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="account.fatherName" labelType="floating" color="light" labelColor="light"/>
                 <InputText inputType="text" labelText="account.motherName" labelType="floating" color="light" labelColor="light"/>

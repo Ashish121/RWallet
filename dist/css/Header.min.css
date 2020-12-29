@@ -1,0 +1,21 @@
+.header-wrapper ion-toolbar {
+  --background: #004777;
+  border-bottom-left-radius: 15px 15px;
+  border-bottom-right-radius: 15px 15px;
+  border: none;
+  height: 50px;
+}
+
+.header-wrapper ion-text {
+  color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=Header.min.css.map */

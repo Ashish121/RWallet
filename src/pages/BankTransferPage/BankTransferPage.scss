@@ -1,0 +1,40 @@
+.bankPage-container {
+  display: flex;
+  display: flex;
+  height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
+  flex-direction: column;
+  background-color: #3182b9;
+  .bankPage-text-area {
+    display: flex;
+    margin-top: 20px;
+    color: #ffffff;
+  }
+  .bankPage-wrapper {
+    margin-top: 10px;
+    background-color: #3182b9;
+    .bankPage-ion-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 70px;
+    }
+    .bankPage-button {
+      display: flex;
+      flex-shrink: 2;
+      margin-left: 35px;
+      width: 100%;
+      margin-right: 50px;
+    }
+  }
+}
+
+// .header-text-bottom {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin-top: 15px;
+//   font-size: small;
+//   color: #ffffff;
+// }

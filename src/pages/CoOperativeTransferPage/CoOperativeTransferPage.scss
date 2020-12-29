@@ -1,0 +1,42 @@
+.coOperative-container {
+  display: flex;
+  height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
+  flex-direction: column;
+  background-color: #3182b9;
+  .coOperative-text-area {
+    display: flex;
+    margin-top: 5px;
+    color: #ffffff;
+  }
+  .coOperative-wrapper {
+    background-color: #3182b9;
+    margin-top: 5px;
+  }
+  .coOperative-header-grid {
+    width: 100%;
+  }
+  .coOperative-ion-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .coOperative-button {
+    display: flex;
+    flex-shrink: 2;
+    margin-left: 35px;
+    width: 100%;
+    margin-right: 50px;
+  }
+}
+
+// .header-text-bottom {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin-top: 15px;
+//   font-size: small;
+//   color: #ffffff;
+// }

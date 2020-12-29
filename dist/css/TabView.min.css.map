@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACR,YAAY,CAAC,QAAC;CACjB;;AACD,AAAA,cAAc,CAAC;EACX,OAAO,CAAC,QAAC;EACT,SAAS,EAAE,IAAI;EACf,gBAAgB,CAAA,OAAC;EACjB,OAAO,EAAC,GACZ;CAAC",
+    "sources": [
+        "../../src/pages/TabView/TabView.scss"
+    ],
+    "names": [],
+    "file": "TabView.min.css"
+}

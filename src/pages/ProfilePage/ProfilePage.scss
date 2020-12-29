@@ -1,0 +1,40 @@
+.profilePage-container {
+  height: 100%;
+  padding: 28px;
+  background-color: #ffff;
+  position: relative;
+  .profilePage-text-area {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+    color: #000000;
+  }
+  .profile-icon-section {
+    margin-left: 170px;
+    .profile-icon-wrapper {
+      direction: rtl;
+      position: fixed;
+    }
+  }
+  .profile-page-wrapper {
+    .Profile-Line {
+      height: 1px;
+      background-color: gray;
+      margin-top: 10px;
+    }
+    .profile-header-text {
+      display: flex;
+      direction: ltr;
+      margin-top: 12px;
+    }
+    .name-message {
+      color: gray;
+      margin-top: 3px;
+      .nameMessage {
+        margin-top: 2px;
+      }
+    }
+  }
+}

@@ -1,31 +1,31 @@
-.container {
+.fundTransfer-container {
   display: flex;
   display: flex;
   height: 100%;
   flex-direction: column;
   background-color: #3182b9;
+  .fund-text-area {
+    display: flex;
+    padding-left: 30px;
+    margin-top: 65px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+  }
+  .fundTransfer-wrapper {
+    padding: 30px;
+    margin-top: 80px;
+  }
 }
 
-.container .fund-wrapper {
-  padding: 30px;
-  margin-top: 80px;
-}
-.container .header-text-area {
-  display: flex;
-  padding-left: 30px;
-  margin-top: 65px;
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-  color: #ffffff;
-}
-.header-text-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-  font-size: small;
-  color: #ffffff;
-}
+// .header-text-bottom {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin-top: 15px;
+//   font-size: small;
+//   color: #ffffff;
+// }

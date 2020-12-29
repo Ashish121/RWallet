@@ -1,0 +1,27 @@
+.profilePage-container {
+  height: 100%;
+  padding: 28px;
+  background-color: #ffff;
+}
+
+.profilePage-container .profilePage-text-area {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+}
+
+.profilePage-container .profile-icon-wrapper {
+  direction: rtl;
+  margin-left: 23px;
+}
+
+.profilePage-container .profile-header-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  direction: ltr;
+  margin: 15px;
+}
+/*# sourceMappingURL=ProfilePage.min.css.map */

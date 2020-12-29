@@ -1,0 +1,103 @@
+.home-wrapper .page-content-wrapper {
+  background-color: #3182b9;
+}
+
+.home-wrapper ion-content {
+  --ion-background-color: #3182b9;
+}
+
+.home-wrapper ion-content ion-slides {
+  --bullet-background-active: #ffff;
+}
+
+.home-wrapper ion-content ion-slides ion-card {
+  width: 305px;
+  height: 113px;
+  color: #ffff;
+  border-radius: 15px;
+}
+
+.home-wrapper ion-content .services-options-wrapper {
+  position: absolute;
+  bottom: 0px;
+  height: 280px;
+  -webkit-transition: height 0.25s ease-in;
+  transition: height 0.25s ease-in;
+  width: 100%;
+  max-height: 600px;
+  z-index: 99999;
+}
+
+.home-wrapper ion-content .services-options-wrapper .service-card-wrapper {
+  height: 100%;
+  background-color: #ffff;
+  border-radius: 30px 30px 0px 0px;
+}
+
+.home-wrapper ion-content .services-options-wrapper .service-card-wrapper .iconButtons {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 10px;
+}
+
+.home-wrapper ion-content .services-options-wrapper .service-card-wrapper .iconButtons ion-text {
+  margin-top: 55px;
+  position: absolute;
+  width: 50px;
+}
+
+.home-wrapper ion-content .services-options-wrapper ion-card {
+  margin: 0;
+}
+
+.home-wrapper ion-content .services-options-wrapper .see-more-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  bottom: 10px;
+  position: relative;
+}
+
+.home-wrapper ion-content .services-options-wrapper .see-more-section ion-button {
+  width: 80px;
+  height: 20px;
+  font-size: 10px;
+}
+
+.home-wrapper ion-content .fullHeight {
+  height: calc(100% - 20px);
+  -webkit-transition: height 0.25s ease-in;
+  transition: height 0.25s ease-in;
+}
+
+.home-wrapper hr {
+  margin-top: 40px;
+  background-color: lightgrey;
+}
+
+.home-wrapper .triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 25px solid transparent;
+  border-right: 50px solid #555;
+  border-bottom: 25px solid transparent;
+}
+/*# sourceMappingURL=Home.min.css.map */

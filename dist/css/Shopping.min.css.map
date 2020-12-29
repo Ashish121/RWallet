@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACE,iBADe,CACf,OAAO,CAAC;EACN,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "../../src/components/Shopping/Shopping.scss"
+    ],
+    "names": [],
+    "file": "Shopping.min.css"
+}

@@ -8,21 +8,20 @@ import './Fund.scss';
 const Fund: React.FC = () => {
   const history = useHistory();
  
-
   function handleBank() {
     console.log('Handling registration');
-    history.push('/bank');
+    history.push('/bankTransferPage');
   }
   
   function handleCoperative() {
     console.log('Handling registration');
-    history.push('/cop');
+    history.push('/coOperativeTransferPage');
   }
 
   
   function handleAgent() {
     console.log('Handling registration');
-    history.push('/agent');
+    history.push('/agentTransferPage');
   }
   
 
@@ -32,11 +31,11 @@ const Fund: React.FC = () => {
         <IonPage>
           <HeaderComponent headerLable="common.header" />
           <IonContent>
-            <div className="container">
-              <IonText className="header-text-area">
+            <div className="fundTransfer-container">
+              <IonText className="fund-text-area">
                 <Translate  message="fund.fundpage"/>
               </IonText>
-              <div className='fund-wrapper'>
+              <div className='fundTransfer-wrapper'>
                 <div style={{marginTop: '13px'}}>
                   <ButtonConmponent buttonLabel='fund.bankTrasfer' size='block' clickHandler={handleBank}/>
                 </div>

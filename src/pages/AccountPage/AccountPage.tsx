@@ -27,19 +27,17 @@ const AccountPage: React.FC = () => {
     console.log('Handling registration');
     history.push('/account/current');
   }
-  
-
   return (
     <>
       <IonApp>
         <IonPage>
           <HeaderComponent headerLable="common.header" />
           <IonContent>
-            <div className="container">
-              <IonText className="header-text-area">
+            <div className="accountPage-container">
+              <IonText className="accountPage-text-area">
                 <Translate  message="account.lableTexttop"/>
               </IonText>
-              <div className='page-wrapper'>
+              <div className='accountPage-wrapper'>
                 <div style={{marginTop: '13px'}}>
                   <ButtonConmponent buttonLabel='account.saving' size='block' clickHandler={handleSaving}/>
                 </div>
@@ -49,7 +47,7 @@ const AccountPage: React.FC = () => {
                 <div style={{marginTop: '13px'}}>
                   <ButtonConmponent buttonLabel='account.current' size='block' clickHandler={handleCurrent}/>
                 </div>
-                <IonText className="header-text-bottom">
+                <IonText className="accountPage-text-bottom">
                   <Translate  message="account.labelmore"/>
                 </IonText>
               </div>

@@ -1,0 +1,11 @@
+ion-tab-bar {
+  --background: #004777;
+}
+
+ion-tab-button {
+  --color: #ffffff;
+  font-size: 15px;
+  --color-selected:#ffffff;
+  padding: 5px;
+}
+/*# sourceMappingURL=TabView.min.css.map */

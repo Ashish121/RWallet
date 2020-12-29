@@ -1,0 +1,62 @@
+.ion-page {
+  background-color: #3182b9;
+}
+
+.confirm-page-wrapper ion-card {
+  width: 100%;
+}
+
+.confirm-page-wrapper ion-card ion-card-content {
+  padding: 0;
+  height: 100%;
+}
+
+.confirm-page-wrapper .card-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: calc(100% - 120px);
+}
+
+.confirm-page-wrapper .card-wrapper .icon-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: calc(100% - 100px);
+}
+
+.confirm-page-wrapper .card-wrapper ion-toolbar {
+  --background: #004777;
+  height: 100px;
+}
+
+.confirm-page-wrapper .continue-btn-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.confirm-page-wrapper .continue-btn-wrapper .buttonWrapper {
+  width: 100%;
+}
+
+.confirm-page-wrapper .continue-btn-wrapper .buttonWrapper ion-button {
+  width: 100%;
+}
+/*# sourceMappingURL=ConfirmPage.min.css.map */

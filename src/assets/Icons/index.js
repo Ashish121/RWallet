@@ -23,6 +23,8 @@ import { CreditCardIcon } from './CreditCardIcon';
 import { InsuranceIcon } from './InsuranceIcon';
 import { AntivirusIcon } from './AntivirusIcon';
 import { OrderConfirmIcon } from './OrderConfirmIcon';
+import {ProfilePictureIcon } from './ProfilePictureIcon';
+import {ProfileCamera} from './ProfileCamera';
 
 export {
   SmartphoneIcon,
@@ -50,4 +52,6 @@ export {
   InsuranceIcon,
   AntivirusIcon,
   OrderConfirmIcon,
+  ProfilePictureIcon,
+  ProfileCamera
 };

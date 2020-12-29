@@ -103,6 +103,7 @@
   "fund.coTransfer": "CO-OPERATIVE TRANSFER",
   "fund.agent": "AGENT FUND TRANSFER",
 
+  "bank.BankDetail":" BANK TRANSFER",
   "bank.destination": "Destination bank",
   "bank.holderName": "Account Holder name",
   "bank.number": "Account number",
@@ -123,12 +124,50 @@
   "coOperative.remark": "Remarks/purpose",
 
   "agent.text": "AGENT TRANSFER",
-  "agent.country": "Select country",
+  "agent.country": "Country selected",
   "agent.code": "Agent code",
   "agent.holder": "Account holder name",
   "agent.number": "Account number",
   "agent.mob": "Mobile number",
   "agent.amount": "Amount",
   "agent.remark": "Remarks/purpose",
-  "agent.conform": "CONFIRM"
+  "agent.conform": "CONFIRM",
+
+  "profile.text":"Profile",
+  "profile.fullName":"Full name",
+  "profile.accountNumber":"Account number",
+  "profile.accountType":"Account type",
+  "profile.accountCurrency":"Account curency",
+  "profile.accountInterest":"Account interest",
+  "profile.changeLanguage":"Change language",
+  "profile.changeMPIN":"Change MPIN",
+  "profile.changePassword":"Change Password",
+  "profile.logout":"Logout",
+  "profile.privacy":"Privacy",
+  "profile.Version":"Version",
+
+  "NotificationPage.text":"Notifications",
+  "NotificationPage.today":"Today",
+  "NotificationPage.yesterday":"Yesterday",
+  "NotificationPage.ThisWeek":"This Week",
+  "NotificationPage.date":"Date",
+  "NotificationPage.time":"Time",
+
+
+  "TransactionHistory.text":"Transaction History",
+  "TransactionHistory.payment":"Payment to ",
+  "TransactionHistory.Receivedfrom":"Received from"
+
+
+  
+
+
+
+
+
+
+
+
+
+
 }

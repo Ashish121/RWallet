@@ -1,4 +1,10 @@
-.header-text {
-  padding: 25px;
-  color: #ffffff;
+.accountUser-container {
+  display: flex;
+  height: 100%;
+  padding: 28px;
+  flex-direction: column;
+  background-color: #3182b9;
+  .accountUser-header-text {
+    color: #ffffff;
+  }
 }

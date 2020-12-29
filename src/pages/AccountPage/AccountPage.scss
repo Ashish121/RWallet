@@ -1,21 +1,22 @@
-.container {
-  display: flex;
+.accountPage-container {
   display: flex;
   height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
+  justify-content: center;
   flex-direction: column;
   background-color: #3182b9;
-}
-.container .header-text-area {
-  display: flex;
-  padding-left: 30px;
-  margin-top: 65px;
-  color: #ffffff;
-}
-.header-text-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-  font-size: small;
-  color: #ffffff;
+  .accountPage-text-area {
+    display: flex;
+    padding-left: 30px;
+    color: #ffffff;
+  }
+  .accountPage-text-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: small;
+    color: #ffffff;
+  }
 }

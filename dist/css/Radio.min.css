@@ -1,0 +1,10 @@
+.radio-wrapper ion-radio {
+  --color-checked: #ffffff;
+  --font-family: "Montserrat";
+}
+
+.radio-wrapper .ion-margin-start {
+  color: #ffffff;
+  font-size: 14px;
+}
+/*# sourceMappingURL=Radio.min.css.map */
