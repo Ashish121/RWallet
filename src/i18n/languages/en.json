@@ -134,5 +134,18 @@
   "agent.mob": "Mobile number",
   "agent.amount": "Amount",
   "agent.remark": "Remarks/purpose",
-  "agent.conform": "CONFIRM"
+  "agent.conform": "CONFIRM",
+
+  "profile.text":"Profile",
+  "profile.fullName":"Full name",
+  "profile.accountNumber":"Account number",
+  "profile.accountType":"Account type",
+  "profile.accountCurrency":"Account curency",
+  "profile.accountInterest":"Account interest",
+  "profile.changeLanguage":"Change language",
+  "profile.changeMPIN":"Change MPIN",
+  "profile.changePassword":"Change Password",
+  "profile.logout":"Logout",
+  "profile.privacy":"Privacy",
+  "profile.Version":"Version"
 }

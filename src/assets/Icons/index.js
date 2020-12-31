@@ -36,6 +36,9 @@ import { MapInactive } from './MapInactive';
 import { HistoryActive } from './HistoryActive';
 import { HistoryInactive } from './HistoryInactive';
 import { CloseBarIcon } from './CloseBarIcon';
+import {CloseIcon} from './CloseIcon';
+import {ProfilePictureIcon } from './ProfilePictureIcon';
+import {MenuCamera} from './MenuCamera';
 
 export {
   SmartphoneIcon,
@@ -76,4 +79,7 @@ export {
   HistoryActive,
   HistoryInactive,
   CloseBarIcon,
+  CloseIcon,
+  ProfilePictureIcon,
+  MenuCamera
 };

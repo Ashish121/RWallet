@@ -18,6 +18,7 @@ import { AgentS } from './AgentS/AgentS';
 import { ConfirmPage } from './ConfirmPage/ConfirmPage';
 import { CoOperativeS } from './CoOperativeS/CoOperativeS';
 import { SplashScreenPlayer } from './SplashScreen/Splash';
+import {MenuBarPage} from './MenuBarPage/MenuBarPage';
 
 export {
   HomePage,
@@ -40,4 +41,5 @@ export {
   CoOperativeS,
   CoOperative,
   SplashScreenPlayer,
+  MenuBarPage,
 };
