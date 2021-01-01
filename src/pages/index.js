@@ -7,6 +7,8 @@ import { OtpPage } from './Otp/OtpPage';
 import { MpinPage } from './Mpin/Mpin';
 import { AccountUser } from './AccountUser/AccountUser';
 import { FixedAccountPage } from './Accounts/Fixed/Fixed';
+import { SavingAccountPage } from './Accounts/Saving/Saving';
+import { CurrentAccountPage } from './Accounts/Current/Current';
 import { TabViewPage } from './TabView/TabView';
 import { Reset } from './Reset/Reset';
 import { Fund } from './Fund/Fund';
@@ -28,6 +30,8 @@ export {
   OtpPage,
   MpinPage,
   FixedAccountPage,
+  SavingAccountPage,
+  CurrentAccountPage,
   TabViewPage,
   AccountUser,
   AccountPage,

@@ -16,9 +16,9 @@ import {
   ButtonConmponent,
 } from '../../../components';
 
-import './Fixed.scss';
+import './Current.scss';
 
-const FixedAccountPage: React.FC = () => {
+const CurrentAccountPage: React.FC = () => {
   const history = useHistory();
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
@@ -35,44 +35,42 @@ const FixedAccountPage: React.FC = () => {
       <IonApp>
         <IonPage>
           <HeaderComponent headerLable="common.header" />
-          <IonContent className="fixed-account-wrapper">
-            <div className="fixed-wrapper">
+          <IonContent className="current-account-wrapper">
+            <div className="current-wrapper">
               <div className="page-inner-wrapper">
                 <div className="page-header-label">
                   <IonText className="account-no-text">
                     <Translate
-                      message="account.fixedPageHeader"
+                      message="account.savingPageHeader"
                       value={{ accountNo: '07601402201' }}
                     />
                   </IonText>
                 </div>
               </div>
-              <div className="fixed-content-wrapper">
+              <div className="current-content-wrapper">
                 <InputText
                   inputType="tel"
-                  placeholderText="Amount of deposite(Min 5000)"
+                  placeholderText="Amount of deposite(Min Rs 1000)"
                 />
-                <div className="section-1">
-                  <IonText className="section-header">
-                    <Translate message="account.investmentPeriod" />
+                <div className="CurrentSection-0">
+                  <IonText className="CurrentSection-header">
+                    <Translate message="account.minimumAccountBalance" />
                   </IonText>
                   <IonRadioGroup>
                     <div className="options-section1">
-                      <RadioComponent label="12 months with 10%" />
+                      <RadioComponent label="Rs 5000 per quarter for non-rural" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="24 months with 20%" />
-                    </div>
-                    <div className="options-section1">
-                      <RadioComponent label="36 months with 35%" />
-                    </div>
-                    <div className="options-section1">
-                      <RadioComponent label="48 months with 50%" />
-                    </div>
-                    <div className="options-section1">
-                      <RadioComponent label="60 monthss with 100%" />
+                      <RadioComponent label="Rs 2500 per quarter for rural" />
                     </div>
                   </IonRadioGroup>
+                  <IonText className="CurrentSection-last">
+                    <Translate message="account.currentWithdrawlimit" />
+                  </IonText>
+                  <br/>
+                  <IonText className="CurrentSection-last1">
+                    <Translate message="account.currentUnlimited" />
+                  </IonText>
                 </div>
                 <div className="terms-select-wrapper">
                   <CheckboxComponent
@@ -104,4 +102,4 @@ const FixedAccountPage: React.FC = () => {
   );
 };
 
-export { FixedAccountPage };
+export { CurrentAccountPage };

@@ -21,7 +21,9 @@ import {
   CoOperativeS,
   CoOperative,
   SplashScreenPlayer,
-  MenuBarPage
+  MenuBarPage,
+  SavingAccountPage,
+  CurrentAccountPage
 } from './index';
 import './Routes.scss';
 
@@ -39,6 +41,8 @@ const Routes: React.FC = () => {
             <Route path="/accountuser" exact component={AccountUser} />
             <Route path="/accountpage" exact component={AccountPage} />
             <Route path="/account/fixed" exact component={FixedAccountPage} />
+            <Route path="/account/saving" exact component={SavingAccountPage} />
+            <Route path="/account/current" exact component={CurrentAccountPage} />
             <Route
               path="/tabs"
               component={isTabView ? TabViewPage : TabViewPage}
