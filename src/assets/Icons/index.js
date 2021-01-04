@@ -39,6 +39,8 @@ import { CloseBarIcon } from './CloseBarIcon';
 import {CloseIcon} from './CloseIcon';
 import {ProfilePictureIcon } from './ProfilePictureIcon';
 import {MenuCamera} from './MenuCamera';
+import { MapMarker } from './MapMarker';
+import { CurrentLocationMarker } from './CurrentLocationMarker';
 
 export {
   SmartphoneIcon,
@@ -81,5 +83,7 @@ export {
   CloseBarIcon,
   CloseIcon,
   ProfilePictureIcon,
-  MenuCamera
+  MenuCamera,
+  MapMarker,
+  CurrentLocationMarker,
 };
