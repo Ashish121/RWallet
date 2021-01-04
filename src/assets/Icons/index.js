@@ -36,6 +36,8 @@ import { MapInactive } from './MapInactive';
 import { HistoryActive } from './HistoryActive';
 import { HistoryInactive } from './HistoryInactive';
 import { CloseBarIcon } from './CloseBarIcon';
+import { MapMarker } from './MapMarker';
+import { CurrentLocationMarker } from './CurrentLocationMarker';
 
 export {
   SmartphoneIcon,
@@ -76,4 +78,6 @@ export {
   HistoryActive,
   HistoryInactive,
   CloseBarIcon,
+  MapMarker,
+  CurrentLocationMarker,
 };

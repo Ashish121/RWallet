@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { IonContent } from '@ionic/react';
+import React, { useEffect, useState } from 'react';
 
 import './Splash.scss';
+import { CustomAccordion } from '../../components';
 
-const SplashScreenPlayer: React.FC = () => {
+const AnimatedSplash: React.FC = () => {
+  const [accordionDetails, setAccordionDetails] = useState([{}]);
   useEffect(() => {
     const timeout = setTimeout(() => {
       console.log('Hide splash now');
@@ -13,15 +14,33 @@ const SplashScreenPlayer: React.FC = () => {
     }, 7000);
   }, []);
 
+  useEffect(() => {
+    const data = [
+      {
+        id: 1,
+        title: 'Button 1 content',
+        showDetails: false,
+      },
+      {
+        id: 2,
+        title: 'Button 2 content',
+        showDetails: false,
+      },
+
+      {
+        id: 3,
+        title: 'Button 3 content',
+        showDetails: false,
+      },
+    ];
+    setAccordionDetails(data);
+  }, []);
+
   return (
-    <div className="splash-wrapper">
-      <IonContent className="video-player-wrapper">
-        <video className="video-player" loop autoPlay>
-          <source src={require('./video.mp4')} type="video/mp4" />
-        </video>
-      </IonContent>
-    </div>
+    <React.Fragment>
+      <CustomAccordion accordionData={accordionDetails} />
+    </React.Fragment>
   );
 };
 
-export { SplashScreenPlayer };
+export { AnimatedSplash };

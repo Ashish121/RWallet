@@ -20,7 +20,7 @@ import {
   ConfirmPage,
   CoOperativeS,
   CoOperative,
-  SplashScreenPlayer,
+  AnimatedSplash,
 } from './index';
 import './Routes.scss';
 
@@ -42,7 +42,7 @@ const Routes: React.FC = () => {
               path="/tabs"
               component={isTabView ? TabViewPage : TabViewPage}
             />
-            <Route path="/splash" exact component={SplashScreenPlayer} />
+            <Route path="/splash" exact component={AnimatedSplash} />
             <Route path="/reset" exact component={ResetPassword} />
             <Route path="/pass" exact component={Reset} />
             {/* <Route path="/fundTransfer" component={Fund} /> */}
@@ -53,7 +53,7 @@ const Routes: React.FC = () => {
             <Route path="/copS" exact component={CoOperativeS} />
             <Route path="/agentS" exact component={AgentS} />
             <Route path="/confirm" exact component={ConfirmPage} />
-            <Redirect exact from="/" to="/register" />
+            <Redirect exact from="/" to="/splash" />
           </IonRouterOutlet>
         </IonPage>
       </IonApp>
