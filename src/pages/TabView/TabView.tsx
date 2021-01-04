@@ -17,7 +17,7 @@ import {
   HistoryActive,
   HistoryInactive,
 } from '../../assets/Icons';
-import { HomePage, Fund } from '../index';
+import { HomePage, Fund, MapView } from '../index';
 import './TabView.scss';
 
 const TabViewPage: React.FC = () => {
@@ -66,6 +66,7 @@ const TabViewPage: React.FC = () => {
         <Switch>
           <Route path="/tabs/home" component={HomePage} exact />
           <Route path="/tabs/transfer" component={Fund} exact />
+          <Route path="/tabs/mapview" component={MapView} exact />
           <Route
             path="/tabs"
             render={() => <Redirect to="/tabs/home" />}
@@ -89,7 +90,7 @@ const TabViewPage: React.FC = () => {
           <IonLabel>Transfer</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="map">
+        <IonTabButton tab="map" href="/tabs/mapview">
           {mapActive && <MapActive width="20" height="20" />}
           {!mapActive && <MapInactive width="20" height="20" />}
 
