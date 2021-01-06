@@ -1,0 +1,56 @@
+.container-notification {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  background-color: #ffff;
+  padding: 30px;
+  .notification-text-area {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 40px;
+    color: #000000;
+  }
+  .notification-today-text {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 10px;
+    color: #000000;
+    margin-top: 20px;
+    opacity: 1;
+  }
+  .notification-area {
+    position: relative;
+    font-family: "Montserrat";
+    background-color: #ffff;
+    width: 100%;
+  }
+  .notificationdate {
+    margin-left: 15px;
+    color: #000000;
+  }
+  .notificationtime {
+    margin-left: 15px;
+    color: #000000;
+  }
+  .notificationMessage {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    margin-left: 15px;
+    color: #000000;
+    opacity: 0.5;
+  }
+}
+.container-notification .notification-area .notification-content .vl {
+  background-color: #3182b9;
+  width: 2px;
+  height: 40px;
+  position: fixed;
+}

@@ -134,5 +134,13 @@
   "agent.mob": "Mobile number",
   "agent.amount": "Amount",
   "agent.remark": "Remarks/purpose",
-  "agent.conform": "CONFIRM"
+  "agent.conform": "CONFIRM",
+
+  
+  "NotificationPage.text":"Notifications",
+  "NotificationPage.today":"Today",
+  "NotificationPage.yesterday":"Yesterday",
+  "NotificationPage.ThisWeek":"This Week",
+  "NotificationPage.date":"Date",
+  "NotificationPage.time":"Time"
 }
