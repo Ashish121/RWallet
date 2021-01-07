@@ -134,5 +134,9 @@
   "agent.mob": "Mobile number",
   "agent.amount": "Amount",
   "agent.remark": "Remarks/purpose",
-  "agent.conform": "CONFIRM"
+  "agent.conform": "CONFIRM",
+
+  "TransactionHistory.text":"Transaction History",
+  "TransactionHistory.payment":"Payment to ",
+  "TransactionHistory.Receivedfrom":"Received from"
 }

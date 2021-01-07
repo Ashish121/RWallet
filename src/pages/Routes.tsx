@@ -21,6 +21,7 @@ import {
   CoOperativeS,
   CoOperative,
   AnimatedSplash,
+  TransactionHistory ,
 } from './index';
 import './Routes.scss';
 
@@ -53,6 +54,7 @@ const Routes: React.FC = () => {
             <Route path="/copS" exact component={CoOperativeS} />
             <Route path="/agentS" exact component={AgentS} />
             <Route path="/confirm" exact component={ConfirmPage} />
+            <Route path="/transactionHistory" exact component={TransactionHistory} />
             <Redirect exact from="/" to="/splash" />
           </IonRouterOutlet>
         </IonPage>
