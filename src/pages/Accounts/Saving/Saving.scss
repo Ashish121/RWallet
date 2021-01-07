@@ -1,0 +1,47 @@
+.ion-page {
+  background-color: #3182b9;
+}
+
+.list-md {
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+.saving-account-wrapper {
+  .saving-wrapper {
+    background-color: #3182b9;
+    height: 100%;
+    .page-inner-wrapper {
+      .page-header-label {
+        padding-left: 20px;
+        padding-top: 25px;
+        .account-no-text {
+          color: #ffffff;
+          margin-top: 20px;
+        }
+      }
+    }
+    .saving-content-wrapper {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 25px;
+      background-color: #3182b9;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .SavingSection-0,
+      .SevingSection-1,
+      .SevingSection-2 {
+        margin-top: 20px;
+        .section-header {
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 17px;
+        }
+      }
+    }
+  }
+}
