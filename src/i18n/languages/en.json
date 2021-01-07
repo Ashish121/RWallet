@@ -142,5 +142,8 @@
   "NotificationPage.yesterday":"Yesterday",
   "NotificationPage.ThisWeek":"This Week",
   "NotificationPage.date":"Date",
-  "NotificationPage.time":"Time"
+  "NotificationPage.time":"Time",
+  "TransactionHistory.text":"Transaction History",
+  "TransactionHistory.payment":"Payment to ",
+  "TransactionHistory.Receivedfrom":"Received from"
 }

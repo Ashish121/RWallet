@@ -20,6 +20,7 @@ import { CoOperativeS } from './CoOperativeS/CoOperativeS';
 import { AnimatedSplash } from './SplashScreen/Splash';
 import { MapView } from './Map/MapView';
 import { NotificationPage } from './NotificationPage/NotificationPage';
+import {TransactionHistory} from './TransactionHistory/TransactionHistory';
 
 export {
   HomePage,
@@ -44,4 +45,5 @@ export {
   AnimatedSplash,
   NotificationPage,
   MapView,
+  TransactionHistory,
 };
