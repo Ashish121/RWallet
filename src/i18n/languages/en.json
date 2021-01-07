@@ -147,5 +147,8 @@
   "profile.changePassword":"Change Password",
   "profile.logout":"Logout",
   "profile.privacy":"Privacy",
-  "profile.Version":"Version"
+  "profile.Version":"Version",
+  "TransactionHistory.text":"Transaction History",
+  "TransactionHistory.payment":"Payment to ",
+  "TransactionHistory.Receivedfrom":"Received from"
 }

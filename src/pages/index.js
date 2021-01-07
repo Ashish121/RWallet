@@ -17,8 +17,10 @@ import { BankS } from './BankS/BankS';
 import { AgentS } from './AgentS/AgentS';
 import { ConfirmPage } from './ConfirmPage/ConfirmPage';
 import { CoOperativeS } from './CoOperativeS/CoOperativeS';
-import { SplashScreenPlayer } from './SplashScreen/Splash';
 import {MenuBarPage} from './MenuBarPage/MenuBarPage';
+import { AnimatedSplash } from './SplashScreen/Splash';
+import { MapView } from './Map/MapView';
+import {TransactionHistory} from './TransactionHistory/TransactionHistory';
 
 export {
   HomePage,
@@ -40,6 +42,8 @@ export {
   ConfirmPage,
   CoOperativeS,
   CoOperative,
-  SplashScreenPlayer,
   MenuBarPage,
+  AnimatedSplash,
+  MapView,
+  TransactionHistory,
 };
