@@ -148,6 +148,13 @@
   "profile.logout":"Logout",
   "profile.privacy":"Privacy",
   "profile.Version":"Version",
+  
+  "NotificationPage.text":"Notifications",
+  "NotificationPage.today":"Today",
+  "NotificationPage.yesterday":"Yesterday",
+  "NotificationPage.ThisWeek":"This Week",
+  "NotificationPage.date":"Date",
+  "NotificationPage.time":"Time",
   "TransactionHistory.text":"Transaction History",
   "TransactionHistory.payment":"Payment to ",
   "TransactionHistory.Receivedfrom":"Received from"
