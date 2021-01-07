@@ -17,6 +17,7 @@ import { BankS } from './BankS/BankS';
 import { AgentS } from './AgentS/AgentS';
 import { ConfirmPage } from './ConfirmPage/ConfirmPage';
 import { CoOperativeS } from './CoOperativeS/CoOperativeS';
+import {MenuBarPage} from './MenuBarPage/MenuBarPage';
 import { AnimatedSplash } from './SplashScreen/Splash';
 import { MapView } from './Map/MapView';
 import { NotificationPage } from './NotificationPage/NotificationPage';
@@ -42,6 +43,7 @@ export {
   ConfirmPage,
   CoOperativeS,
   CoOperative,
+  MenuBarPage,
   AnimatedSplash,
   NotificationPage,
   MapView,

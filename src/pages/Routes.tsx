@@ -20,6 +20,7 @@ import {
   ConfirmPage,
   CoOperativeS,
   CoOperative,
+  MenuBarPage,
   AnimatedSplash,
   NotificationPage,
   TransactionHistory ,
@@ -55,6 +56,10 @@ const Routes: React.FC = () => {
             <Route path="/copS" exact component={CoOperativeS} />
             <Route path="/agentS" exact component={AgentS} />
             <Route path="/confirm" exact component={ConfirmPage} />
+
+            <Route path="/menu" exact component={MenuBarPage} />
+
+            <Redirect exact from="/" to="/register" />
             <Route path="/notification" exact component={NotificationPage} />
             <Route path="/transactionHistory" exact component={TransactionHistory} />
             <Redirect exact from="/" to="/splash" />
