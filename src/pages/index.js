@@ -19,6 +19,7 @@ import { ConfirmPage } from './ConfirmPage/ConfirmPage';
 import { CoOperativeS } from './CoOperativeS/CoOperativeS';
 import { AnimatedSplash } from './SplashScreen/Splash';
 import { MapView } from './Map/MapView';
+import { NotificationPage } from './NotificationPage/NotificationPage';
 import {TransactionHistory} from './TransactionHistory/TransactionHistory';
 
 export {
@@ -42,6 +43,7 @@ export {
   CoOperativeS,
   CoOperative,
   AnimatedSplash,
+  NotificationPage,
   MapView,
   TransactionHistory,
 };
