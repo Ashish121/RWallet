@@ -24,6 +24,7 @@ import {
   SavingAccountPage,
   CurrentAccountPage,
   AnimatedSplash,
+  TransactionHistory ,
 } from './index';
 import './Routes.scss';
 
@@ -62,6 +63,7 @@ const Routes: React.FC = () => {
             <Route path="/menu" exact component={MenuBarPage} />
 
             <Redirect exact from="/" to="/register" />
+            <Route path="/transactionHistory" exact component={TransactionHistory} />
             <Redirect exact from="/" to="/splash" />
           </IonRouterOutlet>
         </IonPage>

@@ -8,14 +8,13 @@
 
 .container .header-text-area {
   display: flex;
-  padding-left: 30px;
+  padding: 0px;
   margin-top: 20px;
   color: #ffffff;
 }
-
-.cop-wrapper {
+.container .cop-wrapper {
+  margin-top: 30px;
   background-color: #3182b9;
-  padding: 30px;
 }
 .header-text-bottom {
   display: flex;
