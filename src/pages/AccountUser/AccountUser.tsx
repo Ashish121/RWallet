@@ -58,6 +58,9 @@ const AccountUser: React.FC<any> = () => {
                 <div className="date-picker-wrapper">
                   <DatePickerComponent />
                 </div>
+                <div className="date-picker-wrapper">
+                  <DatePickerComponent />
+                </div>
                 <InputText
                   inputType="text"
                   labelText="account.bsad"
