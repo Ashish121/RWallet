@@ -1,84 +1,88 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
+import   { Translate   } from '../../i18n/formatMessages';
+import { useHistory } from 'react-router-dom';
+import { ButtonConmponent,  HeaderComponent} from '../../components';
 import './CoOperativeS.scss';
-
 const CoOperativeS: React.FC = () => {
+  const history = useHistory();
+  const province=useState('Province name');
+  const district=useState('District name');
+  const coOperativeName=useState('Name of the account');
+  const accountHolderName=useState('XYZ');
+  const accountNumber=useState('XYZ');
+  const mobileNumber=useState('XYZ');
+  const amount=useState('XYZ');
+  const remarks=useState('XYZ');
+
+
+  
+  function handleSucess() {
+    console.log('Handling registration');
+    history.push('/sucessPage');
+  }
   return (
     <>
       <IonApp>
         <IonPage>
           <HeaderComponent headerLable="common.header" />
           <IonContent>
-            <div className="container">
-              <IonText className="header-text-area">
-                <Translate message="coOperative.text" />
+            <div className="coOperativeDetails-container">
+              <IonText className="coOperativeDetails-text-area">
+                <Translate  message="coOperative.text"/>
               </IonText>
-              <div className="cops-wrapper">
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.province"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.district"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.name"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.holder"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.number"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.mobile"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.amount"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.remark"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <div className="clear-button">
-                  <div style={{ marginTop: '13px' }}>
-                    <ButtonConmponent
-                      buttonLabel="agent.conform"
-                      size="block"
-                    />
+              <div className='coOperativeDetails-wrapper'>
+                <IonText className="coOperativeDetails-header-text"><span className="coOperative_text"><Translate message='coOperative.province'/></span></IonText>
+                <div className="coOperativeDetails-message">
+                  <IonText className="nameMessage">
+                    {province}
+                  </IonText>
+                </div>
+                <IonText className="coOperativeDetails-header-text"><span className="coOperative_text"><Translate message='coOperative.district'/></span></IonText>
+                <div className="coOperativeDetails-message">
+                  <IonText className="nameMessage">
+                    {district}
+                  </IonText>
+                </div>
+                <IonText className="coOperativeDetails-header-text"><span className="coOperative_text"><Translate message='coOperative.name'/></span></IonText>
+                <div className="coOperativeDetails-message">
+                  <IonText className="nameMessage">
+                    {coOperativeName}
+                  </IonText>
+                </div>
+                <IonText className="coOperativeDetails-header-text"><span className="coOperative_text"><Translate message='coOperative.holder'/></span></IonText>
+                <div className="coOperativeDetails-message">
+                  <IonText className="nameMessage">
+                    {accountHolderName}
+                  </IonText>
+                </div>
+                <IonText className="coOperativeDetails-header-text"><span className="coOperative_text"><Translate message='coOperative.number'/></span></IonText>
+                <div className="coOperativeDetails-message">
+                  <IonText className="nameMessage">
+                    {accountNumber}
+                  </IonText>
+                </div>
+                <IonText className="coOperativeDetails-header-text"><span className="coOperative_text"><Translate message='coOperative.mob'/></span></IonText>
+                <div className="coOperativeDetails-message">
+                  <IonText className="nameMessage">
+                    {mobileNumber}
+                  </IonText>
+                </div>
+                <IonText className="coOperativeDetails-header-text"><span className="coOperative_text"><Translate message='coOperative.amount'/></span></IonText>
+                <div className="coOperativeDetails-message">
+                  <IonText className="nameMessage">
+                    {amount}
+                  </IonText>
+                </div>
+                <IonText className="coOperativeDetails-header-text"><span className="coOperative_text"><Translate message='coOperative.remark'/></span></IonText>
+                <div className="coOperativeDetails-message">
+                  <IonText className="nameMessage">
+                    {remarks}
+                  </IonText>
+                </div>
+                <div className="coOperativeDetails-button">
+                  <div style={{marginTop: '13px'}}>
+                    <ButtonConmponent buttonLabel='agent.conform' size='block' clickHandler={handleSucess} />
                   </div>
                 </div>
               </div>
