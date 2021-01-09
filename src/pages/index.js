@@ -27,6 +27,7 @@ import {TransactionHistory} from './TransactionHistory/TransactionHistory';
 import {ElectricityWater} from './Utilitys/UtilityElectricityWater/ElectricityWater/ElectricityWater';
 import {NepalElectricity} from './Utilitys/UtilityElectricityWater/NepalElectricity/NepalElectricity';
 import { Khanepani } from './Utilitys/UtilityElectricityWater/Khanepani/Khanepani';
+import { CardPayment } from './Utilitys/UtilityCardPayment/CardPayment';
 
 export {
   HomePage,
@@ -58,5 +59,6 @@ export {
   ElectricityWater,
   NepalElectricity,
   Khanepani,
+  CardPayment,
   
 };

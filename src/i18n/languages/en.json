@@ -183,6 +183,12 @@
   "UtilityCustomerIdKhanepani":"Customer ID",
 
   "UtilityDiscard":"Discard",
-  "UtilitySubmit":"Submit"
-   
+  "UtilitySubmit":"Submit",
+
+  "UtilityInternetPayment":"Credit card Payment",
+  "UtilityBankName":"Bank name",
+  "UtilityCardNumber":"Card number",
+  "UtilityAmountPayment":"Amount" ,
+  "UtilityCardClear":"Clear",
+  "UtilityConfirm":"Confirm"
 }

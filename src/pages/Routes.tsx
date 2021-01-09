@@ -30,6 +30,7 @@ import {
   ElectricityWater,
   NepalElectricity,
   Khanepani,
+  CardPayment,
 } from './index';
 import './Routes.scss';
 
@@ -82,7 +83,7 @@ const Routes: React.FC = () => {
             <Route path="/nepalElectricity" exact component={NepalElectricity} />
             <Route path="/khanepani" exact component={Khanepani} />
 
-
+            <Route path="/CardPayment" exact component={CardPayment} />
         
 
             <Redirect exact from="/" to="/register" />
