@@ -1,19 +1,18 @@
 .container {
   display: flex;
-  display: flex;
   height: 100%;
   flex-direction: column;
   background-color: #3182b9;
-  .fund-text-area {
-    margin-top: 65px;
+  .electricity-water-text-area {
     font-family: "Montserrat";
     font-style: normal;
+    // font-weight: 600;
     font-size: 16px;
+    margin-top: 40px;
     line-height: 20px;
     color: #ffffff;
   }
-  .fund-wrapper {
-    padding: 30px;
+  .Utility-Electricity-Water-Wrapper {
     margin-top: 80px;
   }
 }

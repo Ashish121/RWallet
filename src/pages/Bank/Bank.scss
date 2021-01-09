@@ -2,42 +2,27 @@
   display: flex;
   display: flex;
   height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
-}
-
-.container .header-text-area {
-  display: flex;
-  padding-left: 30px;
-  margin-top: 20px;
-  color: #ffffff;
-}
-.container .bank-wrapper {
-  margin-top: 30px;
-
-  background-color: #3182b9;
-}
-.header-text-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-  font-size: small;
-  color: #ffffff;
-}
-.header-grid {
-  width: 100%;
-}
-.ion-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 70px;
-}
-.button-line {
-  display: flex;
-  flex-shrink: 2;
-  margin-left: 35px;
-  width: 100%;
-  margin-right: 50px;
+  .bank-text-area {
+    display: flex;
+    margin-top: 20px;
+    color: #ffffff;
+  }
+  .bank-wrapper {
+    margin-top: 30px;
+    background-color: #3182b9;
+  }
+  .bank-clear-button {
+    width: 100px;
+    float: left;
+    margin-top: 40px;
+  }
+  .bank-proceed-button {
+    width: 100px;
+    float: right;
+    margin-top: 40px;
+  }
 }

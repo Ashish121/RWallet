@@ -24,6 +24,9 @@ import { AnimatedSplash } from './SplashScreen/Splash';
 import { MapView } from './Map/MapView';
 import { NotificationPage } from './NotificationPage/NotificationPage';
 import {TransactionHistory} from './TransactionHistory/TransactionHistory';
+import {ElectricityWater} from './Utilitys/UtilityElectricityWater/ElectricityWater/ElectricityWater';
+import {NepalElectricity} from './Utilitys/UtilityElectricityWater/NepalElectricity/NepalElectricity';
+import { Khanepani } from './Utilitys/UtilityElectricityWater/Khanepani/Khanepani';
 
 export {
   HomePage,
@@ -52,4 +55,8 @@ export {
   NotificationPage,
   MapView,
   TransactionHistory,
+  ElectricityWater,
+  NepalElectricity,
+  Khanepani,
+  
 };

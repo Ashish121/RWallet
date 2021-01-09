@@ -165,7 +165,24 @@
   "NotificationPage.ThisWeek":"This Week",
   "NotificationPage.date":"Date",
   "NotificationPage.time":"Time",
+
+
   "TransactionHistory.text":"Transaction History",
   "TransactionHistory.payment":"Payment to ",
-  "TransactionHistory.Receivedfrom":"Received from"
+  "TransactionHistory.Receivedfrom":"Received from",
+
+  "UtilityElectricityWater":"Electricity & Water",
+  "UtilityNepalElectricityAuthority":"Nepal electricity authority",
+  "UtilityKhanepani":"Khanepani",
+
+  "UtilityNepalNEACounter":"NEA Counter",
+  "UtilitySCnumber":"SC number",
+  "UtilityCustomerId":"Customer ID",
+
+  "UtilityKhanepaniName":"Name of the place",
+  "UtilityCustomerIdKhanepani":"Customer ID",
+
+  "UtilityDiscard":"Discard",
+  "UtilitySubmit":"Submit"
+   
 }

@@ -5,18 +5,18 @@ import {
   IonContent,
   IonText,
   IonApp,
- 
-} from '@ionic/react';
-import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
-import './Bank.scss';
 
-const Bank: React.FC = () => {
+} from '@ionic/react';
+import { Translate } from '../../../../i18n/formatMessages';
+import { ButtonConmponent,InputText, HeaderComponent } from '../../../../components';
+import './NepalElectricity.scss';
+
+const NepalElectricity: React.FC = () => {
   const history = useHistory();
 
   function handleproceed() {
     console.log('Handling registration');
-    history.push('/banks');
+    history.push('/');
   }
 
   return (
@@ -26,61 +26,42 @@ const Bank: React.FC = () => {
           <HeaderComponent headerLable="common.header" />
           <IonContent>
             <div className="container">
-              <IonText className="bank-text-area">
-                <Translate message="fund.bankTrasfer" />
+              <IonText className="nepal-electricity-text-area">
+                <Translate message="UtilityNepalElectricityAuthority" />
               </IonText>
-              <div className="bank-wrapper">
+              <div className="nepal-electricity-authority-wrapper">
                 <InputText
                   inputType="text"
-                  labelText="bank.destination"
+                  labelText="UtilityNepalNEACounter"
                   labelType="floating"
                   color="light"
                   labelColor="light"
                 />
                 <InputText
                   inputType="text"
-                  labelText="bank.holderName"
+                  labelText="UtilitySCnumber"
                   labelType="floating"
                   color="light"
                   labelColor="light"
                 />
                 <InputText
                   inputType="text"
-                  labelText="bank.number"
+                  labelText="UtilityCustomerId"
                   labelType="floating"
                   color="light"
                   labelColor="light"
                 />
-                <InputText
-                  inputType="text"
-                  labelText="bank.mobile"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.amount"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.remark"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <div className="bank-clear-button">
+            
+                <div className="nepal-button-last">
                   <ButtonConmponent
-                    buttonLabel="bank.clear"
+                    buttonLabel="UtilityDiscard"
                     size="block"
+
                   />
                 </div>
-                <div className="bank-proceed-button">
+                <div className="last-nepal-submit">
                   <ButtonConmponent
-                    buttonLabel="bank.proceed"
+                    buttonLabel="UtilitySubmit"
                     size="block"
                     clickHandler={handleproceed}
                   />
@@ -94,4 +75,4 @@ const Bank: React.FC = () => {
   );
 };
 
-export { Bank };
+export { NepalElectricity };

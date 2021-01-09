@@ -5,9 +5,7 @@ import {
   IonContent,
   IonText,
   IonApp,
-  IonGrid,
-  IonCol,
-  IonRow,
+ 
 } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
@@ -28,10 +26,10 @@ const Agent: React.FC = () => {
           <HeaderComponent headerLable="common.header" />
           <IonContent>
             <div className="container">
-              <IonText className="header-text-area">
+              <IonText className="agent-text-area">
                 <Translate message="agent.text" />
               </IonText>
-              <div className="page-wrapper">
+              <div className="agent-page-wrapper">
                 <InputText
                   inputType="text"
                   labelText="agent.country"
@@ -81,32 +79,18 @@ const Agent: React.FC = () => {
                   color="light"
                   labelColor="light"
                 />
-                <div className="clear-button">
-                  <IonGrid className="header-grid">
-                    <IonRow>
-                      <IonCol className="ion-button">
-                        <div
-                          className="button-line"
-                          style={{ marginTop: '10px' }}
-                        >
-                          <ButtonConmponent
-                            buttonLabel="bank.clear"
-                            size="block"
-                          />
-                        </div>
-                        <div
-                          className="button-line"
-                          style={{ marginTop: '10px' }}
-                        >
-                          <ButtonConmponent
-                            buttonLabel="bank.proceed"
-                            size="block"
-                            clickHandler={handleproceed}
-                          />
-                        </div>
-                      </IonCol>
-                    </IonRow>
-                  </IonGrid>
+                <div className="agent-clear-button">
+                  <ButtonConmponent
+                    buttonLabel="bank.clear"
+                    size="block"
+                  />
+                </div>
+                <div className="agent-proceed-button">
+                  <ButtonConmponent
+                    buttonLabel="bank.proceed"
+                    size="block"
+                    clickHandler={handleproceed}
+                  />
                 </div>
               </div>
             </div>
