@@ -30,7 +30,7 @@ const Fund: React.FC = () => {
           <HeaderComponent headerLable="common.header" />
           <IonContent>
             <div className="container">
-              <IonText className="header-text-area">
+              <IonText className="fund-text-area">
                 <Translate message="fund.fundpage" />
               </IonText>
               <div className="fund-wrapper">

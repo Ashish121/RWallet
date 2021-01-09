@@ -13,6 +13,7 @@ import {
   AccountUser,
   AccountPage,
   Reset,
+  Fund,
   Bank,
   Agent,
   BankS,
@@ -26,8 +27,12 @@ import {
   AnimatedSplash,
   NotificationPage,
   TransactionHistory ,
+  ElectricityWater,
+  NepalElectricity,
+  Khanepani,
 } from './index';
 import './Routes.scss';
+
 
 const Routes: React.FC = () => {
   const isTabView = true;
@@ -52,20 +57,37 @@ const Routes: React.FC = () => {
             <Route path="/splash" exact component={AnimatedSplash} />
             <Route path="/reset" exact component={ResetPassword} />
             <Route path="/pass" exact component={Reset} />
-            {/* <Route path="/fundTransfer" component={Fund} /> */}
+
+            <Route path="/fund" component={Fund} />
             <Route path="/bank" exact component={Bank} />
             <Route path="/cop" exact component={CoOperative} />
             <Route path="/agent" exact component={Agent} />
+
+            {/* Summary Details Page  */}
             <Route path="/bankS" exact component={BankS} />
             <Route path="/copS" exact component={CoOperativeS} />
             <Route path="/agentS" exact component={AgentS} />
+
+            {/* Sucess Page */}
             <Route path="/confirm" exact component={ConfirmPage} />
 
+            {/* Header Component  MenuBar Or Notification  */}
             <Route path="/menu" exact component={MenuBarPage} />
+            <Route path="/notification" exact component={NotificationPage} />
+            
+            <Route path="/transactionHistory" exact component={TransactionHistory} />
+
+            {/* Utility Electricity Section */}
+            <Route path="/electricityWater" exact component={ElectricityWater} />
+            <Route path="/nepalElectricity" exact component={NepalElectricity} />
+            <Route path="/khanepani" exact component={Khanepani} />
+
+
+        
 
             <Redirect exact from="/" to="/register" />
-            <Route path="/notification" exact component={NotificationPage} />
-            <Route path="/transactionHistory" exact component={TransactionHistory} />
+         
+         
             <Redirect exact from="/" to="/splash" />
           </IonRouterOutlet>
         </IonPage>

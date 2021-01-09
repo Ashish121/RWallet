@@ -1,27 +1,30 @@
 .container {
   display: flex;
-  display: flex;
   height: 100%;
   padding-left: 28px;
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
-  .agent-text-area {
-    display: flex;
-    margin-top: 20px;
+  .khanepani-text-area {
+    font-family: "Montserrat";
+    font-style: normal;
+    // font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
     color: #ffffff;
-  }
-  .agent-page-wrapper {
     margin-top: 30px;
   }
-  .agent-clear-button {
-    width: 100px;
+  .khanepani-wrapper {
+    margin-top: 60px;
+  }
+  .khanepani-button-last {
     float: left;
     margin-top: 40px;
-  }
-  .agent-proceed-button {
     width: 100px;
+  }
+  .khanepani-nepal-submit {
     float: right;
+    width: 100px;
     margin-top: 40px;
   }
 }

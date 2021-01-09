@@ -5,9 +5,7 @@ import {
   IonContent,
   IonText,
   IonApp,
-  IonGrid,
-  IonCol,
-  IonRow,
+
 } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
@@ -28,10 +26,10 @@ const CoOperative: React.FC = () => {
           <HeaderComponent headerLable="common.header" />
           <IonContent>
             <div className="container">
-              <IonText className="header-text-area">
+              <IonText className="coperative-text-area">
                 <Translate message="coOperative.text" />
               </IonText>
-              <div className="cop-wrapper">
+              <div className="coperative-wrapper">
                 <InputText
                   inputType="text"
                   labelText="coOperative.province"
@@ -95,32 +93,18 @@ const CoOperative: React.FC = () => {
                   color="light"
                   labelColor="light"
                 />
-                <div className="clear-button">
-                  <IonGrid className="header-grid">
-                    <IonRow>
-                      <IonCol className="ion-button">
-                        <div
-                          className="button-line"
-                          style={{ marginTop: '10px' }}
-                        >
-                          <ButtonConmponent
-                            buttonLabel="bank.clear"
-                            size="block"
-                          />
-                        </div>
-                        <div
-                          className="button-line"
-                          style={{ marginTop: '10px' }}
-                        >
-                          <ButtonConmponent
-                            buttonLabel="bank.proceed"
-                            size="block"
-                            clickHandler={handleproceed}
-                          />
-                        </div>
-                      </IonCol>
-                    </IonRow>
-                  </IonGrid>
+                <div className="coperative-clear-button">
+                  <ButtonConmponent
+                    buttonLabel="bank.clear"
+                    size="block"
+                  />
+                </div>
+                <div className="coperative-proceed-button">
+                  <ButtonConmponent
+                    buttonLabel="bank.proceed"
+                    size="block"
+                    clickHandler={handleproceed}
+                  />
                 </div>
               </div>
             </div>
