@@ -6,7 +6,6 @@
   flex-direction: column;
   background-color: #3182b9;
   .credit-card-text-area {
-    font-family: "Montserrat";
     font-style: normal;
     // font-weight: 600;
     font-size: 16px;
@@ -16,15 +15,15 @@
   }
   .credit-card-wrapper {
     margin-top: 60px;
-  }
-  .card-button-last {
-    float: left;
-    margin-top: 40px;
-    width: 100px;
-  }
-  .card-submit {
-    float: right;
-    width: 100px;
-    margin-top: 40px;
+    .card-button-last {
+      float: left;
+      margin-top: 40px;
+      width: 100px;
+    }
+    .card-submit {
+      float: right;
+      width: 100px;
+      margin-top: 40px;
+    }
   }
 }

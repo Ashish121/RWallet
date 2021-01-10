@@ -16,7 +16,7 @@ const ElectricityWater: React.FC = () => {
 
   function handleKhanepani() {
     console.log('Handling registration');
-    history.push('/');
+    history.push('/khanepani');
   }
 
   return (

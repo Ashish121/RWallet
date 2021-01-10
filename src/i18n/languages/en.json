@@ -204,9 +204,13 @@
   "SavingAmount":"Saving amount",
   "Remarks":"Remark",
   "ClearSaving":"clear",
-  "ConfirmSaving":"confirm"
+  "ConfirmSaving":"confirm",
 
-  
+  "AntivirusPaymentOption":" Payment option",
+  "AntivirusSelectBank":"Select bank account",
+  "AntivirusOrderDetails":"Order details",
+  "Antiviruskaspersky":"Kaspersky antivirus 1 PC/1 user",
+  "AntivirusContiue":"Continue"
 
 
 }
