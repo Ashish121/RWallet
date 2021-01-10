@@ -31,8 +31,13 @@ import {
   NepalElectricity,
   Khanepani,
   CardPayment,
+  InsuranceFinancePage ,
+  RoyalityFinancialServices ,
+  RoyalitySavingCredit
+
 } from './index';
 import './Routes.scss';
+
 
 
 const Routes: React.FC = () => {
@@ -84,6 +89,10 @@ const Routes: React.FC = () => {
             <Route path="/khanepani" exact component={Khanepani} />
 
             <Route path="/CardPayment" exact component={CardPayment} />
+
+            <Route path="/insuranceFinancePage" exact component={InsuranceFinancePage} />
+            <Route path="/royalityFinancialServices" exact component={RoyalityFinancialServices} />
+            <Route path="/royalitySavingCredit" exact component={RoyalitySavingCredit} />
         
 
             <Redirect exact from="/" to="/register" />
