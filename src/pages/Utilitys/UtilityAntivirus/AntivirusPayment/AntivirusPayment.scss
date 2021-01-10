@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
+  flex-direction: column;
+  background-color: #3182b9;
+  .antivirus-payment-text-area {
+    font-style: normal;
+    // font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+    margin-top: 30px;
+  }
+  .antivirus-payment-wrapper {
+    margin-top: 60px;
+    .AntivirusPayment-OrderDetails {
+      font-style: normal;
+      font-weight: 600;
+      margin-top: 45px;
+      font-size: 16px;
+      line-height: 20px;
+      color: #ffffff;
+    }
+  }
+  .AntivirusPayment-spersky {
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+    color: #ffffff;
+  }
+  .antivirus-confirm-button {
+    margin-top: 40px;
+  }
+}

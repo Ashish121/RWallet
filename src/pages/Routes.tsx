@@ -33,7 +33,8 @@ import {
   CardPayment,
   InsuranceFinancePage ,
   RoyalityFinancialServices ,
-  RoyalitySavingCredit
+  RoyalitySavingCredit,
+  AntivirusPayment
 
 } from './index';
 import './Routes.scss';
@@ -93,7 +94,8 @@ const Routes: React.FC = () => {
             <Route path="/insuranceFinancePage" exact component={InsuranceFinancePage} />
             <Route path="/royalityFinancialServices" exact component={RoyalityFinancialServices} />
             <Route path="/royalitySavingCredit" exact component={RoyalitySavingCredit} />
-        
+
+            <Route path="/antivirusPayment" exact component={AntivirusPayment} />
 
             <Redirect exact from="/" to="/register" />
          

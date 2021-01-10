@@ -31,6 +31,8 @@ import { CardPayment } from './Utilitys/UtilityCardPayment/CardPayment';
 import { InsuranceFinancePage} from  './Utilitys/UtilityInsuranceFinanceEmi/InsuranceFinancePage/InsuranceFinancePage';
 import { RoyalitySavingCredit} from './Utilitys/UtilityInsuranceFinanceEmi/RoyalitySavingCredit/RoyalitySavingCredit';
 import {RoyalityFinancialServices} from './Utilitys/UtilityInsuranceFinanceEmi/RoyalityFinancialService/RoyalityFinancialServices';
+import {AntivirusPayment} from './Utilitys/UtilityAntivirus/AntivirusPayment/AntivirusPayment';
+
 
 export {
   HomePage,
@@ -66,5 +68,5 @@ export {
   InsuranceFinancePage,
   RoyalitySavingCredit,
   RoyalityFinancialServices,
-  
+  AntivirusPayment,
 };
