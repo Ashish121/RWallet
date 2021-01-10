@@ -28,6 +28,9 @@ import {ElectricityWater} from './Utilitys/UtilityElectricityWater/ElectricityWa
 import {NepalElectricity} from './Utilitys/UtilityElectricityWater/NepalElectricity/NepalElectricity';
 import { Khanepani } from './Utilitys/UtilityElectricityWater/Khanepani/Khanepani';
 import { CardPayment } from './Utilitys/UtilityCardPayment/CardPayment';
+import { InsuranceFinancePage} from  './Utilitys/UtilityInsuranceFinanceEmi/InsuranceFinancePage/InsuranceFinancePage';
+import { RoyalitySavingCredit} from './Utilitys/UtilityInsuranceFinanceEmi/RoyalitySavingCredit/RoyalitySavingCredit';
+import {RoyalityFinancialServices} from './Utilitys/UtilityInsuranceFinanceEmi/RoyalityFinancialService/RoyalityFinancialServices';
 
 export {
   HomePage,
@@ -60,5 +63,8 @@ export {
   NepalElectricity,
   Khanepani,
   CardPayment,
+  InsuranceFinancePage,
+  RoyalitySavingCredit,
+  RoyalityFinancialServices,
   
 };

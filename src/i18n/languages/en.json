@@ -190,5 +190,23 @@
   "UtilityCardNumber":"Card number",
   "UtilityAmountPayment":"Amount" ,
   "UtilityCardClear":"Clear",
-  "UtilityConfirm":"Confirm"
+  "UtilityConfirm":"Confirm",
+
+
+  "InsuranceFinanceEmi":"Insurance/Finance/EMI",
+  "RoyalitySaving":"Royality saving and credit co-operative Ltd.",
+  "RoyaliFinancialServices":"Royality financial services and investment Pvt.Ltd.",
+
+  "membershipAccountnumber":"Membership/Account number",
+  "MemberName":"Member name",
+  "MobileNumber":"Mobile number",
+  "SelectTransactionType":"Select transaction type",
+  "SavingAmount":"Saving amount",
+  "Remarks":"Remark",
+  "ClearSaving":"clear",
+  "ConfirmSaving":"confirm"
+
+  
+
+
 }
