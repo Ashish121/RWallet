@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
+  flex-direction: column;
+  background-color: #3182b9;
+  .Loan-ApplyPage-text-area {
+    font-style: normal;
+    // font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+    margin-top: 30px;
+  }
+  .Loan-ApplyPage-wrapper {
+    margin-top: 60px;
+    .loan-ApplyPage-Discard {
+      float: left;
+      margin-top: 40px;
+      width: 100px;
+    }
+    .loan-ApplyPage-Apply {
+      float: right;
+      width: 100px;
+      margin-top: 40px;
+    }
+  }
+}

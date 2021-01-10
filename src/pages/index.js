@@ -32,7 +32,7 @@ import { InsuranceFinancePage} from  './Utilitys/UtilityInsuranceFinanceEmi/Insu
 import { RoyalitySavingCredit} from './Utilitys/UtilityInsuranceFinanceEmi/RoyalitySavingCredit/RoyalitySavingCredit';
 import {RoyalityFinancialServices} from './Utilitys/UtilityInsuranceFinanceEmi/RoyalityFinancialService/RoyalityFinancialServices';
 import {AntivirusPayment} from './Utilitys/UtilityAntivirus/AntivirusPayment/AntivirusPayment';
-
+import {ApplyPage} from './LoanSection/ApplyPage/ApplyPage';
 
 export {
   HomePage,
@@ -69,4 +69,5 @@ export {
   RoyalitySavingCredit,
   RoyalityFinancialServices,
   AntivirusPayment,
+  ApplyPage,
 };

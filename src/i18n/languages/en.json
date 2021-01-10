@@ -171,6 +171,17 @@
   "TransactionHistory.payment":"Payment to ",
   "TransactionHistory.Receivedfrom":"Received from",
 
+
+  "LoanApplyPage":"Fill up your details",
+  "LoanFullName":"Full name",
+  "LoanFatherName":"Father name",
+  "LoanMobileNumber":"Mobile number",
+  "PurposeLoan":"Purpose of loan ",
+  "ApplyPageDiscard":"Dicard",
+  "ApplyPageApply":"Apply",
+
+
+  
   "UtilityElectricityWater":"Electricity & Water",
   "UtilityNepalElectricityAuthority":"Nepal electricity authority",
   "UtilityKhanepani":"Khanepani",
