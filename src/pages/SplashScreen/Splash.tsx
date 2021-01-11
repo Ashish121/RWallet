@@ -18,27 +18,22 @@ const AnimatedSplash: React.FC = () => {
     const data = [
       {
         id: 1,
-        title: 'Button 1 content',
+        //buttonLabel="account.openAccount",
         showDetails: false,
       },
-      {
-        id: 2,
-        title: 'Button 2 content',
-        showDetails: false,
-      },
-
-      {
-        id: 3,
-        title: 'Button 3 content',
-        showDetails: false,
-      },
+    
     ];
     setAccordionDetails(data);
   }, []);
 
   return (
     <React.Fragment>
-      <CustomAccordion accordionData={accordionDetails} />
+      <CustomAccordion accordionData={accordionDetails}
+        buttonLabel="account.openAccount"/>
+      <CustomAccordion accordionData={accordionDetails}
+        buttonLabel="account.openAccount"/>
+      <CustomAccordion accordionData={accordionDetails}
+        buttonLabel="account.openAccount"/>
     </React.Fragment>
   );
 };

@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { IonButton, IonIcon } from '@ionic/react';
 import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
+import   { Translate   } from '../../i18n/formatMessages';
 import './Accordion.scss';
 
 interface accordionProps {
-  accordionData: any;
+  accordionData: any,
+  buttonLabel?: any,
 }
 
-const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
+const CustomAccordion: React.FC<accordionProps> = ({ accordionData ,
+  buttonLabel,
+  ...props
+}) => {
   const [toggleAccordion, setToggleAccordion] = useState(false);
 
   const toggle = (item: any, index: any) => {
@@ -26,7 +31,8 @@ const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
       {accordionData?.map((item: any, index: any) => {
         return (
           <div className="accordion-wrapper">
-            <IonButton expand="full" onClick={() => toggle(item, index)}>
+         
+            <IonButton expand="block" onClick={() => toggle(item, index)} className="acc-button-name" {...props} ><Translate message={buttonLabel}/>
               {item.title}
               <IonIcon
                 slot="end"
