@@ -13,6 +13,7 @@ import LoanSection from './Loans/Loans';
 import UtilitiesSection from './Utilities/Utilities';
 import DatePickerComponent from './DatePicker/DatePicker';
 import CustomAccordion from './Accordion/Accordion';
+import RangeSlider from './RangeSlider/RangeSlider';
 
 export {
   InputText,
@@ -30,4 +31,5 @@ export {
   UtilitiesSection,
   DatePickerComponent,
   CustomAccordion,
+  RangeSlider,
 };
