@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import './Splash.scss';
-import { CustomAccordion } from '../../components';
+import { CustomAccordion, RangeSlider } from '../../components';
 
 const AnimatedSplash: React.FC = () => {
   const [accordionDetails, setAccordionDetails] = useState([{}]);
@@ -39,6 +39,7 @@ const AnimatedSplash: React.FC = () => {
   return (
     <React.Fragment>
       <CustomAccordion accordionData={accordionDetails} />
+      <RangeSlider />
     </React.Fragment>
   );
 };
