@@ -33,6 +33,7 @@ import { RoyalitySavingCredit} from './Utilitys/UtilityInsuranceFinanceEmi/Royal
 import {RoyalityFinancialServices} from './Utilitys/UtilityInsuranceFinanceEmi/RoyalityFinancialService/RoyalityFinancialServices';
 import {AntivirusPayment} from './Utilitys/UtilityAntivirus/AntivirusPayment/AntivirusPayment';
 import {ApplyPage} from './LoanSection/ApplyPage/ApplyPage';
+import {EmiCalculater} from './LoanSection/EmiCalculater/EmiCalculater';
 
 export {
   HomePage,
@@ -70,4 +71,5 @@ export {
   RoyalityFinancialServices,
   AntivirusPayment,
   ApplyPage,
+  EmiCalculater,
 };

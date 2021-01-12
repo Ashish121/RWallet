@@ -13,6 +13,7 @@ const MenuBarPage: React.FC = () => {
   const accountCurency= useState('NRP');
   const accuredInterest = useState('4.5%');
   const phoneVersion = useState('v.1.2.3');
+  
   return (
     <>
       <IonApp>

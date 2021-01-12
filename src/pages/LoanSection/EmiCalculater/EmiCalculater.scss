@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
+  flex-direction: column;
+  background-color: #3182b9;
+  .emi-calcluter-text-area {
+    font-style: normal;
+    // font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+    margin-top: 30px;
+  }
+
+  .emi-calculater-wrapper {
+    margin-top: 20px;
+
+    .emiCalculate-rest {
+      float: left;
+      margin-top: 40px;
+      width: 100px;
+    }
+    .emiCalculater-calculate {
+      float: right;
+      width: 100px;
+      margin-top: 40px;
+    }
+    .interest-area {
+      margin-top: 13px;
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      color: #ffffff;
+      .range-area {
+        margin-top: -30px;
+        margin-bottom: -10px;
+      }
+    }
+    .button-Section {
+      .emiCalculate-rest {
+        float: left;
+        margin-top: 20px;
+        width: 120px;
+      }
+      .emiCalculater-calculate {
+        float: right;
+        width: 120px;
+        margin-top: 20px;
+      }
+    }
+  }
+  .emiCalculater {
+    margin-top: 15px;
+    .emi-cal-prinival {
+      margin-top: 10px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      color: #ffffff;
+      opacity: 0.5;
+      .emi-interest {
+        margin-top: 10px;
+      }
+    }
+    .name-message {
+      margin-top: 2px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      /* identical to box height */
+      color: #ffffff;
+      opacity: 0.5;
+    }
+  }
+}

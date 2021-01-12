@@ -35,7 +35,8 @@ import {
   RoyalityFinancialServices ,
   RoyalitySavingCredit,
   AntivirusPayment,
-  ApplyPage
+  ApplyPage,
+  EmiCalculater
 
 } from './index';
 import './Routes.scss';
@@ -88,6 +89,7 @@ const Routes: React.FC = () => {
             {/* Loan Section */}
 
             <Route path="/applyPage" exact component={ApplyPage} />
+            <Route path="/emiCalculater" exact component={EmiCalculater} />
 
             {/* Utility Electricity Section */}
             <Route path="/electricityWater" exact component={ElectricityWater} />

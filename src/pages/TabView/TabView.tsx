@@ -67,6 +67,7 @@ const TabViewPage: React.FC = () => {
           <Route path="/tabs/home" component={HomePage} exact />
           <Route path="/tabs/transfer" component={Fund} exact />
           <Route path="/tabs/mapview" component={MapView} exact />
+        
           <Route
             path="/tabs"
             render={() => <Redirect to="/tabs/home" />}

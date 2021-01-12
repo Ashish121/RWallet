@@ -180,6 +180,16 @@
   "ApplyPageDiscard":"Dicard",
   "ApplyPageApply":"Apply",
 
+  "emiCalculator":"EMI Calculator",
+  "emiloanAmount":"Loan amount",
+  "emiInterestRate":"Interest rate",
+  "emiLoanTenure":"Loan tenure",
+  "emiRest":"Reset",
+  "emiCalculate":"Calculate",
+  "emiPrinivipalAmount":"Prinicipal amount",
+  "emiInterest":"Interest",
+  "emiTotal":"Total payable = Principal + Interest",
+  "emiAmountMonthely":"EMI amount(Monthly instalment)",
 
   
   "UtilityElectricityWater":"Electricity & Water",
