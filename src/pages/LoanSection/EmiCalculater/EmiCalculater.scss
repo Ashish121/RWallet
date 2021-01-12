@@ -78,4 +78,28 @@
       opacity: 0.5;
     }
   }
+  .emiCalculater1 {
+    margin-top: 15px;
+    .emi-cal-prinival1 {
+      margin-top: 10px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      color: #ffffff;
+
+      .emi-interest1 {
+        margin-top: 10px;
+      }
+    }
+    .name-message1 {
+      margin-top: 2px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      /* identical to box height */
+      color: #ffffff;
+    }
+  }
 }

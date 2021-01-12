@@ -13,9 +13,9 @@ import './EmiCalculater.scss';
 const EmiCalculater: React.FC = () => {
   const history = useHistory();
   const prinicipalAmount = useState('10000.00');
-  const interest= useState('NRP');
-  const totalPayable = useState('4.5%');
-  const emiAmountMonthly = useState('v.1.2.3');
+  const interest= useState('724.00');
+  const totalPayable = useState('10724.00');
+  const emiAmountMonthly = useState('416.34');
 
   function handleproceed() {
     console.log('Handling registration');
@@ -94,9 +94,9 @@ const EmiCalculater: React.FC = () => {
                   </IonText>
                 </div>
               </div>
-              <div className="emiCalculater">
-                <IonText className="emi-cal-prinival"><span className="emi-interest"><Translate message='emiAmountMonthely'/></span></IonText>
-                <div className="name-message">
+              <div className="emiCalculater1">
+                <IonText className="emi-cal-prinival1"><span className="emi-interest1"><Translate message='emiAmountMonthely'/></span></IonText>
+                <div className="name-message1">
                   <IonText className="nameMessage">
                     {emiAmountMonthly}
                   </IonText>
