@@ -191,6 +191,18 @@
   "emiTotal":"Total payable = Principal + Interest",
   "emiAmountMonthely":"EMI amount(Monthly instalment)",
 
+
+
+  "UtilityFlightBooking":"Flight booking",
+  "UtilityFlightFrom":"From",
+  "UtilityFlightTo":"To",
+  "UtilityDeparture":"Departure",
+  "UtilityReturn":"Return",
+  "UtilityTravellers":"Travellers",
+  "UtilityClass":"Class",
+  "UtilityBookFlight":"Book Flight",
+
+  
   
   "UtilityElectricityWater":"Electricity & Water",
   "UtilityNepalElectricityAuthority":"Nepal electricity authority",
