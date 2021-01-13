@@ -34,6 +34,8 @@ import {RoyalityFinancialServices} from './Utilitys/UtilityInsuranceFinanceEmi/R
 import {AntivirusPayment} from './Utilitys/UtilityAntivirus/AntivirusPayment/AntivirusPayment';
 import {ApplyPage} from './LoanSection/ApplyPage/ApplyPage';
 import {EmiCalculater} from './LoanSection/EmiCalculater/EmiCalculater';
+import {FlightOneWay} from './Utilitys/UtilityFlightBooking/FlightOneWay/FlightOneWay';
+import {FlightTwoWay} from './Utilitys/UtilityFlightBooking/FlightTwoWay/FlightTwoWay';
 
 export {
   HomePage,
@@ -72,4 +74,6 @@ export {
   AntivirusPayment,
   ApplyPage,
   EmiCalculater,
+  FlightOneWay,
+  FlightTwoWay,
 };

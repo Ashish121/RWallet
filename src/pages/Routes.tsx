@@ -36,7 +36,9 @@ import {
   RoyalitySavingCredit,
   AntivirusPayment,
   ApplyPage,
-  EmiCalculater
+  EmiCalculater,
+  FlightOneWay,
+  FlightTwoWay,
 
 } from './index';
 import './Routes.scss';
@@ -90,6 +92,12 @@ const Routes: React.FC = () => {
 
             <Route path="/applyPage" exact component={ApplyPage} />
             <Route path="/emiCalculater" exact component={EmiCalculater} />
+
+            {/* Utility FlightBooking Section */}
+
+            <Route path="/flightOneWay" exact component={FlightOneWay} />
+            <Route path="/flightTwoWay" exact component={FlightTwoWay} />
+
 
             {/* Utility Electricity Section */}
             <Route path="/electricityWater" exact component={ElectricityWater} />

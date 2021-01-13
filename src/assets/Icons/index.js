@@ -41,6 +41,7 @@ import {ProfilePictureIcon } from './ProfilePictureIcon';
 import {MenuCamera} from './MenuCamera';
 import { MapMarker } from './MapMarker';
 import { CurrentLocationMarker } from './CurrentLocationMarker';
+import {FlightIcon} from './FlightIcon';
 
 export {
   SmartphoneIcon,
@@ -86,4 +87,5 @@ export {
   MenuCamera,
   MapMarker,
   CurrentLocationMarker,
+  FlightIcon,
 };
