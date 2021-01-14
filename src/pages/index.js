@@ -36,6 +36,8 @@ import {ApplyPage} from './LoanSection/ApplyPage/ApplyPage';
 import {EmiCalculater} from './LoanSection/EmiCalculater/EmiCalculater';
 import {FlightOneWay} from './Utilitys/UtilityFlightBooking/FlightOneWay/FlightOneWay';
 import {FlightTwoWay} from './Utilitys/UtilityFlightBooking/FlightTwoWay/FlightTwoWay';
+import {BusOneWay} from './Utilitys/UtilityBusBooking/BusOneWay/BusOneWay';
+import {BusTwoWay} from  './Utilitys/UtilityBusBooking/BusTwoWay/BusTwoWay';
 
 export {
   HomePage,
@@ -76,4 +78,6 @@ export {
   EmiCalculater,
   FlightOneWay,
   FlightTwoWay,
+  BusOneWay,
+  BusTwoWay,
 };

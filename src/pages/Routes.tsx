@@ -39,6 +39,8 @@ import {
   EmiCalculater,
   FlightOneWay,
   FlightTwoWay,
+  BusOneWay,
+  BusTwoWay,
 
 } from './index';
 import './Routes.scss';
@@ -97,6 +99,10 @@ const Routes: React.FC = () => {
 
             <Route path="/flightOneWay" exact component={FlightOneWay} />
             <Route path="/flightTwoWay" exact component={FlightTwoWay} />
+
+            {/* Utility Bus Booking Section */}
+            <Route path="/busOneWay" exact component={BusOneWay} />
+            <Route path="/busTwoWay" exact component={BusTwoWay} />
 
 
             {/* Utility Electricity Section */}

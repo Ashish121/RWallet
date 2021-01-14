@@ -202,7 +202,8 @@
   "UtilityClass":"Class",
   "UtilityBookFlight":"Book Flight",
 
-  
+  "UtilityBusBooking":"Bus booking",
+  "UtilityBus":"Book Bus",  
   
   "UtilityElectricityWater":"Electricity & Water",
   "UtilityNepalElectricityAuthority":"Nepal electricity authority",

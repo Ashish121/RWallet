@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
+  flex-direction: column;
+  background-color: #3182b9;
+  .booking-oneWay-text-area {
+    font-style: normal;
+    // font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+    margin-top: 30px;
+  }
+  .booking-oneWay-wrapper {
+    margin-top: 60px;
+    .booking-section {
+      display: flex;
+      width: 100%;
+    }
+    .booking-from {
+      display: flex;
+      width: 100%;
+    }
+    .flight-icon {
+      display: flex;
+      margin-right: 5px;
+      margin-top: 20px;
+    }
+    .booking-to {
+      display: flex;
+      width: 100%;
+    }
+  }
+  .departure-area {
+    display: inline-block;
+    width: 100;
+  }
+  .booking-button {
+    margin-top: 20px;
+  }
+}
