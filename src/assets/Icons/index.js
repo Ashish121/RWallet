@@ -42,6 +42,7 @@ import {MenuCamera} from './MenuCamera';
 import { MapMarker } from './MapMarker';
 import { CurrentLocationMarker } from './CurrentLocationMarker';
 import {FlightIcon} from './FlightIcon';
+import {BusBookingIcon} from './BusBookingIcon';
 
 export {
   SmartphoneIcon,
@@ -88,4 +89,5 @@ export {
   MapMarker,
   CurrentLocationMarker,
   FlightIcon,
+  BusBookingIcon,
 };
