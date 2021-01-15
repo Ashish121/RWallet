@@ -41,11 +41,12 @@ import {
   FlightTwoWay,
   BusOneWay,
   BusTwoWay,
+  LoanType,
+  TvPayment,
+  TopUpRecharge,
 
 } from './index';
 import './Routes.scss';
-
-
 
 const Routes: React.FC = () => {
   const isTabView = true;
@@ -87,13 +88,13 @@ const Routes: React.FC = () => {
             {/* Header Component  MenuBar Or Notification  */}
             <Route path="/menu" exact component={MenuBarPage} />
             <Route path="/notification" exact component={NotificationPage} />
-            
             <Route path="/transactionHistory" exact component={TransactionHistory} />
 
             {/* Loan Section */}
 
             <Route path="/applyPage" exact component={ApplyPage} />
             <Route path="/emiCalculater" exact component={EmiCalculater} />
+            <Route path="/loanType" exact component={LoanType} />
 
             {/* Utility FlightBooking Section */}
 
@@ -105,11 +106,15 @@ const Routes: React.FC = () => {
             <Route path="/busTwoWay" exact component={BusTwoWay} />
 
 
+            {/* Utility ToUpRecharge Section */}
+            <Route path="/topUpRecharge" exact component={TopUpRecharge} />
+            <Route path="/tvPayment" exact component={TvPayment} />
+
             {/* Utility Electricity Section */}
             <Route path="/electricityWater" exact component={ElectricityWater} />
             <Route path="/nepalElectricity" exact component={NepalElectricity} />
             <Route path="/khanepani" exact component={Khanepani} />
-
+            
             <Route path="/CardPayment" exact component={CardPayment} />
 
             <Route path="/insuranceFinancePage" exact component={InsuranceFinancePage} />
