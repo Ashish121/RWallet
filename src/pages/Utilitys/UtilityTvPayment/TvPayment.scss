@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
+  flex-direction: column;
+  background-color: #3182b9;
+  .TvPayment-text-area {
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+    margin-top: 30px;
+  }
+  .TvPayment-wrapper {
+    margin-top: 20px;
+  }
+}

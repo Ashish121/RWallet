@@ -17,9 +17,9 @@ const EmiCalculater: React.FC = () => {
   const totalPayable = useState('10724.00');
   const emiAmountMonthly = useState('416.34');
 
-  function handleproceed() {
+  function handleCalculate() {
     console.log('Handling registration');
-    history.push('/');
+    history.push('/tabs/applyPage');
   }
 
   return (
@@ -65,7 +65,7 @@ const EmiCalculater: React.FC = () => {
                     <ButtonConmponent
                       buttonLabel="emiCalculate"
                       size="block"
-                      clickHandler={handleproceed}
+                      clickHandler={handleCalculate}
                     />
                   </div>
                 </div>
