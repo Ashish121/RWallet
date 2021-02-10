@@ -26,12 +26,14 @@ const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
       {accordionData?.map((item: any, index: any) => {
         return (
           <div className="accordion-wrapper">
-            <IonButton expand="full" onClick={() => toggle(item, index)}>
+          
+            <IonButton expand="block" onClick={() => toggle(item, index)}>
               {item.title}
               <IonIcon
                 slot="end"
                 icon={item.showDetails ? caretUpOutline : caretDownOutline}
               />
+            
             </IonButton>
 
             <div className={`${item.showDetails ? 'is-shown' : 'is-hidden'}`}>

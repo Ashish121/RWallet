@@ -14,9 +14,9 @@ import './ApplyPage.scss';
 const ApplyPage: React.FC = () => {
   const history = useHistory();
 
-  function handleproceed() {
+  function handleApply() {
     console.log('Handling registration');
-    history.push('/');
+    history.push('/tabs/flightOneWay');
   }
 
   return (
@@ -76,7 +76,7 @@ const ApplyPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="ApplyPageApply"
                     size="block"
-                    clickHandler={handleproceed}
+                    clickHandler={handleApply}
                   />
                 </div>
               </div>

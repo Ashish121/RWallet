@@ -17,8 +17,27 @@ import {
   HistoryActive,
   HistoryInactive,
 } from '../../assets/Icons';
-import { HomePage, Fund, MapView } from '../index';
+import { HomePage, Fund, MapView,LoanType } from '../index';
 import './TabView.scss';
+import { ApplyPage } from '../LoanSection/ApplyPage/ApplyPage';
+import { EmiCalculater } from '../LoanSection/EmiCalculater/EmiCalculater';
+import { FlightOneWay } from '../Utilitys/UtilityFlightBooking/FlightOneWay/FlightOneWay';
+import { FlightTwoWay } from '../Utilitys/UtilityFlightBooking/FlightTwoWay/FlightTwoWay';
+import { BusOneWay } from '../Utilitys/UtilityBusBooking/BusOneWay/BusOneWay';
+import { BusTwoWay } from '../Utilitys/UtilityBusBooking/BusTwoWay/BusTwoWay';
+import { TopUpRecharge } from '../Utilitys/UtilityTopUpRecharge/TopUpRecharge';
+import { TvPayment } from '../Utilitys/UtilityTvPayment/TvPayment';
+import { InternetPayment } from '../Utilitys/InternetPayment/InternetPayment';
+import { ElectricityWater } from '../Utilitys/UtilityElectricityWater/ElectricityWater/ElectricityWater';
+import { NepalElectricity } from '../Utilitys/UtilityElectricityWater/NepalElectricity/NepalElectricity';
+import { Khanepani } from '../Utilitys/UtilityElectricityWater/Khanepani/Khanepani';
+import { CardPayment } from '../Utilitys/UtilityCardPayment/CardPayment';
+import { InsuranceFinancePage } from '../Utilitys/UtilityInsuranceFinanceEmi/InsuranceFinancePage/InsuranceFinancePage';
+import { RoyalityFinancialServices } from '../Utilitys/UtilityInsuranceFinanceEmi/RoyalityFinancialService/RoyalityFinancialServices';
+import { RoyalitySavingCredit } from '../Utilitys/UtilityInsuranceFinanceEmi/RoyalitySavingCredit/RoyalitySavingCredit';
+import { Antivirus } from '../Utilitys/UtilityAntivirus/Antivirus/Antivirus';
+import { AntivirusPayment } from '../Utilitys/UtilityAntivirus/AntivirusPayment/AntivirusPayment';
+
 
 const TabViewPage: React.FC = () => {
   const [homeActive, setHomeActive] = useState(true);
@@ -67,14 +86,42 @@ const TabViewPage: React.FC = () => {
           <Route path="/tabs/home" component={HomePage} exact />
           <Route path="/tabs/transfer" component={Fund} exact />
           <Route path="/tabs/mapview" component={MapView} exact />
+          <Route path="/tabs/loanType" component={LoanType} exact />
+          <Route path="/tabs/applyPage" component={ApplyPage} exact />
+          <Route path="/tabs/emiCalculater" component={EmiCalculater} exact />
+          <Route path="/tabs/flightOneWay" component={FlightOneWay} exact />
+          <Route path="/tabs/flightTwoWay" component={FlightTwoWay} exact />
+          <Route path="/tabs/busOneWay" component={BusOneWay} exact />
+          <Route path="/tabs/busTwoWay" component={BusTwoWay} exact />
+          <Route path="/tabs/topUpRecharge" component={TopUpRecharge} exact />
+          <Route path="/tabs/tvPayment" component={TvPayment} exact />
+          <Route path="/tabs/internetPayment" component={InternetPayment} exact />
+          <Route path="/tabs/electricityWater" component={ElectricityWater} exact />
+          <Route path="/tabs/nepalElectricity" component={NepalElectricity} exact />
+          <Route path="/tabs/khanepani" component={Khanepani} exact />
+          <Route path="/tabs/CardPayment" component={CardPayment} exact />
+          <Route path="/tabs/khanepani" component={Khanepani} exact />
+          <Route path="/tabs/insuranceFinancePage" component={InsuranceFinancePage} exact />
+          <Route path="/tabs/royalityFinancialServices" component={RoyalityFinancialServices} exact />
+          <Route path="/tabs/royalitySavingCredit" component={RoyalitySavingCredit} exact />
+          <Route path="/tabs/antivirus" component={Antivirus} exact />
+          <Route path="/tabs/antivirusPayment" component={AntivirusPayment} exact />
+            
+
+            
+       
         
           <Route
             path="/tabs"
             render={() => <Redirect to="/tabs/home" />}
             exact
           />
+           
         </Switch>
+     
+       
       </IonRouterOutlet>
+      
 
       <IonTabBar slot="bottom">
         <IonTabButton tab="home" href="/tabs/home">

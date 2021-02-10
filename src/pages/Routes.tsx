@@ -44,6 +44,8 @@ import {
   LoanType,
   TvPayment,
   TopUpRecharge,
+  InternetPayment,
+  Antivirus,
 
 } from './index';
 import './Routes.scss';
@@ -110,6 +112,10 @@ const Routes: React.FC = () => {
             <Route path="/topUpRecharge" exact component={TopUpRecharge} />
             <Route path="/tvPayment" exact component={TvPayment} />
 
+            {/* Utility Internet Payment Section */}
+            
+            <Route path="/internetPayment" exact component={InternetPayment} />
+
             {/* Utility Electricity Section */}
             <Route path="/electricityWater" exact component={ElectricityWater} />
             <Route path="/nepalElectricity" exact component={NepalElectricity} />
@@ -121,7 +127,9 @@ const Routes: React.FC = () => {
             <Route path="/royalityFinancialServices" exact component={RoyalityFinancialServices} />
             <Route path="/royalitySavingCredit" exact component={RoyalitySavingCredit} />
 
+            {/* Utility Antivirus Section */}
             <Route path="/antivirusPayment" exact component={AntivirusPayment} />
+            <Route path="/antivirus" exact component={Antivirus} />
 
             <Redirect exact from="/" to="/register" />
          

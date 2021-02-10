@@ -7,18 +7,19 @@ import {
   IonApp,
 
 } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import {FlightIcon,} from '../../../../assets/Icons';
 import { Translate } from '../../../../i18n/formatMessages';
 import { ButtonConmponent,InputText, HeaderComponent , } from '../../../../components';
 import './FlightOneWay.scss';
 
 const FlightOneWay: React.FC = () => {
-  // const history = useHistory();
+  const history = useHistory();
 
-  //   function handleproceed() {
-  //     console.log('Handling registration');
-  //     history.push('/');
-  //   }
+  function handleflightBook() {
+    console.log('Handling registration');
+    history.push('/tabs/flightTwoWay');
+  }
 
   return (
     <>
@@ -84,6 +85,7 @@ const FlightOneWay: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="UtilityBookFlight"
                     size="block"
+                    clickHandler={handleflightBook}
                   />
                 </div>
               </div>

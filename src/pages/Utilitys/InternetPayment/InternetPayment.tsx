@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-import './LoanType.scss';
+import './InternetPayment.scss';
 import {
   IonPage,
   IonContent,
@@ -8,16 +7,9 @@ import {
   IonApp,
 } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import { CustomAccordion, HeaderComponent,ButtonConmponent } from '../../../components';
-import { useHistory } from 'react-router-dom';
+import { CustomAccordion, HeaderComponent  } from '../../../components';
 
-const LoanType: React.FC = () => {
-  const history = useHistory();
-
-  function handleEMIcal() {
-    console.log('Handling registration');
-    history.push('/tabs/emiCalculater');
-  }
+const InternetPayment: React.FC = () => {
   const [accordionDetails, setAccordionDetails] = useState([{}]);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -32,38 +24,39 @@ const LoanType: React.FC = () => {
     const data = [
       {
         id: 1,
-        title: 'BUSINESS LOAN',
+        title: 'World link',
         showDetails: false,
       },
       {
         id: 2,
-        title: 'HIRE-PURCHASE LOAN',
+        title: 'Via net',
         showDetails: false,
       },
 
       {
         id: 3,
-        title: 'TERM LOAN',
+        title: 'Subisu Internet',
         showDetails: false,
       },
       
       {
         id: 4,
-        title: 'PERSONAL LOAN',
+        title: 'Classic Tech',
         showDetails: false,
       },
       
       {
         id: 5,
-        title: 'EDUCATION LOAN',
+        title: 'Nepal Telecom FTTH',
         showDetails: false,
       },
-      
       {
-        id: 6,
-        title: 'SECURED LOAN',
+        id: 5,
+        title: 'Nepal Telecom WIMAX',
         showDetails: false,
       },
+    
+    
     ];
     setAccordionDetails(data);
   }, []);
@@ -75,18 +68,11 @@ const LoanType: React.FC = () => {
           <HeaderComponent headerLable="common.header" />
           <IonContent>
             <div className="container">
-              <IonText className="loan-type-text-area">
-                <Translate message="LoanTypeText" />
+              <IonText className="InternetPayment-text-area">
+                <Translate message="UtlityInternetPayment" />
               </IonText>
-              <div className="loan-type-wrapper">
+              <div className="Internetpayment-wrapper">
                 <CustomAccordion accordionData={accordionDetails} />
-              </div>
-              <div className="loanType-btn">
-                <ButtonConmponent
-                  buttonLabel="LoanTypeEmiCal"
-                  size="block"
-                  clickHandler={handleEMIcal}
-                />
               </div>
             </div>
           </IonContent>
@@ -96,4 +82,4 @@ const LoanType: React.FC = () => {
   );
 };
 
-export {LoanType };
+export {InternetPayment };

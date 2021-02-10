@@ -41,6 +41,8 @@ import {BusTwoWay} from  './Utilitys/UtilityBusBooking/BusTwoWay/BusTwoWay';
 import {LoanType} from './LoanSection/LoanType/LoanType';
 import {TopUpRecharge} from './Utilitys/UtilityTopUpRecharge/TopUpRecharge';
 import {TvPayment} from './Utilitys/UtilityTvPayment/TvPayment';
+import {InternetPayment} from  './Utilitys/InternetPayment/InternetPayment';
+import {Antivirus} from './Utilitys/UtilityAntivirus/Antivirus/Antivirus';
 
 export {
   HomePage,
@@ -86,4 +88,6 @@ export {
   LoanType,
   TopUpRecharge,
   TvPayment,
+  InternetPayment,
+  Antivirus
 };

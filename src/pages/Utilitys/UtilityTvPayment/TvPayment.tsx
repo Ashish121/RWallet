@@ -1,23 +1,60 @@
-import React from 'react';
-// import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import './TvPayment.scss';
 import {
   IonPage,
   IonContent,
   IonText,
   IonApp,
-
 } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent } from '../../../components';
-import './TvPayment.scss';
+import { CustomAccordion, HeaderComponent  } from '../../../components';
 
 const TvPayment: React.FC = () => {
-  // const history = useHistory();
+  const [accordionDetails, setAccordionDetails] = useState([{}]);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      console.log('Hide splash now');
+      return () => {
+        clearTimeout(timeout);
+      };
+    }, 7000);
+  }, []);
 
-  //   function handleproceed() {
-  //     console.log('Handling registration');
-  //     history.push('/');
-  //   }
+  useEffect(() => {
+    const data = [
+      {
+        id: 1,
+        title: 'Clear TV',
+        showDetails: false,
+      },
+      {
+        id: 2,
+        title: 'Dish home',
+        showDetails: false,
+      },
+
+      {
+        id: 3,
+        title: 'Max TV',
+        showDetails: false,
+      },
+      
+      {
+        id: 4,
+        title: 'Metro TV',
+        showDetails: false,
+      },
+      
+      {
+        id: 5,
+        title: 'Prabhu TV',
+        showDetails: false,
+      },
+    
+    
+    ];
+    setAccordionDetails(data);
+  }, []);
 
   return (
     <>
@@ -26,37 +63,11 @@ const TvPayment: React.FC = () => {
           <HeaderComponent headerLable="common.header" />
           <IonContent>
             <div className="container">
-              <IonText className="antivirus-payment-text-area">
-                <Translate message="AntivirusPaymentOption" />
+              <IonText className="TvPayment-text-area">
+                <Translate message="UtilityTvPayment" />
               </IonText>
-              <div className="antivirus-payment-wrapper">
-                <InputText
-                  inputType="text"
-                  labelText="AntivirusSelectBank"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
-                <div className="AntivirusPayment-OrderDetails">
-                  <IonText className="antivirus-payment-spersky">
-                    <Translate message="AntivirusOrderDetails" />
-                  </IonText>
-                </div>
-            
-                <div className="AntivirusPayment-spersky">
-                  <IonText className="antivirus-payment-spersky">
-                    <Translate message="Antiviruskaspersky" />
-                  </IonText>
-                </div>
-              
-                <div className="antivirus-confirm-button">
-                  <ButtonConmponent
-                    buttonLabel="AntivirusContiue"
-                    size="block"
-
-                  />
-                </div>
-               
+              <div className="TvPayment-wrapper">
+                <CustomAccordion accordionData={accordionDetails} />
               </div>
             </div>
           </IonContent>
@@ -66,4 +77,4 @@ const TvPayment: React.FC = () => {
   );
 };
 
-export { TvPayment };
+export {TvPayment };

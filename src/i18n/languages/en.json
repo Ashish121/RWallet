@@ -180,6 +180,9 @@
   "ApplyPageDiscard":"Dicard",
   "ApplyPageApply":"Apply",
 
+  "LoanTypeText":"Loan type",
+  "LoanTypeEmiCal":"EMI Calculator",
+
   "emiCalculator":"EMI Calculator",
   "emiloanAmount":"Loan amount",
   "emiInterestRate":"Interest rate",
@@ -204,6 +207,8 @@
 
   "UtilityBusBooking":"Bus booking",
   "UtilityBus":"Book Bus",  
+
+  "UtilityTopUpRecharge":"TopUP & Recharge",
   
   "UtilityElectricityWater":"Electricity & Water",
   "UtilityNepalElectricityAuthority":"Nepal electricity authority",
@@ -230,6 +235,11 @@
   "InsuranceFinanceEmi":"Insurance/Finance/EMI",
   "RoyalitySaving":"Royality saving and credit co-operative Ltd.",
   "RoyaliFinancialServices":"Royality financial services and investment Pvt.Ltd.",
+
+  "UtlityInternetPayment":"Utility Internet Payment ",
+  "UtilityTvPayment":"Tv Payment",
+  "UtilityAntivirus":"Antivirus",
+  "AnitvirusProced":"Proceed",
 
   "membershipAccountnumber":"Membership/Account number",
   "MemberName":"Member name",

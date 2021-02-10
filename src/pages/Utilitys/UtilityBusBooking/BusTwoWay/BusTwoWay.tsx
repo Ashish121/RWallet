@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   IonPage,
   IonContent,
@@ -13,12 +13,12 @@ import { ButtonConmponent,InputText, HeaderComponent } from '../../../../compone
 import './BusTwoWay.scss';
 
 const BusTwoWay: React.FC = () => {
-  // const history = useHistory();
+  const history = useHistory();
 
-  //   function handleproceed() {
-  //     console.log('Handling registration');
-  //     history.push('/');
-  //   }
+  function handletopUp() {
+    console.log('Handling registration');
+    history.push('/');
+  }
 
   return (
     <>
@@ -98,6 +98,7 @@ const BusTwoWay: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="UtilityBus"
                     size="block"
+                    clickHandler={handletopUp}
                   />
                 </div>
               </div>
