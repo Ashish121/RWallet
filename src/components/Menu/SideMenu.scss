@@ -1,0 +1,99 @@
+ion-menu {
+  --width: 100%;
+}
+.ion-content-wrapper {
+  --ion-background-color: #ffffff !important;
+}
+.header-md::after {
+  background-image: none;
+}
+.menu-content-wrapper {
+  background-color: #ffffff;
+  height: 100%;
+  padding: 25px;
+  .profile-icon-wrapper {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    .camera-icon-wrapper {
+      position: absolute;
+      top: 80px;
+      right: 10px;
+    }
+  }
+
+  .page-header-text {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    color: #000000;
+  }
+  .fields-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px 0px 0px;
+    flex-direction: column;
+    .label-text {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #000000;
+    }
+    .label-value {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 12px;
+
+      color: #000000;
+
+      opacity: 0.5;
+    }
+  }
+  .action-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .footer-wrapper {
+    .version-wrapper .label-text {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #000000;
+      margin-top: 10px;
+    }
+    .version-wrapper .label-value {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 12px;
+      color: #000000;
+      opacity: 0.5;
+    }
+  }
+  .action-button {
+    margin: 25px 0px 0px 0px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    background-color: transparent;
+    color: #000000;
+    padding: 0px;
+  }
+  button:focus {
+    outline: 0;
+  }
+}

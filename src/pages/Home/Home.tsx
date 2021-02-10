@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   IonPage,
   IonContent,
@@ -24,6 +25,7 @@ import { Translate } from '../../i18n/formatMessages';
 import { CloseBarIcon } from '../../assets/Icons';
 
 const HomePage: React.FC = () => {
+  const history = useHistory();
   const [balance, setBalance] = useState(0);
   const [expandOptions, setExpandOptions] = useState(false);
 
@@ -35,6 +37,10 @@ const HomePage: React.FC = () => {
     setExpandOptions(!expandOptions);
   };
 
+  const showNotifications = () => {
+    history.push('/tabs/notification');
+  };
+
   return (
     <IonApp className="home-wrapper">
       <IonPage>
@@ -42,6 +48,7 @@ const HomePage: React.FC = () => {
           headerLable={'common.header'}
           showMenu={true}
           showNotification={true}
+          notificationHandler={showNotifications}
         />
         <IonContent className="home-wrapper">
           <div className="balance-check-section">

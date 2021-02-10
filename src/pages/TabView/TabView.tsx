@@ -17,7 +17,14 @@ import {
   HistoryActive,
   HistoryInactive,
 } from '../../assets/Icons';
-import { HomePage, Fund, MapView } from '../index';
+import {
+  HomePage,
+  Fund,
+  MapView,
+  NotificationPage,
+  ShoppingPage,
+  ItemDetailsPage,
+} from '../index';
 import './TabView.scss';
 
 const TabViewPage: React.FC = () => {
@@ -67,7 +74,14 @@ const TabViewPage: React.FC = () => {
           <Route path="/tabs/home" component={HomePage} exact />
           <Route path="/tabs/transfer" component={Fund} exact />
           <Route path="/tabs/mapview" component={MapView} exact />
-        
+          <Route path="/tabs/notification" exact component={NotificationPage} />
+          <Route path="/tabs/shopping" exact component={ShoppingPage} />
+          <Route
+            path="/tabs/shopping/itemdetails"
+            exact
+            component={ItemDetailsPage}
+          />
+
           <Route
             path="/tabs"
             render={() => <Redirect to="/tabs/home" />}

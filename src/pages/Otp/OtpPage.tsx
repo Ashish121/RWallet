@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+import OtpInput from 'react-otp-input';
 import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText } from '../../components';
+import { ButtonConmponent } from '../../components';
 
 import './OtpPage.scss';
 
 const OtpPage: React.FC = () => {
+  const [otpText1, setOtpText1] = useState('');
   const history = useHistory();
   function handleVerifyOtp() {
     history.push('/mpin');
   }
+  const onOtpEnter = (otp: any) => {
+    setOtpText1(otp);
+  };
   return (
     <>
       <IonApp>
@@ -33,10 +38,14 @@ const OtpPage: React.FC = () => {
                 </div>
               </div>
               <div className="field-container">
-                <InputText inputType="tel" maxLen={1} />
-                <InputText inputType="tel" maxLen={1} />
-                <InputText inputType="tel" maxLen={1} />
-                <InputText inputType="tel" maxLen={1} />
+                <OtpInput
+                  value={otpText1}
+                  onChange={onOtpEnter}
+                  numInputs={4}
+                  containerStyle="otp-field-wrapper"
+                  isInputNum={true}
+                  inputStyle="otp-field-input"
+                />
               </div>
               <div className="resend-link-container">
                 <IonText>

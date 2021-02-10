@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   IonCard,
@@ -7,138 +7,154 @@ import {
   IonContent,
   IonApp,
   IonText,
-
 } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
+import { CloseIcon } from '../../assets/Icons';
+
 import './NotificationPage.scss';
 import { Translate } from '../../i18n/formatMessages';
 const NotificationPage: React.FC = () => {
-
-  const notificationDate = useState('12/18/2020');
-  const notificationtime = useState('12:00:21');
-  const notificationMessage = useState('Your loan account (A/C no.) is due with interest for the month ');
+  const history = useHistory();
+  const closeNotificationPanel = () => {
+    history.goBack();
+  };
   return (
     <>
       <IonApp>
         <IonPage>
-          <IonContent>
-            <div className="container-notification">
-              <IonText className="notification-text-area">
-                <Translate  message="NotificationPage.text"/>
-              </IonText>
-              <IonText className="notification-today-text" >
-                <Translate  message="NotificationPage.today"/>
-              </IonText>
-              <IonCard className="notification-area">
-                <IonCardContent className="notification-content">
-                  <div className="vl">    </div>
-                  <IonText className="notificationdate">
-                    <Translate message="NotificationPage.date" />{' '}
-                    {notificationDate}
+          <IonContent style={{ '--ion-background-color': '#ffffff' }}>
+            <div className="notification-wrapper">
+              <div className="notification-cards-wrapper">
+                <button
+                  style={{
+                    backgroundColor: 'white',
+                    outline: 'none',
+                    border: 'none',
+                  }}
+                  onClick={closeNotificationPanel}
+                >
+                  <CloseIcon />
+                </button>
+                <div className="page-header-text">
+                  <IonText>
+                    <Translate message="NotificationPage.text" />
                   </IonText>
-                  <IonText className="notificationtime">
-                    <Translate
-                      message="NotificationPage.time" />{' '}
-                    {notificationtime}
-                  </IonText>
-                  <div className="message-box">
-                    <IonText className="notificationMessage">
-                      {notificationMessage}
-                    </IonText>
-                  </div>
-                </IonCardContent>
-              </IonCard>
-              <IonText className="notification-today-text" >
-                <Translate  message="NotificationPage.yesterday"/>
-              </IonText>
-              <IonCard className="notification-area">
-                <IonCardContent className="notification-content">
-                  <div className="vl">    </div>
-                  <IonText className="notificationdate">
-                    <Translate message="NotificationPage.date" />{' '}
-                    {notificationDate}
-                  </IonText>
-                  <IonText className="notificationtime">
-                    <Translate
-                      message="NotificationPage.time" />{' '}
-                    {notificationtime}
-                  </IonText>
-                  <div className="message-box">
-                    <IonText className="notificationMessage">
-                      {notificationMessage}
-                    </IonText>
-                  </div>
-                </IonCardContent>
-              </IonCard>
-              <IonCard className="notification-area">
-                <IonCardContent className="notification-content">
-                  <div className="vl">    </div>
-                  <IonText className="notificationdate">
-                    <Translate message="NotificationPage.date" />{' '}
-                    {notificationDate}
-                  </IonText>
-                  <IonText className="notificationtime">
-                    <Translate
-                      message="NotificationPage.time" />{' '}
-                    {notificationtime}
-                  </IonText>
-                  <div className="message-box">
-                    <IonText className="notificationMessage">
-                      {notificationMessage}
-                    </IonText>
-                  </div>
-                </IonCardContent>
-              </IonCard>
-              <IonText className="notification-today-text" >
-                <Translate  message="NotificationPage.ThisWeek"/>
-              </IonText>
-              <IonCard className="notification-area">
-                <IonCardContent className="notification-content">
-                  <div className="vl">    </div>
-                  <IonText className="notificationdate">
-                    <Translate message="NotificationPage.date" />{' '}
-                    {notificationDate}
-                  </IonText>
-                  <IonText className="notificationtime">
-                    <Translate
-                      message="NotificationPage.time" />{' '}
-                    {notificationtime}
-                  </IonText>
-                  <div className="message-box">
-                    <IonText className="notificationMessage">
-                      {notificationMessage}
-                    </IonText>
-                  </div>
-                </IonCardContent>
-              </IonCard>
-              <IonCard className="notification-area">
-                <IonCardContent className="notification-content">
-                  <div className="vl">    </div>
-                  <IonText className="notificationdate">
-                    <Translate message="NotificationPage.date" />{' '}
-                    {notificationDate}
-                  </IonText>
-                  <IonText className="notificationtime">
-                    <Translate
-                      message="NotificationPage.time" />{' '}
-                    {notificationtime}
-                  </IonText>
-                  <div className="message-box">
-                    <IonText className="notificationMessage">
-                      {notificationMessage}
-                    </IonText>
-                  </div>
-                </IonCardContent>
-              </IonCard>
-            
+                </div>
+                <IonCard>
+                  <IonCardContent>
+                    <div className="card-body-wrapper">
+                      <div className="bar"></div>
+                      <div className="notification-text">
+                        <IonText>
+                          <span>Date: 20-12-2020 17:44:02</span>
+                        </IonText>
+                        <IonText>
+                          <p>
+                            Your loan account (A/C no.) is due with interest for
+                            the month of June 2020
+                          </p>
+                        </IonText>
+                      </div>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+                <IonCard>
+                  <IonCardContent>
+                    <div className="card-body-wrapper">
+                      <div className="bar"></div>
+                      <div className="notification-text">
+                        <IonText>
+                          <span>Date: 20-12-2020 17:44:02</span>
+                        </IonText>
+                        <IonText>
+                          <p>
+                            Your loan account (A/C no.) is due with interest for
+                            the month of June 2020
+                          </p>
+                        </IonText>
+                      </div>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+                <IonCard>
+                  <IonCardContent>
+                    <div className="card-body-wrapper">
+                      <div className="bar"></div>
+                      <div className="notification-text">
+                        <IonText>
+                          <span>Date: 20-12-2020 17:44:02</span>
+                        </IonText>
+                        <IonText>
+                          <p>
+                            Your loan account (A/C no.) is due with interest for
+                            the month of June 2020
+                          </p>
+                        </IonText>
+                      </div>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+                <IonCard>
+                  <IonCardContent>
+                    <div className="card-body-wrapper">
+                      <div className="bar"></div>
+                      <div className="notification-text">
+                        <IonText>
+                          <span>Date: 20-12-2020 17:44:02</span>
+                        </IonText>
+                        <IonText>
+                          <p>
+                            Your loan account (A/C no.) is due with interest for
+                            the month of June 2020
+                          </p>
+                        </IonText>
+                      </div>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+                <IonCard>
+                  <IonCardContent>
+                    <div className="card-body-wrapper">
+                      <div className="bar"></div>
+                      <div className="notification-text">
+                        <IonText>
+                          <span>Date: 20-12-2020 17:44:02</span>
+                        </IonText>
+                        <IonText>
+                          <p>
+                            Your loan account (A/C no.) is due with interest for
+                            the month of June 2020
+                          </p>
+                        </IonText>
+                      </div>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+                <IonCard>
+                  <IonCardContent>
+                    <div className="card-body-wrapper">
+                      <div className="bar"></div>
+                      <div className="notification-text">
+                        <IonText>
+                          <span>Date: 20-12-2020 17:44:02</span>
+                        </IonText>
+                        <IonText>
+                          <p>
+                            Your loan account (A/C no.) is due with interest for
+                            the month of June 2020
+                          </p>
+                        </IonText>
+                      </div>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+              </div>
             </div>
           </IonContent>
         </IonPage>
       </IonApp>
-
     </>
   );
 };
 
 export { NotificationPage };
-
-
