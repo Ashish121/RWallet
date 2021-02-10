@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React, { useState } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 import {
   IonTabs,
   IonTabBar,
   IonTabButton,
   IonLabel,
   IonRouterOutlet,
-} from '@ionic/react';
+} from "@ionic/react";
 import {
   MapActive,
   MapInactive,
@@ -16,7 +16,7 @@ import {
   HomeInactive,
   HistoryActive,
   HistoryInactive,
-} from '../../assets/Icons';
+} from "../../assets/Icons";
 import {
   HomePage,
   Fund,
@@ -24,8 +24,26 @@ import {
   NotificationPage,
   ShoppingPage,
   ItemDetailsPage,
-} from '../index';
-import './TabView.scss';
+} from "../index";
+import "./TabView.scss";
+import { ApplyPage } from "../LoanSection/ApplyPage/ApplyPage";
+import { EmiCalculater } from "../LoanSection/EmiCalculater/EmiCalculater";
+import { FlightOneWay } from "../Utilitys/UtilityFlightBooking/FlightOneWay/FlightOneWay";
+import { FlightTwoWay } from "../Utilitys/UtilityFlightBooking/FlightTwoWay/FlightTwoWay";
+import { BusOneWay } from "../Utilitys/UtilityBusBooking/BusOneWay/BusOneWay";
+import { BusTwoWay } from "../Utilitys/UtilityBusBooking/BusTwoWay/BusTwoWay";
+import { TopUpRecharge } from "../Utilitys/UtilityTopUpRecharge/TopUpRecharge";
+import { TvPayment } from "../Utilitys/UtilityTvPayment/TvPayment";
+import { InternetPayment } from "../Utilitys/InternetPayment/InternetPayment";
+import { ElectricityWater } from "../Utilitys/UtilityElectricityWater/ElectricityWater/ElectricityWater";
+import { NepalElectricity } from "../Utilitys/UtilityElectricityWater/NepalElectricity/NepalElectricity";
+import { Khanepani } from "../Utilitys/UtilityElectricityWater/Khanepani/Khanepani";
+import { CardPayment } from "../Utilitys/UtilityCardPayment/CardPayment";
+import { InsuranceFinancePage } from "../Utilitys/UtilityInsuranceFinanceEmi/InsuranceFinancePage/InsuranceFinancePage";
+import { RoyalityFinancialServices } from "../Utilitys/UtilityInsuranceFinanceEmi/RoyalityFinancialService/RoyalityFinancialServices";
+import { RoyalitySavingCredit } from "../Utilitys/UtilityInsuranceFinanceEmi/RoyalitySavingCredit/RoyalitySavingCredit";
+import { Antivirus } from "../Utilitys/UtilityAntivirus/Antivirus/Antivirus";
+import { AntivirusPayment } from "../Utilitys/UtilityAntivirus/AntivirusPayment/AntivirusPayment";
 
 const TabViewPage: React.FC = () => {
   const [homeActive, setHomeActive] = useState(true);
@@ -33,37 +51,37 @@ const TabViewPage: React.FC = () => {
   const [mapActive, setMapActive] = useState(false);
   const [hisotryActive, setHistoryActive] = useState(false);
   function handleTabClick(event: any) {
-    console.log('Tab clocled', event);
+    console.log("Tab clocled", event);
     const tabName = event.detail.tab;
     switch (tabName) {
-    case 'home':
-      setHomeActive(true);
-      setTransferActive(false);
-      setMapActive(false);
-      setHistoryActive(false);
-      break;
-    case 'transfer':
-      setHomeActive(false);
-      setTransferActive(true);
-      setMapActive(false);
-      setHistoryActive(false);
+      case "home":
+        setHomeActive(true);
+        setTransferActive(false);
+        setMapActive(false);
+        setHistoryActive(false);
+        break;
+      case "transfer":
+        setHomeActive(false);
+        setTransferActive(true);
+        setMapActive(false);
+        setHistoryActive(false);
 
-      break;
-    case 'map':
-      setHomeActive(false);
-      setTransferActive(false);
-      setMapActive(true);
-      setHistoryActive(false);
-      break;
-    case 'history':
-      setHomeActive(false);
-      setTransferActive(false);
-      setMapActive(false);
-      setHistoryActive(true);
-      break;
+        break;
+      case "map":
+        setHomeActive(false);
+        setTransferActive(false);
+        setMapActive(true);
+        setHistoryActive(false);
+        break;
+      case "history":
+        setHomeActive(false);
+        setTransferActive(false);
+        setMapActive(false);
+        setHistoryActive(true);
+        break;
 
-    default:
-      break;
+      default:
+        break;
     }
   }
 

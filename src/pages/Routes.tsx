@@ -1,7 +1,7 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, IonPage } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+import { IonApp, IonRouterOutlet, IonPage } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
 import {
   LoginPage,
   SignUpPage,
@@ -43,8 +43,10 @@ import {
   LoanType,
   TvPayment,
   TopUpRecharge,
-} from './index';
-import './Routes.scss';
+  InternetPayment,
+  Antivirus,
+} from "./index";
+import "./Routes.scss";
 
 const Routes: React.FC = () => {
   const isTabView = true;
@@ -114,6 +116,10 @@ const Routes: React.FC = () => {
             <Route path="/topUpRecharge" exact component={TopUpRecharge} />
             <Route path="/tvPayment" exact component={TvPayment} />
 
+            {/* Utility Internet Payment Section */}
+
+            <Route path="/internetPayment" exact component={InternetPayment} />
+
             {/* Utility Electricity Section */}
             <Route
               path="/electricityWater"
@@ -150,6 +156,13 @@ const Routes: React.FC = () => {
               exact
               component={AntivirusPayment}
             />
+            {/* Utility Antivirus Section */}
+            <Route
+              path="/antivirusPayment"
+              exact
+              component={AntivirusPayment}
+            />
+            <Route path="/antivirus" exact component={Antivirus} />
 
             <Redirect exact from="/" to="/register" />
           </IonRouterOutlet>

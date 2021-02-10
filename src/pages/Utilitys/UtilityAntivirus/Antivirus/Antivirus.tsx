@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from 'react';
-
-import './LoanType.scss';
+import './Antivirus.scss';
 import {
   IonPage,
   IonContent,
   IonText,
   IonApp,
 } from '@ionic/react';
-import { Translate } from '../../../i18n/formatMessages';
-import { CustomAccordion, HeaderComponent,ButtonConmponent } from '../../../components';
-import { useHistory } from 'react-router-dom';
+import { Translate } from '../../../../i18n/formatMessages';
+import { CustomAccordion, HeaderComponent,ButtonConmponent  } from '../../../../components';
 
-const LoanType: React.FC = () => {
-  const history = useHistory();
-
-  function handleEMIcal() {
-    console.log('Handling registration');
-    history.push('/tabs/emiCalculater');
-  }
+const Antivirus: React.FC = () => {
   const [accordionDetails, setAccordionDetails] = useState([{}]);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -32,38 +24,56 @@ const LoanType: React.FC = () => {
     const data = [
       {
         id: 1,
-        title: 'BUSINESS LOAN',
+        title: 'Kaspersky Antivirus',
         showDetails: false,
       },
       {
         id: 2,
-        title: 'HIRE-PURCHASE LOAN',
+        title: 'Eset Antivirus',
         showDetails: false,
       },
 
       {
         id: 3,
-        title: 'TERM LOAN',
+        title: 'eSCAN Antivirus',
         showDetails: false,
       },
       
       {
         id: 4,
-        title: 'PERSONAL LOAN',
+        title: 'K7 Antivirus',
         showDetails: false,
       },
       
       {
         id: 5,
-        title: 'EDUCATION LOAN',
+        title: 'WardWiz Antivirus',
+        showDetails: false,
+      },
+
+      {
+        id: 6,
+        title: 'BitDefender Antivirus',
         showDetails: false,
       },
       
+      
       {
-        id: 6,
-        title: 'SECURED LOAN',
+        id: 7,
+        title: 'Dr.Web Antivirus',
         showDetails: false,
       },
+      
+            
+      {
+        id: 8,
+        title: 'McAffee Antivirus',
+        showDetails: false,
+      },
+
+
+    
+    
     ];
     setAccordionDetails(data);
   }, []);
@@ -75,17 +85,16 @@ const LoanType: React.FC = () => {
           <HeaderComponent headerLable="common.header" />
           <IonContent>
             <div className="container">
-              <IonText className="loan-type-text-area">
-                <Translate message="LoanTypeText" />
+              <IonText className="antivirus-text-area">
+                <Translate message="UtilityAntivirus" />
               </IonText>
-              <div className="loan-type-wrapper">
+              <div className="antivirus-wrapper">
                 <CustomAccordion accordionData={accordionDetails} />
               </div>
-              <div className="loanType-btn">
+              <div className="antivirus-btn">
                 <ButtonConmponent
-                  buttonLabel="LoanTypeEmiCal"
+                  buttonLabel="AnitvirusProced"
                   size="block"
-                  clickHandler={handleEMIcal}
                 />
               </div>
             </div>
@@ -96,4 +105,4 @@ const LoanType: React.FC = () => {
   );
 };
 
-export {LoanType };
+export {Antivirus };
