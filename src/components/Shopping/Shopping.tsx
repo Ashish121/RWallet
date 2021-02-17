@@ -1,5 +1,6 @@
 import React from 'react';
 import { IonText } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import { Translate } from '../../i18n/formatMessages';
 import './Shopping.scss';
 import {
@@ -26,6 +27,15 @@ interface shoppingProps {
  */
 
 const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
+  const history = useHistory();
+  const navigateToShopping = () => {
+    history.push({
+      pathname: '/tabs/shopping',
+      state: {
+        shoppingType: 'mobile',
+      },
+    });
+  };
   return (
     <>
       <div className="shopping-section">
@@ -37,7 +47,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
 
         <div className="shopping-list-container">
           <div>
-            <button className="iconButtons">
+            <button className="iconButtons" onClick={navigateToShopping}>
               <SmartphoneIcon width="20" height="20" />
               <IonText>
                 <Translate message="home.mobileIconText" />

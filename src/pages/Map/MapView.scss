@@ -5,5 +5,10 @@
   .leaflet-container {
     height: 100%;
     width: 100%;
+    .leaflet-control-container {
+      position: absolute;
+      bottom: 93px;
+      right: 59px;
+    }
   }
 }

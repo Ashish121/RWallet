@@ -11,7 +11,7 @@ import { menuController } from '@ionic/core';
 import { Translate } from '../../i18n/formatMessages';
 import './Header.scss';
 import { MenuComponent } from '../index';
-import { SideMenuIcon, NotificationBell } from '../../assets/Icons';
+import { SideMenuIcon, NotificationBell, CartIcon } from '../../assets/Icons';
 
 interface headerProps {
   headerLable: any;
@@ -19,12 +19,17 @@ interface headerProps {
   notificationHandler?: any;
   showMenu?: boolean;
   showNotification?: boolean;
+  showCart?: boolean;
+  cartHandler?: any;
 }
 
 const HeaderComponent: React.FC<headerProps> = ({
   headerLable,
   showMenu,
   showNotification,
+  notificationHandler,
+  showCart,
+  cartHandler,
 }) => {
   const toggleSideMenu = () => {
     menuController.toggle();
@@ -44,8 +49,18 @@ const HeaderComponent: React.FC<headerProps> = ({
             <IonButtons
               slot="end"
               style={{ position: 'absolute', right: '15px' }}
+              onClick={notificationHandler}
             >
               <NotificationBell width="20" height="20" />
+            </IonButtons>
+          )}
+          {showCart && (
+            <IonButtons
+              slot="end"
+              style={{ position: 'absolute', right: '15px' }}
+              onClick={cartHandler}
+            >
+              <CartIcon width="20" height="20" />
             </IonButtons>
           )}
           {showMenu && (

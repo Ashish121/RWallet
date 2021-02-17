@@ -1,7 +1,7 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, IonPage } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+import { IonApp, IonRouterOutlet, IonPage } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
 import {
   LoginPage,
   SignUpPage,
@@ -25,14 +25,13 @@ import {
   SavingAccountPage,
   CurrentAccountPage,
   AnimatedSplash,
-  NotificationPage,
-  TransactionHistory ,
+  TransactionHistory,
   ElectricityWater,
   NepalElectricity,
   Khanepani,
   CardPayment,
-  InsuranceFinancePage ,
-  RoyalityFinancialServices ,
+  InsuranceFinancePage,
+  RoyalityFinancialServices,
   RoyalitySavingCredit,
   AntivirusPayment,
   ApplyPage,
@@ -46,9 +45,8 @@ import {
   TopUpRecharge,
   InternetPayment,
   Antivirus,
-
-} from './index';
-import './Routes.scss';
+} from "./index";
+import "./Routes.scss";
 
 const Routes: React.FC = () => {
   const isTabView = true;
@@ -65,7 +63,11 @@ const Routes: React.FC = () => {
             <Route path="/accountpage" exact component={AccountPage} />
             <Route path="/account/fixed" exact component={FixedAccountPage} />
             <Route path="/account/saving" exact component={SavingAccountPage} />
-            <Route path="/account/current" exact component={CurrentAccountPage} />
+            <Route
+              path="/account/current"
+              exact
+              component={CurrentAccountPage}
+            />
             <Route
               path="/tabs"
               component={isTabView ? TabViewPage : TabViewPage}
@@ -89,8 +91,11 @@ const Routes: React.FC = () => {
 
             {/* Header Component  MenuBar Or Notification  */}
             <Route path="/menu" exact component={MenuBarPage} />
-            <Route path="/notification" exact component={NotificationPage} />
-            <Route path="/transactionHistory" exact component={TransactionHistory} />
+            <Route
+              path="/transactionHistory"
+              exact
+              component={TransactionHistory}
+            />
 
             {/* Loan Section */}
 
@@ -107,34 +112,59 @@ const Routes: React.FC = () => {
             <Route path="/busOneWay" exact component={BusOneWay} />
             <Route path="/busTwoWay" exact component={BusTwoWay} />
 
-
             {/* Utility ToUpRecharge Section */}
             <Route path="/topUpRecharge" exact component={TopUpRecharge} />
             <Route path="/tvPayment" exact component={TvPayment} />
 
             {/* Utility Internet Payment Section */}
-            
+
             <Route path="/internetPayment" exact component={InternetPayment} />
 
             {/* Utility Electricity Section */}
-            <Route path="/electricityWater" exact component={ElectricityWater} />
-            <Route path="/nepalElectricity" exact component={NepalElectricity} />
+            <Route
+              path="/electricityWater"
+              exact
+              component={ElectricityWater}
+            />
+            <Route
+              path="/nepalElectricity"
+              exact
+              component={NepalElectricity}
+            />
             <Route path="/khanepani" exact component={Khanepani} />
-            
+
             <Route path="/CardPayment" exact component={CardPayment} />
 
-            <Route path="/insuranceFinancePage" exact component={InsuranceFinancePage} />
-            <Route path="/royalityFinancialServices" exact component={RoyalityFinancialServices} />
-            <Route path="/royalitySavingCredit" exact component={RoyalitySavingCredit} />
+            <Route
+              path="/insuranceFinancePage"
+              exact
+              component={InsuranceFinancePage}
+            />
+            <Route
+              path="/royalityFinancialServices"
+              exact
+              component={RoyalityFinancialServices}
+            />
+            <Route
+              path="/royalitySavingCredit"
+              exact
+              component={RoyalitySavingCredit}
+            />
 
+            <Route
+              path="/antivirusPayment"
+              exact
+              component={AntivirusPayment}
+            />
             {/* Utility Antivirus Section */}
-            <Route path="/antivirusPayment" exact component={AntivirusPayment} />
+            <Route
+              path="/antivirusPayment"
+              exact
+              component={AntivirusPayment}
+            />
             <Route path="/antivirus" exact component={Antivirus} />
 
             <Redirect exact from="/" to="/register" />
-         
-         
-            <Redirect exact from="/" to="/splash" />
           </IonRouterOutlet>
         </IonPage>
       </IonApp>

@@ -1,0 +1,145 @@
+.item-details-wrapper {
+  .services-options-wrapper {
+    position: absolute;
+    bottom: 0px;
+    height: 250px;
+    transition: height 0.25s ease-in;
+    width: 100%;
+    max-height: 600px;
+    z-index: 99999;
+    .service-card-wrapper {
+      height: 100%;
+      background-color: #ffff;
+      border-radius: 30px 30px 0px 0px;
+      .close-bar-icon {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        button {
+          background-color: transparent;
+          border: none;
+        }
+        button:focus {
+          outline: 0;
+          outline-style: none;
+          outline-width: 0;
+        }
+      }
+    }
+    ion-card {
+      margin: 0;
+    }
+    .storage-details-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      .btn-64gb {
+        border: 0;
+        border-radius: 0;
+        font-family: inherit;
+        font-style: inherit;
+        font-feature-settings: inherit;
+        font-variant: inherit;
+        line-height: 1;
+        text-transform: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+        color: #000000;
+        opacity: 0.5;
+        background-color: #ffffff;
+        border: 1px solid grey;
+        margin-right: 10px;
+        padding: 5px;
+        border-radius: 5px;
+        outline: none;
+        width: 100%;
+      }
+      .btn-128gb {
+        border-radius: 0;
+        font-family: inherit;
+        font-style: inherit;
+        font-feature-settings: inherit;
+        font-variant: inherit;
+        line-height: 1;
+        text-transform: none;
+        cursor: pointer;
+        /* font-size: 12px; */
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+        color: #000000;
+        opacity: 0.5;
+        background-color: #ffffff;
+        border: 1px solid grey;
+        margin-left: 10px;
+        border-radius: 5px;
+        outline: none;
+        width: 100%;
+      }
+    }
+    .item-color-wrapper {
+      margin-top: 10px;
+      ion-list {
+        border-radius: 5px;
+      }
+      ion-item {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        --ion-background-color: #fff;
+        border-radius: 5px;
+        --border-color: #ffffff;
+      }
+      ion-select::part(text) {
+        color: #000000;
+        --padding-top: 0px;
+        --padding-bottom: 10px;
+      }
+      ion-select::part(icon) {
+        color: #000000;
+        opacity: 0.8;
+      }
+    }
+    .price-details-wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+    .add-to-cart-button-wrapper {
+      .add-cart-button {
+        margin-top: 30px;
+        border-radius: 8px;
+        --background: #004777;
+        height: 31px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #ffffff;
+      }
+    }
+  }
+  .fullHeight {
+    height: 100%;
+  }
+  .features-wapper {
+    margin-top: 15px;
+  }
+  .features-label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+  .features-text {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: #000000;
+  }
+  .item-name-label {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+  }
+}

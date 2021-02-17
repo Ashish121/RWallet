@@ -42,29 +42,41 @@
     align-items: center;
     border-color: none;
     padding-top: 20px;
-    input[type="tel"] {
-      height: 45px;
-      width: 45px;
-      font-size: 25px;
-      text-align: center;
-
-      margin: 10px;
-      height: 45px;
-      width: 45px;
-      font-size: 25px;
-      text-align: center;
-
-      margin-top: 20px;
-      background-color: #5195c4;
-      border: none;
-      width: 27px;
-      height: 27px;
-      font-size: 13px;
-      color: #ffffff;
+    .otp-field-wrapper {
+      .otp-field-input {
+        width: 28px !important;
+        height: 28px !important;
+        margin: 10px;
+        background-color: transparent;
+        outline: none;
+        color: #ffffff;
+        border: 1px solid #5195c4;
+      }
     }
-    input[type="number"] :focus {
-      border: none;
-    }
+
+    // input[type="tel"] {
+    //   height: 45px;
+    //   width: 45px;
+    //   font-size: 25px;
+    //   text-align: center;
+
+    //   margin: 10px;
+    //   height: 45px;
+    //   width: 45px;
+    //   font-size: 25px;
+    //   text-align: center;
+
+    //   margin-top: 20px;
+    //   background-color: #5195c4;
+    //   border: none;
+    //   width: 27px;
+    //   height: 27px;
+    //   font-size: 13px;
+    //   color: #ffffff;
+    // }
+    // input[type="number"] :focus {
+    //   border: none;
+    // }
   }
   .resend-link-container {
     color: #ffff;

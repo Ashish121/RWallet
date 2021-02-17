@@ -36,13 +36,17 @@ import { MapInactive } from './MapInactive';
 import { HistoryActive } from './HistoryActive';
 import { HistoryInactive } from './HistoryInactive';
 import { CloseBarIcon } from './CloseBarIcon';
-import {CloseIcon} from './CloseIcon';
-import {ProfilePictureIcon } from './ProfilePictureIcon';
-import {MenuCamera} from './MenuCamera';
+import { CloseIcon } from './CloseIcon';
+import { ProfilePictureIcon } from './ProfilePictureIcon';
+import { MenuCamera } from './MenuCamera';
 import { MapMarker } from './MapMarker';
 import { CurrentLocationMarker } from './CurrentLocationMarker';
-import {FlightIcon} from './FlightIcon';
-import {BusBookingIcon} from './BusBookingIcon';
+import { FlightIcon } from './FlightIcon';
+import { BusBookingIcon } from './BusBookingIcon';
+import { CartIcon } from './CartIcon';
+import { SearchIcon } from './SearchIcon';
+import { FavButtonDisabled } from './FavButtonDisabled';
+import { FavButtonEnabled } from './FavButtonEnabled';
 
 export {
   SmartphoneIcon,
@@ -90,4 +94,8 @@ export {
   CurrentLocationMarker,
   FlightIcon,
   BusBookingIcon,
+  CartIcon,
+  SearchIcon,
+  FavButtonDisabled,
+  FavButtonEnabled,
 };
