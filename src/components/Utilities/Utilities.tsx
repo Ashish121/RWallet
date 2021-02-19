@@ -24,6 +24,7 @@ interface utilitiesProps {
  */
 
 const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
+  
   return (
     <>
       {expanded && (

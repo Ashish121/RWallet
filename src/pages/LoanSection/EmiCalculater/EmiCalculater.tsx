@@ -19,7 +19,7 @@ const EmiCalculater: React.FC = () => {
 
   function handleCalculate() {
     console.log('Handling registration');
-    history.push('/tabs/applyPage');
+    history.push('/');
   }
 
   return (

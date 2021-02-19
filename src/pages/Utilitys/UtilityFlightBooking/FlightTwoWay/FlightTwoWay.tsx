@@ -17,7 +17,7 @@ const FlightTwoWay: React.FC = () => {
 
   function handleBusBooking() {
     console.log('Handling registration');
-    history.push('/busOneWay');
+    history.push('/tabs/busOneWay');
   }
 
   return (
