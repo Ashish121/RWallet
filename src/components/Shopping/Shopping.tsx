@@ -35,7 +35,6 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
         shoppingType: 'mobile',
       },
     });
-    
   };
   return (
     <>

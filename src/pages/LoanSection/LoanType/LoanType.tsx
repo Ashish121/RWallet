@@ -16,7 +16,7 @@ const LoanType: React.FC = () => {
 
   function handleEMIcal() {
     console.log('Handling registration');
-    history.push('/tabs/applyPage');
+    history.push('/tabs/emiCalculater');
   }
   const [accordionDetails, setAccordionDetails] = useState([{}]);
   useEffect(() => {
@@ -83,7 +83,7 @@ const LoanType: React.FC = () => {
               </div>
               <div className="loanType-btn">
                 <ButtonConmponent
-                  buttonLabel="emiCalculator"
+                  buttonLabel="LoanTypeEmiCal"
                   size="block"
                   clickHandler={handleEMIcal}
                 />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import {
   IonPage,
   IonContent,
@@ -12,12 +12,12 @@ import { ButtonConmponent,InputText, HeaderComponent } from '../../../../compone
 import './AntivirusPayment.scss';
 
 const AntivirusPayment: React.FC = () => {
-  const history = useHistory();
+  // const history = useHistory();
 
-  function handleAntivirus() {
-    console.log('Handling registration');
-    history.push('/tabs/antivirusPayment');
-  }
+  //   function handleproceed() {
+  //     console.log('Handling registration');
+  //     history.push('/');
+  //   }
 
   return (
     <>
@@ -53,7 +53,7 @@ const AntivirusPayment: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="AntivirusContiue"
                     size="block"
-                    clickHandler={handleAntivirus}
+
                   />
                 </div>
                

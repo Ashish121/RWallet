@@ -16,7 +16,7 @@ const Agent: React.FC = () => {
 
   function handleproceed() {
     console.log('Handling registration');
-    history.push('/tabs/agentS');
+    history.push('/agentS');
   }
 
   return (

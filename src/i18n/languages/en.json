@@ -169,7 +169,6 @@
   "TransactionHistory.Receivedfrom": "Received from",
 
   "LoanApplyPage": "Fill up your details",
-  "LoanTypeText":"Loan types",
   "LoanFullName": "Full name",
   "LoanFatherName": "Father name",
   "LoanMobileNumber": "Mobile number",
@@ -200,8 +199,6 @@
   "UtilityBusBooking": "Bus booking",
   "UtilityBus": "Book Bus",
 
-  "UtilityTopUpRecharge": "TopUp & Recharge",
-
   "UtilityElectricityWater": "Electricity & Water",
   "UtilityNepalElectricityAuthority": "Nepal electricity authority",
   "UtilityKhanepani": "Khanepani",
@@ -215,8 +212,6 @@
 
   "UtilityDiscard": "Discard",
   "UtilitySubmit": "Submit",
-  "UtilityTvPayment":"TV Payment",
-  "UtlityInternetPayment":"Internet Payment",
 
   "UtilityInternetPayment": "Credit card Payment",
   "UtilityBankName": "Bank name",
@@ -224,7 +219,6 @@
   "UtilityAmountPayment": "Amount",
   "UtilityCardClear": "Clear",
   "UtilityConfirm": "Confirm",
-  "UtilityAntivirus":"Antivirus",
 
   "InsuranceFinanceEmi": "Insurance/Finance/EMI",
   "RoyalitySaving": "Royality saving and credit co-operative Ltd.",
@@ -244,8 +238,7 @@
   "AntivirusOrderDetails": "Order details",
   "Antiviruskaspersky": "Kaspersky antivirus 1 PC/1 user",
   "AntivirusContiue": "Continue",
-  "AntivirusProced":"Proceed",
-  "AnitvirusProced":"Proceed",
+
   "shoppingPage.shoppoingLevelText": "SHOPPING LIMIT",
   "itemDetails.dealPrice": "Deal price",
   "itemDetails.addToCart": "Add to cart",
