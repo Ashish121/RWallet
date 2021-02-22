@@ -11,12 +11,12 @@ const ElectricityWater: React.FC = () => {
 
   function handleNepalElectricity() {
     console.log('Handling registration');
-    history.push('/tabs/nepalElectricity');
+    history.push('/nepalElectricity');
   }
 
   function handleKhanepani() {
     console.log('Handling registration');
-    history.push('/tabs/khanepani');
+    history.push('/khanepani');
   }
 
   return (

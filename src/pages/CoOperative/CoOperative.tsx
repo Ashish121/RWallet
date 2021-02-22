@@ -16,7 +16,7 @@ const CoOperative: React.FC = () => {
 
   function handleproceed() {
     console.log('Handling registration');
-    history.push('/tabs/cops');
+    history.push('/cops');
   }
 
   return (
