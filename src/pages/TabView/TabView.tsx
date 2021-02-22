@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React, { useState } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import {
   IonTabs,
   IonTabBar,
   IonTabButton,
   IonLabel,
   IonRouterOutlet,
-} from "@ionic/react";
+} from '@ionic/react';
 import {
   MapActive,
   MapInactive,
@@ -16,7 +16,7 @@ import {
   HomeInactive,
   HistoryActive,
   HistoryInactive,
-} from "../../assets/Icons";
+} from '../../assets/Icons';
 import {
   HomePage,
   Fund,
@@ -24,26 +24,34 @@ import {
   NotificationPage,
   ShoppingPage,
   ItemDetailsPage,
-} from "../index";
-import "./TabView.scss";
-import { ApplyPage } from "../LoanSection/ApplyPage/ApplyPage";
-import { EmiCalculater } from "../LoanSection/EmiCalculater/EmiCalculater";
-import { FlightOneWay } from "../Utilitys/UtilityFlightBooking/FlightOneWay/FlightOneWay";
-import { FlightTwoWay } from "../Utilitys/UtilityFlightBooking/FlightTwoWay/FlightTwoWay";
-import { BusOneWay } from "../Utilitys/UtilityBusBooking/BusOneWay/BusOneWay";
-import { BusTwoWay } from "../Utilitys/UtilityBusBooking/BusTwoWay/BusTwoWay";
-import { TopUpRecharge } from "../Utilitys/UtilityTopUpRecharge/TopUpRecharge";
-import { TvPayment } from "../Utilitys/UtilityTvPayment/TvPayment";
-import { InternetPayment } from "../Utilitys/InternetPayment/InternetPayment";
-import { ElectricityWater } from "../Utilitys/UtilityElectricityWater/ElectricityWater/ElectricityWater";
-import { NepalElectricity } from "../Utilitys/UtilityElectricityWater/NepalElectricity/NepalElectricity";
-import { Khanepani } from "../Utilitys/UtilityElectricityWater/Khanepani/Khanepani";
-import { CardPayment } from "../Utilitys/UtilityCardPayment/CardPayment";
-import { InsuranceFinancePage } from "../Utilitys/UtilityInsuranceFinanceEmi/InsuranceFinancePage/InsuranceFinancePage";
-import { RoyalityFinancialServices } from "../Utilitys/UtilityInsuranceFinanceEmi/RoyalityFinancialService/RoyalityFinancialServices";
-import { RoyalitySavingCredit } from "../Utilitys/UtilityInsuranceFinanceEmi/RoyalitySavingCredit/RoyalitySavingCredit";
-import { Antivirus } from "../Utilitys/UtilityAntivirus/Antivirus/Antivirus";
-import { AntivirusPayment } from "../Utilitys/UtilityAntivirus/AntivirusPayment/AntivirusPayment";
+  Bank,
+  BankS,
+  CoOperative,
+  CoOperativeS,
+  ConfirmPage,
+  Agent,
+  AgentS,
+  ApplyPage ,
+  EmiCalculater ,
+  FlightOneWay,
+  FlightTwoWay,
+  BusOneWay,
+  BusTwoWay,
+  TopUpRecharge,
+  TvPayment,
+  InternetPayment,
+  ElectricityWater,
+  NepalElectricity,
+  Khanepani ,
+  CardPayment,
+  InsuranceFinancePage ,
+  RoyalityFinancialServices,
+  RoyalitySavingCredit,
+  Antivirus ,
+  AntivirusPayment ,
+} from '../index';
+import './TabView.scss';
+import { LoanType } from '../LoanSection/LoanType/LoanType';
 
 const TabViewPage: React.FC = () => {
   const [homeActive, setHomeActive] = useState(true);
@@ -51,37 +59,37 @@ const TabViewPage: React.FC = () => {
   const [mapActive, setMapActive] = useState(false);
   const [hisotryActive, setHistoryActive] = useState(false);
   function handleTabClick(event: any) {
-    console.log("Tab clocled", event);
+    console.log('Tab clocled', event);
     const tabName = event.detail.tab;
     switch (tabName) {
-      case "home":
-        setHomeActive(true);
-        setTransferActive(false);
-        setMapActive(false);
-        setHistoryActive(false);
-        break;
-      case "transfer":
-        setHomeActive(false);
-        setTransferActive(true);
-        setMapActive(false);
-        setHistoryActive(false);
+    case 'home':
+      setHomeActive(true);
+      setTransferActive(false);
+      setMapActive(false);
+      setHistoryActive(false);
+      break;
+    case 'transfer':
+      setHomeActive(false);
+      setTransferActive(true);
+      setMapActive(false);
+      setHistoryActive(false);
 
-        break;
-      case "map":
-        setHomeActive(false);
-        setTransferActive(false);
-        setMapActive(true);
-        setHistoryActive(false);
-        break;
-      case "history":
-        setHomeActive(false);
-        setTransferActive(false);
-        setMapActive(false);
-        setHistoryActive(true);
-        break;
+      break;
+    case 'map':
+      setHomeActive(false);
+      setTransferActive(false);
+      setMapActive(true);
+      setHistoryActive(false);
+      break;
+    case 'history':
+      setHomeActive(false);
+      setTransferActive(false);
+      setMapActive(false);
+      setHistoryActive(true);
+      break;
 
-      default:
-        break;
+    default:
+      break;
     }
   }
 
@@ -94,6 +102,33 @@ const TabViewPage: React.FC = () => {
           <Route path="/tabs/mapview" component={MapView} exact />
           <Route path="/tabs/notification" exact component={NotificationPage} />
           <Route path="/tabs/shopping" exact component={ShoppingPage} />
+          <Route path="/tabs/bank" exact component={Bank} />
+          <Route path="/tabs/banks" exact component={BankS} />
+          <Route path="/tabs/agent" exact component={Agent} />
+          <Route path="/tabs/agents" exact component={AgentS} />
+          <Route path="/tabs/cop" exact component={CoOperative} />
+          <Route path="/tabs/cops" exact component={CoOperativeS} />
+          <Route path="/tabs/confirm" exact component={ConfirmPage} />
+          <Route path="/tabs/emiCalculater" exact component={EmiCalculater} />
+          <Route path="/tabs/applyPage" exact component={ApplyPage} />
+          <Route path="/tabs/loanType" exact component={LoanType} />
+          <Route path="/tabs/flightOneWay" exact component={FlightOneWay} />
+          <Route path="/tabs/flightTwoWay" exact component={FlightTwoWay} />
+          <Route path="/tabs/busOneWay" exact component={BusOneWay} />
+          <Route path="/tabs/busTwoWay" exact component={BusTwoWay} />
+          <Route path="/tabs/topUpRecharge" exact component={TopUpRecharge} />
+          <Route path="/tabs/electricityWater" exact component={ElectricityWater} />
+          <Route path="/tabs/nepalElectricity" exact component={NepalElectricity} />
+          <Route path="/tabs/khanepani" exact component={Khanepani} />
+          <Route path="/tabs/tvPayment" exact component={TvPayment} />
+          <Route path="/tabs/internetPayment" exact component={InternetPayment} />
+          <Route path="/tabs/cardPayment" exact component={CardPayment} />
+          <Route path="/tabs/insuranceFinancePage" exact component={ InsuranceFinancePage} />
+          <Route path="/tabs/royalityFinancialServices" exact component={RoyalityFinancialServices} />
+          <Route path="/tabs/royalitySavingCredit" exact component={ RoyalitySavingCredit} />
+          <Route path="/tabs/antivirus" exact component={ Antivirus} />
+          <Route path="/tabs/antivirusPayment" exact component={ AntivirusPayment } />
+      
           <Route
             path="/tabs/shopping/itemdetails"
             exact

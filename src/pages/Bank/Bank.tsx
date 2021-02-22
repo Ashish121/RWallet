@@ -16,7 +16,7 @@ const Bank: React.FC = () => {
 
   function handleproceed() {
     console.log('Handling registration');
-    history.push('/banks');
+    history.push('/tabs/banks');
   }
 
   return (

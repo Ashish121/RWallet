@@ -11,12 +11,12 @@ const InsuranceFinancePage: React.FC = () => {
 
   function handleroyalFinancialServices() {
     console.log('Handling registration');
-    history.push('/royalityFinancialServices');
+    history.push('/tabs/royalityFinancialServices');
   }
 
   function handleroyalitySavingCredit() {
     console.log('Handling registration');
-    history.push('/royalitySavingCredit');
+    history.push('/tabs/royalitySavingCredit');
   }
 
   return (

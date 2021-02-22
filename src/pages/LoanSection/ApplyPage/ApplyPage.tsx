@@ -16,7 +16,7 @@ const ApplyPage: React.FC = () => {
 
   function handleApply() {
     console.log('Handling registration');
-    history.push('/tabs/flightOneWay');
+    history.push('/tabs/emiCalculater');
   }
 
   return (
@@ -58,13 +58,7 @@ const ApplyPage: React.FC = () => {
                   color="light"
                   labelColor="light"
                 />
-                <InputText
-                  inputType="text"
-                  labelText="LoanMobileNumber"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
+             
                 <div className="loan-ApplyPage-Discard">
                   <ButtonConmponent
                     buttonLabel="ApplyPageDiscard"
