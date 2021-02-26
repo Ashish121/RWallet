@@ -1,1 +1,2 @@
-export  { requestForLogin, loginSuccess } from './Login';
+export  { requestForLogin } from './Login';
+export { updateToast } from './Toast';

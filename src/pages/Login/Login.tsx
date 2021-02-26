@@ -1,36 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import LoaderComponent from '../../components/Spinner/Spinner';
-import { requestForLogin, loginSuccess } from '../../redux/actions';
+import { requestForLogin } from '../../redux/actions';
 import './Login.scss';
 import { InputText, ButtonConmponent } from '../../components';
 
 const LoginPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const [contactNo, setContactNo] = useState('');
+  const [password, setUserPassword] = useState('');
   const isAuthenticating = useSelector(
     (state: any) => state.login.isAuthenticating
   );
-
-  function loginHandler() {
-    dispatch(requestForLogin());
-    let timeout = setTimeout(() => {
-      dispatch(loginSuccess());
-      clearTimeout(timeout);
-      history.push('/tabs');
-    }, 4000);
+  function nextRoute() {
+    history.replace('tabs/home');
   }
-  const updateEmail = (emailText: any) => {
-    console.log('updateEmail -> emailText', emailText);
-    // setUserEmail(emailText);
+  function loginHandler() {
+    dispatch(requestForLogin({ contactNo, password }, nextRoute));
+  }
+  const updateContactNo = (contactNo: any) => {
+    console.log('contactNo -> contactNo', contactNo);
+    setContactNo(contactNo);
   };
 
   function updatePassword(password: any) {
     console.log('updatePassword -> password', password);
-    // setUserPassword(password);
+    setUserPassword(password);
   }
 
   function navigateToRegister() {
@@ -62,12 +62,13 @@ const LoginPage: React.FC = () => {
               </div>
               <div className="loginPageWrapper">
                 <InputText
-                  inputType="email"
-                  labelText="login.emailLabel"
+                  inputType="number"
+                  labelText="login.mobileText"
                   labelType="floating"
                   color="light"
                   labelColor="light"
-                  onChange={updateEmail}
+                  onChange={updateContactNo}
+                  autoFocus={true}
                 />
                 <InputText
                   inputType="password"
@@ -82,6 +83,9 @@ const LoginPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="login.signInLabel"
                     size="block"
+                    disabled={
+                      contactNo.trim() && password.trim() ? false : true
+                    }
                     clickHandler={loginHandler}
                   />
                 </div>

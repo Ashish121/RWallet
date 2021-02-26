@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
 import Routes from './pages/Routes';
 
@@ -24,18 +25,32 @@ import 'leaflet/dist/leaflet.css';
 
 import { IntlProvider } from 'react-intl';
 import { English } from './i18n/languages';
+import { ToastComponent } from './components';
 
 let lang: any = English;
 const App: React.FC = () => {
   const { StatusBar, SplashScreen } = Plugins;
+  const dispatch = useDispatch();
+  const showToast = useSelector((state: any) => state.toast.showToast);
+  const message = useSelector((state: any) => state.toast.toastMessage);
   StatusBar.setStyle({ style: StatusBarStyle.Dark });
   // Show the splash for two seconds and then auto hide:
   SplashScreen.show({
-    showDuration: 2,
+    showDuration: 2000,
     autoHide: true,
   });
+  function closeToast() {
+    dispatch({ type: 'RESET_TOAST' });
+  }
   return (
     <IntlProvider locale="en" messages={lang}>
+      <ToastComponent
+        showToast={showToast}
+        toastMessage={message}
+        onDismissToast={closeToast}
+        position="top"
+        duration="10000"
+      />
       <Routes />
     </IntlProvider>
   );
