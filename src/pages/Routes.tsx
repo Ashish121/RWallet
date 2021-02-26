@@ -1,7 +1,7 @@
-import React from "react";
-import { Redirect, Route } from "react-router-dom";
-import { IonApp, IonRouterOutlet, IonPage } from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
+import { IonApp, IonRouterOutlet, IonPage } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
 import {
   LoginPage,
   SignUpPage,
@@ -45,11 +45,17 @@ import {
   TopUpRecharge,
   InternetPayment,
   Antivirus,
-} from "./index";
-import "./Routes.scss";
+} from './index';
+import './Routes.scss';
 
 const Routes: React.FC = () => {
   const isTabView = true;
+  const loggedInUser: any = localStorage.getItem('loginDetails');
+  console.log('loggedInUser: ', JSON.parse(loggedInUser)?.type);
+
+  const token = JSON.parse(loggedInUser)?.data?.token;
+  console.log(token);
+
   return (
     <IonReactRouter>
       <IonApp>
@@ -163,8 +169,7 @@ const Routes: React.FC = () => {
               component={AntivirusPayment}
             />
             <Route path="/antivirus" exact component={Antivirus} />
-
-            <Redirect exact from="/" to="/register" />
+            <Redirect exact from="/" to={token ? '/tabs' : '/login'} />
           </IonRouterOutlet>
         </IonPage>
       </IonApp>

@@ -4,7 +4,7 @@
   "common.continue": "CONTINUE",
 
   "login.siginPageLabel": "Royality Wallet",
-  "login.emailLabel": "Mobile number/Email id",
+  "login.mobileText": "Mobile number",
   "login.passwordLabel": "Password",
   "login.signInLabel": "LOGIN",
   "login.welcomeText": "Welcome to",

@@ -18,6 +18,7 @@ interface inputTextProps {
   pattern?: any;
   placeholderText?: any;
   showPasswordMode?: boolean;
+  autoFocus?: boolean;
 }
 
 /**
@@ -36,6 +37,7 @@ const InputText: React.FC<inputTextProps> = ({
   showPasswordMode = false,
   maxLen,
   placeholderText,
+  autoFocus,
 }) => {
   const [toggleEyeOn, setToggleEyeOn] = useState(false);
   const onInpuTextChange = debounce((event) => {
@@ -67,6 +69,7 @@ const InputText: React.FC<inputTextProps> = ({
               maxlength={maxLen}
               type={toggleEyeOn ? 'text' : inputType || 'text'}
               color={color}
+              autofocus={autoFocus}
               onIonChange={(e) => onInpuTextChange(e)}
             />
           )}
@@ -76,6 +79,7 @@ const InputText: React.FC<inputTextProps> = ({
               maxlength={maxLen}
               type={toggleEyeOn ? 'text' : inputType || 'text'}
               color={color}
+              autofocus={autoFocus}
               onIonChange={(e) => onInpuTextChange(e)}
               placeholder={placeholderText}
             />
