@@ -3,3 +3,9 @@ export const LOGIN_SUCCESS              = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED    = 'LOGIN_FAILED';
 export const UPDATE_TOAST = 'UPDATE_TOAST';
 export const RESET_TOAST = 'RESET_TOAST';
+
+//for registration
+
+export const REGISTRATION_SUCCESS='REGISTRATION_SUCCESS';
+export const REGISTRATION_FAILED = 'REGISTRATION_FAILED ';
+
