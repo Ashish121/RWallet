@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import {  useDispatch } from 'react-redux';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 // import LoaderComponent from '../../components/Spinner/Spinner';
+import { requestForRegistration } from '../../redux/actions/Registration';
 import {
   InputText,
   ButtonConmponent,
@@ -11,27 +13,72 @@ import {
 } from '../../components';
 import './SignUp.scss';
 
+
 const SignUpPage: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  function handleRegistration() {
-    console.log('Handling registration');
+  const [fullName, setFullName] = useState('');
+  const [mobileNo, setMobileNo] = useState('');
+  const [password, setPassword] = useState('');
+  const[gender,setGender]=useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  // const isAuthenticating = useSelector(
+  //   (state: any) => state.login.isAuthenticating
+  // );
+  
+
+  function nextRoute() {
     history.push('/otp');
   }
-  function onGenderSelect(gender: string) {
-    console.log('Selected: ', gender);
+
+  function handleRegistration() {
+    dispatch(requestForRegistration({fullName,gender,mobileNo,password }, nextRoute));
+    console.log('Handling registration');
+    // history.push('/otp');
   }
+
+  function updateFullName(fullName:any){
+    console.log('fullName: ', fullName);
+    setFullName(fullName);
+
+  }
+
+  function onGenderSelect(gender: any) {
+    console.log('Selected value: ', gender);
+    setGender(gender);
+  }
+
+  function updateMobileNo(mobileNo:any){
+    console.log('MobileNumber: ', mobileNo);
+    setMobileNo(mobileNo);
+  }
+
+  function updatePassword(password: any) {
+    console.log('updatePassword -> password', password);
+    setPassword(password);
+  }
+
+  function updateConfirmPassword(confirmPassword: any) {
+    console.log('confirmPassword', confirmPassword);
+    setConfirmPassword(confirmPassword);
+  }
+
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
+
   function navigateToLogin() {
     console.log('**');
-
     history.push('/login');
   }
 
   return (
     <>
+      {/* <LoaderComponent
+        showLoading={isAuthenticating}
+        loaderMessage={'Authenticating'}
+      /> */}
       <IonApp>
         <IonPage>
           <IonContent>
@@ -51,9 +98,10 @@ const SignUpPage: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateFullName}
                 />
                 <div>
-                  <SelectMenu label="signup.gender" onSelect={onGenderSelect} />
+                  <SelectMenu label="signup.gender"  onSelect={onGenderSelect} />
                 </div>
                 <InputText
                   inputType="text"
@@ -61,6 +109,7 @@ const SignUpPage: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateMobileNo}
                 />
                 <InputText
                   inputType="password"
@@ -69,6 +118,7 @@ const SignUpPage: React.FC = () => {
                   color="light"
                   labelColor="light"
                   showPasswordMode={true}
+                  onChange={updatePassword}
                 />
                 <InputText
                   inputType="password"
@@ -77,6 +127,7 @@ const SignUpPage: React.FC = () => {
                   color="light"
                   labelColor="light"
                   showPasswordMode={true}
+                  onChange={updateConfirmPassword}
                 />
                 <div className="terms-select-wrapper">
                   <CheckboxComponent
@@ -88,6 +139,11 @@ const SignUpPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="signup.register"
                     size="block"
+                    disabled={
+                      fullName.trim()  &&  mobileNo.trim() && password.trim() && gender.trim()
+                      && confirmPassword.trim()
+                      && (password.trim() === confirmPassword.trim()) ? false : true
+                    }
                     clickHandler={handleRegistration}
                   />
                 </div>
