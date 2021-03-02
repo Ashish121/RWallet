@@ -16,7 +16,7 @@ import {
   CheckboxComponent,
   ButtonConmponent,
 } from '../../../components';
-import { requestForCurrentAccount } from '../../../redux/actions/Current';
+import { requestForCurrentAccount } from '../../../redux/actions';
 import './Current.scss';
 
 const CurrentAccountPage: React.FC = () => {
