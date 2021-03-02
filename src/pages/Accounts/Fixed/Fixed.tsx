@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { requestForFixedAccount } from '../../../redux/actions/Fixed';
 import {
   IonPage,
   IonContent,
@@ -15,19 +17,37 @@ import {
   CheckboxComponent,
   ButtonConmponent,
 } from '../../../components';
-
 import './Fixed.scss';
 
 const FixedAccountPage: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [investment_period, setInvestmentPeriod] = useState('');
+  const user_id = localStorage.getItem('userId');
+  const [amount, setAmount] = useState('');
+
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
-  function navigateToConfirm() {
-    // console.log("history: ", history);
-    // console.log("Router.History", Router.History);
-    // history.replaceState("/confirm");
+
+  function nextRoute() {
     history.replace('/confirm');
+  }
+
+  function navigateToConfirm() {
+    dispatch(
+      requestForFixedAccount({ investment_period, user_id, amount }, nextRoute)
+    );
+    console.log('Handling Fixed account', amount, investment_period);
+  }
+
+  function updateAmount(amount: any) {
+    setAmount(amount);
+  }
+
+  function updateInvestmentPeriod(event: any) {
+    const investment_period = event.target.value;
+    setInvestmentPeriod(investment_period);
   }
 
   return (
@@ -51,26 +71,27 @@ const FixedAccountPage: React.FC = () => {
                 <InputText
                   inputType="tel"
                   placeholderText="Amount of deposite(Min 5000)"
+                  onChange={updateAmount}
                 />
                 <div className="section-1">
                   <IonText className="section-header">
                     <Translate message="account.investmentPeriod" />
                   </IonText>
-                  <IonRadioGroup>
+                  <IonRadioGroup onIonChange={updateInvestmentPeriod}>
                     <div className="options-section1">
-                      <RadioComponent label="12 months with 10%" />
+                      <RadioComponent label="12 months with 10%" val="12" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="24 months with 20%" />
+                      <RadioComponent label="24 months with 20%" val="24" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="36 months with 35%" />
+                      <RadioComponent label="36 months with 35%" val="36" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="48 months with 50%" />
+                      <RadioComponent label="48 months with 50%" val="48" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="60 monthss with 100%" />
+                      <RadioComponent label="60 monthss with 100%" val="60" />
                     </div>
                   </IonRadioGroup>
                 </div>
