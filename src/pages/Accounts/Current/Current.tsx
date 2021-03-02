@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   IonPage,
   IonContent,
@@ -15,21 +16,36 @@ import {
   CheckboxComponent,
   ButtonConmponent,
 } from '../../../components';
-
+import { requestForCurrentAccount } from '../../../redux/actions/Current';
 import './Current.scss';
 
 const CurrentAccountPage: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const user_id = localStorage.getItem('userId');
+  const [amount, setAmount] = useState('');
+  //  const [investment_period, setInvestmentPeriod] = useState("");
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
-  function navigateToConfirm() {
-    // console.log("history: ", history);
-    // console.log("Router.History", Router.History);
-    // history.replaceState("/confirm");
+
+  function nextRoute() {
     history.replace('/confirm');
+    history.push('/confirm');
   }
 
+  function navigateToConfirm() {
+    dispatch(requestForCurrentAccount({ user_id, amount }, nextRoute));
+  }
+
+  function updateAmount(amount: any) {
+    setAmount(amount);
+  }
+  // function updateInvestmentPeriod(event: any) {
+  //   const investment_period = event.target.value;
+  //   setInvestmentPeriod(investment_period);
+  // }
   return (
     <>
       <IonApp>
@@ -51,6 +67,7 @@ const CurrentAccountPage: React.FC = () => {
                 <InputText
                   inputType="tel"
                   placeholderText="Amount of deposite(Min Rs 1000)"
+                  onChange={updateAmount}
                 />
                 <div className="CurrentSection-0">
                   <IonText className="CurrentSection-header">
@@ -58,16 +75,22 @@ const CurrentAccountPage: React.FC = () => {
                   </IonText>
                   <IonRadioGroup>
                     <div className="options-section1">
-                      <RadioComponent label="Rs 5000 per quarter for non-rural" />
+                      <RadioComponent
+                        label="Rs 5000 per quarter for non-rural"
+                        val="5000"
+                      />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="Rs 2500 per quarter for rural" />
+                      <RadioComponent
+                        label="Rs 2500 per quarter for rural"
+                        val="2500"
+                      />
                     </div>
                   </IonRadioGroup>
                   <IonText className="CurrentSection-last">
                     <Translate message="account.currentWithdrawlimit" />
                   </IonText>
-                  <br/>
+                  <br />
                   <IonText className="CurrentSection-last1">
                     <Translate message="account.currentUnlimited" />
                   </IonText>
