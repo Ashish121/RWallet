@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import {  useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 // import LoaderComponent from '../../components/Spinner/Spinner';
@@ -13,7 +13,6 @@ import {
 } from '../../components';
 import './SignUp.scss';
 
-
 const SignUpPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -21,27 +20,44 @@ const SignUpPage: React.FC = () => {
   const [fullName, setFullName] = useState('');
   const [mobileNo, setMobileNo] = useState('');
   const [password, setPassword] = useState('');
-  const[gender,setGender]=useState('');
+  const [gender, setGender] = useState('');
+  const [genderDetails, setGenderDetails] = useState([{}]);
   const [confirmPassword, setConfirmPassword] = useState('');
   // const isAuthenticating = useSelector(
   //   (state: any) => state.login.isAuthenticating
   // );
-  
 
+  useEffect(() => {
+    const array = [
+      {
+        value: 'male',
+        label: 'Male',
+      },
+      {
+        value: 'female',
+        label: 'Female',
+      },
+    ];
+    setGenderDetails(array);
+  }, []);
   function nextRoute() {
     history.push('/otp');
   }
 
   function handleRegistration() {
-    dispatch(requestForRegistration({fullName,gender,mobileNo,password }, nextRoute));
+    dispatch(
+      requestForRegistration(
+        { fullName, gender, mobileNo, password },
+        nextRoute
+      )
+    );
     console.log('Handling registration');
     // history.push('/otp');
   }
 
-  function updateFullName(fullName:any){
+  function updateFullName(fullName: any) {
     console.log('fullName: ', fullName);
     setFullName(fullName);
-
   }
 
   function onGenderSelect(gender: any) {
@@ -49,7 +65,7 @@ const SignUpPage: React.FC = () => {
     setGender(gender);
   }
 
-  function updateMobileNo(mobileNo:any){
+  function updateMobileNo(mobileNo: any) {
     console.log('MobileNumber: ', mobileNo);
     setMobileNo(mobileNo);
   }
@@ -69,7 +85,6 @@ const SignUpPage: React.FC = () => {
   }
 
   function navigateToLogin() {
-    console.log('**');
     history.push('/login');
   }
 
@@ -101,7 +116,11 @@ const SignUpPage: React.FC = () => {
                   onChange={updateFullName}
                 />
                 <div>
-                  <SelectMenu label="signup.gender"  onSelect={onGenderSelect} />
+                  <SelectMenu
+                    label="signup.gender"
+                    onSelect={onGenderSelect}
+                    array={genderDetails}
+                  />
                 </div>
                 <InputText
                   inputType="text"
@@ -140,9 +159,14 @@ const SignUpPage: React.FC = () => {
                     buttonLabel="signup.register"
                     size="block"
                     disabled={
-                      fullName.trim()  &&  mobileNo.trim() && password.trim() && gender.trim()
-                      && confirmPassword.trim()
-                      && (password.trim() === confirmPassword.trim()) ? false : true
+                      fullName.trim() &&
+                      mobileNo.trim() &&
+                      password.trim() &&
+                      gender.length > 0 &&
+                      confirmPassword.trim() &&
+                      password.trim() === confirmPassword.trim()
+                        ? false
+                        : true
                     }
                     clickHandler={handleRegistration}
                   />

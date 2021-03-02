@@ -14,14 +14,15 @@ interface SelectGenderProps {
   onSelect?: Function;
   placeholderLabel?: string;
   label?: any;
+  array?: any;
 }
 
 const SelectMenu: React.FC<SelectGenderProps> = ({
   onSelect,
   placeholderLabel,
   label,
+  array,
 }) => {
-  const gender = '';
   const handleSelect = debounce((value) => {
     onSelect?.(value);
   }, 100);
@@ -34,12 +35,16 @@ const SelectMenu: React.FC<SelectGenderProps> = ({
             <Translate message={label} />
           </IonLabel>
           <IonSelect
-            value={gender}
             placeholder={placeholderLabel}
             onIonChange={(e) => handleSelect(e.detail.value)}
           >
-            <IonSelectOption value="male">Male</IonSelectOption>
-            <IonSelectOption value="female">Female</IonSelectOption>
+            {array.map((element: any) => {
+              return (
+                <IonSelectOption value={element.value}>
+                  {element.label}
+                </IonSelectOption>
+              );
+            })}
           </IonSelect>
         </IonItem>
       </IonList>
