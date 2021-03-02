@@ -113,6 +113,9 @@ const FixedAccountPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="account.openAccount"
                     size="block"
+                    disabled={
+                      investment_period.trim() && amount.trim() ? false : true
+                    }
                     clickHandler={navigateToConfirm}
                   />
                 </div>
