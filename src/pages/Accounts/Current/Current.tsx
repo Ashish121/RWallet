@@ -113,6 +113,7 @@ const CurrentAccountPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="account.openAccount"
                     size="block"
+                    disabled={amount.trim() ? false : true}
                     clickHandler={navigateToConfirm}
                   />
                 </div>
