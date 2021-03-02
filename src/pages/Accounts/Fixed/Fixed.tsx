@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { requestForFixedAccount } from '../../../redux/actions/Fixed';
+import { requestForFixedAccount } from '../../../redux/actions';
 import {
   IonPage,
   IonContent,
