@@ -61,7 +61,9 @@
   "rest.newConfirm": "Confirm password",
 
   "otp.pageHeader": "Verification code",
-  "otp.pageSubHeader": "Please type the verification code sent to +91 8892050268",
+  "otp.pageSubHeader": "Please type the verification code sent to {contact}",
+  "otp.send": "SEND",
+  "otp.sendOtpInfo": "Send OTP to {contact}",
   "otp.resendText": "Didn't receive OTP.",
   "otp.resendLinkText": "Resend OTP",
   "otp.verify": " VERIFY",
