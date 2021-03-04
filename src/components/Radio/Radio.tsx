@@ -7,14 +7,15 @@ interface radioTypeProps {
   label?: any;
   clickHandler?: Function;
   color?: any;
+  val?: string;
 }
 
-const RadioComponent: React.FC<radioTypeProps> = ({ label }) => {
+const RadioComponent: React.FC<radioTypeProps> = ({ label, val }) => {
   return (
     <div className="radio-wrapper">
       <IonList>
         <IonItem lines="none">
-          <IonRadio mode="md" />
+          <IonRadio mode="md" value={val} />
           <IonText className="ion-margin-start">
             <Translate message={label} />
           </IonText>
