@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { requestForFixedAccount } from '../../../redux/actions/Fixed';
+import { requestForFixedAccount } from '../../../redux/actions';
 import {
   IonPage,
   IonContent,
@@ -113,6 +113,9 @@ const FixedAccountPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="account.openAccount"
                     size="block"
+                    disabled={
+                      investment_period.trim() && amount.trim() ? false : true
+                    }
                     clickHandler={navigateToConfirm}
                   />
                 </div>
