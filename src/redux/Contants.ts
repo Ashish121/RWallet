@@ -9,3 +9,10 @@ export const RESET_TOAST = 'RESET_TOAST';
 export const REGISTRATION_SUCCESS='REGISTRATION_SUCCESS';
 export const REGISTRATION_FAILED = 'REGISTRATION_FAILED ';
 
+//for fixed account
+export const FIXED_SUCCESS='FIXED_SUCCESS';
+export const FIXED_FAILED = 'FIXED_FAILED';
+
+//for current account
+export const CURRENT_SUCCESS='CURRENT_SUCCESS';
+export const CURRENT_FAILED = 'CURRENT_FAILED';
