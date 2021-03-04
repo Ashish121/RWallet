@@ -14,3 +14,11 @@ export const REGISTRATION_FAILED = 'REGISTRATION_FAILED ';
 export const BANKTRANSFER_SUCCESS='BANKTRANSFER_SUCCESS';
 export const BANKTRANSFER_FAILED = 'BANKTRANSFER_FAILED ';
 
+//for fixed account
+export const FIXED_SUCCESS='FIXED_SUCCESS';
+export const FIXED_FAILED = 'FIXED_FAILED';
+
+//for current account
+export const CURRENT_SUCCESS='CURRENT_SUCCESS';
+export const CURRENT_FAILED = 'CURRENT_FAILED';
+
