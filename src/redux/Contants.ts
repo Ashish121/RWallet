@@ -9,6 +9,11 @@ export const RESET_TOAST = 'RESET_TOAST';
 export const REGISTRATION_SUCCESS='REGISTRATION_SUCCESS';
 export const REGISTRATION_FAILED = 'REGISTRATION_FAILED ';
 
+//for Agent Transfer
+
+export const AGETTRANSFER_SUCCESS='AGETTRANSFER_SUCCESS';
+export const AGETTRANSFER_FAILED = 'AGETTRANSFER_FAILED ';
+
 //for Bank transfer
 
 export const BANKTRANSFER_SUCCESS='BANKTRANSFER_SUCCESS';
@@ -21,4 +26,5 @@ export const FIXED_FAILED = 'FIXED_FAILED';
 //for current account
 export const CURRENT_SUCCESS='CURRENT_SUCCESS';
 export const CURRENT_FAILED = 'CURRENT_FAILED';
+
 
