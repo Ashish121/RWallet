@@ -31,3 +31,8 @@ export const CURRENT_FAILED = 'CURRENT_FAILED';
 
 export const COOPERATIVE_SUCCESS = 'COOPERATIVE_SUCCESS';
 export const COOPERATIVE_FAILED = '  COOPERATIVE_FAILED';
+
+//for Mpin
+
+export const MPIN_SUCCESS = 'MPIN_SUCCESS';
+export const MPIN_FAILED = 'MPIN_FAILED';

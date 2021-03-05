@@ -1,19 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText } from '../../components';
-
+import { useDispatch } from 'react-redux';
+import { requestForMpin } from '../../redux/actions';
 import './Mpin.scss';
-
 const MpinPage: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const user_id = localStorage.getItem('userId');
+  const [mpin, setMpin] = useState('');
+  const [confirmMpin, setConfirmMpin] = useState('');
 
-  function setMpin() {}
-  function confirmMpin() {}
-  function handleMpin() {
+  function updateMpin(mpin: any) {
+    let newMpin = mpin;
+    if (!Number(mpin)) {
+      return;
+    }
+    setMpin(newMpin);
+  }
+
+  function updateConfirmMpin(confirmMpin: any) {
+    setConfirmMpin(confirmMpin);
+  }
+
+  function nextRoute() {
     history.push('/accountuser');
   }
+  function handleMpin() {
+    dispatch(requestForMpin({ user_id, mpin }, nextRoute));
+    console.log('Handling registration');
+  }
+
   return (
     <>
       <IonApp>
@@ -34,28 +53,29 @@ const MpinPage: React.FC = () => {
               </div>
               <div className="fields-container">
                 <InputText
-                  inputType="password"
+                  inputType="number"
                   labelText="mpin.mpinField"
                   labelType="floating"
                   color="light"
                   labelColor="light"
                   showPasswordMode={true}
-                  onChange={setMpin}
+                  onChange={updateMpin}
                 />
                 <InputText
-                  inputType="password"
+                  inputType="number"
                   labelText="mpin.confirmMpin"
                   labelType="floating"
                   color="light"
                   labelColor="light"
                   showPasswordMode={true}
-                  onChange={confirmMpin}
+                  onChange={updateConfirmMpin}
                 />
               </div>
               <div className="confirm-btn-wrapper">
                 <ButtonConmponent
                   buttonLabel="mpin.done"
                   size="block"
+                  disabled={mpin === confirmMpin ? false : true}
                   clickHandler={handleMpin}
                 />
               </div>
