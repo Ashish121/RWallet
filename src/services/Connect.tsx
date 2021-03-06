@@ -40,8 +40,6 @@ export const authenticationForRegister = async (
       password: password,
     }),
   });
-  const mobile = localStorage.setItem('mobile_number', mobileNo);
-  console.log('mobile: ', mobile);
   console.log('result: ', result);
 
   return result;
@@ -207,25 +205,5 @@ export const authenticationForFixedAccount = async (
     }),
   });
   console.log('result: ', result);
-  return result;
-};
-
-//authentication for  reset forgot password
-export const authenticationForResetPassword = async (
-  mobileNo: string,
-  newPass: string
-): Promise<any> => {
-  const result = await axios({
-    url:
-      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/forgot_password',
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: JSON.stringify({
-      mobile_number: mobileNo,
-      password: newPass,
-    }),
-  });
   return result;
 };
