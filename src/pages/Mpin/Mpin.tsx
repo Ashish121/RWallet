@@ -11,14 +11,23 @@ const MpinPage: React.FC = () => {
 
   function setMpin() {}
   function confirmMpin() {}
-  function handleMpin() {
+  function nextRoute() {
     history.push('/accountuser');
+  }
+  function createMpinRequest() {}
+  function skipStep() {
+    nextRoute();
   }
   return (
     <>
       <IonApp>
         <IonPage>
           <IonContent>
+            <div className="skip_btn_container">
+              <button className="btn-skip" onClick={skipStep}>
+                <Translate message="common.skip" />
+              </button>
+            </div>
             <div className="mpin-container">
               <div className="page-header">
                 <IonText>
@@ -56,7 +65,7 @@ const MpinPage: React.FC = () => {
                 <ButtonConmponent
                   buttonLabel="mpin.done"
                   size="block"
-                  clickHandler={handleMpin}
+                  clickHandler={createMpinRequest}
                 />
               </div>
             </div>

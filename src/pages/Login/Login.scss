@@ -44,15 +44,19 @@
   .header-grid {
     width: 100%;
   }
-  .linkText {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 15px;
-    color: #ffffff;
-    float: right;
-    margin-right: 5px;
-    line-height: 15px;
-    margin-top: 8px;
+  .link-text-wrapper {
+    display: flex;
+    justify-content: space-between;
+    .linkText {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 15px;
+      color: #ffffff;
+      float: right;
+      margin-right: 5px;
+      line-height: 15px;
+      margin-top: 8px;
+    }
   }
 }

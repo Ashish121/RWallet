@@ -1,14 +1,13 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.royality.wallet",
   "appName": "RWallet",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
   "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 0,
-      "launchAutoHide": true
-    }
-  },
-  "cordova": {}
+    "PushNotifications": {
+      "PresentationOptions": ["badge", "sound", "alert"]
+    },
+    "cordova": {}
+  }
 }

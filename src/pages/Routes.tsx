@@ -55,7 +55,11 @@ const Routes: React.FC = () => {
 
   const token = JSON.parse(loggedInUser)?.data?.token;
   console.log(token);
-
+  const isUserFormCompleted = localStorage.getItem('userFilledAccountDetails')
+    ? true
+    : false;
+  const userId = localStorage.getItem('registeredUserId');
+  const userCreatedAccount = localStorage.getItem('userCreatedAccount');
   return (
     <IonReactRouter>
       <IonApp>
@@ -80,7 +84,7 @@ const Routes: React.FC = () => {
             />
             <Route path="/splash" exact component={AnimatedSplash} />
             <Route path="/reset" exact component={ResetPassword} />
-            <Route path="/pass" exact component={Reset} />
+            <Route path="/passReset" exact component={Reset} />
 
             <Route path="/fund" component={Fund} />
             <Route path="/bank" exact component={Bank} />
@@ -169,7 +173,21 @@ const Routes: React.FC = () => {
               component={AntivirusPayment}
             />
             <Route path="/antivirus" exact component={Antivirus} />
-            <Redirect exact from="/" to={token ? '/tabs' : '/login'} />
+            <Redirect
+              exact
+              from="/"
+              to={
+                token
+                  ? '/tabs'
+                  : !userId
+                    ? '/login'
+                    : !isUserFormCompleted
+                      ? '/accountuser'
+                      : userCreatedAccount
+                        ? '/login'
+                        : 'accountpage'
+              }
+            />
           </IonRouterOutlet>
         </IonPage>
       </IonApp>

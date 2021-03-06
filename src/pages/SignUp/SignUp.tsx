@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
-// import LoaderComponent from '../../components/Spinner/Spinner';
-import { requestForRegistration } from '../../redux/actions/Registration';
+
 import {
   InputText,
   ButtonConmponent,
@@ -15,8 +13,6 @@ import './SignUp.scss';
 
 const SignUpPage: React.FC = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
-
   const [fullName, setFullName] = useState('');
   const [mobileNo, setMobileNo] = useState('');
   const [password, setPassword] = useState('');
@@ -40,19 +36,9 @@ const SignUpPage: React.FC = () => {
     ];
     setGenderDetails(array);
   }, []);
-  function nextRoute() {
-    history.push('/otp');
-  }
 
   function handleRegistration() {
-    dispatch(
-      requestForRegistration(
-        { fullName, gender, mobileNo, password },
-        nextRoute
-      )
-    );
-    console.log('Handling registration');
-    // history.push('/otp');
+    history.push('/otp', { fullName, gender, mobileNo, password });
   }
 
   function updateFullName(fullName: any) {
@@ -85,7 +71,7 @@ const SignUpPage: React.FC = () => {
   }
 
   function navigateToLogin() {
-    history.push('/login');
+    history.replace('/login');
   }
 
   return (

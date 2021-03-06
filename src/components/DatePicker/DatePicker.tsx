@@ -5,22 +5,29 @@ import { Translate } from '../../i18n/formatMessages';
 import { CalenderIcon } from '../../assets/Icons';
 import './DatePicker.scss';
 
-const DatePickerComponent: React.FC<any> = () => {
+const DatePickerComponent: React.FC<{
+  placeholder: any;
+  handler?: Function;
+}> = ({ placeholder, handler }) => {
   const [selectedDate, setSelectedDate] = useState<string>('');
 
+  function handleDate(date: any) {
+    setSelectedDate(date);
+    handler?.(date);
+  }
   return (
     <div className="date-picker-container">
       <IonList>
         <IonItem>
           <IonLabel position="floating" className="date-picker-label">
-            <Translate message="account.dateofBirth" />
+            <Translate message={placeholder} />
           </IonLabel>
           <IonDatetime
             style={{ color: '#ffffff' }}
             displayFormat="MMM DD YYYY"
             min="1970-06-04"
             value={selectedDate}
-            onIonChange={(e) => setSelectedDate(e.detail.value!)}
+            onIonChange={(e) => handleDate(e.detail.value!)}
           ></IonDatetime>
           <div
             className="calendericon"

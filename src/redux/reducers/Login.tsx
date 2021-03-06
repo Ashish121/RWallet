@@ -22,10 +22,9 @@ const reducers: any = {
   [AUTHENTICATION_INPROGRESS]: (draft: any) => {
     draft.isAuthenticating = true;
   },
-  [LOGIN_SUCCESS]: (draft: any, data: any) => {
+  [LOGIN_SUCCESS]: (draft: any) => {
     draft.authenticated = true;
     draft.isAuthenticating = false;
-    localStorage.setItem('loginDetails', JSON.stringify(data));
   },
   [LOGIN_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;

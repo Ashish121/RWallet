@@ -12,10 +12,14 @@ const requestForCurrentAccount = (payload: any, nextRoute: Function) => {
       );
       if (response.status === 200) {
         dispatch({ type: CURRENT_SUCCESS, data: response.data });
-        nextRoute();
+        localStorage.setItem('userCreatedAccount', 'true');
+        nextRoute(true);
+      } else {
+        nextRoute(false);
       }
       console.log('done', response);
     } catch (error) {
+      nextRoute(false);
       const data = {
         showToast: true,
         toastMessage: 'API failed',

@@ -6,12 +6,13 @@ import {
 } from '../Contants';
 interface RegistrationState {
   isAuthenticating: boolean;
-  
+  userDetails: any;
 }
 
 // defines the initial state for the reducer ...
 export const initialState: RegistrationState = {
   isAuthenticating: false,
+  userDetails: null,
 };
 
 // defines this reducers reducer functions ...
@@ -21,7 +22,7 @@ const reducers: any = {
   },
   [REGISTRATION_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
-    localStorage.setItem('RegistrationDetails', JSON.stringify(data));
+    draft.userDetails = data;
   },
   [REGISTRATION_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;

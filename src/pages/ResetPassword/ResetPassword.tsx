@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
@@ -7,8 +7,14 @@ import './ResetPassword.scss';
 
 const ResetPassword: React.FC = () => {
   const history = useHistory();
+  const [contactNo, setConactNo] = useState('');
   function handleVerifyReset() {
-    history.push('/otp');
+    history.push('/otp', { mobileNo: contactNo, routeName: 'passReset' });
+  }
+
+  function setContact(value: any) {
+    console.log('value', value);
+    setConactNo(value);
   }
   return (
     <>
@@ -35,6 +41,7 @@ const ResetPassword: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={setContact}
                 />
               </div>
               <div className="confirm-btn-wrapper">

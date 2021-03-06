@@ -15,6 +15,7 @@ import {
   RadioComponent,
   CheckboxComponent,
   ButtonConmponent,
+  LoaderComponent,
 } from '../../../components';
 import { requestForCurrentAccount } from '../../../redux/actions';
 import './Current.scss';
@@ -22,20 +23,28 @@ import './Current.scss';
 const CurrentAccountPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-
-  const user_id = localStorage.getItem('userId');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setLoadeMessage] = useState('');
   const [amount, setAmount] = useState('');
   //  const [investment_period, setInvestmentPeriod] = useState("");
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
 
-  function nextRoute() {
-    history.replace('/confirm');
-    history.push('/confirm');
+  function nextRoute(status: any) {
+    if (status) {
+      history.replace('/confirm');
+      return;
+    }
+    setIsLoading(false);
+    setLoadeMessage('');
   }
 
   function navigateToConfirm() {
+    setIsLoading(true);
+    setLoadeMessage('Creating account...');
+    const user_id = localStorage.getItem('registeredUserId');
+
     dispatch(requestForCurrentAccount({ user_id, amount }, nextRoute));
   }
 
@@ -48,6 +57,7 @@ const CurrentAccountPage: React.FC = () => {
   // }
   return (
     <>
+      <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
           <HeaderComponent headerLable="common.header" />

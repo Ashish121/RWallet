@@ -21,7 +21,7 @@ export const authenticate = async (
 };
 
 export const authenticationForRegister = async (
-  fullName: string,
+  name: string,
   gender: string,
   mobileNo: string,
   password: string
@@ -34,7 +34,7 @@ export const authenticationForRegister = async (
       'Content-Type': 'application/json',
     },
     data: JSON.stringify({
-      name: fullName,
+      name: name,
       gender: gender,
       mobile_number: mobileNo,
       password: password,
@@ -203,6 +203,39 @@ export const authenticationForFixedAccount = async (
         },
       ],
     }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+/**
+ * @param null
+ * this api will load the list of country along
+ * with states
+ */
+
+export const loadCountryAndStates = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/country_fetch',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+export const updateUserAccountDetails = async (payload: any): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/update_user',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify(payload),
   });
   console.log('result: ', result);
   return result;
