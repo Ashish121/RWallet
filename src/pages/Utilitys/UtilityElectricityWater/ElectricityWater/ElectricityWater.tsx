@@ -5,18 +5,17 @@ import { Translate } from '../../../../i18n/formatMessages';
 import { ButtonConmponent, HeaderComponent } from '../../../../components';
 import './ElectricityWater.scss';
 
-
 const ElectricityWater: React.FC = () => {
   const history = useHistory();
 
   function handleNepalElectricity() {
     console.log('Handling registration');
-    history.push('/nepalElectricity');
+    history.replace('/nepalElectricity');
   }
 
   function handleKhanepani() {
     console.log('Handling registration');
-    history.push('/khanepani');
+    history.replace('/khanepani');
   }
 
   return (

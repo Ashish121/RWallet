@@ -33,9 +33,11 @@ const LoginPage: React.FC = () => {
     setUserPassword(password);
   }
 
+  function navigateToResetPassword() {
+    history.replace('/reset');
+  }
   function navigateToRegister() {
-    console.log('Navigating to registration');
-    history.push('/reset');
+    history.replace('/register');
   }
   return (
     <>
@@ -94,6 +96,14 @@ const LoginPage: React.FC = () => {
                     ion-text="true"
                     color="light"
                     onClick={navigateToRegister}
+                    className="linkText"
+                  >
+                    <Translate message="login.linkTextRegister" />
+                  </a>
+                  <a
+                    ion-text="true"
+                    color="light"
+                    onClick={navigateToResetPassword}
                     className="linkText"
                   >
                     <Translate message="login.linkText" />

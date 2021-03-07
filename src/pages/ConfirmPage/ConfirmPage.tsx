@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ButtonConmponent, HeaderComponent } from '../../components';
-import { useHistory } from 'react-router-dom';
 import {
   IonCard,
   IonCardContent,
@@ -16,11 +15,13 @@ import { OrderConfirmIcon } from '../../assets/Icons';
 import { Translate } from '../../i18n/formatMessages';
 
 const ConfirmPage: React.FC = () => {
-  const history = useHistory();
   const generatedAccountNo = useState('07601202001');
   // const [generatedAccountNo, setGeneratedAccountNo] = useState("07601202001");
   function navigateToHome() {
-    history.push('/tabs');
+    alert(
+      'This feature is not available.You can expect this in future release'
+    );
+    // history.replace("/tabs");
   }
   return (
     <>

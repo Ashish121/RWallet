@@ -9,9 +9,10 @@ import {
   SelectMenu,
   HeaderComponent,
   DatePickerComponent,
+  LoaderComponent,
 } from '../../components';
 import './AccountUser.scss';
-import { requestForRegistration } from '../../redux/actions/Registration';
+import { loadInitialData, updateUserDetails } from '../../redux/actions';
 
 const AccountUser: React.FC<any> = () => {
   const history = useHistory();
@@ -19,13 +20,22 @@ const AccountUser: React.FC<any> = () => {
   const [fullName, setFullName] = useState('');
   const [fatherName, setFatherName] = useState('');
   const [motherName, setMotherName] = useState('');
-  const [account, setAccount] = useState('');
+  const [dobAD, setDobAD] = useState('');
+  const [dobBS, setDobBS] = useState('');
+  const [gender, setGender] = useState('');
   const [currentAddress, setCurrentAddress] = useState('');
   const [permanentAddress, setPermanentAddress] = useState('');
+  const [country, setCountry] = useState('');
+  const [selectedState, setSelectedState] = useState('');
+  const [selectedMuniciplaty, setSelectedMuniciplaty] = useState('');
   const [province, setProvince] = useState('');
-  const [gender, setGender] = useState('');
-  const [genderDetails, setGenderDetails] = useState([{}]);
 
+  const [genderDetails, setGenderDetails] = useState([{}]);
+  const [isLoading, setLoadeStatus] = useState(false);
+  const [loaderText, setLoaderText] = useState('');
+  const [countryList, setCountryList] = useState([{}]);
+  const [states, setStates] = useState([{}]);
+  const [municipalties, setMunicipalties] = useState([{}]);
   useEffect(() => {
     const array = [
       {
@@ -40,29 +50,65 @@ const AccountUser: React.FC<any> = () => {
     setGenderDetails(array);
   }, []);
 
-  function nextRoute() {
-    history.push('/otp');
+  useEffect(() => {
+    setLoadeStatus(true);
+    setLoaderText('Please wait...');
+    dispatch(loadInitialData(setInitialData));
+  }, []);
+
+  function setInitialData(res: any) {
+    console.log('setting data: ', res);
+    const initialData = res.data;
+    setLoadeStatus(false);
+    setLoaderText('');
+    loadCountries(initialData.country);
+    loadStates(initialData.states);
+    loadMunicipality(initialData.municipality);
+  }
+  function loadMunicipality(municipalties: any) {
+    let finalArray: any = [];
+    municipalties.forEach((municipality: any) => {
+      let tempObj = {
+        value: municipality,
+        label: municipality,
+      };
+      finalArray.push(tempObj);
+    });
+    setMunicipalties(finalArray);
+    console.log('municipalties: ', finalArray);
   }
 
-  function handleRegistration() {
-    dispatch(
-      requestForRegistration(
-        {
-          fullName,
-          fatherName,
-          motherName,
-          account,
-          currentAddress,
-          permanentAddress,
-          province,
-          gender,
-          genderDetails,
-        },
-        nextRoute
-      )
-    );
-    console.log('Handling registration');
-    history.push('/accountpage');
+  function loadStates(states: any) {
+    let finalArray: any = [];
+    states.forEach((state: any) => {
+      let tempObj = {
+        value: state,
+        label: state,
+      };
+      finalArray.push(tempObj);
+    });
+    setStates(finalArray);
+    console.log('States: ', finalArray);
+  }
+
+  function loadCountries(name: any) {
+    const countries = [
+      {
+        value: name,
+        label: name,
+      },
+    ];
+    setCountryList(countries);
+  }
+
+  function nextRoute(status: boolean) {
+    setLoadeStatus(false);
+    setLoaderText('');
+    if (status) {
+      localStorage.setItem('userFilledAccountDetails', 'true');
+      history.replace('/accountpage');
+      return;
+    }
   }
 
   function onGenderSelect(gender: any) {
@@ -71,23 +117,30 @@ const AccountUser: React.FC<any> = () => {
   }
 
   function updateFullName(fullName: string) {
-    setFullName(fullName);
+    setFullName(fullName.trim());
     console.log('fullName: ', fullName);
   }
 
   function updateFatherName(fatherName: string) {
-    setFatherName(fatherName);
+    setFatherName(fatherName.trim());
     console.log('fatherName: ', fatherName);
   }
 
   function updateMotherName(motherName: string) {
-    setMotherName(motherName);
+    setMotherName(motherName.trim());
     console.log('motherName: ', motherName);
   }
-  function updateAccount(account: string) {
-    setAccount(account);
-    console.log('account: ', account);
+
+  function handleDobAD(date: any) {
+    console.log('date: ', date);
+
+    setDobAD(date);
   }
+  function handleDobBS(date: any) {
+    console.log('date: ', date);
+    setDobBS(date);
+  }
+
   function updateCurrentAddress(currentAddress: string) {
     setCurrentAddress(currentAddress);
     console.log('currentAddress: ', currentAddress);
@@ -97,16 +150,50 @@ const AccountUser: React.FC<any> = () => {
     setPermanentAddress(permanentAddress);
     console.log('permanentAddress: ', permanentAddress);
   }
+  function handleCountry(country: any) {
+    console.log('country', country);
 
-  function updateProvince() {
-    setProvince(province);
-    console.log('province: ', province);
+    setCountry(country);
+  }
+  function handleState(state: any) {
+    console.log('state: ', state);
+
+    setSelectedState(state);
+  }
+  function handleMunicipality(municipality: any) {
+    console.log('municipality: ', municipality);
+    setSelectedMuniciplaty(municipality);
+  }
+
+  function updateProvince(value: any) {
+    setProvince(value);
+    console.log('province: ', value);
+  }
+
+  function updateUser() {
+    const userId = localStorage.getItem('registeredUserId');
+    const payload = {
+      user_id: userId,
+      father_name: fatherName,
+      mother_name: motherName,
+      dob: dobAD,
+      current_address: currentAddress,
+      permanent_address: permanentAddress,
+      country: country,
+      municipality: selectedMuniciplaty,
+      province: province,
+    };
+    setLoadeStatus(true);
+    setLoaderText('Updating....');
+    dispatch(updateUserDetails(payload, nextRoute));
   }
   return (
     <>
+      <LoaderComponent showLoading={isLoading} loaderMessage={loaderText} />
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent headerLable="common.header" showBackButton={false} />
+
           <IonContent>
             <div className="user-details-container">
               <IonText className="page-header-text">
@@ -139,19 +226,17 @@ const AccountUser: React.FC<any> = () => {
                   onChange={updateMotherName}
                 />
                 <div className="date-picker-wrapper">
-                  <DatePickerComponent />
+                  <DatePickerComponent
+                    placeholder="account.dateofBirth"
+                    handler={handleDobAD}
+                  />
                 </div>
                 <div className="date-picker-wrapper">
-                  <DatePickerComponent />
+                  <DatePickerComponent
+                    placeholder="account.dateofBirthBS"
+                    handler={handleDobBS}
+                  />
                 </div>
-                <InputText
-                  inputType="text"
-                  labelText="account.bsad"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAccount}
-                />
                 <div>
                   <SelectMenu
                     label="signup.gender"
@@ -176,18 +261,26 @@ const AccountUser: React.FC<any> = () => {
                   onChange={updatePermanentAddress}
                 />
                 <div>
-                  <SelectMenu label="account.country" />
+                  <SelectMenu
+                    label="account.country"
+                    array={countryList}
+                    onSelect={handleCountry}
+                  />
                 </div>
                 <div>
-                  <SelectMenu label="account.state" />
+                  <SelectMenu
+                    label="account.state"
+                    array={states}
+                    onSelect={handleState}
+                  />
                 </div>
                 <div>
-                  <SelectMenu label="account.municipality" />
+                  <SelectMenu
+                    label="account.municipality"
+                    array={municipalties}
+                    onSelect={handleMunicipality}
+                  />
                 </div>
-                <div>
-                  <SelectMenu label="account.district" />
-                </div>
-
                 <InputText
                   inputType="text"
                   labelText="account.province"
@@ -205,15 +298,19 @@ const AccountUser: React.FC<any> = () => {
                       fullName.trim() &&
                       fatherName.trim() &&
                       motherName.trim() &&
-                      account.trim() &&
-                      gender.length > 0 &&
+                      gender &&
                       currentAddress.trim() &&
                       permanentAddress.trim() &&
-                      province.trim()
+                      province.trim() &&
+                      dobAD &&
+                      dobBS &&
+                      selectedState &&
+                      country &&
+                      municipalties
                         ? false
                         : true
                     }
-                    clickHandler={handleRegistration}
+                    clickHandler={updateUser}
                   />
                 </div>
               </div>

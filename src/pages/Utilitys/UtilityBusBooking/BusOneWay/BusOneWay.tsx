@@ -1,15 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-
-} from '@ionic/react';
-import {BusBookingIcon,} from '../../../../assets/Icons';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+import { BusBookingIcon } from '../../../../assets/Icons';
 import { Translate } from '../../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent , } from '../../../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+} from '../../../../components';
 import './BusOneWay.scss';
 
 const BusOneWay: React.FC = () => {
@@ -17,7 +15,7 @@ const BusOneWay: React.FC = () => {
 
   function handleBusBooking() {
     console.log('Handling registration');
-    history.push('/tabs/busTwoWay');
+    history.replace('/tabs/busTwoWay');
   }
 
   return (
@@ -56,7 +54,7 @@ const BusOneWay: React.FC = () => {
                     />
                   </div>
                 </div>
-                <div  className="departure-area">
+                <div className="departure-area">
                   <InputText
                     inputType="text"
                     labelText="UtilityDeparture"
@@ -79,7 +77,7 @@ const BusOneWay: React.FC = () => {
                     labelColor="light"
                   />
                 </div>
-                
+
                 <div className="booking-button">
                   <ButtonConmponent
                     buttonLabel="UtilityBus"

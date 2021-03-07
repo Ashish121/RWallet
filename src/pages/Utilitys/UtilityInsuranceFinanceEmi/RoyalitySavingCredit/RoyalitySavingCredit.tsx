@@ -1,13 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-} from '@ionic/react';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent } from '../../../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+} from '../../../../components';
 import './RoyalitySavingCredit.scss';
 
 const RoyalitySavingCredit: React.FC = () => {
@@ -15,7 +14,7 @@ const RoyalitySavingCredit: React.FC = () => {
 
   function handleproceed() {
     console.log('Handling registration');
-    history.push('/');
+    history.replace('/');
   }
 
   return (
@@ -71,11 +70,9 @@ const RoyalitySavingCredit: React.FC = () => {
                   color="light"
                   labelColor="light"
                 />
-            
+
                 <div className="royalitySaving-button">
-                  <ButtonConmponent
-                    buttonLabel="UtilityDiscard"
-                    size="block"/>
+                  <ButtonConmponent buttonLabel="UtilityDiscard" size="block" />
                 </div>
                 <div className="royalitySaving-submit">
                   <ButtonConmponent
@@ -93,4 +90,4 @@ const RoyalitySavingCredit: React.FC = () => {
   );
 };
 
-export {RoyalitySavingCredit};
+export { RoyalitySavingCredit };

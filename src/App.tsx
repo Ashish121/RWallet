@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
+import firebase from 'firebase/app';
 import Routes from './pages/Routes';
 
 /* Core CSS required for Ionic components to work properly */
@@ -35,10 +36,20 @@ const App: React.FC = () => {
   const message = useSelector((state: any) => state.toast.toastMessage);
   StatusBar.setStyle({ style: StatusBarStyle.Dark });
   // Show the splash for two seconds and then auto hide:
-  SplashScreen.show({
-    showDuration: 2000,
-    autoHide: true,
-  });
+  SplashScreen.hide();
+  useEffect(() => {
+    const firebaseConfig = {
+      apiKey: 'AIzaSyDJ7MJd0QIHefCPHw5TWGYp_q38lfT8xqw',
+      authDomain: 'royality-wallet-ac0bc.firebaseapp.com',
+      projectId: 'royality-wallet-ac0bc',
+      storageBucket: 'royality-wallet-ac0bc.appspot.com',
+      messagingSenderId: '361032041804',
+      appId: '1:361032041804:web:9768c4b02697f18eb1bbe9',
+      measurementId: 'G-KYXG3H44DT',
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  }, []);
   function closeToast() {
     dispatch({ type: 'RESET_TOAST' });
   }

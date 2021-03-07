@@ -1,3 +1,19 @@
+.skip_btn_container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  position: absolute;
+  margin-top: 30px;
+  right: 21px;
+  .btn-skip {
+    background-color: transparent;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+  }
+}
+
 .mpin-container {
   display: flex;
   justify-content: center;
@@ -10,7 +26,6 @@
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    font-family: "Montserrat";
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -31,7 +46,6 @@
     .innercontainer {
       width: 220px;
       text-align: center;
-      font-family: "Montserrat";
     }
   }
   .fields-container {

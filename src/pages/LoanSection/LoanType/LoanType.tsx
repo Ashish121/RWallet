@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import './LoanType.scss';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-} from '@ionic/react';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import { CustomAccordion, HeaderComponent,ButtonConmponent } from '../../../components';
+import {
+  CustomAccordion,
+  HeaderComponent,
+  ButtonConmponent,
+} from '../../../components';
 import { useHistory } from 'react-router-dom';
 
 const LoanType: React.FC = () => {
@@ -16,7 +15,7 @@ const LoanType: React.FC = () => {
 
   function handleEMIcal() {
     console.log('Handling registration');
-    history.push('/tabs/emiCalculater');
+    history.replace('/tabs/emiCalculater');
   }
   const [accordionDetails, setAccordionDetails] = useState([{}]);
   useEffect(() => {
@@ -46,19 +45,19 @@ const LoanType: React.FC = () => {
         title: 'TERM LOAN',
         showDetails: false,
       },
-      
+
       {
         id: 4,
         title: 'PERSONAL LOAN',
         showDetails: false,
       },
-      
+
       {
         id: 5,
         title: 'EDUCATION LOAN',
         showDetails: false,
       },
-      
+
       {
         id: 6,
         title: 'SECURED LOAN',
@@ -96,4 +95,4 @@ const LoanType: React.FC = () => {
   );
 };
 
-export {LoanType };
+export { LoanType };

@@ -3,6 +3,8 @@
   height: 100%;
   flex-direction: column;
   background-color: #3182b9;
+  --ion-font-family: "Montserrat" !important;
+  font-family: "Montserrat", sans-serif;
 
   .logoContainer {
     flex: 1;
@@ -44,15 +46,19 @@
   .header-grid {
     width: 100%;
   }
-  .linkText {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 15px;
-    color: #ffffff;
-    float: right;
-    margin-right: 5px;
-    line-height: 15px;
-    margin-top: 8px;
+  .link-text-wrapper {
+    display: flex;
+    justify-content: space-between;
+    .linkText {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 15px;
+      color: #ffffff;
+      float: right;
+      margin-right: 5px;
+      line-height: 15px;
+      margin-top: 8px;
+    }
   }
 }

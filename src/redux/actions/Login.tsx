@@ -8,7 +8,8 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
     try {
       const response = await authenticate(payload.contactNo, payload.password);
       if (response.status === 200) {
-        dispatch({ type: LOGIN_SUCCESS, data: response.data });
+        dispatch({ type: LOGIN_SUCCESS });
+        localStorage.setItem('loginDetails', JSON.stringify(response));
         nextRoute();
       }
       console.log('done', response);

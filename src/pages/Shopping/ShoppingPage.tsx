@@ -37,7 +37,7 @@ const ShoppingPage: React.FC = () => {
     setFavSelected(selectedStatus);
   }
   function showItemDetails() {
-    history.push('/tabs/shopping/itemdetails');
+    history.replace('/tabs/shopping/itemdetails');
   }
   return (
     <React.Fragment>

@@ -16,6 +16,7 @@ import {
   RadioComponent,
   CheckboxComponent,
   ButtonConmponent,
+  LoaderComponent,
 } from '../../../components';
 import './Fixed.scss';
 
@@ -23,18 +24,27 @@ const FixedAccountPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [investment_period, setInvestmentPeriod] = useState('');
-  const user_id = localStorage.getItem('userId');
   const [amount, setAmount] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setLoadeMessage] = useState('');
 
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
 
-  function nextRoute() {
-    history.replace('/confirm');
+  function nextRoute(status: any) {
+    if (status) {
+      history.replace('/confirm');
+      return;
+    }
+    setIsLoading(true);
+    setLoadeMessage('');
   }
 
   function navigateToConfirm() {
+    setIsLoading(true);
+    setLoadeMessage('Creating account...');
+    const user_id = localStorage.getItem('registeredUserId');
     dispatch(
       requestForFixedAccount({ investment_period, user_id, amount }, nextRoute)
     );
@@ -49,12 +59,20 @@ const FixedAccountPage: React.FC = () => {
     const investment_period = event.target.value;
     setInvestmentPeriod(investment_period);
   }
+  function goBack() {
+    history.replace('/accountpage');
+  }
 
   return (
     <>
+      <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent className="fixed-account-wrapper">
             <div className="fixed-wrapper">
               <div className="page-inner-wrapper">

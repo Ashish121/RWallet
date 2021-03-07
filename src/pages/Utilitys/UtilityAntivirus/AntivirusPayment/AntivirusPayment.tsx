@@ -1,14 +1,12 @@
 import React from 'react';
 // import { useHistory } from 'react-router-dom';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-
-} from '@ionic/react';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent } from '../../../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+} from '../../../../components';
 import './AntivirusPayment.scss';
 
 const AntivirusPayment: React.FC = () => {
@@ -16,7 +14,7 @@ const AntivirusPayment: React.FC = () => {
 
   //   function handleproceed() {
   //     console.log('Handling registration');
-  //     history.push('/');
+  //     history.replace('/');
   //   }
 
   return (
@@ -42,21 +40,19 @@ const AntivirusPayment: React.FC = () => {
                     <Translate message="AntivirusOrderDetails" />
                   </IonText>
                 </div>
-            
+
                 <div className="AntivirusPayment-spersky">
                   <IonText className="antivirus-payment-spersky">
                     <Translate message="Antiviruskaspersky" />
                   </IonText>
                 </div>
-              
+
                 <div className="antivirus-confirm-button">
                   <ButtonConmponent
                     buttonLabel="AntivirusContiue"
                     size="block"
-
                   />
                 </div>
-               
               </div>
             </div>
           </IonContent>

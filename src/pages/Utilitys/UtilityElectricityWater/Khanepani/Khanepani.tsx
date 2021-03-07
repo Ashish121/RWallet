@@ -1,13 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-} from '@ionic/react';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent } from '../../../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+} from '../../../../components';
 import './Khanepani.scss';
 
 const Khanepani: React.FC = () => {
@@ -15,7 +14,7 @@ const Khanepani: React.FC = () => {
 
   function handleproceed() {
     console.log('Handling registration');
-    history.push('/');
+    history.replace('/');
   }
 
   return (
@@ -43,12 +42,9 @@ const Khanepani: React.FC = () => {
                   color="light"
                   labelColor="light"
                 />
-          
-            
+
                 <div className="khanepani-button-last">
-                  <ButtonConmponent
-                    buttonLabel="UtilityDiscard"
-                    size="block"/>
+                  <ButtonConmponent buttonLabel="UtilityDiscard" size="block" />
                 </div>
                 <div className="khanepani-nepal-submit">
                   <ButtonConmponent
@@ -66,4 +62,4 @@ const Khanepani: React.FC = () => {
   );
 };
 
-export { Khanepani};
+export { Khanepani };

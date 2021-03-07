@@ -1,25 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-} from '@ionic/react';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent,RangeSlider  } from '../../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+  RangeSlider,
+} from '../../../components';
 import './EmiCalculater.scss';
 
 const EmiCalculater: React.FC = () => {
   const history = useHistory();
   const prinicipalAmount = useState('10000.00');
-  const interest= useState('724.00');
+  const interest = useState('724.00');
   const totalPayable = useState('10724.00');
   const emiAmountMonthly = useState('416.34');
 
   function handleCalculate() {
     console.log('Handling registration');
-    history.push('/tabs/applyPage');
+    history.replace('/tabs/applyPage');
   }
 
   return (
@@ -40,26 +40,31 @@ const EmiCalculater: React.FC = () => {
                   color="light"
                   labelColor="light"
                 />
-               
+
                 <div className="interest-area">
-                  <IonText className="interestRate-area"><span className="emi-interest"><Translate message='emiInterestRate'/></span></IonText>
+                  <IonText className="interestRate-area">
+                    <span className="emi-interest">
+                      <Translate message="emiInterestRate" />
+                    </span>
+                  </IonText>
                   <div className="range-area">
                     <RangeSlider />
                   </div>
                 </div>
                 <div className="interest-area">
-                  <IonText className="interestRate-area"><span className="emi-interest"><Translate message='emiLoanTenure'/></span></IonText>
+                  <IonText className="interestRate-area">
+                    <span className="emi-interest">
+                      <Translate message="emiLoanTenure" />
+                    </span>
+                  </IonText>
                   <div className="range-area">
                     <RangeSlider />
                   </div>
                 </div>
-              
+
                 <div className="button-Section">
                   <div className="emiCalculate-rest">
-                    <ButtonConmponent
-                      buttonLabel="emiRest"
-                      size="block"
-                    />
+                    <ButtonConmponent buttonLabel="emiRest" size="block" />
                   </div>
                   <div className="emiCalculater-calculate">
                     <ButtonConmponent
@@ -71,35 +76,43 @@ const EmiCalculater: React.FC = () => {
                 </div>
               </div>
               <div className="emiCalculater">
-                <IonText className="emi-cal-prinival"><span className="emi-interest"><Translate message='emiPrinivipalAmount'/></span></IonText>
+                <IonText className="emi-cal-prinival">
+                  <span className="emi-interest">
+                    <Translate message="emiPrinivipalAmount" />
+                  </span>
+                </IonText>
                 <div className="name-message">
-                  <IonText className="nameMessage">
-                    {prinicipalAmount}
-                  </IonText>
+                  <IonText className="nameMessage">{prinicipalAmount}</IonText>
                 </div>
               </div>
               <div className="emiCalculater">
-                <IonText className="emi-cal-prinival"><span className="emi-interest"><Translate message='emiInterest'/></span></IonText>
+                <IonText className="emi-cal-prinival">
+                  <span className="emi-interest">
+                    <Translate message="emiInterest" />
+                  </span>
+                </IonText>
                 <div className="name-message">
-                  <IonText className="nameMessage">
-                    {interest}
-                  </IonText>
+                  <IonText className="nameMessage">{interest}</IonText>
                 </div>
               </div>
               <div className="emiCalculater">
-                <IonText className="emi-cal-prinival"><span className="emi-interest"><Translate message='emiTotal'/></span></IonText>
+                <IonText className="emi-cal-prinival">
+                  <span className="emi-interest">
+                    <Translate message="emiTotal" />
+                  </span>
+                </IonText>
                 <div className="name-message">
-                  <IonText className="nameMessage">
-                    {totalPayable}
-                  </IonText>
+                  <IonText className="nameMessage">{totalPayable}</IonText>
                 </div>
               </div>
               <div className="emiCalculater1">
-                <IonText className="emi-cal-prinival1"><span className="emi-interest1"><Translate message='emiAmountMonthely'/></span></IonText>
+                <IonText className="emi-cal-prinival1">
+                  <span className="emi-interest1">
+                    <Translate message="emiAmountMonthely" />
+                  </span>
+                </IonText>
                 <div className="name-message1">
-                  <IonText className="nameMessage">
-                    {emiAmountMonthly}
-                  </IonText>
+                  <IonText className="nameMessage">{emiAmountMonthly}</IonText>
                 </div>
               </div>
             </div>

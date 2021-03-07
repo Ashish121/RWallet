@@ -1,15 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-
-} from '@ionic/react';
-import {BusBookingIcon} from '../../../../assets/Icons';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+import { BusBookingIcon } from '../../../../assets/Icons';
 import { Translate } from '../../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent } from '../../../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+} from '../../../../components';
 import './BusTwoWay.scss';
 
 const BusTwoWay: React.FC = () => {
@@ -17,7 +15,7 @@ const BusTwoWay: React.FC = () => {
 
   function handletopUp() {
     console.log('Handling registration');
-    history.push('/');
+    history.replace('/');
   }
 
   return (
@@ -75,10 +73,9 @@ const BusTwoWay: React.FC = () => {
                       labelColor="light"
                     />
                   </div>
-                  
                 </div>
-               
-                <div  className="departure-twoWay-area">
+
+                <div className="departure-twoWay-area">
                   <InputText
                     inputType="text"
                     labelText="UtilityTravellers"
@@ -107,7 +104,6 @@ const BusTwoWay: React.FC = () => {
         </IonPage>
       </IonApp>
     </>
-
   );
 };
 
