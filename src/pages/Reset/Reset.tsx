@@ -56,7 +56,7 @@ const Reset: React.FC = () => {
       <IonApp>
         <IonPage>
           <IonContent>
-            <div className="password-reset-container">
+            <div className="password-container">
               <div className="page-header">
                 <IonText>
                   <Translate message="reset.pageHeader" />
@@ -65,10 +65,11 @@ const Reset: React.FC = () => {
               <div className="page-sub-header">
                 <div className="innercontainer">
                   <IonText>
-                    <Translate message="rest.newpassword" />
+                    <Translate message="reset.newpassword" />
                   </IonText>
                 </div>
-              </div>{' '}
+              </div>
+
               <div className="input-container">
                 <InputText
                   inputType="password"

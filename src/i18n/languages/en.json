@@ -58,7 +58,7 @@
   "reset.pageHeader": "Password reset",
   "reset.pageSubHeader": "Enter your registered mobile number and an OTP will be reset your password",
   "reset.continue": "CONTINUE",
-  "rest.newpassword": "Enter your new password",
+  "reset.newpassword": "Enter your new password and confirm password",
   "rest.new": "New password",
   "rest.newConfirm": "Confirm password",
 
