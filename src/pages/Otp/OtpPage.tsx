@@ -40,14 +40,13 @@ const OtpPage: React.FC = () => {
   };
 
   function nextRoute(status: any, data: any) {
-    if (status == true) {
-      setShowLoading(false);
-      setLoaderMessage('');
-      history.replace('/mpin');
-    }
     setShowLoading(false);
-    history.goBack();
-    dispatch(updateToast(data));
+    setLoaderMessage('');
+    if (status == true) {
+      history.replace('/mpin');
+    } else {
+      dispatch(updateToast(data));
+    }
   }
 
   function sendOTP() {
@@ -201,7 +200,7 @@ const OtpPage: React.FC = () => {
                     <div className="resend-link-container">
                       <IonText>
                         <Translate message="otp.resendText" />
-                        <a>
+                        <a onClick={sendOTP}>
                           <Translate message="otp.resendLinkText" />
                         </a>
                       </IonText>

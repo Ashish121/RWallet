@@ -6,15 +6,21 @@ import {
   IonRouterOutlet,
   IonText,
 } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import { menuController } from '@ionic/core';
 import { ProfilePictureIcon, CloseIcon, MenuCamera } from '../../assets/Icons';
 import './SideMenu.scss';
 import { Translate } from '../../i18n/formatMessages';
 
 const MenuComponent: React.FC<any> = () => {
+  const history = useHistory();
   const closeMenu = () => {
     menuController.toggle();
   };
+  function logOut() {
+    history.replace('/login');
+    localStorage.clear();
+  }
   return (
     <>
       <IonMenu side="start" menuId="menu" contentId="menu">
@@ -92,7 +98,7 @@ const MenuComponent: React.FC<any> = () => {
                   <Translate message="profile.changePassword" />
                 </IonText>
               </button>
-              <button className="action-button">
+              <button className="action-button" onClick={logOut}>
                 <IonText>
                   <Translate message="profile.logout" />
                 </IonText>

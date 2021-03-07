@@ -61,3 +61,8 @@
     padding-right: 30px;
   }
 }
+.skip-toolbar {
+  ion-toolbar {
+    --background: transparent;
+  }
+}
