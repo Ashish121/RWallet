@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+import {
+  IonPage,
+  IonContent,
+  IonText,
+  IonApp,
+  IonButton,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+} from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText, LoaderComponent } from '../../components';
 import { useDispatch } from 'react-redux';
@@ -53,12 +62,21 @@ const MpinPage: React.FC = () => {
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
+          <div className="skip-toolbar">
+            <IonHeader>
+              <IonToolbar>
+                <IonButtons slot="end">
+                  <IonButton className="btn-skip" onClick={skipStep}>
+                    <IonText style={{ color: '#ffffff' }}>
+                      <Translate message="common.skip" />
+                    </IonText>
+                  </IonButton>
+                </IonButtons>
+              </IonToolbar>
+            </IonHeader>
+          </div>
           <IonContent>
-            <div className="skip_btn_container">
-              <button className="btn-skip" onClick={skipStep}>
-                <Translate message="common.skip" />
-              </button>
-            </div>
+            <div className="skip_btn_container"></div>
             <div className="mpin-container">
               <div className="page-header">
                 <IonText>
