@@ -103,7 +103,7 @@ const HomePage: React.FC = () => {
   };
 
   const showNotifications = () => {
-    history.push('/tabs/notification');
+    history.replace('/tabs/notification');
   };
 
   return (

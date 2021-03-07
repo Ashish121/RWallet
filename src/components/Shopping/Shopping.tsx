@@ -29,7 +29,7 @@ interface shoppingProps {
 const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
   const history = useHistory();
   const navigateToShopping = () => {
-    history.push({
+    history.replace({
       pathname: '/tabs/shopping',
       state: {
         shoppingType: 'mobile',

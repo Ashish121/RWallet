@@ -106,7 +106,7 @@ const AccountUser: React.FC<any> = () => {
     setLoaderText('');
     if (status) {
       localStorage.setItem('userFilledAccountDetails', 'true');
-      history.push('/accountpage');
+      history.replace('/accountpage');
       return;
     }
   }
@@ -192,7 +192,7 @@ const AccountUser: React.FC<any> = () => {
       <LoaderComponent showLoading={isLoading} loaderMessage={loaderText} />
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent headerLable="common.header" showBackButton={false} />
 
           <IonContent>
             <div className="user-details-container">

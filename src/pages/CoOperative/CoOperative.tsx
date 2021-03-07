@@ -53,7 +53,7 @@ const CoOperative: React.FC = () => {
   }
 
   function nextRoute() {
-    history.push('/cops');
+    history.replace('/cops');
   }
 
   function handleproceed() {

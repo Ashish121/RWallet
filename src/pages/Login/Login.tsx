@@ -34,7 +34,7 @@ const LoginPage: React.FC = () => {
   }
 
   function navigateToResetPassword() {
-    history.push('/reset');
+    history.replace('/reset');
   }
   function navigateToRegister() {
     history.replace('/register');

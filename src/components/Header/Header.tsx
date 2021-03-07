@@ -3,10 +3,13 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonBackButton,
   IonButtons,
   IonText,
+  IonIcon,
+  IonButton,
 } from '@ionic/react';
+import { chevronBackOutline } from 'ionicons/icons';
+
 import { menuController } from '@ionic/core';
 import { Translate } from '../../i18n/formatMessages';
 import './Header.scss';
@@ -21,6 +24,8 @@ interface headerProps {
   showNotification?: boolean;
   showCart?: boolean;
   cartHandler?: any;
+  handler?: Function;
+  showBackButton?: boolean;
 }
 
 const HeaderComponent: React.FC<headerProps> = ({
@@ -30,19 +35,31 @@ const HeaderComponent: React.FC<headerProps> = ({
   notificationHandler,
   showCart,
   cartHandler,
+  handler,
+  showBackButton = false,
 }) => {
   const toggleSideMenu = () => {
     menuController.toggle();
   };
+  function backButtonHandler() {
+    handler?.();
+  }
   return (
     <>
       {showMenu && <MenuComponent />}
 
       <IonHeader className="header-wrapper" style={{ backgroundImage: 'none' }}>
         <IonToolbar className="header">
-          {!showMenu && (
+          {!showMenu && showBackButton && (
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/" text="" />
+              <IonButton color="secondary" onClick={backButtonHandler}>
+                <IonIcon
+                  style={{ color: '#ffffff' }}
+                  slot="icon-only"
+                  ios={chevronBackOutline}
+                  md={chevronBackOutline}
+                />
+              </IonButton>
             </IonButtons>
           )}
           {showNotification && (

@@ -13,24 +13,24 @@ const AccountPage: React.FC = () => {
 
   function handleSaving() {
     console.log('Handling registration');
-    history.push('/account/saving');
+    history.replace('/account/saving');
   }
 
   function handleFixed() {
     console.log('Handling registration');
-    history.push('/account/fixed');
+    history.replace('/account/fixed');
   }
 
   function handleCurrent() {
     console.log('Handling registration');
-    history.push('/account/current');
+    history.replace('/account/current');
   }
 
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent headerLable="common.header" showBackButton={false} />
           <IonContent>
             <div className="account-type-page-container">
               <IonText className="header-text-area">

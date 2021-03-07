@@ -75,7 +75,7 @@ const Agent: React.FC = () => {
   }
 
   function nextRoute() {
-    history.push('/agentS');
+    history.replace('/agentS');
   }
   function handleproceed() {
     dispatch(

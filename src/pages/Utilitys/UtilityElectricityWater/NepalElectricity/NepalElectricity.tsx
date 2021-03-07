@@ -1,14 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-
-} from '@ionic/react';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent } from '../../../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+} from '../../../../components';
 import './NepalElectricity.scss';
 
 const NepalElectricity: React.FC = () => {
@@ -16,7 +14,7 @@ const NepalElectricity: React.FC = () => {
 
   function handleproceed() {
     console.log('Handling registration');
-    history.push('/');
+    history.replace('/');
   }
 
   return (
@@ -51,13 +49,9 @@ const NepalElectricity: React.FC = () => {
                   color="light"
                   labelColor="light"
                 />
-            
-                <div className="nepal-button-last">
-                  <ButtonConmponent
-                    buttonLabel="UtilityDiscard"
-                    size="block"
 
-                  />
+                <div className="nepal-button-last">
+                  <ButtonConmponent buttonLabel="UtilityDiscard" size="block" />
                 </div>
                 <div className="last-nepal-submit">
                   <ButtonConmponent

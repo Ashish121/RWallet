@@ -48,7 +48,7 @@ const Bank: React.FC = () => {
   }
 
   function nextRoute() {
-    history.push('/banks');
+    history.replace('/banks');
   }
   function handleproceed() {
     dispatch(

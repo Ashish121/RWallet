@@ -5,18 +5,17 @@ import { Translate } from '../../../../i18n/formatMessages';
 import { ButtonConmponent, HeaderComponent } from '../../../../components';
 import './InsuranceFinancePage.scss';
 
-
 const InsuranceFinancePage: React.FC = () => {
   const history = useHistory();
 
   function handleroyalFinancialServices() {
     console.log('Handling registration');
-    history.push('/royalityFinancialServices');
+    history.replace('/royalityFinancialServices');
   }
 
   function handleroyalitySavingCredit() {
     console.log('Handling registration');
-    history.push('/royalitySavingCredit');
+    history.replace('/royalitySavingCredit');
   }
 
   return (
@@ -34,7 +33,7 @@ const InsuranceFinancePage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="RoyalitySaving"
                     size="block"
-                    clickHandler={ handleroyalFinancialServices}
+                    clickHandler={handleroyalFinancialServices}
                   />
                 </div>
                 <div style={{ marginTop: '13px' }}>

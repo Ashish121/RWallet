@@ -14,7 +14,7 @@ import UtilitiesSection from './Utilities/Utilities';
 import DatePickerComponent from './DatePicker/DatePicker';
 import CustomAccordion from './Accordion/Accordion';
 import RangeSlider from './RangeSlider/RangeSlider';
-
+import BackButton from './BackButton/BackButton';
 export {
   InputText,
   ToastComponent,
@@ -32,4 +32,5 @@ export {
   DatePickerComponent,
   CustomAccordion,
   RangeSlider,
+  BackButton,
 };

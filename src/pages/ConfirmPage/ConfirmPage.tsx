@@ -21,7 +21,7 @@ const ConfirmPage: React.FC = () => {
     alert(
       'This feature is not available.You can expect this in future release'
     );
-    // history.push("/tabs");
+    // history.replace("/tabs");
   }
   return (
     <>

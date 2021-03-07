@@ -51,6 +51,9 @@ const CurrentAccountPage: React.FC = () => {
   function updateAmount(amount: any) {
     setAmount(amount);
   }
+  function backButtonHander() {
+    history.replace('/accountpage');
+  }
   // function updateInvestmentPeriod(event: any) {
   //   const investment_period = event.target.value;
   //   setInvestmentPeriod(investment_period);
@@ -60,7 +63,11 @@ const CurrentAccountPage: React.FC = () => {
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={backButtonHander}
+          />
           <IonContent className="current-account-wrapper">
             <div className="current-wrapper">
               <div className="page-inner-wrapper">

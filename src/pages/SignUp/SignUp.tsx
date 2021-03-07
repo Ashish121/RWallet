@@ -38,7 +38,7 @@ const SignUpPage: React.FC = () => {
   }, []);
 
   function handleRegistration() {
-    history.push('/otp', { fullName, gender, mobileNo, password });
+    history.replace('/otp', { fullName, gender, mobileNo, password });
   }
 
   function updateFullName(fullName: any) {

@@ -1,16 +1,14 @@
 import React from 'react';
 // import { useHistory } from 'react-router-dom';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-
-} from '@ionic/react';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
-import {FlightIcon,} from '../../../../assets/Icons';
+import { FlightIcon } from '../../../../assets/Icons';
 import { Translate } from '../../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent , } from '../../../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+} from '../../../../components';
 import './FlightOneWay.scss';
 
 const FlightOneWay: React.FC = () => {
@@ -18,7 +16,7 @@ const FlightOneWay: React.FC = () => {
 
   function handleflightBook() {
     console.log('Handling registration');
-    history.push('/tabs/flightTwoWay');
+    history.replace('/tabs/flightTwoWay');
   }
 
   return (
@@ -57,7 +55,7 @@ const FlightOneWay: React.FC = () => {
                     />
                   </div>
                 </div>
-                <div  className="departure-area">
+                <div className="departure-area">
                   <InputText
                     inputType="text"
                     labelText="UtilityDeparture"
@@ -80,7 +78,7 @@ const FlightOneWay: React.FC = () => {
                     labelColor="light"
                   />
                 </div>
-                
+
                 <div className="booking-button">
                   <ButtonConmponent
                     buttonLabel="UtilityBookFlight"

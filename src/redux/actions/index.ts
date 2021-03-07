@@ -7,3 +7,5 @@ export { requestForCurrentAccount } from './Current';
 export { requestForCoOperativeBankTransfer } from './CoOperative';
 export { requestForRegistration } from './Registration';
 export { loadInitialData, updateUserDetails } from './UserAccount';
+export { requestForResetPassword } from './Reset';
+export { requestForMpin } from './Mpin';

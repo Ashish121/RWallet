@@ -59,13 +59,20 @@ const FixedAccountPage: React.FC = () => {
     const investment_period = event.target.value;
     setInvestmentPeriod(investment_period);
   }
+  function goBack() {
+    history.replace('/accountpage');
+  }
 
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent className="fixed-account-wrapper">
             <div className="fixed-wrapper">
               <div className="page-inner-wrapper">

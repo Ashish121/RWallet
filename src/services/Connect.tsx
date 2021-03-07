@@ -240,3 +240,44 @@ export const updateUserAccountDetails = async (payload: any): Promise<any> => {
   console.log('result: ', result);
   return result;
 };
+
+//authentication for Mpin
+export const authenticationForMpin = async (
+  user_id: string,
+  mpin: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/update_mpin',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+      mpin: mpin,
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//authentication for  reset forgot password
+export const authenticationForResetPassword = async (
+  mobileNo: string,
+  newPass: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/forgot_password',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      mobile_number: mobileNo,
+      password: newPass,
+    }),
+  });
+  return result;
+};

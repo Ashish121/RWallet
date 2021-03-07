@@ -1,14 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-
-} from '@ionic/react';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import { ButtonConmponent,InputText, HeaderComponent } from '../../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+} from '../../../components';
 import './ApplyPage.scss';
 
 const ApplyPage: React.FC = () => {
@@ -16,7 +14,7 @@ const ApplyPage: React.FC = () => {
 
   function handleApply() {
     console.log('Handling registration');
-    history.push('/tabs/flightOneWay');
+    history.replace('/tabs/flightOneWay');
   }
 
   return (
@@ -69,7 +67,6 @@ const ApplyPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="ApplyPageDiscard"
                     size="block"
-
                   />
                 </div>
                 <div className="loan-ApplyPage-Apply">

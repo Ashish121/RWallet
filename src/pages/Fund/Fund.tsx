@@ -10,17 +10,17 @@ const Fund: React.FC = () => {
 
   function handleBank() {
     console.log('Handling registration');
-    history.push('/bank');
+    history.replace('/bank');
   }
 
   function handleCoperative() {
     console.log('Handling registration');
-    history.push('/cop');
+    history.replace('/cop');
   }
 
   function handleAgent() {
     console.log('Handling registration');
-    history.push('/agent');
+    history.replace('/agent');
   }
 
   return (
