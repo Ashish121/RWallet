@@ -40,6 +40,8 @@ export const authenticationForRegister = async (
       password: password,
     }),
   });
+  const mobile = localStorage.setItem('mobile_number', mobileNo);
+  console.log('mobile: ', mobile);
   console.log('result: ', result);
 
   return result;

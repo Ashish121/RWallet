@@ -56,7 +56,7 @@ const Reset: React.FC = () => {
       <IonApp>
         <IonPage>
           <IonContent>
-            <div className="container">
+            <div className="password-reset-container">
               <div className="page-header">
                 <IonText>
                   <Translate message="reset.pageHeader" />
@@ -68,7 +68,7 @@ const Reset: React.FC = () => {
                     <Translate message="rest.newpassword" />
                   </IonText>
                 </div>
-              </div>
+              </div>{' '}
               <div className="input-container">
                 <InputText
                   inputType="password"
@@ -93,14 +93,10 @@ const Reset: React.FC = () => {
                 <ButtonConmponent
                   buttonLabel="reset.continue"
                   size="block"
-                  clickHandler={handleVerifyReset}
                   disabled={
-                    newPass &&
-                    newPass.trim() === confirmPass.trim() &&
-                    confirmPass
-                      ? false
-                      : true
+                    newPass.trim() === confirmPass.trim() ? false : true
                   }
+                  clickHandler={handleVerifyReset}
                 />
               </div>
             </div>
