@@ -114,6 +114,8 @@
   "account.successText": "SUCCESS",
   "account.accountNoText": "Account created :",
   "account.continue": "CONTINUE",
+  "account.done": "DONE",
+  
 
   "fund.fundpage": "FUND TRANSFER",
   "fund.bankTrasfer": "BANK TRANSFER",

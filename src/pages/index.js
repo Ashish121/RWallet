@@ -45,6 +45,7 @@ import { ShoppingPage } from './Shopping/ShoppingPage';
 import { ItemDetailsPage } from './ShoppingItemDetails/ItemDetailsPage';
 import { InternetPayment } from './Utilitys/InternetPayment/InternetPayment';
 import { Antivirus } from './Utilitys/UtilityAntivirus/Antivirus/Antivirus';
+import { SuccessPage } from './SuccessPage/SuccessPage';
 
 export {
   HomePage,
@@ -94,4 +95,5 @@ export {
   ItemDetailsPage,
   InternetPayment,
   Antivirus,
+  SuccessPage,
 };

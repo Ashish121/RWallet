@@ -178,8 +178,7 @@ export const authenticationForBankTransfer = async (
       ],
     }),
   });
-  const userId = result.data.user.id;
-  localStorage.setItem('userId', userId);
+  console.log('result: ', result);
   return result;
 };
 

@@ -6,17 +6,21 @@ import { Translate } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
 import './Bank.scss';
 import { requestForBankTransfer } from '../../redux/actions/';
+import LoaderComponent from '../../components/Spinner/Spinner';
 
 const Bank: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const user_id = localStorage.getItem('userId');
+  //const user_id = localStorage.getItem("userId");
+  const user_id = 2;
   const [destination, setDestination] = useState('');
   const [holderName, setHolderName] = useState('');
   const [accountNumber, setAccountNumber] = useState('');
   const [mobileNo, setMobileNo] = useState('');
   const [amount, setAmount] = useState('');
   const [remarks, setRemarks] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setLoaderMessage] = useState('');
 
   function updateDestination(destination: any) {
     console.log('destination :', destination);
@@ -47,10 +51,18 @@ const Bank: React.FC = () => {
     setRemarks(remarks);
   }
 
-  function nextRoute() {
-    history.replace('/banks');
+  function nextRoute(status: any) {
+    setIsLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      console.log('status: ', status);
+      console.log('History: ', history);
+      history.replace('/tabs/banks');
+    }
   }
   function handleproceed() {
+    setIsLoading(true);
+    setLoaderMessage('Updating...');
     dispatch(
       requestForBankTransfer(
         {
@@ -68,88 +80,98 @@ const Bank: React.FC = () => {
     console.log('Handling registration');
   }
 
+  function goBack() {
+    history.replace('/tabs/transfer');
+  }
   return (
     <>
+      <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
-          <IonContent>
-            <div className="container">
-              <IonText className="bank-text-area">
-                <Translate message="fund.bankTrasfer" />
-              </IonText>
-              <div className="bank-wrapper">
-                <InputText
-                  inputType="text"
-                  labelText="bank.destination"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateDestination}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.holderName"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateHolderName}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.number"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAccountNumber}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.mobile"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateMobileNo}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.amount"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAmount}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.remark"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateRemarks}
-                />
-                <div className="bank-clear-button">
-                  <ButtonConmponent buttonLabel="bank.clear" size="block" />
-                </div>
-                <div className="bank-proceed-button">
-                  <ButtonConmponent
-                    buttonLabel="bank.proceed"
-                    size="block"
-                    disabled={
-                      destination.trim() &&
-                      holderName.trim() &&
-                      accountNumber.trim() &&
-                      mobileNo.trim() &&
-                      amount.trim() &&
-                      remarks.trim()
-                        ? false
-                        : true
-                    }
-                    clickHandler={handleproceed}
+          <>
+            <HeaderComponent
+              headerLable="common.header"
+              showBackButton={true}
+              handler={goBack}
+            />
+            <IonContent>
+              <div className="container">
+                <IonText className="bank-text-area">
+                  <Translate message="fund.bankTrasfer" />
+                </IonText>
+                <div className="bank-wrapper">
+                  <InputText
+                    inputType="text"
+                    labelText="bank.destination"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateDestination}
                   />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.holderName"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateHolderName}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.number"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateAccountNumber}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.mobile"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateMobileNo}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.amount"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateAmount}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.remark"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateRemarks}
+                  />
+                  <div className="bank-clear-button">
+                    <ButtonConmponent buttonLabel="bank.clear" size="block" />
+                  </div>
+                  <div className="bank-proceed-button">
+                    <ButtonConmponent
+                      buttonLabel="bank.proceed"
+                      size="block"
+                      disabled={
+                        destination.trim() &&
+                        holderName.trim() &&
+                        accountNumber.trim() &&
+                        mobileNo.trim() &&
+                        amount.trim() &&
+                        remarks.trim()
+                          ? false
+                          : true
+                      }
+                      clickHandler={handleproceed}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </IonContent>
+            </IonContent>
+          </>
         </IonPage>
       </IonApp>
     </>

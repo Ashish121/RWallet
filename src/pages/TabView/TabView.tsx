@@ -31,8 +31,8 @@ import {
   ConfirmPage,
   Agent,
   AgentS,
-  ApplyPage ,
-  EmiCalculater ,
+  ApplyPage,
+  EmiCalculater,
   FlightOneWay,
   FlightTwoWay,
   BusOneWay,
@@ -42,13 +42,14 @@ import {
   InternetPayment,
   ElectricityWater,
   NepalElectricity,
-  Khanepani ,
+  Khanepani,
   CardPayment,
-  InsuranceFinancePage ,
+  InsuranceFinancePage,
   RoyalityFinancialServices,
   RoyalitySavingCredit,
-  Antivirus ,
-  AntivirusPayment ,
+  Antivirus,
+  AntivirusPayment,
+  SuccessPage,
 } from '../index';
 import './TabView.scss';
 import { LoanType } from '../LoanSection/LoanType/LoanType';
@@ -117,18 +118,47 @@ const TabViewPage: React.FC = () => {
           <Route path="/tabs/busOneWay" exact component={BusOneWay} />
           <Route path="/tabs/busTwoWay" exact component={BusTwoWay} />
           <Route path="/tabs/topUpRecharge" exact component={TopUpRecharge} />
-          <Route path="/tabs/electricityWater" exact component={ElectricityWater} />
-          <Route path="/tabs/nepalElectricity" exact component={NepalElectricity} />
+          <Route
+            path="/tabs/electricityWater"
+            exact
+            component={ElectricityWater}
+          />
+          <Route
+            path="/tabs/nepalElectricity"
+            exact
+            component={NepalElectricity}
+          />
           <Route path="/tabs/khanepani" exact component={Khanepani} />
           <Route path="/tabs/tvPayment" exact component={TvPayment} />
-          <Route path="/tabs/internetPayment" exact component={InternetPayment} />
+          <Route
+            path="/tabs/internetPayment"
+            exact
+            component={InternetPayment}
+          />
           <Route path="/tabs/cardPayment" exact component={CardPayment} />
-          <Route path="/tabs/insuranceFinancePage" exact component={ InsuranceFinancePage} />
-          <Route path="/tabs/royalityFinancialServices" exact component={RoyalityFinancialServices} />
-          <Route path="/tabs/royalitySavingCredit" exact component={ RoyalitySavingCredit} />
-          <Route path="/tabs/antivirus" exact component={ Antivirus} />
-          <Route path="/tabs/antivirusPayment" exact component={ AntivirusPayment } />
- 
+          <Route
+            path="/tabs/insuranceFinancePage"
+            exact
+            component={InsuranceFinancePage}
+          />
+          <Route
+            path="/tabs/royalityFinancialServices"
+            exact
+            component={RoyalityFinancialServices}
+          />
+          <Route
+            path="/tabs/royalitySavingCredit"
+            exact
+            component={RoyalitySavingCredit}
+          />
+          <Route path="/tabs/antivirus" exact component={Antivirus} />
+          <Route
+            path="/tabs/antivirusPayment"
+            exact
+            component={AntivirusPayment}
+          />
+          <Route path="/tabs/successPage" exact component={SuccessPage} />
+
           <Route
             path="/tabs/shopping/itemdetails"
             exact
