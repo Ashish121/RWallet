@@ -15,80 +15,91 @@ const BankS: React.FC = () => {
 
   function handleSucess() {
     console.log('Handling registration');
-    history.replace('/sucessPage');
+    history.replace('/tabs/SuccessPage');
+  }
+  function goBack() {
+    history.replace('/tabs/bank');
   }
 
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
-          <IonContent>
-            <div className="bankDetails-container">
-              <IonText className="bankDetails-text-area">
-                <Translate message="fund.bankTrasfer" />
-              </IonText>
-              <div className="bankDetails-wrapper">
-                <IonText className="bankDetails-header-text">
-                  <span className="bank_text">
-                    <Translate message="bank.destination" />
-                  </span>
+          <>
+            <HeaderComponent
+              headerLable="common.header"
+              showBackButton={true}
+              handler={goBack}
+            />
+            <IonContent>
+              <div className="bankDetails-container">
+                <IonText className="bankDetails-text-area">
+                  <Translate message="fund.bankTrasfer" />
                 </IonText>
-                <div className="bankDetails-message">
-                  <IonText className="nameMessage">{DestinationBank}</IonText>
-                </div>
-                <IonText className="bankDetails-header-text">
-                  <span className="bank_text">
-                    <Translate message="bank.holderName" />
-                  </span>
-                </IonText>
-                <div className="bankDetails-message">
-                  <IonText className="nameMessage">{AccountHolderName}</IonText>
-                </div>
-                <IonText className="bankDetails-header-text">
-                  <span className="bank_text">
-                    <Translate message="bank.number" />
-                  </span>
-                </IonText>
-                <div className="bankDetails-message">
-                  <IonText className="nameMessage">{accountNumber}</IonText>
-                </div>
-                <IonText className="bankDetails-header-text">
-                  <span className="bank_text">
-                    <Translate message="bank.mobile" />
-                  </span>
-                </IonText>
-                <div className="bankDetails-message">
-                  <IonText className="nameMessage">{mobileNumber}</IonText>
-                </div>
-                <IonText className="bankDetails-header-text">
-                  <span className="bank_text">
-                    <Translate message="bank.amount" />
-                  </span>
-                </IonText>
-                <div className="bankDetails-message">
-                  <IonText className="nameMessage">{amount}</IonText>
-                </div>
-                <IonText className="bankDetails-header-text">
-                  <span className="bank_text">
-                    <Translate message="bank.remark" />
-                  </span>
-                </IonText>
-                <div className="bankDetails-message">
-                  <IonText className="nameMessage">{remarks}</IonText>
-                </div>
-                <div className="bankDetails-button">
-                  <div style={{ marginTop: '13px' }}>
-                    <ButtonConmponent
-                      buttonLabel="agent.conform"
-                      size="block"
-                      clickHandler={handleSucess}
-                    />
+                <div className="bankDetails-wrapper">
+                  <IonText className="bankDetails-header-text">
+                    <span className="bank_text">
+                      <Translate message="bank.destination" />
+                    </span>
+                  </IonText>
+                  <div className="bankDetails-message">
+                    <IonText className="nameMessage">{DestinationBank}</IonText>
+                  </div>
+                  <IonText className="bankDetails-header-text">
+                    <span className="bank_text">
+                      <Translate message="bank.holderName" />
+                    </span>
+                  </IonText>
+                  <div className="bankDetails-message">
+                    <IonText className="nameMessage">
+                      {AccountHolderName}
+                    </IonText>
+                  </div>
+                  <IonText className="bankDetails-header-text">
+                    <span className="bank_text">
+                      <Translate message="bank.number" />
+                    </span>
+                  </IonText>
+                  <div className="bankDetails-message">
+                    <IonText className="nameMessage">{accountNumber}</IonText>
+                  </div>
+                  <IonText className="bankDetails-header-text">
+                    <span className="bank_text">
+                      <Translate message="bank.mobile" />
+                    </span>
+                  </IonText>
+                  <div className="bankDetails-message">
+                    <IonText className="nameMessage">{mobileNumber}</IonText>
+                  </div>
+                  <IonText className="bankDetails-header-text">
+                    <span className="bank_text">
+                      <Translate message="bank.amount" />
+                    </span>
+                  </IonText>
+                  <div className="bankDetails-message">
+                    <IonText className="nameMessage">{amount}</IonText>
+                  </div>
+                  <IonText className="bankDetails-header-text">
+                    <span className="bank_text">
+                      <Translate message="bank.remark" />
+                    </span>
+                  </IonText>
+                  <div className="bankDetails-message">
+                    <IonText className="nameMessage">{remarks}</IonText>
+                  </div>
+                  <div className="bankDetails-button">
+                    <div style={{ marginTop: '13px' }}>
+                      <ButtonConmponent
+                        buttonLabel="agent.conform"
+                        size="block"
+                        clickHandler={handleSucess}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </IonContent>
+            </IonContent>
+          </>
         </IonPage>
       </IonApp>
     </>

@@ -13,38 +13,11 @@ import {
   AccountUser,
   AccountPage,
   Reset,
-  Fund,
-  Bank,
-  Agent,
-  BankS,
-  AgentS,
-  ConfirmPage,
-  CoOperativeS,
-  CoOperative,
   MenuBarPage,
   SavingAccountPage,
   CurrentAccountPage,
   AnimatedSplash,
   TransactionHistory,
-  ElectricityWater,
-  NepalElectricity,
-  Khanepani,
-  CardPayment,
-  InsuranceFinancePage,
-  RoyalityFinancialServices,
-  RoyalitySavingCredit,
-  AntivirusPayment,
-  ApplyPage,
-  EmiCalculater,
-  FlightOneWay,
-  FlightTwoWay,
-  BusOneWay,
-  BusTwoWay,
-  LoanType,
-  TvPayment,
-  TopUpRecharge,
-  InternetPayment,
-  Antivirus,
 } from './index';
 import './Routes.scss';
 
@@ -52,7 +25,6 @@ const Routes: React.FC = () => {
   const isTabView = true;
   const loggedInUser: any = localStorage.getItem('loginDetails');
   console.log('loggedInUser: ', JSON.parse(loggedInUser)?.type);
-
   const token = JSON.parse(loggedInUser)?.data?.token;
   console.log(token);
   const isUserFormCompleted = localStorage.getItem('userFilledAccountDetails')
@@ -86,19 +58,6 @@ const Routes: React.FC = () => {
             <Route path="/reset" exact component={ResetPassword} />
             <Route path="/passReset" exact component={Reset} />
 
-            <Route path="/fund" component={Fund} />
-            <Route path="/bank" exact component={Bank} />
-            <Route path="/cop" exact component={CoOperative} />
-            <Route path="/agent" exact component={Agent} />
-
-            {/* Summary Details Page  */}
-            <Route path="/bankS" exact component={BankS} />
-            <Route path="/copS" exact component={CoOperativeS} />
-            <Route path="/agentS" exact component={AgentS} />
-
-            {/* Sucess Page */}
-            <Route path="/confirm" exact component={ConfirmPage} />
-
             {/* Header Component  MenuBar Or Notification  */}
             <Route path="/menu" exact component={MenuBarPage} />
             <Route
@@ -107,72 +66,6 @@ const Routes: React.FC = () => {
               component={TransactionHistory}
             />
 
-            {/* Loan Section */}
-
-            <Route path="/applyPage" exact component={ApplyPage} />
-            <Route path="/emiCalculater" exact component={EmiCalculater} />
-            <Route path="/loanType" exact component={LoanType} />
-
-            {/* Utility FlightBooking Section */}
-
-            <Route path="/flightOneWay" exact component={FlightOneWay} />
-            <Route path="/flightTwoWay" exact component={FlightTwoWay} />
-
-            {/* Utility Bus Booking Section */}
-            <Route path="/busOneWay" exact component={BusOneWay} />
-            <Route path="/busTwoWay" exact component={BusTwoWay} />
-
-            {/* Utility ToUpRecharge Section */}
-            <Route path="/topUpRecharge" exact component={TopUpRecharge} />
-            <Route path="/tvPayment" exact component={TvPayment} />
-
-            {/* Utility Internet Payment Section */}
-
-            <Route path="/internetPayment" exact component={InternetPayment} />
-
-            {/* Utility Electricity Section */}
-            <Route
-              path="/electricityWater"
-              exact
-              component={ElectricityWater}
-            />
-            <Route
-              path="/nepalElectricity"
-              exact
-              component={NepalElectricity}
-            />
-            <Route path="/khanepani" exact component={Khanepani} />
-
-            <Route path="/CardPayment" exact component={CardPayment} />
-
-            <Route
-              path="/insuranceFinancePage"
-              exact
-              component={InsuranceFinancePage}
-            />
-            <Route
-              path="/royalityFinancialServices"
-              exact
-              component={RoyalityFinancialServices}
-            />
-            <Route
-              path="/royalitySavingCredit"
-              exact
-              component={RoyalitySavingCredit}
-            />
-
-            <Route
-              path="/antivirusPayment"
-              exact
-              component={AntivirusPayment}
-            />
-            {/* Utility Antivirus Section */}
-            <Route
-              path="/antivirusPayment"
-              exact
-              component={AntivirusPayment}
-            />
-            <Route path="/antivirus" exact component={Antivirus} />
             <Redirect
               exact
               from="/"

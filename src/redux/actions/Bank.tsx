@@ -1,10 +1,9 @@
-import { AUTHENTICATION_INPROGRESS, BANKTRANSFER_SUCCESS } from '../Contants';
+import { BANKTRANSFER_SUCCESS } from '../Contants';
 import { authenticationForBankTransfer } from '../../services/Connect';
 import { updateToast } from './index';
 
 const requestForBankTransfer = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
-    dispatch({ type: AUTHENTICATION_INPROGRESS });
     try {
       const response = await authenticationForBankTransfer(
         payload.user_id,
@@ -17,10 +16,11 @@ const requestForBankTransfer = (payload: any, nextRoute: Function) => {
       );
       if (response.status === 200) {
         dispatch({ type: BANKTRANSFER_SUCCESS, data: response.data });
-        nextRoute();
+        nextRoute(true);
       }
       console.log('done', response);
     } catch (error) {
+      nextRoute(false);
       const data = {
         showToast: true,
         toastMessage: 'API failed',

@@ -20,7 +20,7 @@ const reducers: any = {
   },
   [BANKTRANSFER_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
-    localStorage.setItem('RegistrationDetails', JSON.stringify(data));
+    localStorage.setItem('Bank Transfer Details:', JSON.stringify(data));
   },
   [BANKTRANSFER_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;
