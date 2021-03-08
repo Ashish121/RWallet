@@ -1,6 +1,22 @@
 ion-menu {
   --width: 100%;
 }
+.close-icon-btn {
+  width: 50px;
+  --background: #ffffff;
+  --box-shadow: noe;
+  border: none;
+  position: absolute;
+  right: 0px;
+  z-index: 99999;
+}
+.camera-btn {
+  width: 50px;
+  --background: transparent;
+  --box-shadow: noe;
+  border: none;
+  z-index: 99999;
+}
 .ion-content-wrapper {
   --ion-background-color: #ffffff !important;
 }
@@ -11,47 +27,54 @@ ion-menu {
   background-color: #ffffff;
   height: 100%;
   padding: 25px;
-  .profile-icon-wrapper {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    .camera-icon-wrapper {
-      position: absolute;
-      top: 80px;
-      right: 10px;
-    }
-  }
-
-  .page-header-text {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 22px;
-    /* identical to box height */
-
-    color: #000000;
-  }
-  .fields-wrapper {
+  .page-wrapper {
     display: flex;
-    flex-direction: column;
-    margin: 10px 0px 0px 0px;
-    flex-direction: column;
-    .label-text {
+    justify-content: space-between;
+    .profile-icon-wrapper {
+      position: absolute;
+      right: 30px;
+      ion-avatar {
+        width: 120px;
+        height: 120px;
+      }
+      .camera-icon-wrapper {
+        position: absolute;
+        top: 80px;
+        right: 10px;
+      }
+    }
+
+    .page-header-text {
       font-style: normal;
-      font-weight: 600;
-      font-size: 12px;
-      line-height: 15px;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      /* identical to box height */
+
       color: #000000;
     }
-    .label-value {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 10px;
-      line-height: 12px;
+    .fields-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0px 0px 0px;
+      flex-direction: column;
+      .label-text {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        color: #000000;
+      }
+      .label-value {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
 
-      color: #000000;
+        color: #000000;
 
-      opacity: 0.5;
+        opacity: 0.5;
+      }
     }
   }
   .action-items-wrapper {
@@ -79,16 +102,19 @@ ion-menu {
     }
   }
   .action-button {
-    margin: 25px 0px 0px 0px;
-    font-style: normal;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
     background-color: transparent;
     color: #000000;
     padding: 0px;
-  }
-  button:focus {
-    outline: 0;
+    width: 100%;
+    padding-top: 20px;
+    text-align: left;
+    padding-left: 0px;
+    outline: none;
+    button:focus {
+      outline: 0;
+    }
   }
 }
