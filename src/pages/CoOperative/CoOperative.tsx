@@ -10,7 +10,8 @@ import { requestForCoOperativeBankTransfer } from '../../redux/actions';
 const CoOperative: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const user_id = localStorage.getItem('userId');
+  const user_id = 2;
+  // const user_id = localStorage.getItem("userId");
   const [province, setProvince] = useState('');
   const [district, setDistrict] = useState('');
   const [copName, setCopName] = useState('');
@@ -53,7 +54,7 @@ const CoOperative: React.FC = () => {
   }
 
   function nextRoute() {
-    history.replace('/cops');
+    history.replace('/tabs/cops');
   }
 
   function handleproceed() {
@@ -76,107 +77,122 @@ const CoOperative: React.FC = () => {
     console.log('Handling registration');
   }
 
+  function goBack() {
+    history.replace('/tabs/transfer');
+  }
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
-          <IonContent>
-            <div className="container">
-              <IonText className="coperative-text-area">
-                <Translate message="coOperative.text" />
-              </IonText>
-              <div className="coperative-wrapper">
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.province"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateProvince}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.district"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateDistrict}
-                />
-
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.name"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateCopName}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.holder"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateHolderName}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.number"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAccountNo}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.mobile"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateMobileNo}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.amount"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAmount}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="coOperative.remark"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateRemarks}
-                />
-                <div className="coperative-clear-button">
-                  <ButtonConmponent buttonLabel="bank.clear" size="block" />
-                </div>
-                <div className="coperative-proceed-button">
-                  <ButtonConmponent
-                    buttonLabel="bank.proceed"
-                    size="block"
-                    disabled={
-                      province.trim() &&
-                      district.trim() &&
-                      copName.trim() &&
-                      holderName.trim() &&
-                      accountNo.trim() &&
-                      mobileNo.trim() &&
-                      amount.trim() &&
-                      remarks.trim()
-                        ? false
-                        : true
-                    }
-                    clickHandler={handleproceed}
+          <>
+            <HeaderComponent
+              headerLable="common.header"
+              showBackButton={true}
+              handler={goBack}
+            />
+            <IonContent>
+              <div className="container">
+                <IonText className="coperative-text-area">
+                  <Translate message="coOperative.text" />
+                </IonText>
+                <div className="coperative-wrapper">
+                  <InputText
+                    inputType="text"
+                    labelText="coOperative.province"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateProvince}
+                    clearInput={true}
                   />
+                  <InputText
+                    inputType="text"
+                    labelText="coOperative.district"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateDistrict}
+                    clearInput={true}
+                  />
+
+                  <InputText
+                    inputType="text"
+                    labelText="coOperative.name"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateCopName}
+                    clearInput={true}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="coOperative.holder"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateHolderName}
+                    clearInput={true}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.number"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateAccountNo}
+                    clearInput={true}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.mobile"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateMobileNo}
+                    clearInput={true}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="coOperative.amount"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateAmount}
+                    clearInput={true}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="coOperative.remark"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateRemarks}
+                    clearInput={true}
+                  />
+
+                  <div className="coperative-proceed-button">
+                    <ButtonConmponent
+                      buttonLabel="bank.proceed"
+                      size="block"
+                      disabled={
+                        province.trim() &&
+                        district.trim() &&
+                        copName.trim() &&
+                        holderName.trim() &&
+                        accountNo.trim() &&
+                        mobileNo.trim() &&
+                        amount.trim() &&
+                        remarks.trim()
+                          ? false
+                          : true
+                      }
+                      clickHandler={handleproceed}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </IonContent>
+            </IonContent>
+          </>
         </IonPage>
       </IonApp>
     </>

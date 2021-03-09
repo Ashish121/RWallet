@@ -6,11 +6,13 @@ import {
 } from '../Contants';
 interface CoOperativeState {
   isAuthenticating: boolean;
+  coOperativeDetails: any;
 }
 
 // defines the initial state for the reducer ...
 export const initialState: CoOperativeState = {
   isAuthenticating: false,
+  coOperativeDetails: null,
 };
 
 // defines this reducers reducer functions ...
@@ -20,7 +22,7 @@ const reducers: any = {
   },
   [COOPERATIVE_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
-    localStorage.setItem('COOPERATIVE DETAILS:', JSON.stringify(data));
+    draft.coOperativeDetails = data;
   },
   [COOPERATIVE_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;
