@@ -14,15 +14,13 @@
   .bank-wrapper {
     margin-top: 30px;
     background-color: #3182b9;
+    margin-top: 20px;
   }
-  .bank-clear-button {
-    width: 100px;
-    float: left;
-    margin-top: 40px;
-  }
+
   .bank-proceed-button {
-    width: 100px;
-    float: right;
+    width: 150px;
+    float: inline;
     margin-top: 40px;
+    margin-left: 25%;
   }
 }

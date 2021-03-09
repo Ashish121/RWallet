@@ -6,11 +6,13 @@ import {
 } from '../Contants';
 interface BankTransferState {
   isAuthenticating: boolean;
+  bankDetails: any;
 }
 
 // defines the initial state for the reducer ...
 export const initialState: BankTransferState = {
   isAuthenticating: false,
+  bankDetails: null,
 };
 
 // defines this reducers reducer functions ...
@@ -20,7 +22,7 @@ const reducers: any = {
   },
   [BANKTRANSFER_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
-    localStorage.setItem('Bank Transfer Details:', JSON.stringify(data));
+    draft.bankDetails = data;
   },
   [BANKTRANSFER_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;
