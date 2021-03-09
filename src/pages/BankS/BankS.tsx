@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import { useHistory } from 'react-router-dom';
 import { ButtonConmponent, HeaderComponent } from '../../components';
 import './BankS.scss';
+import { useSelector } from 'react-redux';
 const BankS: React.FC = () => {
   const history = useHistory();
-  const DestinationBank = useState('XYZ');
-  const AccountHolderName = useState('XYZ');
-  const accountNumber = useState('XYZ');
-  const mobileNumber = useState('XYZ');
-  const amount = useState('XYZ');
-  const remarks = useState('XYZ');
+  const bankDetails = useSelector(
+    (state: any) => state.bank.bankDetails.data.data
+  );
 
   function handleSucess() {
     console.log('Handling registration');
@@ -43,7 +41,9 @@ const BankS: React.FC = () => {
                     </span>
                   </IonText>
                   <div className="bankDetails-message">
-                    <IonText className="nameMessage">{DestinationBank}</IonText>
+                    <IonText className="nameMessage">
+                      {bankDetails.destination_bank}
+                    </IonText>
                   </div>
                   <IonText className="bankDetails-header-text">
                     <span className="bank_text">
@@ -52,7 +52,7 @@ const BankS: React.FC = () => {
                   </IonText>
                   <div className="bankDetails-message">
                     <IonText className="nameMessage">
-                      {AccountHolderName}
+                      {bankDetails.account_holder_name}
                     </IonText>
                   </div>
                   <IonText className="bankDetails-header-text">
@@ -61,7 +61,9 @@ const BankS: React.FC = () => {
                     </span>
                   </IonText>
                   <div className="bankDetails-message">
-                    <IonText className="nameMessage">{accountNumber}</IonText>
+                    <IonText className="nameMessage">
+                      {bankDetails.account_number}
+                    </IonText>
                   </div>
                   <IonText className="bankDetails-header-text">
                     <span className="bank_text">
@@ -69,7 +71,9 @@ const BankS: React.FC = () => {
                     </span>
                   </IonText>
                   <div className="bankDetails-message">
-                    <IonText className="nameMessage">{mobileNumber}</IonText>
+                    <IonText className="nameMessage">
+                      {bankDetails.mobile_number}
+                    </IonText>
                   </div>
                   <IonText className="bankDetails-header-text">
                     <span className="bank_text">
@@ -77,7 +81,9 @@ const BankS: React.FC = () => {
                     </span>
                   </IonText>
                   <div className="bankDetails-message">
-                    <IonText className="nameMessage">{amount}</IonText>
+                    <IonText className="nameMessage">
+                      {bankDetails.amount}
+                    </IonText>
                   </div>
                   <IonText className="bankDetails-header-text">
                     <span className="bank_text">
@@ -85,7 +91,9 @@ const BankS: React.FC = () => {
                     </span>
                   </IonText>
                   <div className="bankDetails-message">
-                    <IonText className="nameMessage">{remarks}</IonText>
+                    <IonText className="nameMessage">
+                      {bankDetails.remarks}
+                    </IonText>
                   </div>
                   <div className="bankDetails-button">
                     <div style={{ marginTop: '13px' }}>

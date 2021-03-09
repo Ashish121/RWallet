@@ -83,6 +83,7 @@ const Bank: React.FC = () => {
   function goBack() {
     history.replace('/tabs/transfer');
   }
+
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
@@ -107,6 +108,7 @@ const Bank: React.FC = () => {
                     color="light"
                     labelColor="light"
                     onChange={updateDestination}
+                    clearInput={true}
                   />
                   <InputText
                     inputType="text"
@@ -115,6 +117,7 @@ const Bank: React.FC = () => {
                     color="light"
                     labelColor="light"
                     onChange={updateHolderName}
+                    clearInput={true}
                   />
                   <InputText
                     inputType="text"
@@ -123,6 +126,7 @@ const Bank: React.FC = () => {
                     color="light"
                     labelColor="light"
                     onChange={updateAccountNumber}
+                    clearInput={true}
                   />
                   <InputText
                     inputType="text"
@@ -131,6 +135,7 @@ const Bank: React.FC = () => {
                     color="light"
                     labelColor="light"
                     onChange={updateMobileNo}
+                    clearInput={true}
                   />
                   <InputText
                     inputType="text"
@@ -139,6 +144,7 @@ const Bank: React.FC = () => {
                     color="light"
                     labelColor="light"
                     onChange={updateAmount}
+                    clearInput={true}
                   />
                   <InputText
                     inputType="text"
@@ -147,10 +153,9 @@ const Bank: React.FC = () => {
                     color="light"
                     labelColor="light"
                     onChange={updateRemarks}
+                    clearInput={true}
                   />
-                  <div className="bank-clear-button">
-                    <ButtonConmponent buttonLabel="bank.clear" size="block" />
-                  </div>
+
                   <div className="bank-proceed-button">
                     <ButtonConmponent
                       buttonLabel="bank.proceed"

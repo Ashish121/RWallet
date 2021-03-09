@@ -19,6 +19,7 @@ interface inputTextProps {
   placeholderText?: any;
   showPasswordMode?: boolean;
   autoFocus?: boolean;
+  clearInput?: boolean;
 }
 
 /**
@@ -38,6 +39,7 @@ const InputText: React.FC<inputTextProps> = ({
   maxLen,
   placeholderText,
   autoFocus,
+  clearInput,
 }) => {
   const [toggleEyeOn, setToggleEyeOn] = useState(false);
   const onInpuTextChange = debounce((event) => {
@@ -71,6 +73,7 @@ const InputText: React.FC<inputTextProps> = ({
               color={color}
               autofocus={autoFocus}
               onIonChange={(e) => onInpuTextChange(e)}
+              clearInput={clearInput}
             />
           )}
 
@@ -82,6 +85,7 @@ const InputText: React.FC<inputTextProps> = ({
               autofocus={autoFocus}
               onIonChange={(e) => onInpuTextChange(e)}
               placeholder={placeholderText}
+              clearInput={clearInput}
             />
           )}
           {showPasswordMode && (
