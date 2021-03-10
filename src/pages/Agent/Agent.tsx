@@ -11,12 +11,13 @@ import {
 } from '../../components';
 import './Agent.scss';
 import { requestForAgentTransfer } from '../../redux/actions';
+import LoaderComponent from '../../components/Spinner/Spinner';
 
 const Agent: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const user_id = localStorage.getItem('userId');
-
+  //const user_id = localStorage.getItem("userId");
+  const user_id = 2;
   const [country, setCountry] = useState('');
   const [countryDetails, setCountryDetails] = useState([{}]);
   const [agentCode, setAgentCode] = useState('');
@@ -25,6 +26,8 @@ const Agent: React.FC = () => {
   const [mobileNo, setMobileNo] = useState('');
   const [amount, setAmount] = useState('');
   const [remarks, setRemarks] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setLoaderMessage] = useState('');
 
   useEffect(() => {
     const array = [
@@ -74,10 +77,16 @@ const Agent: React.FC = () => {
     setRemarks(remarks);
   }
 
-  function nextRoute() {
-    history.replace('/agentS');
+  function nextRoute(status: any) {
+    setIsLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      history.replace('/tabs/agents');
+    }
   }
   function handleproceed() {
+    setIsLoading(true);
+    setLoaderMessage('Updating...');
     dispatch(
       requestForAgentTransfer(
         {
@@ -97,96 +106,111 @@ const Agent: React.FC = () => {
     console.log('Handling registration:');
   }
 
+  function goBack() {
+    history.replace('/tabs/transfer');
+  }
+
   return (
     <>
+      <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
-          <IonContent>
-            <div className="container">
-              <IonText className="agent-text-area">
-                <Translate message="agent.text" />
-              </IonText>
-              <div className="agent-page-wrapper">
-                <div>
-                  <SelectMenu
-                    label="agent.country"
-                    onSelect={onCounrtySelect}
-                    array={countryDetails}
+          <>
+            <HeaderComponent
+              headerLable="common.header"
+              showBackButton={true}
+              handler={goBack}
+            />
+            <IonContent>
+              <div className="container">
+                <IonText className="agent-text-area">
+                  <Translate message="agent.text" />
+                </IonText>
+                <div className="agent-page-wrapper">
+                  <div>
+                    <SelectMenu
+                      label="agent.country"
+                      onSelect={onCounrtySelect}
+                      array={countryDetails}
+                    />
+                  </div>
+                  <InputText
+                    inputType="text"
+                    labelText="agent.code"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateAgentCode}
+                    clearInput={true}
                   />
-                </div>
-                <InputText
-                  inputType="text"
-                  labelText="bank.code"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAgentCode}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.holderName"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAccountHolderName}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.number"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAccountNumber}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.mobile"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateMobileNo}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.amount"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAmount}
-                />
-                <InputText
-                  inputType="text"
-                  labelText="bank.remark"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateRemarks}
-                />
-                <div className="agent-clear-button">
-                  <ButtonConmponent buttonLabel="bank.clear" size="block" />
-                </div>
-                <div className="agent-proceed-button">
-                  <ButtonConmponent
-                    buttonLabel="bank.proceed"
-                    size="block"
-                    disabled={
-                      country.trim() &&
-                      agentCode.trim() &&
-                      accountHolderName.trim() &&
-                      accountNo.trim() &&
-                      mobileNo.trim() &&
-                      amount.trim() &&
-                      remarks.trim()
-                        ? false
-                        : true
-                    }
-                    clickHandler={handleproceed}
+                  <InputText
+                    inputType="text"
+                    labelText="bank.holderName"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateAccountHolderName}
+                    clearInput={true}
                   />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.number"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateAccountNumber}
+                    clearInput={true}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.mobile"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateMobileNo}
+                    clearInput={true}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.amount"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateAmount}
+                    clearInput={true}
+                  />
+                  <InputText
+                    inputType="text"
+                    labelText="bank.remark"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    onChange={updateRemarks}
+                    clearInput={true}
+                  />
+
+                  <div className="agent-proceed-button">
+                    <ButtonConmponent
+                      buttonLabel="bank.proceed"
+                      size="block"
+                      disabled={
+                        country.trim() &&
+                        agentCode.trim() &&
+                        accountHolderName.trim() &&
+                        accountNo.trim() &&
+                        mobileNo.trim() &&
+                        amount.trim() &&
+                        remarks.trim()
+                          ? false
+                          : true
+                      }
+                      clickHandler={handleproceed}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </IonContent>
+            </IonContent>
+          </>
         </IonPage>
       </IonApp>
     </>
