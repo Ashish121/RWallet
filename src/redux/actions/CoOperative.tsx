@@ -1,4 +1,4 @@
-import { AUTHENTICATION_INPROGRESS, COOPERATIVE_SUCCESS } from '../Contants';
+import { COOPERATIVE_SUCCESS } from '../Contants';
 import { authenticationForCoOperativeBankTransfer } from '../../services/Connect';
 import { updateToast } from './index';
 
@@ -7,7 +7,6 @@ const requestForCoOperativeBankTransfer = (
   nextRoute: Function
 ) => {
   return async (dispatch: any) => {
-    dispatch({ type: AUTHENTICATION_INPROGRESS });
     try {
       const response = await authenticationForCoOperativeBankTransfer(
         payload.user_id,
@@ -22,10 +21,11 @@ const requestForCoOperativeBankTransfer = (
       );
       if (response.status === 200) {
         dispatch({ type: COOPERATIVE_SUCCESS, data: response.data });
-        nextRoute();
+        nextRoute(true);
       }
       console.log('done', response);
     } catch (error) {
+      nextRoute(false);
       const data = {
         showToast: true,
         toastMessage: 'API failed',

@@ -6,6 +6,7 @@ import { Translate } from '../../i18n/formatMessages';
 import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
 import './CoOperative.scss';
 import { requestForCoOperativeBankTransfer } from '../../redux/actions';
+import LoaderComponent from '../../components/Spinner/Spinner';
 
 const CoOperative: React.FC = () => {
   const history = useHistory();
@@ -20,6 +21,8 @@ const CoOperative: React.FC = () => {
   const [mobileNo, setMobileNo] = useState('');
   const [amount, setAmount] = useState('');
   const [remarks, setRemarks] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setLoaderMessage] = useState('');
 
   function updateProvince(province: any) {
     setProvince(province);
@@ -53,11 +56,19 @@ const CoOperative: React.FC = () => {
     setRemarks(remarks);
   }
 
-  function nextRoute() {
-    history.replace('/tabs/cops');
+  function nextRoute(status: any) {
+    setIsLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      console.log('status: ', status);
+      console.log('History: ', history);
+      history.replace('/tabs/cops');
+    }
   }
 
   function handleproceed() {
+    setIsLoading(true);
+    setLoaderMessage('Updating...');
     dispatch(
       requestForCoOperativeBankTransfer(
         {
@@ -82,6 +93,7 @@ const CoOperative: React.FC = () => {
   }
   return (
     <>
+      <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
           <>
