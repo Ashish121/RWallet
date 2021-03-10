@@ -21,19 +21,13 @@ const SuccessPage: React.FC = () => {
   function navigateToHome() {
     history.replace('/tabs/home');
   }
-  function goBack() {
-    history.replace('/tabs/banks');
-  }
+
   return (
     <>
       <IonApp>
         <IonPage>
           <>
-            <HeaderComponent
-              headerLable="common.header"
-              showBackButton={true}
-              handler={goBack}
-            />
+            <HeaderComponent headerLable="common.header" />
             <IonContent>
               <div
                 className="confirm-page-wrapper"
