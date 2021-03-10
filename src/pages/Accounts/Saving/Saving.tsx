@@ -53,7 +53,7 @@ const SavingAccountPage: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling Fixed account', amount, investment_period);
+    console.log('Handling saving account', amount, investment_period);
   }
 
   function updateInvestmentPeriod(event: any) {

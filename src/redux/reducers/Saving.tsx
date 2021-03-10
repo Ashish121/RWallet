@@ -4,12 +4,12 @@ import {
   SAVING_SUCCESS,
   SAVING_FAILED,
 } from '../Contants';
-interface FixedState {
+interface SavingState {
   isAuthenticating: boolean;
 }
 
 // defines the initial state for the reducer ...
-export const initialState: FixedState = {
+export const initialState: SavingState = {
   isAuthenticating: false,
 };
 
@@ -20,7 +20,7 @@ const reducers: any = {
   },
   [SAVING_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
-    localStorage.setItem('Fixed_Account_Details', JSON.stringify(data));
+    localStorage.setItem('Saving_Account_Details', JSON.stringify(data));
   },
   [SAVING_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;
@@ -28,7 +28,7 @@ const reducers: any = {
 };
 
 // defines all reducers for actions of interest to the this reducer ...
-export default produce((draft: FixedState = initialState, action) => {
+export default produce((draft: SavingState = initialState, action) => {
   reducers?.[action.type]?.(draft, action);
   return draft;
 });
