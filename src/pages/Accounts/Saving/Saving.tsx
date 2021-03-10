@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   IonPage,
   IonContent,
@@ -14,27 +14,78 @@ import {
   RadioComponent,
   CheckboxComponent,
   ButtonConmponent,
+  LoaderComponent,
 } from '../../../components';
 
 import './Saving.scss';
-
+import { useDispatch } from 'react-redux';
+import { requestForSavingAccount } from '../../../redux/actions';
 const SavingAccountPage: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [investment_period, setInvestmentPeriod] = useState('');
+  const [amount, setAmount] = useState('');
+  const [depositType, setDepositType] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setLoadeMessage] = useState('');
+
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
-  function navigateToConfirm() {
-    // console.log("history: ", history);
-    // console.log("Router.History", Router.History);
-    // history.replaceState("/confirm");
-    history.replace('/confirm');
+
+  function nextRoute(status: any) {
+    if (status) {
+      history.replace('/tabs/confirm');
+      return;
+    }
+    setIsLoading(true);
+    setLoadeMessage('');
   }
 
+  function navigateToConfirm() {
+    setIsLoading(true);
+    setLoadeMessage('Creating account...');
+    // const user_id = localStorage.getItem("registeredUserId");
+    const user_id = 2;
+    dispatch(
+      requestForSavingAccount(
+        { investment_period, user_id, amount, depositType },
+        nextRoute
+      )
+    );
+    console.log('Handling Fixed account', amount, investment_period);
+  }
+
+  function updateInvestmentPeriod(event: any) {
+    const investment_period = event.target.value;
+    setInvestmentPeriod(investment_period);
+    console.log('investment_period', investment_period);
+  }
+
+  function updateAmount(amount: any) {
+    console.log('amount', amount);
+    setAmount(amount);
+  }
+
+  function updateDepositType(event: any) {
+    const depositType = event.target.value;
+    setDepositType(depositType);
+    console.log('depositType', depositType);
+  }
+
+  function goBack() {
+    history.replace('/accountpage');
+  }
   return (
     <>
+      <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent className="saving-account-wrapper">
             <div className="saving-wrapper">
               <div className="page-inner-wrapper">
@@ -51,17 +102,18 @@ const SavingAccountPage: React.FC = () => {
                 <InputText
                   inputType="tel"
                   placeholderText="Amount of deposite(Min Rs 1000)"
+                  onChange={updateAmount}
                 />
                 <div className="SavingSection-0">
                   <IonText className="section-header">
                     <Translate message="account.savingDeposit" />
                   </IonText>
-                  <IonRadioGroup>
+                  <IonRadioGroup onIonChange={updateDepositType}>
                     <div className="options-section1">
-                      <RadioComponent label="Daily Rs 1000" />
+                      <RadioComponent label="Daily Rs 1000" val="daily" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="Monthly Rs 1000" />
+                      <RadioComponent label="Monthly Rs 1000" val="monthly" />
                     </div>
                   </IonRadioGroup>
                 </div>
@@ -69,15 +121,15 @@ const SavingAccountPage: React.FC = () => {
                   <IonText className="section-header">
                     <Translate message="account.investmentPeriodDaily" />
                   </IonText>
-                  <IonRadioGroup>
+                  <IonRadioGroup onIonChange={updateInvestmentPeriod}>
                     <div className="options-section1">
-                      <RadioComponent label="12 months with 3.5%" />
+                      <RadioComponent label="12 months with 3.5%" val="12" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="24 months with 8%" />
+                      <RadioComponent label="24 months with 8%" val="24" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="36 months with 13%" />
+                      <RadioComponent label="36 months with 13%" val="36" />
                     </div>
                   </IonRadioGroup>
                 </div>
@@ -85,21 +137,21 @@ const SavingAccountPage: React.FC = () => {
                   <IonText className="section-header">
                     <Translate message="account.investmentPeriodMonthly" />
                   </IonText>
-                  <IonRadioGroup>
+                  <IonRadioGroup onIonChange={updateInvestmentPeriod}>
                     <div className="options-section1">
-                      <RadioComponent label="12 months with 5%" />
+                      <RadioComponent label="12 months with 5%" val="12" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="24 months with 6%" />
+                      <RadioComponent label="24 months with 6%" val="24" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="36 months with 12%" />
+                      <RadioComponent label="36 months with 12%" val="36" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="48 months with 15.5%" />
+                      <RadioComponent label="48 months with 15.5%" val="48" />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="60 monthss with 20%" />
+                      <RadioComponent label="60 monthss with 20%" val="60" />
                     </div>
                   </IonRadioGroup>
                 </div>
@@ -121,6 +173,13 @@ const SavingAccountPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="account.openAccount"
                     size="block"
+                    disabled={
+                      investment_period.trim() &&
+                      amount.trim() &&
+                      depositType.trim()
+                        ? false
+                        : true
+                    }
                     clickHandler={navigateToConfirm}
                   />
                 </div>

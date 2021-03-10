@@ -39,7 +39,7 @@ const AccountPage: React.FC = () => {
               <div className="page-wrapper">
                 <div style={{ marginTop: '13px' }}>
                   <ButtonConmponent
-                    disabled={true}
+                    //disabled={true}
                     buttonLabel="account.saving"
                     size="block"
                     clickHandler={handleSaving}

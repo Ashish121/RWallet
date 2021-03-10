@@ -49,3 +49,7 @@ export const RESETPASSWORD_FAILED = 'RESETPASSWORD_FAILED';
 
 export const MPIN_SUCCESS = 'MPIN_SUCCESS';
 export const MPIN_FAILED = 'MPIN_FAILED';
+
+//for saving account
+export const SAVING_SUCCESS = 'SAVING_SUCCESS';
+export const SAVING_FAILED = 'SAVING_FAILED';

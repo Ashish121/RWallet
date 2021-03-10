@@ -282,3 +282,32 @@ export const authenticationForResetPassword = async (
   });
   return result;
 };
+
+//authentication for saving account
+export const authenticationForSavingAccount = async (
+  investment_period: string,
+  user_id: string,
+  amount: number,
+  depositType: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/saving_account_create',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      saving_account: [
+        {
+          investment_period: investment_period,
+          user_id: user_id,
+          amount: amount,
+          deposit_type: depositType,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};

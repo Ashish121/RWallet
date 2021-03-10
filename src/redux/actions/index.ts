@@ -9,3 +9,4 @@ export { requestForRegistration } from './Registration';
 export { loadInitialData, updateUserDetails } from './UserAccount';
 export { requestForResetPassword } from './Reset';
 export { requestForMpin } from './Mpin';
+export {requestForSavingAccount} from './Saving';
