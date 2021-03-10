@@ -6,11 +6,13 @@ import {
 } from '../Contants';
 interface AgentTransferState {
   isAuthenticating: boolean;
+  agentDetails: any;
 }
 
 // defines the initial state for the reducer ...
 export const initialState: AgentTransferState = {
   isAuthenticating: false,
+  agentDetails: null,
 };
 
 // defines this reducers reducer functions ...
@@ -20,7 +22,7 @@ const reducers: any = {
   },
   [AGETTRANSFER_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
-    localStorage.setItem('Agent Transfer Details', JSON.stringify(data));
+    draft.agentDetails = data;
   },
   [AGETTRANSFER_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;
