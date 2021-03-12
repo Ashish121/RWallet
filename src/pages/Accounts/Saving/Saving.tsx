@@ -28,8 +28,8 @@ const SavingAccountPage: React.FC = () => {
   const [depositType, setDepositType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoadeMessage] = useState('');
-  const [showRadioButton1, setShowRadioButton1] = useState(false);
-
+  const [showDailySection, setShowDailySection] = useState(true);
+  const [showMonthlySection, setShowMonthlySection] = useState(false);
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
@@ -72,9 +72,11 @@ const SavingAccountPage: React.FC = () => {
     const depositType = event.target.value;
     setDepositType(depositType);
     if (depositType === 'daily') {
-      return setShowRadioButton1(showRadioButton1);
+      setShowDailySection(true);
+      setShowMonthlySection(false);
     } else {
-      return setShowRadioButton1(!showRadioButton1);
+      setShowDailySection(false);
+      setShowMonthlySection(true);
     }
   }
 
@@ -130,7 +132,7 @@ const SavingAccountPage: React.FC = () => {
                     </div>
                   </IonRadioGroup>
                 </div>
-                {!showRadioButton1 ? (
+                {showDailySection && (
                   <div className="SevingSection-1">
                     <IonText className="section-header">
                       <Translate message="account.investmentPeriodDaily" />
@@ -160,7 +162,8 @@ const SavingAccountPage: React.FC = () => {
                       </div>
                     </IonRadioGroup>
                   </div>
-                ) : (
+                )}
+                {showMonthlySection && (
                   <div className="SevingSection-2">
                     <IonText className="section-header">
                       <Translate message="account.investmentPeriodMonthly" />
