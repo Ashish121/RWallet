@@ -28,6 +28,7 @@ const SavingAccountPage: React.FC = () => {
   const [depositType, setDepositType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoadeMessage] = useState('');
+  const [showRadioButton1, setShowRadioButton1] = useState(false);
 
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
@@ -70,7 +71,11 @@ const SavingAccountPage: React.FC = () => {
   function updateDepositType(event: any) {
     const depositType = event.target.value;
     setDepositType(depositType);
-    console.log('depositType', depositType);
+    if (depositType === 'daily') {
+      return setShowRadioButton1(showRadioButton1);
+    } else {
+      return setShowRadioButton1(!showRadioButton1);
+    }
   }
 
   function goBack() {
@@ -110,51 +115,96 @@ const SavingAccountPage: React.FC = () => {
                   </IonText>
                   <IonRadioGroup onIonChange={updateDepositType}>
                     <div className="options-section1">
-                      <RadioComponent label="Daily Rs 1000" val="daily" />
+                      <RadioComponent
+                        label="Daily Rs 1000"
+                        val="daily"
+                        showRadioButton={true}
+                      />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="Monthly Rs 1000" val="monthly" />
+                      <RadioComponent
+                        label="Monthly Rs 1000"
+                        val="monthly"
+                        showRadioButton={true}
+                      />
                     </div>
                   </IonRadioGroup>
                 </div>
-                <div className="SevingSection-1">
-                  <IonText className="section-header">
-                    <Translate message="account.investmentPeriodDaily" />
-                  </IonText>
-                  <IonRadioGroup onIonChange={updateInvestmentPeriod}>
-                    <div className="options-section1">
-                      <RadioComponent label="12 months with 3.5%" val="12" />
-                    </div>
-                    <div className="options-section1">
-                      <RadioComponent label="24 months with 8%" val="24" />
-                    </div>
-                    <div className="options-section1">
-                      <RadioComponent label="36 months with 13%" val="36" />
-                    </div>
-                  </IonRadioGroup>
-                </div>
-                <div className="SevingSection-2">
-                  <IonText className="section-header">
-                    <Translate message="account.investmentPeriodMonthly" />
-                  </IonText>
-                  <IonRadioGroup onIonChange={updateInvestmentPeriod}>
-                    <div className="options-section1">
-                      <RadioComponent label="12 months with 5%" val="12" />
-                    </div>
-                    <div className="options-section1">
-                      <RadioComponent label="24 months with 6%" val="24" />
-                    </div>
-                    <div className="options-section1">
-                      <RadioComponent label="36 months with 12%" val="36" />
-                    </div>
-                    <div className="options-section1">
-                      <RadioComponent label="48 months with 15.5%" val="48" />
-                    </div>
-                    <div className="options-section1">
-                      <RadioComponent label="60 monthss with 20%" val="60" />
-                    </div>
-                  </IonRadioGroup>
-                </div>
+                {!showRadioButton1 ? (
+                  <div className="SevingSection-1">
+                    <IonText className="section-header">
+                      <Translate message="account.investmentPeriodDaily" />
+                    </IonText>
+
+                    <IonRadioGroup onIonChange={updateInvestmentPeriod}>
+                      <div className="options-section1">
+                        <RadioComponent
+                          label="12 months with 3.5%"
+                          val="12"
+                          showRadioButton={true}
+                        />
+                      </div>
+                      <div className="options-section1">
+                        <RadioComponent
+                          label="24 months with 8%"
+                          val="24"
+                          showRadioButton={true}
+                        />
+                      </div>
+                      <div className="options-section1">
+                        <RadioComponent
+                          label="36 months with 13%"
+                          val="36"
+                          showRadioButton={true}
+                        />
+                      </div>
+                    </IonRadioGroup>
+                  </div>
+                ) : (
+                  <div className="SevingSection-2">
+                    <IonText className="section-header">
+                      <Translate message="account.investmentPeriodMonthly" />
+                    </IonText>
+
+                    <IonRadioGroup onIonChange={updateInvestmentPeriod}>
+                      <div className="options-section1">
+                        <RadioComponent
+                          label="12 months with 5%"
+                          val="12"
+                          showRadioButton={true}
+                        />
+                      </div>
+                      <div className="options-section1">
+                        <RadioComponent
+                          label="24 months with 6%"
+                          val="24"
+                          showRadioButton={true}
+                        />
+                      </div>
+                      <div className="options-section1">
+                        <RadioComponent
+                          label="36 months with 12%"
+                          val="36"
+                          showRadioButton={true}
+                        />
+                      </div>
+                      <div className="options-section1">
+                        <RadioComponent
+                          label="48 months with 15.5%"
+                          val="48"
+                          showRadioButton={true}
+                        />
+                      </div>
+                      <div className="options-section1">
+                        <RadioComponent
+                          label="60 monthss with 20%"
+                          val="60"
+                          showRadioButton={true}
+                        />
+                      </div>
+                    </IonRadioGroup>
+                  </div>
+                )}
                 <div className="terms-select-wrapper">
                   <CheckboxComponent
                     onCheckboxToggle={setToggleTerms}

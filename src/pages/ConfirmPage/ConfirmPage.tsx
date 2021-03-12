@@ -13,15 +13,13 @@ import {
 import './ConfirmPage.scss';
 import { OrderConfirmIcon } from '../../assets/Icons';
 import { Translate } from '../../i18n/formatMessages';
-
+import { useHistory } from 'react-router-dom';
 const ConfirmPage: React.FC = () => {
+  const history = useHistory();
   const generatedAccountNo = useState('07601202001');
   // const [generatedAccountNo, setGeneratedAccountNo] = useState("07601202001");
   function navigateToHome() {
-    alert(
-      'This feature is not available.You can expect this in future release'
-    );
-    // history.replace("/tabs");
+    history.replace('/tabs/home');
   }
   return (
     <>
@@ -80,7 +78,7 @@ const ConfirmPage: React.FC = () => {
               </div>
               <div className="continue-btn-wrapper">
                 <ButtonConmponent
-                  buttonLabel="account.continue"
+                  buttonLabel="account.done"
                   clickHandler={navigateToHome}
                 />
               </div>
