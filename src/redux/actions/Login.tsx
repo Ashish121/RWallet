@@ -7,12 +7,20 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
     dispatch({ type: AUTHENTICATION_INPROGRESS });
     try {
       const response = await authenticate(payload.contactNo, payload.password);
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.success) {
         dispatch({ type: LOGIN_SUCCESS });
         localStorage.setItem('loginDetails', JSON.stringify(response));
         nextRoute();
+      } else {
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'LOGIN_FAILED' });
+        dispatch(updateToast(data));
       }
-      console.log('done', response);
     } catch (error) {
       const data = {
         showToast: true,
