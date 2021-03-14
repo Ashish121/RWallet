@@ -47,6 +47,7 @@ import { CartIcon } from './CartIcon';
 import { SearchIcon } from './SearchIcon';
 import { FavButtonDisabled } from './FavButtonDisabled';
 import { FavButtonEnabled } from './FavButtonEnabled';
+import { CurrentPositionBtn } from './CurrentPositionBtn';
 
 export {
   SmartphoneIcon,
@@ -98,4 +99,5 @@ export {
   SearchIcon,
   FavButtonDisabled,
   FavButtonEnabled,
+  CurrentPositionBtn,
 };

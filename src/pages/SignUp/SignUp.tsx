@@ -109,7 +109,7 @@ const SignUpPage: React.FC = () => {
                   />
                 </div>
                 <InputText
-                  inputType="text"
+                  inputType="tel"
                   labelText="signup.mobileNo"
                   labelType="floating"
                   color="light"

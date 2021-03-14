@@ -18,9 +18,20 @@ import { Translate } from '../../i18n/formatMessages';
 import './ShoppingPage.scss';
 import { HeaderComponent } from '../../components';
 import {
+  FashionIcon,
   FavButtonDisabled,
   FavButtonEnabled,
+  GroceryIcon,
+  LaptopIcon,
+  MotorBikeIcon,
   SearchIcon,
+  SmartphoneIcon,
+  SneakersIcon,
+  SparepartIcon,
+  StoreIcon,
+  TelevisionIcon,
+  WalletIcon,
+  WatchIcon,
 } from '../../assets/Icons';
 
 const ShoppingPage: React.FC = () => {
@@ -30,7 +41,9 @@ const ShoppingPage: React.FC = () => {
   useEffect(() => {
     setshoppingLimitBalance('12844');
   }, []);
-  function navigateToCart() {}
+  function navigateToCart() {
+    history.replace('/tabs/shopping/cart');
+  }
   function search() {}
   function toggleFav() {
     const selectedStatus = !favSelected;
@@ -39,6 +52,10 @@ const ShoppingPage: React.FC = () => {
   function showItemDetails() {
     history.replace('/tabs/shopping/itemdetails');
   }
+  function goBack() {
+    history.replace('/tabs');
+  }
+
   return (
     <React.Fragment>
       <IonApp>
@@ -49,6 +66,8 @@ const ShoppingPage: React.FC = () => {
             showNotification={false}
             showCart={true}
             cartHandler={navigateToCart}
+            showBackButton={true}
+            handler={goBack}
           />
           <IonContent>
             <div className="shopping-page-wrapper">
@@ -102,6 +121,118 @@ const ShoppingPage: React.FC = () => {
                   </button>
                 </IonInput>
               </div>
+              <div className="scroll-items-wrapper">
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <SmartphoneIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.mobileIconText" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <LaptopIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.laptopIconText" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <FashionIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.fashionIconText" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <TelevisionIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.televisionText" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <StoreIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.storeText" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <SparepartIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.sparePartText" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <MotorBikeIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.motorbike" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <GroceryIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.grocery" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <WalletIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.walletText" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <WatchIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.watchText" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+                <div>
+                  <IonCard>
+                    <IonCardContent>
+                      <SneakersIcon width="15" height="15" />
+                      <IonText>
+                        <Translate message="home.shoesText" />
+                      </IonText>
+                    </IonCardContent>
+                  </IonCard>
+                </div>
+              </div>
               <div className="mobile-items-wrapper">
                 <IonGrid>
                   <IonRow>
@@ -119,11 +250,7 @@ const ShoppingPage: React.FC = () => {
                             </button>
                           )}
 
-                          <div className="image-wrapper">
-                            <IonImg
-                              src={require('../../assets/Icons/phone1.png')}
-                            />
-                          </div>
+                          <div className="image-wrapper"></div>
                         </IonCardHeader>
 
                         <IonCardContent>

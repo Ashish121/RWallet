@@ -1,4 +1,8 @@
 .header-wrapper {
+  ion-header {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 15px 15px;
+  }
   ion-toolbar {
     --background: #004777;
     border-bottom-left-radius: 15px 15px;
@@ -14,9 +18,7 @@
 
   ion-text {
     color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 18px;
     font-family: "Montserrat", sans-serif;
   }
 }

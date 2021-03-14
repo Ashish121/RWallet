@@ -13,6 +13,7 @@ import {
   IonSelect,
   IonButton,
 } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 
 import { HeaderComponent, SlidesComponent } from '../../components';
 import {
@@ -25,6 +26,7 @@ import './ItemDetailsPage.scss';
 import { Translate } from '../../i18n/formatMessages';
 
 const ItemDetailsPage: React.FC = () => {
+  const history = useHistory();
   const [expandOptions, setExpandOptions] = useState(false);
   const [favSelected, setFavSelected] = useState(false);
   const [color, setDeviceColor] = useState<string>();
@@ -41,6 +43,18 @@ const ItemDetailsPage: React.FC = () => {
   function setColor(value: any) {
     setDeviceColor(value);
   }
+  function addToCart() {
+    console.log('Adding to cart');
+    alert('Item added to cart.');
+
+    //TODO : // Need to app action which will stor item data to store
+  }
+  function showCartItems() {
+    history.replace('/tabs/shopping/cart');
+  }
+  function goBack() {
+    history.replace('/tabs/shopping');
+  }
 
   return (
     <IonApp className="item-details-wrapper">
@@ -50,6 +64,9 @@ const ItemDetailsPage: React.FC = () => {
           showMenu={false}
           showNotification={false}
           showCart={true}
+          cartHandler={showCartItems}
+          showBackButton={true}
+          handler={goBack}
         />
         <IonContent>
           <SlidesComponent />
@@ -173,7 +190,11 @@ const ItemDetailsPage: React.FC = () => {
                   </div>
                 )}
                 <div className="add-to-cart-button-wrapper">
-                  <IonButton className="add-cart-button" expand="block">
+                  <IonButton
+                    className="add-cart-button"
+                    expand="block"
+                    onClick={addToCart}
+                  >
                     <Translate message="itemDetails.addToCart" />
                   </IonButton>
                 </div>

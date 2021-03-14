@@ -51,10 +51,10 @@ const HeaderComponent: React.FC<headerProps> = ({
       <IonHeader className="header-wrapper" style={{ backgroundImage: 'none' }}>
         <IonToolbar className="header">
           {!showMenu && showBackButton && (
-            <IonButtons slot="start">
+            <IonButtons slot="start" style={{ position: 'absolute' }}>
               <IonButton color="secondary" onClick={backButtonHandler}>
                 <IonIcon
-                  style={{ color: '#ffffff' }}
+                  style={{ color: '#ffffff', fontSize: '24px' }}
                   slot="icon-only"
                   ios={chevronBackOutline}
                   md={chevronBackOutline}
@@ -89,7 +89,7 @@ const HeaderComponent: React.FC<headerProps> = ({
               <SideMenuIcon width="20" height="20" />
             </IonButtons>
           )}
-          <IonTitle>
+          <IonTitle size="small" class="ion-text-center" style={{ top: '5px' }}>
             <IonText>
               <Translate message={headerLable} />
             </IonText>

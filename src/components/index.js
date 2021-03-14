@@ -15,6 +15,7 @@ import DatePickerComponent from './DatePicker/DatePicker';
 import CustomAccordion from './Accordion/Accordion';
 import RangeSlider from './RangeSlider/RangeSlider';
 import BackButton from './BackButton/BackButton';
+import RoyallityWalletMap from './Map/Map';
 export {
   InputText,
   ToastComponent,
@@ -33,4 +34,5 @@ export {
   CustomAccordion,
   RangeSlider,
   BackButton,
+  RoyallityWalletMap,
 };

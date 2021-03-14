@@ -115,7 +115,6 @@
   "account.accountNoText": "Account created :",
   "account.continue": "CONTINUE",
   "account.done": "DONE",
-  
 
   "fund.fundpage": "FUND TRANSFER",
   "fund.bankTrasfer": "BANK TRANSFER",
@@ -249,5 +248,9 @@
   "shoppingPage.shoppoingLevelText": "SHOPPING LIMIT",
   "itemDetails.dealPrice": "Deal price",
   "itemDetails.addToCart": "Add to cart",
-  "itemDetails.feature": "Features:"
+  "itemDetails.feature": "Features:",
+
+  "cart.pageLabel": "My Cart",
+  "cart.total": "Total",
+  "cart.checkout": "CHECKOUT"
 }
