@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {HeaderComponent} from '../../components';
+import React from 'react';
+import { HeaderComponent } from '../../components';
 
 import {
   IonCard,
@@ -8,17 +8,11 @@ import {
   IonContent,
   IonApp,
   IonText,
-
 } from '@ionic/react';
 import './TransactionHistory.scss';
 import { Translate } from '../../i18n/formatMessages';
 
 const TransactionHistory: React.FC = () => {
-  const transactionMessage = useState('Tv Recharge  ');
-  const transactionDate = useState('12/18/2020');
-  const AmountMessage=useState('Rs 250');
- 
-  
   return (
     <>
       <IonApp>
@@ -27,36 +21,115 @@ const TransactionHistory: React.FC = () => {
           <IonContent>
             <div className="transaction-wrapper">
               <IonText className="transaction-text-area">
-                <Translate  message="TransactionHistory.text"/>
+                <Translate message="TransactionHistory.text" />
               </IonText>
-              <IonCard className="transactionHistory-area">
-                <IonCardContent className="transactionHistory-content">
-                  <div className="vl-red">    </div>
-                  <IonText className="transaction-pyment">
-                    <Translate message="TransactionHistory.payment" />{' '}
-                    <IonText className="transactionMessage">
-                      {AmountMessage}
-                    </IonText>
-                  </IonText>
-                  <div className="message-box">
-                    <IonText className="transactionMessage">
-                      {transactionMessage}
-                    </IonText>
-                    <IonText className="transactionDateMessage">
-                      { transactionDate}
-                    </IonText>
+              <IonCard>
+                <IonCardContent style={{ width: '100%' }}>
+                  <div
+                    className="card-body-wrapper"
+                    style={{ borderLeftColor: 'red', width: '100%' }}
+                  >
+                    <div className="card-inner-header">
+                      <IonText className="transaction-type">Payment To</IonText>
+                      <IonText className="transaction-type">Rs 231</IonText>
+                    </div>
+                    <div className="card-inner-body">
+                      <IonText className="transaction-type">TV payment</IonText>
+                      <IonText
+                        className="transaction-type"
+                        style={{ fontSize: '8px' }}
+                      >
+                        12 Sep 2020
+                      </IonText>
+                    </div>
                   </div>
                 </IonCardContent>
               </IonCard>
-              <IonCard className="transactionHistory-area">
-                <IonCardContent className="transactionHistory-content">
-                  <div className="vl-green">    </div>
-                  <IonText className="transaction-pyment">
-                    <Translate message="TransactionHistory.Receivedfrom" />{' '}
-                  </IonText>
-                  <div className="message-box">
-                    <IonText className="transactionMessage">
-                    </IonText>
+              <IonCard>
+                <IonCardContent style={{ width: '100%' }}>
+                  <div
+                    className="card-body-wrapper"
+                    style={{ borderLeftColor: 'red', width: '100%' }}
+                  >
+                    <div className="card-inner-header">
+                      <IonText className="transaction-type">Payment To</IonText>
+                      <IonText className="transaction-type">Rs 231</IonText>
+                    </div>
+                    <div className="card-inner-body">
+                      <IonText className="transaction-type">TV payment</IonText>
+                      <IonText
+                        className="transaction-type"
+                        style={{ fontSize: '8px' }}
+                      >
+                        12 Sep 2020
+                      </IonText>
+                    </div>
+                  </div>
+                </IonCardContent>
+              </IonCard>
+              <IonCard>
+                <IonCardContent style={{ width: '100%' }}>
+                  <div
+                    className="card-body-wrapper"
+                    style={{ borderLeftColor: 'red', width: '100%' }}
+                  >
+                    <div className="card-inner-header">
+                      <IonText className="transaction-type">Payment To</IonText>
+                      <IonText className="transaction-type">Rs 231</IonText>
+                    </div>
+                    <div className="card-inner-body">
+                      <IonText className="transaction-type">TV payment</IonText>
+                      <IonText
+                        className="transaction-type"
+                        style={{ fontSize: '8px' }}
+                      >
+                        12 Sep 2020
+                      </IonText>
+                    </div>
+                  </div>
+                </IonCardContent>
+              </IonCard>
+              <IonCard>
+                <IonCardContent style={{ width: '100%' }}>
+                  <div
+                    className="card-body-wrapper"
+                    style={{ borderLeftColor: 'red', width: '100%' }}
+                  >
+                    <div className="card-inner-header">
+                      <IonText className="transaction-type">Payment To</IonText>
+                      <IonText className="transaction-type">Rs 231</IonText>
+                    </div>
+                    <div className="card-inner-body">
+                      <IonText className="transaction-type">TV payment</IonText>
+                      <IonText
+                        className="transaction-type"
+                        style={{ fontSize: '8px' }}
+                      >
+                        12 Sep 2020
+                      </IonText>
+                    </div>
+                  </div>
+                </IonCardContent>
+              </IonCard>
+              <IonCard>
+                <IonCardContent style={{ width: '100%' }}>
+                  <div
+                    className="card-body-wrapper"
+                    style={{ borderLeftColor: 'red', width: '100%' }}
+                  >
+                    <div className="card-inner-header">
+                      <IonText className="transaction-type">Payment To</IonText>
+                      <IonText className="transaction-type">Rs 231</IonText>
+                    </div>
+                    <div className="card-inner-body">
+                      <IonText className="transaction-type">TV payment</IonText>
+                      <IonText
+                        className="transaction-type"
+                        style={{ fontSize: '8px' }}
+                      >
+                        12 Sep 2020
+                      </IonText>
+                    </div>
                   </div>
                 </IonCardContent>
               </IonCard>

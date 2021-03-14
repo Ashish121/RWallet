@@ -1,64 +1,57 @@
 .transaction-wrapper {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  background-color: #3182b9;
-  padding: 30px;
+  margin-top: 50px;
+  padding-bottom: 5px;
   .transaction-text-area {
+    margin-left: 15px;
+    color: #ffffff;
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 20px;
     color: #ffffff;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
-  .transactionHistory-area {
-    background-color: #ffffff;
-    height: 65px;
-
-    .transactionHistory-content {
-      position: relative;
-      padding: 15px;
-
-      .vl-red {
-        width: 2px;
-        background: #da2700;
-        border-radius: 1.5px;
-        height: 43px;
-        position: fixed;
-      }
-      .vl-green {
-        background: #00da23;
-        border-radius: 1.5px;
-        width: 2px;
-        height: 43px;
-        position: fixed;
-      }
-      .transaction-pyment {
-        position: relative;
-        margin-left: 10px;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 15px;
-        color: #000000;
-      }
-      .transaction-pyment {
-        position: relative;
-        margin-left: 10px;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 15px;
-        color: #000000;
-        .transactionMessage {
-          float: right;
+  ion-card {
+    background: #ffffff;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .card-body-wrapper {
+      display: inline-flex;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #000000;
+      border-left: 3px solid red;
+      display: block;
+      .card-inner-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5px;
+        ion-text {
+          font-weight: bold;
+          font-size: 12px;
+          color: #000000;
         }
       }
-      .message-box {
-        margin-left: 15px;
-        .transactionDateMessage {
-          float: right;
+      .card-inner-body {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        padding-left: 5px;
+        padding-top: 5px;
+        ion-text {
+          font-weight: 500;
+          font-size: 12px;
+          opacity: 0.5;
         }
       }
     }

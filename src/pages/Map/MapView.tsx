@@ -1,40 +1,89 @@
 import React, { useState, useEffect } from 'react';
 import { IonPage, IonContent, IonApp } from '@ionic/react';
-import { MapContainer, TileLayer } from 'react-leaflet';
-import { HeaderComponent } from '../../components';
-import { MapMarker } from '../../assets/Icons';
-import osm from './osm-provider';
+import { Plugins } from '@capacitor/core';
+import {
+  HeaderComponent,
+  LoaderComponent,
+  RoyallityWalletMap,
+} from '../../components';
+
 import './MapView.scss';
 
 const MapView: React.FC = () => {
-  const center = { lat: 12.9716, lng: 77.5946 };
-  const zoomlevel = 13;
   const [mapReady, setMapReady] = useState(false);
-  const markerDetails = {
-    coordinates: [12.9716, 77.5946],
-    iconPath: 'mapMarkerIcon.svg',
-    description: 'Hello',
-  };
+  const [showLoader, setShowLoader] = useState(false);
+  const [message, setMessage] = useState('');
+  const [zoomLevel, setZoomLevel] = useState(10);
+  const [center, setMapCenter] = useState({ lat: 0, lng: 0 });
+  const [
+    currentPositionMarkerDetails,
+    setCurrentPositionMarkerDetails,
+  ] = useState({});
+  const { Geolocation } = Plugins;
+
   useEffect(() => {
-    setTimeout(() => {
-      setMapReady(true);
-    }, 1000);
+    getCurrentPosition();
+    setShowLoader(true);
+    setMessage('Fetching your location...');
   }, []);
+
+  async function getCurrentPosition() {
+    const coordinates = await Geolocation.getCurrentPosition();
+    console.log('Current', coordinates);
+    const coords: any = {
+      lat: coordinates.coords?.latitude,
+      lng: coordinates.coords?.longitude,
+    };
+    setMapCenter({ lat: coords.lat, lng: coords.lng });
+    setZoomLevel(17);
+    const markerArray = [
+      {
+        coordinates: [12.929883, 77.622658],
+        iconPath: 'mapMarkerIcon.svg',
+        description: 'Marker 1',
+      },
+      {
+        coordinates: [12.937845, 77.61142],
+        iconPath: 'mapMarkerIcon.svg',
+        description: 'marker 2',
+      },
+    ];
+    createMarkerDetails(coords, markerArray);
+
+    setMapReady(true);
+    setShowLoader(false);
+    setMessage('');
+    setMapReady(true);
+  }
+  function createMarkerDetails(currentPos: any, markers: any) {
+    const array = [
+      {
+        coordinates: [currentPos.lat, currentPos.lng],
+        iconPath: 'currentPositionIcon.svg',
+        description: 'Hey!',
+      },
+    ];
+    markers.forEach((data: any) => {
+      array.push(data);
+    });
+    setCurrentPositionMarkerDetails(array);
+  }
   return (
     <>
       <IonApp>
+        <LoaderComponent showLoading={showLoader} loaderMessage={message} />
         <IonPage>
           <HeaderComponent headerLable={'common.header'} />
           <IonContent>
             <div className="map-container">
               {mapReady && (
-                <MapContainer center={center} zoom={zoomlevel}>
-                  <TileLayer
-                    attribution={osm.mapTiler.attr}
-                    url={osm.mapTiler.url}
+                <React.Fragment>
+                  <RoyallityWalletMap
+                    mapCenter={center}
+                    markerDetails={currentPositionMarkerDetails}
+                    zoomLevel={zoomLevel}
                   />
-                  <MapMarker markerDetails={markerDetails} />
-                </MapContainer>
+                </React.Fragment>
               )}
             </div>
           </IonContent>

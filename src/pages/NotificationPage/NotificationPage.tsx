@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   IonCard,
@@ -20,7 +20,9 @@ import { Translate } from '../../i18n/formatMessages';
 const NotificationPage: React.FC = () => {
   const history = useHistory();
   const [color, setcolor] = useState('');
-  setcolor('blue');
+  useEffect(() => {
+    setcolor('Blue');
+  }, []);
   const closeNotificationPanel = () => {
     history.replace('/tabs');
   };

@@ -35,18 +35,6 @@ const Agent: React.FC = () => {
         value: 'nepal',
         label: 'Nepal',
       },
-      {
-        value: 'india',
-        label: 'India',
-      },
-      {
-        value: 'japan',
-        label: 'Japan',
-      },
-      {
-        value: 'china',
-        label: 'China',
-      },
     ];
     setCountryDetails(array);
   }, []);

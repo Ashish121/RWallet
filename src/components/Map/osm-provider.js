@@ -1,7 +1,6 @@
 export default {
   mapTiler: {
-    url:
-      'https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=NQy2uI4JiedGLa92gnTu',
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     attr:
       '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
   },

@@ -50,6 +50,8 @@ import {
   Antivirus,
   AntivirusPayment,
   SuccessPage,
+  CartPage,
+  TransactionHistory,
 } from '../index';
 import './TabView.scss';
 import { LoanType } from '../LoanSection/LoanType/LoanType';
@@ -164,6 +166,8 @@ const TabViewPage: React.FC = () => {
             exact
             component={ItemDetailsPage}
           />
+          <Route path="/tabs/history" exact component={TransactionHistory} />
+          <Route path="/tabs/shopping/cart" exact component={CartPage} />
 
           <Route
             path="/tabs"
@@ -194,7 +198,7 @@ const TabViewPage: React.FC = () => {
 
           <IonLabel>Map</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="history">
+        <IonTabButton tab="history" href="/tabs/history">
           {!hisotryActive && <HistoryInactive width="20" height="20" />}
           {hisotryActive && <HistoryActive width="20" height="20" />}
 
