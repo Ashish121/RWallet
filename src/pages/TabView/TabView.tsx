@@ -44,6 +44,7 @@ import {
   NepalElectricity,
   Khanepani,
   CardPayment,
+  PosPaymentPage,
   InsuranceFinancePage,
   RoyalityFinancialServices,
   RoyalitySavingCredit,
@@ -138,6 +139,7 @@ const TabViewPage: React.FC = () => {
             component={InternetPayment}
           />
           <Route path="/tabs/cardPayment" exact component={CardPayment} />
+          <Route path="/tabs/posPayment" exact component={PosPaymentPage} />
           <Route
             path="/tabs/insuranceFinancePage"
             exact
