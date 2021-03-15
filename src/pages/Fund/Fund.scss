@@ -5,14 +5,17 @@
   flex-direction: column;
   background-color: #3182b9;
   .fund-text-area {
-    margin-top: 65px;
+    margin-top: 20px;
     font-style: normal;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
+    font-weight: 600;
+    padding-left: 6px;
   }
   .fund-wrapper {
-    padding: 30px;
+    padding: 8px;
     margin-top: 80px;
   }
 }
+ 

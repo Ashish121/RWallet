@@ -37,22 +37,21 @@ const AccountPage: React.FC = () => {
                 <Translate message="account.lableTexttop" />
               </IonText>
               <div className="page-wrapper">
-                <div style={{ marginTop: '13px' }}>
-                  <ButtonConmponent
-                    //disabled={true}
-                    buttonLabel="account.saving"
-                    size="block"
-                    clickHandler={handleSaving}
-                  />
-                </div>
-                <div style={{ marginTop: '13px' }}>
+                <ButtonConmponent
+                  //disabled={true}
+                  buttonLabel="account.saving"
+                  size="block"
+                  clickHandler={handleSaving}
+                />
+
+                <div className="button-gap">
                   <ButtonConmponent
                     buttonLabel="account.fixed"
                     size="block"
                     clickHandler={handleFixed}
                   />
                 </div>
-                <div style={{ marginTop: '13px' }}>
+                <div className="button-gap">
                   <ButtonConmponent
                     buttonLabel="account.current"
                     size="block"

@@ -74,7 +74,7 @@ const CurrentAccountPage: React.FC = () => {
                 <div className="page-header-label">
                   <IonText className="account-no-text">
                     <Translate
-                      message="account.savingPageHeader"
+                      message="account.currentPageHeader"
                       value={{ accountNo: '07601402201' }}
                     />
                   </IonText>

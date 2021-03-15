@@ -12,6 +12,7 @@
   "login.linkText": "Forgot Passwod ?",
   "login.linkTextRegister": "New Member?",
 
+  "signup.signingPageLabel": "ROYALITY WALLET",
   "signup.fullName": "Full name",
   "signup.gender": "Gender",
   "signup.mobileNo": "Mobile no",
@@ -94,9 +95,9 @@
   "account.proceed": "PROCEED",
 
   "account.lableTexttop": "Select your account type",
-  "account.saving": "SAVING",
-  "account.fixed": "FIXED",
-  "account.current": "CURRENT",
+  "account.saving": "SAVING ACCOUNT",
+  "account.fixed": "FIXED ACCOUNT",
+  "account.current": "CURRENT ACCOUNT",
   "account.labelmore": "Know more about each account",
 
   "account.fixedPageHeader": "Fixed Account - {accountNo}",
@@ -115,6 +116,8 @@
   "account.accountNoText": "Account created :",
   "account.continue": "CONTINUE",
   "account.done": "DONE",
+
+  "account.currentPageHeader": "Current Account - {accountNo}",
 
   "fund.fundpage": "FUND TRANSFER",
   "fund.bankTrasfer": "BANK TRANSFER",

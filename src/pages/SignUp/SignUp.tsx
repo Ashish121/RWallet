@@ -89,7 +89,7 @@ const SignUpPage: React.FC = () => {
                   <Translate message="login.welcomeText" />
                 </IonText>
                 <IonText className="body-header-text-wrapper header-bold">
-                  <Translate message="login.siginPageLabel" />
+                  <Translate message="signup.signingPageLabel" />
                 </IonText>
               </div>
               <div className="page-wrapper">
