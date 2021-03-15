@@ -97,19 +97,39 @@ const FixedAccountPage: React.FC = () => {
                   </IonText>
                   <IonRadioGroup onIonChange={updateInvestmentPeriod}>
                     <div className="options-section1">
-                      <RadioComponent label="12 months with 10%" val="12" />
+                      <RadioComponent
+                        label="12 months with 10%"
+                        val="12"
+                        showRadioButton={true}
+                      />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="24 months with 20%" val="24" />
+                      <RadioComponent
+                        label="24 months with 20%"
+                        val="24"
+                        showRadioButton={true}
+                      />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="36 months with 35%" val="36" />
+                      <RadioComponent
+                        label="36 months with 35%"
+                        val="36"
+                        showRadioButton={true}
+                      />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="48 months with 50%" val="48" />
+                      <RadioComponent
+                        label="48 months with 50%"
+                        val="48"
+                        showRadioButton={true}
+                      />
                     </div>
                     <div className="options-section1">
-                      <RadioComponent label="60 monthss with 100%" val="60" />
+                      <RadioComponent
+                        label="60 monthss with 100%"
+                        val="60"
+                        showRadioButton={true}
+                      />
                     </div>
                   </IonRadioGroup>
                 </div>

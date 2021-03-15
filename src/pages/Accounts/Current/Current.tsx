@@ -93,12 +93,14 @@ const CurrentAccountPage: React.FC = () => {
                   <IonRadioGroup>
                     <div className="options-section1">
                       <RadioComponent
+                        showRadioButton={true}
                         label="Rs 5000 per quarter for non-rural"
                         val="5000"
                       />
                     </div>
                     <div className="options-section1">
                       <RadioComponent
+                        showRadioButton={true}
                         label="Rs 2500 per quarter for rural"
                         val="2500"
                       />
