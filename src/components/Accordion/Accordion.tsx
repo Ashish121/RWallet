@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { IonButton, IonIcon, IonRow, IonCol } from '@ionic/react';
 import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 import './Accordion.scss';
-
+import { useHistory } from 'react-router-dom';
 interface accordionProps {
   accordionData: any;
 }
 
 const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
   const [toggleAccordion, setToggleAccordion] = useState(false);
+  const history = useHistory();
 
   const toggle = (item: any, index: any) => {
     const status = !toggleAccordion;
@@ -21,6 +22,10 @@ const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
     });
     setToggleAccordion(status);
   };
+
+  function handleClickButton() {
+    history.replace('/tabs/applyPage');
+  }
   return (
     <React.Fragment>
       {accordionData?.map((item: any, index: any) => {
@@ -58,6 +63,7 @@ const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
                       marginLeft: '25%',
                       width: '45%',
                     }}
+                    onClick={handleClickButton}
                   >
                     Apply
                   </IonButton>
