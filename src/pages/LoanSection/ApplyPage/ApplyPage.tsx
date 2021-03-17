@@ -17,11 +17,19 @@ const ApplyPage: React.FC = () => {
     history.replace('/tabs/flightOneWay');
   }
 
+  function goBack() {
+    history.replace('/tabs/loanType');
+  }
+
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent>
             <div className="container">
               <IonText className="Loan-ApplyPage-text-area">
@@ -56,13 +64,7 @@ const ApplyPage: React.FC = () => {
                   color="light"
                   labelColor="light"
                 />
-                <InputText
-                  inputType="text"
-                  labelText="LoanMobileNumber"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                />
+
                 <div className="loan-ApplyPage-Discard">
                   <ButtonConmponent
                     buttonLabel="ApplyPageDiscard"

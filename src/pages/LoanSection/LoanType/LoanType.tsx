@@ -85,11 +85,19 @@ const LoanType: React.FC = () => {
     setAccordionDetails(data);
   }, []);
 
+  function goBack() {
+    history.replace('/tabs');
+  }
+
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent>
             <div className="container">
               <IonText className="loan-type-text-area">

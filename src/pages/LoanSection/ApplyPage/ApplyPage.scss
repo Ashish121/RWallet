@@ -5,25 +5,27 @@
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
+  font-family: "Montserrat";
   .Loan-ApplyPage-text-area {
     font-style: normal;
-    // font-weight: 600;
+    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
-    margin-top: 30px;
+    margin-top: 15px;
+    font-family: "Montserrat";
   }
   .Loan-ApplyPage-wrapper {
-    margin-top: 60px;
+    margin-top: 50px;
     .loan-ApplyPage-Discard {
       float: left;
-      margin-top: 40px;
+      margin-top: 45%;
       width: 100px;
     }
     .loan-ApplyPage-Apply {
       float: right;
       width: 100px;
-      margin-top: 40px;
+      margin-top: 45%;
     }
   }
 }
