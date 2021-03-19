@@ -5,25 +5,35 @@
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
+  font-family: "Montserrat";
   .credit-card-text-area {
     font-style: normal;
-    // font-weight: 600;
+    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
     margin-top: 30px;
+    font-family: "Montserrat";
   }
   .credit-card-wrapper {
-    margin-top: 60px;
-    .card-button-last {
-      float: left;
-      margin-top: 40px;
-      width: 100px;
-    }
-    .card-submit {
-      float: right;
-      width: 100px;
-      margin-top: 40px;
-    }
+    margin-top: 40px;
+  }
+}
+
+.buttonElement {
+  margin-top: 71%;
+  display: flex;
+
+  .btn-elem {
+    width: 120%;
+    font-size: 14px;
+  }
+  .cardClearButton {
+    margin-left: 0%;
+    width: 100px;
+  }
+  .cardSubmitButton {
+    margin-left: 26%;
+    width: 100px;
   }
 }
