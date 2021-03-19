@@ -26,71 +26,95 @@ const TopUpRecharge: React.FC = () => {
         id: 1,
         title: 'NCell Topup',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
       {
         id: 2,
         title: 'NT landline Topup',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 3,
         title: 'NT FTTH',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 4,
         title: 'NT WIMAX',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 5,
         title: 'NT PostPaid Topup',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 6,
         title: 'NT Prepaid Topup',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 7,
         title: 'NT CDMA Postpaid Topup',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 8,
         title: 'NT CDMA Prepaid Topup',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 9,
         title: 'Smartcell Topup',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 10,
         title: 'NT ADSL Topup-unlimited',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 11,
         title: 'NT ADSL Topup-volume based',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
 
       {
         id: 12,
         title: 'NT recharge card',
         showDetails: false,
+        inputfield1: 'Mobile number',
+        inputfield2: 'Amount',
       },
     ];
     setAccordionDetails(data);

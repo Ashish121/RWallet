@@ -5,14 +5,17 @@
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
+  font-family: "Montserrat";
   .TvPayment-text-area {
+    font-weight: 600;
     font-style: normal;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
     margin-top: 30px;
+    font-family: "Montserrat";
   }
   .TvPayment-wrapper {
-    margin-top: 20px;
+    margin-top: 55px;
   }
 }

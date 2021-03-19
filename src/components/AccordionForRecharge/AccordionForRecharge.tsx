@@ -57,7 +57,7 @@ const CustomAccordionForRecharge: React.FC<accordionProps> = ({
               {item.showDetails && (
                 <div>
                   <IonItem className="inputArea" color="white">
-                    <IonLabel> Mobile number</IonLabel>
+                    <IonLabel>{item.inputfield1}</IonLabel>
                     <IonInput
                       name="number"
                       type="number"
@@ -67,7 +67,7 @@ const CustomAccordionForRecharge: React.FC<accordionProps> = ({
                   </IonItem>
 
                   <IonItem className="inputArea" color="white">
-                    <IonLabel>Amount</IonLabel>
+                    <IonLabel>{item.inputfield2}</IonLabel>
                     <IonInput
                       name="amount"
                       type="number"
