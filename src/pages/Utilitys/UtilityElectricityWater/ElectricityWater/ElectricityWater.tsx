@@ -10,39 +10,44 @@ const ElectricityWater: React.FC = () => {
 
   function handleNepalElectricity() {
     console.log('Handling registration');
-    history.replace('/nepalElectricity');
+    history.replace('/tabs/nepalElectricity');
   }
 
   function handleKhanepani() {
     console.log('Handling registration');
-    history.replace('/khanepani');
+    history.replace('/tabs/khanepani');
   }
-
+  function goBack() {
+    history.replace('/tabs/home');
+  }
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent>
             <div className="container">
               <IonText className="electricity-water-text-area">
                 <Translate message="UtilityElectricityWater" />
               </IonText>
-              <div className="Utility-Electricity-Water-Wrapper">
-                <div style={{ marginTop: '13px' }}>
-                  <ButtonConmponent
-                    buttonLabel="UtilityNepalElectricityAuthority"
-                    size="block"
-                    clickHandler={handleNepalElectricity}
-                  />
-                </div>
-                <div style={{ marginTop: '13px' }}>
-                  <ButtonConmponent
-                    buttonLabel="UtilityKhanepani"
-                    size="block"
-                    clickHandler={handleKhanepani}
-                  />
-                </div>
+
+              <div style={{ marginTop: '55%' }}>
+                <ButtonConmponent
+                  buttonLabel="UtilityNepalElectricityAuthority"
+                  size="block"
+                  clickHandler={handleNepalElectricity}
+                />
+              </div>
+              <div style={{ marginTop: '10px' }}>
+                <ButtonConmponent
+                  buttonLabel="UtilityKhanepani"
+                  size="block"
+                  clickHandler={handleKhanepani}
+                />
               </div>
             </div>
           </IonContent>

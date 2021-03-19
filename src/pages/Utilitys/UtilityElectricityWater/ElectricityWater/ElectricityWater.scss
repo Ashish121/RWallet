@@ -5,13 +5,16 @@
   background-color: #3182b9;
   .electricity-water-text-area {
     font-style: normal;
-    // font-weight: 600;
+    font-weight: 600;
     font-size: 16px;
     margin-top: 40px;
     line-height: 20px;
     color: #ffffff;
+    font-family: "Montserrat";
   }
-  .Utility-Electricity-Water-Wrapper {
-    margin-top: 80px;
+
+  .btn-elem {
+    width: 100%;
+    font-size: 12px;
   }
 }
