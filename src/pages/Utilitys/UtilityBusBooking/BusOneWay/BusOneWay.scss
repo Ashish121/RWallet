@@ -5,13 +5,15 @@
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
+  font-family: "Montserrat";
   .booking-oneWay-text-area {
     font-style: normal;
-    // font-weight: 600;
+    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
     margin-top: 30px;
+    font-family: "Montserrat";
   }
   .booking-oneWay-wrapper {
     margin-top: 60px;
@@ -37,7 +39,7 @@
     display: inline-block;
     width: 100;
   }
-  .booking-button {
-    margin-top: 20px;
+  .bookingButton {
+    margin-top: 47%;
   }
 }
