@@ -13,6 +13,7 @@ import LoanSection from './Loans/Loans';
 import UtilitiesSection from './Utilities/Utilities';
 import DatePickerComponent from './DatePicker/DatePicker';
 import CustomAccordion from './Accordion/Accordion';
+import CustomAccordionForRecharge from './AccordionForRecharge/AccordionForRecharge';
 import RangeSlider from './RangeSlider/RangeSlider';
 import BackButton from './BackButton/BackButton';
 import RoyallityWalletMap from './Map/Map';
@@ -32,6 +33,7 @@ export {
   UtilitiesSection,
   DatePickerComponent,
   CustomAccordion,
+  CustomAccordionForRecharge,
   RangeSlider,
   BackButton,
   RoyallityWalletMap,

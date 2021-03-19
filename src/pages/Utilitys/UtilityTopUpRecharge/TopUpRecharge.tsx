@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-
+import { useHistory } from 'react-router-dom';
 import './TopUpRecharge.scss';
-import {
-  IonPage,
-  IonContent,
-  IonText,
-  IonApp,
-} from '@ionic/react';
+import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import { CustomAccordion, HeaderComponent } from '../../../components';
+import {
+  CustomAccordionForRecharge,
+  HeaderComponent,
+} from '../../../components';
 
 const TopUpRecharge: React.FC = () => {
+  const history = useHistory();
   const [accordionDetails, setAccordionDetails] = useState([{}]);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -93,24 +92,29 @@ const TopUpRecharge: React.FC = () => {
         title: 'NT recharge card',
         showDetails: false,
       },
-
-
     ];
     setAccordionDetails(data);
   }, []);
 
+  function goBack() {
+    history.replace('/tabs/home');
+  }
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent>
             <div className="container">
               <IonText className="TopUpRecharge-text-area">
-                <Translate message="UtilityTopUpRecharge" />
+                <Translate message="TopUpRecharge" />
               </IonText>
               <div className="TopUpRecharge-wrapper">
-                <CustomAccordion accordionData={accordionDetails} />
+                <CustomAccordionForRecharge accordionData={accordionDetails} />
               </div>
             </div>
           </IonContent>
