@@ -5,13 +5,15 @@
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
+  font-family: "Montserrat";
   .khanepani-text-area {
     font-style: normal;
-    // font-weight: 600;
+    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
     margin-top: 30px;
+    font-family: "Montserrat";
   }
   .khanepani-wrapper {
     margin-top: 60px;
@@ -25,5 +27,21 @@
       margin-top: 40px;
       width: 100px;
     }
+  }
+}
+
+.buttonElementforKhanepani {
+  margin-top: 84%;
+  display: flex;
+
+  .btn-elem {
+    width: 120%;
+    font-size: 14px;
+  }
+  .discardButton {
+    margin-left: 0%;
+  }
+  .submitButton {
+    margin-left: 26%;
   }
 }

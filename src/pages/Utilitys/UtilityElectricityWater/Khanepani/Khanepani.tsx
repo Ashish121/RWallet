@@ -16,12 +16,18 @@ const Khanepani: React.FC = () => {
     console.log('Handling registration');
     history.replace('/');
   }
-
+  function goBack() {
+    history.replace('/tabs/electricityWater');
+  }
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent>
             <div className="container">
               <IonText className="khanepani-text-area">
@@ -43,15 +49,20 @@ const Khanepani: React.FC = () => {
                   labelColor="light"
                 />
 
-                <div className="khanepani-button-last">
-                  <ButtonConmponent buttonLabel="UtilityDiscard" size="block" />
-                </div>
-                <div className="khanepani-nepal-submit">
-                  <ButtonConmponent
-                    buttonLabel="UtilitySubmit"
-                    size="block"
-                    clickHandler={handleproceed}
-                  />
+                <div className="buttonElementforKhanepani">
+                  <div className="discardButton">
+                    <ButtonConmponent
+                      buttonLabel="UtilityDiscard"
+                      size="block"
+                    />
+                  </div>
+                  <div className="submitButton">
+                    <ButtonConmponent
+                      buttonLabel="UtilitySubmit"
+                      size="block"
+                      clickHandler={handleproceed}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
