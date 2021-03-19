@@ -5,6 +5,8 @@
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
+  font-weight: 600;
+  font-family: "Montserrat";
   .booking-twoWay-text-area {
     font-style: normal;
     // font-weight: 600;
@@ -51,7 +53,7 @@
     display: inline-block;
     width: 100;
   }
-  .flight-twoWay-button {
-    margin-top: 20px;
-  }
+}
+.flightTwoWayButton {
+  margin-top: 35%;
 }

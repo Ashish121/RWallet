@@ -8,6 +8,8 @@ interface buttonProps {
   clickHandler?: Function;
   size?: any;
   disabled?: boolean;
+  style?: any;
+  color?: string;
 }
 
 /**
@@ -20,6 +22,8 @@ const ButtonConmponent: React.FC<buttonProps> = ({
   clickHandler,
   size,
   disabled,
+  style,
+  color,
   ...props
 }) => {
   function handleButtonClick() {
@@ -30,6 +34,8 @@ const ButtonConmponent: React.FC<buttonProps> = ({
       <IonButton
         disabled={disabled}
         expand={size}
+        style={style}
+        color={color}
         onClick={() => handleButtonClick()}
         className="btn-elem"
         {...props}

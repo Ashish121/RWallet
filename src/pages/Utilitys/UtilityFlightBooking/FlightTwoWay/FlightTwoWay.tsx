@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { FlightIcon } from '../../../../assets/Icons';
@@ -7,28 +7,110 @@ import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
+  DatePickerComponent,
+  SelectMenu,
 } from '../../../../components';
 import './FlightTwoWay.scss';
 
 const FlightTwoWay: React.FC = () => {
   const history = useHistory();
+  // const [date, setDate] = useState("");
+  // const [returnDate, setReturnDate] = useState("");
+  const [toggle, setToggle] = useState(false);
+  // const [classForFlight, setClass] = useState("");
+  const [classDetails, setClassDetails] = useState([{}]);
+
+  useEffect(() => {
+    const array = [
+      {
+        value: 'first',
+        label: 'First Class',
+      },
+      {
+        value: 'business',
+        label: 'Business Class',
+      },
+      {
+        value: 'economy',
+        label: 'Economy Class',
+      },
+    ];
+
+    setClassDetails(array);
+  }, []);
 
   function handleBusBooking() {
     console.log('Handling registration');
     history.replace('/busOneWay');
   }
 
+  function handleToggle(toggle: any) {
+    toggle = !toggle;
+    setToggle(toggle);
+    history.replace('/tabs/flightOneWay');
+  }
+  function handleDepartureDate(date: any) {
+    console.log('date: ', date);
+
+    //setDate(date);
+  }
+
+  function handleReturnDate(returnDate: any) {
+    console.log('returnDate: ', returnDate);
+
+    // setReturnDate(returnDate);
+  }
+  function onClassSelect(classForFlight: any) {
+    console.log('Selected value: ', classForFlight);
+    //setClass(classForFlight);
+  }
+
+  function goBack() {
+    history.replace('/tabs/flightOneWay');
+  }
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent>
             <div className="container">
               <IonText className="booking-twoWay-text-area">
                 <Translate message="UtilityFlightBooking" />
               </IonText>
-              <div className="booking-twoWay-wrapper">
+
+              <div
+                className="toggelButton"
+                style={{ width: '60%', display: 'flex', marginTop: '5%' }}
+              >
+                <ButtonConmponent
+                  buttonLabel="One Way"
+                  size="large"
+                  color={!toggle ? 'light' : ''}
+                  clickHandler={handleToggle}
+                  style={{ fontSize: '16px', width: '118% ', height: '2rem' }}
+                />
+                <ButtonConmponent
+                  buttonLabel=" Two Way"
+                  size="large"
+                  style={{
+                    position: 'fixed',
+                    color: 'white',
+                    fontSize: '16px',
+                    width: '50%',
+                    height: '2.2rem',
+                  }}
+                  color={toggle ? 'light' : ''}
+                />
+              </div>
+              <div
+                className="booking-twoWay-wrapper"
+                style={{ marginTop: '15px' }}
+              >
                 <div className="booking-twoWay-section">
                   <div className="booking-twoWay-from">
                     <InputText
@@ -54,28 +136,26 @@ const FlightTwoWay: React.FC = () => {
                     />
                   </div>
                 </div>
-                <div className="flight-Return">
-                  <div className="flight-departure">
-                    <InputText
-                      inputType="text"
-                      labelText="UtilityDeparture"
-                      labelType="floating"
-                      color="light"
-                      labelColor="light"
+
+                <div style={{ display: 'flex' }}>
+                  <div className="flight-departure" style={{ width: '45%' }}>
+                    <DatePickerComponent
+                      placeholder="UtilityDeparture"
+                      handler={handleDepartureDate}
                     />
                   </div>
-                  <div className="flight-return">
-                    <InputText
-                      inputType="text"
-                      labelText="UtilityReturn"
-                      labelType="floating"
-                      color="light"
-                      labelColor="light"
+                  <div
+                    className="flight-return"
+                    style={{ width: '45%', marginLeft: '40px' }}
+                  >
+                    <DatePickerComponent
+                      placeholder="UtilityReturn"
+                      handler={handleReturnDate}
                     />
-                  </div>
+                  </div>{' '}
                 </div>
 
-                <div className="departure-twoWay-area">
+                <div className="departure-twoWay-area" style={{ width: '45%' }}>
                   <InputText
                     inputType="text"
                     labelText="UtilityTravellers"
@@ -83,15 +163,13 @@ const FlightTwoWay: React.FC = () => {
                     color="light"
                     labelColor="light"
                   />
-                  <InputText
-                    inputType="text"
-                    labelText="UtilityClass"
-                    labelType="floating"
-                    color="light"
-                    labelColor="light"
+                  <SelectMenu
+                    label="UtilityClass"
+                    onSelect={onClassSelect}
+                    array={classDetails}
                   />
                 </div>
-                <div className="flight-twoWay-button">
+                <div className="flightTwoWayButton">
                   <ButtonConmponent
                     buttonLabel="UtilityBookFlight"
                     size="block"
