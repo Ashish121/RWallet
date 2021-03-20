@@ -1,29 +1,40 @@
 .container {
-  display: flex;
   height: 100%;
   padding-left: 28px;
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
+  font-family: "Montserrat";
   .royalityFinancial-text-area {
     font-style: normal;
-    // font-weight: 600;
+    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
     margin-top: 30px;
+    font-family: "Montserrat";
   }
+
   .royalityFinancial-wrapper {
-    margin-top: 60px;
-    .royalityFinancial-button {
-      float: left;
+    margin-top: 50px;
+
+    .royalityFinancialButton {
       margin-top: 40px;
-      width: 100px;
-    }
-    .royalityFinancial-submit {
-      float: right;
-      width: 100px;
-      margin-top: 40px;
+      display: flex;
+      .btn-elem {
+        width: 100%;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: "Montserrat";
+      }
+      .royalityFinancialClearbutton {
+        float: left;
+        width: 40%;
+      }
+      .royalityFinancialSubmit {
+        margin-left: 26%;
+        width: 40%;
+      }
     }
   }
 }

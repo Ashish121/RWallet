@@ -5,25 +5,36 @@
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
+  font-family: "Montserrat";
   .royalitySaving-text-area {
     font-style: normal;
-    // font-weight: 600;
+    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
     margin-top: 30px;
+    font-family: "Montserrat";
   }
   .royalitySaving-wrapper {
-    margin-top: 60px;
-    .royalitySaving-button {
-      float: left;
+    margin-top: 32px;
+
+    .royalitySavingButton {
       margin-top: 40px;
-      width: 100px;
-    }
-    .royalitySaving-submit {
-      float: right;
-      width: 100px;
-      margin-top: 40px;
+      display: flex;
+      .btn-elem {
+        width: 100%;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: "Montserrat";
+      }
+      .royalitySavingClear-button {
+        float: left;
+        width: 40%;
+      }
+      .royalitySaving-submit {
+        margin-left: 26%;
+        width: 40%;
+      }
     }
   }
 }
