@@ -16,12 +16,19 @@ const RoyalityFinancialServices: React.FC = () => {
     console.log('Handling registration');
     history.replace('/');
   }
+  function goBack() {
+    history.replace('/tabs/insuranceFinancePage');
+  }
 
   return (
     <>
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent
+            headerLable="common.header"
+            showBackButton={true}
+            handler={goBack}
+          />
           <IonContent>
             <div className="container">
               <IonText className="royalityFinancial-text-area">

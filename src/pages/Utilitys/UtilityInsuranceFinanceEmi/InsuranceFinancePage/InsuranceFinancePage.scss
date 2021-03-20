@@ -5,17 +5,31 @@
   background-color: #3182b9;
   .insuranceEmi-text-area {
     font-style: normal;
-    // font-weight: 600;
+    font-weight: 600;
     font-size: 16px;
     margin-top: 40px;
     line-height: 20px;
     color: #ffffff;
+    font-family: Montserrat;
   }
-  .InsuranceEmi-Wrapper {
-    margin-top: 80px;
+
+  .InsuranceEmiWrapper {
+    margin-top: 50%;
+
     .btn-elem {
-      height: 50px;
-      font-size: 8px;
+      width: 100%;
+      font-size: 14px;
+      white-space: pre-wrap;
+      height: 3rem;
+      font-weight: 500;
+      font-family: Montserrat;
+      text-transform: capitalize;
+    }
+    .firstButton {
+      margin-top: 13px;
+    }
+    .secondButton {
+      margin-top: 13px;
     }
   }
 }
