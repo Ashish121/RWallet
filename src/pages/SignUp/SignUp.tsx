@@ -19,6 +19,7 @@ const SignUpPage: React.FC = () => {
   const [gender, setGender] = useState('');
   const [genderDetails, setGenderDetails] = useState([{}]);
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [countryCode, setCountryCode] = useState('');
   // const isAuthenticating = useSelector(
   //   (state: any) => state.login.isAuthenticating
   // );
@@ -38,7 +39,13 @@ const SignUpPage: React.FC = () => {
   }, []);
 
   function handleRegistration() {
-    history.replace('/otp', { fullName, gender, mobileNo, password });
+    history.replace('/otp', {
+      fullName,
+      gender,
+      mobileNo,
+      password,
+      countryCode,
+    });
   }
 
   function updateFullName(fullName: any) {
@@ -72,6 +79,10 @@ const SignUpPage: React.FC = () => {
 
   function navigateToLogin() {
     history.replace('/login');
+  }
+  function updateCountryCode(code: any) {
+    console.log('code', code);
+    setCountryCode(code);
   }
 
   return (
@@ -108,6 +119,14 @@ const SignUpPage: React.FC = () => {
                     array={genderDetails}
                   />
                 </div>
+                <InputText
+                  inputType="tel"
+                  labelText="signup.countryCode"
+                  labelType="floating"
+                  color="light"
+                  labelColor="light"
+                  onChange={updateCountryCode}
+                />
                 <InputText
                   inputType="tel"
                   labelText="signup.mobileNo"
@@ -148,8 +167,10 @@ const SignUpPage: React.FC = () => {
                       fullName.trim() &&
                       mobileNo.trim() &&
                       password.trim() &&
+                      password.trim().length > 5 &&
                       gender.length > 0 &&
                       confirmPassword.trim() &&
+                      countryCode.trim() &&
                       password.trim() === confirmPassword.trim()
                         ? false
                         : true

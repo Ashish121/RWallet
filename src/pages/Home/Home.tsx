@@ -7,7 +7,6 @@ import {
   IonApp,
   IonCard,
   IonCardContent,
-  IonGrid,
   IonIcon,
   IonButton,
   IonText,
@@ -121,38 +120,40 @@ const HomePage: React.FC = () => {
             notificationHandler={showNotifications}
           />
           <IonContent className="home-wrapper">
-            <div className="balance-check-section">
-              <div
-                className="common-ion-text"
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius: '7px 0px 0px 7px',
-                }}
-              >
-                <IonText
-                  className="balance-wrapper-text"
-                  style={{ color: '#000000' }}
+            <div className="section-1">
+              <div className="balance-check-section">
+                <div
+                  className="common-ion-text"
+                  style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: '7px 0px 0px 7px',
+                  }}
                 >
-                  <Translate message="home.balanceLabel" />
-                </IonText>
-              </div>
-              <div className="arrow_box"></div>
-              <div
-                className="common-ion-text"
-                style={{
-                  backgroundColor: '#004777',
-                  borderRadius: '0px 7px 7px 0px',
-                }}
-              >
-                <IonText
-                  className="balance-wrapper-text"
-                  style={{ color: '#ffffff' }}
+                  <IonText
+                    className="balance-wrapper-text"
+                    style={{ color: '#000000' }}
+                  >
+                    <Translate message="home.balanceLabel" />
+                  </IonText>
+                </div>
+                <div className="arrow_box"></div>
+                <div
+                  className="common-ion-text"
+                  style={{
+                    backgroundColor: '#004777',
+                    borderRadius: '0px 7px 7px 0px',
+                  }}
                 >
-                  {balance}
-                </IonText>
+                  <IonText
+                    className="balance-wrapper-text"
+                    style={{ color: '#ffffff' }}
+                  >
+                    {balance}
+                  </IonText>
+                </div>
               </div>
+              <SlidesComponent />
             </div>
-            <SlidesComponent />
 
             <div
               className={
@@ -180,27 +181,23 @@ const HomePage: React.FC = () => {
                     </div>
                   )}
 
-                  <IonGrid>
-                    <ShoppingSection expanded={expandOptions} />
+                  <ShoppingSection expanded={expandOptions} />
 
-                    <LoanSection expanded={expandOptions} />
-                    <UtilitiesSection expanded={expandOptions} />
-                    <div className="see-more-section">
-                      <IonButton onClick={toggleExpandOptions}>
-                        <IonIcon
-                          slot="end"
-                          icon={
-                            expandOptions ? caretUpOutline : caretDownOutline
-                          }
-                        />
-                        {!expandOptions ? (
-                          <Translate message="home.seeAll" />
-                        ) : (
-                          <Translate message="home.collapse" />
-                        )}
-                      </IonButton>
-                    </div>
-                  </IonGrid>
+                  <LoanSection expanded={expandOptions} />
+                  <UtilitiesSection expanded={expandOptions} />
+                  <div className="see-more-section">
+                    <IonButton onClick={toggleExpandOptions}>
+                      <IonIcon
+                        slot="end"
+                        icon={expandOptions ? caretDownOutline : caretUpOutline}
+                      />
+                      {!expandOptions ? (
+                        <Translate message="home.seeAll" />
+                      ) : (
+                        <Translate message="home.collapse" />
+                      )}
+                    </IonButton>
+                  </div>
                 </IonCardContent>
               </IonCard>
             </div>

@@ -252,14 +252,6 @@ const AccountUser: React.FC<any> = () => {
                   labelColor="light"
                   onChange={updateCurrentAddress}
                 />
-                <InputText
-                  inputType="text"
-                  labelText="account.permanentAddress"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updatePermanentAddress}
-                />
                 <div>
                   <SelectMenu
                     label="account.country"
@@ -267,9 +259,17 @@ const AccountUser: React.FC<any> = () => {
                     onSelect={handleCountry}
                   />
                 </div>
+                <InputText
+                  inputType="text"
+                  labelText="account.province"
+                  labelType="floating"
+                  color="light"
+                  labelColor="light"
+                  onChange={updateProvince}
+                />
                 <div>
                   <SelectMenu
-                    label="account.state"
+                    label="account.district"
                     array={states}
                     onSelect={handleState}
                   />
@@ -283,11 +283,11 @@ const AccountUser: React.FC<any> = () => {
                 </div>
                 <InputText
                   inputType="text"
-                  labelText="account.province"
+                  labelText="account.houseNo"
                   labelType="floating"
                   color="light"
                   labelColor="light"
-                  onChange={updateProvince}
+                  onChange={updatePermanentAddress}
                 />
 
                 <div style={{ marginTop: '30px' }}>

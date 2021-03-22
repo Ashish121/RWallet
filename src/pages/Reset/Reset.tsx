@@ -2,9 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useHistory, useLocation } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+import { IonPage, IonContent, IonText } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, LoaderComponent } from '../../components';
+import {
+  BackButton,
+  ButtonConmponent,
+  InputText,
+  LoaderComponent,
+} from '../../components';
 import { requestForResetPassword } from '../../redux/actions';
 
 import './Reset.scss';
@@ -53,57 +58,55 @@ const Reset: React.FC = () => {
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
-      <IonApp>
-        <IonPage>
-          <IonContent>
-            <div className="password-container">
-              <div className="page-header">
+
+      <IonPage>
+        <BackButton clickHandler={() => history.goBack()} />
+        <IonContent>
+          <div className="password-container">
+            <div className="page-header">
+              <IonText>
+                <Translate message="reset.pageHeader" />
+              </IonText>
+            </div>
+            <div className="page-sub-header">
+              <div className="innercontainer">
                 <IonText>
-                  <Translate message="reset.pageHeader" />
+                  <Translate message="reset.newpassword" />
                 </IonText>
               </div>
-              <div className="page-sub-header">
-                <div className="innercontainer">
-                  <IonText>
-                    <Translate message="reset.newpassword" />
-                  </IonText>
-                </div>
-              </div>
-
-              <div className="input-container">
-                <InputText
-                  inputType="password"
-                  labelText="rest.new"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateNewPass}
-                  showPasswordMode={true}
-                />
-                <InputText
-                  inputType="password"
-                  labelText="rest.newConfirm"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateConfirmPassword}
-                  showPasswordMode={true}
-                />
-              </div>
-              <div className="confirm-btn-wrapper">
-                <ButtonConmponent
-                  buttonLabel="reset.continue"
-                  size="block"
-                  disabled={
-                    newPass.trim() === confirmPass.trim() ? false : true
-                  }
-                  clickHandler={handleVerifyReset}
-                />
-              </div>
             </div>
-          </IonContent>
-        </IonPage>
-      </IonApp>
+
+            <div className="input-container">
+              <InputText
+                inputType="password"
+                labelText="rest.new"
+                labelType="floating"
+                color="light"
+                labelColor="light"
+                onChange={updateNewPass}
+                showPasswordMode={true}
+              />
+              <InputText
+                inputType="password"
+                labelText="rest.newConfirm"
+                labelType="floating"
+                color="light"
+                labelColor="light"
+                onChange={updateConfirmPassword}
+                showPasswordMode={true}
+              />
+            </div>
+            <div className="confirm-btn-wrapper">
+              <ButtonConmponent
+                buttonLabel="reset.continue"
+                size="block"
+                disabled={newPass.trim() === confirmPass.trim() ? false : true}
+                clickHandler={handleVerifyReset}
+              />
+            </div>
+          </div>
+        </IonContent>
+      </IonPage>
     </>
   );
 };

@@ -27,53 +27,53 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
         <div className="loan-list-container">
           <div>
             <button className="iconButtons">
-              <LoanIcon width="20" height="20" />
-              <IonText>
-                <Translate message="home.businessLoan" />
-              </IonText>
+              <LoanIcon width="30" height="30" />
             </button>
+            <IonText>
+              <Translate message="home.businessLoan" />
+            </IonText>
           </div>
           <div>
             <button className="iconButtons">
-              <PurchaseIcon width="20" height="20" />
-              <IonText>
-                <Translate message="home.puchaseLoan" />
-              </IonText>
+              <PurchaseIcon width="30" height="30" />
             </button>
+            <IonText>
+              <Translate message="home.puchaseLoan" />
+            </IonText>
           </div>
           <div>
             <button className="iconButtons">
-              <TearmLoanIcon width="20" height="20" />
-              <IonText>
-                <Translate message="home.termLoan" />
-              </IonText>
+              <TearmLoanIcon width="30" height="30" />
             </button>
+            <IonText>
+              <Translate message="home.termLoan" />
+            </IonText>
           </div>
           <div>
             <button className="iconButtons">
-              <PersonalLoanIcon width="20" height="20" />
-              <IonText>
-                <Translate message="home.personalLoanText" />
-              </IonText>
+              <PersonalLoanIcon width="30" height="30" />
             </button>
+            <IonText>
+              <Translate message="home.personalLoanText" />
+            </IonText>
           </div>
           {expanded && (
             <>
               <div>
                 <button className="iconButtons">
-                  <EducationIcon width="20" height="20" />
-                  <IonText>
-                    <Translate message="home.educationTedxt" />
-                  </IonText>
+                  <EducationIcon width="30" height="30" />
                 </button>
+                <IonText>
+                  <Translate message="home.educationTedxt" />
+                </IonText>
               </div>
               <div>
                 <button className="iconButtons">
-                  <Securityicon width="20" height="20" />
-                  <IonText>
-                    <Translate message="home.secureText" />
-                  </IonText>
+                  <Securityicon width="30" height="30" />
                 </button>
+                <IonText>
+                  <Translate message="home.secureText" />
+                </IonText>
               </div>
             </>
           )}

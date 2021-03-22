@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+import { IonPage, IonContent, IonText } from '@ionic/react';
 import { FirebaseAuthentication } from '@ionic-native/firebase-authentication';
 import 'firebase/auth';
 import OtpInput from 'react-otp-input';
@@ -27,10 +27,12 @@ const OtpPage: React.FC = () => {
   const [showLoading, setShowLoading] = useState(false);
   const [contact, setContact] = useState('');
   const [loaderMessage, setLoaderMessage] = useState('');
+  const [countryCode, setCountryCode] = useState('');
 
   useEffect(() => {
     const params: any = location.state;
     setContact(params.mobileNo);
+    setCountryCode(params.countryCode);
   }, []);
 
   const onOtpEnter = (otp: any) => {
@@ -45,6 +47,7 @@ const OtpPage: React.FC = () => {
     if (status == true) {
       history.replace('/mpin');
     } else {
+      history.replace('/register');
       dispatch(updateToast(data));
     }
   }
@@ -52,7 +55,9 @@ const OtpPage: React.FC = () => {
   function sendOTP() {
     setShowLoading(true);
     setLoaderMessage('Please Wait...');
-    FirebaseAuthentication.verifyPhoneNumber(`+91${contact}`, 30000)
+    console.log('countryCode: ', countryCode);
+
+    FirebaseAuthentication.verifyPhoneNumber(`+${countryCode}${contact}`, 30000)
       .then((verificationId: any) => {
         setShowLoading(false);
         console.log('Received verificationId: ', verificationId);
@@ -86,6 +91,7 @@ const OtpPage: React.FC = () => {
         setShowLoading(false);
         setLoaderMessage('');
         console.log('opt verification status: ', response);
+        console.log('params.routeName: ', params.routeName);
 
         if (params.routeName) {
           history.replace('/' + params.routeName, { mobileNo: contact });
@@ -110,7 +116,7 @@ const OtpPage: React.FC = () => {
         console.log('Error: ', error);
         const data = {
           showToast: true,
-          toastMessage: 'Invalid OTP.Please enter valid otp.',
+          toastMessage: 'Invalid OTP.Please check your otp or resend it.',
           position: 'top',
           duration: '10000',
         };
@@ -119,13 +125,13 @@ const OtpPage: React.FC = () => {
       }
     );
   };
-  function goBack() {
+  function back() {
     const params: any = location.state;
-    if (params.routeName == 'passReset') {
+    if (params.routeName) {
       history.replace('/reset');
-    } else {
-      history.replace('/register');
+      return;
     }
+    history.replace('/register');
   }
   return (
     <>
@@ -133,92 +139,86 @@ const OtpPage: React.FC = () => {
         showLoading={showLoading}
         loaderMessage={loaderMessage}
       />
-      <IonApp>
-        <IonPage>
-          <>
-            <BackButton clickHandler={goBack} />
-            <IonContent>
-              <div className="otp-container">
-                {!otpReceived && (
-                  <>
-                    <div className="page-header">
-                      <IonText>
-                        <Translate message="otp.sendOtpHeader" />
-                      </IonText>
-                    </div>
-                    <div
-                      className="innercontainer"
-                      style={{ marginTop: '10px' }}
-                    >
-                      <IonText style={{ color: '#ffffff' }}>
-                        <Translate
-                          message="otp.sendOtpInfo"
-                          value={{ contact }}
-                        />
-                      </IonText>
-                    </div>
-                    <div
-                      className="confirm-btn-wrapper"
-                      style={{ display: 'flex', justifyContent: 'center' }}
-                    >
-                      <ButtonConmponent
-                        buttonLabel="otp.send"
-                        size="block"
-                        clickHandler={sendOTP}
-                      />
-                    </div>
-                  </>
-                )}
-                {otpReceived && (
-                  <>
-                    <div className="page-header">
-                      <IonText>
-                        <Translate message="otp.pageHeader" />
-                      </IonText>
-                    </div>
-                    <div className="page-sub-header">
-                      <div className="innercontainer">
-                        <IonText>
-                          <Translate
-                            message="otp.pageSubHeader"
-                            value={{ contact }}
-                          />
-                        </IonText>
-                      </div>
-                    </div>
 
-                    <div className="field-container">
-                      <OtpInput
-                        value={otpText}
-                        onChange={onOtpEnter}
-                        numInputs={6}
-                        containerStyle="otp-field-wrapper"
-                        isInputNum={true}
-                        inputStyle="otp-field-input"
+      <IonPage>
+        <BackButton clickHandler={back} />
+        <IonContent>
+          <div className="otp-container">
+            {!otpReceived && (
+              <>
+                <div className="page-header">
+                  <IonText>
+                    <Translate message="otp.sendOtpHeader" />
+                  </IonText>
+                </div>
+                <div className="innercontainer" style={{ marginTop: '10px' }}>
+                  <IonText style={{ color: '#ffffff' }}>
+                    <Translate
+                      message="otp.sendOtpInfo"
+                      value={{ contact, countryCode }}
+                    />
+                  </IonText>
+                </div>
+                <div
+                  className="confirm-btn-wrapper"
+                  style={{ display: 'flex', justifyContent: 'center' }}
+                >
+                  <ButtonConmponent
+                    buttonLabel="otp.send"
+                    size="block"
+                    clickHandler={sendOTP}
+                  />
+                </div>
+              </>
+            )}
+            {otpReceived && (
+              <>
+                <div className="page-header">
+                  <IonText>
+                    <Translate message="otp.pageHeader" />
+                  </IonText>
+                </div>
+                <div className="page-sub-header">
+                  <div className="innercontainer">
+                    <IonText>
+                      <Translate
+                        message="otp.pageSubHeader"
+                        value={{ contact, countryCode }}
                       />
-                    </div>
-                    <div className="resend-link-container">
-                      <IonText>
-                        <Translate message="otp.resendText" />
-                        <a onClick={sendOTP}>
-                          <Translate message="otp.resendLinkText" />
-                        </a>
-                      </IonText>
-                    </div>
-                    <div className="confirm-btn-wrapper">
-                      <ButtonConmponent
-                        buttonLabel="common.continue"
-                        size="block"
-                        clickHandler={handleVerifyOtp}
-                      />
-                    </div>
-                  </>
-                )}
-              </div>
-            </IonContent>
-          </>
-        </IonPage>
-      </IonApp>
+                    </IonText>
+                  </div>
+                </div>
+
+                <div className="field-container">
+                  <OtpInput
+                    value={otpText}
+                    onChange={onOtpEnter}
+                    numInputs={6}
+                    containerStyle="otp-field-wrapper"
+                    isInputNum={true}
+                    inputStyle="otp-field-input"
+                  />
+                </div>
+                <div className="resend-link-container">
+                  <IonText>
+                    <Translate message="otp.resendText" />
+                    <a onClick={sendOTP}>
+                      <Translate message="otp.resendLinkText" />
+                    </a>
+                  </IonText>
+                </div>
+                <div className="confirm-btn-wrapper">
+                  <ButtonConmponent
+                    buttonLabel="common.continue"
+                    size="block"
+                    clickHandler={handleVerifyOtp}
+                  />
+                </div>
+              </>
+            )}
+          </div>
+        </IonContent>
+      </IonPage>
     </>
   );
 };

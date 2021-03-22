@@ -78,10 +78,7 @@ const FixedAccountPage: React.FC = () => {
               <div className="page-inner-wrapper">
                 <div className="page-header-label">
                   <IonText className="account-no-text">
-                    <Translate
-                      message="account.fixedPageHeader"
-                      value={{ accountNo: '07601402201' }}
-                    />
+                    <Translate message="account.fixedPageHeader" />
                   </IonText>
                 </div>
               </div>

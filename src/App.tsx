@@ -22,7 +22,7 @@ import '@ionic/react/css/display.css';
 import 'leaflet/dist/leaflet.css';
 
 /* Theme variables */
-// import './theme/variables.css';
+import './theme/variables.css';
 
 import { IntlProvider } from 'react-intl';
 import { English } from './i18n/languages';

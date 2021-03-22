@@ -1,6 +1,6 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, IonPage } from '@ionic/react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import {
   LoginPage,
@@ -33,10 +33,10 @@ const Routes: React.FC = () => {
   const userId = localStorage.getItem('registeredUserId');
   const userCreatedAccount = localStorage.getItem('userCreatedAccount');
   return (
-    <IonReactRouter>
-      <IonApp>
-        <IonPage>
-          <IonRouterOutlet>
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Switch>
             <Route path="/register" exact component={SignUpPage} />
             <Route path="/login" exact component={LoginPage} />
             <Route path="/otp" exact component={OtpPage} />
@@ -81,10 +81,10 @@ const Routes: React.FC = () => {
                         : 'accountpage'
               }
             />
-          </IonRouterOutlet>
-        </IonPage>
-      </IonApp>
-    </IonReactRouter>
+          </Switch>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
   );
 };
 

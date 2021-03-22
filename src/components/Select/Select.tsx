@@ -35,6 +35,7 @@ const SelectMenu: React.FC<SelectGenderProps> = ({
             <Translate message={label} />
           </IonLabel>
           <IonSelect
+            interface="action-sheet"
             placeholder={placeholderLabel}
             onIonChange={(e) => handleSelect(e.detail.value)}
           >

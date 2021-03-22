@@ -231,8 +231,12 @@ http://ionicframework.com/docs/theming/ */
 }
 
 @font-face {
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: normal;
-  src: url("./fonts/Monstserrat/Montserrat-Black.ttf");
+  src: url("../fonts/Montserrat/Montserrat-Black.ttf");
+}
+
+* {
+  font-family: "Montserrat", sans-serif !important;
 }
