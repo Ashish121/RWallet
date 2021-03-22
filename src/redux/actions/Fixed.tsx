@@ -11,6 +11,7 @@ const requestForFixedAccount = (payload: any, nextRoute: Function) => {
         payload.user_id,
         payload.amount
       );
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       if (response.status === 200) {
         dispatch({ type: FIXED_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
@@ -19,6 +20,7 @@ const requestForFixedAccount = (payload: any, nextRoute: Function) => {
         nextRoute(false);
       }
     } catch (error) {
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       nextRoute(false);
       const data = {
         showToast: true,

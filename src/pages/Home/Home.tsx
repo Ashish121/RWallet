@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { RupayIcon, CloseBarIcon } from '../../assets/Icons';
+import { CloseBarIcon } from '../../assets/Icons';
 
 import {
   IonPage,
@@ -12,6 +12,7 @@ import {
   IonIcon,
   IonButton,
   IonText,
+  IonImg,
 } from '@ionic/react';
 import {
   Plugins,
@@ -127,11 +128,14 @@ const HomePage: React.FC = () => {
                 <div
                   className="common-ion-text"
                   style={{
-                    backgroundColor: '#000000',
+                    backgroundColor: '#ffffff',
                     borderRadius: '7px 0px 0px 7px',
                   }}
                 >
-                  <RupayIcon width="30" height="30" />
+                  <IonImg
+                    style={{ width: '20px' }}
+                    src={require('../../assets/Icons/Rupay.svg')}
+                  />
                 </div>
                 <div className="arrow_box"></div>
                 <div

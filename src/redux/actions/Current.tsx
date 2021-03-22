@@ -10,6 +10,7 @@ const requestForCurrentAccount = (payload: any, nextRoute: Function) => {
         payload.user_id,
         payload.amount
       );
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       if (response.status === 200) {
         dispatch({ type: CURRENT_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
@@ -19,6 +20,7 @@ const requestForCurrentAccount = (payload: any, nextRoute: Function) => {
       }
       console.log('done', response);
     } catch (error) {
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       nextRoute(false);
       const data = {
         showToast: true,

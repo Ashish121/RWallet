@@ -10,11 +10,13 @@ const requestForMpin = (payload: any, nextRoute: Function) => {
         payload.user_id,
         payload.mpin
       );
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       if (response.status === 200) {
         dispatch({ type: MPIN_SUCCESS, data: response.data });
         nextRoute(true);
       }
     } catch (error) {
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       nextRoute(false);
       const data = {
         showToast: true,

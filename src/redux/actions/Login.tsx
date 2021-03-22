@@ -7,6 +7,7 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
     dispatch({ type: AUTHENTICATION_INPROGRESS });
     try {
       const response = await authenticate(payload.contactNo, payload.password);
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       if (response.status === 200 && response.data.success) {
         dispatch({ type: LOGIN_SUCCESS });
         localStorage.setItem('loginDetails', JSON.stringify(response));
@@ -22,6 +23,7 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
         dispatch(updateToast(data));
       }
     } catch (error) {
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       const data = {
         showToast: true,
         toastMessage: 'API failed',
