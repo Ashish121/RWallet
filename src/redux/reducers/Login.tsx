@@ -22,6 +22,9 @@ const reducers: any = {
   [AUTHENTICATION_INPROGRESS]: (draft: any) => {
     draft.isAuthenticating = true;
   },
+  'AUTHENTICATION_COMPLETED': (draft: any) => {
+    draft.isAuthenticating = false;
+  },
   [LOGIN_SUCCESS]: (draft: any) => {
     draft.authenticated = true;
     draft.isAuthenticating = false;

@@ -70,7 +70,6 @@ const LoginPage: React.FC = () => {
                 color="light"
                 labelColor="light"
                 onChange={updateContactNo}
-                autoFocus={true}
               />
               <InputText
                 inputType="password"

@@ -12,6 +12,7 @@ const requestForSavingAccount = (payload: any, nextRoute: Function) => {
         payload.amount,
         payload.depositType
       );
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       if (response.status === 200) {
         dispatch({ type: SAVING_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
@@ -20,6 +21,7 @@ const requestForSavingAccount = (payload: any, nextRoute: Function) => {
         nextRoute(false);
       }
     } catch (error) {
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       nextRoute(false);
       const data = {
         showToast: true,

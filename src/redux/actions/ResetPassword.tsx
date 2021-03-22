@@ -10,11 +10,13 @@ const requestForResetPassword = (payload: any, nextRoute: Function) => {
         payload.mobileNo,
         payload.newPass
       );
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       if (response.status === 200) {
         dispatch({ type: RESETPASSWORD_SUCCESS, data: response.data });
         nextRoute();
       }
     } catch (error) {
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       const data = {
         showToast: true,
         toastMessage: 'API failed',

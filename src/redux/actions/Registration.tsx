@@ -13,7 +13,7 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         payload.password
       );
       console.log('res****', response);
-
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       if (response.status == 200) {
         dispatch({ type: REGISTRATION_SUCCESS, response: response });
         localStorage.setItem('registeredUserId', response.data.user.id);
@@ -22,6 +22,7 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
       }
       console.log('done', response);
     } catch (error) {
+      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       console.log('error: ', error);
       let data: any;
       if (error?.errors?.mobile_number) {

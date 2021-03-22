@@ -142,7 +142,7 @@ const OtpPage: React.FC = () => {
 
       <IonPage>
         <BackButton clickHandler={back} />
-        <IonContent>
+        <IonContent className="otp-content">
           <div className="otp-container">
             {!otpReceived && (
               <>
