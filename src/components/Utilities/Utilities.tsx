@@ -1,6 +1,6 @@
-import React from "react";
-import { IonText, IonRow, IonCol } from "@ionic/react";
-import { Translate } from "../../i18n/formatMessages";
+import React from 'react';
+import { IonText } from '@ionic/react';
+import { Translate } from '../../i18n/formatMessages';
 import {
   TelevisionIcon,
   AirPlaneIcon,
@@ -11,8 +11,8 @@ import {
   CreditCardIcon,
   InsuranceIcon,
   AntivirusIcon,
-} from "../../assets/Icons";
-import "./Utilities.scss";
+} from '../../assets/Icons';
+import './Utilities.scss';
 
 interface utilitiesProps {
   expanded?: boolean;
@@ -28,7 +28,7 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
     <>
       {expanded && (
         <div className="utility-section">
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: 'center' }}>
             <IonText text-center>
               <Translate message="home.utility" />
             </IonText>

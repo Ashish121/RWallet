@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { useHistory, useLocation } from "react-router-dom";
-import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
-import { Translate } from "../../i18n/formatMessages";
+import { useHistory, useLocation } from 'react-router-dom';
+import { IonPage, IonContent, IonText } from '@ionic/react';
+import { Translate } from '../../i18n/formatMessages';
 import {
   BackButton,
   ButtonConmponent,
   InputText,
   LoaderComponent,
-} from "../../components";
-import { requestForResetPassword } from "../../redux/actions";
+} from '../../components';
+import { requestForResetPassword } from '../../redux/actions';
 
-import "./Reset.scss";
+import './Reset.scss';
 
 const Reset: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
-  const [newPass, setNewPass] = useState("");
-  const [confirmPass, setConfirmPass] = useState("");
+  const [newPass, setNewPass] = useState('');
+  const [confirmPass, setConfirmPass] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setLoaderMessage] = useState("");
-  const [contact, setContact] = useState("");
+  const [message, setLoaderMessage] = useState('');
+  const [contact, setContact] = useState('');
 
   useEffect(() => {
     const params: any = location.state;
@@ -38,19 +38,19 @@ const Reset: React.FC = () => {
 
   function nextRoute(status: any) {
     setIsLoading(false);
-    setLoaderMessage("");
+    setLoaderMessage('');
     if (status) {
-      console.log("status: ", status);
-      console.log("History: ", history);
-      history.replace("/login");
+      console.log('status: ', status);
+      console.log('History: ', history);
+      history.replace('/login');
     }
   }
 
   function handleVerifyReset() {
-    console.log("location", location);
+    console.log('location', location);
 
     setIsLoading(true);
-    setLoaderMessage("Updating...");
+    setLoaderMessage('Updating...');
     dispatch(
       requestForResetPassword({ mobileNo: contact, newPass }, nextRoute)
     );

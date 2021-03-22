@@ -1,6 +1,6 @@
-import React from "react";
-import "./Spinner.css";
-import { IonLoading, IonContent } from "@ionic/react";
+import React from 'react';
+import './Spinner.css';
+import { IonLoading } from '@ionic/react';
 
 interface LoaderProps {
   showLoading: boolean;

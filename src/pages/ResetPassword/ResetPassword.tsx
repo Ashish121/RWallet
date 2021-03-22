@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
-import { Translate } from "../../i18n/formatMessages";
-import { BackButton, ButtonConmponent, InputText } from "../../components";
-import "./ResetPassword.scss";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { IonPage, IonContent, IonText } from '@ionic/react';
+import { Translate } from '../../i18n/formatMessages';
+import { BackButton, ButtonConmponent, InputText } from '../../components';
+import './ResetPassword.scss';
 
 const ResetPassword: React.FC = () => {
   const history = useHistory();
-  const [contactNo, setConactNo] = useState("");
-  const [countryCode, setCountryCode] = useState("");
+  const [contactNo, setConactNo] = useState('');
+  const [countryCode, setCountryCode] = useState('');
   function handleVerifyReset() {
-    history.replace("/otp", {
+    history.replace('/otp', {
       mobileNo: contactNo,
-      routeName: "passReset",
+      routeName: 'passReset',
       countryCode,
     });
   }
 
   function setContact(value: any) {
-    console.log("value", value);
+    console.log('value', value);
     setConactNo(value);
   }
   function back() {
-    history.replace("/login");
+    history.replace('/login');
   }
   function updateCountryCode(code: any) {
     setCountryCode(code);
