@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../../i18n/formatMessages';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../../i18n/formatMessages";
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
   RangeSlider,
-} from '../../../components';
-import './EmiCalculater.scss';
+} from "../../../components";
+import "./EmiCalculater.scss";
 
 const EmiCalculater: React.FC = () => {
   const history = useHistory();
-  const prinicipalAmount = useState('10000.00');
-  const interest = useState('724.00');
-  const totalPayable = useState('10724.00');
-  const emiAmountMonthly = useState('416.34');
+  const prinicipalAmount = useState("10000.00");
+  const interest = useState("724.00");
+  const totalPayable = useState("10724.00");
+  const emiAmountMonthly = useState("416.34");
 
   function handleCalculate() {
-    console.log('Handling registration');
-    history.replace('/tabs/applyPage');
+    console.log("Handling registration");
+    history.replace("/tabs/applyPage");
   }
 
   return (

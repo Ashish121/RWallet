@@ -1,21 +1,21 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../../../i18n/formatMessages';
-import { ButtonConmponent, HeaderComponent } from '../../../../components';
-import './InsuranceFinancePage.scss';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../../../i18n/formatMessages";
+import { ButtonConmponent, HeaderComponent } from "../../../../components";
+import "./InsuranceFinancePage.scss";
 
 const InsuranceFinancePage: React.FC = () => {
   const history = useHistory();
 
   function handleroyalFinancialServices() {
-    console.log('Handling registration');
-    history.replace('/royalityFinancialServices');
+    console.log("Handling registration");
+    history.replace("/royalityFinancialServices");
   }
 
   function handleroyalitySavingCredit() {
-    console.log('Handling registration');
-    history.replace('/royalitySavingCredit');
+    console.log("Handling registration");
+    history.replace("/royalitySavingCredit");
   }
 
   return (
@@ -29,14 +29,14 @@ const InsuranceFinancePage: React.FC = () => {
                 <Translate message="InsuranceFinanceEmi" />
               </IonText>
               <div className="InsuranceEmi-Wrapper">
-                <div style={{ marginTop: '13px' }}>
+                <div style={{ marginTop: "13px" }}>
                   <ButtonConmponent
                     buttonLabel="RoyalitySaving"
                     size="block"
                     clickHandler={handleroyalFinancialServices}
                   />
                 </div>
-                <div style={{ marginTop: '13px' }}>
+                <div style={{ marginTop: "13px" }}>
                   <ButtonConmponent
                     buttonLabel="RoyaliFinancialServices"
                     size="block"

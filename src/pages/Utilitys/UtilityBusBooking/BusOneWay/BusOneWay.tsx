@@ -1,21 +1,21 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { BusBookingIcon } from '../../../../assets/Icons';
-import { Translate } from '../../../../i18n/formatMessages';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { BusBookingIcon } from "../../../../assets/Icons";
+import { Translate } from "../../../../i18n/formatMessages";
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
-} from '../../../../components';
-import './BusOneWay.scss';
+} from "../../../../components";
+import "./BusOneWay.scss";
 
 const BusOneWay: React.FC = () => {
   const history = useHistory();
 
   function handleBusBooking() {
-    console.log('Handling registration');
-    history.replace('/tabs/busTwoWay');
+    console.log("Handling registration");
+    history.replace("/tabs/busTwoWay");
   }
 
   return (

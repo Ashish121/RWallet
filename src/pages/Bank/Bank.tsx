@@ -1,68 +1,68 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { useDispatch } from 'react-redux';
-import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
-import './Bank.scss';
-import { requestForBankTransfer } from '../../redux/actions/';
-import LoaderComponent from '../../components/Spinner/Spinner';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { useDispatch } from "react-redux";
+import { Translate } from "../../i18n/formatMessages";
+import { ButtonConmponent, InputText, HeaderComponent } from "../../components";
+import "./Bank.scss";
+import { requestForBankTransfer } from "../../redux/actions/";
+import LoaderComponent from "../../components/Spinner/Spinner";
 
 const Bank: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   //const user_id = localStorage.getItem("userId");
   const user_id = 2;
-  const [destination, setDestination] = useState('');
-  const [holderName, setHolderName] = useState('');
-  const [accountNumber, setAccountNumber] = useState('');
-  const [mobileNo, setMobileNo] = useState('');
-  const [amount, setAmount] = useState('');
-  const [remarks, setRemarks] = useState('');
+  const [destination, setDestination] = useState("");
+  const [holderName, setHolderName] = useState("");
+  const [accountNumber, setAccountNumber] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [amount, setAmount] = useState("");
+  const [remarks, setRemarks] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setLoaderMessage] = useState('');
+  const [message, setLoaderMessage] = useState("");
 
   function updateDestination(destination: any) {
-    console.log('destination :', destination);
+    console.log("destination :", destination);
     setDestination(destination);
   }
   function updateHolderName(holderName: any) {
-    console.log('holderName :', holderName);
+    console.log("holderName :", holderName);
     setHolderName(holderName);
   }
 
   function updateAccountNumber(accountNumber: any) {
-    console.log('accountNumber :', accountNumber);
+    console.log("accountNumber :", accountNumber);
     setAccountNumber(accountNumber);
   }
 
   function updateMobileNo(mobileNo: any) {
-    console.log('mobileNo :', mobileNo);
+    console.log("mobileNo :", mobileNo);
     setMobileNo(mobileNo);
   }
 
   function updateAmount(amount: any) {
-    console.log('amount :', amount);
+    console.log("amount :", amount);
     setAmount(amount);
   }
 
   function updateRemarks(remarks: any) {
-    console.log('remarks :', remarks);
+    console.log("remarks :", remarks);
     setRemarks(remarks);
   }
 
   function nextRoute(status: any) {
     setIsLoading(false);
-    setLoaderMessage('');
+    setLoaderMessage("");
     if (status) {
-      console.log('status: ', status);
-      console.log('History: ', history);
-      history.replace('/tabs/banks');
+      console.log("status: ", status);
+      console.log("History: ", history);
+      history.replace("/tabs/banks");
     }
   }
   function handleproceed() {
     setIsLoading(true);
-    setLoaderMessage('Updating...');
+    setLoaderMessage("Updating...");
     dispatch(
       requestForBankTransfer(
         {
@@ -77,11 +77,11 @@ const Bank: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
+    console.log("Handling registration");
   }
 
   function goBack() {
-    history.replace('/tabs/transfer');
+    history.replace("/tabs/transfer");
   }
 
   return (

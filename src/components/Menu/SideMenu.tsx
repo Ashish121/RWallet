@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   IonMenu,
   IonHeader,
@@ -9,29 +9,29 @@ import {
   IonButtons,
   IonButton,
   IonAvatar,
-} from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-import { menuController } from '@ionic/core';
-import { Plugins, CameraResultType } from '@capacitor/core';
+} from "@ionic/react";
+import { useHistory } from "react-router-dom";
+import { menuController } from "@ionic/core";
+import { Plugins, CameraResultType } from "@capacitor/core";
 
-import { ProfilePictureIcon, CloseIcon, MenuCamera } from '../../assets/Icons';
-import './SideMenu.scss';
-import { Translate } from '../../i18n/formatMessages';
+import { ProfilePictureIcon, CloseIcon, MenuCamera } from "../../assets/Icons";
+import "./SideMenu.scss";
+import { Translate } from "../../i18n/formatMessages";
 
 const MenuComponent: React.FC<any> = () => {
   const [imagePicked, setImagePicked] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
+  const [selectedImage, setSelectedImage] = useState("");
   const { Camera } = Plugins;
   const history = useHistory();
   const closeMenu = () => {
     menuController.toggle();
   };
   function logOut() {
-    history.replace('/login');
+    history.replace("/login");
     localStorage.clear();
   }
   async function takePicture() {
-    console.log('Taking picture now');
+    console.log("Taking picture now");
 
     const image = await Camera.getPhoto({
       quality: 90,
@@ -39,7 +39,7 @@ const MenuComponent: React.FC<any> = () => {
       resultType: CameraResultType.Uri,
     });
     const imageUrl: any = image.webPath;
-    console.log('imageUrl: ', imageUrl);
+    console.log("imageUrl: ", imageUrl);
     setSelectedImage(imageUrl);
     setImagePicked(true);
   }
@@ -52,7 +52,7 @@ const MenuComponent: React.FC<any> = () => {
             <IonButtons slot="end">
               <IonButton
                 onClick={closeMenu}
-                style={{ position: 'absolute', width: '100%' }}
+                style={{ position: "absolute", width: "100%" }}
               />
               <CloseIcon />
             </IonButtons>
@@ -150,7 +150,7 @@ const MenuComponent: React.FC<any> = () => {
                     <Translate message="profile.privacy" />
                   </IonText>
                 </button>
-                <div className="version-wrapper" style={{ display: 'grid' }}>
+                <div className="version-wrapper" style={{ display: "grid" }}>
                   <IonText className="label-text">
                     <Translate message="profile.version" />
                   </IonText>

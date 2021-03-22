@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { requestForFixedAccount } from '../../../redux/actions';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { requestForFixedAccount } from "../../../redux/actions";
 import {
   IonPage,
   IonContent,
   IonText,
   IonApp,
   IonRadioGroup,
-} from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-import { Translate } from '../../../i18n/formatMessages';
+} from "@ionic/react";
+import { useHistory } from "react-router-dom";
+import { Translate } from "../../../i18n/formatMessages";
 import {
   HeaderComponent,
   InputText,
@@ -17,38 +17,38 @@ import {
   CheckboxComponent,
   ButtonConmponent,
   LoaderComponent,
-} from '../../../components';
-import './Fixed.scss';
+} from "../../../components";
+import "./Fixed.scss";
 
 const FixedAccountPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [investment_period, setInvestmentPeriod] = useState('');
-  const [amount, setAmount] = useState('');
+  const [investment_period, setInvestmentPeriod] = useState("");
+  const [amount, setAmount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setLoadeMessage] = useState('');
+  const [message, setLoadeMessage] = useState("");
 
   function setToggleTerms(value: boolean) {
-    console.log('value: ', value);
+    console.log("value: ", value);
   }
 
   function nextRoute(status: any) {
     if (status) {
-      history.replace('/confirm');
+      history.replace("/confirm");
       return;
     }
     setIsLoading(true);
-    setLoadeMessage('');
+    setLoadeMessage("");
   }
 
   function navigateToConfirm() {
     setIsLoading(true);
-    setLoadeMessage('Creating account...');
-    const user_id = localStorage.getItem('registeredUserId');
+    setLoadeMessage("Creating account...");
+    const user_id = localStorage.getItem("registeredUserId");
     dispatch(
       requestForFixedAccount({ investment_period, user_id, amount }, nextRoute)
     );
-    console.log('Handling Fixed account', amount, investment_period);
+    console.log("Handling Fixed account", amount, investment_period);
   }
 
   function updateAmount(amount: any) {
@@ -60,7 +60,7 @@ const FixedAccountPage: React.FC = () => {
     setInvestmentPeriod(investment_period);
   }
   function goBack() {
-    history.replace('/accountpage');
+    history.replace("/accountpage");
   }
 
   return (
@@ -78,10 +78,7 @@ const FixedAccountPage: React.FC = () => {
               <div className="page-inner-wrapper">
                 <div className="page-header-label">
                   <IonText className="account-no-text">
-                    <Translate
-                      message="account.fixedPageHeader"
-                      value={{ accountNo: '07601402201' }}
-                    />
+                    <Translate message="account.fixedPageHeader" />
                   </IonText>
                 </div>
               </div>
@@ -121,11 +118,11 @@ const FixedAccountPage: React.FC = () => {
                 </div>
                 <div
                   style={{
-                    marginTop: '10px',
-                    bottom: '10px',
-                    width: '100%;',
-                    left: '0',
-                    padding: '30px',
+                    marginTop: "10px",
+                    bottom: "10px",
+                    width: "100%;",
+                    left: "0",
+                    padding: "30px",
                   }}
                 >
                   <ButtonConmponent

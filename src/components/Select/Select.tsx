@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
   IonItem,
   IonSelect,
   IonLabel,
   IonList,
   IonSelectOption,
-} from '@ionic/react';
-import debounce from 'lodash.debounce';
-import { Translate } from '../../i18n/formatMessages';
-import './Select.scss';
+} from "@ionic/react";
+import debounce from "lodash.debounce";
+import { Translate } from "../../i18n/formatMessages";
+import "./Select.scss";
 
 interface SelectGenderProps {
   onSelect?: Function;
@@ -35,6 +35,7 @@ const SelectMenu: React.FC<SelectGenderProps> = ({
             <Translate message={label} />
           </IonLabel>
           <IonSelect
+            interface="action-sheet"
             placeholder={placeholderLabel}
             onIonChange={(e) => handleSelect(e.detail.value)}
           >

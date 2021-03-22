@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../i18n/formatMessages';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../i18n/formatMessages";
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
   SelectMenu,
-} from '../../components';
-import './Agent.scss';
-import { requestForAgentTransfer } from '../../redux/actions';
-import LoaderComponent from '../../components/Spinner/Spinner';
+} from "../../components";
+import "./Agent.scss";
+import { requestForAgentTransfer } from "../../redux/actions";
+import LoaderComponent from "../../components/Spinner/Spinner";
 
 const Agent: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   //const user_id = localStorage.getItem("userId");
   const user_id = 2;
-  const [country, setCountry] = useState('');
+  const [country, setCountry] = useState("");
   const [countryDetails, setCountryDetails] = useState([{}]);
-  const [agentCode, setAgentCode] = useState('');
-  const [accountHolderName, setAccountHolderName] = useState('');
-  const [accountNo, setAccountNo] = useState('');
-  const [mobileNo, setMobileNo] = useState('');
-  const [amount, setAmount] = useState('');
-  const [remarks, setRemarks] = useState('');
+  const [agentCode, setAgentCode] = useState("");
+  const [accountHolderName, setAccountHolderName] = useState("");
+  const [accountNo, setAccountNo] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [amount, setAmount] = useState("");
+  const [remarks, setRemarks] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setLoaderMessage] = useState('');
+  const [message, setLoaderMessage] = useState("");
 
   useEffect(() => {
     const array = [
       {
-        value: 'nepal',
-        label: 'Nepal',
+        value: "nepal",
+        label: "Nepal",
       },
     ];
     setCountryDetails(array);
@@ -67,14 +67,14 @@ const Agent: React.FC = () => {
 
   function nextRoute(status: any) {
     setIsLoading(false);
-    setLoaderMessage('');
+    setLoaderMessage("");
     if (status) {
-      history.replace('/tabs/agents');
+      history.replace("/tabs/agents");
     }
   }
   function handleproceed() {
     setIsLoading(true);
-    setLoaderMessage('Updating...');
+    setLoaderMessage("Updating...");
     dispatch(
       requestForAgentTransfer(
         {
@@ -91,11 +91,11 @@ const Agent: React.FC = () => {
       )
     );
 
-    console.log('Handling registration:');
+    console.log("Handling registration:");
   }
 
   function goBack() {
-    history.replace('/tabs/transfer');
+    history.replace("/tabs/transfer");
   }
 
   return (

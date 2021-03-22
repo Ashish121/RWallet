@@ -1,20 +1,20 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../../../i18n/formatMessages';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../../../i18n/formatMessages";
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
-} from '../../../../components';
-import './NepalElectricity.scss';
+} from "../../../../components";
+import "./NepalElectricity.scss";
 
 const NepalElectricity: React.FC = () => {
   const history = useHistory();
 
   function handleproceed() {
-    console.log('Handling registration');
-    history.replace('/');
+    console.log("Handling registration");
+    history.replace("/");
   }
 
   return (

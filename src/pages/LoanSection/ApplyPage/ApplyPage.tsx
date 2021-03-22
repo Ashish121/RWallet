@@ -1,20 +1,20 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../../i18n/formatMessages';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../../i18n/formatMessages";
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
-} from '../../../components';
-import './ApplyPage.scss';
+} from "../../../components";
+import "./ApplyPage.scss";
 
 const ApplyPage: React.FC = () => {
   const history = useHistory();
 
   function handleApply() {
-    console.log('Handling registration');
-    history.replace('/tabs/flightOneWay');
+    console.log("Handling registration");
+    history.replace("/tabs/flightOneWay");
   }
 
   return (

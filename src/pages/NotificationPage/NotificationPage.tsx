@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 import {
   IonCard,
@@ -11,20 +11,20 @@ import {
   IonToolbar,
   IonButtons,
   IonButton,
-} from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-import { CloseIcon } from '../../assets/Icons';
+} from "@ionic/react";
+import { useHistory } from "react-router-dom";
+import { CloseIcon } from "../../assets/Icons";
 
-import './NotificationPage.scss';
-import { Translate } from '../../i18n/formatMessages';
+import "./NotificationPage.scss";
+import { Translate } from "../../i18n/formatMessages";
 const NotificationPage: React.FC = () => {
   const history = useHistory();
-  const [color, setcolor] = useState('');
+  const [color, setcolor] = useState("");
   useEffect(() => {
-    setcolor('Blue');
+    setcolor("Blue");
   }, []);
   const closeNotificationPanel = () => {
-    history.replace('/tabs');
+    history.replace("/tabs");
   };
   return (
     <>
@@ -35,13 +35,13 @@ const NotificationPage: React.FC = () => {
               <IonButtons slot="end">
                 <IonButton
                   onClick={closeNotificationPanel}
-                  style={{ position: 'absolute', width: '100%' }}
+                  style={{ position: "absolute", width: "100%" }}
                 />
                 <CloseIcon />
               </IonButtons>
             </IonToolbar>
           </IonHeader>
-          <IonContent style={{ '--ion-background-color': '#ffffff' }}>
+          <IonContent style={{ "--ion-background-color": "#ffffff" }}>
             <div className="notification-wrapper">
               <div className="notification-cards-wrapper">
                 <div className="page-header-text">

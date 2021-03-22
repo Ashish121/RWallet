@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   IonPage,
   IonContent,
@@ -13,10 +13,10 @@ import {
   IonCardHeader,
   IonCardContent,
   IonImg,
-} from '@ionic/react';
-import { Translate } from '../../i18n/formatMessages';
-import './ShoppingPage.scss';
-import { HeaderComponent } from '../../components';
+} from "@ionic/react";
+import { Translate } from "../../i18n/formatMessages";
+import "./ShoppingPage.scss";
+import { HeaderComponent } from "../../components";
 import {
   FashionIcon,
   FavButtonDisabled,
@@ -32,17 +32,17 @@ import {
   TelevisionIcon,
   WalletIcon,
   WatchIcon,
-} from '../../assets/Icons';
+} from "../../assets/Icons";
 
 const ShoppingPage: React.FC = () => {
   const history = useHistory();
-  const [shoppingLimitBalance, setshoppingLimitBalance] = useState('');
+  const [shoppingLimitBalance, setshoppingLimitBalance] = useState("");
   const [favSelected, setFavSelected] = useState(false);
   useEffect(() => {
-    setshoppingLimitBalance('12844');
+    setshoppingLimitBalance("12844");
   }, []);
   function navigateToCart() {
-    history.replace('/tabs/shopping/cart');
+    history.replace("/tabs/shopping/cart");
   }
   function search() {}
   function toggleFav() {
@@ -50,10 +50,10 @@ const ShoppingPage: React.FC = () => {
     setFavSelected(selectedStatus);
   }
   function showItemDetails() {
-    history.replace('/tabs/shopping/itemdetails');
+    history.replace("/tabs/shopping/itemdetails");
   }
   function goBack() {
-    history.replace('/tabs');
+    history.replace("/tabs");
   }
 
   return (
@@ -61,7 +61,7 @@ const ShoppingPage: React.FC = () => {
       <IonApp>
         <IonPage>
           <HeaderComponent
-            headerLable={'common.header'}
+            headerLable={"common.header"}
             showMenu={false}
             showNotification={false}
             showCart={true}
@@ -75,13 +75,13 @@ const ShoppingPage: React.FC = () => {
                 <div
                   className="common-ion-text"
                   style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '7px 0px 0px 7px',
+                    backgroundColor: "#ffffff",
+                    borderRadius: "7px 0px 0px 7px",
                   }}
                 >
                   <IonText
                     className="balance-wrapper-text"
-                    style={{ color: '#000000' }}
+                    style={{ color: "#000000" }}
                   >
                     <Translate message="shoppingPage.shoppoingLevelText" />
                   </IonText>
@@ -90,13 +90,13 @@ const ShoppingPage: React.FC = () => {
                 <div
                   className="common-ion-text"
                   style={{
-                    backgroundColor: '#004777',
-                    borderRadius: '0px 7px 7px 0px',
+                    backgroundColor: "#004777",
+                    borderRadius: "0px 7px 7px 0px",
                   }}
                 >
                   <IonText
                     className="balance-wrapper-text"
-                    style={{ color: '#ffffff' }}
+                    style={{ color: "#ffffff" }}
                   >
                     {shoppingLimitBalance}
                   </IonText>
@@ -110,11 +110,11 @@ const ShoppingPage: React.FC = () => {
                     onClick={search}
                     slot="end"
                     style={{
-                      backgroundColor: 'transparent',
-                      border: 'none',
-                      outline: 'none',
-                      position: 'absolute',
-                      right: '10px',
+                      backgroundColor: "transparent",
+                      border: "none",
+                      outline: "none",
+                      position: "absolute",
+                      right: "10px",
                     }}
                   >
                     <SearchIcon width="16" height="16" />
@@ -278,7 +278,7 @@ const ShoppingPage: React.FC = () => {
                           )}
                           <div className="image-wrapper">
                             <IonImg
-                              src={require('../../assets/Icons/phone2.png')}
+                              src={require("../../assets/Icons/phone2.png")}
                             />
                           </div>
                         </IonCardHeader>
@@ -296,7 +296,7 @@ const ShoppingPage: React.FC = () => {
                   </IonRow>
                   <IonRow>
                     <IonCol>
-                      {' '}
+                      {" "}
                       <IonCard>
                         <IonCardHeader>
                           {favSelected && (
@@ -311,7 +311,7 @@ const ShoppingPage: React.FC = () => {
                           )}
                           <div className="image-wrapper">
                             <IonImg
-                              src={require('../../assets/Icons/phone3.png')}
+                              src={require("../../assets/Icons/phone3.png")}
                             />
                           </div>
                         </IonCardHeader>
@@ -327,7 +327,7 @@ const ShoppingPage: React.FC = () => {
                       </IonCard>
                     </IonCol>
                     <IonCol>
-                      {' '}
+                      {" "}
                       <IonCard>
                         <IonCardHeader>
                           {favSelected && (
@@ -342,7 +342,7 @@ const ShoppingPage: React.FC = () => {
                           )}
                           <div className="image-wrapper">
                             <IonImg
-                              src={require('../../assets/Icons/phone4.png')}
+                              src={require("../../assets/Icons/phone4.png")}
                             />
                           </div>
                         </IonCardHeader>
@@ -360,7 +360,7 @@ const ShoppingPage: React.FC = () => {
                   </IonRow>
                   <IonRow>
                     <IonCol>
-                      {' '}
+                      {" "}
                       <IonCard>
                         <IonCardHeader>
                           {favSelected && (
@@ -375,7 +375,7 @@ const ShoppingPage: React.FC = () => {
                           )}
                           <div className="image-wrapper">
                             <IonImg
-                              src={require('../../assets/Icons/phone1.png')}
+                              src={require("../../assets/Icons/phone1.png")}
                             />
                           </div>
                         </IonCardHeader>
@@ -391,7 +391,7 @@ const ShoppingPage: React.FC = () => {
                       </IonCard>
                     </IonCol>
                     <IonCol>
-                      {' '}
+                      {" "}
                       <IonCard>
                         <IonCardHeader>
                           {favSelected && (
@@ -406,7 +406,7 @@ const ShoppingPage: React.FC = () => {
                           )}
                           <div className="image-wrapper">
                             <IonImg
-                              src={require('../../assets/Icons/phone3.png')}
+                              src={require("../../assets/Icons/phone3.png")}
                             />
                           </div>
                         </IonCardHeader>

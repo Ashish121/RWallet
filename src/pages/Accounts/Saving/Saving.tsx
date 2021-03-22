@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   IonPage,
   IonContent,
   IonText,
   IonApp,
   IonRadioGroup,
-} from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-import { Translate } from '../../../i18n/formatMessages';
+} from "@ionic/react";
+import { useHistory } from "react-router-dom";
+import { Translate } from "../../../i18n/formatMessages";
 import {
   HeaderComponent,
   InputText,
@@ -15,37 +15,37 @@ import {
   CheckboxComponent,
   ButtonConmponent,
   LoaderComponent,
-} from '../../../components';
+} from "../../../components";
 
-import './Saving.scss';
-import { useDispatch } from 'react-redux';
-import { requestForSavingAccount } from '../../../redux/actions';
+import "./Saving.scss";
+import { useDispatch } from "react-redux";
+import { requestForSavingAccount } from "../../../redux/actions";
 const SavingAccountPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [investment_period, setInvestmentPeriod] = useState('');
-  const [amount, setAmount] = useState('');
-  const [depositType, setDepositType] = useState('');
+  const [investment_period, setInvestmentPeriod] = useState("");
+  const [amount, setAmount] = useState("");
+  const [depositType, setDepositType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setLoadeMessage] = useState('');
+  const [message, setLoadeMessage] = useState("");
   const [showDailySection, setShowDailySection] = useState(true);
   const [showMonthlySection, setShowMonthlySection] = useState(false);
   function setToggleTerms(value: boolean) {
-    console.log('value: ', value);
+    console.log("value: ", value);
   }
 
   function nextRoute(status: any) {
     if (status) {
-      history.replace('/tabs/confirm');
+      history.replace("/tabs/confirm");
       return;
     }
     setIsLoading(true);
-    setLoadeMessage('');
+    setLoadeMessage("");
   }
 
   function navigateToConfirm() {
     setIsLoading(true);
-    setLoadeMessage('Creating account...');
+    setLoadeMessage("Creating account...");
     // const user_id = localStorage.getItem("registeredUserId");
     const user_id = 2;
     dispatch(
@@ -54,24 +54,24 @@ const SavingAccountPage: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling saving account', amount, investment_period);
+    console.log("Handling saving account", amount, investment_period);
   }
 
   function updateInvestmentPeriod(event: any) {
     const investment_period = event.target.value;
     setInvestmentPeriod(investment_period);
-    console.log('investment_period', investment_period);
+    console.log("investment_period", investment_period);
   }
 
   function updateAmount(amount: any) {
-    console.log('amount', amount);
+    console.log("amount", amount);
     setAmount(amount);
   }
 
   function updateDepositType(event: any) {
     const depositType = event.target.value;
     setDepositType(depositType);
-    if (depositType === 'daily') {
+    if (depositType === "daily") {
       setShowDailySection(true);
       setShowMonthlySection(false);
     } else {
@@ -81,7 +81,7 @@ const SavingAccountPage: React.FC = () => {
   }
 
   function goBack() {
-    history.replace('/accountpage');
+    history.replace("/accountpage");
   }
   return (
     <>
@@ -98,10 +98,7 @@ const SavingAccountPage: React.FC = () => {
               <div className="page-inner-wrapper">
                 <div className="page-header-label">
                   <IonText className="account-no-text">
-                    <Translate
-                      message="account.savingPageHeader"
-                      value={{ accountNo: '07601402201' }}
-                    />
+                    <Translate message="account.savingPageHeader" />
                   </IonText>
                 </div>
               </div>
@@ -216,11 +213,11 @@ const SavingAccountPage: React.FC = () => {
                 </div>
                 <div
                   style={{
-                    marginTop: '10px',
-                    bottom: '10px',
-                    width: '100%;',
-                    left: '0',
-                    padding: '30px',
+                    marginTop: "10px",
+                    bottom: "10px",
+                    width: "100%;",
+                    left: "0",
+                    padding: "30px",
                   }}
                 >
                   <ButtonConmponent

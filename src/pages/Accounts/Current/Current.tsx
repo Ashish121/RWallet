@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   IonPage,
   IonContent,
   IonText,
   IonApp,
   IonRadioGroup,
-} from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-import { Translate } from '../../../i18n/formatMessages';
+} from "@ionic/react";
+import { useHistory } from "react-router-dom";
+import { Translate } from "../../../i18n/formatMessages";
 import {
   HeaderComponent,
   InputText,
@@ -16,34 +16,34 @@ import {
   CheckboxComponent,
   ButtonConmponent,
   LoaderComponent,
-} from '../../../components';
-import { requestForCurrentAccount } from '../../../redux/actions';
-import './Current.scss';
+} from "../../../components";
+import { requestForCurrentAccount } from "../../../redux/actions";
+import "./Current.scss";
 
 const CurrentAccountPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setLoadeMessage] = useState('');
-  const [amount, setAmount] = useState('');
+  const [message, setLoadeMessage] = useState("");
+  const [amount, setAmount] = useState("");
   //  const [investment_period, setInvestmentPeriod] = useState("");
   function setToggleTerms(value: boolean) {
-    console.log('value: ', value);
+    console.log("value: ", value);
   }
 
   function nextRoute(status: any) {
     if (status) {
-      history.replace('/confirm');
+      history.replace("/confirm");
       return;
     }
     setIsLoading(false);
-    setLoadeMessage('');
+    setLoadeMessage("");
   }
 
   function navigateToConfirm() {
     setIsLoading(true);
-    setLoadeMessage('Creating account...');
-    const user_id = localStorage.getItem('registeredUserId');
+    setLoadeMessage("Creating account...");
+    const user_id = localStorage.getItem("registeredUserId");
 
     dispatch(requestForCurrentAccount({ user_id, amount }, nextRoute));
   }
@@ -52,7 +52,7 @@ const CurrentAccountPage: React.FC = () => {
     setAmount(amount);
   }
   function backButtonHander() {
-    history.replace('/accountpage');
+    history.replace("/accountpage");
   }
   // function updateInvestmentPeriod(event: any) {
   //   const investment_period = event.target.value;
@@ -73,10 +73,7 @@ const CurrentAccountPage: React.FC = () => {
               <div className="page-inner-wrapper">
                 <div className="page-header-label">
                   <IonText className="account-no-text">
-                    <Translate
-                      message="account.savingPageHeader"
-                      value={{ accountNo: '07601402201' }}
-                    />
+                    <Translate message="account.savingPageHeader" />
                   </IonText>
                 </div>
               </div>
@@ -120,11 +117,11 @@ const CurrentAccountPage: React.FC = () => {
                 </div>
                 <div
                   style={{
-                    marginTop: '10px',
-                    bottom: '10px',
-                    width: '100%;',
-                    left: '0',
-                    padding: '30px',
+                    marginTop: "10px",
+                    bottom: "10px",
+                    width: "100%;",
+                    left: "0",
+                    padding: "30px",
                   }}
                 >
                   <ButtonConmponent

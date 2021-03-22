@@ -1,10 +1,10 @@
-import React from 'react';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../i18n/formatMessages';
-import { useHistory } from 'react-router-dom';
-import { ButtonConmponent, HeaderComponent } from '../../components';
-import './CoOperativeS.scss';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../i18n/formatMessages";
+import { useHistory } from "react-router-dom";
+import { ButtonConmponent, HeaderComponent } from "../../components";
+import "./CoOperativeS.scss";
+import { useSelector } from "react-redux";
 const CoOperativeS: React.FC = () => {
   const history = useHistory();
   const coOperativeDetails = useSelector(
@@ -12,11 +12,11 @@ const CoOperativeS: React.FC = () => {
   );
 
   function handleSucess() {
-    console.log('Handling registration');
-    history.replace('/tabs/SuccessPage');
+    console.log("Handling registration");
+    history.replace("/tabs/SuccessPage");
   }
   function goBack() {
-    history.replace('/tabs/cop');
+    history.replace("/tabs/cop");
   }
   return (
     <>
