@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   IonPage,
   IonContent,
@@ -9,22 +9,22 @@ import {
   IonHeader,
   IonToolbar,
   IonButtons,
-} from '@ionic/react';
-import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, LoaderComponent } from '../../components';
-import { useDispatch } from 'react-redux';
-import { requestForMpin } from '../../redux/actions';
+} from "@ionic/react";
+import { Translate } from "../../i18n/formatMessages";
+import { ButtonConmponent, InputText, LoaderComponent } from "../../components";
+import { useDispatch } from "react-redux";
+import { requestForMpin } from "../../redux/actions";
 
-import './Mpin.scss';
+import "./Mpin.scss";
 
 const MpinPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [mpin, setMpin] = useState('');
-  const [confirmMpin, setConfirmMpin] = useState('');
+  const [mpin, setMpin] = useState("");
+  const [confirmMpin, setConfirmMpin] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setLoaderMessage] = useState('');
+  const [message, setLoaderMessage] = useState("");
 
   function updateMpin(mpin: any) {
     let newMpin = mpin;
@@ -40,18 +40,18 @@ const MpinPage: React.FC = () => {
 
   function nextRoute(status: any) {
     if (status) {
-      history.replace('/accountuser');
+      history.replace("/accountuser");
     } else {
       setIsLoading(false);
-      setLoaderMessage('');
+      setLoaderMessage("");
     }
   }
   function handleMpin() {
     setIsLoading(true);
-    setLoaderMessage('Updating...');
-    const user_id = localStorage.getItem('registeredUserId');
+    setLoaderMessage("Updating...");
+    const user_id = localStorage.getItem("registeredUserId");
     dispatch(requestForMpin({ user_id, mpin }, nextRoute));
-    console.log('Handling registration');
+    console.log("Handling registration");
   }
 
   function skipStep() {
@@ -67,7 +67,7 @@ const MpinPage: React.FC = () => {
               <IonToolbar>
                 <IonButtons slot="end">
                   <IonButton className="btn-skip" onClick={skipStep}>
-                    <IonText style={{ color: '#ffffff' }}>
+                    <IonText style={{ color: "#ffffff" }}>
                       <Translate message="common.skip" />
                     </IonText>
                   </IonButton>

@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
-import './CoOperative.scss';
-import { requestForCoOperativeBankTransfer } from '../../redux/actions';
-import LoaderComponent from '../../components/Spinner/Spinner';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../i18n/formatMessages";
+import { ButtonConmponent, InputText, HeaderComponent } from "../../components";
+import "./CoOperative.scss";
+import { requestForCoOperativeBankTransfer } from "../../redux/actions";
+import LoaderComponent from "../../components/Spinner/Spinner";
 
 const CoOperative: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user_id = 2;
   // const user_id = localStorage.getItem("userId");
-  const [province, setProvince] = useState('');
-  const [district, setDistrict] = useState('');
-  const [copName, setCopName] = useState('');
-  const [holderName, setHolderName] = useState('');
-  const [accountNo, setAccountNo] = useState('');
-  const [mobileNo, setMobileNo] = useState('');
-  const [amount, setAmount] = useState('');
-  const [remarks, setRemarks] = useState('');
+  const [province, setProvince] = useState("");
+  const [district, setDistrict] = useState("");
+  const [copName, setCopName] = useState("");
+  const [holderName, setHolderName] = useState("");
+  const [accountNo, setAccountNo] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [amount, setAmount] = useState("");
+  const [remarks, setRemarks] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setLoaderMessage] = useState('');
+  const [message, setLoaderMessage] = useState("");
 
   function updateProvince(province: any) {
     setProvince(province);
@@ -58,17 +58,17 @@ const CoOperative: React.FC = () => {
 
   function nextRoute(status: any) {
     setIsLoading(false);
-    setLoaderMessage('');
+    setLoaderMessage("");
     if (status) {
-      console.log('status: ', status);
-      console.log('History: ', history);
-      history.replace('/tabs/cops');
+      console.log("status: ", status);
+      console.log("History: ", history);
+      history.replace("/tabs/cops");
     }
   }
 
   function handleproceed() {
     setIsLoading(true);
-    setLoaderMessage('Updating...');
+    setLoaderMessage("Updating...");
     dispatch(
       requestForCoOperativeBankTransfer(
         {
@@ -85,11 +85,11 @@ const CoOperative: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
+    console.log("Handling registration");
   }
 
   function goBack() {
-    history.replace('/tabs/transfer');
+    history.replace("/tabs/transfer");
   }
   return (
     <>

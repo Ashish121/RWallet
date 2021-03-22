@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ButtonConmponent, HeaderComponent } from '../../components';
+import React, { useState } from "react";
+import { ButtonConmponent, HeaderComponent } from "../../components";
 import {
   IonCard,
   IonCardContent,
@@ -9,17 +9,17 @@ import {
   IonText,
   IonFooter,
   IonToolbar,
-} from '@ionic/react';
-import './ConfirmPage.scss';
-import { OrderConfirmIcon } from '../../assets/Icons';
-import { Translate } from '../../i18n/formatMessages';
-import { useHistory } from 'react-router-dom';
+} from "@ionic/react";
+import "./ConfirmPage.scss";
+import { OrderConfirmIcon } from "../../assets/Icons";
+import { Translate } from "../../i18n/formatMessages";
+import { useHistory } from "react-router-dom";
 const ConfirmPage: React.FC = () => {
   const history = useHistory();
-  const generatedAccountNo = useState('07601202001');
+  const generatedAccountNo = useState("07601202001");
   // const [generatedAccountNo, setGeneratedAccountNo] = useState("07601202001");
   function navigateToHome() {
-    history.replace('/tabs/home');
+    history.replace("/tabs/home");
   }
   return (
     <>
@@ -29,7 +29,7 @@ const ConfirmPage: React.FC = () => {
           <IonContent>
             <div
               className="confirm-page-wrapper"
-              style={{ backgroundColor: '#3182b9', height: '100%' }}
+              style={{ backgroundColor: "#3182b9", height: "100%" }}
             >
               <div className="card-wrapper">
                 <IonCard>
@@ -43,12 +43,12 @@ const ConfirmPage: React.FC = () => {
                         <div
                           className="successText"
                           style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            color: '#ffffff',
-                            fontSize: '18px',
-                            marginTop: '10px',
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            color: "#ffffff",
+                            fontSize: "18px",
+                            marginTop: "10px",
                           }}
                         >
                           <IonText>
@@ -58,16 +58,16 @@ const ConfirmPage: React.FC = () => {
                         <div
                           className="account-generated-text"
                           style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            color: '#ffffff',
-                            fontSize: '18px',
-                            marginTop: '15px',
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            color: "#ffffff",
+                            fontSize: "18px",
+                            marginTop: "15px",
                           }}
                         >
                           <IonText>
-                            <Translate message="account.accountNoText" />{' '}
+                            <Translate message="account.accountNoText" />{" "}
                             {generatedAccountNo}
                           </IonText>
                         </div>

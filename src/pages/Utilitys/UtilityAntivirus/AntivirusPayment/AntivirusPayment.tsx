@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 // import { useHistory } from 'react-router-dom';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../../../i18n/formatMessages';
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../../../i18n/formatMessages";
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
-} from '../../../../components';
-import './AntivirusPayment.scss';
+} from "../../../../components";
+import "./AntivirusPayment.scss";
 
 const AntivirusPayment: React.FC = () => {
   // const history = useHistory();

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { IonLabel, IonList, IonItem, IonDatetime } from '@ionic/react';
+import React, { useState } from "react";
+import { IonLabel, IonList, IonItem, IonDatetime } from "@ionic/react";
 
-import { Translate } from '../../i18n/formatMessages';
-import { CalenderIcon } from '../../assets/Icons';
-import './DatePicker.scss';
+import { Translate } from "../../i18n/formatMessages";
+import { CalenderIcon } from "../../assets/Icons";
+import "./DatePicker.scss";
 
 const DatePickerComponent: React.FC<{
   placeholder: any;
   handler?: Function;
 }> = ({ placeholder, handler }) => {
-  const [selectedDate, setSelectedDate] = useState<string>('');
+  const [selectedDate, setSelectedDate] = useState<string>("");
 
   function handleDate(date: any) {
     setSelectedDate(date);
@@ -23,7 +23,7 @@ const DatePickerComponent: React.FC<{
             <Translate message={placeholder} />
           </IonLabel>
           <IonDatetime
-            style={{ color: '#ffffff' }}
+            style={{ color: "#ffffff" }}
             displayFormat="MMM DD YYYY"
             min="1970-06-04"
             value={selectedDate}
@@ -32,9 +32,9 @@ const DatePickerComponent: React.FC<{
           <div
             className="calendericon"
             style={{
-              position: 'absolute',
-              top: 'calc(100% - 31px)',
-              right: '16px',
+              position: "absolute",
+              top: "calc(100% - 31px)",
+              right: "16px",
             }}
           >
             <CalenderIcon width="16" height="16" />

@@ -1,5 +1,5 @@
-import React from 'react';
-import { ButtonConmponent, HeaderComponent } from '../../components';
+import React from "react";
+import { ButtonConmponent, HeaderComponent } from "../../components";
 import {
   IonCard,
   IonCardContent,
@@ -9,17 +9,17 @@ import {
   IonText,
   IonFooter,
   IonToolbar,
-} from '@ionic/react';
-import './SuccessPage.scss';
-import { OrderConfirmIcon } from '../../assets/Icons';
-import { Translate } from '../../i18n/formatMessages';
-import { useHistory } from 'react-router-dom';
+} from "@ionic/react";
+import "./SuccessPage.scss";
+import { OrderConfirmIcon } from "../../assets/Icons";
+import { Translate } from "../../i18n/formatMessages";
+import { useHistory } from "react-router-dom";
 
 const SuccessPage: React.FC = () => {
   const history = useHistory();
 
   function navigateToHome() {
-    history.replace('/tabs/home');
+    history.replace("/tabs/home");
   }
 
   return (
@@ -31,7 +31,7 @@ const SuccessPage: React.FC = () => {
             <IonContent>
               <div
                 className="confirm-page-wrapper"
-                style={{ backgroundColor: '#3182b9', height: '100%' }}
+                style={{ backgroundColor: "#3182b9", height: "100%" }}
               >
                 <div className="card-wrapper">
                   <IonCard>
@@ -45,12 +45,12 @@ const SuccessPage: React.FC = () => {
                           <div
                             className="successText"
                             style={{
-                              display: 'flex',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                              color: '#ffffff',
-                              fontSize: '18px',
-                              marginTop: '10px',
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              color: "#ffffff",
+                              fontSize: "18px",
+                              marginTop: "10px",
                             }}
                           >
                             <IonText>
@@ -60,12 +60,12 @@ const SuccessPage: React.FC = () => {
                           <div
                             className="account-generated-text"
                             style={{
-                              display: 'flex',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                              color: '#ffffff',
-                              fontSize: '18px',
-                              marginTop: '15px',
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              color: "#ffffff",
+                              fontSize: "18px",
+                              marginTop: "15px",
                             }}
                           ></div>
                         </IonToolbar>

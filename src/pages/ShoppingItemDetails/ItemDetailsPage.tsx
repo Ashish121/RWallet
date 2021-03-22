@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   IonPage,
   IonContent,
@@ -12,18 +12,18 @@ import {
   IonSelectOption,
   IonSelect,
   IonButton,
-} from '@ionic/react';
-import { useHistory } from 'react-router-dom';
+} from "@ionic/react";
+import { useHistory } from "react-router-dom";
 
-import { HeaderComponent, SlidesComponent } from '../../components';
+import { HeaderComponent, SlidesComponent } from "../../components";
 import {
   FavButtonDisabled,
   FavButtonEnabled,
   CloseBarIcon,
-} from '../../assets/Icons';
+} from "../../assets/Icons";
 
-import './ItemDetailsPage.scss';
-import { Translate } from '../../i18n/formatMessages';
+import "./ItemDetailsPage.scss";
+import { Translate } from "../../i18n/formatMessages";
 
 const ItemDetailsPage: React.FC = () => {
   const history = useHistory();
@@ -44,23 +44,23 @@ const ItemDetailsPage: React.FC = () => {
     setDeviceColor(value);
   }
   function addToCart() {
-    console.log('Adding to cart');
-    alert('Item added to cart.');
+    console.log("Adding to cart");
+    alert("Item added to cart.");
 
     //TODO : // Need to app action which will stor item data to store
   }
   function showCartItems() {
-    history.replace('/tabs/shopping/cart');
+    history.replace("/tabs/shopping/cart");
   }
   function goBack() {
-    history.replace('/tabs/shopping');
+    history.replace("/tabs/shopping");
   }
 
   return (
     <IonApp className="item-details-wrapper">
       <IonPage>
         <HeaderComponent
-          headerLable={'common.header'}
+          headerLable={"common.header"}
           showMenu={false}
           showNotification={false}
           showCart={true}
@@ -74,18 +74,18 @@ const ItemDetailsPage: React.FC = () => {
           <div
             className={
               expandOptions
-                ? 'services-options-wrapper fullHeight'
-                : 'services-options-wrapper'
+                ? "services-options-wrapper fullHeight"
+                : "services-options-wrapper"
             }
           >
             <IonCard
               className="service-card-wrapper"
               style={
-                expandOptions ? { overflow: 'scroll' } : { overflow: 'hidden' }
+                expandOptions ? { overflow: "scroll" } : { overflow: "hidden" }
               }
             >
               <IonCardContent
-                style={{ paddingBottom: '0px', paddingTop: '0px' }}
+                style={{ paddingBottom: "0px", paddingTop: "0px" }}
               >
                 <div className="close-bar-icon">
                   <button onClick={toggleExpandOptions}>
@@ -98,10 +98,10 @@ const ItemDetailsPage: React.FC = () => {
                     <button
                       onClick={toggleFav}
                       style={{
-                        backgroundColor: '#ffffff',
-                        border: 'none',
-                        outline: 'none',
-                        float: 'right',
+                        backgroundColor: "#ffffff",
+                        border: "none",
+                        outline: "none",
+                        float: "right",
                       }}
                     >
                       <FavButtonEnabled width="18" height="18" />
@@ -110,10 +110,10 @@ const ItemDetailsPage: React.FC = () => {
                   {!favSelected && (
                     <button
                       style={{
-                        backgroundColor: '#ffffff',
-                        border: 'none',
-                        outline: 'none',
-                        float: 'right',
+                        backgroundColor: "#ffffff",
+                        border: "none",
+                        outline: "none",
+                        float: "right",
                       }}
                       onClick={toggleFav}
                     >
@@ -128,7 +128,7 @@ const ItemDetailsPage: React.FC = () => {
                 <div className="item-color-wrapper">
                   <IonList>
                     <IonItem>
-                      <IonLabel style={{ color: '#000000' }}>Color</IonLabel>
+                      <IonLabel style={{ color: "#000000" }}>Color</IonLabel>
                       <IonSelect
                         value={color}
                         onIonChange={(e) => setColor(e.detail.value)}
@@ -146,11 +146,11 @@ const ItemDetailsPage: React.FC = () => {
                 <div className="price-details-wrapper">
                   <IonText
                     style={{
-                      fontStyle: 'normal',
-                      fontWeight: '600',
-                      fontSize: '14px',
-                      lineHeight: '17px',
-                      color: '#000000',
+                      fontStyle: "normal",
+                      fontWeight: "600",
+                      fontSize: "14px",
+                      lineHeight: "17px",
+                      color: "#000000",
                     }}
                   >
                     <Translate message="itemDetails.dealPrice" />
@@ -158,11 +158,11 @@ const ItemDetailsPage: React.FC = () => {
 
                   <IonText
                     style={{
-                      fontStyle: 'normal',
-                      fontWeight: '600',
-                      fontSize: '16px',
-                      lineHeight: '20px',
-                      color: '#000000',
+                      fontStyle: "normal",
+                      fontWeight: "600",
+                      fontSize: "16px",
+                      lineHeight: "20px",
+                      color: "#000000",
                     }}
                   >
                     Rs 2,400

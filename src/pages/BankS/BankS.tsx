@@ -1,10 +1,10 @@
-import React from 'react';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../i18n/formatMessages';
-import { useHistory } from 'react-router-dom';
-import { ButtonConmponent, HeaderComponent } from '../../components';
-import './BankS.scss';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../i18n/formatMessages";
+import { useHistory } from "react-router-dom";
+import { ButtonConmponent, HeaderComponent } from "../../components";
+import "./BankS.scss";
+import { useSelector } from "react-redux";
 const BankS: React.FC = () => {
   const history = useHistory();
   const bankDetails = useSelector(
@@ -12,11 +12,11 @@ const BankS: React.FC = () => {
   );
 
   function handleSucess() {
-    console.log('Handling registration');
-    history.replace('/tabs/SuccessPage');
+    console.log("Handling registration");
+    history.replace("/tabs/SuccessPage");
   }
   function goBack() {
-    history.replace('/tabs/bank');
+    history.replace("/tabs/bank");
   }
 
   return (
@@ -96,7 +96,7 @@ const BankS: React.FC = () => {
                     </IonText>
                   </div>
                   <div className="bankDetails-button">
-                    <div style={{ marginTop: '13px' }}>
+                    <div style={{ marginTop: "13px" }}>
                       <ButtonConmponent
                         buttonLabel="agent.conform"
                         size="block"

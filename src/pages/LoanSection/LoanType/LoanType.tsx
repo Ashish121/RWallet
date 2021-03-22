@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import './LoanType.scss';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-import { Translate } from '../../../i18n/formatMessages';
+import "./LoanType.scss";
+import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
+import { Translate } from "../../../i18n/formatMessages";
 import {
   CustomAccordion,
   HeaderComponent,
   ButtonConmponent,
-} from '../../../components';
-import { useHistory } from 'react-router-dom';
+} from "../../../components";
+import { useHistory } from "react-router-dom";
 
 const LoanType: React.FC = () => {
   const history = useHistory();
 
   function handleEMIcal() {
-    console.log('Handling registration');
-    history.replace('/tabs/emiCalculater');
+    console.log("Handling registration");
+    history.replace("/tabs/emiCalculater");
   }
   const [accordionDetails, setAccordionDetails] = useState([{}]);
   useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log('Hide splash now');
+      console.log("Hide splash now");
       return () => {
         clearTimeout(timeout);
       };
@@ -31,36 +31,36 @@ const LoanType: React.FC = () => {
     const data = [
       {
         id: 1,
-        title: 'BUSINESS LOAN',
+        title: "BUSINESS LOAN",
         showDetails: false,
       },
       {
         id: 2,
-        title: 'HIRE-PURCHASE LOAN',
+        title: "HIRE-PURCHASE LOAN",
         showDetails: false,
       },
 
       {
         id: 3,
-        title: 'TERM LOAN',
+        title: "TERM LOAN",
         showDetails: false,
       },
 
       {
         id: 4,
-        title: 'PERSONAL LOAN',
+        title: "PERSONAL LOAN",
         showDetails: false,
       },
 
       {
         id: 5,
-        title: 'EDUCATION LOAN',
+        title: "EDUCATION LOAN",
         showDetails: false,
       },
 
       {
         id: 6,
-        title: 'SECURED LOAN',
+        title: "SECURED LOAN",
         showDetails: false,
       },
     ];

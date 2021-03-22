@@ -35,12 +35,15 @@
         height: 113px;
         color: #ffff;
         border-radius: 15px;
+        ion-card-content {
+          padding-bottom: 10px;
+        }
       }
     }
     .services-options-wrapper {
       position: absolute;
       bottom: 0px;
-      height: 250px;
+      height: 350px;
       transition: height 0.25s ease-in;
       width: 100%;
       max-height: 600px;
@@ -65,17 +68,9 @@
         }
         .iconButtons {
           background-color: rgb(255, 255, 255);
-          display: flex;
-          position: relative;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          font-size: 10px;
-          ion-text {
-            margin-top: 25px;
-            position: absolute;
-            width: 50px;
-          }
+        }
+        ion-text {
+          margin-top: 10px;
         }
         button:focus {
           outline: 0;
@@ -90,9 +85,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
         width: 100%;
-        left: 0;
         ion-button {
           width: 90px;
           height: 20px;
@@ -107,7 +100,6 @@
   }
   hr {
     background-color: lightgrey;
-    margin-top: 15px;
   }
   .triangle-left {
     width: 0;
