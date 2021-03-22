@@ -1,49 +1,49 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { IonPage, IonContent, IonText, IonApp } from "@ionic/react";
-import { Translate } from "../../i18n/formatMessages";
-import LoaderComponent from "../../components/Spinner/Spinner";
-import { requestForLogin } from "../../redux/actions";
-import "./Login.scss";
-import { InputText, ButtonConmponent } from "../../components";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { IonPage, IonContent, IonText } from '@ionic/react';
+import { Translate } from '../../i18n/formatMessages';
+import LoaderComponent from '../../components/Spinner/Spinner';
+import { requestForLogin } from '../../redux/actions';
+import './Login.scss';
+import { InputText, ButtonConmponent } from '../../components';
 
 const LoginPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [contactNo, setContactNo] = useState("");
-  const [password, setUserPassword] = useState("");
+  const [contactNo, setContactNo] = useState('');
+  const [password, setUserPassword] = useState('');
   const isAuthenticating = useSelector(
     (state: any) => state.login.isAuthenticating
   );
   function nextRoute() {
-    history.replace("tabs/home");
+    history.replace('tabs/home');
   }
   function loginHandler() {
     dispatch(requestForLogin({ contactNo, password }, nextRoute));
   }
   const updateContactNo = (contactNo: any) => {
-    console.log("contactNo -> contactNo", contactNo);
+    console.log('contactNo -> contactNo', contactNo);
     setContactNo(contactNo);
   };
 
   function updatePassword(password: any) {
-    console.log("updatePassword -> password", password);
+    console.log('updatePassword -> password', password);
     setUserPassword(password);
   }
 
   function navigateToResetPassword() {
-    history.replace("/reset");
+    history.replace('/reset');
   }
   function navigateToRegister() {
-    history.replace("/register");
+    history.replace('/register');
   }
   return (
     <>
       <LoaderComponent
         showLoading={isAuthenticating}
-        loaderMessage={"Authenticating"}
+        loaderMessage={'Authenticating'}
       />
 
       <IonPage>
@@ -55,7 +55,7 @@ const LoginPage: React.FC = () => {
                   <Translate message="login.welcomeText" />
                 </span>
                 <span
-                  style={{ marginLeft: "5px" }}
+                  style={{ marginLeft: '5px' }}
                   className="header-bold ion-text-uppercase"
                 >
                   <Translate message="login.siginPageLabel" />
@@ -81,7 +81,7 @@ const LoginPage: React.FC = () => {
                 showPasswordMode={true}
                 onChange={updatePassword}
               />
-              <div className="ion-padding-top" style={{ marginTop: "40px" }}>
+              <div className="ion-padding-top" style={{ marginTop: '40px' }}>
                 <ButtonConmponent
                   buttonLabel="login.signInLabel"
                   size="block"

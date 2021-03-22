@@ -1,8 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const CloseBarIcon: React.FC<any> = ({ width, height }) => {
-  const w = width || "84";
-  const h = height || "4";
+const CloseBarIcon: React.FC<any> = () => {
   return (
     <svg
       width="200"
