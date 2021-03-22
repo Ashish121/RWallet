@@ -26,11 +26,11 @@
 
   "home.mobileIconText": "Mobile",
   "home.laptopIconText": "Laptop",
-  "home.shopping": "Shopping",
-  "home.utility": "Utility",
+  "home.shopping": "SHOPPING",
+  "home.utility": "UTILITY",
   "home.fashionIconText": "Fashion",
   "home.televisionText": "Tv Apps",
-  "home.loanText": "Loans",
+  "home.loanText": "LOANS",
   "home.businessLoan": "Business loan",
   "home.puchaseLoan": "Hire-purchase loan",
   "home.termLoan": "Term loan",
@@ -118,7 +118,7 @@
   "account.continue": "CONTINUE",
   "account.done": "DONE",
 
-  "account.currentPageHeader": "Current Account - {accountNo}",
+  "account.currentPageHeader": "Current Account",
 
   "fund.fundpage": "FUND TRANSFER",
   "fund.bankTrasfer": "BANK TRANSFER",
@@ -158,7 +158,7 @@
   "profile.fullName": "Full name",
   "profile.accountNumber": "Account number",
   "profile.accountType": "Account type",
-  "profile.accountCurrency": "Account curency",
+  "profile.accountCurrency": "Account currency",
   "profile.accountInterest": "Account interest",
   "profile.changeLanguage": "Change language",
   "profile.changeMPIN": "Change MPIN",

@@ -48,6 +48,7 @@ import { SearchIcon } from './SearchIcon';
 import { FavButtonDisabled } from './FavButtonDisabled';
 import { FavButtonEnabled } from './FavButtonEnabled';
 import { CurrentPositionBtn } from './CurrentPositionBtn';
+import {RupayIcon} from './RupayIcon';
 
 export {
   SmartphoneIcon,
@@ -100,4 +101,5 @@ export {
   FavButtonDisabled,
   FavButtonEnabled,
   CurrentPositionBtn,
+  RupayIcon
 };

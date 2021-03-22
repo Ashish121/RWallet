@@ -119,6 +119,7 @@ const MenuComponent: React.FC<any> = () => {
                 </div>
               </div>
             </div>
+
             <div className="bottom-wrapper">
               <hr />
               <div className="action-items-wrapper">

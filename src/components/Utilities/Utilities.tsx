@@ -29,7 +29,7 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
       {expanded && (
         <div className="utility-section">
           <div style={{ textAlign: 'center' }}>
-            <IonText text-center>
+            <IonText text-center style={{ fontWeight: '600' }}>
               <Translate message="home.utility" />
             </IonText>
           </div>

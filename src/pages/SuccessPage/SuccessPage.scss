@@ -16,8 +16,9 @@
   }
   .card-wrapper {
     display: flex;
+    margin-top: 10%;
     justify-content: center;
-    height: calc(100% - 180px);
+    height: calc(100% - 98px);
     .icon-wrapper {
       width: 100%;
       display: flex;
@@ -37,7 +38,7 @@
     justify-content: center;
     padding-left: 20px;
     padding-right: 20px;
-    margin-top: 30px;
+    margin-top: 9%;
     .buttonWrapper {
       width: 100%;
       ion-button {
@@ -46,3 +47,10 @@
     }
   }
 }
+
+// .confirm-page-wrapper .card-wrapper {
+//   display: flex;
+//   margin-top: 15%;
+//   justify-content: center;
+//   height: calc(100% - 98px);
+// }
