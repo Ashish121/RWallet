@@ -39,12 +39,19 @@ const SignUpPage: React.FC = () => {
   }, []);
 
   function handleRegistration() {
+    let trimmedCountryCode = countryCode.trim();
+    if (countryCode.trim().includes('+')) {
+      console.log('Country code includes +');
+      trimmedCountryCode = countryCode.trim().substring(1);
+    }
+    console.log('trimmedCountryCode: ', trimmedCountryCode);
+
     history.replace('/otp', {
       fullName,
       gender,
       mobileNo,
       password,
-      countryCode,
+      countryCode: trimmedCountryCode,
     });
   }
 

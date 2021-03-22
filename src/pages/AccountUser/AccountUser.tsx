@@ -12,7 +12,12 @@ import {
   LoaderComponent,
 } from '../../components';
 import './AccountUser.scss';
-import { loadInitialData, updateUserDetails } from '../../redux/actions';
+import {
+  loadProvince,
+  updateUserDetails,
+  fetchdistrictByProvince,
+  localLevelName,
+} from '../../redux/actions';
 
 const AccountUser: React.FC<any> = () => {
   const history = useHistory();
@@ -24,18 +29,18 @@ const AccountUser: React.FC<any> = () => {
   const [dobBS, setDobBS] = useState('');
   const [gender, setGender] = useState('');
   const [currentAddress, setCurrentAddress] = useState('');
-  const [permanentAddress, setPermanentAddress] = useState('');
-  const [country, setCountry] = useState('');
-  const [selectedState, setSelectedState] = useState('');
+  const [houseNo, setHouseNo] = useState('');
   const [selectedMuniciplaty, setSelectedMuniciplaty] = useState('');
-  const [province, setProvince] = useState('');
-
+  const [province, setProvince] = useState([{}]);
   const [genderDetails, setGenderDetails] = useState([{}]);
   const [isLoading, setLoadeStatus] = useState(false);
   const [loaderText, setLoaderText] = useState('');
-  const [countryList, setCountryList] = useState([{}]);
-  const [states, setStates] = useState([{}]);
-  const [municipalties, setMunicipalties] = useState([{}]);
+  const [district, setDistricts] = useState([{}]);
+  const [selectedProvince, setSelectedProvince] = useState('');
+  const [selectedDistrict, setSelectedDistrict] = useState('');
+  const [localLevelNameArray, setLocalLevelName] = useState([{}]);
+  const [selectedCountry, setCountry] = useState('');
+  const country = 'Nepal';
   useEffect(() => {
     const array = [
       {
@@ -53,52 +58,62 @@ const AccountUser: React.FC<any> = () => {
   useEffect(() => {
     setLoadeStatus(true);
     setLoaderText('Please wait...');
-    dispatch(loadInitialData(setInitialData));
+    dispatch(loadProvince(setProvinceList));
   }, []);
 
-  function setInitialData(res: any) {
+  function setProvinceList(res: any) {
     console.log('setting data: ', res);
-    const initialData = res.data;
+    const provinces = res.data.data;
     setLoadeStatus(false);
     setLoaderText('');
-    loadCountries(initialData.country);
-    loadStates(initialData.states);
-    loadMunicipality(initialData.municipality);
+    configureProvince(provinces);
+    // loadCountries(initialData.country);
+    // loadStates(initialData.states);
+    // loadMunicipality(initialData.municipality);
   }
-  function loadMunicipality(municipalties: any) {
+  function configureProvince(array: any) {
     let finalArray: any = [];
-    municipalties.forEach((municipality: any) => {
+    array.forEach((element: any) => {
       let tempObj = {
-        value: municipality,
-        label: municipality,
+        value: element,
+        label: element,
       };
       finalArray.push(tempObj);
     });
-    setMunicipalties(finalArray);
+    updateProvince(finalArray);
     console.log('municipalties: ', finalArray);
   }
 
-  function loadStates(states: any) {
+  function loadDistrict(res: any) {
+    const districts = res.data.data;
+    setLoadeStatus(false);
+    setLoaderText('');
     let finalArray: any = [];
-    states.forEach((state: any) => {
+    districts.forEach((element: any) => {
       let tempObj = {
-        value: state,
-        label: state,
+        value: element,
+        label: element,
       };
       finalArray.push(tempObj);
     });
-    setStates(finalArray);
+    setDistricts(finalArray);
     console.log('States: ', finalArray);
   }
 
-  function loadCountries(name: any) {
-    const countries = [
-      {
-        value: name,
-        label: name,
-      },
-    ];
-    setCountryList(countries);
+  function loadLocalLevelName(res: any) {
+    const localLevelNames = res.data.data;
+    setLoadeStatus(false);
+    setLoaderText('');
+    let finalArray: any = [];
+    localLevelNames.forEach((element: any) => {
+      let tempObj = {
+        value: element,
+        label: element,
+      };
+      finalArray.push(tempObj);
+    });
+    setLocalLevelName(finalArray);
+    console.log('States: ', finalArray);
   }
 
   function nextRoute(status: boolean) {
@@ -146,28 +161,34 @@ const AccountUser: React.FC<any> = () => {
     console.log('currentAddress: ', currentAddress);
   }
 
-  function updatePermanentAddress(permanentAddress: string) {
-    setPermanentAddress(permanentAddress);
-    console.log('permanentAddress: ', permanentAddress);
+  function updateHouseNo(val: string) {
+    setHouseNo(val);
+    console.log('val: ', val);
   }
   function handleCountry(country: any) {
     console.log('country', country);
 
     setCountry(country);
   }
-  function handleState(state: any) {
-    console.log('state: ', state);
+  function handleDistrict(val: any) {
+    console.log('district: ', val);
 
-    setSelectedState(state);
+    setSelectedDistrict(val);
+    dispatch(localLevelName(loadLocalLevelName, val));
   }
-  function handleMunicipality(municipality: any) {
-    console.log('municipality: ', municipality);
-    setSelectedMuniciplaty(municipality);
+  function handleMunicipality(val: any) {
+    console.log('local level name: ', val);
+    setSelectedMuniciplaty(val);
   }
 
-  function updateProvince(value: any) {
-    setProvince(value);
-    console.log('province: ', value);
+  function updateProvince(array: any) {
+    setProvince(array);
+    console.log('array: ', array);
+  }
+  function handleProvince(value: any) {
+    console.log('Selected province: ', value);
+    setSelectedProvince(value);
+    dispatch(fetchdistrictByProvince(loadDistrict, value));
   }
 
   function updateUser() {
@@ -177,11 +198,13 @@ const AccountUser: React.FC<any> = () => {
       father_name: fatherName,
       mother_name: motherName,
       dob: dobAD,
+      // dobBS : dobBS,
       current_address: currentAddress,
-      permanent_address: permanentAddress,
-      country: country,
-      municipality: selectedMuniciplaty,
-      province: province,
+      house_no: houseNo,
+      country: selectedCountry,
+      local_level_name: selectedMuniciplaty,
+      province: selectedProvince,
+      district: selectedDistrict,
     };
     setLoadeStatus(true);
     setLoaderText('Updating....');
@@ -255,29 +278,31 @@ const AccountUser: React.FC<any> = () => {
                 <div>
                   <SelectMenu
                     label="account.country"
-                    array={countryList}
+                    array={[
+                      {
+                        value: country,
+                        label: country,
+                      },
+                    ]}
                     onSelect={handleCountry}
                   />
                 </div>
-                <InputText
-                  inputType="text"
-                  labelText="account.province"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateProvince}
+                <SelectMenu
+                  label="account.province"
+                  array={province}
+                  onSelect={handleProvince}
                 />
                 <div>
                   <SelectMenu
                     label="account.district"
-                    array={states}
-                    onSelect={handleState}
+                    array={district}
+                    onSelect={handleDistrict}
                   />
                 </div>
                 <div>
                   <SelectMenu
                     label="account.municipality"
-                    array={municipalties}
+                    array={localLevelNameArray}
                     onSelect={handleMunicipality}
                   />
                 </div>
@@ -287,7 +312,7 @@ const AccountUser: React.FC<any> = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
-                  onChange={updatePermanentAddress}
+                  onChange={updateHouseNo}
                 />
 
                 <div style={{ marginTop: '30px' }}>
@@ -300,13 +325,12 @@ const AccountUser: React.FC<any> = () => {
                       motherName.trim() &&
                       gender &&
                       currentAddress.trim() &&
-                      permanentAddress.trim() &&
-                      province.trim() &&
+                      houseNo.trim() &&
+                      selectedProvince.trim() &&
                       dobAD &&
                       dobBS &&
-                      selectedState &&
                       country &&
-                      municipalties
+                      selectedMuniciplaty
                         ? false
                         : true
                     }
