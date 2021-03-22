@@ -215,14 +215,46 @@ export const authenticationForFixedAccount = async (
  * with states
  */
 
-export const loadCountryAndStates = async (): Promise<any> => {
+export const getProvinces = async (): Promise<any> => {
   const result = await axios({
     url:
-      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/country_fetch',
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/province_fetch',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
     },
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+export const getDistrictByProvince = async (id: any): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/district_fetch',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      province: id,
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+export const getLocalLevelName = async (id: any): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/local_level_name_fetch',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      district: id,
+    }),
   });
   console.log('result: ', result);
   return result;
