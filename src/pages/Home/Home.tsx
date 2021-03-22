@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { RupayIcon, CloseBarIcon } from '../../assets/Icons';
+
 import {
   IonPage,
   IonContent,
@@ -29,18 +31,18 @@ import {
 
 import './Home.scss';
 import { Translate } from '../../i18n/formatMessages';
-import { CloseBarIcon } from '../../assets/Icons';
+
 import { updateToast } from '../../redux/actions';
 
 const HomePage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState('');
   const [expandOptions, setExpandOptions] = useState(false);
   const [initializing, setInitializing] = useState(false);
   const { PushNotifications } = Plugins;
   useEffect(() => {
-    setBalance(22090);
+    setBalance('22090.00');
     askPushPermission();
   }, []);
 
@@ -125,16 +127,11 @@ const HomePage: React.FC = () => {
                 <div
                   className="common-ion-text"
                   style={{
-                    backgroundColor: '#ffffff',
+                    backgroundColor: '#000000',
                     borderRadius: '7px 0px 0px 7px',
                   }}
                 >
-                  <IonText
-                    className="balance-wrapper-text"
-                    style={{ color: '#000000' }}
-                  >
-                    <Translate message="home.balanceLabel" />
-                  </IonText>
+                  <RupayIcon width="30" height="30" />
                 </div>
                 <div className="arrow_box"></div>
                 <div

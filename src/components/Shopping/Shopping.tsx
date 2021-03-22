@@ -40,7 +40,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
     <>
       <div className="shopping-section">
         <div style={{ textAlign: 'center' }}>
-          <IonText text-center>
+          <IonText text-center style={{ fontWeight: '600' }}>
             <Translate message="home.shopping" />
           </IonText>
         </div>

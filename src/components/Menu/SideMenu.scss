@@ -84,6 +84,7 @@ ion-menu {
     align-items: flex-start;
   }
   .footer-wrapper {
+    margin-top: -10px;
     .version-wrapper .label-text {
       font-style: normal;
       font-weight: 600;
@@ -117,4 +118,13 @@ ion-menu {
       outline: 0;
     }
   }
+}
+
+.menu-content-wrapper .action-items-wrapper {
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.menu-content-wrapper .page-wrapper {
+  margin-bottom: 15px;
 }

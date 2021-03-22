@@ -20,7 +20,7 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
     <>
       <div className="loan-section">
         <div style={{ textAlign: 'center' }}>
-          <IonText text-center>
+          <IonText text-center style={{ fontWeight: '600' }}>
             <Translate message="home.loanText" />
           </IonText>
         </div>
