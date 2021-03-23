@@ -343,3 +343,30 @@ export const authenticationForSavingAccount = async (
   console.log('result: ', result);
   return result;
 };
+
+//authentication For Khanepani Page
+export const authenticationForKhanepaniPage = async (
+  user_id: string,
+  placeName: number,
+  customerID: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/water_bill',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      water_bill: [
+        {
+          user_id: user_id,
+          place_name: placeName,
+          customer_id: customerID,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};

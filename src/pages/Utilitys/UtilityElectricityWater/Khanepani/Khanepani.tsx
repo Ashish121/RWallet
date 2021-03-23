@@ -1,26 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../../i18n/formatMessages';
+import { useDispatch } from 'react-redux';
+import { requestForKhanepaniPage } from '../../../../redux/actions';
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
+  LoaderComponent,
 } from '../../../../components';
 import './Khanepani.scss';
 
 const Khanepani: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [showLoading, setShowLoading] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState('');
+  const [placeName, setPlaceName] = useState('');
+  const [customerID, setCustomerID] = useState('');
 
+  function updatePlaceName(placeName: any) {
+    setPlaceName(placeName);
+  }
+  function updateCustomerID(customerID: any) {
+    setCustomerID(customerID);
+  }
   function handleproceed() {
+    const user_id = 2;
+    // {placeName,customerID}
+    setShowLoading(true);
+    setLoaderMessage('Please Wait...');
+    dispatch(
+      requestForKhanepaniPage({ user_id, placeName, customerID }, nextRoute)
+    );
     console.log('Handling registration');
-    history.replace('/');
+  }
+
+  function nextRoute(status: any) {
+    setShowLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      history.replace('/tabs/home');
+      return;
+    }
   }
   function goBack() {
     history.replace('/tabs/electricityWater');
   }
   return (
     <>
+      <LoaderComponent
+        showLoading={showLoading}
+        loaderMessage={loaderMessage}
+      />
       <IonApp>
         <IonPage>
           <HeaderComponent
@@ -40,6 +73,7 @@ const Khanepani: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updatePlaceName}
                 />
                 <InputText
                   inputType="text"
@@ -47,6 +81,7 @@ const Khanepani: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateCustomerID}
                 />
 
                 <div className="buttonElementforKhanepani">
