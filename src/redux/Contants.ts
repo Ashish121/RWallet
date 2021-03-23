@@ -54,6 +54,9 @@ export const MPIN_FAILED = 'MPIN_FAILED';
 export const SAVING_SUCCESS = 'SAVING_SUCCESS';
 export const SAVING_FAILED = 'SAVING_FAILED';
 
+//for saving account
+export const ELECTRICITY_SUCCESS = 'ELECTRICITY_SUCCESS';
+export const ELECTRICITY_FAILED = 'ELECTRICITY_FAILED';
 
 //for water bill account
 export const WATERBILL_SUCCESS = 'WATERBILL_SUCCESS';

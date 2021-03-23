@@ -344,6 +344,36 @@ export const authenticationForSavingAccount = async (
   return result;
 };
 
+//authentication For Nepal ElectricityPage
+
+export const authenticationForNepalElectricityPage = async (
+  user_id: string,
+  neaCounter: string,
+  scNumber: string,
+  customerID: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/electricity_bill',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      electricity_bill: [
+        {
+          user_id: user_id,
+          nea_counter: neaCounter,
+          sc_number: scNumber,
+          customer_id: customerID,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
 //authentication For Khanepani Page
 export const authenticationForKhanepaniPage = async (
   user_id: string,
