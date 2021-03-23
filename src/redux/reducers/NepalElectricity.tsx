@@ -1,15 +1,15 @@
 import produce from 'immer';
 import {
   AUTHENTICATION_INPROGRESS,
-  WATERBILL_SUCCESS,
-  WATERBILL_FAILED,
+  ELECTRICITY_SUCCESS,
+  ELECTRICITY_FAILED,
 } from '../Contants';
-interface WaterBillPageState {
+interface initialPageState {
   isAuthenticating: boolean;
 }
 
 // defines the initial state for the reducer ...
-export const initialState: WaterBillPageState = {
+export const initialState: initialPageState = {
   isAuthenticating: false,
 };
 
@@ -18,17 +18,17 @@ const reducers: any = {
   [AUTHENTICATION_INPROGRESS]: (draft: any) => {
     draft.isAuthenticating = true;
   },
-  [WATERBILL_SUCCESS]: (draft: any, data: any) => {
+  [ELECTRICITY_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
-    localStorage.setItem('Apply Details :', JSON.stringify(data));
+    localStorage.setItem('Electricity Details :', JSON.stringify(data));
   },
-  [WATERBILL_FAILED]: (draft: any) => {
+  [ELECTRICITY_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;
   },
 };
 
 // defines all reducers for actions of interest to the this reducer ...
-export default produce((draft: WaterBillPageState = initialState, action) => {
+export default produce((draft: initialPageState = initialState, action) => {
   reducers?.[action.type]?.(draft, action);
   return draft;
 });
