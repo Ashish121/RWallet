@@ -344,6 +344,7 @@ export const authenticationForSavingAccount = async (
   return result;
 };
 
+
 //authentication for APPLY PAGE OR LOAN TYPE
 export const authenticationForApplyPage = async (
   user_id: string,
@@ -356,11 +357,13 @@ export const authenticationForApplyPage = async (
   const result = await axios({
     url:
       'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/loan_type',
+
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
     },
     data: JSON.stringify({
+
       loan_type: [
         {
           user_id: user_id,
@@ -369,6 +372,65 @@ export const authenticationForApplyPage = async (
           mobile_number: mobileNo,
           purpose_of_loan: purposeOfLoan,
           loan_type: loanType,
+
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+
+//authentication For Nepal ElectricityPage
+
+export const authenticationForNepalElectricityPage = async (
+  user_id: string,
+  neaCounter: string,
+  scNumber: string,
+  customerID: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/electricity_bill',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      electricity_bill: [
+        {
+          user_id: user_id,
+          nea_counter: neaCounter,
+          sc_number: scNumber,
+          customer_id: customerID,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//authentication For Khanepani Page
+export const authenticationForKhanepaniPage = async (
+  user_id: string,
+  placeName: number,
+  customerID: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/water_bill',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      water_bill: [
+        {
+          user_id: user_id,
+          place_name: placeName,
+          customer_id: customerID,
         },
       ],
     }),

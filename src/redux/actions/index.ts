@@ -16,3 +16,5 @@ export { requestForResetPassword } from './Reset';
 export { requestForMpin } from './Mpin';
 export { requestForSavingAccount } from './Saving';
 export {requestForApplyPage} from './Apply';
+export {requestForNepalElectricityPage} from './NepalElectricity';
+export {requestForKhanepaniPage} from './Khanepani';
