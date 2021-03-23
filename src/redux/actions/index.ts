@@ -15,3 +15,4 @@ export {
 export { requestForResetPassword } from './Reset';
 export { requestForMpin } from './Mpin';
 export { requestForSavingAccount } from './Saving';
+export {requestForKhanepaniPage} from './Khanepani';
