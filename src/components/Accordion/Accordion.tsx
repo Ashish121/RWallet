@@ -10,7 +10,6 @@ interface accordionProps {
 const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
   const [toggleAccordion, setToggleAccordion] = useState(false);
   const history = useHistory();
-
   const toggle = (item: any, index: any) => {
     const status = !toggleAccordion;
     accordionData.map((item: any, i: any) => {
@@ -23,8 +22,8 @@ const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
     setToggleAccordion(status);
   };
 
-  function handleClickButton() {
-    history.replace('/tabs/applyPage');
+  function handleClickButton(loantype: any) {
+    history.replace('/tabs/applyPage', { loantype: loantype });
   }
   return (
     <React.Fragment>
@@ -63,7 +62,7 @@ const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
                       marginLeft: '25%',
                       width: '45%',
                     }}
-                    onClick={handleClickButton}
+                    onClick={() => handleClickButton(item.title)}
                   >
                     Apply
                   </IonButton>
