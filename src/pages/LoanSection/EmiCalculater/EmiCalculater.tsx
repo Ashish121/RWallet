@@ -71,7 +71,6 @@ const EmiCalculater: React.FC = () => {
                     <RangeSlider
                       min={12}
                       max={16}
-                      textType="percentage"
                       handler={updateInterestRate}
                     />
                   </div>
