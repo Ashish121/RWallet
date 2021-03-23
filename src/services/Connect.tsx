@@ -344,6 +344,44 @@ export const authenticationForSavingAccount = async (
   return result;
 };
 
+
+//authentication for APPLY PAGE OR LOAN TYPE
+export const authenticationForApplyPage = async (
+  user_id: string,
+  loanType: string,
+  fullName: string,
+  fatherName: string,
+  mobileNo: string,
+  purposeOfLoan: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/loan_type',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+
+      loan_type: [
+        {
+          user_id: user_id,
+          full_name: fullName,
+          father_name: fatherName,
+          mobile_number: mobileNo,
+          purpose_of_loan: purposeOfLoan,
+          loan_type: loanType,
+
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+
 //authentication For Nepal ElectricityPage
 
 export const authenticationForNepalElectricityPage = async (
