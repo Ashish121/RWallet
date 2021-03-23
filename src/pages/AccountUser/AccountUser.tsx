@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+import debounce from 'lodash.debounce';
 import { Translate } from '../../i18n/formatMessages';
 import {
   InputText,
@@ -40,6 +41,10 @@ const AccountUser: React.FC<any> = () => {
   const [selectedDistrict, setSelectedDistrict] = useState('');
   const [localLevelNameArray, setLocalLevelName] = useState([{}]);
   const [selectedCountry, setCountry] = useState('');
+  const [clearValueDistrict, setClearValueDistrict] = useState(false);
+  const [clearValueLocalLevelName, setClearValueLocalLevelName] = useState(
+    false
+  );
   const country = 'Nepal';
   useEffect(() => {
     const array = [
@@ -96,6 +101,8 @@ const AccountUser: React.FC<any> = () => {
       };
       finalArray.push(tempObj);
     });
+    setClearValueLocalLevelName(false);
+    setClearValueDistrict(false);
     setDistricts(finalArray);
     console.log('States: ', finalArray);
   }
@@ -113,6 +120,7 @@ const AccountUser: React.FC<any> = () => {
       finalArray.push(tempObj);
     });
     setLocalLevelName(finalArray);
+    setClearValueLocalLevelName(false);
     console.log('States: ', finalArray);
   }
 
@@ -170,12 +178,15 @@ const AccountUser: React.FC<any> = () => {
 
     setCountry(country);
   }
-  function handleDistrict(val: any) {
+  const handleDistrict = debounce((val: any) => {
     console.log('district: ', val);
-
     setSelectedDistrict(val);
+    setClearValueLocalLevelName(true);
+    setSelectedMuniciplaty('');
+    setLocalLevelName([{}]);
     dispatch(localLevelName(loadLocalLevelName, val));
-  }
+  }, 300);
+
   function handleMunicipality(val: any) {
     console.log('local level name: ', val);
     setSelectedMuniciplaty(val);
@@ -185,11 +196,17 @@ const AccountUser: React.FC<any> = () => {
     setProvince(array);
     console.log('array: ', array);
   }
-  function handleProvince(value: any) {
-    console.log('Selected province: ', value);
-    setSelectedProvince(value);
-    dispatch(fetchdistrictByProvince(loadDistrict, value));
-  }
+  const handleProvince = debounce((val: any) => {
+    console.log('Selected province: ', val);
+    setSelectedProvince(val);
+    setDistricts([{}]);
+    setLocalLevelName([{}]);
+    setSelectedDistrict('');
+    setSelectedMuniciplaty('');
+    setClearValueLocalLevelName(true);
+    setClearValueDistrict(true);
+    dispatch(fetchdistrictByProvince(loadDistrict, val));
+  }, 300);
 
   function updateUser() {
     const userId = localStorage.getItem('registeredUserId');
@@ -296,6 +313,7 @@ const AccountUser: React.FC<any> = () => {
                   <SelectMenu
                     label="account.district"
                     array={district}
+                    selectedVal={clearValueDistrict}
                     onSelect={handleDistrict}
                   />
                 </div>
@@ -303,6 +321,7 @@ const AccountUser: React.FC<any> = () => {
                   <SelectMenu
                     label="account.municipality"
                     array={localLevelNameArray}
+                    selectedVal={clearValueLocalLevelName}
                     onSelect={handleMunicipality}
                   />
                 </div>
