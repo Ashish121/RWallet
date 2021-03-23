@@ -17,9 +17,28 @@ const EmiCalculater: React.FC = () => {
   const totalPayable = useState('10724.00');
   const emiAmountMonthly = useState('416.34');
 
+  // const [loanAmount, setLoanAmount] = useState("");
+  // const [interestRate, setInterestRate] = useState("");
+  // const [loanTenure, setLoanTenure] = useState("");
+
   function handleCalculate() {
     console.log('Handling registration');
     history.replace('/tabs/applyPage');
+  }
+
+  function updateLoanAmount(loanAmount: any) {
+    console.log('loanAmount :', loanAmount);
+    // setLoanAmount(loanAmount);
+  }
+
+  function updateInterestRate(interestRate: any) {
+    console.log('interestRate :', interestRate);
+    // setInterestRate(interestRate);
+  }
+
+  function updateLoanTenure(loanTenure: any) {
+    console.log('loanTenure :', loanTenure);
+    // setLoanTenure(loanTenure);
   }
 
   return (
@@ -39,6 +58,7 @@ const EmiCalculater: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateLoanAmount}
                 />
 
                 <div className="interest-area">
@@ -48,7 +68,12 @@ const EmiCalculater: React.FC = () => {
                     </span>
                   </IonText>
                   <div className="range-area">
-                    <RangeSlider />
+                    <RangeSlider
+                      min={12}
+                      max={16}
+                      textType="percentage"
+                      handler={updateInterestRate}
+                    />
                   </div>
                 </div>
                 <div className="interest-area">
@@ -58,7 +83,7 @@ const EmiCalculater: React.FC = () => {
                     </span>
                   </IonText>
                   <div className="range-area">
-                    <RangeSlider />
+                    <RangeSlider handler={updateLoanTenure} />
                   </div>
                 </div>
 
