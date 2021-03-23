@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   IonItem,
   IonSelect,
@@ -15,6 +15,7 @@ interface SelectGenderProps {
   placeholderLabel?: string;
   label?: any;
   array?: any;
+  selectedVal?: any;
 }
 
 const SelectMenu: React.FC<SelectGenderProps> = ({
@@ -22,8 +23,11 @@ const SelectMenu: React.FC<SelectGenderProps> = ({
   placeholderLabel,
   label,
   array,
+  selectedVal,
 }) => {
+  const [currentSelectedVal, setCurrentSelectedVal] = useState('');
   const handleSelect = debounce((value) => {
+    setCurrentSelectedVal(value);
     onSelect?.(value);
   }, 100);
 
@@ -38,6 +42,7 @@ const SelectMenu: React.FC<SelectGenderProps> = ({
             interface="action-sheet"
             placeholder={placeholderLabel}
             onIonChange={(e) => handleSelect(e.detail.value)}
+            value={!selectedVal ? currentSelectedVal : ''}
           >
             {array.map((element: any) => {
               return (

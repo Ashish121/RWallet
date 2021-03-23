@@ -132,10 +132,16 @@ const HomePage: React.FC = () => {
                     borderRadius: '7px 0px 0px 7px',
                   }}
                 >
-                  <IonImg
-                    style={{ width: '20px' }}
-                    src={require('../../assets/Icons/Rupay.svg')}
-                  />
+                  <IonText
+                    className="balance-wrapper-text"
+                    style={{
+                      color: '#000000',
+                      fontWeight: '500',
+                      fontSize: '14px',
+                    }}
+                  >
+                    <Translate message="home.balanceLabel" />
+                  </IonText>
                 </div>
                 <div className="arrow_box"></div>
                 <div
@@ -145,6 +151,10 @@ const HomePage: React.FC = () => {
                     borderRadius: '0px 7px 7px 0px',
                   }}
                 >
+                  <IonImg
+                    style={{ width: '15px', marginRight: '10px' }}
+                    src={require('../../assets/Icons/Rupay.svg')}
+                  />
                   <IonText
                     className="balance-wrapper-text"
                     style={{ color: '#ffffff' }}
