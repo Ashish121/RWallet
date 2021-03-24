@@ -27,7 +27,6 @@
     .flight-icon {
       display: flex;
       margin-right: 5px;
-      // margin-top: 20px;
     }
     .booking-to {
       display: flex;
@@ -38,10 +37,7 @@
     display: inline-block;
     width: 100;
   }
-  .bookingButton {
-    margin-top: 35%;
-    color: red;
-  }
+
   .toggelButton {
     color: white;
   }
@@ -50,9 +46,11 @@
 .allwidth {
   width: "65%";
 }
-// .IonToggle {
-//   height: 60px;
-// }
+
 .toggle-inner {
   --handle-background: red;
+}
+
+.container .bookingButtonForFlight {
+  margin-top: 38%;
 }

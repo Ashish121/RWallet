@@ -344,7 +344,6 @@ export const authenticationForSavingAccount = async (
   return result;
 };
 
-
 //authentication for APPLY PAGE OR LOAN TYPE
 export const authenticationForApplyPage = async (
   user_id: string,
@@ -363,7 +362,6 @@ export const authenticationForApplyPage = async (
       'Content-Type': 'application/json',
     },
     data: JSON.stringify({
-
       loan_type: [
         {
           user_id: user_id,
@@ -372,7 +370,6 @@ export const authenticationForApplyPage = async (
           mobile_number: mobileNo,
           purpose_of_loan: purposeOfLoan,
           loan_type: loanType,
-
         },
       ],
     }),
@@ -380,7 +377,6 @@ export const authenticationForApplyPage = async (
   console.log('result: ', result);
   return result;
 };
-
 
 //authentication For Nepal ElectricityPage
 
@@ -431,6 +427,45 @@ export const authenticationForKhanepaniPage = async (
           user_id: user_id,
           place_name: placeName,
           customer_id: customerID,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//authentication For Khanepani Page
+export const authenticationFlightOneWayPage = async (
+  user_id: string,
+  returnDate: string,
+  roundTrip: string,
+  travelType: string,
+  sourceCity: string,
+  destCity: string,
+  departureDate: string,
+  travelers: string,
+  classForFlight: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/ticket_booking',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      ticket_booking: [
+        {
+          user_id: user_id,
+          return_date: returnDate,
+          round_trip: roundTrip,
+          travel_type: travelType,
+          source_city: sourceCity,
+          destination_city: destCity,
+          departure_date: departureDate,
+          number_of_travelers: travelers,
+          class: classForFlight,
         },
       ],
     }),

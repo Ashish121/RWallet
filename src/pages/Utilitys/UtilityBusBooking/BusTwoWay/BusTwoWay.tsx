@@ -9,14 +9,25 @@ import {
   HeaderComponent,
   DatePickerComponent,
   SelectMenu,
+  LoaderComponent,
 } from '../../../../components';
 import './BusTwoWay.scss';
+import { useDispatch } from 'react-redux';
+import { requestForFlightOneWayPage } from '../../../../redux/actions';
 
 const BusTwoWay: React.FC = () => {
   const history = useHistory();
-  // const [date, setDate] = useState("");
-  // const [returnDate, setReturnDate] = useState("");
-  // const [travellers, setTravellers] = useState("");
+  const dispatch = useDispatch();
+
+  const [sourceCity, setSourceCity] = useState('');
+  const [destCity, setDestCity] = useState('');
+  const [departureDate, setDepartureDate] = useState('');
+  const [returnDate, setReturnDate] = useState('');
+
+  const [showLoading, setShowLoading] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState('');
+
+  const [travelers, setTravelers] = useState('');
   const [travellersDetails, setTravellersDetails] = useState([{}]);
   const [toggle, setToggle] = useState(false);
 
@@ -38,30 +49,68 @@ const BusTwoWay: React.FC = () => {
         value: '4',
         label: '4',
       },
-      {
-        value: '5',
-        label: '5',
-      },
     ];
 
     setTravellersDetails(array);
   }, []);
 
-  function handletopUp() {
+  function updateSourceCity(sourceCity: any) {
+    console.log('sourceCity: ', sourceCity);
+    setSourceCity(sourceCity);
+  }
+
+  function updateDestinationCity(destCity: any) {
+    console.log('destCity: ', destCity);
+    setDestCity(destCity);
+  }
+
+  function handleDepartureDate(departureDate: any) {
+    console.log('departureDate: ', departureDate);
+    setDepartureDate(departureDate);
+  }
+
+  function nextRoute(status: any) {
+    setShowLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      //history.replace('/tabs/busTwoWay');
+      return;
+    }
+  }
+
+  function handleBusTwoWayBooking() {
+    const user_id = 2;
+    const roundTrip = '1';
+    const travelType = 'Bus';
+    const classForFlight = 'empty';
+    setShowLoading(true);
+    setLoaderMessage('Please Wait...');
+    dispatch(
+      requestForFlightOneWayPage(
+        {
+          user_id,
+          returnDate,
+          roundTrip,
+          travelType,
+          sourceCity,
+          destCity,
+          departureDate,
+          travelers,
+          classForFlight,
+        },
+        nextRoute
+      )
+    );
     console.log('Handling registration');
-    history.replace('/');
   }
-  function handleDepartureDate(date: any) {
-    console.log('date: ', date);
-    //setDate(date);
-  }
+
   function handleReturnDate(returnDate: any) {
     console.log('returnDate: ', returnDate);
-    // setReturnDate(returnDate);
+    setReturnDate(returnDate);
   }
-  function onTravellerSelect(travellers: any) {
-    console.log('Selected value: ', travellers);
-    // setTravellers(travellers);
+  function onTravellerSelect(travelers: any) {
+    console.log('Selected value: ', travelers);
+    setTravelers(travelers);
   }
   function handleToggle(toggle: any) {
     toggle = !toggle;
@@ -73,6 +122,10 @@ const BusTwoWay: React.FC = () => {
   }
   return (
     <>
+      <LoaderComponent
+        showLoading={showLoading}
+        loaderMessage={loaderMessage}
+      />
       <IonApp>
         <IonPage>
           <HeaderComponent
@@ -123,6 +176,7 @@ const BusTwoWay: React.FC = () => {
                       labelType="floating"
                       color="light"
                       labelColor="light"
+                      onChange={updateSourceCity}
                     />
                   </div>
                   <div className="flight-twoWay-icon">
@@ -137,6 +191,7 @@ const BusTwoWay: React.FC = () => {
                       labelType="floating"
                       color="light"
                       labelColor="light"
+                      onChange={updateDestinationCity}
                     />
                   </div>
                 </div>
@@ -172,7 +227,7 @@ const BusTwoWay: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="UtilityBus"
                     size="block"
-                    clickHandler={handletopUp}
+                    clickHandler={handleBusTwoWayBooking}
                   />
                 </div>
               </div>
