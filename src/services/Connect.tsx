@@ -344,7 +344,6 @@ export const authenticationForSavingAccount = async (
   return result;
 };
 
-
 //authentication for APPLY PAGE OR LOAN TYPE
 export const authenticationForApplyPage = async (
   user_id: string,
@@ -363,7 +362,6 @@ export const authenticationForApplyPage = async (
       'Content-Type': 'application/json',
     },
     data: JSON.stringify({
-
       loan_type: [
         {
           user_id: user_id,
@@ -372,7 +370,6 @@ export const authenticationForApplyPage = async (
           mobile_number: mobileNo,
           purpose_of_loan: purposeOfLoan,
           loan_type: loanType,
-
         },
       ],
     }),
@@ -380,7 +377,6 @@ export const authenticationForApplyPage = async (
   console.log('result: ', result);
   return result;
 };
-
 
 //authentication For Nepal ElectricityPage
 
@@ -431,6 +427,33 @@ export const authenticationForKhanepaniPage = async (
           user_id: user_id,
           place_name: placeName,
           customer_id: customerID,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//authentication For EMI calculator Page
+export const authenticationForEmiCalculaterPage = async (
+  loanAmount: number,
+  interestRate: number,
+  loanTenure: number
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/emi_calculate',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      emi_calculate: [
+        {
+          loan_amount: loanAmount,
+          interest_rate: interestRate,
+          loan_tenure: loanTenure,
         },
       ],
     }),

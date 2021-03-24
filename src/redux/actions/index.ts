@@ -18,3 +18,4 @@ export { requestForSavingAccount } from './Saving';
 export {requestForApplyPage} from './Apply';
 export {requestForNepalElectricityPage} from './NepalElectricity';
 export {requestForKhanepaniPage} from './Khanepani';
+export {requestForEmiCalculaterPage} from './EmiCalculater';
