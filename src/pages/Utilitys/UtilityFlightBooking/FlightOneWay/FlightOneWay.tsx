@@ -3,21 +3,33 @@ import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { FlightIcon } from '../../../../assets/Icons';
 import { Translate } from '../../../../i18n/formatMessages';
+import { useDispatch } from 'react-redux';
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
   DatePickerComponent,
   SelectMenu,
+  LoaderComponent,
 } from '../../../../components';
 import './FlightOneWay.scss';
+import { requestForFlightOneWayPage } from '../../../../redux/actions';
 
 const FlightOneWay: React.FC = () => {
   const history = useHistory();
-  // const [date, setDate] = useState("");
-  // const [classForFlight, setClass] = useState("");
+  const dispatch = useDispatch();
+
+  const [sourceCity, setSourceCity] = useState('');
+  const [destCity, setDestCity] = useState('');
+  const [departureDate, setDepartureDate] = useState('');
+  const [travelers, setTravelers] = useState('');
+
+  const [classForFlight, setClass] = useState('');
   const [classDetails, setClassDetails] = useState([{}]);
   const [toggle, setToggle] = useState(false);
+
+  const [showLoading, setShowLoading] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState('');
 
   useEffect(() => {
     const array = [
@@ -38,19 +50,66 @@ const FlightOneWay: React.FC = () => {
     setClassDetails(array);
   }, []);
 
-  function handleflightBook() {
-    console.log('Handling registration');
-    history.replace('/tabs/flightTwoWay');
+  function updateSourceCity(sourceCity: any) {
+    console.log('sourceCity: ', sourceCity);
+    setSourceCity(sourceCity);
   }
-  function handleDate(date: any) {
-    console.log('date: ', date);
 
-    // setDate(date);
+  function updateDestCity(destCity: any) {
+    console.log('destCity: ', destCity);
+    setDestCity(destCity);
+  }
+
+  function updateTravelers(travelers: any) {
+    console.log('travelers: ', travelers);
+    setTravelers(travelers);
+  }
+
+  function handleDate(departureDate: any) {
+    console.log('departureDate: ', departureDate);
+    setDepartureDate(departureDate);
   }
   function onClassSelect(classForFlight: any) {
-    console.log('Selected value: ', classForFlight);
-    // setClass(classForFlight);
+    console.log('Selected class: ', classForFlight);
+    setClass(classForFlight);
   }
+
+  function nextRoute(status: any) {
+    setShowLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      // history.replace("/tabs/flightTwoWay");
+      return;
+    }
+  }
+
+  function handleflightBook() {
+    const user_id = 2;
+    const returnDate = '';
+    const roundTrip = '0';
+    const travelType = 'flight';
+
+    setShowLoading(true);
+    setLoaderMessage('Please Wait...');
+    dispatch(
+      requestForFlightOneWayPage(
+        {
+          user_id,
+          returnDate,
+          roundTrip,
+          travelType,
+          sourceCity,
+          destCity,
+          departureDate,
+          travelers,
+          classForFlight,
+        },
+        nextRoute
+      )
+    );
+    console.log('Handling registration');
+  }
+
   function goBack() {
     history.replace('/tabs/home');
   }
@@ -67,6 +126,10 @@ const FlightOneWay: React.FC = () => {
 
   return (
     <>
+      <LoaderComponent
+        showLoading={showLoading}
+        loaderMessage={loaderMessage}
+      />
       <IonApp>
         <IonPage>
           <HeaderComponent
@@ -124,6 +187,7 @@ const FlightOneWay: React.FC = () => {
                       labelType="floating"
                       color="light"
                       labelColor="light"
+                      onChange={updateSourceCity}
                     />
                   </div>
                   <div className="flight-icon">
@@ -138,6 +202,7 @@ const FlightOneWay: React.FC = () => {
                       labelType="floating"
                       color="light"
                       labelColor="light"
+                      onChange={updateDestCity}
                     />
                   </div>
                 </div>
@@ -154,6 +219,7 @@ const FlightOneWay: React.FC = () => {
                       labelType="floating"
                       color="light"
                       labelColor="light"
+                      onChange={updateTravelers}
                     />
 
                     <SelectMenu
@@ -164,7 +230,7 @@ const FlightOneWay: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="bookingButton">
+                <div className="bookingButtonForFlight">
                   <ButtonConmponent
                     buttonLabel="UtilityBookFlight"
                     size="block"

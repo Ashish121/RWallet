@@ -9,23 +9,81 @@ import {
   HeaderComponent,
   SelectMenu,
   DatePickerComponent,
+  LoaderComponent,
 } from '../../../../components';
 import './BusOneWay.scss';
+import { useDispatch } from 'react-redux';
+import { requestForFlightOneWayPage } from '../../../../redux/actions';
 
 const BusOneWay: React.FC = () => {
   const history = useHistory();
-  // const [date, setDate] = useState("");
-  // const [travellers, setTravellers] = useState("");
-  const [travellersDetails, setTravellersDetails] = useState([{}]);
+  const dispatch = useDispatch();
+
+  const [sourceCity, setSourceCity] = useState('');
+  const [destCity, setDestCity] = useState('');
+  const [departureDate, setDepartureDate] = useState('');
+
   const [toggle, setToggle] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState('');
+
+  // const [date, setDate] = useState("");
+  const [travelers, setTravelers] = useState('');
+  const [travellersDetails, setTravellersDetails] = useState([{}]);
+
+  function updateSourceCity(sourceCity: any) {
+    console.log('sourceCity: ', sourceCity);
+    setSourceCity(sourceCity);
+  }
+
+  function updateDestinationCity(destCity: any) {
+    console.log('destCity: ', destCity);
+    setDestCity(destCity);
+  }
+
+  function handleDepartureDate(departureDate: any) {
+    console.log('departureDate: ', departureDate);
+    setDepartureDate(departureDate);
+  }
+
+  function nextRoute(status: any) {
+    setShowLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      //history.replace('/tabs/busTwoWay');
+      return;
+    }
+  }
 
   function handleBusBooking() {
+    const user_id = 2;
+    const returnDate = 'empty';
+    const roundTrip = '0';
+    const travelType = 'Bus';
+    const classForFlight = 'empty';
+    setShowLoading(true);
+    setLoaderMessage('Please Wait...');
+    dispatch(
+      requestForFlightOneWayPage(
+        {
+          user_id,
+          returnDate,
+          roundTrip,
+          travelType,
+          sourceCity,
+          destCity,
+          departureDate,
+          travelers,
+          classForFlight,
+        },
+        nextRoute
+      )
+    );
     console.log('Handling registration');
-    history.replace('/tabs/busTwoWay');
   }
   function onTravellerSelect(travellers: any) {
     console.log('Selected value: ', travellers);
-    // setTravellers(travellers);
+    setTravelers(travellers);
   }
 
   useEffect(() => {
@@ -46,20 +104,10 @@ const BusOneWay: React.FC = () => {
         value: '4',
         label: '4',
       },
-      {
-        value: '5',
-        label: '5',
-      },
     ];
 
     setTravellersDetails(array);
   }, []);
-
-  function handleDate(date: any) {
-    console.log('date: ', date);
-
-    // setDate(date);
-  }
 
   function handleToggle(toggle: any) {
     toggle = !toggle;
@@ -77,6 +125,10 @@ const BusOneWay: React.FC = () => {
 
   return (
     <>
+      <LoaderComponent
+        showLoading={showLoading}
+        loaderMessage={loaderMessage}
+      />
       <IonApp>
         <IonPage>
           <HeaderComponent
@@ -134,6 +186,7 @@ const BusOneWay: React.FC = () => {
                       labelType="floating"
                       color="light"
                       labelColor="light"
+                      onChange={updateSourceCity}
                     />
                   </div>
                   <div className="flight-icon">
@@ -148,6 +201,7 @@ const BusOneWay: React.FC = () => {
                       labelType="floating"
                       color="light"
                       labelColor="light"
+                      onChange={updateDestinationCity}
                     />
                   </div>
                 </div>
@@ -157,7 +211,7 @@ const BusOneWay: React.FC = () => {
                 >
                   <DatePickerComponent
                     placeholder="UtilityDeparture"
-                    handler={handleDate}
+                    handler={handleDepartureDate}
                   />
                   <div style={{ marginTop: '5%' }}>
                     <SelectMenu

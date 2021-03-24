@@ -70,3 +70,7 @@ export const WATERBILL_FAILED = 'WATERBILL_FAILED';
 export const EMI_SUCCESS = 'EMI_SUCCESS';
 export const EMI_FAILED = 'EMI_FAILED';
 
+//for flight one way booking page
+export const FLIGHTONEWAY_SUCCESS = 'FLIGHTONEWAY_SUCCESS';
+export const FLIGHTONEWAY_FAILED = 'FLIGHTONEWAY_FAILED';
+

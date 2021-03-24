@@ -9,16 +9,34 @@ import {
   HeaderComponent,
   DatePickerComponent,
   SelectMenu,
+  LoaderComponent,
 } from '../../../../components';
 import './FlightTwoWay.scss';
+import { useDispatch } from 'react-redux';
+import { requestForFlightOneWayPage } from '../../../../redux/actions';
 
 const FlightTwoWay: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [sourceCity, setSourceCity] = useState('');
+  const [destCity, setDestCity] = useState('');
+  const [departureDate, setDepartureDate] = useState('');
+  const [returnDate, setReturnDate] = useState('');
+  const [travelers, setTravelers] = useState('');
+
+  const [classForFlight, setClass] = useState('');
+  const [classDetails, setClassDetails] = useState([{}]);
+  const [toggle, setToggle] = useState(false);
+
+  const [showLoading, setShowLoading] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState('');
+
   // const [date, setDate] = useState("");
   // const [returnDate, setReturnDate] = useState("");
-  const [toggle, setToggle] = useState(false);
+  //const [toggle, setToggle] = useState(false);
   // const [classForFlight, setClass] = useState("");
-  const [classDetails, setClassDetails] = useState([{}]);
+  // const [classDetails, setClassDetails] = useState([{}]);
 
   useEffect(() => {
     const array = [
@@ -39,9 +57,68 @@ const FlightTwoWay: React.FC = () => {
     setClassDetails(array);
   }, []);
 
+  function updateSourceCity(sourceCity: any) {
+    console.log('sourceCity: ', sourceCity);
+    setSourceCity(sourceCity);
+  }
+
+  function updateDestCity(destCity: any) {
+    console.log('destCity: ', destCity);
+    setDestCity(destCity);
+  }
+
+  function updateTravelers(travelers: any) {
+    console.log('travelers: ', travelers);
+    setTravelers(travelers);
+  }
+
+  function handleDepartureDate(departureDate: any) {
+    console.log('departureDate: ', departureDate);
+    setDepartureDate(departureDate);
+  }
+  function onClassSelect(classForFlight: any) {
+    console.log('Selected class: ', classForFlight);
+    setClass(classForFlight);
+  }
+
+  function handleReturnDate(returnDate: any) {
+    console.log('returnDate: ', returnDate);
+    setReturnDate(returnDate);
+  }
+
   function handleBusBooking() {
+    const user_id = 2;
+    const roundTrip = '1';
+    const travelType = 'flight';
+
+    setShowLoading(true);
+    setLoaderMessage('Please Wait...');
+    dispatch(
+      requestForFlightOneWayPage(
+        {
+          user_id,
+          returnDate,
+          roundTrip,
+          travelType,
+          sourceCity,
+          destCity,
+          departureDate,
+          travelers,
+          classForFlight,
+        },
+        nextRoute
+      )
+    );
     console.log('Handling registration');
-    history.replace('/busOneWay');
+  }
+
+  function nextRoute(status: any) {
+    setShowLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      //history.replace('/busOneWay');
+      return;
+    }
   }
 
   function handleToggle(toggle: any) {
@@ -49,27 +126,16 @@ const FlightTwoWay: React.FC = () => {
     setToggle(toggle);
     history.replace('/tabs/flightOneWay');
   }
-  function handleDepartureDate(date: any) {
-    console.log('date: ', date);
-
-    //setDate(date);
-  }
-
-  function handleReturnDate(returnDate: any) {
-    console.log('returnDate: ', returnDate);
-
-    // setReturnDate(returnDate);
-  }
-  function onClassSelect(classForFlight: any) {
-    console.log('Selected value: ', classForFlight);
-    //setClass(classForFlight);
-  }
 
   function goBack() {
     history.replace('/tabs/flightOneWay');
   }
   return (
     <>
+      <LoaderComponent
+        showLoading={showLoading}
+        loaderMessage={loaderMessage}
+      />
       <IonApp>
         <IonPage>
           <HeaderComponent
@@ -119,6 +185,7 @@ const FlightTwoWay: React.FC = () => {
                       labelType="floating"
                       color="light"
                       labelColor="light"
+                      onChange={updateSourceCity}
                     />
                   </div>
                   <div className="flight-twoWay-icon">
@@ -133,6 +200,7 @@ const FlightTwoWay: React.FC = () => {
                       labelType="floating"
                       color="light"
                       labelColor="light"
+                      onChange={updateDestCity}
                     />
                   </div>
                 </div>
@@ -162,6 +230,7 @@ const FlightTwoWay: React.FC = () => {
                     labelType="floating"
                     color="light"
                     labelColor="light"
+                    onChange={updateTravelers}
                   />
                   <SelectMenu
                     label="UtilityClass"
@@ -169,7 +238,7 @@ const FlightTwoWay: React.FC = () => {
                     array={classDetails}
                   />
                 </div>
-                <div className="flightTwoWayButton">
+                <div className="bookingButtonForFlightTwoWay">
                   <ButtonConmponent
                     buttonLabel="UtilityBookFlight"
                     size="block"
