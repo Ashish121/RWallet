@@ -6,11 +6,13 @@ import {
 } from '../Contants';
 interface EmiPageState {
   isAuthenticating: boolean;
+  emiDetails: any;
 }
 
 // defines the initial state for the reducer ...
 export const initialState: EmiPageState = {
   isAuthenticating: false,
+  emiDetails: null,
 };
 
 // defines this reducers reducer functions ...
@@ -20,7 +22,8 @@ const reducers: any = {
   },
   [EMI_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
-    localStorage.setItem('Apply Details :', JSON.stringify(data));
+    // localStorage.setItem("Apply Details :", JSON.stringify(data));
+    draft.emiDetails = data;
   },
   [EMI_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;

@@ -5,12 +5,14 @@ import UserAccount from './UserAccount';
 import Bank from './Bank';
 import CoOperative from './CoOperative';
 import Agent from './Agent';
+import EmiCalculater from './EmiCalculater';
 const rootReducer = combineReducers({
   login: LoginReducer,
   toast: Toast,
   userAccount: UserAccount,
   bank:Bank,
   co_operative:CoOperative,
-  agent:Agent
+  agent:Agent,
+  emi:EmiCalculater
 });
 export default rootReducer;

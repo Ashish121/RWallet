@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import { useDispatch } from 'react-redux';
-// import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   ButtonConmponent,
   InputText,
@@ -24,9 +24,12 @@ const EmiCalculater: React.FC = () => {
 
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
+  //state.bank.bankDetails.data.data
 
-  // const emiDetails = useSelector((state: any) => state.emi.emiDetails.data);
-  // console.log("emiDetails response******* :", emiDetails);
+  const emiDetails = useSelector(
+    (state: any) => state.emi.emiDetails.data.data
+  );
+  console.log('emiDetails response******* :', emiDetails);
 
   const prinicipalAmount = useState('10000.00');
   const interest = useState('724.00');
@@ -69,7 +72,8 @@ const EmiCalculater: React.FC = () => {
     setLoanTenure(loanTenure);
   }
   function goBack() {
-    history.replace('/tabs/loanType');
+    // history.replace("/tabs/loanType");
+    history.replace('/tabs/emiCalculater');
   }
   return (
     <>
