@@ -1,20 +1,70 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
+  LoaderComponent,
 } from '../../../components';
 import './ApplyPage.scss';
+import { requestForApplyPage } from '../../../redux/actions';
 
 const ApplyPage: React.FC = () => {
   const history = useHistory();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const [showLoading, setShowLoading] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [fatherName, setFatherName] = useState('');
+  const [mobileNo, setMobileNo] = useState('');
+  const [purposeOfLoan, setPurposeOfLoan] = useState('');
+  const [loanType, setLoanType] = useState('');
+
+  useEffect(() => {
+    const params: any = location.state;
+    const loanType = params.loantype;
+    console.log('loanType : ', loanType);
+    setLoanType(loanType);
+  }, []);
+
+  function updateFullName(fullName: any) {
+    setFullName(fullName);
+  }
+  function updateFatherName(fatherName: any) {
+    setFatherName(fatherName);
+  }
+  function updateMobileNo(mobileNo: any) {
+    setMobileNo(mobileNo);
+  }
+  function updatePurposeOfLoan(purposeOfLoan: any) {
+    setPurposeOfLoan(purposeOfLoan);
+  }
+
+  function nextRoute(status: any) {
+    setShowLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      history.replace('/tabs/emiCalculater');
+      return;
+    }
+  }
 
   function handleApply() {
+    const user_id = 2;
+    // const loanType = "Business Loan";
+    setShowLoading(true);
+    setLoaderMessage('Please Wait...');
+    dispatch(
+      requestForApplyPage(
+        { user_id, loanType, fullName, fatherName, mobileNo, purposeOfLoan },
+        nextRoute
+      )
+    );
     console.log('Handling registration');
-    history.replace('/tabs/flightOneWay');
   }
 
   function goBack() {
@@ -23,6 +73,10 @@ const ApplyPage: React.FC = () => {
 
   return (
     <>
+      <LoaderComponent
+        showLoading={showLoading}
+        loaderMessage={loaderMessage}
+      />
       <IonApp>
         <IonPage>
           <HeaderComponent
@@ -42,6 +96,7 @@ const ApplyPage: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateFullName}
                 />
                 <InputText
                   inputType="text"
@@ -49,6 +104,7 @@ const ApplyPage: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateFatherName}
                 />
                 <InputText
                   inputType="text"
@@ -56,6 +112,7 @@ const ApplyPage: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateMobileNo}
                 />
                 <InputText
                   inputType="text"
@@ -63,20 +120,30 @@ const ApplyPage: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updatePurposeOfLoan}
                 />
-
-                <div className="loan-ApplyPage-Discard">
-                  <ButtonConmponent
-                    buttonLabel="ApplyPageDiscard"
-                    size="block"
-                  />
-                </div>
-                <div className="loan-ApplyPage-Apply">
-                  <ButtonConmponent
-                    buttonLabel="ApplyPageApply"
-                    size="block"
-                    clickHandler={handleApply}
-                  />
+                <div className="Button-wrapper-applypage">
+                  <div className="loan-ApplyPage-Discard">
+                    <ButtonConmponent
+                      buttonLabel="ApplyPageDiscard"
+                      size="block"
+                    />
+                  </div>
+                  <div className="loan-ApplyPage-Apply">
+                    <ButtonConmponent
+                      buttonLabel="ApplyPageApply"
+                      size="block"
+                      disabled={
+                        fullName.trim() &&
+                        fatherName.trim() &&
+                        mobileNo.trim() &&
+                        purposeOfLoan.trim()
+                          ? false
+                          : true
+                      }
+                      clickHandler={handleApply}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

@@ -53,3 +53,16 @@ export const MPIN_FAILED = 'MPIN_FAILED';
 //for saving account
 export const SAVING_SUCCESS = 'SAVING_SUCCESS';
 export const SAVING_FAILED = 'SAVING_FAILED';
+
+//for Apply page and loan type 
+export const APPLY_SUCCESS = 'APPLY_SUCCESS';
+export const APPLY_FAILED = 'APPLY_FAILED';
+
+//for electricity page
+export const ELECTRICITY_SUCCESS = 'ELECTRICITY_SUCCESS';
+export const ELECTRICITY_FAILED = 'ELECTRICITY_FAILED';
+
+//for water bill page
+export const WATERBILL_SUCCESS = 'WATERBILL_SUCCESS';
+export const WATERBILL_FAILED = 'WATERBILL_FAILED';
+
