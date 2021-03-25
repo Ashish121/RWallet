@@ -49,34 +49,34 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
           <div>
             <button className="iconButtons" onClick={navigateToShopping}>
               <SmartphoneIcon width="30" height="30" />
+              <IonText>
+                <Translate message="home.mobileIconText" />
+              </IonText>
             </button>
-            <IonText>
-              <Translate message="home.mobileIconText" />
-            </IonText>
           </div>
           <div>
             <button className="iconButtons">
               <LaptopIcon width="30" height="30" />
+              <IonText>
+                <Translate message="home.laptopIconText" />
+              </IonText>
             </button>
-            <IonText>
-              <Translate message="home.laptopIconText" />
-            </IonText>
           </div>
           <div>
             <button className="iconButtons">
               <FashionIcon width="30" height="30" />
+              <IonText>
+                <Translate message="home.fashionIconText" />
+              </IonText>
             </button>
-            <IonText>
-              <Translate message="home.fashionIconText" />
-            </IonText>
           </div>
           <div>
             <button className="iconButtons">
               <TelevisionIcon width="30" height="30" />
+              <IonText>
+                <Translate message="home.televisionText" />
+              </IonText>
             </button>
-            <IonText>
-              <Translate message="home.televisionText" />
-            </IonText>
           </div>
 
           {expanded && (
@@ -84,58 +84,58 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
               <div>
                 <button className="iconButtons">
                   <StoreIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.storeText" />
+                  </IonText>
                 </button>
-                <IonText>
-                  <Translate message="home.storeText" />
-                </IonText>
               </div>
               <div>
                 <button className="iconButtons">
                   <SparepartIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.sparePartText" />
+                  </IonText>
                 </button>
-                <IonText>
-                  <Translate message="home.sparePartText" />
-                </IonText>
               </div>
               <div>
                 <button className="iconButtons">
                   <MotorBikeIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.motorbike" />
+                  </IonText>
                 </button>
-                <IonText>
-                  <Translate message="home.motorbike" />
-                </IonText>
               </div>
               <div>
                 <button className="iconButtons">
                   <GroceryIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.grocery" />
+                  </IonText>
                 </button>
-                <IonText>
-                  <Translate message="home.grocery" />
-                </IonText>
               </div>
               <div>
                 <button className="iconButtons">
                   <WalletIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.walletText" />
+                  </IonText>
                 </button>
-                <IonText>
-                  <Translate message="home.walletText" />
-                </IonText>
               </div>
               <div>
                 <button className="iconButtons">
                   <WatchIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.watchText" />
+                  </IonText>
                 </button>
-                <IonText>
-                  <Translate message="home.watchText" />
-                </IonText>
               </div>
               <div>
                 <button className="iconButtons">
                   <SneakersIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.shoesText" />
+                  </IonText>
                 </button>
-                <IonText>
-                  <Translate message="home.shoesText" />
-                </IonText>
               </div>
             </>
           )}

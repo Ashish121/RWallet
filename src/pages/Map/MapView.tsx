@@ -59,7 +59,7 @@ const MapView: React.FC = () => {
     const array = [
       {
         coordinates: [currentPos.lat, currentPos.lng],
-        iconPath: 'currentPositionIcon.svg',
+        iconPath: 'currentPositionMarker.svg',
         description: 'Hey!',
       },
     ];

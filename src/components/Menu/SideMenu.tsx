@@ -48,8 +48,11 @@ const MenuComponent: React.FC<any> = () => {
     <>
       <IonMenu side="start" menuId="menu" contentId="menu">
         <IonHeader>
-          <IonToolbar>
-            <IonButtons slot="end">
+          <IonToolbar className="side-menu-toobar">
+            <IonButtons
+              slot="end"
+              style={{ right: '20px', position: 'absolute' }}
+            >
               <IonButton
                 onClick={closeMenu}
                 style={{ position: 'absolute', width: '100%' }}
