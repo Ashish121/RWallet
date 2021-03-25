@@ -3,17 +3,22 @@ import { IonButton, IonIcon, IonItem, IonLabel, IonInput } from '@ionic/react';
 import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 import './AccordionForRecharge.scss';
 import { useHistory } from 'react-router-dom';
-interface accordionProps {
+import { useDispatch } from 'react-redux';
+import { requestForTvPayment } from '../../redux/actions';
+interface accordionContainerProps {
   accordionData: any;
+  // handler?: Function;
 }
 
-const CustomAccordionForRecharge: React.FC<accordionProps> = ({
+const AccordionContainer: React.FC<accordionContainerProps> = ({
   accordionData,
+  // handler,
 }) => {
   const [toggleAccordion, setToggleAccordion] = useState(false);
   const history = useHistory();
-  const [number, setNumber] = useState('');
-  const [amount, setAmount] = useState('');
+  const dispatch = useDispatch();
+  const [customerId, setCustomerId] = useState('');
+  const [amount, setAmount] = useState();
 
   const toggle = (item: any, index: any) => {
     const status = !toggleAccordion;
@@ -27,13 +32,44 @@ const CustomAccordionForRecharge: React.FC<accordionProps> = ({
     setToggleAccordion(status);
   };
 
-  function handleClickButton(loantype: any) {
-    history.replace('/tabs/tvPayment', { loantype: loantype });
+  function nextRoute(status: any) {
+    if (status) {
+      history.replace('/tabs/tvPayment');
+      return;
+    }
   }
-  function handleNumber() {
-    setNumber(number);
+
+  // function handleRearch() {
+  //   const user_id = 2;
+  //   const companyName = "clear TV";
+  //   handler?.({
+  //     customerId,
+  //     amount,
+  //     user_id,
+  //     companyName,
+  //   });
+  // }
+
+  function handleClickButton() {
+    const user_id = 2;
+    const companyName = 'clear TV';
+    // const amount = currentTarget.detail.value;
+    // const customerId = "3123";
+
+    dispatch(
+      requestForTvPayment(
+        { user_id, amount, companyName, customerId },
+        nextRoute
+      )
+    );
+    console.log('Handling registration');
   }
-  function handleAmount() {
+  function handleCustomerId(customerId: any) {
+    console.log('customerId', customerId);
+    setCustomerId(customerId);
+  }
+  function handleAmount(amount: any) {
+    console.log('amount ****', amount);
     setAmount(amount);
   }
   return (
@@ -59,19 +95,17 @@ const CustomAccordionForRecharge: React.FC<accordionProps> = ({
                   <IonItem className="inputArea" color="white">
                     <IonLabel>{item.inputfield1}</IonLabel>
                     <IonInput
-                      name="number"
+                      name="customerId"
                       type="number"
-                      value={number}
-                      onIonChange={handleNumber}
+                      onIonChange={handleCustomerId}
                     />
                   </IonItem>
 
                   <IonItem className="inputArea" color="white">
                     <IonLabel>{item.inputfield2}</IonLabel>
                     <IonInput
-                      name="amount"
+                      name={amount}
                       type="number"
-                      value={amount}
                       onIonChange={handleAmount}
                     />
                   </IonItem>
@@ -84,7 +118,9 @@ const CustomAccordionForRecharge: React.FC<accordionProps> = ({
                       width: '45%',
                       marginTop: '5%',
                     }}
-                    onClick={() => handleClickButton(item.title)}
+                    // onClick={() => handleClickButton(item.title)}
+                    // onClick={handleRearch}
+                    onClick={handleClickButton}
                   >
                     recharge
                   </IonButton>
@@ -98,4 +134,4 @@ const CustomAccordionForRecharge: React.FC<accordionProps> = ({
   );
 };
 
-export default CustomAccordionForRecharge;
+export default AccordionContainer;

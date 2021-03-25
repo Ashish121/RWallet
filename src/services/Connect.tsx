@@ -501,3 +501,32 @@ export const authenticationForEmiCalculation = async (
   console.log('result: ', result);
   return result;
 };
+
+//authentication For tv payment page
+export const authenticationForTvPayment = async (
+  user_id: string,
+  amount: string,
+  companyName: string,
+  customerId: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/television_payment',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      television_payment: [
+        {
+          user_id: user_id,
+          amount: amount,
+          company_name: companyName,
+          customer_id: customerId,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};

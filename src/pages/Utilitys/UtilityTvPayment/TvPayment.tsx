@@ -3,10 +3,7 @@ import { useHistory } from 'react-router-dom';
 import './TvPayment.scss';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import {
-  CustomAccordionForRecharge,
-  HeaderComponent,
-} from '../../../components';
+import { AccordionContainer, HeaderComponent } from '../../../components';
 
 const TvPayment: React.FC = () => {
   const history = useHistory();
@@ -77,6 +74,12 @@ const TvPayment: React.FC = () => {
   function goBack() {
     history.replace('/tabs/home');
   }
+  // function getReachargeDetails(data: any) {
+  //   console.log("data", data);
+
+  //   // const amount = data.amount.CustomEvent.detail.value;
+  //   // console.log("new amount*****", amount);
+  // }
   return (
     <>
       <IonApp>
@@ -92,7 +95,10 @@ const TvPayment: React.FC = () => {
                 <Translate message="UtilityTvPayment" />
               </IonText>
               <div className="TvPayment-wrapper">
-                <CustomAccordionForRecharge accordionData={accordionDetails} />
+                <AccordionContainer
+                  accordionData={accordionDetails}
+                  // handler={getReachargeDetails}
+                />
               </div>
             </div>
           </IonContent>
