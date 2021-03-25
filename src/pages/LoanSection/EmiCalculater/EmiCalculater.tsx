@@ -63,7 +63,7 @@ const EmiCalculater: React.FC = () => {
     setLoanTenure(loanTenure);
   }
   function goBack() {
-    history.replace('/tabs/emiCalculater');
+    history.replace('/tabs/loanType');
   }
 
   return (
