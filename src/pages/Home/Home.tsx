@@ -42,6 +42,7 @@ const HomePage: React.FC = () => {
   const [expandOptions, setExpandOptions] = useState(false);
   const [initializing, setInitializing] = useState(false);
   const { PushNotifications } = Plugins;
+
   useEffect(() => {
     setBalance('22090.00');
     askPushPermission();
@@ -137,7 +138,7 @@ const HomePage: React.FC = () => {
                     style={{
                       color: '#000000',
                       fontWeight: '500',
-                      fontSize: '14px',
+                      fontSize: '13px',
                     }}
                   >
                     <Translate message="home.balanceLabel" />
@@ -197,7 +198,16 @@ const HomePage: React.FC = () => {
                   <LoanSection expanded={expandOptions} />
                   <UtilitiesSection expanded={expandOptions} />
                   <div className="see-more-section">
-                    <IonButton onClick={toggleExpandOptions}>
+                    <IonButton
+                      onClick={toggleExpandOptions}
+                      className="ion-padding"
+                      style={{
+                        width: '159px',
+                        '--background': 'rgb(0, 71, 119)',
+                        'font-size': '16px',
+                        '--padding': '10px',
+                      }}
+                    >
                       <IonIcon
                         slot="end"
                         icon={expandOptions ? caretDownOutline : caretUpOutline}

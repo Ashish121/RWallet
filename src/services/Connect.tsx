@@ -435,7 +435,8 @@ export const authenticationForKhanepaniPage = async (
   return result;
 };
 
-//authentication For Khanepani Page
+//common authentication For ticket booking
+//(flightOneWay,flightTwoWay,BusOneWay and BusTwoWay Booking )
 export const authenticationFlightOneWayPage = async (
   user_id: string,
   returnDate: string,
@@ -466,6 +467,33 @@ export const authenticationFlightOneWayPage = async (
           departure_date: departureDate,
           number_of_travelers: travelers,
           class: classForFlight,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//authentication For EMI calculation page
+export const authenticationForEmiCalculation = async (
+  loanAmount: number,
+  interestRate: number,
+  loanTenure: number
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/emi_calculate',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      emi_calculate: [
+        {
+          loan_amount: loanAmount,
+          interest_rate: interestRate,
+          loan_tenure: loanTenure,
         },
       ],
     }),

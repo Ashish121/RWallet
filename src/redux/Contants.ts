@@ -66,6 +66,9 @@ export const ELECTRICITY_FAILED = 'ELECTRICITY_FAILED';
 export const WATERBILL_SUCCESS = 'WATERBILL_SUCCESS';
 export const WATERBILL_FAILED = 'WATERBILL_FAILED';
 
+//for emi calculater page
+export const EMI_SUCCESS = 'EMI_SUCCESS';
+export const EMI_FAILED = 'EMI_FAILED';
 
 //for flight one way booking page
 export const FLIGHTONEWAY_SUCCESS = 'FLIGHTONEWAY_SUCCESS';
