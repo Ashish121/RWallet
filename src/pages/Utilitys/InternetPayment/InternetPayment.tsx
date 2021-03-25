@@ -3,10 +3,7 @@ import './InternetPayment.scss';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import {
-  CustomAccordionForRecharge,
-  HeaderComponent,
-} from '../../../components';
+import { AccordionContainer, HeaderComponent } from '../../../components';
 
 const InternetPayment: React.FC = () => {
   const history = useHistory();
@@ -89,7 +86,7 @@ const InternetPayment: React.FC = () => {
                 <Translate message="Internet Payment" />
               </IonText>
               <div className="InternetPaymentWrapper ">
-                <CustomAccordionForRecharge accordionData={accordionDetails} />
+                <AccordionContainer accordionData={accordionDetails} />
               </div>
             </div>
           </IonContent>

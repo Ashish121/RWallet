@@ -74,6 +74,9 @@ export const EMI_FAILED = 'EMI_FAILED';
 export const FLIGHTONEWAY_SUCCESS = 'FLIGHTONEWAY_SUCCESS';
 export const FLIGHTONEWAY_FAILED = 'FLIGHTONEWAY_FAILED';
 
+//for emi tv-payment page
+export const TVPAYMENT_SUCCESS = 'TVPAYMENT_SUCCESS';
+export const TVPAYMENT_FAILED = 'TVPAYMENT_FAILED';
 //for royality Saving & Credit page
 export const SAVING_CREDIT_SUCCESS = 'SAVING_CREDIT_SUCCESS';
 export const SAVING_CREDIT_FAILED = 'SAVING_CREDIT_FAILED';

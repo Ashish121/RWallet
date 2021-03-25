@@ -3,10 +3,7 @@ import { useHistory } from 'react-router-dom';
 import './TopUpRecharge.scss';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import {
-  CustomAccordionForRecharge,
-  HeaderComponent,
-} from '../../../components';
+import { AccordionContainer, HeaderComponent } from '../../../components';
 
 const TopUpRecharge: React.FC = () => {
   const history = useHistory();
@@ -123,6 +120,7 @@ const TopUpRecharge: React.FC = () => {
   function goBack() {
     history.replace('/tabs/home');
   }
+
   return (
     <>
       <IonApp>
@@ -138,7 +136,7 @@ const TopUpRecharge: React.FC = () => {
                 <Translate message="TopUpRecharge" />
               </IonText>
               <div className="TopUpRecharge-wrapper">
-                <CustomAccordionForRecharge accordionData={accordionDetails} />
+                <AccordionContainer accordionData={accordionDetails} />
               </div>
             </div>
           </IonContent>
