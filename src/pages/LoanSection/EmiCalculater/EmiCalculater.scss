@@ -11,11 +11,11 @@
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .emi-calculater-wrapper {
-    margin-top: 20px;
+    margin-top: 10px;
 
     .emiCalculate-rest {
       float: left;
@@ -28,7 +28,19 @@
       margin-top: 40px;
     }
     .interest-area {
-      margin-top: 13px;
+      margin-top: 25px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      color: #ffffff;
+      .range-area {
+        margin-top: -30px;
+        margin-bottom: -10px;
+      }
+    }
+    .interest-area1 {
+      margin-top: 10px;
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
@@ -42,18 +54,18 @@
     .button-Section {
       .emiCalculate-rest {
         float: left;
-        margin-top: 20px;
+        margin-top: 15px;
         width: 120px;
       }
       .emiCalculater-calculate {
         float: right;
         width: 120px;
-        margin-top: 20px;
+        margin-top: 15px;
       }
     }
   }
   .emiCalculater {
-    margin-top: 15px;
+    margin-top: 8px;
     .emi-cal-prinival {
       margin-top: 10px;
       font-style: normal;
@@ -101,4 +113,10 @@
       color: #ffffff;
     }
   }
+}
+
+.inputWrapper ion-item {
+  --background: #3182b9;
+  --border-color: #ffffff;
+  width: 95%;
 }
