@@ -7,13 +7,24 @@ import {
   InputText,
   HeaderComponent,
   SelectMenu,
+  LoaderComponent,
 } from '../../../../components';
 import './RoyalitySavingCredit.scss';
+import { requestForRoyalitySavingCreditPage } from '../../../../redux/actions';
+import { useDispatch } from 'react-redux';
 
 const RoyalitySavingCredit: React.FC = () => {
   const history = useHistory();
-  // const [trsType, setTrsType] = useState("");
+  const dispatch = useDispatch();
+  const [accountNumber, setAccountNumber] = useState('');
+  const [memberName, setMemberName] = useState('');
+  const [mobileNo, setMobileNo] = useState('');
+  const [transType, setTransType] = useState('');
+  const [savingAmount, setSavingAmount] = useState('');
+  const [remarks, setRemarks] = useState('');
   const [transactionDetails, setTransactionDetails] = useState([{}]);
+  const [showLoading, setShowLoading] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState('');
 
   useEffect(() => {
     const array = [
@@ -25,19 +36,76 @@ const RoyalitySavingCredit: React.FC = () => {
     setTransactionDetails(array);
   }, []);
 
+  function updateAccountNumber(accountNumber: any) {
+    console.log(' accountNumber :', accountNumber);
+    setAccountNumber(accountNumber);
+  }
+
+  function updateMemberName(memberName: any) {
+    console.log(' memberName :', memberName);
+    setMemberName(memberName);
+  }
+
+  function updateMobileNo(mobileNo: any) {
+    console.log(' mobileNo :', mobileNo);
+    setMobileNo(mobileNo);
+  }
+
+  function updateSavingAmount(savingAmount: any) {
+    console.log(' savingAmount :', savingAmount);
+    setSavingAmount(savingAmount);
+  }
+  function updateRemarks(remarks: any) {
+    console.log(' remarks :', remarks);
+    setRemarks(remarks);
+  }
+
+  function nextRoute(status: any) {
+    setShowLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      history.replace('/tabs/home');
+      return;
+    }
+  }
+
   function handleproceed() {
+    const user_id = 2;
+    const financeName = 'Royality saving and credit co-operative Ltd';
+
+    setShowLoading(true);
+    setLoaderMessage('Please Wait...');
+    dispatch(
+      requestForRoyalitySavingCreditPage(
+        {
+          user_id,
+          accountNumber,
+          memberName,
+          mobileNo,
+          transType,
+          savingAmount,
+          remarks,
+          financeName,
+        },
+        nextRoute
+      )
+    );
     console.log('Handling registration');
-    history.replace('/');
   }
   function goBack() {
     history.replace('/tabs/insuranceFinancePage');
   }
-  function selectTransactionType(trsType: any) {
-    console.log('Selected value: ', trsType);
-    //setTrsType(trsType);
+
+  function selectTransactionType(transType: any) {
+    console.log('Selected transType value: ', transType);
+    setTransType(transType);
   }
   return (
     <>
+      <LoaderComponent
+        showLoading={showLoading}
+        loaderMessage={loaderMessage}
+      />
       <IonApp>
         <IonPage>
           <HeaderComponent
@@ -48,7 +116,7 @@ const RoyalitySavingCredit: React.FC = () => {
           <IonContent>
             <div className="container">
               <IonText className="royalitySaving-text-area">
-                <Translate message="RoyaliFinancialServices" />
+                <Translate message="RoyalitySaving" />
               </IonText>
               <div className="royalitySaving-wrapper">
                 <InputText
@@ -57,6 +125,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateAccountNumber}
                 />
                 <InputText
                   inputType="text"
@@ -64,6 +133,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateMemberName}
                 />
                 <InputText
                   inputType="text"
@@ -71,6 +141,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateMobileNo}
                 />
 
                 <SelectMenu
@@ -84,6 +155,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateSavingAmount}
                 />
                 <InputText
                   inputType="text"
@@ -91,6 +163,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateRemarks}
                 />
                 <div className="royalitySavingButton">
                   <div className="royalitySavingClear-button">
@@ -99,10 +172,21 @@ const RoyalitySavingCredit: React.FC = () => {
                       size="block"
                     />
                   </div>
+
                   <div className="royalitySaving-submit">
                     <ButtonConmponent
                       buttonLabel="UtilityConfirm"
                       size="block"
+                      disabled={
+                        accountNumber.trim() &&
+                        memberName.trim() &&
+                        mobileNo.trim() &&
+                        transType.trim() &&
+                        savingAmount.trim() &&
+                        remarks.trim()
+                          ? false
+                          : true
+                      }
                       clickHandler={handleproceed}
                     />
                   </div>
