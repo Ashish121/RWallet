@@ -28,9 +28,9 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
     setToggleAccordion(status);
   };
 
-  function handleRearch() {
+  function handleRearch(title: any) {
     const user_id = 2;
-    const companyName = 'clear TV';
+    const companyName = title;
     handler?.({
       customerId,
       amount,
@@ -95,7 +95,7 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
                       width: '45%',
                       marginTop: '5%',
                     }}
-                    onClick={handleRearch}
+                    onClick={() => handleRearch(item.title)}
                   >
                     recharge
                   </IonButton>
