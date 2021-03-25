@@ -21,7 +21,7 @@ const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
     });
     setToggleAccordion(status);
   };
-
+ 
   function handleClickButton(loantype: any) {
     history.replace('/tabs/applyPage', { loantype: loantype });
   }

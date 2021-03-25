@@ -27,8 +27,8 @@ const CustomAccordionForRecharge: React.FC<accordionProps> = ({
     setToggleAccordion(status);
   };
 
-  function handleClickButton() {
-    history.replace('#');
+  function handleClickButton(loantype: any) {
+    history.replace('/tabs/tvPayment', { loantype: loantype });
   }
   function handleNumber() {
     setNumber(number);
@@ -84,7 +84,7 @@ const CustomAccordionForRecharge: React.FC<accordionProps> = ({
                       width: '45%',
                       marginTop: '5%',
                     }}
-                    onClick={handleClickButton}
+                    onClick={() => handleClickButton(item.title)}
                   >
                     recharge
                   </IonButton>

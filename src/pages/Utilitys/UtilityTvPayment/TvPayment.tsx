@@ -10,7 +10,10 @@ import {
 
 const TvPayment: React.FC = () => {
   const history = useHistory();
+  // const location = useLocation();
   const [accordionDetails, setAccordionDetails] = useState([{}]);
+  // const [loanType, setLoanType] = useState("");
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       console.log('Hide splash now');
@@ -63,6 +66,13 @@ const TvPayment: React.FC = () => {
     ];
     setAccordionDetails(data);
   }, []);
+
+  // useEffect(() => {
+  //   const params: any = location.state;
+  //   const loanType1 = params.loantype;
+  //   console.log("loanType : ", loanType1);
+  //   setLoanType(loanType);
+  // }, []);
 
   function goBack() {
     history.replace('/tabs/home');
