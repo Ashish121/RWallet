@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {
   ButtonConmponent,
@@ -24,17 +24,16 @@ const EmiCalculater: React.FC = () => {
 
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
-  //state.bank.bankDetails.data.data
-
-  const emiDetails = useSelector(
-    (state: any) => state.emi.emiDetails.data.data
-  );
-  console.log('emiDetails response******* :', emiDetails);
 
   const prinicipalAmount = useState('10000.00');
   const interest = useState('724.00');
   const totalPayable = useState('10724.00');
   const emiAmountMonthly = useState('416.34');
+
+  //   const emiDetails = useSelector(
+  //     (state: any) => state.emi.emiDetails.data.data
+  //   );
+  // console.log("emiDetails", emiDetails);
 
   function nextRoute(status: any) {
     setShowLoading(false);
@@ -75,6 +74,7 @@ const EmiCalculater: React.FC = () => {
     // history.replace("/tabs/loanType");
     history.replace('/tabs/emiCalculater');
   }
+
   return (
     <>
       <LoaderComponent
@@ -143,16 +143,6 @@ const EmiCalculater: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                {/* <hr />
-                {response.data.map((book: any) => {
-                  return (
-                    <div className="name-message">
-                      <IonText className="nameMessage">
-                        {book.emi}
-                      </IonText>
-                    </div>
-                  );
-                })} */}
 
                 <div className="emiCalculater">
                   <IonText className="emi-cal-prinival">
