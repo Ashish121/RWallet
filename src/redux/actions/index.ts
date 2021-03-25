@@ -20,3 +20,4 @@ export {requestForNepalElectricityPage} from './NepalElectricity';
 export {requestForKhanepaniPage} from './Khanepani';
 export {requestForEmiCalculaterPage} from './EmiCalculater';
 export {requestForFlightOneWayPage} from './FlightOneWay';
+export {requestForRoyalitySavingCreditPage} from './RoyalitySavingCredit';

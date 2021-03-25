@@ -39,14 +39,14 @@ const InsuranceFinancePage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="RoyalitySaving"
                     size="block"
-                    clickHandler={handleroyalFinancialServices}
+                    clickHandler={handleroyalitySavingCredit}
                   />
                 </div>
                 <div style={{ marginTop: '13px' }}>
                   <ButtonConmponent
                     buttonLabel="RoyaliFinancialServices"
                     size="block"
-                    clickHandler={handleroyalitySavingCredit}
+                    clickHandler={handleroyalFinancialServices}
                   />
                 </div>
               </div>

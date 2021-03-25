@@ -501,3 +501,40 @@ export const authenticationForEmiCalculation = async (
   console.log('result: ', result);
   return result;
 };
+
+//common authentication For finance payment
+export const authenticationForFinancePaymentCalculation = async (
+  user_id: any,
+  accountNumber: string,
+  memberName: string,
+  mobileNo: string,
+  transType: string,
+  savingAmount: string,
+  remarks: string,
+  financeName: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/finance_payment',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      finance_payment: [
+        {
+          user_id: user_id,
+          account_number: accountNumber,
+          member_name: memberName,
+          mobile_number: mobileNo,
+          transaction_type: transType,
+          savings_amount: savingAmount,
+          remarks: remarks,
+          finance_name: financeName,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
