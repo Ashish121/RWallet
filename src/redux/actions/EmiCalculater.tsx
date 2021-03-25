@@ -1,11 +1,11 @@
 import { EMI_SUCCESS } from '../Contants';
-import { authenticationForEmiCalculaterPage } from '../../services/Connect';
+import { authenticationForEmiCalculation } from '../../services/Connect';
 import { updateToast } from './index';
 
 const requestForEmiCalculaterPage = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
     try {
-      const response = await authenticationForEmiCalculaterPage(
+      const response = await authenticationForEmiCalculation(
         payload.loanAmount,
         payload.interestRate,
         payload.loanTenure

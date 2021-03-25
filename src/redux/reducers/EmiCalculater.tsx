@@ -1,32 +1,19 @@
 import produce from 'immer';
-import {
-  AUTHENTICATION_INPROGRESS,
-  EMI_SUCCESS,
-  EMI_FAILED,
-} from '../Contants';
+import { EMI_SUCCESS } from '../Contants';
 interface EmiPageState {
-  isAuthenticating: boolean;
   emiDetails: any;
 }
 
 // defines the initial state for the reducer ...
 export const initialState: EmiPageState = {
-  isAuthenticating: false,
   emiDetails: null,
 };
 
 // defines this reducers reducer functions ...
 const reducers: any = {
-  [AUTHENTICATION_INPROGRESS]: (draft: any) => {
-    draft.isAuthenticating = true;
-  },
   [EMI_SUCCESS]: (draft: any, data: any) => {
-    draft.isAuthenticating = false;
-    // localStorage.setItem("Apply Details :", JSON.stringify(data));
+    console.log('emiDetails', data);
     draft.emiDetails = data;
-  },
-  [EMI_FAILED]: (draft: any) => {
-    draft.isAuthenticating = false;
   },
 };
 

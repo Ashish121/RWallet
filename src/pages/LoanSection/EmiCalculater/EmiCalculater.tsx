@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   ButtonConmponent,
@@ -17,35 +17,26 @@ import { requestForEmiCalculaterPage } from '../../../redux/actions';
 const EmiCalculater: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-
   const [loanAmount, setLoanAmount] = useState(Number);
   const [interestRate, setInterestRate] = useState(Number);
   const [loanTenure, setLoanTenure] = useState(Number);
-
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
+  const [showMenu, setShowMenu] = useState(false);
 
-  const prinicipalAmount = useState('10000.00');
-  const interest = useState('724.00');
-  const totalPayable = useState('10724.00');
-  const emiAmountMonthly = useState('416.34');
-
-  //   const emiDetails = useSelector(
-  //     (state: any) => state.emi.emiDetails.data.data
-  //   );
-  // console.log("emiDetails", emiDetails);
+  const emiDetails = useSelector((state: any) => state.emi.emiDetails);
+  console.log('emiDetails', emiDetails);
 
   function nextRoute(status: any) {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      // history.replace('/tabs/emiCalculater');
+      setShowMenu(!showMenu);
       return;
     }
   }
 
   function handleCalculate() {
-    console.log('Handling registration');
     setShowLoading(true);
     setLoaderMessage('Please Wait...');
     dispatch(
@@ -54,6 +45,7 @@ const EmiCalculater: React.FC = () => {
         nextRoute
       )
     );
+    console.log('Handling registration');
   }
 
   function updateLoanAmount(loanAmount: any) {
@@ -71,7 +63,6 @@ const EmiCalculater: React.FC = () => {
     setLoanTenure(loanTenure);
   }
   function goBack() {
-    // history.replace("/tabs/loanType");
     history.replace('/tabs/emiCalculater');
   }
 
@@ -138,57 +129,68 @@ const EmiCalculater: React.FC = () => {
                       <ButtonConmponent
                         buttonLabel="emiCalculate"
                         size="block"
+                        disabled={
+                          loanAmount && interestRate && loanTenure
+                            ? false
+                            : true
+                        }
                         clickHandler={handleCalculate}
                       />
                     </div>
                   </div>
                 </div>
 
-                <div className="emiCalculater">
-                  <IonText className="emi-cal-prinival">
-                    <span className="emi-interest">
-                      <Translate message="emiPrinivipalAmount" />
-                    </span>
-                  </IonText>
-                  <div className="name-message">
-                    <IonText className="nameMessage">
-                      {prinicipalAmount}
-                    </IonText>
-                  </div>
-                </div>
-                <div className="emiCalculater">
-                  <IonText className="emi-cal-prinival">
-                    <span className="emi-interest">
-                      <Translate message="emiInterest" />
-                    </span>
-                  </IonText>
-                  <div className="name-message">
-                    <IonText className="nameMessage">{interest}</IonText>
-                  </div>
-                </div>
+                {showMenu && (
+                  <>
+                    <div className="emiCalculater">
+                      <IonText className="emi-cal-prinival">
+                        <span className="emi-interest">
+                          <Translate message="emiPrinivipalAmount" />
+                        </span>
+                      </IonText>
+                      <div className="name-message">
+                        <IonText className="nameMessage">{loanAmount}</IonText>
+                      </div>
+                    </div>
+                    <div className="emiCalculater">
+                      <IonText className="emi-cal-prinival">
+                        <span className="emi-interest">
+                          <Translate message="emiInterest" />
+                        </span>
+                      </IonText>
+                      <div className="name-message">
+                        <IonText className="nameMessage">
+                          {emiDetails.data.data.total_interest}
+                        </IonText>
+                      </div>
+                    </div>
 
-                <div className="emiCalculater">
-                  <IonText className="emi-cal-prinival">
-                    <span className="emi-interest">
-                      <Translate message="emiTotal" />
-                    </span>
-                  </IonText>
-                  <div className="name-message">
-                    <IonText className="nameMessage">{totalPayable}</IonText>
-                  </div>
-                </div>
-                <div className="emiCalculater1">
-                  <IonText className="emi-cal-prinival1">
-                    <span className="emi-interest1">
-                      <Translate message="emiAmountMonthely" />
-                    </span>
-                  </IonText>
-                  <div className="name-message1">
-                    <IonText className="nameMessage">
-                      {emiAmountMonthly}
-                    </IonText>
-                  </div>
-                </div>
+                    <div className="emiCalculater">
+                      <IonText className="emi-cal-prinival">
+                        <span className="emi-interest">
+                          <Translate message="emiTotal" />
+                        </span>
+                      </IonText>
+                      <div className="name-message">
+                        <IonText className="nameMessage">
+                          {emiDetails.data.data.total_payable}
+                        </IonText>
+                      </div>
+                    </div>
+                    <div className="emiCalculater1">
+                      <IonText className="emi-cal-prinival1">
+                        <span className="emi-interest1">
+                          <Translate message="emiAmountMonthely" />
+                        </span>
+                      </IonText>
+                      <div className="name-message1">
+                        <IonText className="nameMessage">
+                          {emiDetails.data.data.emi}
+                        </IonText>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </IonContent>
           </IonPage>

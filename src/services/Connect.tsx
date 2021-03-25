@@ -475,8 +475,8 @@ export const authenticationFlightOneWayPage = async (
   return result;
 };
 
-//authentication For EMI calculator Page
-export const authenticationForEmiCalculaterPage = async (
+//authentication For EMI calculation
+export const authenticationForEmiCalculation = async (
   loanAmount: number,
   interestRate: number,
   loanTenure: number
