@@ -22,3 +22,4 @@ export {requestForEmiCalculaterPage} from './EmiCalculater';
 export {requestForFlightOneWayPage} from './FlightOneWay';
 export {requestForTvPayment} from './TvPayment';
 
+export {requestForRoyalitySavingCreditPage} from './RoyalitySavingCredit';
