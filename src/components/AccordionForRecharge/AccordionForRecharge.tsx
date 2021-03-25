@@ -2,21 +2,17 @@ import React, { useState } from 'react';
 import { IonButton, IonIcon, IonItem, IonLabel, IonInput } from '@ionic/react';
 import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 import './AccordionForRecharge.scss';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { requestForTvPayment } from '../../redux/actions';
+
 interface accordionContainerProps {
   accordionData: any;
-  // handler?: Function;
+  handler?: Function;
 }
 
 const AccordionContainer: React.FC<accordionContainerProps> = ({
   accordionData,
-  // handler,
+  handler,
 }) => {
   const [toggleAccordion, setToggleAccordion] = useState(false);
-  const history = useHistory();
-  const dispatch = useDispatch();
   const [customerId, setCustomerId] = useState('');
   const [amount, setAmount] = useState();
 
@@ -32,44 +28,25 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
     setToggleAccordion(status);
   };
 
-  function nextRoute(status: any) {
-    if (status) {
-      history.replace('/tabs/tvPayment');
-      return;
-    }
-  }
-
-  // function handleRearch() {
-  //   const user_id = 2;
-  //   const companyName = "clear TV";
-  //   handler?.({
-  //     customerId,
-  //     amount,
-  //     user_id,
-  //     companyName,
-  //   });
-  // }
-
-  function handleClickButton() {
+  function handleRearch() {
     const user_id = 2;
     const companyName = 'clear TV';
-    // const amount = currentTarget.detail.value;
-    // const customerId = "3123";
-
-    dispatch(
-      requestForTvPayment(
-        { user_id, amount, companyName, customerId },
-        nextRoute
-      )
-    );
-    console.log('Handling registration');
+    handler?.({
+      customerId,
+      amount,
+      user_id,
+      companyName,
+    });
   }
-  function handleCustomerId(customerId: any) {
-    console.log('customerId', customerId);
+
+  function handleCustomerId(event: any) {
+    console.log('customerId :', event.target.value);
+    const customerId = event.target.value;
     setCustomerId(customerId);
   }
-  function handleAmount(amount: any) {
-    console.log('amount ****', amount);
+  function handleAmount(event: any) {
+    console.log('amount :', event.target.value);
+    const amount = event.target.value;
     setAmount(amount);
   }
   return (
@@ -104,7 +81,7 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
                   <IonItem className="inputArea" color="white">
                     <IonLabel>{item.inputfield2}</IonLabel>
                     <IonInput
-                      name={amount}
+                      name="amount"
                       type="number"
                       onIonChange={handleAmount}
                     />
@@ -118,9 +95,7 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
                       width: '45%',
                       marginTop: '5%',
                     }}
-                    // onClick={() => handleClickButton(item.title)}
-                    // onClick={handleRearch}
-                    onClick={handleClickButton}
+                    onClick={handleRearch}
                   >
                     recharge
                   </IonButton>
