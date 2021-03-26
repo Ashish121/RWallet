@@ -14,6 +14,7 @@ import UtilitiesSection from './Utilities/Utilities';
 import DatePickerComponent from './DatePicker/DatePicker';
 import CustomAccordion from './Accordion/Accordion';
 import AccordionContainer from './AccordionForRecharge/AccordionForRecharge';
+import AccordionContainerForAntivirus from './AccordionForAntivirus/AccordionForAntivirus';
 import RangeSlider from './RangeSlider/RangeSlider';
 import BackButton from './BackButton/BackButton';
 import RoyallityWalletMap from './Map/Map';
@@ -34,6 +35,7 @@ export {
   DatePickerComponent,
   CustomAccordion,
   AccordionContainer,
+  AccordionContainerForAntivirus,
   RangeSlider,
   BackButton,
   RoyallityWalletMap,
