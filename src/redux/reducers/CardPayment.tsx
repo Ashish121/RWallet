@@ -1,11 +1,11 @@
 import produce from 'immer';
 import { CARD_PAYMENT_SUCCESS, CARD_PAYMENT_FAILED } from '../Contants';
-interface ApplyPageState {
+interface cardPaymentPageState {
   isAuthenticating: boolean;
 }
 
 // defines the initial state for the reducer ...
-export const initialState: ApplyPageState = {
+export const initialState: cardPaymentPageState = {
   isAuthenticating: false,
 };
 
@@ -21,7 +21,7 @@ const reducers: any = {
 };
 
 // defines all reducers for actions of interest to the this reducer ...
-export default produce((draft: ApplyPageState = initialState, action) => {
+export default produce((draft: cardPaymentPageState = initialState, action) => {
   reducers?.[action.type]?.(draft, action);
   return draft;
 });

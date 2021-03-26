@@ -1,10 +1,9 @@
-import { AUTHENTICATION_INPROGRESS, CURRENT_SUCCESS } from '../Contants';
+import { APPLY_SUCCESS } from '../Contants';
 import { authenticationForApplyPage } from '../../services/Connect';
 import { updateToast } from './index';
 
 const requestForApplyPage = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
-    dispatch({ type: AUTHENTICATION_INPROGRESS });
     try {
       const response = await authenticationForApplyPage(
         payload.user_id,
@@ -14,17 +13,16 @@ const requestForApplyPage = (payload: any, nextRoute: Function) => {
         payload.mobileNo,
         payload.purposeOfLoan
       );
-      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
+
       if (response.status === 200) {
-        dispatch({ type: CURRENT_SUCCESS, data: response.data });
-        localStorage.setItem('userCreatedAccount', 'true');
+        dispatch({ type: APPLY_SUCCESS, data: response.data });
+        localStorage.setItem('loan type :', 'true');
         nextRoute(true);
       } else {
         nextRoute(false);
       }
       console.log('done', response);
     } catch (error) {
-      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       nextRoute(false);
       const data = {
         showToast: true,
@@ -32,7 +30,7 @@ const requestForApplyPage = (payload: any, nextRoute: Function) => {
         position: 'top',
         duration: '10000',
       };
-      dispatch({ type: 'CURRENT_FAILED' });
+      dispatch({ type: 'APPLY_FAILED' });
       dispatch(updateToast(data));
     }
   };

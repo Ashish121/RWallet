@@ -1,9 +1,5 @@
 import produce from 'immer';
-import {
-  AUTHENTICATION_INPROGRESS,
-  APPLY_SUCCESS,
-  APPLY_FAILED,
-} from '../Contants';
+import { APPLY_SUCCESS, APPLY_FAILED } from '../Contants';
 interface ApplyPageState {
   isAuthenticating: boolean;
 }
@@ -15,9 +11,6 @@ export const initialState: ApplyPageState = {
 
 // defines this reducers reducer functions ...
 const reducers: any = {
-  [AUTHENTICATION_INPROGRESS]: (draft: any) => {
-    draft.isAuthenticating = true;
-  },
   [APPLY_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
     localStorage.setItem('Apply Details :', JSON.stringify(data));
