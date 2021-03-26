@@ -85,3 +85,7 @@ export const SAVING_CREDIT_FAILED = 'SAVING_CREDIT_FAILED';
 //for royality Credit card payment page
 export const CARD_PAYMENT_SUCCESS = 'CARD_PAYMENT_SUCCESS';
 export const CARD_PAYMENT_FAILED = 'CARD_PAYMENT_FAILED';
+
+//for Internet payment page
+export const INTERNET_PAYMENT_SUCCESS = 'INTERNET_PAYMENT_SUCCESS';
+export const  INTERNET_PAYMENT_FAILED = ' INTERNET_PAYMENT_FAILED';

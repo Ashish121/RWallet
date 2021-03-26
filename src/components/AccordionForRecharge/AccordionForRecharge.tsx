@@ -73,7 +73,7 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
                     <IonLabel>{item.inputfield1}</IonLabel>
                     <IonInput
                       name="customerId"
-                      type="number"
+                      type="text"
                       onIonChange={handleCustomerId}
                     />
                   </IonItem>
