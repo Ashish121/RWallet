@@ -567,3 +567,32 @@ export const authenticationForFinancePaymentCalculation = async (
   console.log('result: ', result);
   return result;
 };
+
+// authentication For Card Payment
+export const authenticationForCardPaymentCalculation = async (
+  user_id: any,
+  amount: string,
+  bankName: string,
+  cardNumber: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/card_payment',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      card_payment: [
+        {
+          user_id: user_id,
+          amount: amount,
+          bank_name: bankName,
+          card_number: cardNumber,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};

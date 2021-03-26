@@ -66,7 +66,7 @@ const ApplyPage: React.FC = () => {
     );
     console.log('Handling registration');
   }
-
+ 
   function goBack() {
     history.replace('/tabs/loanType');
   }

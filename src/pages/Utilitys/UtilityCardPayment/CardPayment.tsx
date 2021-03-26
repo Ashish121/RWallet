@@ -7,13 +7,21 @@ import {
   InputText,
   HeaderComponent,
   SelectMenu,
+  LoaderComponent,
 } from '../../../components';
 import './CardPayment.scss';
+import { useDispatch } from 'react-redux';
+import { requestForCreditCardPayment } from '../../../redux/actions';
 
 const CardPayment: React.FC = () => {
   const history = useHistory();
-  // const [gender, setGender] = useState("");
-  const [genderDetails, setGenderDetails] = useState([{}]);
+  const dispatch = useDispatch();
+  const [amount, setAmount] = useState('');
+  const [bankName, setBankName] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [bankDetails, setBankDetails] = useState([{}]);
+  const [showLoading, setShowLoading] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState('');
 
   useEffect(() => {
     const array = [
@@ -30,21 +38,53 @@ const CardPayment: React.FC = () => {
         label: 'Bank-C',
       },
     ];
-    setGenderDetails(array);
+    setBankDetails(array);
   }, []);
+
+  function updateAmount(amount: any) {
+    console.log('amount : ', amount);
+    setAmount(amount);
+  }
+  function OnSelectBankName(bankName: any) {
+    console.log('Selected bank value: ', bankName);
+    setBankName(bankName);
+  }
+  function updateCardNumber(cardNumber: any) {
+    console.log('cardNumber : ', cardNumber);
+    setCardNumber(cardNumber);
+  }
+
+  function nextRoute(status: any) {
+    setShowLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      history.replace('/tabs/home');
+      return;
+    }
+  }
+
   function handleproceed() {
+    const user_id = 2;
+    setShowLoading(true);
+    setLoaderMessage('Please Wait...');
+    dispatch(
+      requestForCreditCardPayment(
+        { user_id, amount, bankName, cardNumber },
+        nextRoute
+      )
+    );
     console.log('Handling registration');
-    history.replace('/tabs/home');
   }
   function goBack() {
     history.replace('/tabs/home');
   }
-  function onGenderSelect(gender: any) {
-    console.log('Selected value: ', gender);
-    // setGender(gender);
-  }
+
   return (
     <>
+      <LoaderComponent
+        showLoading={showLoading}
+        loaderMessage={loaderMessage}
+      />
       <IonApp>
         <IonPage>
           <HeaderComponent
@@ -60,8 +100,8 @@ const CardPayment: React.FC = () => {
               <div className="credit-card-wrapper">
                 <SelectMenu
                   label="UtilityBankName"
-                  onSelect={onGenderSelect}
-                  array={genderDetails}
+                  onSelect={OnSelectBankName}
+                  array={bankDetails}
                 />
 
                 <InputText
@@ -70,6 +110,7 @@ const CardPayment: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateCardNumber}
                 />
                 <InputText
                   inputType="text"
@@ -77,6 +118,7 @@ const CardPayment: React.FC = () => {
                   labelType="floating"
                   color="light"
                   labelColor="light"
+                  onChange={updateAmount}
                 />
 
                 <div className="buttonElement">
@@ -90,6 +132,11 @@ const CardPayment: React.FC = () => {
                     <ButtonConmponent
                       buttonLabel="UtilityConfirm"
                       size="block"
+                      disabled={
+                        amount.trim() && bankName.trim() && cardNumber.trim()
+                          ? false
+                          : true
+                      }
                       clickHandler={handleproceed}
                     />
                   </div>{' '}
