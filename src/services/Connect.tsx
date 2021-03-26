@@ -625,3 +625,32 @@ export const authenticationForInternetPayment = async (
   console.log('result: ', result);
   return result;
 };
+
+//authentication For Top-Up and Recharge payment
+export const authenticationForTopUpRecharge = async (
+  user_id: string,
+  amount: string,
+  companyName: string,
+  mobileNumber: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/mobile_recharge',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      mobile_recharge: [
+        {
+          user_id: user_id,
+          amount: amount,
+          company_name: companyName,
+          mobile_number: mobileNumber,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};

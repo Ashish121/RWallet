@@ -24,3 +24,4 @@ export {requestForTvPayment} from './TvPayment';
 export {requestForRoyalitySavingCreditPage} from './RoyalitySavingCredit';
 export {requestForCreditCardPayment} from './CardPayment';
 export {requestForInternetPayment} from './InternetPayment';
+export {requestForTopUpRecharge} from './TopUpRecharge';
