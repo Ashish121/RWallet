@@ -19,7 +19,6 @@ const requestForInternetPayment = (payload: any, nextRoute: Function) => {
       } else {
         nextRoute(false);
       }
-      console.log('done', response);
     } catch (error) {
       nextRoute(false);
       const data = {
