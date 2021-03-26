@@ -654,3 +654,32 @@ export const authenticationForTopUpRecharge = async (
   console.log('result: ', result);
   return result;
 };
+
+//authentication For antivirus payment
+export const authenticationForAntivirusPayment = async (
+  user_id: string,
+  brandName: string,
+  planName: string,
+  accountType: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/antivirus_payment',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      antivirus_payment: [
+        {
+          user_id: user_id,
+          brand_name: brandName,
+          plan_name: planName,
+          bank_account_type: accountType,
+        },
+      ],
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
