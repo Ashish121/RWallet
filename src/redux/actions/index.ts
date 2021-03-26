@@ -23,3 +23,4 @@ export {requestForFlightOneWayPage} from './FlightOneWay';
 export {requestForTvPayment} from './TvPayment';
 export {requestForRoyalitySavingCreditPage} from './RoyalitySavingCredit';
 export {requestForCreditCardPayment} from './CardPayment';
+export {requestForInternetPayment} from './InternetPayment';
