@@ -89,3 +89,7 @@ export const CARD_PAYMENT_FAILED = 'CARD_PAYMENT_FAILED';
 //for Internet payment page
 export const INTERNET_PAYMENT_SUCCESS = 'INTERNET_PAYMENT_SUCCESS';
 export const  INTERNET_PAYMENT_FAILED = ' INTERNET_PAYMENT_FAILED';
+
+//for To-up recharge payment page
+export const TOP_UP_SUCCESS = 'TOP_UP_SUCCESS';
+export const  TOP_UP_FAILED = ' TOP_UP_FAILED';

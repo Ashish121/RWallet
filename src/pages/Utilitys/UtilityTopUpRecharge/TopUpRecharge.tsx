@@ -4,9 +4,16 @@ import './TopUpRecharge.scss';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
 import { AccordionContainer, HeaderComponent } from '../../../components';
+import { requestForTopUpRecharge } from '../../../redux/actions';
+import LoaderComponent from '../../../components/Spinner/Spinner';
+import { useDispatch } from 'react-redux';
 
 const TopUpRecharge: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [showLoading, setShowLoading] = useState(false);
+  const [loaderMessage, setLoaderMessage] = useState('');
+
   const [accordionDetails, setAccordionDetails] = useState([{}]);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -117,12 +124,40 @@ const TopUpRecharge: React.FC = () => {
     setAccordionDetails(data);
   }, []);
 
+  function nextRoute(status: any) {
+    setShowLoading(false);
+    setLoaderMessage('');
+    if (status) {
+      history.replace('/tabs/topUpRecharge');
+      return;
+    }
+  }
+  function getReachargeDetails(data: any) {
+    setShowLoading(true);
+    setLoaderMessage('Please Wait...');
+    const user_id = data.user_id;
+    const amount = data.amount;
+    const companyName = data.companyName;
+    const mobileNumber = data.customerId;
+
+    dispatch(
+      requestForTopUpRecharge(
+        { user_id, amount, companyName, mobileNumber },
+        nextRoute
+      )
+    );
+  }
+
   function goBack() {
     history.replace('/tabs/home');
   }
 
   return (
     <>
+      <LoaderComponent
+        showLoading={showLoading}
+        loaderMessage={loaderMessage}
+      />
       <IonApp>
         <IonPage>
           <HeaderComponent
@@ -136,7 +171,10 @@ const TopUpRecharge: React.FC = () => {
                 <Translate message="TopUpRecharge" />
               </IonText>
               <div className="TopUpRecharge-wrapper">
-                <AccordionContainer accordionData={accordionDetails} />
+                <AccordionContainer
+                  accordionData={accordionDetails}
+                  handler={getReachargeDetails}
+                />
               </div>
             </div>
           </IonContent>
