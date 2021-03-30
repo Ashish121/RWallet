@@ -145,9 +145,9 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
                 className="iconButtons"
                 onClick={navigateToUtility}
                 value="bus"
-              />
-              <BusIcon width="30" height="30" />
-
+              >
+                <BusIcon width="30" height="30" onClick={navigateToUtility} />
+              </button>
               <IonText>
                 <Translate message="home.busText" />
               </IonText>

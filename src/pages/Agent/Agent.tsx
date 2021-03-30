@@ -97,7 +97,9 @@ const Agent: React.FC = () => {
   function goBack() {
     history.replace('/tabs/transfer');
   }
-
+  function handleClearButton() {
+    alert('are you want to clear all field ?');
+  }
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
@@ -178,22 +180,31 @@ const Agent: React.FC = () => {
                   />
 
                   <div className="agent-proceed-button">
-                    <ButtonConmponent
-                      buttonLabel="bank.proceed"
-                      size="block"
-                      disabled={
-                        country.trim() &&
-                        agentCode.trim() &&
-                        accountHolderName.trim() &&
-                        accountNo.trim() &&
-                        mobileNo.trim() &&
-                        amount.trim() &&
-                        remarks.trim()
-                          ? false
-                          : true
-                      }
-                      clickHandler={handleproceed}
-                    />
+                    <div className="clear-button">
+                      <ButtonConmponent
+                        buttonLabel="UtilityCardClear"
+                        size="block"
+                        clickHandler={handleClearButton}
+                      />
+                    </div>
+                    <div className="procced-button">
+                      <ButtonConmponent
+                        buttonLabel="bank.proceed"
+                        size="block"
+                        disabled={
+                          country.trim() &&
+                          agentCode.trim() &&
+                          accountHolderName.trim() &&
+                          accountNo.trim() &&
+                          mobileNo.trim() &&
+                          amount.trim() &&
+                          remarks.trim()
+                            ? false
+                            : true
+                        }
+                        clickHandler={handleproceed}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

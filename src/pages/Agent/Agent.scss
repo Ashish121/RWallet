@@ -22,10 +22,19 @@
     margin-top: 40px;
   }
   .agent-proceed-button {
-    width: 100%;
+    // width: 100%;
+    // float: inline;
+    // margin-top: 62px;
+    // margin-bottom: 10px;
     float: inline;
-    margin-top: 62px;
-
-    margin-bottom: 10px;
+    display: flex;
+    margin-top: 85px;
+    .clear-button {
+      width: 70%;
+    }
+    .procced-button {
+      margin-left: 10%;
+      width: 70%;
+    }
   }
 }
