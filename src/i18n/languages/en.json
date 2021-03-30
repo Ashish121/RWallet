@@ -258,8 +258,12 @@
   "cart.total": "Total",
   "cart.checkout": "CHECKOUT",
   "pos.pageLabel": "Payment option",
-  "pos.confirm":"Confirm",
-  "pos.radioLabel":"Delivery of your order",
-  "pos.accountLabel":"Account number",
-  "pos.accountNumber":"1234567890112"
+  "pos.confirm": "Confirm",
+  "pos.radioLabel": "Delivery of your order",
+  "pos.accountLabel": "Account number",
+  "pos.accountNumber": "1234567890112",
+
+  "map.name": "Name",
+  "map.pos_no": "Phone no",
+  "map.dispatchStatus": "Dispatch status"
 }

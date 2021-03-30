@@ -1,9 +1,15 @@
 import React from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
+import { IonText } from '@ionic/react';
+import { Translate } from '../../i18n/formatMessages';
 
 const MapMarker: React.FC<any> = ({ width, height, markerDetails }) => {
-  const { coordinates, iconPath } = markerDetails;
+  console.log('^^^^^^^^^^^^^^^', markerDetails);
+
+  const iconPath = markerDetails.iconPath
+    ? markerDetails.iconPath
+    : 'mapMarkerIcon.svg';
   const marker = new L.Icon({
     iconUrl: require(`../../assets/Icons/${iconPath}`),
     iconRetinaUrl: require(`../../assets/Icons/${iconPath}`),
@@ -15,8 +21,32 @@ const MapMarker: React.FC<any> = ({ width, height, markerDetails }) => {
   });
   return (
     <React.Fragment>
-      <Marker position={[coordinates[0], coordinates[1]]} icon={marker}>
-        <Popup>{markerDetails.description}</Popup>
+      <Marker
+        position={[markerDetails.latitude, markerDetails.longitude]}
+        icon={marker}
+      >
+        <Popup maxWidth={100}>
+          <div className="popup_content">
+            <div>
+              <IonText>
+                <Translate message="map.name" />
+              </IonText>
+              <IonText>{markerDetails.pos_name}</IonText>
+            </div>
+            <div>
+              <IonText>
+                <Translate message="map.pos_no" />
+              </IonText>
+              <IonText>{markerDetails.pos_number}</IonText>
+            </div>
+            <div>
+              <IonText>
+                <Translate message="map.dispatchStatus" />
+              </IonText>
+              <IonText>{markerDetails.pos_number}</IonText>
+            </div>
+          </div>
+        </Popup>
       </Marker>
     </React.Fragment>
   );

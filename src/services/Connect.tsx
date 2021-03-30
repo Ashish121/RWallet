@@ -683,3 +683,15 @@ export const authenticationForAntivirusPayment = async (
   console.log('result: ', result);
   return result;
 };
+export const fetchPOSDetails = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/pos_data',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('result: ', result);
+  return result;
+};
