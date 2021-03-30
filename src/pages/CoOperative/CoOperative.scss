@@ -26,7 +26,30 @@
     width: 100%;
     float: inline;
     margin-top: 75px;
-    // margin-left: 25%;
     margin-bottom: 3%;
+
+    float: inline;
+    display: flex;
+    margin-top: 85px;
+    .clear-button {
+      width: 70%;
+    }
+    .procced-button {
+      margin-left: 10%;
+      width: 70%;
+    }
   }
+
+  // .bank-proceed-button {
+  //   float: inline;
+  //   display: flex;
+  //   margin-top: 85px;
+  //   .clear-button {
+  //     width: 70%;
+  //   }
+  //   .procced-button {
+  //     margin-left: 10%;
+  //     width: 70%;
+  //   }
+  // }
 }

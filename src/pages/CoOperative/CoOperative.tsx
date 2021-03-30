@@ -91,6 +91,10 @@ const CoOperative: React.FC = () => {
   function goBack() {
     history.replace('/tabs/transfer');
   }
+  function handleClearButton() {
+    alert('are you want to clear all field ?');
+
+  }
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
@@ -183,11 +187,19 @@ const CoOperative: React.FC = () => {
                   />
 
                   <div className="coperative-proceed-button">
-                    <ButtonConmponent
-                      buttonLabel="bank.proceed"
-                      size="block"
-                      disabled={
-                        province.trim() &&
+                    <div className="clear-button">
+                      <ButtonConmponent
+                        buttonLabel="UtilityCardClear"
+                        size="block"
+                        clickHandler={handleClearButton}
+                      />
+                    </div>
+                    <div className="procced-button">
+                      <ButtonConmponent
+                        buttonLabel="bank.proceed"
+                        size="block"
+                        disabled={
+                          province.trim() &&
                         district.trim() &&
                         copName.trim() &&
                         holderName.trim() &&
@@ -195,11 +207,12 @@ const CoOperative: React.FC = () => {
                         mobileNo.trim() &&
                         amount.trim() &&
                         remarks.trim()
-                          ? false
-                          : true
-                      }
-                      clickHandler={handleproceed}
-                    />
+                            ? false
+                            : true
+                        }
+                        clickHandler={handleproceed}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

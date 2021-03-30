@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useHistory, useLocation } from 'react-router-dom';
 import './LoanType.scss';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
@@ -8,26 +8,20 @@ import {
   HeaderComponent,
   ButtonConmponent,
 } from '../../../components';
-import { useHistory } from 'react-router-dom';
 
 const LoanType: React.FC = () => {
   const history = useHistory();
+  const location = useLocation();
 
   function handleEMIcal() {
     console.log('Handling registration');
     history.replace('/tabs/emiCalculater');
   }
   const [accordionDetails, setAccordionDetails] = useState([{}]);
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      console.log('Hide splash now');
-      return () => {
-        clearTimeout(timeout);
-      };
-    }, 7000);
-  }, []);
 
   useEffect(() => {
+    const params: any = location.state;
+    console.log(params);
     const data = [
       {
         id: 1,
@@ -35,7 +29,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: false,
+        showDetails: params.loanId == 1 ? true : false,
       },
       {
         id: 2,
@@ -43,7 +37,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: false,
+        showDetails: params.loanId == 2 ? true : false,
       },
 
       {
@@ -52,7 +46,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: false,
+        showDetails: params.loanId == 3 ? true : false,
       },
 
       {
@@ -61,7 +55,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: false,
+        showDetails: params.loanId == 4 ? true : false,
       },
 
       {
@@ -70,7 +64,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: false,
+        showDetails: params.loanId == 5 ? true : false,
       },
 
       {
@@ -79,9 +73,10 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: false,
+        showDetails: params.loanId == 6 ? true : false,
       },
     ];
+
     setAccordionDetails(data);
   }, []);
 

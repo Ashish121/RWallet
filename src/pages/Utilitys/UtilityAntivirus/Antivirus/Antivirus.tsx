@@ -160,7 +160,7 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
     setData(data);
   }
   function goBack() {
-    history.replace('/tabs/antivirus');
+    history.replace('/tabs/home');
   }
   return (
     <>

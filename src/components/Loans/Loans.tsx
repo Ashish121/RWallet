@@ -1,6 +1,7 @@
 import React from 'react';
 import { IonText } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
+import { useHistory } from 'react-router-dom';
 import {
   LoanIcon,
   PersonalLoanIcon,
@@ -16,6 +17,15 @@ interface loanProps {
 }
 
 const LoanSection: React.FC<loanProps> = ({ expanded }) => {
+  const history = useHistory();
+  const navigateToLoan = (id: any) => {
+    history.replace({
+      pathname: '/tabs/loanType',
+      state: {
+        loanId: id,
+      },
+    });
+  };
   return (
     <>
       <div className="loan-section">
@@ -26,7 +36,7 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
         </div>
         <div className="loan-list-container">
           <div>
-            <button className="iconButtons">
+            <button className="iconButtons" onClick={() => navigateToLoan(1)}>
               <LoanIcon width="30" height="30" />
             </button>
             <IonText>
@@ -34,7 +44,7 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
             </IonText>
           </div>
           <div>
-            <button className="iconButtons">
+            <button className="iconButtons" onClick={() => navigateToLoan(2)}>
               <PurchaseIcon width="30" height="30" />
             </button>
             <IonText>
@@ -42,7 +52,7 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
             </IonText>
           </div>
           <div>
-            <button className="iconButtons">
+            <button className="iconButtons" onClick={() => navigateToLoan(3)}>
               <TearmLoanIcon width="30" height="30" />
             </button>
             <IonText>
@@ -50,7 +60,7 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
             </IonText>
           </div>
           <div>
-            <button className="iconButtons">
+            <button className="iconButtons" onClick={() => navigateToLoan(4)}>
               <PersonalLoanIcon width="30" height="30" />
             </button>
             <IonText>
@@ -60,7 +70,10 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
           {expanded && (
             <>
               <div>
-                <button className="iconButtons">
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToLoan(5)}
+                >
                   <EducationIcon width="30" height="30" />
                 </button>
                 <IonText>
@@ -68,7 +81,10 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
                 </IonText>
               </div>
               <div>
-                <button className="iconButtons">
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToLoan(6)}
+                >
                   <Securityicon width="30" height="30" />
                 </button>
                 <IonText>

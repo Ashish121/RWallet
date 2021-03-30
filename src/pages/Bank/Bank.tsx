@@ -3,7 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { useDispatch } from 'react-redux';
 import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+  // SelectMenu,
+} from '../../components';
 import './Bank.scss';
 import { requestForBankTransfer } from '../../redux/actions/';
 import LoaderComponent from '../../components/Spinner/Spinner';
@@ -80,6 +85,10 @@ const Bank: React.FC = () => {
     console.log('Handling registration');
   }
 
+  function handleClearButton() {
+    // alert("are you want to clear all field ?");
+  }
+
   function goBack() {
     history.replace('/tabs/transfer');
   }
@@ -110,6 +119,11 @@ const Bank: React.FC = () => {
                     onChange={updateDestination}
                     clearInput={true}
                   />
+                  {/* <SelectMenu
+                    label="bank.destination"
+                    // array={bankName}
+                    onSelect={updateDestination}
+                  /> */}
                   <InputText
                     inputType="text"
                     labelText="bank.holderName"
@@ -157,21 +171,30 @@ const Bank: React.FC = () => {
                   />
 
                   <div className="bank-proceed-button">
-                    <ButtonConmponent
-                      buttonLabel="bank.proceed"
-                      size="block"
-                      disabled={
-                        destination.trim() &&
-                        holderName.trim() &&
-                        accountNumber.trim() &&
-                        mobileNo.trim() &&
-                        amount.trim() &&
-                        remarks.trim()
-                          ? false
-                          : true
-                      }
-                      clickHandler={handleproceed}
-                    />
+                    <div className="clear-button">
+                      <ButtonConmponent
+                        buttonLabel="UtilityCardClear"
+                        size="block"
+                        clickHandler={handleClearButton}
+                      />
+                    </div>
+                    <div className="procced-button">
+                      <ButtonConmponent
+                        buttonLabel="bank.proceed"
+                        size="block"
+                        disabled={
+                          destination.trim() &&
+                          holderName.trim() &&
+                          accountNumber.trim() &&
+                          mobileNo.trim() &&
+                          amount.trim() &&
+                          remarks.trim()
+                            ? false
+                            : true
+                        }
+                        clickHandler={handleproceed}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
