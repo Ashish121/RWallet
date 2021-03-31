@@ -21,7 +21,10 @@ const LoanType: React.FC = () => {
 
   useEffect(() => {
     const params: any = location.state;
+    const loanId = params && params.loanId ? params.loanId : 0;
     console.log(params);
+    console.log('loanId***** ', loanId);
+
     const data = [
       {
         id: 1,
@@ -29,7 +32,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: params.loanId == 1 ? true : false,
+        showDetails: loanId == 1 ? true : false,
       },
       {
         id: 2,
@@ -37,7 +40,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: params.loanId == 2 ? true : false,
+        showDetails: loanId == 2 ? true : false,
       },
 
       {
@@ -46,7 +49,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: params.loanId == 3 ? true : false,
+        showDetails: loanId == 3 ? true : false,
       },
 
       {
@@ -55,7 +58,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: params.loanId == 4 ? true : false,
+        showDetails: loanId == 4 ? true : false,
       },
 
       {
@@ -64,7 +67,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: params.loanId == 5 ? true : false,
+        showDetails: loanId == 5 ? true : false,
       },
 
       {
@@ -73,7 +76,7 @@ const LoanType: React.FC = () => {
         amount: '40000',
         interest: '12-16%',
         year: '1-4 years',
-        showDetails: params.loanId == 6 ? true : false,
+        showDetails: loanId == 6 ? true : false,
       },
     ];
 
