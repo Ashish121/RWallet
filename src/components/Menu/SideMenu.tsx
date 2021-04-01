@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   IonMenu,
   IonHeader,
@@ -23,6 +24,10 @@ const MenuComponent: React.FC<any> = () => {
   const [selectedImage, setSelectedImage] = useState('');
   const { Camera } = Plugins;
   const history = useHistory();
+
+  const profileData = useSelector((state: any) => state.profile.profileDetails);
+  console.log('profile in sidebar*****', profileData);
+
   const closeMenu = () => {
     menuController.toggle();
   };
@@ -62,12 +67,15 @@ const MenuComponent: React.FC<any> = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-content-wrapper">
+          <div
+            className="pageheader"
+            style={{ marginLeft: '7%', fontWeight: 600, fontSize: '20px' }}
+          >
+            <IonText>
+              <Translate message="profile.text" />
+            </IonText>
+          </div>
           <div className="menu-content-wrapper">
-            <div className="page-header-text">
-              <IonText>
-                <Translate message="profile.text" />
-              </IonText>
-            </div>
             <div className="page-wrapper">
               <div className="profile-icon-wrapper">
                 {imagePicked && (

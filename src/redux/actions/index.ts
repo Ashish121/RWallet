@@ -26,3 +26,4 @@ export {requestForCreditCardPayment} from './CardPayment';
 export {requestForInternetPayment} from './InternetPayment';
 export {requestForTopUpRecharge} from './TopUpRecharge';
 export {requestForAntivirusPayment} from './AntivirusPayment';
+export {requestForProfile} from './Profile';

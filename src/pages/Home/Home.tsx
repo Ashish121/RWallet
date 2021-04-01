@@ -29,7 +29,7 @@ import {
   UtilitiesSection,
   LoaderComponent,
 } from '../../components';
-
+import { requestForProfile } from '../../redux/actions/';
 import './Home.scss';
 import { Translate } from '../../i18n/formatMessages';
 
@@ -43,8 +43,17 @@ const HomePage: React.FC = () => {
   const [initializing, setInitializing] = useState(false);
   const { PushNotifications } = Plugins;
 
+  function nextRoute(status: any) {
+    if (status) {
+      console.log('status: ', status);
+      history.replace('/tabs/home');
+    }
+  }
+
   useEffect(() => {
+    const user_id = 2;
     setBalance('22090.00');
+    dispatch(requestForProfile({ user_id }, nextRoute));
     askPushPermission();
   }, []);
 

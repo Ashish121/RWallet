@@ -683,3 +683,21 @@ export const authenticationForAntivirusPayment = async (
   console.log('result: ', result);
   return result;
 };
+
+//loadProfile
+
+export const loadProfile = async (user_id: string): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/profile_fetch',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+    }),
+  });
+  console.log('result: ', result.data.user);
+  return result;
+};

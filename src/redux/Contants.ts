@@ -97,3 +97,7 @@ export const  TOP_UP_FAILED = ' TOP_UP_FAILED';
 //for To-up antivirus payment page
 export const ANTIVIRUS_SUCCESS = 'ANTIVIRUS_SUCCESS';
 export const  ANTIVIRUS_FAILED = '  ANTIVIRUS_FAILED';
+
+//for profile section page
+export const PROFILE_SUCCESS = 'PROFILE_SUCCESS';
+export const  PROFILE_FAILED = 'PROFILE_FAILED';
