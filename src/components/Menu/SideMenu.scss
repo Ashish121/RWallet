@@ -29,21 +29,18 @@ ion-menu {
   background-image: none;
 }
 .menu-content-wrapper {
+  font-size: 12px;
   background-color: #ffffff;
   height: 100%;
   background-color: #ffffff;
-  height: 100%;
+  // height: 100%;
   padding-left: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  .page-header-text {
-    ion-text {
-      font-size: 1.4rem;
-      font-style: normal;
-      font-weight: bold;
-      color: #000000;
-    }
+  .pageheader {
+    margin-left: 20%;
+    font-weight: 600;
   }
   .page-wrapper {
     display: flex;
