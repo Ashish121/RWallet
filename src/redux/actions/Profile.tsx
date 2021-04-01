@@ -1,7 +1,6 @@
 import { PROFILE_SUCCESS } from '../Contants';
 import { loadProfile } from '../../services/Connect';
 import { updateToast } from './index';
-
 const requestForProfile = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
     try {
