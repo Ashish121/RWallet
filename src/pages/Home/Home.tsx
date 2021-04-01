@@ -211,10 +211,10 @@ const HomePage: React.FC = () => {
                       onClick={toggleExpandOptions}
                       className="ion-padding"
                       style={{
-                        width: '159px',
+                        width: '220px',
                         '--background': 'rgb(0, 71, 119)',
                         'font-size': '16px',
-                        '--padding': '10px',
+                        paddingBottom: '26px',
                       }}
                     >
                       <IonIcon
