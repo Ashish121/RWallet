@@ -39,7 +39,7 @@ const ShoppingPage: React.FC = () => {
   const [shoppingLimitBalance, setshoppingLimitBalance] = useState('');
   const [favSelected, setFavSelected] = useState(false);
   useEffect(() => {
-    setshoppingLimitBalance('12844');
+    setshoppingLimitBalance('128445.00');
   }, []);
   function navigateToCart() {
     history.replace('/tabs/shopping/cart');
@@ -81,12 +81,17 @@ const ShoppingPage: React.FC = () => {
                 >
                   <IonText
                     className="balance-wrapper-text"
-                    style={{ color: '#000000' }}
+                    style={{
+                      color: '#000000',
+                      fontWeight: '500',
+                      fontSize: '12px',
+                    }}
                   >
                     <Translate message="shoppingPage.shoppoingLevelText" />
                   </IonText>
                 </div>
                 <div className="arrow_box"></div>
+
                 <div
                   className="common-ion-text"
                   style={{
@@ -94,33 +99,27 @@ const ShoppingPage: React.FC = () => {
                     borderRadius: '0px 7px 7px 0px',
                   }}
                 >
+                  <IonImg
+                    style={{ width: '15px', marginRight: '10px' }}
+                    src={require('../../assets/Icons/Rupay.svg')}
+                  />
                   <IonText
                     className="balance-wrapper-text"
-                    style={{ color: '#ffffff' }}
+                    style={{
+                      color: '#ffffff',
+                      fontWeight: '500',
+                      fontSize: '12px',
+                    }}
                   >
                     {shoppingLimitBalance}
                   </IonText>
                 </div>
               </div>
-              <div className="search-area-wrapper">
-                <IonInput placeholder="Search">
-                  <button
-                    type="button"
-                    className="eye-btn"
-                    onClick={search}
-                    slot="end"
-                    style={{
-                      backgroundColor: 'transparent',
-                      border: 'none',
-                      outline: 'none',
-                      position: 'absolute',
-                      right: '10px',
-                    }}
-                  >
-                    <SearchIcon width="16" height="16" />
-                  </button>
-                </IonInput>
-              </div>
+
+              <IonText className="shopping-heading-text-area">
+                <Translate message="shopping.categories" />
+              </IonText>
+
               <div className="scroll-items-wrapper">
                 <div>
                   <IonCard>
@@ -232,6 +231,25 @@ const ShoppingPage: React.FC = () => {
                     </IonCardContent>
                   </IonCard>
                 </div>
+              </div>
+              <div className="search-area-wrapper">
+                <IonInput placeholder="Search">
+                  <button
+                    type="button"
+                    className="eye-btn"
+                    onClick={search}
+                    slot="end"
+                    style={{
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      outline: 'none',
+                      position: 'absolute',
+                      right: '10px',
+                    }}
+                  >
+                    <SearchIcon width="16" height="16" />
+                  </button>
+                </IonInput>
               </div>
               <div className="mobile-items-wrapper">
                 <IonGrid>
