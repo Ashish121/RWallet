@@ -21,7 +21,7 @@ const NotificationPage: React.FC = () => {
   const history = useHistory();
   const [color, setcolor] = useState('');
   useEffect(() => {
-    setcolor('Blue');
+    setcolor('#004777');
   }, []);
   const closeNotificationPanel = () => {
     history.replace('/tabs');
