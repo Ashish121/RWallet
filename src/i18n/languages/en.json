@@ -261,5 +261,7 @@
   "pos.confirm":"Confirm",
   "pos.radioLabel":"Delivery of your order",
   "pos.accountLabel":"Account number",
-  "pos.accountNumber":"1234567890112"
+  "pos.accountNumber":"1234567890112",
+
+  "shopping.categories": "Categories"
 }

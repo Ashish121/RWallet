@@ -38,7 +38,9 @@ const CartPage: React.FC = () => {
   function goBack() {
     history.replace('/tabs/shopping/itemdetails');
   }
-
+  function handleCheckout() {
+    history.replace('/tabs/posPayment');
+  }
   return (
     <>
       <IonApp>
@@ -316,7 +318,10 @@ const CartPage: React.FC = () => {
                 <IonText className="price-text">Rs 129445.00</IonText>
               </div>
               <div className="checkout-btn-wrapper">
-                <ButtonConmponent buttonLabel="cart.checkout" />
+                <ButtonConmponent
+                  buttonLabel="cart.checkout"
+                  clickHandler={handleCheckout}
+                />
               </div>
             </div>
           </IonFooter>
