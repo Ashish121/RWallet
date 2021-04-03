@@ -18,6 +18,7 @@ import {
   CurrentAccountPage,
   AnimatedSplash,
   TransactionHistory,
+  ConfirmPage,
 } from './index';
 import './Routes.scss';
 
@@ -45,6 +46,7 @@ const Routes: React.FC = () => {
             <Route path="/accountpage" exact component={AccountPage} />
             <Route path="/account/fixed" exact component={FixedAccountPage} />
             <Route path="/account/saving" exact component={SavingAccountPage} />
+            <Route path="/confirm" exact component={ConfirmPage} />
             <Route
               path="/account/current"
               exact

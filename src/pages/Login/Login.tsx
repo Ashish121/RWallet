@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText } from '@ionic/react';
@@ -17,6 +17,10 @@ const LoginPage: React.FC = () => {
   const isAuthenticating = useSelector(
     (state: any) => state.login.isAuthenticating
   );
+
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
   function nextRoute() {
     history.replace('tabs/home');
   }

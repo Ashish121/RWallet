@@ -74,6 +74,7 @@
   "otp.verify": " VERIFY",
 
   "mpin.mpinField": "New MPIN",
+  "mpin.oldMpin": "Old MPIN",
   "mpin.confirmMpin": "Confirm MPIN",
   "mpin.pageHeader": "Create MPIN",
   "mpin.subHeader": "MPIN allows you hassle free login even if you forgot password",
@@ -258,10 +259,10 @@
   "cart.total": "Total",
   "cart.checkout": "CHECKOUT",
   "pos.pageLabel": "Payment option",
-  "pos.confirm":"Confirm",
-  "pos.radioLabel":"Delivery of your order",
-  "pos.accountLabel":"Account number",
-  "pos.accountNumber":"1234567890112",
+  "pos.confirm": "Confirm",
+  "pos.radioLabel": "Delivery of your order",
+  "pos.accountLabel": "Account number",
+  "pos.accountNumber": "1234567890112",
 
   "shopping.categories": "Categories"
 }

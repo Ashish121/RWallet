@@ -30,9 +30,18 @@ const OtpPage: React.FC = () => {
   const [countryCode, setCountryCode] = useState('');
 
   useEffect(() => {
+    let userDetails: any;
     const params: any = location.state;
     setContact(params.mobileNo);
-    setCountryCode(params.countryCode);
+    if (localStorage.getItem('loginDetails') !== undefined) {
+      userDetails = localStorage.getItem('loginDetails');
+    }
+
+    const countryCode: any = userDetails
+      ? JSON.parse(userDetails).data.user.country_code
+      : params.countryCode;
+
+    setCountryCode(countryCode);
   }, []);
 
   const onOtpEnter = (otp: any) => {
@@ -88,13 +97,19 @@ const OtpPage: React.FC = () => {
     ).then(
       (response) => {
         const params: any = location.state;
+        console.log('params: ', params);
+
         setShowLoading(false);
         setLoaderMessage('');
         console.log('opt verification status: ', response);
         console.log('params.routeName: ', params.routeName);
-
+        localStorage.setItem('countryCode', countryCode);
         if (params.routeName) {
           history.replace('/' + params.routeName, { mobileNo: contact });
+          return;
+        }
+        if (params.updateMode) {
+          history.replace('/mpin', { updateMode: true });
           return;
         }
         setShowLoading(true);
@@ -106,6 +121,7 @@ const OtpPage: React.FC = () => {
               gender: params.gender,
               mobileNo: params.mobileNo,
               password: params.password,
+              countryCode,
             },
             nextRoute
           )
@@ -129,6 +145,10 @@ const OtpPage: React.FC = () => {
     const params: any = location.state;
     if (params.routeName) {
       history.replace('/reset');
+      return;
+    }
+    if (params.updateMode) {
+      history.replace('/tabs');
       return;
     }
     history.replace('/register');
