@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ButtonConmponent, HeaderComponent } from '../../components';
+import { useSelector } from 'react-redux';
 import {
   IonCard,
   IonCardContent,
@@ -16,8 +17,14 @@ import { Translate } from '../../i18n/formatMessages';
 import { useHistory } from 'react-router-dom';
 const ConfirmPage: React.FC = () => {
   const history = useHistory();
-  const generatedAccountNo = useState('07601202001');
-  // const [generatedAccountNo, setGeneratedAccountNo] = useState("07601202001");
+  const newAccountNumber = useSelector(
+    (state: any) =>
+      state.savingAccount.accountDetails ||
+      state.currentAccount.accountDetails ||
+      state.fixedAccount.accountDetails
+  );
+  console.log('account Number ***', newAccountNumber);
+
   function navigateToHome() {
     history.replace('/tabs/home');
   }
@@ -68,7 +75,7 @@ const ConfirmPage: React.FC = () => {
                         >
                           <IonText>
                             <Translate message="account.accountNoText" />{' '}
-                            {generatedAccountNo}
+                            {newAccountNumber}
                           </IonText>
                         </div>
                       </IonToolbar>

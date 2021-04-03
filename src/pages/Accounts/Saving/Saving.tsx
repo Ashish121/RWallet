@@ -46,8 +46,8 @@ const SavingAccountPage: React.FC = () => {
   function navigateToConfirm() {
     setIsLoading(true);
     setLoadeMessage('Creating account...');
-    // const user_id = localStorage.getItem("registeredUserId");
-    const user_id = 2;
+    const user_id = localStorage.getItem('registeredUserId');
+
     dispatch(
       requestForSavingAccount(
         { investment_period, user_id, amount, depositType },
@@ -115,7 +115,7 @@ const SavingAccountPage: React.FC = () => {
                   <IonRadioGroup onIonChange={updateDepositType}>
                     <div className="options-section1">
                       <RadioComponent
-                        label="Daily Rs 1000"
+                        label="Daily Rs 100"
                         val="daily"
                         showRadioButton={true}
                       />

@@ -34,7 +34,7 @@ const FixedAccountPage: React.FC = () => {
 
   function nextRoute(status: any) {
     if (status) {
-      history.replace('/confirm');
+      history.replace('/tabs/confirm');
       return;
     }
     setIsLoading(true);
