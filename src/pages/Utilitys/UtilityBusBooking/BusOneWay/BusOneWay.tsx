@@ -50,7 +50,7 @@ const BusOneWay: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      //history.replace('/tabs/busTwoWay');
+      history.replace('/tabs/home');
       return;
     }
   }

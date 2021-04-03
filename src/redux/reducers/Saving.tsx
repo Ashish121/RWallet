@@ -6,11 +6,13 @@ import {
 } from '../Contants';
 interface SavingState {
   isAuthenticating: boolean;
+  accountDetails: any;
 }
 
 // defines the initial state for the reducer ...
 export const initialState: SavingState = {
   isAuthenticating: false,
+  accountDetails: null,
 };
 
 // defines this reducers reducer functions ...
@@ -21,6 +23,8 @@ const reducers: any = {
   [SAVING_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
     localStorage.setItem('Saving_Account_Details', JSON.stringify(data));
+    draft.accountDetails = data.data.data.saving_account_number;
+    // console.log("accountDetails", draft.accountDetails);
   },
   [SAVING_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;

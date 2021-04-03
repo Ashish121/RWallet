@@ -7,6 +7,9 @@ import CoOperative from './CoOperative';
 import Agent from './Agent';
 import EmiCalculater from './EmiCalculater';
 import Profile from './Profile';
+import Saving from './Saving';
+import Current from './Current';
+import Fixed from './Fixed';
 const rootReducer = combineReducers({
   login: LoginReducer,
   toast: Toast,
@@ -15,6 +18,9 @@ const rootReducer = combineReducers({
   co_operative:CoOperative,
   agent:Agent,
   emi:EmiCalculater,
-  profile:Profile
+  profile:Profile,
+  savingAccount:Saving,
+  currentAccount:Current,
+  fixedAccount:Fixed
 });
 export default rootReducer;

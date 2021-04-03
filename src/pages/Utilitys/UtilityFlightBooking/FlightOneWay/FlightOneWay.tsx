@@ -78,7 +78,7 @@ const FlightOneWay: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      // history.replace("/tabs/flightTwoWay");
+      history.replace('/tabs/home');
       return;
     }
   }
