@@ -88,6 +88,7 @@ const FlightTwoWay: React.FC = () => {
 
   function handleBusBooking() {
     const user_id = 2;
+    console.log('user_id : ', user_id);
     const roundTrip = '1';
     const travelType = 'flight';
 
@@ -116,7 +117,7 @@ const FlightTwoWay: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      //history.replace('/busOneWay');
+      history.replace('/tabs/home');
       return;
     }
   }

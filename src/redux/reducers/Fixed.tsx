@@ -6,11 +6,13 @@ import {
 } from '../Contants';
 interface FixedState {
   isAuthenticating: boolean;
+  accountDetails: any;
 }
 
 // defines the initial state for the reducer ...
 export const initialState: FixedState = {
   isAuthenticating: false,
+  accountDetails: null,
 };
 
 // defines this reducers reducer functions ...
@@ -21,6 +23,8 @@ const reducers: any = {
   [FIXED_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
     localStorage.setItem('Fixed_Account_Details', JSON.stringify(data));
+    draft.accountDetails = data.data.data[0].fixed_account_number;
+    //console.log("accountDetails", draft.accountDetails);
   },
   [FIXED_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;

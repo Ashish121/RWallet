@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CloseBarIcon } from '../../assets/Icons';
 
 import {
@@ -38,21 +38,22 @@ import { updateToast } from '../../redux/actions';
 const HomePage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [balance, setBalance] = useState('');
   const [expandOptions, setExpandOptions] = useState(false);
   const [initializing, setInitializing] = useState(false);
   const { PushNotifications } = Plugins;
 
+  const profileInfo = useSelector((state: any) => state.profile.profileDetails);
+  //console.log("profile Info ***", profileInfo);
+
   function nextRoute(status: any) {
     if (status) {
-      console.log('status: ', status);
+      // console.log("status: ", status);
       history.replace('/tabs/home');
     }
   }
 
   useEffect(() => {
     const user_id = 2;
-    setBalance('22090.00');
     dispatch(requestForProfile({ user_id }, nextRoute));
     askPushPermission();
   }, []);
@@ -169,7 +170,7 @@ const HomePage: React.FC = () => {
                     className="balance-wrapper-text"
                     style={{ color: '#ffffff' }}
                   >
-                    {balance}
+                    {profileInfo.balance}
                   </IonText>
                 </div>
               </div>

@@ -31,6 +31,11 @@ const MenuComponent: React.FC<any> = () => {
   const profileData = useSelector((state: any) => state.profile.profileDetails);
   console.log('profile in sidebar*****', profileData);
 
+  const profileFields = useSelector(
+    (state: any) => state.profile.profileDetails
+  );
+  //console.log("profile in sidebar*****", profileFields);
+
   const closeMenu = () => {
     menuController.toggle();
   };
@@ -157,31 +162,41 @@ const MenuComponent: React.FC<any> = () => {
                   <IonText className="label-text">
                     <Translate message="profile.fullName" />
                   </IonText>
-                  <IonText className="label-value">Ashish Kumar</IonText>
+                  <IonText className="label-value">
+                    {profileFields.full_name}
+                  </IonText>
                 </div>
                 <div className="fields-wrapper">
                   <IonText className="label-text">
                     <Translate message="profile.accountNumber" />
                   </IonText>
-                  <IonText className="label-value">12345678</IonText>
+                  <IonText className="label-value">
+                    {profileFields.account_number}
+                  </IonText>
                 </div>
                 <div className="fields-wrapper">
                   <IonText className="label-text">
                     <Translate message="profile.accountType" />
                   </IonText>
-                  <IonText className="label-value">Savings</IonText>
+                  <IonText className="label-value">
+                    {profileFields.account_type}
+                  </IonText>
                 </div>
                 <div className="fields-wrapper">
                   <IonText className="label-text">
                     <Translate message="profile.accountCurrency" />
                   </IonText>
-                  <IonText className="label-value">NRP</IonText>
+                  <IonText className="label-value">
+                    {profileFields.account_currency}
+                  </IonText>
                 </div>
                 <div className="fields-wrapper">
                   <IonText className="label-text">
                     <Translate message="profile.accountInterest" />
                   </IonText>
-                  <IonText className="label-value">4.5%</IonText>
+                  <IonText className="label-value">
+                    {profileFields.account_interest}
+                  </IonText>
                 </div>
               </div>
             </div>
