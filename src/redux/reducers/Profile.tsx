@@ -6,27 +6,25 @@ import {
 } from '../Contants';
 interface profileState {
   isAuthenticating: boolean;
-  profileDetails: any;
+  profileDetails: [];
 }
-
 // defines the initial state for the reducer ...
 export const initialState: profileState = {
   isAuthenticating: false,
-  profileDetails: null,
+  profileDetails: [],
 };
-
 // defines this reducers reducer functions ...
 const reducers: any = {
   [AUTHENTICATION_INPROGRESS]: (draft: any) => {
     draft.isAuthenticating = true;
   },
-  // [PROFILE_SUCCESS]: (draft: any, data: any) => {
-  //   draft.isAuthenticating = false;
-  //   draft.profileDetails = data;
-  // },
+
   [PROFILE_SUCCESS]: (draft: any, data: string) => {
+    localStorage.setItem('profile_Details', JSON.stringify(data));
     draft.profileDetails = data;
+    draft.profileDetails = draft.profileDetails.data;
   },
+
   [PROFILE_FAILED]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
     draft.profileDetails = data;
