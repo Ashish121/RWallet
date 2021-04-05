@@ -48,7 +48,7 @@ const ApplyPage: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      history.replace('/tabs/emiCalculater');
+      history.replace('/tabs/home');
       return;
     }
   }
@@ -66,7 +66,7 @@ const ApplyPage: React.FC = () => {
     );
     console.log('Handling registration');
   }
- 
+
   function goBack() {
     history.replace('/tabs/loanType');
   }
