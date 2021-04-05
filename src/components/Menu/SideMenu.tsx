@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   IonMenu,
   IonHeader,
@@ -10,6 +10,7 @@ import {
   IonButtons,
   IonButton,
   IonAvatar,
+  IonAlert,
 } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { menuController } from '@ionic/core';
@@ -18,12 +19,17 @@ import { Plugins, CameraResultType } from '@capacitor/core';
 import { ProfilePictureIcon, CloseIcon, MenuCamera } from '../../assets/Icons';
 import './SideMenu.scss';
 import { Translate } from '../../i18n/formatMessages';
+import { requestForLogout } from '../../redux/actions';
 
 const MenuComponent: React.FC<any> = () => {
   const [imagePicked, setImagePicked] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   const { Camera } = Plugins;
   const history = useHistory();
+  const dispatch = useDispatch();
+  const profileData = useSelector((state: any) => state.profile.profileDetails);
+  console.log('profile in sidebar*****', profileData);
 
   const profileFields = useSelector(
     (state: any) => state.profile.profileDetails
@@ -33,9 +39,17 @@ const MenuComponent: React.FC<any> = () => {
   const closeMenu = () => {
     menuController.toggle();
   };
-  function logOut() {
+
+  function nextRoute() {
     history.replace('/login');
     localStorage.clear();
+  }
+
+  function logOut() {
+    setShowAlert(true);
+  }
+  function confirmLogout() {
+    dispatch(requestForLogout(nextRoute));
   }
   async function takePicture() {
     console.log('Taking picture now');
@@ -51,8 +65,52 @@ const MenuComponent: React.FC<any> = () => {
     setImagePicked(true);
   }
 
+  const requestForChangeMpin = () => {
+    console.log('Request for MPIN change');
+    const userDetails: any = localStorage.getItem('loginDetails')
+      ? localStorage.getItem('loginDetails')
+      : '';
+    closeMenu();
+    console.log(JSON.parse(userDetails));
+    const parsedRes = JSON.parse(userDetails);
+    const isMpinCreated: any = localStorage.getItem('isMpinCreated')
+      ? localStorage.getItem('isMpinCreated')
+      : false;
+    console.log('isMpinCreated: ', isMpinCreated);
+    console.log('******', isMpinCreated === 'false');
+    console.log('***^^^^^***', isMpinCreated == 'false');
+
+    history.replace('/otp', {
+      updateMode: isMpinCreated === 'false' ? false : true,
+      nextroute: '/mpin',
+      backNavigation: '/tabs',
+      mobileNo: parsedRes.data.user.mobile_number,
+    });
+  };
+
   return (
     <>
+      <IonAlert
+        isOpen={showAlert}
+        onDidDismiss={() => setShowAlert(false)}
+        subHeader={'Are you sure ?'}
+        buttons={[
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'light',
+            handler: () => {
+              console.log('Confirm Cancel');
+            },
+          },
+          {
+            text: 'Ok',
+            handler: () => {
+              confirmLogout();
+            },
+          },
+        ]}
+      />
       <IonMenu side="start" menuId="menu" contentId="menu">
         <IonHeader>
           <IonToolbar className="side-menu-toobar">
@@ -151,7 +209,10 @@ const MenuComponent: React.FC<any> = () => {
                     <Translate message="profile.changeLanguage" />
                   </IonText>
                 </button>
-                <button className="action-button">
+                <button
+                  className="action-button"
+                  onClick={requestForChangeMpin}
+                >
                   <IonText>
                     <Translate message="profile.changeMPIN" />
                   </IonText>

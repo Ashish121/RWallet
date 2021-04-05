@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   IonPage,
@@ -11,26 +11,41 @@ import {
   IonButtons,
 } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, LoaderComponent } from '../../components';
+import { BackButton, ButtonConmponent, InputText } from '../../components';
 import { useDispatch } from 'react-redux';
-import { requestForMpin } from '../../redux/actions';
+import { requestForMpin, requestForChangeMpin } from '../../redux/actions';
 
 import './Mpin.scss';
 
 const MpinPage: React.FC = () => {
-  const history = useHistory();
+  const history: any = useHistory();
   const dispatch = useDispatch();
 
   const [mpin, setMpin] = useState('');
   const [confirmMpin, setConfirmMpin] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [message, setLoaderMessage] = useState('');
+  const [updateMode, setUpdateMode] = useState(false);
+  const [oldMpin, setOldMpin] = useState('');
+  const [backNavigationPage, setBackNavigation] = useState(null);
+  useEffect(() => {
+    console.log('History: ', history);
+    // const isMpinCreated: any = localStorage.getItem("isMpinCreated")
+    //   ? localStorage.getItem("isMpinCreated")
+    //   : false;
+    // setIsMpinCreated(isMpinCreated);
+    const updateMode: any = history.location?.state?.data.updateMode || false;
+    const backNavigation: any =
+      history.location?.state?.data.backNavigation || null;
+    console.log('updateMode: ', updateMode);
+    setBackNavigation(backNavigation);
+    setUpdateMode(updateMode);
+  }, []);
 
+  function updateOldMpin(currentMpin: any) {
+    console.log('currentMpin: ', currentMpin);
+    setOldMpin(currentMpin);
+  }
   function updateMpin(mpin: any) {
     let newMpin = mpin;
-    if (!Number(mpin)) {
-      return;
-    }
     setMpin(newMpin);
   }
 
@@ -40,41 +55,61 @@ const MpinPage: React.FC = () => {
 
   function nextRoute(status: any) {
     if (status) {
+      console.log('status******', status, '****updateMode*****', updateMode);
+
+      if (updateMode || backNavigationPage) {
+        history.replace('/tabs/home', { message: 'Mpin updated successfully' });
+        return;
+      }
       history.replace('/accountuser');
-    } else {
-      setIsLoading(false);
-      setLoaderMessage('');
     }
   }
   function handleMpin() {
-    setIsLoading(true);
-    setLoaderMessage('Updating...');
-    const user_id = localStorage.getItem('registeredUserId');
-    dispatch(requestForMpin({ user_id, mpin }, nextRoute));
+    // setIsLoading(true);
+    // setLoaderMessage("Updating...");s
+    let user_id = localStorage.getItem('userId');
+    if (!updateMode) {
+      dispatch(requestForMpin({ user_id, mpin }, nextRoute));
+    } else {
+      console.log('oldMpin: ', oldMpin);
+
+      dispatch(
+        requestForChangeMpin(
+          { user_id, new_mpin: mpin, current_mpin: oldMpin },
+          nextRoute
+        )
+      );
+    }
+
     console.log('Handling registration');
   }
 
   function skipStep() {
     nextRoute(true);
   }
+  function goBack() {
+    history.replace('/tabs');
+  }
   return (
     <>
-      <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
-          <div className="skip-toolbar">
-            <IonHeader>
-              <IonToolbar>
-                <IonButtons slot="end">
-                  <IonButton className="btn-skip" onClick={skipStep}>
-                    <IonText style={{ color: '#ffffff' }}>
-                      <Translate message="common.skip" />
-                    </IonText>
-                  </IonButton>
-                </IonButtons>
-              </IonToolbar>
-            </IonHeader>
-          </div>
+          {backNavigationPage && <BackButton clickHandler={goBack} />}
+          {!backNavigationPage && (
+            <div className="skip-toolbar">
+              <IonHeader>
+                <IonToolbar>
+                  <IonButtons slot="end">
+                    <IonButton className="btn-skip" onClick={skipStep}>
+                      <IonText style={{ color: '#ffffff' }}>
+                        <Translate message="common.skip" />
+                      </IonText>
+                    </IonButton>
+                  </IonButtons>
+                </IonToolbar>
+              </IonHeader>
+            </div>
+          )}
           <IonContent>
             <div className="skip_btn_container"></div>
             <div className="mpin-container">
@@ -91,6 +126,17 @@ const MpinPage: React.FC = () => {
                 </div>
               </div>
               <div className="fields-container">
+                {updateMode && (
+                  <InputText
+                    inputType="password"
+                    labelText="mpin.oldMpin"
+                    labelType="floating"
+                    color="light"
+                    labelColor="light"
+                    showPasswordMode={true}
+                    onChange={updateOldMpin}
+                  />
+                )}
                 <InputText
                   inputType="password"
                   labelText="mpin.mpinField"
