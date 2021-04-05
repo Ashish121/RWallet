@@ -9,7 +9,7 @@ const requestForProfile = (payload: any, nextRoute: Function) => {
         dispatch({ type: PROFILE_SUCCESS, data: response.data.user });
         nextRoute(true);
       }
-      console.log('done', response);
+      // console.log('done', response);
     } catch (error) {
       nextRoute(false);
       const data = {
