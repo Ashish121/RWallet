@@ -12,7 +12,7 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
         dispatch({ type: LOGIN_SUCCESS });
         localStorage.setItem('loginDetails', JSON.stringify(response));
         localStorage.setItem('userId', response.data.user.id);
-        localStorage.setItem('isMpinCreated', response.data.is_mpin);
+        localStorage.setItem('isMpinCreated', response.data.isMpin);
         nextRoute();
       } else {
         const data = {

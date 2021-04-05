@@ -25,18 +25,19 @@ const MpinPage: React.FC = () => {
   const [confirmMpin, setConfirmMpin] = useState('');
   const [updateMode, setUpdateMode] = useState(false);
   const [oldMpin, setOldMpin] = useState('');
-  const [isMpinCreated, setIsMpinCreated] = useState(false);
+  const [backNavigationPage, setBackNavigation] = useState(null);
   useEffect(() => {
     console.log('History: ', history);
-    const isMpinCreated: any = localStorage.getItem('isMpinCreated')
-      ? localStorage.getItem('isMpinCreated')
-      : false;
-    setIsMpinCreated(isMpinCreated);
-    const updateMode: any = history.location?.state?.updateMode ? true : false;
-    if (updateMode && !isMpinCreated) {
-      console.log('Update mode');
-      setUpdateMode(true);
-    }
+    // const isMpinCreated: any = localStorage.getItem("isMpinCreated")
+    //   ? localStorage.getItem("isMpinCreated")
+    //   : false;
+    // setIsMpinCreated(isMpinCreated);
+    const updateMode: any = history.location?.state?.data.updateMode || false;
+    const backNavigation: any =
+      history.location?.state?.data.backNavigation || null;
+    console.log('updateMode: ', updateMode);
+    setBackNavigation(backNavigation);
+    setUpdateMode(updateMode);
   }, []);
 
   function updateOldMpin(currentMpin: any) {
@@ -56,7 +57,7 @@ const MpinPage: React.FC = () => {
     if (status) {
       console.log('status******', status, '****updateMode*****', updateMode);
 
-      if (updateMode) {
+      if (updateMode || backNavigationPage) {
         history.replace('/tabs/home', { message: 'Mpin updated successfully' });
         return;
       }
@@ -65,9 +66,9 @@ const MpinPage: React.FC = () => {
   }
   function handleMpin() {
     // setIsLoading(true);
-    // setLoaderMessage("Updating...");
+    // setLoaderMessage("Updating...");s
     let user_id = localStorage.getItem('userId');
-    if (!updateMode && !isMpinCreated) {
+    if (!updateMode) {
       dispatch(requestForMpin({ user_id, mpin }, nextRoute));
     } else {
       console.log('oldMpin: ', oldMpin);
@@ -93,8 +94,8 @@ const MpinPage: React.FC = () => {
     <>
       <IonApp>
         <IonPage>
-          {updateMode && <BackButton clickHandler={goBack} />}
-          {!updateMode && !isMpinCreated && (
+          {backNavigationPage && <BackButton clickHandler={goBack} />}
+          {!backNavigationPage && (
             <div className="skip-toolbar">
               <IonHeader>
                 <IonToolbar>
@@ -125,7 +126,7 @@ const MpinPage: React.FC = () => {
                 </div>
               </div>
               <div className="fields-container">
-                {updateMode && isMpinCreated && (
+                {updateMode && (
                   <InputText
                     inputType="password"
                     labelText="mpin.oldMpin"

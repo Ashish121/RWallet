@@ -68,9 +68,17 @@ const MenuComponent: React.FC<any> = () => {
     closeMenu();
     console.log(JSON.parse(userDetails));
     const parsedRes = JSON.parse(userDetails);
+    const isMpinCreated: any = localStorage.getItem('isMpinCreated')
+      ? localStorage.getItem('isMpinCreated')
+      : false;
+    console.log('isMpinCreated: ', isMpinCreated);
+    console.log('******', isMpinCreated === 'false');
+    console.log('***^^^^^***', isMpinCreated == 'false');
+
     history.replace('/otp', {
-      updateMode: true,
+      updateMode: isMpinCreated === 'false' ? false : true,
       nextroute: '/mpin',
+      backNavigation: '/tabs',
       mobileNo: parsedRes.data.user.mobile_number,
     });
   };

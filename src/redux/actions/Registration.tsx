@@ -20,6 +20,7 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         dispatch({ type: REGISTRATION_SUCCESS, response: response });
         localStorage.setItem('userId', response.data.user.id);
         localStorage.setItem('loginDetails', JSON.stringify(response));
+        localStorage.setItem('isMpinCreated', response.data.isMpin);
         nextRoute(true, null);
       }
       console.log('done', response);

@@ -28,10 +28,13 @@ const OtpPage: React.FC = () => {
   const [contact, setContact] = useState('');
   const [loaderMessage, setLoaderMessage] = useState('');
   const [countryCode, setCountryCode] = useState('');
+  const [backNavigationPage, setBackNavigation] = useState(null);
 
   useEffect(() => {
     let userDetails: any;
     const params: any = location.state;
+    const backNavigation = params.backNavigation || null;
+    setBackNavigation(backNavigation);
     setContact(params.mobileNo);
     if (localStorage.getItem('loginDetails') !== undefined) {
       userDetails = localStorage.getItem('loginDetails');
@@ -108,8 +111,8 @@ const OtpPage: React.FC = () => {
           history.replace('/' + params.routeName, { mobileNo: contact });
           return;
         }
-        if (params.updateMode) {
-          history.replace('/mpin', { updateMode: true });
+        if (params.updateMode || params.backNavigation) {
+          history.replace('/mpin', { data: params });
           return;
         }
         setShowLoading(true);
@@ -147,7 +150,7 @@ const OtpPage: React.FC = () => {
       history.replace('/reset');
       return;
     }
-    if (params.updateMode) {
+    if (params.updateMode || backNavigationPage) {
       history.replace('/tabs');
       return;
     }
