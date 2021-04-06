@@ -12,7 +12,7 @@ import {
   DatePickerComponent,
   SelectMenu,
   LoaderComponent,
-  ScrollableComponentForFlight,
+  SegmentButtonComponentForFlight,
 } from '../../../../components';
 import './FlightOneWay.scss';
 import { requestForFlightOneWayPage } from '../../../../redux/actions';
@@ -138,7 +138,7 @@ const FlightOneWay: React.FC = () => {
                 className="toggelButton"
                 style={{ width: '60%', display: 'flex', marginTop: '5%' }}
               >
-                <ScrollableComponentForFlight />
+                <SegmentButtonComponentForFlight />
               </div>
 
               <div

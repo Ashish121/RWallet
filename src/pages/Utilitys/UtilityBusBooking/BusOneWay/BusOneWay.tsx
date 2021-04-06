@@ -10,7 +10,7 @@ import {
   SelectMenu,
   DatePickerComponent,
   LoaderComponent,
-  ScrollableComponentForBus,
+  SegmentButtonComponentForBus,
 } from '../../../../components';
 import './BusOneWay.scss';
 import { useDispatch } from 'react-redux';
@@ -136,7 +136,7 @@ const BusOneWay: React.FC = () => {
                 className="toggelButton"
                 style={{ width: '60%', display: 'flex', marginTop: '5%' }}
               >
-                <ScrollableComponentForBus />
+                <SegmentButtonComponentForBus />
               </div>
 
               <div

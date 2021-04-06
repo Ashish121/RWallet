@@ -10,7 +10,7 @@ import {
   DatePickerComponent,
   SelectMenu,
   LoaderComponent,
-  ScrollableComponentForFlight,
+  SegmentButtonComponentForFlight,
 } from '../../../../components';
 import './FlightTwoWay.scss';
 import { useDispatch } from 'react-redux';
@@ -142,7 +142,7 @@ const FlightTwoWay: React.FC = () => {
                 className="toggelButton"
                 style={{ width: '60%', display: 'flex', marginTop: '5%' }}
               >
-                <ScrollableComponentForFlight />
+                <SegmentButtonComponentForFlight />
               </div>
               <div
                 className="booking-twoWay-wrapper"

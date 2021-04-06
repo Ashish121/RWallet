@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonSegment, IonSegmentButton, IonLabel } from '@ionic/react';
-import './ScrollableComponentForBus.scss';
+import './SegmentButtonComponentForFlight.scss';
 
 interface buttonProps {
   clickHandler?: Function;
   value?: string;
 }
 
-const ScrollableComponentForBus: React.FC<buttonProps> = ({
+const SegmentButtonComponentForFlight: React.FC<buttonProps> = ({
   clickHandler,
   value,
 }) => {
@@ -18,11 +18,11 @@ const ScrollableComponentForBus: React.FC<buttonProps> = ({
   function handleButtonClick(value: any) {
     clickHandler?.();
     if (value === 'one_way') {
-      history.replace('/tabs/busOneWay', { value: value });
+      history.replace('/tabs/flightOneWay', { value: value });
     }
 
     if (value === 'two_way') {
-      history.replace('/tabs/busTwoWay', { value: value });
+      history.replace('/tabs/flightTwoWay', { value: value });
     }
   }
 
@@ -44,7 +44,7 @@ const ScrollableComponentForBus: React.FC<buttonProps> = ({
         className="common_btn_wrapper"
         onIonChange={(e) => {
           handleButtonClick(e.detail.value);
-          console.log('Segment selected', e.detail.value);
+          //console.log("Segment selected", e.detail.value);
         }}
         value={value}
       >
@@ -67,4 +67,4 @@ const ScrollableComponentForBus: React.FC<buttonProps> = ({
   );
 };
 
-export default ScrollableComponentForBus;
+export default SegmentButtonComponentForFlight;
