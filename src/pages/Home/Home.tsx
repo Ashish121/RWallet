@@ -53,7 +53,7 @@ const HomePage: React.FC = () => {
   }
 
   useEffect(() => {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     dispatch(requestForProfile({ user_id }, nextRoute));
     askPushPermission();
   }, []);

@@ -70,7 +70,7 @@ const RoyalitySavingCredit: React.FC = () => {
   }
 
   function handleproceed() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     const financeName = 'Royality saving and credit co-operative Ltd';
 
     setShowLoading(true);

@@ -16,8 +16,8 @@ import LoaderComponent from '../../components/Spinner/Spinner';
 const Bank: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  //const user_id = localStorage.getItem("userId");
-  const user_id = 2;
+  const user_id = localStorage.getItem('userId');
+
   const [destination, setDestination] = useState('');
   const [holderName, setHolderName] = useState('');
   const [accountNumber, setAccountNumber] = useState('');

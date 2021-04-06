@@ -27,7 +27,7 @@ const Khanepani: React.FC = () => {
     setCustomerID(customerID);
   }
   function handleproceed() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     // {placeName,customerID}
     setShowLoading(true);
     setLoaderMessage('Please Wait...');

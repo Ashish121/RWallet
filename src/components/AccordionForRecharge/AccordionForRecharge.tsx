@@ -29,7 +29,7 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
   };
 
   function handleRearch(title: any) {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     const companyName = title;
     handler?.({
       customerId,
