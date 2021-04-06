@@ -10,6 +10,7 @@ import {
   DatePickerComponent,
   SelectMenu,
   LoaderComponent,
+  ScrollableComponentForBus,
 } from '../../../../components';
 import './BusTwoWay.scss';
 import { useDispatch } from 'react-redux';
@@ -29,7 +30,6 @@ const BusTwoWay: React.FC = () => {
 
   const [travelers, setTravelers] = useState('');
   const [travellersDetails, setTravellersDetails] = useState([{}]);
-  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     const array = [
@@ -112,11 +112,7 @@ const BusTwoWay: React.FC = () => {
     console.log('Selected value: ', travelers);
     setTravelers(travelers);
   }
-  function handleToggle(toggle: any) {
-    toggle = !toggle;
-    setToggle(toggle);
-    history.replace('/tabs/busOneWay');
-  }
+
   function goBack() {
     history.replace('/tabs/busOneWay');
   }
@@ -143,25 +139,7 @@ const BusTwoWay: React.FC = () => {
                 className="toggelButton"
                 style={{ width: '60%', display: 'flex', marginTop: '5%' }}
               >
-                <ButtonConmponent
-                  buttonLabel="One Way"
-                  size="large"
-                  color={!toggle ? 'light' : ''}
-                  clickHandler={handleToggle}
-                  style={{ fontSize: '16px', width: '118% ', height: '2rem' }}
-                />
-                <ButtonConmponent
-                  buttonLabel=" Two Way"
-                  size="large"
-                  style={{
-                    position: 'fixed',
-                    color: 'white',
-                    fontSize: '16px',
-                    width: '50%',
-                    height: '2.2rem',
-                  }}
-                  color={toggle ? 'light' : ''}
-                />
+                <ScrollableComponentForBus />
               </div>
 
               <div

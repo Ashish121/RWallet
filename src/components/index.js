@@ -18,6 +18,8 @@ import AccordionContainerForAntivirus from './AccordionForAntivirus/AccordionFor
 import RangeSlider from './RangeSlider/RangeSlider';
 import BackButton from './BackButton/BackButton';
 import RoyallityWalletMap from './Map/Map';
+import ScrollableComponentForFlight from './ScrollableForFlight/ScrollableComponentForFlight';
+import ScrollableComponentForBus from './ScrollableForBus/ScrollableComponentForBus';
 export {
   InputText,
   ToastComponent,
@@ -39,4 +41,6 @@ export {
   RangeSlider,
   BackButton,
   RoyallityWalletMap,
+  ScrollableComponentForFlight,
+  ScrollableComponentForBus
 };

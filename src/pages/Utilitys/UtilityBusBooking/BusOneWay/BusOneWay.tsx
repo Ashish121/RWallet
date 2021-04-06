@@ -10,6 +10,7 @@ import {
   SelectMenu,
   DatePickerComponent,
   LoaderComponent,
+  ScrollableComponentForBus,
 } from '../../../../components';
 import './BusOneWay.scss';
 import { useDispatch } from 'react-redux';
@@ -23,7 +24,6 @@ const BusOneWay: React.FC = () => {
   const [destCity, setDestCity] = useState('');
   const [departureDate, setDepartureDate] = useState('');
 
-  const [toggle, setToggle] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
 
@@ -109,16 +109,6 @@ const BusOneWay: React.FC = () => {
     setTravellersDetails(array);
   }, []);
 
-  function handleToggle(toggle: any) {
-    toggle = !toggle;
-    if (toggle == true) {
-      history.replace('/tabs/busTwoWay');
-      setToggle(toggle);
-    } else {
-      setToggle(toggle);
-    }
-  }
-
   function goBack() {
     history.replace('/tabs/home');
   }
@@ -146,32 +136,7 @@ const BusOneWay: React.FC = () => {
                 className="toggelButton"
                 style={{ width: '60%', display: 'flex', marginTop: '5%' }}
               >
-                <ButtonConmponent
-                  buttonLabel=" Two Way"
-                  size="large"
-                  style={{
-                    marginLeft: '135px',
-                    position: 'fixed',
-                    color: 'black',
-                    fontSize: '16px',
-                    width: '49%',
-                    height: '2rem',
-                    fontfamily: 'Montserrat',
-                  }}
-                  color={toggle ? '' : 'light'}
-                  clickHandler={handleToggle}
-                />
-                <ButtonConmponent
-                  buttonLabel=" One Way"
-                  size="large"
-                  color={!toggle ? '' : 'light'}
-                  style={{
-                    fontSize: '16px',
-                    width: '123%',
-                    height: '2.2rem',
-                    fontfamily: 'Montserrat',
-                  }}
-                />
+                <ScrollableComponentForBus />
               </div>
 
               <div
