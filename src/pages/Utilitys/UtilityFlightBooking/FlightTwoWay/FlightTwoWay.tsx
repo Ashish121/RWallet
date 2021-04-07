@@ -10,6 +10,7 @@ import {
   DatePickerComponent,
   SelectMenu,
   LoaderComponent,
+  SegmentButtonComponentForFlight,
 } from '../../../../components';
 import './FlightTwoWay.scss';
 import { useDispatch } from 'react-redux';
@@ -27,16 +28,9 @@ const FlightTwoWay: React.FC = () => {
 
   const [classForFlight, setClass] = useState('');
   const [classDetails, setClassDetails] = useState([{}]);
-  const [toggle, setToggle] = useState(false);
 
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
-
-  // const [date, setDate] = useState("");
-  // const [returnDate, setReturnDate] = useState("");
-  //const [toggle, setToggle] = useState(false);
-  // const [classForFlight, setClass] = useState("");
-  // const [classDetails, setClassDetails] = useState([{}]);
 
   useEffect(() => {
     const array = [
@@ -87,7 +81,7 @@ const FlightTwoWay: React.FC = () => {
   }
 
   function handleBusBooking() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     console.log('user_id : ', user_id);
     const roundTrip = '1';
     const travelType = 'flight';
@@ -122,12 +116,6 @@ const FlightTwoWay: React.FC = () => {
     }
   }
 
-  function handleToggle(toggle: any) {
-    toggle = !toggle;
-    setToggle(toggle);
-    history.replace('/tabs/flightOneWay');
-  }
-
   function goBack() {
     history.replace('/tabs/flightOneWay');
   }
@@ -154,25 +142,7 @@ const FlightTwoWay: React.FC = () => {
                 className="toggelButton"
                 style={{ width: '60%', display: 'flex', marginTop: '5%' }}
               >
-                <ButtonConmponent
-                  buttonLabel="One Way"
-                  size="large"
-                  color={!toggle ? 'light' : ''}
-                  clickHandler={handleToggle}
-                  style={{ fontSize: '16px', width: '118% ', height: '2rem' }}
-                />
-                <ButtonConmponent
-                  buttonLabel=" Two Way"
-                  size="large"
-                  style={{
-                    position: 'fixed',
-                    color: 'white',
-                    fontSize: '16px',
-                    width: '50%',
-                    height: '2.2rem',
-                  }}
-                  color={toggle ? 'light' : ''}
-                />
+                <SegmentButtonComponentForFlight />
               </div>
               <div
                 className="booking-twoWay-wrapper"

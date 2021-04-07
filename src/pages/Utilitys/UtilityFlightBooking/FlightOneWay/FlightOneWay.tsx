@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+
 import { useHistory } from 'react-router-dom';
 import { FlightIcon } from '../../../../assets/Icons';
 import { Translate } from '../../../../i18n/formatMessages';
@@ -11,6 +12,7 @@ import {
   DatePickerComponent,
   SelectMenu,
   LoaderComponent,
+  SegmentButtonComponentForFlight,
 } from '../../../../components';
 import './FlightOneWay.scss';
 import { requestForFlightOneWayPage } from '../../../../redux/actions';
@@ -26,7 +28,6 @@ const FlightOneWay: React.FC = () => {
 
   const [classForFlight, setClass] = useState('');
   const [classDetails, setClassDetails] = useState([{}]);
-  const [toggle, setToggle] = useState(false);
 
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
@@ -84,7 +85,7 @@ const FlightOneWay: React.FC = () => {
   }
 
   function handleflightBook() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     const returnDate = '';
     const roundTrip = '0';
     const travelType = 'flight';
@@ -114,16 +115,6 @@ const FlightOneWay: React.FC = () => {
     history.replace('/tabs/home');
   }
 
-  function handleToggle(toggle: any) {
-    toggle = !toggle;
-    if (toggle == true) {
-      history.replace('/tabs/flightTwoWay');
-      setToggle(toggle);
-    } else {
-      setToggle(toggle);
-    }
-  }
-
   return (
     <>
       <LoaderComponent
@@ -147,32 +138,7 @@ const FlightOneWay: React.FC = () => {
                 className="toggelButton"
                 style={{ width: '60%', display: 'flex', marginTop: '5%' }}
               >
-                <ButtonConmponent
-                  buttonLabel=" Two Way"
-                  size="large"
-                  style={{
-                    marginLeft: '135px',
-                    position: 'fixed',
-                    color: 'black',
-                    fontSize: '16px',
-                    width: '49%',
-                    height: '2rem',
-                    fontfamily: 'Montserrat',
-                  }}
-                  color={toggle ? '' : 'light'}
-                  clickHandler={handleToggle}
-                />
-                <ButtonConmponent
-                  buttonLabel=" One Way"
-                  size="large"
-                  color={!toggle ? '' : 'light'}
-                  style={{
-                    fontSize: '16px',
-                    width: '123%',
-                    height: '2.2rem',
-                    fontfamily: 'Montserrat',
-                  }}
-                />
+                <SegmentButtonComponentForFlight />
               </div>
 
               <div
