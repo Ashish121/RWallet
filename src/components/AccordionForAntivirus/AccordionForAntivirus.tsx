@@ -34,7 +34,7 @@ const AccordionContainerForAntivirus: React.FC<AccordionContainerForAntivirusPro
   };
 
   function handleRearch(title: any) {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     const brandName = title;
     const accountType = 'Savings';
     console.log('user_id ...........', user_id);

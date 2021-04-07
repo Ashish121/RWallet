@@ -16,8 +16,8 @@ import LoaderComponent from '../../components/Spinner/Spinner';
 const Agent: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  //const user_id = localStorage.getItem("userId");
-  const user_id = 2;
+  const user_id = localStorage.getItem('userId');
+
   const [country, setCountry] = useState('');
   const [countryDetails, setCountryDetails] = useState([{}]);
   const [agentCode, setAgentCode] = useState('');

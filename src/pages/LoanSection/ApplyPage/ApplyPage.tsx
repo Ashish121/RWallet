@@ -54,7 +54,7 @@ const ApplyPage: React.FC = () => {
   }
 
   function handleApply() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     // const loanType = "Business Loan";
     setShowLoading(true);
     setLoaderMessage('Please Wait...');

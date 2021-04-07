@@ -64,7 +64,7 @@ const CardPayment: React.FC = () => {
   }
 
   function handleproceed() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     setShowLoading(true);
     setLoaderMessage('Please Wait...');
     dispatch(

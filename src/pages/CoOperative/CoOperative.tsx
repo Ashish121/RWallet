@@ -11,8 +11,7 @@ import LoaderComponent from '../../components/Spinner/Spinner';
 const CoOperative: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const user_id = 2;
-  // const user_id = localStorage.getItem("userId");
+  const user_id = localStorage.getItem('userId');
   const [province, setProvince] = useState('');
   const [district, setDistrict] = useState('');
   const [copName, setCopName] = useState('');
@@ -93,7 +92,6 @@ const CoOperative: React.FC = () => {
   }
   function handleClearButton() {
     alert('are you want to clear all field ?');
-
   }
   return (
     <>
@@ -200,13 +198,13 @@ const CoOperative: React.FC = () => {
                         size="block"
                         disabled={
                           province.trim() &&
-                        district.trim() &&
-                        copName.trim() &&
-                        holderName.trim() &&
-                        accountNo.trim() &&
-                        mobileNo.trim() &&
-                        amount.trim() &&
-                        remarks.trim()
+                          district.trim() &&
+                          copName.trim() &&
+                          holderName.trim() &&
+                          accountNo.trim() &&
+                          mobileNo.trim() &&
+                          amount.trim() &&
+                          remarks.trim()
                             ? false
                             : true
                         }
