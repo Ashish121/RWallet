@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
+import debounce from 'lodash.debounce';
 import {
   ButtonConmponent,
   InputText,
@@ -11,44 +12,32 @@ import {
 } from '../../../components';
 import './CardPayment.scss';
 import { useDispatch } from 'react-redux';
-import { requestForCreditCardPayment } from '../../../redux/actions';
+import {
+  requestForCreditCardPayment,
+  loadBankList,
+} from '../../../redux/actions';
 
 const CardPayment: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [amount, setAmount] = useState('');
-  const [bankName, setBankName] = useState('');
+
   const [cardNumber, setCardNumber] = useState('');
-  const [bankDetails, setBankDetails] = useState([{}]);
+
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
+  const [bankName, setBankName] = useState([{}]);
+  const [selectedBankName, setSelectedBankName] = useState('');
 
   useEffect(() => {
-    const array = [
-      {
-        value: 'bank-A',
-        label: 'Bank-A',
-      },
-      {
-        value: 'bank-B',
-        label: 'Bank-B',
-      },
-      {
-        value: 'bank-C',
-        label: 'Bank-C',
-      },
-    ];
-    setBankDetails(array);
+    dispatch(loadBankList(setBankNameList));
   }, []);
 
   function updateAmount(amount: any) {
     console.log('amount : ', amount);
     setAmount(amount);
   }
-  function OnSelectBankName(bankName: any) {
-    console.log('Selected bank value: ', bankName);
-    setBankName(bankName);
-  }
+
   function updateCardNumber(cardNumber: any) {
     console.log('cardNumber : ', cardNumber);
     setCardNumber(cardNumber);
@@ -69,7 +58,7 @@ const CardPayment: React.FC = () => {
     setLoaderMessage('Please Wait...');
     dispatch(
       requestForCreditCardPayment(
-        { user_id, amount, bankName, cardNumber },
+        { user_id, amount, bankName: selectedBankName, cardNumber },
         nextRoute
       )
     );
@@ -79,6 +68,30 @@ const CardPayment: React.FC = () => {
     history.replace('/tabs/home');
   }
 
+  function setBankNameList(res: any) {
+    console.log('setting data: ', res);
+    const bankNames = res.data.data;
+    configureBankList(bankNames);
+  }
+  function configureBankList(array: any) {
+    let finalArray: any = [];
+    array.forEach((element: any) => {
+      let tempObj = {
+        value: element,
+        label: element,
+      };
+      finalArray.push(tempObj);
+    });
+    updateBank(finalArray);
+  }
+
+  function updateBank(array: any) {
+    setBankName(array);
+  }
+  const handleBank = debounce((val: any) => {
+    console.log('Selected bankName: ', val);
+    setSelectedBankName(val);
+  }, 300);
   return (
     <>
       <LoaderComponent
@@ -100,8 +113,8 @@ const CardPayment: React.FC = () => {
               <div className="credit-card-wrapper">
                 <SelectMenu
                   label="UtilityBankName"
-                  onSelect={OnSelectBankName}
-                  array={bankDetails}
+                  array={bankName}
+                  onSelect={handleBank}
                 />
 
                 <InputText
@@ -133,7 +146,9 @@ const CardPayment: React.FC = () => {
                       buttonLabel="UtilityConfirm"
                       size="block"
                       disabled={
-                        amount.trim() && bankName.trim() && cardNumber.trim()
+                        amount.trim() &&
+                        selectedBankName.trim() &&
+                        cardNumber.trim()
                           ? false
                           : true
                       }

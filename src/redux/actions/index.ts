@@ -22,7 +22,7 @@ export { requestForEmiCalculaterPage } from './EmiCalculater';
 export { requestForFlightOneWayPage } from './FlightOneWay';
 export { requestForTvPayment } from './TvPayment';
 export { requestForRoyalitySavingCreditPage } from './RoyalitySavingCredit';
-export { requestForCreditCardPayment } from './CardPayment';
+export { requestForCreditCardPayment,loadBankList } from './CardPayment';
 export { requestForInternetPayment } from './InternetPayment';
 export { requestForTopUpRecharge } from './TopUpRecharge';
 export { requestForAntivirusPayment } from './AntivirusPayment';
