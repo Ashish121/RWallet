@@ -763,3 +763,18 @@ export const logout = async (): Promise<any> => {
   console.log('result: ', result);
   return result;
 };
+
+//Destination bank name list
+export const getBankAllNameList = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bank_detail',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('result: ', result);
+  return result;
+};

@@ -101,3 +101,4 @@ export const  ANTIVIRUS_FAILED = '  ANTIVIRUS_FAILED';
 //for profile section page
 export const PROFILE_SUCCESS = 'PROFILE_SUCCESS';
 export const  PROFILE_FAILED = 'PROFILE_FAILED';
+
