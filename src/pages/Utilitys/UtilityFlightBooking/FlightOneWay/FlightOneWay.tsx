@@ -85,7 +85,7 @@ const FlightOneWay: React.FC = () => {
   }
 
   function handleflightBook() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     const returnDate = '';
     const roundTrip = '0';
     const travelType = 'flight';

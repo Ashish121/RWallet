@@ -79,7 +79,7 @@ const BusTwoWay: React.FC = () => {
   }
 
   function handleBusTwoWayBooking() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     const roundTrip = '1';
     const travelType = 'Bus';
     const classForFlight = 'empty';

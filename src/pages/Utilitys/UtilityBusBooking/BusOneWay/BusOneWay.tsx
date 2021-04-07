@@ -56,7 +56,7 @@ const BusOneWay: React.FC = () => {
   }
 
   function handleBusBooking() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     const returnDate = 'empty';
     const roundTrip = '0';
     const travelType = 'Bus';
