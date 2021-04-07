@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { useDispatch } from 'react-redux';
 import { Translate } from '../../i18n/formatMessages';
+import debounce from 'lodash.debounce';
 import {
   ButtonConmponent,
   InputText,
   HeaderComponent,
-  // SelectMenu,
+  SelectMenu,
 } from '../../components';
 import './Bank.scss';
-import { requestForBankTransfer } from '../../redux/actions/';
+import { requestForBankTransfer, loadBankList } from '../../redux/actions/';
 import LoaderComponent from '../../components/Spinner/Spinner';
 
 const Bank: React.FC = () => {
@@ -18,7 +19,7 @@ const Bank: React.FC = () => {
   const dispatch = useDispatch();
   const user_id = localStorage.getItem('userId');
 
-  const [destination, setDestination] = useState('');
+  // const [destination, setDestination] = useState('');
   const [holderName, setHolderName] = useState('');
   const [accountNumber, setAccountNumber] = useState('');
   const [mobileNo, setMobileNo] = useState('');
@@ -26,11 +27,17 @@ const Bank: React.FC = () => {
   const [remarks, setRemarks] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoaderMessage] = useState('');
+  const [bankName, setBankName] = useState([{}]);
+  const [selectedBankName, setSelectedBankName] = useState('');
 
-  function updateDestination(destination: any) {
-    console.log('destination :', destination);
-    setDestination(destination);
-  }
+  // function updateDestination(destination: any) {
+  //   console.log('destination :', destination);
+  //   setDestination(destination);
+  // }
+  useEffect(() => {
+    dispatch(loadBankList(setBankNameList));
+  }, []);
+
   function updateHolderName(holderName: any) {
     console.log('holderName :', holderName);
     setHolderName(holderName);
@@ -72,7 +79,7 @@ const Bank: React.FC = () => {
       requestForBankTransfer(
         {
           user_id,
-          destination,
+          destination: selectedBankName,
           holderName,
           accountNumber,
           mobileNo,
@@ -93,6 +100,31 @@ const Bank: React.FC = () => {
     history.replace('/tabs/transfer');
   }
 
+  function setBankNameList(res: any) {
+    console.log('setting data: ', res);
+    const bankNames = res.data.data;
+    configureBankList(bankNames);
+  }
+  function configureBankList(array: any) {
+    let finalArray: any = [];
+    array.forEach((element: any) => {
+      let tempObj = {
+        value: element,
+        label: element,
+      };
+      finalArray.push(tempObj);
+    });
+    updateBank(finalArray);
+  }
+
+  function updateBank(array: any) {
+    setBankName(array);
+  }
+  const handleBank = debounce((val: any) => {
+    console.log('Selected bankName: ', val);
+    setSelectedBankName(val);
+  }, 300);
+
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
@@ -110,7 +142,7 @@ const Bank: React.FC = () => {
                   <Translate message="fund.bankTrasfer" />
                 </IonText>
                 <div className="bank-wrapper">
-                  <InputText
+                  {/* <InputText
                     inputType="text"
                     labelText="bank.destination"
                     labelType="floating"
@@ -118,12 +150,12 @@ const Bank: React.FC = () => {
                     labelColor="light"
                     onChange={updateDestination}
                     clearInput={true}
-                  />
-                  {/* <SelectMenu
-                    label="bank.destination"
-                    // array={bankName}
-                    onSelect={updateDestination}
                   /> */}
+                  <SelectMenu
+                    label="bank.destination"
+                    array={bankName}
+                    onSelect={handleBank}
+                  />
                   <InputText
                     inputType="text"
                     labelText="bank.holderName"
@@ -183,7 +215,7 @@ const Bank: React.FC = () => {
                         buttonLabel="bank.proceed"
                         size="block"
                         disabled={
-                          destination.trim() &&
+                          selectedBankName.trim() &&
                           holderName.trim() &&
                           accountNumber.trim() &&
                           mobileNo.trim() &&

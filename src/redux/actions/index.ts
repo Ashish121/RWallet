@@ -1,7 +1,7 @@
 export { requestForLogin, requestForLogout } from './Login';
 export { updateToast } from './Toast';
 export { requestForAgentTransfer } from './Agent';
-export { requestForBankTransfer } from './Bank';
+export { requestForBankTransfer,loadDestinationBankList } from './Bank';
 export { requestForFixedAccount } from './Fixed';
 export { requestForCurrentAccount } from './Current';
 export { requestForCoOperativeBankTransfer } from './CoOperative';

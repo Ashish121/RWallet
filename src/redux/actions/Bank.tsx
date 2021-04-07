@@ -1,5 +1,8 @@
 import { BANKTRANSFER_SUCCESS } from '../Contants';
-import { authenticationForBankTransfer } from '../../services/Connect';
+import {
+  authenticationForBankTransfer,
+  getBankAllNameList,
+} from '../../services/Connect';
 import { updateToast } from './index';
 
 const requestForBankTransfer = (payload: any, nextRoute: Function) => {
@@ -32,4 +35,27 @@ const requestForBankTransfer = (payload: any, nextRoute: Function) => {
     }
   };
 };
-export { requestForBankTransfer };
+const loadDestinationBankList = (callback: Function) => {
+  return async (dispatch: any) => {
+    dispatch({ type: BANKTRANSFER_SUCCESS, data: { status: true } });
+    try {
+      const response = await getBankAllNameList();
+      if (response.status === 200 && response.data.success) {
+        dispatch({ type: BANKTRANSFER_SUCCESS, data: { status: false } });
+        localStorage.setItem('BankNameList', JSON.stringify(response));
+        callback(response);
+      }
+      console.log('done', response);
+    } catch (error) {
+      const data = {
+        showToast: true,
+        toastMessage: 'API failed',
+        position: 'top',
+        duration: '10000',
+      };
+      dispatch({ type: BANKTRANSFER_SUCCESS, data: { status: false } });
+      dispatch(updateToast(data));
+    }
+  };
+};
+export { requestForBankTransfer, loadDestinationBankList };
