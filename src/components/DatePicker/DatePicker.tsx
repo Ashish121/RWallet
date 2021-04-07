@@ -24,7 +24,8 @@ const DatePickerComponent: React.FC<{
           </IonLabel>
           <IonDatetime
             style={{ color: '#ffffff' }}
-            displayFormat="MMM DD YYYY"
+            //displayFormat="MMM DD YYYY"
+            displayFormat="MM/DD/YYYY"
             min="1970-06-04"
             value={selectedDate}
             onIonChange={(e) => handleDate(e.detail.value!)}
