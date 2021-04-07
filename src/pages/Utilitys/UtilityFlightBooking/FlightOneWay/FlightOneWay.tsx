@@ -61,11 +61,6 @@ const FlightOneWay: React.FC = () => {
     setDestCity(destCity);
   }
 
-  function updateTravelers(travelers: any) {
-    console.log('travelers: ', travelers);
-    setTravelers(travelers);
-  }
-
   function handleDate(departureDate: any) {
     console.log('departureDate: ', departureDate);
     setDepartureDate(departureDate);
@@ -102,7 +97,7 @@ const FlightOneWay: React.FC = () => {
           sourceCity,
           destCity,
           departureDate,
-          travelers,
+          travelers: travelers,
           classForFlight,
         },
         nextRoute
@@ -115,6 +110,10 @@ const FlightOneWay: React.FC = () => {
     history.replace('/tabs/home');
   }
 
+  function handleTravelersValue(travelers: any) {
+    console.log('travelers', travelers);
+    setTravelers(travelers);
+  }
   return (
     <>
       <LoaderComponent
@@ -179,13 +178,19 @@ const FlightOneWay: React.FC = () => {
                       handler={handleDate}
                     />
 
-                    <InputText
-                      inputType="text"
-                      labelText="UtilityTravellers"
-                      labelType="floating"
-                      color="light"
-                      labelColor="light"
-                      onChange={updateTravelers}
+                    <SelectMenu
+                      label="UtilityTravellers"
+                      array={[
+                        {
+                          value: '1',
+                          label: 1,
+                        },
+                        {
+                          value: '2',
+                          label: 2,
+                        },
+                      ]}
+                      onSelect={handleTravelersValue}
                     />
 
                     <SelectMenu

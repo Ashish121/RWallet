@@ -61,8 +61,8 @@ const FlightTwoWay: React.FC = () => {
     setDestCity(destCity);
   }
 
-  function updateTravelers(travelers: any) {
-    console.log('travelers: ', travelers);
+  function handleTravelersValue(travelers: any) {
+    console.log('travelers', travelers);
     setTravelers(travelers);
   }
 
@@ -98,7 +98,7 @@ const FlightTwoWay: React.FC = () => {
           sourceCity,
           destCity,
           departureDate,
-          travelers,
+          travelers: travelers,
           classForFlight,
         },
         nextRoute
@@ -195,13 +195,19 @@ const FlightTwoWay: React.FC = () => {
                 </div>
 
                 <div className="departure-twoWay-area" style={{ width: '45%' }}>
-                  <InputText
-                    inputType="text"
-                    labelText="UtilityTravellers"
-                    labelType="floating"
-                    color="light"
-                    labelColor="light"
-                    onChange={updateTravelers}
+                  <SelectMenu
+                    label="UtilityTravellers"
+                    array={[
+                      {
+                        value: '1',
+                        label: 1,
+                      },
+                      {
+                        value: '2',
+                        label: 2,
+                      },
+                    ]}
+                    onSelect={handleTravelersValue}
                   />
                   <SelectMenu
                     label="UtilityClass"
