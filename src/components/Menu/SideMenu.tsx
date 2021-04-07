@@ -28,14 +28,10 @@ const MenuComponent: React.FC<any> = () => {
   const { Camera } = Plugins;
   const history = useHistory();
   const dispatch = useDispatch();
-  const profileData = useSelector((state: any) => state.profile.profileDetails);
-  console.log('profile in sidebar*****', profileData);
 
   const profileFields = useSelector(
     (state: any) => state.profile.profileDetails
   );
-  //console.log("profile in sidebar*****", profileFields);
-
   const closeMenu = () => {
     menuController.toggle();
   };
