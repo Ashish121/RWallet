@@ -35,9 +35,7 @@ import { AntivirusPayment } from './Utilitys/UtilityAntivirus/AntivirusPayment/A
 import { ApplyPage } from './LoanSection/ApplyPage/ApplyPage';
 import { EmiCalculater } from './LoanSection/EmiCalculater/EmiCalculater';
 import { FlightOneWay } from './Utilitys/UtilityFlightBooking/FlightOneWay/FlightOneWay';
-import { FlightTwoWay } from './Utilitys/UtilityFlightBooking/FlightTwoWay/FlightTwoWay';
 import { BusOneWay } from './Utilitys/UtilityBusBooking/BusOneWay/BusOneWay';
-import { BusTwoWay } from './Utilitys/UtilityBusBooking/BusTwoWay/BusTwoWay';
 import { LoanType } from './LoanSection/LoanType/LoanType';
 import { TopUpRecharge } from './Utilitys/UtilityTopUpRecharge/TopUpRecharge';
 import { TvPayment } from './Utilitys/UtilityTvPayment/TvPayment';
@@ -87,9 +85,7 @@ export {
   ApplyPage,
   EmiCalculater,
   FlightOneWay,
-  FlightTwoWay,
   BusOneWay,
-  BusTwoWay,
   LoanType,
   TopUpRecharge,
   TvPayment,
