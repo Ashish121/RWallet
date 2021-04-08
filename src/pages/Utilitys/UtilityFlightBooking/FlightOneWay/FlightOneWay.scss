@@ -22,11 +22,28 @@
     .booking-section {
       display: flex;
       width: 100%;
+      .select-text {
+        flex: 1 1 0%;
+        min-width: 100%;
+        font-size: inherit;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        // overflow: hidden;
+      }
     }
-    .booking-from {
-      display: flex;
-      width: 100%;
-    }
+    // .booking-from {
+    //   display: flex;
+    //   width: 100%;
+
+    //   .select-text {
+    //     flex: 1 1 0%;
+    //     min-width: 100%;
+    //     font-size: inherit;
+    //     text-overflow: ellipsis;
+    //     white-space: nowrap;
+    //     // overflow: hidden;
+    //   }
+    // }
     .flight-icon {
       display: flex;
       margin-right: 5px;
@@ -81,8 +98,8 @@
     margin-top: 60px;
     .booking-twoWay-section {
       display: flex;
-      width: 100%;
     }
+
     .booking-twoWay-from {
       display: flex;
       width: 100%;

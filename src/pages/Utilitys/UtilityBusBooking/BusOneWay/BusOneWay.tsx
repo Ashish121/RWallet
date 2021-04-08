@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
-
+import debounce from 'lodash.debounce';
 import { useHistory } from 'react-router-dom';
 import { BusBookingIcon } from '../../../../assets/Icons';
 import { Translate } from '../../../../i18n/formatMessages';
 import { useDispatch } from 'react-redux';
 import {
   ButtonConmponent,
-  InputText,
   HeaderComponent,
   DatePickerComponent,
   SelectMenu,
@@ -15,13 +14,14 @@ import {
   SegmentButtonComponent,
 } from '../../../../components';
 import './BusOneWay.scss';
-import { requestForFlightOneWayPage } from '../../../../redux/actions';
+import {
+  requestForFlightOneWayPage,
+  loadCityNameForBus,
+} from '../../../../redux/actions';
 
 const BusOneWay: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [sourceCity, setSourceCity] = useState('');
-  const [destCity, setDestCity] = useState('');
   const [departureDate, setDepartureDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
   const [travelers, setTravelers] = useState('');
@@ -34,6 +34,14 @@ const BusOneWay: React.FC = () => {
   const [showOneWaySection, setShowOneWaySection] = useState(true);
   const [showTwoWaySection, setShowTwoWaySection] = useState(false);
   const [roundTrip, setRoundTrip] = useState('0');
+
+  const [destinationCity, setDestinationCity] = useState([{}]);
+  const [selectedSourceCity, setSelectedSourceCity] = useState('');
+  const [selectedDestinationPlace, setSelectedDestinationPlace] = useState('');
+
+  useEffect(() => {
+    dispatch(loadCityNameForBus(setDestinationCityList));
+  }, []);
 
   useEffect(() => {
     const array = [
@@ -57,14 +65,6 @@ const BusOneWay: React.FC = () => {
 
     setTravelersDetails(array);
   }, []);
-
-  function updateSourceCity(sourceCity: any) {
-    setSourceCity(sourceCity);
-  }
-
-  function updateDestCity(destCity: any) {
-    setDestCity(destCity);
-  }
 
   function handleDate(departureDate: any) {
     setDepartureDate(departureDate);
@@ -99,8 +99,8 @@ const BusOneWay: React.FC = () => {
           returnDate,
           roundTrip,
           travelType,
-          sourceCity,
-          destCity,
+          sourceCity: selectedSourceCity,
+          destCity: selectedDestinationPlace,
           departureDate,
           travelers,
           classForFlight,
@@ -127,6 +127,38 @@ const BusOneWay: React.FC = () => {
       setShowTwoWaySection(true);
     }
   }
+
+  //for selected source  and destination list ................
+
+  function setDestinationCityList(res: any) {
+    console.log('setting data: ', res);
+    const destinationCitys = res.data.data;
+    configureCityList(destinationCitys);
+  }
+  function configureCityList(array: any) {
+    let finalArray: any = [];
+    array.forEach((element: any) => {
+      let tempObj = {
+        value: element,
+        label: element,
+      };
+      finalArray.push(tempObj);
+    });
+    updateCityList(finalArray);
+  }
+
+  function updateCityList(array: any) {
+    setDestinationCity(array);
+  }
+  const handleSourceCity = debounce((val: any) => {
+    console.log('Selected source city: ', val);
+    setSelectedSourceCity(val);
+  }, 300);
+
+  const handleDestinationCity = debounce((val: any) => {
+    console.log('Selected destination city: ', val);
+    setSelectedDestinationPlace(val);
+  }, 300);
 
   return (
     <>
@@ -158,29 +190,31 @@ const BusOneWay: React.FC = () => {
                   style={{ marginTop: '15px' }}
                 >
                   <div className="booking-section">
-                    <div className="booking-from">
-                      <InputText
-                        inputType="text"
-                        labelText="UtilityFlightFrom"
-                        labelType="floating"
-                        color="light"
-                        labelColor="light"
-                        onChange={updateSourceCity}
+                    <div
+                      className="flight-return"
+                      style={{ width: '45%', marginLeft: '0px' }}
+                    >
+                      <SelectMenu
+                        label="UtilityFlightFrom"
+                        array={destinationCity}
+                        onSelect={handleSourceCity}
                       />
                     </div>
+
                     <div className="flight-icon">
                       <IonText className="profile-icon-wrapper">
                         <BusBookingIcon width="140" height="140" />
                       </IonText>
                     </div>
-                    <div className="booking-to">
-                      <InputText
-                        inputType="text"
-                        labelText="UtilityFlightTo"
-                        labelType="floating"
-                        color="light"
-                        labelColor="light"
-                        onChange={updateDestCity}
+
+                    <div
+                      className="flight-return"
+                      style={{ width: '45%', marginLeft: '0px' }}
+                    >
+                      <SelectMenu
+                        label="UtilityFlightTo"
+                        array={destinationCity}
+                        onSelect={handleDestinationCity}
                       />
                     </div>
                   </div>
@@ -214,14 +248,11 @@ const BusOneWay: React.FC = () => {
                   style={{ marginTop: '15px' }}
                 >
                   <div className="booking-twoWay-section">
-                    <div className="booking-twoWay-from">
-                      <InputText
-                        inputType="text"
-                        labelText="UtilityFlightFrom"
-                        labelType="floating"
-                        color="light"
-                        labelColor="light"
-                        onChange={updateSourceCity}
+                    <div style={{ width: '45%', marginLeft: '0px' }}>
+                      <SelectMenu
+                        label="UtilityFlightFrom"
+                        array={destinationCity}
+                        onSelect={handleSourceCity}
                       />
                     </div>
                     <div className="flight-twoWay-icon">
@@ -229,14 +260,12 @@ const BusOneWay: React.FC = () => {
                         <BusBookingIcon width="140" height="140" />
                       </IonText>
                     </div>
-                    <div className="booking-twoWay-to">
-                      <InputText
-                        inputType="text"
-                        labelText="UtilityFlightTo"
-                        labelType="floating"
-                        color="light"
-                        labelColor="light"
-                        onChange={updateDestCity}
+
+                    <div style={{ width: '45%', marginLeft: '0px' }}>
+                      <SelectMenu
+                        label="UtilityFlightTo"
+                        array={destinationCity}
+                        onSelect={handleDestinationCity}
                       />
                     </div>
                   </div>

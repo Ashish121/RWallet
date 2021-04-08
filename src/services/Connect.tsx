@@ -778,3 +778,33 @@ export const getBankAllNameList = async (): Promise<any> => {
   console.log('result: ', result);
   return result;
 };
+
+//Destination and source place city name list for flight
+export const getFlightPlaceDetails = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/flight_details',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//Destination and source place city name list for Bus
+export const getBusPlacesDetails = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bus_details',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('result: ', result);
+  return result;
+};
