@@ -17,7 +17,7 @@ const SegmentButtonComponent: React.FC<buttonProps> = ({
 
   function handleButtonClick(value: any) {
     clickHandler?.();
-    console.log('value is *******', value);
+    // console.log('value is *******', value);
     handler?.({
       value,
     });
@@ -27,7 +27,7 @@ const SegmentButtonComponent: React.FC<buttonProps> = ({
     if (value === 'two_way') {
       const toggle = true;
       setToggle(toggle);
-      console.log('toggle value :', toggle);
+      // console.log('toggle value :', toggle);
     }
   }
 
@@ -35,7 +35,7 @@ const SegmentButtonComponent: React.FC<buttonProps> = ({
     if (value === 'one_way') {
       const toggle = false;
       setToggle(toggle);
-      console.log('toggle value :', toggle);
+      //console.log('toggle value :', toggle);
     }
   }
   return (

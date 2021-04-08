@@ -56,25 +56,20 @@ const FlightOneWay: React.FC = () => {
   }, []);
 
   function updateSourceCity(sourceCity: any) {
-    console.log('sourceCity: ', sourceCity);
     setSourceCity(sourceCity);
   }
 
   function updateDestCity(destCity: any) {
-    console.log('destCity: ', destCity);
     setDestCity(destCity);
   }
 
   function handleDate(departureDate: any) {
-    console.log('departureDate: ', departureDate);
     setDepartureDate(departureDate);
   }
   function handleReturnDate(returnDate: any) {
-    console.log('returnDate: ', returnDate);
     setReturnDate(returnDate);
   }
   function onClassSelect(classForFlight: any) {
-    console.log('Selected class: ', classForFlight);
     setClass(classForFlight);
   }
 
@@ -109,16 +104,7 @@ const FlightOneWay: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration***********************');
-    console.log('user_id :', user_id);
-    console.log('sourceCity :', sourceCity);
-    console.log('destCity :', destCity);
-    console.log('departureDate :', departureDate);
-    console.log('returnDate :', returnDate);
-    console.log(' travelType :', travelType);
-    console.log('roundTrip :', roundTrip);
-    console.log(' travelers :', travelers);
-    console.log(' classForFlight :', classForFlight);
+    console.log('Handling registration');
   }
 
   function goBack() {
@@ -126,13 +112,11 @@ const FlightOneWay: React.FC = () => {
   }
 
   function handleTravelersValue(travelers: any) {
-    console.log('travelers', travelers);
     setTravelers(travelers);
   }
 
   function getReachargeDetails(data: any) {
     const value = data.value;
-    console.log('getReachargeDetails : ', value);
     if (value === 'one_way') {
       setRoundTrip('0');
       setShowOneWaySection(true);

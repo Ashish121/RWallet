@@ -59,25 +59,20 @@ const BusOneWay: React.FC = () => {
   }, []);
 
   function updateSourceCity(sourceCity: any) {
-    console.log('sourceCity: ', sourceCity);
     setSourceCity(sourceCity);
   }
 
   function updateDestCity(destCity: any) {
-    console.log('destCity: ', destCity);
     setDestCity(destCity);
   }
 
   function handleDate(departureDate: any) {
-    console.log('departureDate: ', departureDate);
     setDepartureDate(departureDate);
   }
   function handleReturnDate(returnDate: any) {
-    console.log('returnDate: ', returnDate);
     setReturnDate(returnDate);
   }
   function OnTravelersSelect(travelers: any) {
-    console.log('Selected class: ', travelers);
     setTravelers(travelers);
   }
 
@@ -113,16 +108,7 @@ const BusOneWay: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration***********************');
-    console.log('user_id :', user_id);
-    console.log('sourceCity :', sourceCity);
-    console.log('destCity :', destCity);
-    console.log('departureDate :', departureDate);
-    console.log('returnDate :', returnDate);
-    console.log(' travelType :', travelType);
-    console.log('roundTrip :', roundTrip);
-    console.log(' travelers :', travelers);
-    console.log(' classForFlight :', classForFlight);
+    console.log('Handling registration');
   }
 
   function goBack() {
@@ -131,7 +117,6 @@ const BusOneWay: React.FC = () => {
 
   function getReachargeDetails(data: any) {
     const value = data.value;
-    console.log('getReachargeDetails : ', value);
     if (value === 'one_way') {
       setRoundTrip('0');
       setShowOneWaySection(true);
@@ -163,7 +148,7 @@ const BusOneWay: React.FC = () => {
               </IonText>
               <div
                 className="toggelButton"
-                style={{ width: '60%', display: 'flex', marginTop: '5%' }}
+                style={{ width: '60%', display: 'flex', marginTop: '6%' }}
               >
                 <SegmentButtonComponent handler={getReachargeDetails} />
               </div>
@@ -216,7 +201,7 @@ const BusOneWay: React.FC = () => {
 
                   <div className="bookingButtonForBus">
                     <ButtonConmponent
-                      buttonLabel="UtilityBookFlight"
+                      buttonLabel="UtilityBus"
                       size="block"
                       clickHandler={handleBusBooking}
                     />
@@ -286,7 +271,7 @@ const BusOneWay: React.FC = () => {
                   </div>
                   <div className="bookingButtonForBusTwoWay">
                     <ButtonConmponent
-                      buttonLabel="UtilityBookFlight"
+                      buttonLabel="UtilityBus"
                       size="block"
                       clickHandler={handleBusBooking}
                     />
