@@ -1,41 +1,41 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { IonSegment, IonSegmentButton, IonLabel } from '@ionic/react';
-import './SegmentButtonComponentForFlight.scss';
+import './SegmentButtonComponent.scss';
 
 interface buttonProps {
   clickHandler?: Function;
   value?: string;
+  handler?: Function;
 }
 
-const SegmentButtonComponentForFlight: React.FC<buttonProps> = ({
+const SegmentButtonComponent: React.FC<buttonProps> = ({
   clickHandler,
   value,
+  handler,
 }) => {
-  const history = useHistory();
   const [toggle, setToggle] = useState(false);
 
   function handleButtonClick(value: any) {
     clickHandler?.();
-    if (value === 'one_way') {
-      history.replace('/tabs/flightOneWay', { value: value });
-    }
-
-    if (value === 'two_way') {
-      history.replace('/tabs/flightTwoWay', { value: value });
-    }
+    // console.log('value is *******', value);
+    handler?.({
+      value,
+    });
   }
 
   function handleClickButtonTwoWay(value: any) {
     if (value === 'two_way') {
       const toggle = true;
       setToggle(toggle);
+      // console.log('toggle value :', toggle);
     }
   }
 
   function handleClickButtonForOneWay(value: any) {
     if (value === 'one_way') {
+      const toggle = false;
       setToggle(toggle);
+      //console.log('toggle value :', toggle);
     }
   }
   return (
@@ -44,7 +44,6 @@ const SegmentButtonComponentForFlight: React.FC<buttonProps> = ({
         className="common_btn_wrapper"
         onIonChange={(e) => {
           handleButtonClick(e.detail.value);
-          //console.log("Segment selected", e.detail.value);
         }}
         value={value}
       >
@@ -67,4 +66,4 @@ const SegmentButtonComponentForFlight: React.FC<buttonProps> = ({
   );
 };
 
-export default SegmentButtonComponentForFlight;
+export default SegmentButtonComponent;

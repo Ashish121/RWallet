@@ -19,7 +19,7 @@ export { requestForApplyPage } from './Apply';
 export { requestForNepalElectricityPage } from './NepalElectricity';
 export { requestForKhanepaniPage } from './Khanepani';
 export { requestForEmiCalculaterPage } from './EmiCalculater';
-export { requestForFlightOneWayPage } from './FlightOneWay';
+export { requestForFlightOneWayPage ,loadCityNameForFlight,loadCityNameForBus} from './FlightOneWay';
 export { requestForTvPayment } from './TvPayment';
 export { requestForRoyalitySavingCreditPage } from './RoyalitySavingCredit';
 export { requestForCreditCardPayment,loadBankList } from './CardPayment';
