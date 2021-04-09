@@ -6,9 +6,9 @@ import { Translate } from '../../../../i18n/formatMessages';
 import { requestForAntivirusPayment } from '../../../../redux/actions';
 import {
   ButtonConmponent,
-  InputText,
   HeaderComponent,
   LoaderComponent,
+  SelectMenu,
 } from '../../../../components';
 import './AntivirusPayment.scss';
 
@@ -16,12 +16,13 @@ const AntivirusPayment: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
-  const [accountType, setAccountType] = useState('');
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
   const [user_id, setUser_id] = useState('');
   const [brandName, setBrandName] = useState('');
   const [planName, setPlanName] = useState('');
+  const [accountType, setAccountType] = useState('');
+  const [accountDetails, setAccountTypeDetails] = useState([{}]);
 
   useEffect(() => {
     const params: any = location.state;
@@ -31,6 +32,25 @@ const AntivirusPayment: React.FC = () => {
     setBrandName(brandName);
     const planName = params.data.planName;
     setPlanName(planName);
+  }, []);
+
+  useEffect(() => {
+    const array = [
+      {
+        value: 'saving',
+        label: 'Saving Account',
+      },
+      {
+        value: 'current',
+        label: 'Current Account',
+      },
+      {
+        value: 'fixed',
+        label: 'Fixed Account',
+      },
+    ];
+
+    setAccountTypeDetails(array);
   }, []);
 
   function nextRoute(status: any) {
@@ -65,15 +85,13 @@ const AntivirusPayment: React.FC = () => {
     );
   }
 
-  function updateAccountType(accountType: any) {
-    console.log('accountType', accountType);
-    setAccountType(accountType);
-  }
-
   function goBack() {
     history.replace('/tabs/antivirus');
   }
 
+  function updateAccountType(accountType: any) {
+    setAccountType(accountType);
+  }
   return (
     <>
       <LoaderComponent
@@ -93,13 +111,10 @@ const AntivirusPayment: React.FC = () => {
                 <Translate message="AntivirusPaymentOption" />
               </IonText>
               <div className="antivirus-payment-wrapper">
-                <InputText
-                  inputType="text"
-                  labelText="AntivirusSelectBank"
-                  labelType="floating"
-                  color="light"
-                  labelColor="light"
-                  onChange={updateAccountType}
+                <SelectMenu
+                  label="AntivirusSelectBank"
+                  onSelect={updateAccountType}
+                  array={accountDetails}
                 />
                 <div className="AntivirusPayment-OrderDetails">
                   <IonText className="antivirus-payment-spersky">
@@ -109,7 +124,7 @@ const AntivirusPayment: React.FC = () => {
 
                 <div className="AntivirusPayment-spersky">
                   <IonText className="antivirus-payment-spersky">
-                    <Translate message="Antiviruskaspersky" />
+                    {planName}
                   </IonText>
                 </div>
 
