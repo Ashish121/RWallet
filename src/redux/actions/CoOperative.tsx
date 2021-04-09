@@ -37,4 +37,5 @@ const requestForCoOperativeBankTransfer = (
     }
   };
 };
+
 export { requestForCoOperativeBankTransfer };
