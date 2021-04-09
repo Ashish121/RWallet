@@ -104,8 +104,8 @@ const EmiCalculater: React.FC = () => {
                     </IonText>
                     <div className="range-area">
                       <RangeSlider
-                        min={12}
-                        max={16}
+                        min={1}
+                        max={20}
                         handler={updateInterestRate}
                       />
                     </div>
@@ -117,7 +117,11 @@ const EmiCalculater: React.FC = () => {
                       </span>
                     </IonText>
                     <div className="range-area">
-                      <RangeSlider min={1} max={4} handler={updateLoanTenure} />
+                      <RangeSlider
+                        min={1}
+                        max={10}
+                        handler={updateLoanTenure}
+                      />
                     </div>
                   </div>
 
