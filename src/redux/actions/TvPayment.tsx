@@ -13,14 +13,23 @@ const requestForTvPayment = (payload: any, nextRoute: Function) => {
         payload.customerId
       );
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.success) {
         dispatch({ type: TVPAYMENT_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
         nextRoute(true);
+        console.log('Inside If block', response);
       } else {
         nextRoute(false);
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'TVPAYMENT_FAILED' });
+        dispatch(updateToast(data));
+        console.log('Inside else block', response);
       }
-      console.log('done', response);
     } catch (error) {
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       nextRoute(false);

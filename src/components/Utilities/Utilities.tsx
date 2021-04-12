@@ -78,12 +78,14 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
       });
       break;
 
-      // history.replace({
-      //   pathname: "/tabs/busOneWay",
-      //   state: {
-      //     utilityType: "wifiPayment",
-      //   },
-      // });
+    case 'wifiPayment':
+      history.replace({
+        pathname: '/tabs/internetPayment',
+        state: {
+          utilityType: 'wifiPayment',
+        },
+      });
+      break;
 
     case 'creditcard':
       history.replace({
@@ -168,7 +170,7 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
               <button
                 className="iconButtons"
                 onClick={navigateToUtility}
-                value="electricityAndWaterText"
+                value="electricityAndWater"
               />
               <LightBulbIcon width="30" height="30" />
 

@@ -14,14 +14,22 @@ const requestForApplyPage = (payload: any, nextRoute: Function) => {
         payload.purposeOfLoan
       );
 
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.success) {
         dispatch({ type: APPLY_SUCCESS, data: response.data });
         localStorage.setItem('loan type :', 'true');
         nextRoute(true);
+        console.log('Inside If side', response);
       } else {
-        nextRoute(false);
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'APPLY_FAILED' });
+        dispatch(updateToast(data));
+        console.log('Inside else part', response);
       }
-      console.log('done', response);
     } catch (error) {
       nextRoute(false);
       const data = {
