@@ -1,28 +1,31 @@
-import { AUTHENTICATION_INPROGRESS, REGISTRATION_SUCCESS } from '../Contants';
+import { REGISTRATION_SUCCESS } from '../Contants';
 import { authenticationForRegister } from '../../services/Connect';
+import { toggleLoader } from './Loader';
 const requestForRegistration = (payload: any, nextRoute: Function) => {
   console.log('payload: ', payload);
 
   return async (dispatch: any) => {
-    dispatch({ type: AUTHENTICATION_INPROGRESS });
+    dispatch(toggleLoader(true, 'Creating account...'));
     try {
       const response = await authenticationForRegister(
         payload.name,
         payload.gender,
         payload.mobileNo,
-        payload.password
+        payload.password,
+        payload.countryCode
       );
       console.log('res****', response);
-      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       if (response.status == 200) {
+        dispatch(toggleLoader(false));
         dispatch({ type: REGISTRATION_SUCCESS, response: response });
-        localStorage.setItem('registeredUserId', response.data.user.id);
-        localStorage.setItem('userDetails', JSON.stringify(response));
+        localStorage.setItem('userId', response.data.user.id);
+        localStorage.setItem('loginDetails', JSON.stringify(response));
+        localStorage.setItem('isMpinCreated', response.data.isMpin);
         nextRoute(true, null);
       }
       console.log('done', response);
     } catch (error) {
-      dispatch({ type: 'AUTHENTICATION_COMPLETED' });
+      dispatch(toggleLoader(false));
       console.log('error: ', error);
       let data: any;
       if (error?.errors?.mobile_number) {
@@ -41,7 +44,6 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         };
       }
 
-      dispatch({ type: 'REGISTRATION_FAILED' });
       nextRoute(false, data);
     }
   };

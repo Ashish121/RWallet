@@ -1,38 +1,38 @@
 import produce from 'immer';
 import {
   AUTHENTICATION_INPROGRESS,
-  FIXED_SUCCESS,
-  FIXED_FAILED,
+  PROFILE_SUCCESS,
+  PROFILE_FAILED,
 } from '../Contants';
-interface FixedState {
+interface profileState {
   isAuthenticating: boolean;
-  accountDetails: any;
+  profileDetails: [];
 }
-
 // defines the initial state for the reducer ...
-export const initialState: FixedState = {
+export const initialState: profileState = {
   isAuthenticating: false,
-  accountDetails: null,
+  profileDetails: [],
 };
-
 // defines this reducers reducer functions ...
 const reducers: any = {
   [AUTHENTICATION_INPROGRESS]: (draft: any) => {
     draft.isAuthenticating = true;
   },
-  [FIXED_SUCCESS]: (draft: any, data: any) => {
-    draft.isAuthenticating = false;
-    localStorage.setItem('Fixed_Account_Details', JSON.stringify(data));
-    draft.accountDetails = data.data.data[0].fixed_account_number;
-    //console.log("accountDetails", draft.accountDetails);
+
+  [PROFILE_SUCCESS]: (draft: any, data: string) => {
+    localStorage.setItem('profile_Details', JSON.stringify(data));
+    draft.profileDetails = data;
+    draft.profileDetails = draft.profileDetails.data;
   },
-  [FIXED_FAILED]: (draft: any) => {
+
+  [PROFILE_FAILED]: (draft: any, data: any) => {
     draft.isAuthenticating = false;
+    draft.profileDetails = data;
   },
 };
 
 // defines all reducers for actions of interest to the this reducer ...
-export default produce((draft: FixedState = initialState, action) => {
+export default produce((draft: profileState = initialState, action) => {
   reducers?.[action.type]?.(draft, action);
   return draft;
 });

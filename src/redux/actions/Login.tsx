@@ -1,6 +1,6 @@
 import { AUTHENTICATION_INPROGRESS, LOGIN_SUCCESS } from '../Contants';
-import { authenticate } from '../../services/Connect';
-import { updateToast } from './index';
+import { authenticate, logout } from '../../services/Connect';
+import { updateToast, toggleLoader } from './index';
 
 const requestForLogin = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
@@ -11,6 +11,8 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
       if (response.status === 200 && response.data.success) {
         dispatch({ type: LOGIN_SUCCESS });
         localStorage.setItem('loginDetails', JSON.stringify(response));
+        localStorage.setItem('userId', response.data.user.id);
+        localStorage.setItem('isMpinCreated', response.data.isMpin);
         nextRoute();
       } else {
         const data = {
@@ -35,5 +37,35 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
     }
   };
 };
+const requestForLogout = (nextRoute: Function) => {
+  return async (dispatch: any) => {
+    dispatch(toggleLoader(true, 'Logging out...'));
+    try {
+      const response = await logout();
+      if (response.status === 200 && response.data.success) {
+        dispatch(toggleLoader(false));
+        nextRoute();
+      } else {
+        dispatch(toggleLoader(false));
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch(updateToast(data));
+      }
+    } catch (error) {
+      dispatch(toggleLoader(false));
+      const data = {
+        showToast: true,
+        toastMessage: 'API failed',
+        position: 'top',
+        duration: '10000',
+      };
+      dispatch(updateToast(data));
+    }
+  };
+};
 
-export { requestForLogin };
+export { requestForLogin, requestForLogout };

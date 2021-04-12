@@ -26,7 +26,7 @@ import './theme/variables.css';
 
 import { IntlProvider } from 'react-intl';
 import { English } from './i18n/languages';
-import { ToastComponent } from './components';
+import { LoaderComponent, ToastComponent } from './components';
 
 let lang: any = English;
 const App: React.FC = () => {
@@ -34,6 +34,8 @@ const App: React.FC = () => {
   const dispatch = useDispatch();
   const showToast = useSelector((state: any) => state.toast.showToast);
   const message = useSelector((state: any) => state.toast.toastMessage);
+  const loading = useSelector((state: any) => state.loader.isLoading);
+  const loaderMessage = useSelector((state: any) => state.loader.message);
   StatusBar.setStyle({ style: StatusBarStyle.Dark });
   // Show the splash for two seconds and then auto hide:
   SplashScreen.hide();
@@ -50,11 +52,17 @@ const App: React.FC = () => {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
   }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      closeToast();
+    }, 3000);
+  }, [showToast == true]);
   function closeToast() {
     dispatch({ type: 'RESET_TOAST' });
   }
   return (
     <IntlProvider locale="en" messages={lang}>
+      <LoaderComponent showLoading={loading} loaderMessage={loaderMessage} />
       <ToastComponent
         showToast={showToast}
         toastMessage={message}

@@ -30,7 +30,9 @@
         font-size: 12px;
         line-height: 15px;
         color: #000000;
-        border-left: 3px solid red;
+        border-left: 3px solid #004777;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
 
         .notification-text {
           margin-left: 10px;
@@ -43,7 +45,7 @@
             font-style: normal;
             font-weight: 500;
             font-size: 13px;
-            line-height: 12px;
+            line-height: 15px;
             color: #000000;
             opacity: 0.5;
             margin-top: 5px;

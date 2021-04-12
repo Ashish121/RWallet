@@ -9,7 +9,7 @@ export const initialState: cardPaymentPageState = {
   isAuthenticating: false,
 };
 
-// defines this reducers reducer functions ...
+// defines this reducers reducer functions ... 
 const reducers: any = {
   [CARD_PAYMENT_SUCCESS]: (draft: any, data: any) => {
     draft.isAuthenticating = false;

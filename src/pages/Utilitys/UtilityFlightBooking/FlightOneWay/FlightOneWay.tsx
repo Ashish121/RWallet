@@ -1,35 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+import debounce from 'lodash.debounce';
 import { useHistory } from 'react-router-dom';
 import { FlightIcon } from '../../../../assets/Icons';
 import { Translate } from '../../../../i18n/formatMessages';
 import { useDispatch } from 'react-redux';
 import {
   ButtonConmponent,
-  InputText,
   HeaderComponent,
   DatePickerComponent,
   SelectMenu,
   LoaderComponent,
+  SegmentButtonComponent,
 } from '../../../../components';
 import './FlightOneWay.scss';
-import { requestForFlightOneWayPage } from '../../../../redux/actions';
+import {
+  requestForFlightOneWayPage,
+  loadCityNameForFlight,
+} from '../../../../redux/actions';
 
 const FlightOneWay: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [sourceCity, setSourceCity] = useState('');
-  const [destCity, setDestCity] = useState('');
   const [departureDate, setDepartureDate] = useState('');
+  const [returnDate, setReturnDate] = useState('');
   const [travelers, setTravelers] = useState('');
 
   const [classForFlight, setClass] = useState('');
   const [classDetails, setClassDetails] = useState([{}]);
-  const [toggle, setToggle] = useState(false);
 
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
+
+  const [showOneWaySection, setShowOneWaySection] = useState(true);
+  const [showTwoWaySection, setShowTwoWaySection] = useState(false);
+  const [roundTrip, setRoundTrip] = useState('0');
+
+  const [destinationCity, setDestinationCity] = useState([{}]);
+  const [selectedSourceCity, setSelectedSourceCity] = useState('');
+
+  const [selectedDestinationPlace, setSelectedDestinationPlace] = useState('');
+
+  useEffect(() => {
+    dispatch(loadCityNameForFlight(setDestinationCityList));
+  }, []);
 
   useEffect(() => {
     const array = [
@@ -50,27 +65,13 @@ const FlightOneWay: React.FC = () => {
     setClassDetails(array);
   }, []);
 
-  function updateSourceCity(sourceCity: any) {
-    console.log('sourceCity: ', sourceCity);
-    setSourceCity(sourceCity);
-  }
-
-  function updateDestCity(destCity: any) {
-    console.log('destCity: ', destCity);
-    setDestCity(destCity);
-  }
-
-  function updateTravelers(travelers: any) {
-    console.log('travelers: ', travelers);
-    setTravelers(travelers);
-  }
-
   function handleDate(departureDate: any) {
-    console.log('departureDate: ', departureDate);
     setDepartureDate(departureDate);
   }
+  function handleReturnDate(returnDate: any) {
+    setReturnDate(returnDate);
+  }
   function onClassSelect(classForFlight: any) {
-    console.log('Selected class: ', classForFlight);
     setClass(classForFlight);
   }
 
@@ -78,19 +79,18 @@ const FlightOneWay: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      // history.replace("/tabs/flightTwoWay");
+      history.replace('/tabs/home');
       return;
     }
   }
 
   function handleflightBook() {
-    const user_id = 2;
-    const returnDate = '';
-    const roundTrip = '0';
+    const user_id = localStorage.getItem('userId');
     const travelType = 'flight';
 
     setShowLoading(true);
     setLoaderMessage('Please Wait...');
+
     dispatch(
       requestForFlightOneWayPage(
         {
@@ -98,10 +98,10 @@ const FlightOneWay: React.FC = () => {
           returnDate,
           roundTrip,
           travelType,
-          sourceCity,
-          destCity,
+          sourceCity: selectedSourceCity,
+          destCity: selectedDestinationPlace,
           departureDate,
-          travelers,
+          travelers: travelers,
           classForFlight,
         },
         nextRoute
@@ -114,15 +114,54 @@ const FlightOneWay: React.FC = () => {
     history.replace('/tabs/home');
   }
 
-  function handleToggle(toggle: any) {
-    toggle = !toggle;
-    if (toggle == true) {
-      history.replace('/tabs/flightTwoWay');
-      setToggle(toggle);
+  function handleTravelersValue(travelers: any) {
+    setTravelers(travelers);
+  }
+
+  function getReachargeDetails(data: any) {
+    const value = data.value;
+    if (value === 'one_way') {
+      setRoundTrip('0');
+      setShowOneWaySection(true);
+      setShowTwoWaySection(false);
     } else {
-      setToggle(toggle);
+      setRoundTrip('1');
+      setShowOneWaySection(false);
+      setShowTwoWaySection(true);
     }
   }
+
+  //for selected source  and destination list ................
+
+  function setDestinationCityList(res: any) {
+    console.log('setting data: ', res);
+    const destinationCitys = res.data.data;
+    configureCityList(destinationCitys);
+  }
+  function configureCityList(array: any) {
+    let finalArray: any = [];
+    array.forEach((element: any) => {
+      let tempObj = {
+        value: element,
+        label: element,
+      };
+      finalArray.push(tempObj);
+    });
+    updateCityList(finalArray);
+  }
+
+  function updateCityList(array: any) {
+    setDestinationCity(array);
+  }
+  const handleSourceCity = debounce((val: any) => {
+    console.log('Selected source city: ', val);
+    setSelectedSourceCity(val);
+  }, 300);
+
+  const handleDestinationCity = debounce((val: any) => {
+    console.log('Selected destination city: ', val);
+    setSelectedDestinationPlace(val);
+  }, 300);
 
   return (
     <>
@@ -142,102 +181,165 @@ const FlightOneWay: React.FC = () => {
               <IonText className="booking-oneWay-text-area">
                 <Translate message="UtilityFlightBooking" />
               </IonText>
-
               <div
                 className="toggelButton"
-                style={{ width: '60%', display: 'flex', marginTop: '5%' }}
+                style={{ width: '60%', display: 'flex', marginTop: '8%' }}
               >
-                <ButtonConmponent
-                  buttonLabel=" Two Way"
-                  size="large"
-                  style={{
-                    marginLeft: '135px',
-                    position: 'fixed',
-                    color: 'black',
-                    fontSize: '16px',
-                    width: '49%',
-                    height: '2rem',
-                    fontfamily: 'Montserrat',
-                  }}
-                  color={toggle ? '' : 'light'}
-                  clickHandler={handleToggle}
-                />
-                <ButtonConmponent
-                  buttonLabel=" One Way"
-                  size="large"
-                  color={!toggle ? '' : 'light'}
-                  style={{
-                    fontSize: '16px',
-                    width: '123%',
-                    height: '2.2rem',
-                    fontfamily: 'Montserrat',
-                  }}
-                />
+                <SegmentButtonComponent handler={getReachargeDetails} />
               </div>
+              {showOneWaySection && (
+                <div
+                  className="booking-oneWay-wrapper"
+                  style={{ marginTop: '15px' }}
+                >
+                  <div className="booking-section">
+                    <div
+                      className="flight-return"
+                      style={{ width: '45%', marginLeft: '0px' }}
+                    >
+                      <SelectMenu
+                        label="UtilityFlightFrom"
+                        array={destinationCity}
+                        onSelect={handleSourceCity}
+                      />
+                    </div>
 
-              <div
-                className="booking-oneWay-wrapper"
-                style={{ marginTop: '15px' }}
-              >
-                <div className="booking-section">
-                  <div className="booking-from">
-                    <InputText
-                      inputType="text"
-                      labelText="UtilityFlightFrom"
-                      labelType="floating"
-                      color="light"
-                      labelColor="light"
-                      onChange={updateSourceCity}
-                    />
+                    <div className="flight-icon">
+                      <IonText className="profile-icon-wrapper">
+                        <FlightIcon width="140" height="140" />
+                      </IonText>
+                    </div>
+
+                    <div
+                      className="flight-return"
+                      style={{ width: '45%', marginLeft: '0px' }}
+                    >
+                      <SelectMenu
+                        label="UtilityFlightTo"
+                        array={destinationCity}
+                        onSelect={handleDestinationCity}
+                      />
+                    </div>
                   </div>
-                  <div className="flight-icon">
-                    <IonText className="profile-icon-wrapper">
-                      <FlightIcon width="140" height="140" />
-                    </IonText>
+                  <div>
+                    <div style={{ width: '50%' }} className="departure-area">
+                      <DatePickerComponent
+                        placeholder="UtilityDeparture"
+                        handler={handleDate}
+                      />
+
+                      <SelectMenu
+                        label="UtilityTravellers"
+                        array={[
+                          {
+                            value: '1',
+                            label: 1,
+                          },
+                          {
+                            value: '2',
+                            label: 2,
+                          },
+                        ]}
+                        onSelect={handleTravelersValue}
+                      />
+
+                      <SelectMenu
+                        label="UtilityClass"
+                        onSelect={onClassSelect}
+                        array={classDetails}
+                      />
+                    </div>
                   </div>
-                  <div className="booking-to">
-                    <InputText
-                      inputType="text"
-                      labelText="UtilityFlightTo"
-                      labelType="floating"
-                      color="light"
-                      labelColor="light"
-                      onChange={updateDestCity}
+
+                  <div className="bookingButtonForFlight">
+                    <ButtonConmponent
+                      buttonLabel="UtilityBookFlight"
+                      size="block"
+                      clickHandler={handleflightBook}
                     />
                   </div>
                 </div>
-                <div>
-                  <div style={{ width: '50%' }} className="departure-area">
-                    <DatePickerComponent
-                      placeholder="UtilityDeparture"
-                      handler={handleDate}
-                    />
+              )}
+              {showTwoWaySection && (
+                <div
+                  className="booking-twoWay-wrapper"
+                  style={{ marginTop: '15px' }}
+                >
+                  <div className="booking-twoWay-section">
+                    <div style={{ width: '45%', marginLeft: '0px' }}>
+                      <SelectMenu
+                        label="UtilityFlightFrom"
+                        array={destinationCity}
+                        onSelect={handleSourceCity}
+                      />
+                    </div>
 
-                    <InputText
-                      inputType="text"
-                      labelText="UtilityTravellers"
-                      labelType="floating"
-                      color="light"
-                      labelColor="light"
-                      onChange={updateTravelers}
-                    />
+                    <div className="flight-twoWay-icon">
+                      <IonText className="profile-icon-wrapper">
+                        <FlightIcon width="140" height="140" />
+                      </IonText>
+                    </div>
 
+                    <div style={{ width: '45%', marginLeft: '0px' }}>
+                      <SelectMenu
+                        label="UtilityFlightTo"
+                        array={destinationCity}
+                        onSelect={handleDestinationCity}
+                      />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex' }}>
+                    <div className="flight-departure" style={{ width: '45%' }}>
+                      <DatePickerComponent
+                        placeholder="UtilityDeparture"
+                        handler={handleDate}
+                      />
+                    </div>
+                    <div
+                      className="flight-return"
+                      style={{ width: '45%', marginLeft: '40px' }}
+                    >
+                      <DatePickerComponent
+                        placeholder="UtilityReturn"
+                        handler={handleReturnDate}
+                      />
+                    </div>{' '}
+                  </div>
+
+                  <div
+                    className="departure-twoWay-area"
+                    style={{ width: '45%' }}
+                  >
+                    <SelectMenu
+                      label="UtilityTravellers"
+                      array={[
+                        {
+                          value: '1',
+                          label: 1,
+                        },
+                        {
+                          value: '2',
+                          label: 2,
+                        },
+                      ]}
+                      onSelect={handleTravelersValue}
+                    />
                     <SelectMenu
                       label="UtilityClass"
                       onSelect={onClassSelect}
                       array={classDetails}
                     />
                   </div>
+                  <div className="bookingButtonForFlightTwoWay">
+                    <ButtonConmponent
+                      buttonLabel="UtilityBookFlight"
+                      size="block"
+                      clickHandler={handleflightBook}
+                    />
+                  </div>
                 </div>
-
-                <div className="bookingButtonForFlight">
-                  <ButtonConmponent
-                    buttonLabel="UtilityBookFlight"
-                    size="block"
-                    clickHandler={handleflightBook}
-                  />
-                </div>
-              </div>
+              )}
             </div>
           </IonContent>
         </IonPage>

@@ -34,9 +34,7 @@ import {
   ApplyPage,
   EmiCalculater,
   FlightOneWay,
-  FlightTwoWay,
   BusOneWay,
-  BusTwoWay,
   TopUpRecharge,
   TvPayment,
   InternetPayment,
@@ -117,9 +115,7 @@ const TabViewPage: React.FC = () => {
           <Route path="/tabs/applyPage" exact component={ApplyPage} />
           <Route path="/tabs/loanType" exact component={LoanType} />
           <Route path="/tabs/flightOneWay" exact component={FlightOneWay} />
-          <Route path="/tabs/flightTwoWay" exact component={FlightTwoWay} />
           <Route path="/tabs/busOneWay" exact component={BusOneWay} />
-          <Route path="/tabs/busTwoWay" exact component={BusTwoWay} />
           <Route path="/tabs/topUpRecharge" exact component={TopUpRecharge} />
           <Route
             path="/tabs/electricityWater"

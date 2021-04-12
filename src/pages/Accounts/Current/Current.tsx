@@ -26,14 +26,13 @@ const CurrentAccountPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoadeMessage] = useState('');
   const [amount, setAmount] = useState('');
-  //  const [investment_period, setInvestmentPeriod] = useState("");
   function setToggleTerms(value: boolean) {
     console.log('value: ', value);
   }
 
   function nextRoute(status: any) {
     if (status) {
-      history.replace('/confirm');
+      history.replace('/tabs/confirm');
       return;
     }
     setIsLoading(false);
@@ -52,12 +51,9 @@ const CurrentAccountPage: React.FC = () => {
     setAmount(amount);
   }
   function backButtonHander() {
-    history.replace('/accountpage');
+    history.replace('/accountpag');
   }
-  // function updateInvestmentPeriod(event: any) {
-  //   const investment_period = event.target.value;
-  //   setInvestmentPeriod(investment_period);
-  // }
+
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />

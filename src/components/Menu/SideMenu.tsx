@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   IonMenu,
   IonHeader,
@@ -9,6 +10,7 @@ import {
   IonButtons,
   IonButton,
   IonAvatar,
+  IonAlert,
 } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { menuController } from '@ionic/core';
@@ -17,18 +19,33 @@ import { Plugins, CameraResultType } from '@capacitor/core';
 import { ProfilePictureIcon, CloseIcon, MenuCamera } from '../../assets/Icons';
 import './SideMenu.scss';
 import { Translate } from '../../i18n/formatMessages';
+import { requestForLogout } from '../../redux/actions';
 
 const MenuComponent: React.FC<any> = () => {
   const [imagePicked, setImagePicked] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   const { Camera } = Plugins;
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const profileFields = useSelector(
+    (state: any) => state.profile.profileDetails
+  );
   const closeMenu = () => {
     menuController.toggle();
   };
-  function logOut() {
+
+  function nextRoute() {
     history.replace('/login');
     localStorage.clear();
+  }
+
+  function logOut() {
+    setShowAlert(true);
+  }
+  function confirmLogout() {
+    dispatch(requestForLogout(nextRoute));
   }
   async function takePicture() {
     console.log('Taking picture now');
@@ -44,8 +61,52 @@ const MenuComponent: React.FC<any> = () => {
     setImagePicked(true);
   }
 
+  const requestForChangeMpin = () => {
+    console.log('Request for MPIN change');
+    const userDetails: any = localStorage.getItem('loginDetails')
+      ? localStorage.getItem('loginDetails')
+      : '';
+    closeMenu();
+    console.log(JSON.parse(userDetails));
+    const parsedRes = JSON.parse(userDetails);
+    const isMpinCreated: any = localStorage.getItem('isMpinCreated')
+      ? localStorage.getItem('isMpinCreated')
+      : false;
+    console.log('isMpinCreated: ', isMpinCreated);
+    console.log('******', isMpinCreated === 'false');
+    console.log('***^^^^^***', isMpinCreated == 'false');
+
+    history.replace('/otp', {
+      updateMode: isMpinCreated === 'false' ? false : true,
+      nextroute: '/mpin',
+      backNavigation: '/tabs',
+      mobileNo: parsedRes.data.user.mobile_number,
+    });
+  };
+
   return (
     <>
+      <IonAlert
+        isOpen={showAlert}
+        onDidDismiss={() => setShowAlert(false)}
+        subHeader={'Are you sure ?'}
+        buttons={[
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'light',
+            handler: () => {
+              console.log('Confirm Cancel');
+            },
+          },
+          {
+            text: 'Ok',
+            handler: () => {
+              confirmLogout();
+            },
+          },
+        ]}
+      />
       <IonMenu side="start" menuId="menu" contentId="menu">
         <IonHeader>
           <IonToolbar className="side-menu-toobar">
@@ -62,12 +123,15 @@ const MenuComponent: React.FC<any> = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-content-wrapper">
+          <div
+            className="pageheader"
+            style={{ marginLeft: '7%', fontWeight: 600, fontSize: '20px' }}
+          >
+            <IonText>
+              <Translate message="profile.text" />
+            </IonText>
+          </div>
           <div className="menu-content-wrapper">
-            <div className="page-header-text">
-              <IonText>
-                <Translate message="profile.text" />
-              </IonText>
-            </div>
             <div className="page-wrapper">
               <div className="profile-icon-wrapper">
                 {imagePicked && (
@@ -94,31 +158,41 @@ const MenuComponent: React.FC<any> = () => {
                   <IonText className="label-text">
                     <Translate message="profile.fullName" />
                   </IonText>
-                  <IonText className="label-value">Ashish Kumar</IonText>
+                  <IonText className="label-value">
+                    {profileFields.full_name}
+                  </IonText>
                 </div>
                 <div className="fields-wrapper">
                   <IonText className="label-text">
                     <Translate message="profile.accountNumber" />
                   </IonText>
-                  <IonText className="label-value">12345678</IonText>
+                  <IonText className="label-value">
+                    {profileFields.account_number}
+                  </IonText>
                 </div>
                 <div className="fields-wrapper">
                   <IonText className="label-text">
                     <Translate message="profile.accountType" />
                   </IonText>
-                  <IonText className="label-value">Savings</IonText>
+                  <IonText className="label-value">
+                    {profileFields.account_type}
+                  </IonText>
                 </div>
                 <div className="fields-wrapper">
                   <IonText className="label-text">
                     <Translate message="profile.accountCurrency" />
                   </IonText>
-                  <IonText className="label-value">NRP</IonText>
+                  <IonText className="label-value">
+                    {profileFields.account_currency}
+                  </IonText>
                 </div>
                 <div className="fields-wrapper">
                   <IonText className="label-text">
                     <Translate message="profile.accountInterest" />
                   </IonText>
-                  <IonText className="label-value">4.5%</IonText>
+                  <IonText className="label-value">
+                    {profileFields.account_interest}
+                  </IonText>
                 </div>
               </div>
             </div>
@@ -131,7 +205,10 @@ const MenuComponent: React.FC<any> = () => {
                     <Translate message="profile.changeLanguage" />
                   </IonText>
                 </button>
-                <button className="action-button">
+                <button
+                  className="action-button"
+                  onClick={requestForChangeMpin}
+                >
                   <IonText>
                     <Translate message="profile.changeMPIN" />
                   </IonText>

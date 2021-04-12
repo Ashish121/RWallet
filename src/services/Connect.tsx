@@ -1,5 +1,18 @@
 import axios from 'axios';
 
+/**
+ * Adding token to all request if token is
+ *  available for the user
+ */
+axios.interceptors.request.use(function (config) {
+  let userToken;
+  const userData: any = localStorage.getItem('loginDetails');
+  if (userData) {
+    userToken = JSON.parse(userData).data.token;
+  }
+  if (userToken) config.headers.Authorization = `Bearer ${userToken}`;
+  return config;
+});
 export const authenticate = async (
   contactNo: string,
   password: string
@@ -24,7 +37,8 @@ export const authenticationForRegister = async (
   name: string,
   gender: string,
   mobileNo: string,
-  password: string
+  password: string,
+  countryCode: any
 ): Promise<any> => {
   const result = await axios({
     url:
@@ -38,6 +52,7 @@ export const authenticationForRegister = async (
       gender: gender,
       mobile_number: mobileNo,
       password: password,
+      countryCode,
     }),
   });
   const mobile = localStorage.setItem('mobile_number', mobileNo);
@@ -276,12 +291,12 @@ export const updateUserAccountDetails = async (payload: any): Promise<any> => {
 
 //authentication for Mpin
 export const authenticationForMpin = async (
-  user_id: string,
+  user_id: any,
   mpin: string
 ): Promise<any> => {
   const result = await axios({
     url:
-      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/update_mpin',
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/create_mpin',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -289,6 +304,35 @@ export const authenticationForMpin = async (
     data: JSON.stringify({
       user_id: user_id,
       mpin: mpin,
+    }),
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+/**
+ *
+ * @param user_id
+ * @param current_mpin
+ * @param new_mpin
+ * @returns {changeMpin}
+ */
+export const changeMpin = async (
+  user_id: any,
+  current_mpin: any,
+  new_mpin: any
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/change_mpin',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id,
+      new_mpin,
+      current_mpin,
     }),
   });
   console.log('result: ', result);
@@ -687,6 +731,86 @@ export const fetchPOSDetails = async (): Promise<any> => {
   const result = await axios({
     url:
       'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/pos_data',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//loadProfile
+
+export const loadProfile = async (user_id: string): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/profile_fetch',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+    }),
+  });
+  console.log('result: ', result.data.user);
+  return result;
+};
+
+/**
+ *
+ * @returns logout
+ */
+
+export const logout = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/logout',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//Destination bank name list
+export const getBankAllNameList = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bank_detail',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//Destination and source place city name list for flight
+export const getFlightPlaceDetails = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/flight_details',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('result: ', result);
+  return result;
+};
+
+//Destination and source place city name list for Bus
+export const getBusPlacesDetails = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bus_details',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',

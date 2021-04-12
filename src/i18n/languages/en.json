@@ -74,6 +74,7 @@
   "otp.verify": " VERIFY",
 
   "mpin.mpinField": "New MPIN",
+  "mpin.oldMpin": "Old MPIN",
   "mpin.confirmMpin": "Confirm MPIN",
   "mpin.pageHeader": "Create MPIN",
   "mpin.subHeader": "MPIN allows you hassle free login even if you forgot password",
@@ -265,5 +266,6 @@
 
   "map.name": "Name",
   "map.pos_no": "Phone no",
-  "map.dispatchStatus": "Dispatch status"
+  "map.dispatchStatus": "Dispatch status",
+  "shopping.categories": "Categories"
 }

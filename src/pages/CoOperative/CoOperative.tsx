@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import debounce from 'lodash.debounce';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
-import { ButtonConmponent, InputText, HeaderComponent } from '../../components';
+import {
+  ButtonConmponent,
+  InputText,
+  HeaderComponent,
+  SelectMenu,
+} from '../../components';
 import './CoOperative.scss';
-import { requestForCoOperativeBankTransfer } from '../../redux/actions';
+import {
+  requestForCoOperativeBankTransfer,
+  loadProvince,
+  fetchdistrictByProvince,
+} from '../../redux/actions';
 import LoaderComponent from '../../components/Spinner/Spinner';
 
 const CoOperative: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const user_id = 2;
-  // const user_id = localStorage.getItem("userId");
-  const [province, setProvince] = useState('');
-  const [district, setDistrict] = useState('');
+  const user_id = localStorage.getItem('userId');
   const [copName, setCopName] = useState('');
   const [holderName, setHolderName] = useState('');
   const [accountNo, setAccountNo] = useState('');
@@ -24,13 +31,64 @@ const CoOperative: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoaderMessage] = useState('');
 
-  function updateProvince(province: any) {
-    setProvince(province);
+  const [province, setProvince] = useState([{}]);
+  const [selectedProvince, setSelectedProvince] = useState('');
+  const [district, setDistricts] = useState([{}]);
+  const [selectedDistrict, setSelectedDistrict] = useState('');
+  const [clearValueDistrict, setClearValueDistrict] = useState(false);
+
+  useEffect(() => {
+    dispatch(loadProvince(setProvinceList));
+  }, []);
+
+  function setProvinceList(res: any) {
+    console.log('setting data: ', res);
+    const Newprovince = res.data.data;
+    configureProvinceList(Newprovince);
+  }
+  function configureProvinceList(array: any) {
+    let finalArray: any = [];
+    array.forEach((element: any) => {
+      let tempObj = {
+        value: element,
+        label: element,
+      };
+      finalArray.push(tempObj);
+    });
+    updateProvince(finalArray);
   }
 
-  function updateDistrict(district: any) {
-    setDistrict(district);
+  function updateProvince(array: any) {
+    setProvince(array);
   }
+  const handleProvince = debounce((val: any) => {
+    console.log('Selected province: ', val);
+    setSelectedProvince(val);
+    setDistricts([{}]);
+    setClearValueDistrict(true);
+    dispatch(fetchdistrictByProvince(loadDistrict, val));
+  }, 300);
+
+  function loadDistrict(res: any) {
+    const districts = res.data.data;
+    let finalArray: any = [];
+    districts.forEach((element: any) => {
+      let tempObj = {
+        value: element,
+        label: element,
+      };
+      finalArray.push(tempObj);
+    });
+
+    setClearValueDistrict(false);
+    setDistricts(finalArray);
+    console.log('States: ', finalArray);
+  }
+
+  const handleDistrict = debounce((val: any) => {
+    console.log('district: ', val);
+    setSelectedDistrict(val);
+  }, 300);
 
   function updateCopName(copName: any) {
     setCopName(copName);
@@ -73,8 +131,8 @@ const CoOperative: React.FC = () => {
       requestForCoOperativeBankTransfer(
         {
           user_id,
-          province,
-          district,
+          province: selectedProvince,
+          district: selectedDistrict,
           copName,
           holderName,
           accountNo,
@@ -93,7 +151,6 @@ const CoOperative: React.FC = () => {
   }
   function handleClearButton() {
     alert('are you want to clear all field ?');
-
   }
   return (
     <>
@@ -112,24 +169,20 @@ const CoOperative: React.FC = () => {
                   <Translate message="coOperative.text" />
                 </IonText>
                 <div className="coperative-wrapper">
-                  <InputText
-                    inputType="text"
-                    labelText="coOperative.province"
-                    labelType="floating"
-                    color="light"
-                    labelColor="light"
-                    onChange={updateProvince}
-                    clearInput={true}
+                  <SelectMenu
+                    label="account.province"
+                    array={province}
+                    onSelect={handleProvince}
                   />
-                  <InputText
-                    inputType="text"
-                    labelText="coOperative.district"
-                    labelType="floating"
-                    color="light"
-                    labelColor="light"
-                    onChange={updateDistrict}
-                    clearInput={true}
-                  />
+
+                  <div>
+                    <SelectMenu
+                      label="coOperative.district"
+                      array={district}
+                      selectedVal={clearValueDistrict}
+                      onSelect={handleDistrict}
+                    />
+                  </div>
 
                   <InputText
                     inputType="text"
@@ -199,14 +252,14 @@ const CoOperative: React.FC = () => {
                         buttonLabel="bank.proceed"
                         size="block"
                         disabled={
-                          province.trim() &&
-                        district.trim() &&
-                        copName.trim() &&
-                        holderName.trim() &&
-                        accountNo.trim() &&
-                        mobileNo.trim() &&
-                        amount.trim() &&
-                        remarks.trim()
+                          selectedProvince.trim() &&
+                          selectedDistrict.trim() &&
+                          copName.trim() &&
+                          holderName.trim() &&
+                          accountNo.trim() &&
+                          mobileNo.trim() &&
+                          amount.trim() &&
+                          remarks.trim()
                             ? false
                             : true
                         }

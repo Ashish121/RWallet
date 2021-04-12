@@ -74,7 +74,7 @@ const RoyalityFinancialServices: React.FC = () => {
   }
 
   function handleproceed() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     const financeName = 'Royality financial services and investment Pvt.Ltd.';
     setShowLoading(true);
     setLoaderMessage('Please Wait...');

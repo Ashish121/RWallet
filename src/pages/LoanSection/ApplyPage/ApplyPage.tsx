@@ -48,13 +48,13 @@ const ApplyPage: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      history.replace('/tabs/emiCalculater');
+      history.replace('/tabs/home');
       return;
     }
   }
 
   function handleApply() {
-    const user_id = 2;
+    const user_id = localStorage.getItem('userId');
     // const loanType = "Business Loan";
     setShowLoading(true);
     setLoaderMessage('Please Wait...');
@@ -66,7 +66,7 @@ const ApplyPage: React.FC = () => {
     );
     console.log('Handling registration');
   }
- 
+
   function goBack() {
     history.replace('/tabs/loanType');
   }

@@ -38,7 +38,7 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
         inputfield5: 'Kaspersky internet security for antivirus',
         inputfield6: 'Kaspersky total security 1 PC/1 Year',
         inputfield7: 'Kaspersky total security 3 PC/3 User',
-        inputfield8: 'Kaspersky internet security for antivirus',
+        inputfield8: 'Kaspersky internet security for antivirus-1',
       },
       {
         id: 2,
@@ -58,14 +58,14 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
         id: 3,
         title: 'eSCAN Antivirus',
         showDetails: false,
-        inputfield1: 'eSCAN antivirus-1 User',
-        inputfield2: 'eSCAN antivirus-3 User',
-        inputfield3: 'eSCAN internet security side-1 User',
-        inputfield4: 'eSCAN internet security side-3 User',
-        inputfield5: 'eSCAN mobile security for android-1 user',
-        inputfield6: 'eSCAN total security suit 1-user',
-        inputfield7: 'eSCAN universal security suit 1-user',
-        inputfield8: 'eSCAN universal security suit 2-user',
+        inputfield1: 'ESCAN antivirus-1 User',
+        inputfield2: 'ESCAN antivirus-3 User',
+        inputfield3: 'ESCAN internet security side-1 User',
+        inputfield4: 'ESCAN internet security side-3 User',
+        inputfield5: 'ESCAN mobile security for android-1 user',
+        inputfield6: 'ESCAN total security suit 1-user',
+        inputfield7: 'ESCAN universal security suit 1-user',
+        inputfield8: 'ESCAN universal security suit 2-user',
       },
 
       {
@@ -89,11 +89,11 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
         inputfield1: 'WardWiz basic-1 PC/1 User',
         inputfield2: 'WardWiz basic-3 PC/3 User',
         inputfield3: 'WardWiz essential-1 PC/1 User',
-        inputfield4: 'WardWiz essential-3 PC/3 User',
+        inputfield4: 'WardWiz essential-2 PC/3 User',
         inputfield5: 'WardWiz essential-3 PC/3 User',
         inputfield6: 'WardWiz essential plus-1 PC/1 Year',
         inputfield7: 'WardWiz essential plus-3 PC/1 User',
-        inputfield8: 'WardWiz essential-3 PC/3 User',
+        inputfield8: 'WardWiz essential-3 PC/1 User',
       },
 
       {
@@ -119,6 +119,7 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
         inputfield2:
           'Dr.Web security space 3 PC 1 Year + 3 Android mobile device security',
         inputfield3: 'Dr.Web server security suite 1 server 1 year',
+        //inputfield4: "",
       },
 
       {
