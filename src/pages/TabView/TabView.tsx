@@ -194,7 +194,7 @@ const TabViewPage: React.FC = () => {
           {mapActive && <MapActive width="20" height="20" />}
           {!mapActive && <MapInactive width="20" height="20" />}
 
-          <IonLabel>Map</IonLabel>
+          <IonLabel>POS</IonLabel>
         </IonTabButton>
         <IonTabButton tab="history" href="/tabs/history">
           {!hisotryActive && <HistoryInactive width="20" height="20" />}

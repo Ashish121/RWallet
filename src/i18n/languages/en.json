@@ -264,5 +264,8 @@
   "pos.accountLabel": "Account number",
   "pos.accountNumber": "1234567890112",
 
+  "map.name": "Name",
+  "map.pos_no": "Phone no",
+  "map.dispatchStatus": "Dispatch status",
   "shopping.categories": "Categories"
 }

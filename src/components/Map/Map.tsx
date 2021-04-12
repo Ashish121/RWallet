@@ -22,13 +22,18 @@ const RoyallityWalletMap: React.FC<MapProps> = ({
   markerDetails,
 }) => {
   const [map, setMap] = useState(null);
+  console.log('markerDetails: ', markerDetails);
+
   function setMapInstance(instance: any) {
     setMap(instance);
   }
 
   function panMap(mapView: any) {
-    console.log('Panning:', markerDetails[0]);
-    mapView.flyTo(markerDetails[0].coordinates, zoomLevel);
+    console.log('Panning:', markerDetails);
+    mapView.flyTo(
+      [markerDetails[0].latitude, markerDetails[0].longitude],
+      zoomLevel
+    );
   }
   /**
    * @param null
@@ -61,9 +66,10 @@ const RoyallityWalletMap: React.FC<MapProps> = ({
         whenCreated={setMapInstance}
       >
         <TileLayer attribution={osm.mapTiler.attr} url={osm.mapTiler.url} />
-        {markerDetails.map((marker: any) => {
-          return <MapMarker markerDetails={marker} />;
-        })}
+        {markerDetails.length > 0 &&
+          markerDetails.map((marker: any) => {
+            return <MapMarker markerDetails={marker} />;
+          })}
       </MapContainer>
       <LocateUserButton />
     </div>
