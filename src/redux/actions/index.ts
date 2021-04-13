@@ -1,7 +1,7 @@
 export { requestForLogin, requestForLogout } from './Login';
 export { updateToast } from './Toast';
 export { requestForAgentTransfer } from './Agent';
-export { requestForBankTransfer,loadDestinationBankList } from './Bank';
+export { requestForBankTransfer, loadDestinationBankList } from './Bank';
 export { requestForFixedAccount } from './Fixed';
 export { requestForCurrentAccount } from './Current';
 export { requestForCoOperativeBankTransfer } from './CoOperative';
@@ -19,12 +19,17 @@ export { requestForApplyPage } from './Apply';
 export { requestForNepalElectricityPage } from './NepalElectricity';
 export { requestForKhanepaniPage } from './Khanepani';
 export { requestForEmiCalculaterPage } from './EmiCalculater';
-export { requestForFlightOneWayPage ,loadCityNameForFlight,loadCityNameForBus} from './FlightOneWay';
+export {
+  requestForFlightOneWayPage,
+  loadCityNameForFlight,
+  loadCityNameForBus,
+} from './FlightOneWay';
 export { requestForTvPayment } from './TvPayment';
 export { requestForRoyalitySavingCreditPage } from './RoyalitySavingCredit';
-export { requestForCreditCardPayment,loadBankList } from './CardPayment';
+export { requestForCreditCardPayment, loadBankList } from './CardPayment';
 export { requestForInternetPayment } from './InternetPayment';
 export { requestForTopUpRecharge } from './TopUpRecharge';
 export { requestForAntivirusPayment } from './AntivirusPayment';
 export { requestForProfile } from './Profile';
 export { toggleLoader } from './Loader';
+export { loadPOSDetails } from './Map';
