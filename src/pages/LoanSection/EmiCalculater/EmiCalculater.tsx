@@ -54,12 +54,14 @@ const EmiCalculater: React.FC = () => {
   }
 
   function updateInterestRate(interestRate: any) {
-    console.log('interestRate :', interestRate);
+    console.log('interestRate :', interestRate.detail.value);
+    interestRate = interestRate.detail.value;
     setInterestRate(interestRate);
   }
 
   function updateLoanTenure(loanTenure: any) {
-    console.log('loanTenure :', loanTenure);
+    console.log('loanTenure :', loanTenure.detail.value);
+    loanTenure = loanTenure.detail.value;
     setLoanTenure(loanTenure);
   }
   function goBack() {
