@@ -31,7 +31,7 @@ const Routes: React.FC = () => {
   const isUserFormCompleted = localStorage.getItem('userFilledAccountDetails')
     ? true
     : false;
-  const userId = localStorage.getItem('registeredUserId');
+  const userId = localStorage.getItem('userId');
   const userCreatedAccount = localStorage.getItem('userCreatedAccount');
   return (
     <IonApp>

@@ -28,7 +28,6 @@ import {
   BankS,
   CoOperative,
   CoOperativeS,
-  ConfirmPage,
   Agent,
   AgentS,
   ApplyPage,
@@ -110,7 +109,6 @@ const TabViewPage: React.FC = () => {
           <Route path="/tabs/agents" exact component={AgentS} />
           <Route path="/tabs/cop" exact component={CoOperative} />
           <Route path="/tabs/cops" exact component={CoOperativeS} />
-          <Route path="/tabs/confirm" exact component={ConfirmPage} />
           <Route path="/tabs/emiCalculater" exact component={EmiCalculater} />
           <Route path="/tabs/applyPage" exact component={ApplyPage} />
           <Route path="/tabs/loanType" exact component={LoanType} />

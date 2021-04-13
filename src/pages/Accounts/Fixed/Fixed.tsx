@@ -34,7 +34,7 @@ const FixedAccountPage: React.FC = () => {
 
   function nextRoute(status: any) {
     if (status) {
-      history.replace('/tabs/confirm');
+      history.replace('/confirm');
       return;
     }
     setIsLoading(true);
@@ -44,7 +44,7 @@ const FixedAccountPage: React.FC = () => {
   function navigateToConfirm() {
     setIsLoading(true);
     setLoadeMessage('Creating account...');
-    const user_id = localStorage.getItem('registeredUserId');
+    const user_id = localStorage.getItem('userId');
     dispatch(
       requestForFixedAccount({ investment_period, user_id, amount }, nextRoute)
     );

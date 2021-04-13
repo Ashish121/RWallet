@@ -22,14 +22,11 @@ const RoyallityWalletMap: React.FC<MapProps> = ({
   markerDetails,
 }) => {
   const [map, setMap] = useState(null);
-  console.log('markerDetails: ', markerDetails);
-
   function setMapInstance(instance: any) {
     setMap(instance);
   }
 
   function panMap(mapView: any) {
-    console.log('Panning:', markerDetails);
     mapView.flyTo(
       [markerDetails[0].latitude, markerDetails[0].longitude],
       zoomLevel

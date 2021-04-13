@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonConmponent, HeaderComponent } from '../../components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   IonCard,
   IonCardContent,
@@ -15,8 +15,10 @@ import './ConfirmPage.scss';
 import { OrderConfirmIcon } from '../../assets/Icons';
 import { Translate } from '../../i18n/formatMessages';
 import { useHistory } from 'react-router-dom';
+import { requestForLogout } from '../../redux/actions';
 const ConfirmPage: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const newAccountNumber = useSelector(
     (state: any) =>
       state.savingAccount.accountDetails ||
@@ -25,8 +27,12 @@ const ConfirmPage: React.FC = () => {
   );
   console.log('account Number ***', newAccountNumber);
 
-  function navigateToHome() {
-    history.replace('/tabs/home');
+  function logoutUser() {
+    dispatch(requestForLogout(nextRoute));
+  }
+  function nextRoute() {
+    history.replace('/');
+    localStorage.clear();
   }
   return (
     <>
@@ -86,7 +92,7 @@ const ConfirmPage: React.FC = () => {
               <div className="continue-btn-wrapper">
                 <ButtonConmponent
                   buttonLabel="account.done"
-                  clickHandler={navigateToHome}
+                  clickHandler={logoutUser}
                 />
               </div>
             </div>
