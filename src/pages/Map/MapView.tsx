@@ -11,8 +11,10 @@ import {
 import { loadPOSDetails } from '../../redux/actions';
 
 import './MapView.scss';
-
-const MapView: React.FC = () => {
+interface mapViewProps {
+  detailsView?: boolean;
+}
+const MapView: React.FC<mapViewProps> = ({ detailsView = true }) => {
   const dispatch = useDispatch();
   const [mapReady, setMapReady] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
@@ -95,25 +97,40 @@ const MapView: React.FC = () => {
   }
   return (
     <>
-      <IonApp>
-        <LoaderComponent showLoading={showLoader} loaderMessage={message} />
-        <IonPage>
-          <HeaderComponent headerLable={'common.header'} />
-          <IonContent>
-            <div className="map-container">
-              {mapReady && (
-                <React.Fragment>
-                  <RoyallityWalletMap
-                    mapCenter={center}
-                    markerDetails={currentPositionMarkerDetails}
-                    zoomLevel={zoomLevel}
-                  />
-                </React.Fragment>
-              )}
-            </div>
-          </IonContent>
-        </IonPage>
-      </IonApp>
+      {detailsView && (
+        <IonApp>
+          <LoaderComponent showLoading={showLoader} loaderMessage={message} />
+          <IonPage>
+            <HeaderComponent headerLable={'common.header'} />
+            <IonContent>
+              <div className="map-container">
+                {mapReady && (
+                  <React.Fragment>
+                    <RoyallityWalletMap
+                      mapCenter={center}
+                      markerDetails={currentPositionMarkerDetails}
+                      zoomLevel={zoomLevel}
+                    />
+                  </React.Fragment>
+                )}
+              </div>
+            </IonContent>
+          </IonPage>
+        </IonApp>
+      )}
+      {!detailsView && (
+        <div className="map-container">
+          {mapReady && (
+            <React.Fragment>
+              <RoyallityWalletMap
+                mapCenter={center}
+                markerDetails={currentPositionMarkerDetails}
+                zoomLevel={zoomLevel}
+              />
+            </React.Fragment>
+          )}
+        </div>
+      )}
     </>
   );
 };

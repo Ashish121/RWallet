@@ -209,7 +209,7 @@ const AccountUser: React.FC<any> = () => {
   }, 300);
 
   function updateUser() {
-    const userId = localStorage.getItem('registeredUserId');
+    const userId = localStorage.getItem('userId');
     const payload = {
       user_id: userId,
       father_name: fatherName,

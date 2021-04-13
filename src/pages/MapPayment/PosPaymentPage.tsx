@@ -15,6 +15,7 @@ import {
 } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import './PosPaymentPage.scss';
+import { MapView } from '..';
 
 const PosPaymentPage: React.FC = () => {
   const history = useHistory();
@@ -98,6 +99,9 @@ const PosPaymentPage: React.FC = () => {
                     />
                   </div>
                 </IonRadioGroup>
+              </div>
+              <div className="map_view_container">
+                <MapView detailsView={false} />
               </div>
             </div>
           </IonContent>
