@@ -1,22 +1,23 @@
-.container {
+.finance-container {
   height: 100%;
   padding-left: 28px;
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
   font-family: "Montserrat";
+  margin-top: 30px;
   .royalityFinancial-text-area {
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;
-    margin-top: 30px;
+    //margin-top: 30px;
     font-family: "Montserrat";
   }
 
   .royalityFinancial-wrapper {
-    margin-top: 30px;
+    margin-top: 5px;
 
     .royalityFinancialButton {
       margin-top: 40px;

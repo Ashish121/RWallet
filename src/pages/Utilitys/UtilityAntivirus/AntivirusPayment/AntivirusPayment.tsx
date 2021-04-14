@@ -106,7 +106,7 @@ const AntivirusPayment: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="antivirus-payment-container">
               <IonText className="antivirus-payment-text-area">
                 <Translate message="AntivirusPaymentOption" />
               </IonText>

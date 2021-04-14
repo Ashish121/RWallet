@@ -28,7 +28,6 @@ const Khanepani: React.FC = () => {
   }
   function handleproceed() {
     const user_id = localStorage.getItem('userId');
-    // {placeName,customerID}
     setShowLoading(true);
     setLoaderMessage('Please Wait...');
     dispatch(
@@ -62,7 +61,7 @@ const Khanepani: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="container-for-Khanepani">
               <IonText className="khanepani-text-area">
                 <Translate message="UtilityKhanepani" />
               </IonText>
@@ -84,17 +83,20 @@ const Khanepani: React.FC = () => {
                   onChange={updateCustomerID}
                 />
 
-                <div className="buttonElementforKhanepani">
-                  <div className="discardButton">
+                <div className="Khanepani-button-property">
+                  <div className="clear-button-for-Khanepani">
                     <ButtonConmponent
                       buttonLabel="UtilityDiscard"
                       size="block"
                     />
                   </div>
-                  <div className="submitButton">
+                  <div className="procced-button-for-Khanepani">
                     <ButtonConmponent
                       buttonLabel="UtilitySubmit"
                       size="block"
+                      disabled={
+                        customerID.trim() && placeName.trim() ? false : true
+                      }
                       clickHandler={handleproceed}
                     />
                   </div>

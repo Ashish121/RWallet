@@ -30,7 +30,7 @@ const InsuranceFinancePage: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="insurance-finance-container">
               <IonText className="insuranceEmi-text-area">
                 <Translate message="InsuranceFinanceEmi" />
               </IonText>

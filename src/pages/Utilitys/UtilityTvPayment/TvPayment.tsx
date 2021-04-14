@@ -110,7 +110,7 @@ const TvPayment: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="tv-payment-container">
               <IonText className="TvPayment-text-area">
                 <Translate message="UtilityTvPayment" />
               </IonText>

@@ -1,4 +1,4 @@
-.container {
+.agent-fund-transfer-container {
   display: flex;
   display: flex;
   height: 100%;
@@ -16,23 +16,15 @@
   .agent-page-wrapper {
     margin-top: 30px;
   }
-  .agent-clear-button {
-    width: 100px;
-    float: left;
-    margin-top: 40px;
-  }
+
   .agent-proceed-button {
-    // width: 100%;
-    // float: inline;
-    // margin-top: 62px;
-    // margin-bottom: 10px;
     float: inline;
     display: flex;
     margin-top: 85px;
-    .clear-button {
+    .clear-button-for-agent {
       width: 70%;
     }
-    .procced-button {
+    .procced-button-for-agent {
       margin-left: 10%;
       width: 70%;
     }

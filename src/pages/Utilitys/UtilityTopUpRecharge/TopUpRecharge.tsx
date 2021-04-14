@@ -166,7 +166,7 @@ const TopUpRecharge: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="top-up-recharge-container">
               <IonText className="TopUpRecharge-text-area">
                 <Translate message="TopUpRecharge" />
               </IonText>

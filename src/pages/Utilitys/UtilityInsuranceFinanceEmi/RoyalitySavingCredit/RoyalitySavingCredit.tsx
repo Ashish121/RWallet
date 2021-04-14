@@ -114,7 +114,7 @@ const RoyalitySavingCredit: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="saving-credit-container">
               <IonText className="royalitySaving-text-area">
                 <Translate message="RoyalitySaving" />
               </IonText>

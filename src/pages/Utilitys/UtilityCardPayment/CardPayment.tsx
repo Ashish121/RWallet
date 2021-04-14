@@ -106,7 +106,7 @@ const CardPayment: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="container-for-card-payment">
               <IonText className="credit-card-text-area">
                 <Translate message="UtilityInternetPayment" />
               </IonText>
@@ -133,15 +133,14 @@ const CardPayment: React.FC = () => {
                   labelColor="light"
                   onChange={updateAmount}
                 />
-
-                <div className="buttonElement">
-                  <div className="cardClearButton">
+                <div className="card-payment-button-property">
+                  <div className="clear-button-for-card-payment">
                     <ButtonConmponent
                       buttonLabel="UtilityCardClear"
                       size="block"
                     />
                   </div>
-                  <div className="cardSubmitButton">
+                  <div className="procced-button-for-card-payment">
                     <ButtonConmponent
                       buttonLabel="UtilityConfirm"
                       size="block"
@@ -154,7 +153,7 @@ const CardPayment: React.FC = () => {
                       }
                       clickHandler={handleproceed}
                     />
-                  </div>{' '}
+                  </div>
                 </div>
               </div>
             </div>

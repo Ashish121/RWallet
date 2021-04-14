@@ -112,7 +112,7 @@ const Agent: React.FC = () => {
               handler={goBack}
             />
             <IonContent>
-              <div className="container">
+              <div className="agent-fund-transfer-container">
                 <IonText className="agent-text-area">
                   <Translate message="agent.text" />
                 </IonText>
@@ -180,14 +180,14 @@ const Agent: React.FC = () => {
                   />
 
                   <div className="agent-proceed-button">
-                    <div className="clear-button">
+                    <div className="clear-button-for-agent">
                       <ButtonConmponent
                         buttonLabel="UtilityCardClear"
                         size="block"
                         clickHandler={handleClearButton}
                       />
                     </div>
-                    <div className="procced-button">
+                    <div className="procced-button-for-agent">
                       <ButtonConmponent
                         buttonLabel="bank.proceed"
                         size="block"

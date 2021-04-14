@@ -184,7 +184,7 @@ const FlightOneWay: React.FC = () => {
               <IonText className="flight-booking-oneWay-text-area">
                 <Translate message="UtilityFlightBooking" />
               </IonText>
-              <div className="toggle-button">
+              <div className="toggle-button-for-flight">
                 <SegmentButtonComponent handler={handleTripDetails} />
               </div>
               {showOneWaySection && (

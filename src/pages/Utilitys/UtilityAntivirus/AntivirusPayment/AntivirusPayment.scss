@@ -1,13 +1,14 @@
-.container {
+.antivirus-payment-container {
   display: flex;
   height: 100%;
   padding-left: 28px;
   padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
+  margin-top: 48px;
   .antivirus-payment-text-area {
     font-style: normal;
-    // font-weight: 600;
+    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #ffffff;

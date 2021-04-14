@@ -30,7 +30,7 @@ const ElectricityWater: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="container-for-ElectricityWater">
               <IonText className="electricity-water-text-area">
                 <Translate message="UtilityElectricityWater" />
               </IonText>

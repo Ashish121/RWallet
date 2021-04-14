@@ -147,20 +147,11 @@ const Bank: React.FC = () => {
               handler={goBack}
             />
             <IonContent>
-              <div className="container">
+              <div className="bank-container">
                 <IonText className="bank-text-area">
                   <Translate message="fund.bankTrasfer" />
                 </IonText>
                 <div className="bank-wrapper">
-                  {/* <InputText
-                    inputType="text"
-                    labelText="bank.destination"
-                    labelType="floating"
-                    color="light"
-                    labelColor="light"
-                    onChange={updateDestination}
-                    clearInput={true}
-                  /> */}
                   <SelectMenu
                     label="bank.destination"
                     array={bankName}
@@ -215,7 +206,7 @@ const Bank: React.FC = () => {
                   />
 
                   <div className="bank-proceed-button">
-                    <div className="clear-button">
+                    <div className="clear-button-for-bank">
                       <ButtonConmponent
                         buttonLabel="UtilityCardClear"
                         size="block"

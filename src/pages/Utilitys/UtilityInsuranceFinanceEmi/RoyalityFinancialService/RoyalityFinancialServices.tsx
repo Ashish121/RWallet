@@ -113,7 +113,7 @@ const RoyalityFinancialServices: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="finance-container">
               <IonText className="royalityFinancial-text-area">
                 <Translate message="RoyaliFinancialServices" />
               </IonText>
