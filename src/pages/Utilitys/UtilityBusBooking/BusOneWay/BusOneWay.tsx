@@ -115,8 +115,9 @@ const BusOneWay: React.FC = () => {
     history.replace('/tabs/home');
   }
 
-  function getReachargeDetails(data: any) {
-    const value = data.value;
+  function handleBusTripDetails(event: any) {
+    console.log('event', event.target.value);
+    const value = event.target.value;
     if (value === 'one_way') {
       setRoundTrip('0');
       setShowOneWaySection(true);
@@ -174,26 +175,18 @@ const BusOneWay: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
-              <IonText className="booking-oneWay-text-area ">
+            <div className="bus-booking-container">
+              <IonText className="bus-booking-oneWay-text-area ">
                 <Translate message="UtilityBusBooking" />
               </IonText>
-              <div
-                className="toggelButton"
-                style={{ width: '60%', display: 'flex', marginTop: '6%' }}
-              >
-                <SegmentButtonComponent handler={getReachargeDetails} />
+              <div className="toggle-button">
+                <SegmentButtonComponent handler={handleBusTripDetails} />
               </div>
+
               {showOneWaySection && (
-                <div
-                  className="booking-oneWay-wrapper"
-                  style={{ marginTop: '15px' }}
-                >
-                  <div className="booking-section">
-                    <div
-                      className="flight-return"
-                      style={{ width: '45%', marginLeft: '0px' }}
-                    >
+                <div className="bus-booking-oneWay-wrapper">
+                  <div className="bus-booking-section">
+                    <div style={{ width: '45%', marginLeft: '0px' }}>
                       <SelectMenu
                         label="UtilityFlightFrom"
                         array={destinationCity}
@@ -201,16 +194,13 @@ const BusOneWay: React.FC = () => {
                       />
                     </div>
 
-                    <div className="flight-icon">
+                    <div className="bus-Booking-icon">
                       <IonText className="profile-icon-wrapper">
                         <BusBookingIcon width="140" height="140" />
                       </IonText>
                     </div>
 
-                    <div
-                      className="flight-return"
-                      style={{ width: '45%', marginLeft: '0px' }}
-                    >
+                    <div style={{ width: '45%', marginLeft: '0px' }}>
                       <SelectMenu
                         label="UtilityFlightTo"
                         array={destinationCity}
@@ -219,7 +209,7 @@ const BusOneWay: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <div style={{ width: '50%' }} className="departure-area">
+                    <div style={{ width: '50%' }}>
                       <DatePickerComponent
                         placeholder="UtilityDeparture"
                         handler={handleDate}
@@ -233,7 +223,7 @@ const BusOneWay: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="bookingButtonForBus">
+                  <div className="bus-one-way-button">
                     <ButtonConmponent
                       buttonLabel="UtilityBus"
                       size="block"
@@ -243,11 +233,8 @@ const BusOneWay: React.FC = () => {
                 </div>
               )}
               {showTwoWaySection && (
-                <div
-                  className="booking-twoWay-wrapper"
-                  style={{ marginTop: '15px' }}
-                >
-                  <div className="booking-twoWay-section">
+                <div className="bus-booking-TwoWay-wrapper">
+                  <div className="bus-booking-twoWay-section">
                     <div style={{ width: '45%', marginLeft: '0px' }}>
                       <SelectMenu
                         label="UtilityFlightFrom"
@@ -255,8 +242,8 @@ const BusOneWay: React.FC = () => {
                         onSelect={handleSourceCity}
                       />
                     </div>
-                    <div className="flight-twoWay-icon">
-                      <IonText className="profile-icon-wrapper">
+                    <div className="bus-twoWay-icon">
+                      <IonText>
                         <BusBookingIcon width="140" height="140" />
                       </IonText>
                     </div>
@@ -271,16 +258,13 @@ const BusOneWay: React.FC = () => {
                   </div>
 
                   <div style={{ display: 'flex' }}>
-                    <div className="flight-departure" style={{ width: '45%' }}>
+                    <div style={{ width: '45%' }}>
                       <DatePickerComponent
                         placeholder="UtilityDeparture"
                         handler={handleDate}
                       />
                     </div>
-                    <div
-                      className="flight-return"
-                      style={{ width: '45%', marginLeft: '40px' }}
-                    >
+                    <div style={{ width: '45%', marginLeft: '40px' }}>
                       <DatePickerComponent
                         placeholder="UtilityReturn"
                         handler={handleReturnDate}
@@ -288,17 +272,14 @@ const BusOneWay: React.FC = () => {
                     </div>{' '}
                   </div>
 
-                  <div
-                    className="departure-twoWay-area"
-                    style={{ width: '45%' }}
-                  >
+                  <div style={{ width: '45%' }}>
                     <SelectMenu
                       label="UtilityTravellers"
                       onSelect={OnTravelersSelect}
                       array={travelersDetails}
                     />
                   </div>
-                  <div className="bookingButtonForBusTwoWay">
+                  <div className="bus-two-way-button">
                     <ButtonConmponent
                       buttonLabel="UtilityBus"
                       size="block"
