@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IonButton, IonIcon, IonRadioGroup } from '@ionic/react';
-import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
+import { chevronDownOutline, chevronUpOutline } from 'ionicons/icons';
 import './AccordionForAntivirus.scss';
 import { RadioComponent } from '..';
 
@@ -60,10 +60,13 @@ const AccordionContainerForAntivirus: React.FC<AccordionContainerForAntivirusPro
               onClick={() => toggle(item, index)}
               className="ion-button"
             >
-              <span style={{ justifyItems: 'right' }}>{item.title} </span>
+              <span style={{ position: 'absolute', left: '10px' }}>
+                {item.title}{' '}
+              </span>
               <IonIcon
                 slot="end"
-                icon={item.showDetails ? caretUpOutline : caretDownOutline}
+                style={{ position: 'absolute', right: '10px' }}
+                icon={item.showDetails ? chevronUpOutline : chevronDownOutline}
               />
             </IonButton>
 

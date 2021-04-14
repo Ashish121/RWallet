@@ -192,18 +192,18 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="antivirus-container">
               <IonText className="antivirus-text-area">
                 <Translate message="UtilityAntivirus" />
               </IonText>
-              <div className="antivirus-wrapper">
+              <div className="antivirus-btn-wrapper">
                 <AccordionContainerForAntivirus
                   accordionData={accordionDetails}
                   handler={getReachargeDetails}
                 />
               </div>
 
-              <div className="antivirus-btn">
+              <div className="antivirus-proceed-btn">
                 <ButtonConmponent
                   buttonLabel="PROCEED"
                   size="block"
