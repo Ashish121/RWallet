@@ -118,8 +118,11 @@ const FlightOneWay: React.FC = () => {
     setTravelers(travelers);
   }
 
-  function getReachargeDetails(data: any) {
-    const value = data.value;
+  function handleTripDetails(event: any) {
+    console.log('event', event.target.value);
+
+    const value = event.target.value;
+    console.log('value: ', value);
     if (value === 'one_way') {
       setRoundTrip('0');
       setShowOneWaySection(true);
@@ -177,15 +180,12 @@ const FlightOneWay: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="flight-booking-container">
               <IonText className="booking-oneWay-text-area">
                 <Translate message="UtilityFlightBooking" />
               </IonText>
-              <div
-                className="toggelButton"
-                style={{ width: '60%', display: 'flex', marginTop: '8%' }}
-              >
-                <SegmentButtonComponent handler={getReachargeDetails} />
+              <div className="toggle-button">
+                <SegmentButtonComponent handler={handleTripDetails} />
               </div>
               {showOneWaySection && (
                 <div

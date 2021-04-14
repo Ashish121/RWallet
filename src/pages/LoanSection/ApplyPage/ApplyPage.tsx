@@ -85,7 +85,7 @@ const ApplyPage: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="apply-page-container">
               <IonText className="Loan-ApplyPage-text-area">
                 <Translate message="LoanApplyPage" />
               </IonText>
@@ -122,29 +122,23 @@ const ApplyPage: React.FC = () => {
                   labelColor="light"
                   onChange={updatePurposeOfLoan}
                 />
-                <div className="Button-wrapper-applypage">
-                  <div className="loan-ApplyPage-Discard">
-                    <ButtonConmponent
-                      buttonLabel="ApplyPageDiscard"
-                      size="block"
-                    />
-                  </div>
-                  <div className="loan-ApplyPage-Apply">
-                    <ButtonConmponent
-                      buttonLabel="ApplyPageApply"
-                      size="block"
-                      disabled={
-                        fullName.trim() &&
-                        fatherName.trim() &&
-                        mobileNo.trim() &&
-                        purposeOfLoan.trim()
-                          ? false
-                          : true
-                      }
-                      clickHandler={handleApply}
-                    />
-                  </div>
-                </div>
+              </div>
+              <div className="bottom-btn-wrapper">
+                <ButtonConmponent buttonLabel="ApplyPageDiscard" size="block" />
+
+                <ButtonConmponent
+                  buttonLabel="ApplyPageApply"
+                  size="block"
+                  disabled={
+                    fullName.trim() &&
+                    fatherName.trim() &&
+                    mobileNo.trim() &&
+                    purposeOfLoan.trim()
+                      ? false
+                      : true
+                  }
+                  clickHandler={handleApply}
+                />
               </div>
             </div>
           </IonContent>

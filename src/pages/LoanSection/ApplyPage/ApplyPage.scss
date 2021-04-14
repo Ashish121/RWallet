@@ -1,10 +1,8 @@
-.container {
-  display: flex;
+.apply-page-container {
+  margin-top: 30px;
   height: 100%;
-  padding-left: 28px;
-  padding-right: 28px;
-  flex-direction: column;
-  background-color: #3182b9;
+  padding-left: 20px;
+  padding-right: 20px;
   font-family: "Montserrat";
   .Loan-ApplyPage-text-area {
     font-style: normal;
@@ -16,24 +14,19 @@
     font-family: "Montserrat";
   }
   .Loan-ApplyPage-wrapper {
-    margin-top: 8%;
-  }
-  .btn-elem {
-    font-size: 14px;
-    height: 30px;
+    margin-top: 15px;
   }
 
-  .Button-wrapper-applypage {
-    margin-top: 53%;
-    .loan-ApplyPage-Discard {
-      float: left;
-      margin-top: 20px;
+  .bottom-btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    ion-button {
       width: 120px;
-    }
-    .loan-ApplyPage-Apply {
-      float: right;
-      width: 120px;
-      margin-top: 20px;
     }
   }
 }

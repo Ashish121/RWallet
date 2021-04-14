@@ -1,36 +1,13 @@
-.segmentWrapper {
-  --background: white;
-}
-
-.oneWay_btn {
-  --background: #004777;
-  color: white;
-  margin-top: -6px;
-}
-.oneWay_btn1 {
-  --background: white;
-  color: black;
-  margin-top: -6px;
-}
-.twoWay_btn {
-  --background: white;
-  color: black;
-  margin-top: -6px;
-}
-.twoWay_btn1 {
-  --background: #004777;
-  color: white;
-  margin-top: -6px;
-}
-
-.common_btn_wrapper {
-  width: 130%;
-  height: 1.9rem;
-  border-radius: 8px;
-  --background: grey;
-  :host(.segment-button-has-label-only) ::slotted(ion-label) {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 12px;
+.segment-wrapper {
+  ion-segement {
+    --background: #ffffff;
+  }
+  ion-segment-button {
+    --background-checked: #004777;
+    --background: #ffffff;
+    --color-checked: #ffffff;
+    --border-color: transparent;
+    --indicator-box-shadow: none;
+    --indicator-color: #004777;
   }
 }

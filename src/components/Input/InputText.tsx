@@ -20,6 +20,7 @@ interface inputTextProps {
   showPasswordMode?: boolean;
   autoFocus?: boolean;
   clearInput?: boolean;
+  value?: any;
 }
 
 /**
@@ -40,10 +41,17 @@ const InputText: React.FC<inputTextProps> = ({
   placeholderText,
   autoFocus,
   clearInput,
+  value,
 }) => {
   const [toggleEyeOn, setToggleEyeOn] = useState(false);
   const onInpuTextChange = debounce((event) => {
-    onChange?.(event.target.value);
+    console.log('received: event', event);
+
+    if (event) {
+      onChange?.(event.target.value);
+    } else {
+      onChange?.(null);
+    }
   }, 100);
 
   function toggleEye(event: any) {
@@ -51,6 +59,7 @@ const InputText: React.FC<inputTextProps> = ({
     console.log('Hello');
     setToggleEyeOn(!toggleEyeOn);
   }
+  console.log('value******', value);
 
   return (
     <div className="inputWrapper">
@@ -72,7 +81,10 @@ const InputText: React.FC<inputTextProps> = ({
               type={toggleEyeOn ? 'text' : inputType || 'text'}
               color={color}
               autofocus={autoFocus}
-              onIonChange={(e) => onInpuTextChange(e)}
+              onIonChange={(e) => {
+                if (e.detail.value === undefined) onInpuTextChange(null);
+                onInpuTextChange(e);
+              }}
               clearInput={clearInput}
             />
           )}
@@ -83,9 +95,13 @@ const InputText: React.FC<inputTextProps> = ({
               type={toggleEyeOn ? 'text' : inputType || 'text'}
               color={color}
               autofocus={autoFocus}
-              onIonChange={(e) => onInpuTextChange(e)}
+              onIonChange={(e) => {
+                if (e.detail.value === undefined) onInpuTextChange(null);
+                onInpuTextChange(e);
+              }}
               placeholder={placeholderText}
               clearInput={clearInput}
+              value={value}
             />
           )}
           {showPasswordMode && (

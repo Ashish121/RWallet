@@ -1,12 +1,8 @@
-.container {
-  display: flex;
+.loan-type-container {
   height: 100%;
-  padding-left: 28px;
-  padding-right: 28px;
-  flex-direction: column;
-  background-color: #3182b9;
+  padding: 30px;
   font-family: "Montserrat";
-  
+
   .loan-type-text-area {
     font-style: normal;
     font-size: 18px;
@@ -17,10 +13,14 @@
     font-family: "Montserrat";
   }
   .loan-type-wrapper {
-    margin-top: 40px;
-    text-align:start
+    margin-top: 100px;
   }
   .loanType-btn {
-    margin-top: 90px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    padding: 30px;
+    left: 0;
+    right: 0;
   }
 }

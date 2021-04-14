@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-import {
-  IonButton,
-  IonIcon,
-  IonLabel,
-  IonRadioGroup,
-  IonRadio,
-} from '@ionic/react';
+import { IonButton, IonIcon, IonRadioGroup } from '@ionic/react';
 import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 import './AccordionForAntivirus.scss';
+import { RadioComponent } from '..';
 
 interface AccordionContainerForAntivirusProps {
   accordionData: any;
@@ -59,7 +54,7 @@ const AccordionContainerForAntivirus: React.FC<AccordionContainerForAntivirusPro
     <React.Fragment>
       {accordionData?.map((item: any, index: any) => {
         return (
-          <div className="accordion-wrapper">
+          <div className="antivirus-wrapper">
             <IonButton
               expand="block"
               onClick={() => toggle(item, index)}
@@ -74,61 +69,26 @@ const AccordionContainerForAntivirus: React.FC<AccordionContainerForAntivirusPro
 
             <div className={`${item.showDetails ? 'is-shown' : 'is-hidden'}`}>
               {item.showDetails && (
-                <div>
-                  <IonRadioGroup
-                    onIonChange={selectRadioButton}
-                    onClick={() => handleRearch(item.title)}
-                  >
-                    <div className="radioButton">
-                      <IonRadio value={item.inputfield1} />
-                      <IonLabel style={{ marginLeft: '5%' }}>
-                        {item.inputfield1}
-                      </IonLabel>
-                    </div>
-                    <div className="radioButton">
-                      <IonRadio value={item.inputfield2} />
-                      <IonLabel style={{ marginLeft: '5%' }}>
-                        {item.inputfield2}
-                      </IonLabel>
-                    </div>
-                    <div className="radioButton">
-                      <IonRadio value={item.inputfield3} />
-                      <IonLabel style={{ marginLeft: '5%' }}>
-                        {item.inputfield3}
-                      </IonLabel>
-                    </div>
-                    <div className="radioButton">
-                      <IonRadio value={item.inputfield4} />
-                      <IonLabel style={{ marginLeft: '5%' }}>
-                        {item.inputfield4}
-                      </IonLabel>
-                    </div>
-                    <div className="radioButton">
-                      <IonRadio value={item.inputfield5} />
-                      <IonLabel style={{ marginLeft: '5%' }}>
-                        {item.inputfield5}
-                      </IonLabel>
-                    </div>
-                    <div className="radioButton">
-                      <IonRadio value={item.inputfield6} />
-                      <IonLabel style={{ marginLeft: '5%' }}>
-                        {item.inputfield6}
-                      </IonLabel>
-                    </div>
-                    <div className="radioButton">
-                      <IonRadio value={item.inputfield7} />
-                      <IonLabel style={{ marginLeft: '5%' }}>
-                        {item.inputfield7}
-                      </IonLabel>
-                    </div>
-                    <div className="radioButton">
-                      <IonRadio value={item.inputfield8} />
-                      <IonLabel style={{ marginLeft: '5%' }}>
-                        {item.inputfield8}
-                      </IonLabel>
-                    </div>
-                  </IonRadioGroup>
-                </div>
+                <React.Fragment>
+                  <div>
+                    <IonRadioGroup
+                      onIonChange={selectRadioButton}
+                      onClick={() => handleRearch(item.title)}
+                    >
+                      {item.details.map((ele: any) => {
+                        return (
+                          <div className="radioButton">
+                            <RadioComponent
+                              showRadioButton={true}
+                              val={ele.text}
+                              label={ele.text}
+                            />
+                          </div>
+                        );
+                      })}
+                    </IonRadioGroup>
+                  </div>
+                </React.Fragment>
               )}
             </div>
           </div>
