@@ -3,10 +3,6 @@
   flex-direction: column;
   justify-content: none;
 
-  // ion-icon{
-  //  margin-left: 30%;
-  // }
-
   .ionmargin {
     display: flex;
     justify-content: space-around;
@@ -41,7 +37,7 @@
     border-radius: 8px;
     transition: height 0.25s ease-in;
     overflow: scroll;
-    height: 500px;
+    height: 450px;
   }
   .is-hidden {
     height: 0px;
@@ -63,14 +59,12 @@
 
   :host {
     --inner-border-width: 0 0 1px 0;
-    --inner-border-color: red;
+    --inner-border-color: rgb(255, 255, 255);
   }
 
   .radioButton {
     margin: 10px;
     font-weight: 10;
     font-family: "Montserrat";
-
-    //justify-content: space-between;
   }
 }

@@ -90,7 +90,7 @@ const EmiCalculater: React.FC = () => {
                 </IonText>
                 <div className="emi-calculater-wrapper">
                   <InputText
-                    inputType="text"
+                    inputType="number"
                     labelText="emiloanAmount"
                     labelType="floating"
                     color="light"

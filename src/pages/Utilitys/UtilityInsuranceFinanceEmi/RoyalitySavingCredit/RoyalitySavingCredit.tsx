@@ -64,6 +64,7 @@ const RoyalitySavingCredit: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      alert('finance payment successfully completed');
       history.replace('/tabs/home');
       return;
     }
@@ -120,7 +121,7 @@ const RoyalitySavingCredit: React.FC = () => {
               </IonText>
               <div className="royalitySaving-wrapper">
                 <InputText
-                  inputType="text"
+                  inputType="number"
                   labelText="membershipAccountnumber"
                   labelType="floating"
                   color="light"
@@ -136,7 +137,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   onChange={updateMemberName}
                 />
                 <InputText
-                  inputType="text"
+                  inputType="number"
                   labelText="MobileNumber"
                   labelType="floating"
                   color="light"
@@ -150,7 +151,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   array={transactionDetails}
                 />
                 <InputText
-                  inputType="text"
+                  inputType="number"
                   labelText="SavingAmount"
                   labelType="floating"
                   color="light"

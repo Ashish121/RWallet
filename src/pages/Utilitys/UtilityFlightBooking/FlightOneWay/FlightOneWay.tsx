@@ -185,7 +185,10 @@ const FlightOneWay: React.FC = () => {
                 <Translate message="UtilityFlightBooking" />
               </IonText>
               <div className="toggle-button-for-flight">
-                <SegmentButtonComponent handler={handleTripDetails} />
+                <SegmentButtonComponent
+                  handler={handleTripDetails}
+                  //swipeGesture={true}
+                />
               </div>
               {showOneWaySection && (
                 <div className="flight-booking-oneWay-wrapper">

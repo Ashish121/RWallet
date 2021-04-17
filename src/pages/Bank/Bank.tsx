@@ -169,7 +169,7 @@ const Bank: React.FC = () => {
                     value={holderName}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="number"
                     labelText="bank.number"
                     labelType="floating"
                     color="light"
@@ -178,7 +178,7 @@ const Bank: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="tel"
+                    inputType="number"
                     labelText="bank.mobile"
                     labelType="floating"
                     color="light"
@@ -187,7 +187,7 @@ const Bank: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="tel"
+                    inputType="number"
                     labelText="bank.amount"
                     labelType="floating"
                     color="light"

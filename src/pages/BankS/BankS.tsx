@@ -96,7 +96,7 @@ const BankS: React.FC = () => {
                     </IonText>
                   </div>
                   <div className="bankDetails-button">
-                    <div style={{ marginTop: '35%' }}>
+                    <div style={{ marginTop: '30%' }}>
                       <ButtonConmponent
                         buttonLabel="agent.conform"
                         size="block"

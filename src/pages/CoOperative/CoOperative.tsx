@@ -203,7 +203,7 @@ const CoOperative: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="number"
                     labelText="bank.number"
                     labelType="floating"
                     color="light"
@@ -212,7 +212,7 @@ const CoOperative: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="number"
                     labelText="bank.mobile"
                     labelType="floating"
                     color="light"
@@ -221,7 +221,7 @@ const CoOperative: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="number"
                     labelText="coOperative.amount"
                     labelType="floating"
                     color="light"

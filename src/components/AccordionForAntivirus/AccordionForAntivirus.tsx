@@ -80,7 +80,10 @@ const AccordionContainerForAntivirus: React.FC<AccordionContainerForAntivirusPro
                     >
                       {item.details.map((ele: any) => {
                         return (
-                          <div className="radioButton">
+                          <div
+                            className="radioButton"
+                            style={{ background: 'white' }}
+                          >
                             <RadioComponent
                               showRadioButton={true}
                               val={ele.text}

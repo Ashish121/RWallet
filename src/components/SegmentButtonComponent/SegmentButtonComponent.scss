@@ -1,6 +1,7 @@
 .segment-wrapper {
   ion-segement {
     --background: #ffffff;
+    --height: 0rem;
   }
   ion-segment-button {
     --background-checked: #004777;
@@ -9,5 +10,17 @@
     --border-color: transparent;
     --indicator-box-shadow: none;
     --indicator-color: #004777;
+    // --border-radius: 8px;
+    --height: 0rem;
+    //--indicator-height: 0rem;
+  }
+  .segment-right-button {
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .segment-left-button {
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
   }
 }

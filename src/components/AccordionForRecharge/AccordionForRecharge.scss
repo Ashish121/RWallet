@@ -40,7 +40,9 @@
     background-color: #ffffff;
     border-radius: 8px;
     height: 150px;
-    transition: height 0.25s ease-in;
+    // transition: height 0.25s ease-in;
+    transition: height 2.3s ease-in;
+    transition-delay: -2s;
   }
   .is-hidden-recharge {
     height: 0px;

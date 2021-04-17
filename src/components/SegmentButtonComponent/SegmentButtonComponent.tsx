@@ -17,10 +17,10 @@ const SegmentButtonComponent: React.FC<segmentBtnProps> = ({ handler }) => {
   return (
     <div className="segment-wrapper">
       <IonSegment value={defaultValue} onIonChange={handleChange}>
-        <IonSegmentButton value="one_way">
+        <IonSegmentButton value="one_way" className="segment-left-button">
           <IonLabel>One Way</IonLabel>
         </IonSegmentButton>
-        <IonSegmentButton value="two_way">
+        <IonSegmentButton value="two_way" className="segment-right-button">
           <IonLabel>Two Way</IonLabel>
         </IonSegmentButton>
       </IonSegment>

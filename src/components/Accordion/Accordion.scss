@@ -37,10 +37,10 @@
   .is-shown {
     background-color: #ffffff;
     border-radius: 8px;
-    height: 100px;
+    height: 148px;
     position: relative;
-    top: -8px;
-    transition: height 0.25s ease-in;
+    transition: height 2.3s ease-in;
+    transition-delay: -2s;
   }
   .is-hidden {
     height: 0px;

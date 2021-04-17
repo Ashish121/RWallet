@@ -48,6 +48,7 @@ const ApplyPage: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      alert('your application successfully submitted ! ');
       history.replace('/tabs/home');
       return;
     }
@@ -107,7 +108,7 @@ const ApplyPage: React.FC = () => {
                   onChange={updateFatherName}
                 />
                 <InputText
-                  inputType="text"
+                  inputType="number"
                   labelText="LoanMobileNumber"
                   labelType="floating"
                   color="light"

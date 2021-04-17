@@ -20,9 +20,9 @@ import {
 const CardPayment: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(Number);
 
-  const [cardNumber, setCardNumber] = useState('');
+  const [cardNumber, setCardNumber] = useState(Number);
 
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
@@ -47,6 +47,7 @@ const CardPayment: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      alert('card payment successfully completed');
       history.replace('/tabs/home');
       return;
     }
@@ -118,7 +119,7 @@ const CardPayment: React.FC = () => {
                 />
 
                 <InputText
-                  inputType="text"
+                  inputType="number"
                   labelText="UtilityCardNumber"
                   labelType="floating"
                   color="light"
@@ -126,7 +127,7 @@ const CardPayment: React.FC = () => {
                   onChange={updateCardNumber}
                 />
                 <InputText
-                  inputType="text"
+                  inputType="number"
                   labelText="UtilityAmountPayment"
                   labelType="floating"
                   color="light"
@@ -145,9 +146,7 @@ const CardPayment: React.FC = () => {
                       buttonLabel="UtilityConfirm"
                       size="block"
                       disabled={
-                        amount.trim() &&
-                        selectedBankName.trim() &&
-                        cardNumber.trim()
+                        amount > 0 && selectedBankName.trim() && cardNumber > 0
                           ? false
                           : true
                       }

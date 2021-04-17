@@ -128,7 +128,8 @@ const TopUpRecharge: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      history.replace('/tabs/topUpRecharge');
+      alert('recharge successfully completed');
+      history.replace('/tabs/home');
       return;
     }
   }

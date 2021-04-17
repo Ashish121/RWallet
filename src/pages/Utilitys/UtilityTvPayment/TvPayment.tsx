@@ -72,7 +72,8 @@ const TvPayment: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      history.replace('/tabs/tvPayment');
+      alert('Tv recharge successfully completed');
+      history.replace('/tabs/home');
       return;
     }
   }
