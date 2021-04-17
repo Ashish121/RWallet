@@ -112,7 +112,7 @@ const SavingAccountPage: React.FC = () => {
                   <IonText className="section-header">
                     <Translate message="account.savingDeposit" />
                   </IonText>
-                  <IonRadioGroup onIonChange={updateDepositType}>
+                  <IonRadioGroup onIonChange={updateDepositType} value="daily">
                     <div className="options-section1">
                       <RadioComponent
                         label="Daily Rs 100"
