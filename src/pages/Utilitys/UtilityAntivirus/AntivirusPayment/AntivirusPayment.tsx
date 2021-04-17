@@ -57,8 +57,8 @@ const AntivirusPayment: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      alert('payment successfully completed');
       history.replace('/tabs/home');
+      alert('payment successfully completed');
       return;
     }
   }
