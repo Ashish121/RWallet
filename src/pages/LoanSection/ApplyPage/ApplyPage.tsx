@@ -108,7 +108,7 @@ const ApplyPage: React.FC = () => {
                   onChange={updateFatherName}
                 />
                 <InputText
-                  inputType="number"
+                  inputType="tel"
                   labelText="LoanMobileNumber"
                   labelType="floating"
                   color="light"

@@ -125,7 +125,7 @@ const Agent: React.FC = () => {
                     />
                   </div>
                   <InputText
-                    inputType="number"
+                    inputType="tel"
                     labelText="agent.code"
                     labelType="floating"
                     color="light"
@@ -143,7 +143,7 @@ const Agent: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="number"
+                    inputType="tel"
                     labelText="bank.number"
                     labelType="floating"
                     color="light"
@@ -152,7 +152,7 @@ const Agent: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="number"
+                    inputType="tel"
                     labelText="bank.mobile"
                     labelType="floating"
                     color="light"
@@ -161,7 +161,7 @@ const Agent: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="number"
+                    inputType="tel"
                     labelText="bank.amount"
                     labelType="floating"
                     color="light"

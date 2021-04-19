@@ -216,7 +216,7 @@ const FlightOneWay: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <div style={{ width: '50%' }}>
+                    <div style={{ width: '45%' }}>
                       <DatePickerComponent
                         placeholder="UtilityDeparture"
                         handler={handleDate}

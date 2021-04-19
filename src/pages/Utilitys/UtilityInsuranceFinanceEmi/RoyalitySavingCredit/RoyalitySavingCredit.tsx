@@ -121,7 +121,7 @@ const RoyalitySavingCredit: React.FC = () => {
               </IonText>
               <div className="royalitySaving-wrapper">
                 <InputText
-                  inputType="number"
+                  inputType="tel"
                   labelText="membershipAccountnumber"
                   labelType="floating"
                   color="light"
@@ -137,7 +137,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   onChange={updateMemberName}
                 />
                 <InputText
-                  inputType="number"
+                  inputType="tel"
                   labelText="MobileNumber"
                   labelType="floating"
                   color="light"
@@ -151,7 +151,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   array={transactionDetails}
                 />
                 <InputText
-                  inputType="number"
+                  inputType="tel"
                   labelText="SavingAmount"
                   labelType="floating"
                   color="light"

@@ -17,7 +17,7 @@ import { requestForEmiCalculaterPage } from '../../../redux/actions';
 const EmiCalculater: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [loanAmount, setLoanAmount] = useState(Number);
+  const [loanAmount, setLoanAmount] = useState('');
   const [interestRate, setInterestRate] = useState(Number);
   const [loanTenure, setLoanTenure] = useState(Number);
   const [showLoading, setShowLoading] = useState(false);
@@ -90,7 +90,7 @@ const EmiCalculater: React.FC = () => {
                 </IonText>
                 <div className="emi-calculater-wrapper">
                   <InputText
-                    inputType="number"
+                    inputType="tel"
                     labelText="emiloanAmount"
                     labelType="floating"
                     color="light"

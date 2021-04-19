@@ -120,7 +120,7 @@ const RoyalityFinancialServices: React.FC = () => {
               </IonText>
               <div className="royalityFinancial-wrapper">
                 <InputText
-                  inputType="number"
+                  inputType="tel"
                   labelText="membershipAccountnumber"
                   labelType="floating"
                   color="light"
@@ -136,7 +136,7 @@ const RoyalityFinancialServices: React.FC = () => {
                   onChange={updateMemberName}
                 />
                 <InputText
-                  inputType="number"
+                  inputType="tel"
                   labelText="MobileNumber"
                   labelType="floating"
                   color="light"
@@ -149,7 +149,7 @@ const RoyalityFinancialServices: React.FC = () => {
                   array={transactionDetails}
                 />
                 <InputText
-                  inputType="number"
+                  inputType="tel"
                   labelText="SavingAmount"
                   labelType="floating"
                   color="light"
