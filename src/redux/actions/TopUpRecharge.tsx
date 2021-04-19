@@ -16,7 +16,6 @@ const requestForTopUpRecharge = (payload: any, nextRoute: Function) => {
         dispatch({ type: TOP_UP_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
         nextRoute(true);
-        console.log('Inside If block', response);
       } else {
         nextRoute(false);
         const data = {
@@ -27,7 +26,6 @@ const requestForTopUpRecharge = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'TOP_UP_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
     } catch (error) {
       nextRoute(false);

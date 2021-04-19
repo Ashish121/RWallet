@@ -33,7 +33,6 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'BANKTRANSFER_FAILED ' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
     } catch (error) {
       dispatch(toggleLoader(false));

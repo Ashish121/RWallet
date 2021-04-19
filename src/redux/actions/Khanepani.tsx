@@ -16,7 +16,6 @@ const requestForKhanepaniPage = (payload: any, nextRoute: Function) => {
         dispatch({ type: WATERBILL_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
         nextRoute(true);
-        console.log('Inside If block', response);
       } else {
         const data = {
           showToast: true,
@@ -26,7 +25,7 @@ const requestForKhanepaniPage = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'WATERBILL_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
+        nextRoute(false);
       }
     } catch (error) {
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });

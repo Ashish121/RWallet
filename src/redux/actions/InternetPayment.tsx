@@ -16,7 +16,6 @@ const requestForInternetPayment = (payload: any, nextRoute: Function) => {
         dispatch({ type: INTERNET_PAYMENT_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
         nextRoute(true);
-        console.log('Inside If block', response);
       } else {
         const data = {
           showToast: true,
@@ -26,7 +25,7 @@ const requestForInternetPayment = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'INTERNET_PAYMENT_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
+        nextRoute(false);
       }
     } catch (error) {
       nextRoute(false);

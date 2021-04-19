@@ -31,6 +31,7 @@ const requestForBankTransfer = (payload: any, nextRoute: Function) => {
         dispatch({ type: 'BANKTRANSFER_FAILED ' });
         dispatch(updateToast(data));
         console.log('Inside else part', response);
+        nextRoute(false);
       }
     } catch (error) {
       nextRoute(false);

@@ -24,7 +24,6 @@ const requestForRoyalitySavingCreditPage = (
         dispatch({ type: SAVING_CREDIT_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
         nextRoute(true);
-        console.log('Inside If block', response);
       } else {
         nextRoute(false);
         const data = {
@@ -35,7 +34,6 @@ const requestForRoyalitySavingCreditPage = (
         };
         dispatch({ type: 'SAVING_CREDIT_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
     } catch (error) {
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });

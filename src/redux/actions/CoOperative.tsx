@@ -22,7 +22,6 @@ const requestForCoOperativeBankTransfer = (
       if (response.status === 200 && response.data.success) {
         dispatch({ type: COOPERATIVE_SUCCESS, data: response.data });
         nextRoute(true);
-        console.log('Inside If side', response);
       } else {
         const data = {
           showToast: true,
@@ -32,7 +31,7 @@ const requestForCoOperativeBankTransfer = (
         };
         dispatch({ type: 'COOPERATIVE_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else part', response);
+        nextRoute(false);
       }
     } catch (error) {
       nextRoute(false);

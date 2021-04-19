@@ -17,7 +17,6 @@ const requestForCreditCardPayment = (payload: any, nextRoute: Function) => {
       if (response.status === 200 && response.data.success) {
         dispatch({ type: CARD_PAYMENT_SUCCESS, data: response.data });
         nextRoute(true);
-        console.log('Inside If side', response);
       } else {
         const data = {
           showToast: true,
@@ -27,7 +26,7 @@ const requestForCreditCardPayment = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'CARD_PAYMENT_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else part', response);
+        nextRoute(false);
       }
     } catch (error) {
       nextRoute(false);

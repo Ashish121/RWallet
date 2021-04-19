@@ -18,7 +18,6 @@ const requestForAgentTransfer = (payload: any, nextRoute: Function) => {
       if (response.status === 200 && response.data.success) {
         dispatch({ type: AGETTRANSFER_SUCCESS, data: response.data });
         nextRoute(true);
-        console.log('Inside If side', response);
       } else {
         const data = {
           showToast: true,
@@ -28,7 +27,7 @@ const requestForAgentTransfer = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'AGETTRANSFER_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else part', response);
+        nextRoute(false);
       }
     } catch (error) {
       nextRoute(false);

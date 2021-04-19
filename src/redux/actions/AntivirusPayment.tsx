@@ -16,7 +16,6 @@ const requestForAntivirusPayment = (payload: any, nextRoute: Function) => {
         dispatch({ type: ANTIVIRUS_SUCCESS, data: response.data });
         localStorage.setItem('Antivirus payment', 'true');
         nextRoute(true);
-        console.log('Inside If side', response);
       } else {
         const data = {
           showToast: true,
@@ -26,7 +25,7 @@ const requestForAntivirusPayment = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'ANTIVIRUS_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else part', response);
+        nextRoute(false);
       }
     } catch (error) {
       nextRoute(false);

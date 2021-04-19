@@ -13,7 +13,6 @@ const requestForEmiCalculaterPage = (payload: any, nextRoute: Function) => {
       if (response.status === 200 && response.data.success) {
         dispatch({ type: EMI_SUCCESS, data: response.data });
         nextRoute(true);
-        console.log('Inside If block', response);
       } else {
         const data = {
           showToast: true,
@@ -23,7 +22,7 @@ const requestForEmiCalculaterPage = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'EMI_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
+        nextRoute(false);
       }
     } catch (error) {
       nextRoute(false);

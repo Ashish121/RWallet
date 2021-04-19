@@ -20,7 +20,6 @@ const fetchdistrictByProvince = (callback: Function, id: any) => {
         dispatch({ type: INITIAL_DATA_LOADING, data: { status: false } });
         localStorage.setItem('districts', JSON.stringify(response));
         callback(response);
-        console.log('Inside If block', response);
       } else {
         const data = {
           showToast: true,
@@ -30,7 +29,6 @@ const fetchdistrictByProvince = (callback: Function, id: any) => {
         };
         dispatch({ type: 'INITIAL_DATA_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
       // console.log('done', response);
     } catch (error) {
@@ -54,9 +52,7 @@ const loadProvince = (callback: Function) => {
         dispatch({ type: INITIAL_DATA_LOADING, data: { status: false } });
         localStorage.setItem('provinceList', JSON.stringify(response));
         callback(response);
-        console.log('Inside If block', response);
       } else {
-        //nextRoute(false);
         const data = {
           showToast: true,
           toastMessage: response.data.message,
@@ -65,7 +61,6 @@ const loadProvince = (callback: Function) => {
         };
         dispatch({ type: 'INITIAL_DATA_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
       console.log('done', response);
     } catch (error) {
@@ -89,9 +84,7 @@ const localLevelName = (callback: Function, id: any) => {
         dispatch({ type: INITIAL_DATA_LOADING, data: { status: false } });
         localStorage.setItem('localLevelName', JSON.stringify(response));
         callback(response);
-        console.log('Inside If block', response);
       } else {
-        // nextRoute(false);
         const data = {
           showToast: true,
           toastMessage: response.data.message,
@@ -100,9 +93,7 @@ const localLevelName = (callback: Function, id: any) => {
         };
         dispatch({ type: 'INITIAL_DATA_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
-      // console.log('done', response);
     } catch (error) {
       const data = {
         showToast: true,
@@ -122,9 +113,7 @@ const updateUserDetails = (payload: any, callback: Function) => {
       if (response.status === 200 && response.data.success) {
         localStorage.setItem('userUpdated', JSON.stringify(response));
         callback(true);
-        console.log('Inside If block', response);
       } else {
-        //nextRoute(false);
         const data = {
           showToast: true,
           toastMessage: response.data.message,
@@ -133,7 +122,6 @@ const updateUserDetails = (payload: any, callback: Function) => {
         };
         dispatch({ type: 'INITIAL_DATA_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
       //console.log('done', response);
     } catch (error) {

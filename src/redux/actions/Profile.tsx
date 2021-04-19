@@ -8,7 +8,6 @@ const requestForProfile = (payload: any, nextRoute: Function) => {
       if (response.status === 200 && response.data.success) {
         dispatch({ type: PROFILE_SUCCESS, data: response.data.user });
         nextRoute(true);
-        console.log('Inside If block', response);
       } else {
         nextRoute(false);
         const data = {
@@ -19,7 +18,6 @@ const requestForProfile = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'PROFILE_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
     } catch (error) {
       nextRoute(false);

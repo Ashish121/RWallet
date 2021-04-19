@@ -14,7 +14,6 @@ const requestForResetPassword = (payload: any, nextRoute: Function) => {
       if (response.status === 200 && response.data.success) {
         dispatch({ type: RESETPASSWORD_SUCCESS, data: response.data });
         nextRoute();
-        console.log('Inside If block', response);
       } else {
         //nextRoute(false);
         const data = {
@@ -25,7 +24,6 @@ const requestForResetPassword = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'RESETPASSWORD_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
     } catch (error) {
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
