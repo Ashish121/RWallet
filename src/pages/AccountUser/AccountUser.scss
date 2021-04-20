@@ -8,4 +8,24 @@
     font-size: 16px;
     line-height: 20px;
   }
+
+  .bs-text-area {
+    margin-left: -21px;
+    margin-top: 20px;
+    .bs-text-heading {
+      color: #ffffff;
+      font-style: normal;
+      font-weight: 100;
+      font-size: 15px;
+      line-height: 20px;
+    }
+    .bs-text-message {
+      color: #ffffff;
+      font-style: normal;
+      font-weight: 100;
+      font-size: 15px;
+      line-height: 20px;
+      margin-left: 50px;
+    }
+  }
 }
