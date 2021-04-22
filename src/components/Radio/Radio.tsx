@@ -9,21 +9,30 @@ interface radioTypeProps {
   color?: any;
   val?: string;
   showRadioButton?: Boolean;
+  showColor?: Boolean;
 }
 
 const RadioComponent: React.FC<radioTypeProps> = ({
   label,
   val,
   showRadioButton = false,
+  showColor = false,
   ...props
 }) => {
   return (
     <div className="radio-wrapper">
       {showRadioButton && (
         <IonList>
-          <IonItem lines="none">
-            <IonRadio mode="md" value={val} {...props} />
-            <IonText className="ion-margin-start">
+          <IonItem lines="none" color={showColor ? '' : 'light'}>
+            <IonRadio
+              mode="md"
+              value={val}
+              {...props}
+              className={showColor ? 'radio-icon-color-white' : 'radio-icon-color-blue'}
+            />
+            <IonText
+              className={showColor ? 'radio-text-color-white' : 'radio-text-color-black'}
+            >
               <Translate message={label} />
             </IonText>
           </IonItem>

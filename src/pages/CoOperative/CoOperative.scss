@@ -1,7 +1,8 @@
-.container {
-  display: flex;
+.coOperative-container {
   display: flex;
   height: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
   flex-direction: column;
   background-color: #3182b9;
   font-family: "Montserrat";
@@ -17,12 +18,7 @@
     background-color: #3182b9;
   }
 
-  .coperative-clear-button {
-    width: 100px;
-    float: left;
-    margin-top: 10px;
-  }
-  .coperative-proceed-button {
+  .coperative-button-property {
     width: 100%;
     float: inline;
     margin-top: 75px;
@@ -31,25 +27,12 @@
     float: inline;
     display: flex;
     margin-top: 85px;
-    .clear-button {
+    .coperative-clear-button {
       width: 70%;
     }
-    .procced-button {
+    .coperative-procced-button {
       margin-left: 10%;
       width: 70%;
     }
   }
-
-  // .bank-proceed-button {
-  //   float: inline;
-  //   display: flex;
-  //   margin-top: 85px;
-  //   .clear-button {
-  //     width: 70%;
-  //   }
-  //   .procced-button {
-  //     margin-left: 10%;
-  //     width: 70%;
-  //   }
-  // }
 }

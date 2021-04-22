@@ -88,7 +88,9 @@ const LoginPage: React.FC = () => {
                 <ButtonConmponent
                   buttonLabel="login.signInLabel"
                   size="block"
-                  disabled={contactNo.trim() && password.trim() ? false : true}
+                  disabled={
+                    contactNo?.trim() && password?.trim() ? false : true
+                  }
                   clickHandler={loginHandler}
                 />
               </div>

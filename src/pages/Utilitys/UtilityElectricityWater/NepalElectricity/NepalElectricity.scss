@@ -1,4 +1,4 @@
-.container {
+.nepal-electricity-container {
   display: flex;
   height: 100%;
   padding-left: 28px;
@@ -25,19 +25,17 @@
       margin-left: 5%;
     }
   }
-}
-.buttonElement {
-  margin-top: 73%;
-  display: flex;
 
-  .btn-elem {
-    width: 120%;
-    font-size: 14px;
-  }
-  .firstButton {
-    margin-left: 0%;
-  }
-  .secondButton {
-    margin-left: 30%;
+  .electricity-proceed-button {
+    float: inline;
+    display: flex;
+    margin-top: 235px;
+    .clear-button-for-electricity {
+      width: 70%;
+    }
+    .procced-button-for-electricity {
+      margin-left: 10%;
+      width: 70%;
+    }
   }
 }

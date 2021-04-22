@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
+import {
+  IonPage,
+  IonContent,
+  IonText,
+  IonApp,
+  IonItem,
+  IonLabel,
+} from '@ionic/react';
 import debounce from 'lodash.debounce';
 import { Translate } from '../../i18n/formatMessages';
 import {
@@ -158,11 +165,19 @@ const AccountUser: React.FC<any> = () => {
     console.log('date: ', date);
 
     setDobAD(date);
-  }
-  function handleDobBS(date: any) {
-    console.log('date: ', date);
+    var bs = require('bikram-sambat');
+    console.log('Vikarm samvat english Date : ', bs.toBik_euro(date));
+    console.log('Vikarm samvat Hindi Date : ', bs.toBik_dev(date));
+    console.log('Vikarm samvat Hindi text format : ', bs.toBik_text(date));
+    date = bs.toBik_text(date);
+    console.log('formated date:********** ', date);
     setDobBS(date);
   }
+  // function handleDobBS(date: any) {
+  //   console.log("date: ", date);
+  //   setDobBS(date);
+
+  // }
 
   function updateCurrentAddress(currentAddress: string) {
     setCurrentAddress(currentAddress);
@@ -271,12 +286,25 @@ const AccountUser: React.FC<any> = () => {
                     handler={handleDobAD}
                   />
                 </div>
-                <div className="date-picker-wrapper">
+
+                {/* <div className="date-picker-wrapper">
                   <DatePickerComponent
                     placeholder="account.dateofBirthBS"
                     handler={handleDobBS}
                   />
                 </div>
+      */}
+
+                <div className="bs-text-area">
+                  <IonItem>
+                    <IonText className="bs-text-heading">
+                      {' '}
+                      <Translate message="account.dateofBirthBS" />
+                    </IonText>
+                    <IonLabel className="bs-text-message">{dobBS}</IonLabel>
+                  </IonItem>
+                </div>
+
                 <div>
                   <SelectMenu
                     label="signup.gender"

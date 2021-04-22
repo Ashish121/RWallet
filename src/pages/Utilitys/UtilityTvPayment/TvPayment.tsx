@@ -72,7 +72,8 @@ const TvPayment: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      history.replace('/tabs/tvPayment');
+      alert('Tv recharge successfully completed');
+      history.replace('/tabs/home');
       return;
     }
   }
@@ -110,7 +111,7 @@ const TvPayment: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="tv-payment-container">
               <IonText className="TvPayment-text-area">
                 <Translate message="UtilityTvPayment" />
               </IonText>

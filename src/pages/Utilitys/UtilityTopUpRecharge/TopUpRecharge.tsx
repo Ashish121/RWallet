@@ -128,7 +128,8 @@ const TopUpRecharge: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      history.replace('/tabs/topUpRecharge');
+      history.replace('/tabs/home');
+      alert('recharge successfully completed');
       return;
     }
   }
@@ -166,7 +167,7 @@ const TopUpRecharge: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="top-up-recharge-container">
               <IonText className="TopUpRecharge-text-area">
                 <Translate message="TopUpRecharge" />
               </IonText>

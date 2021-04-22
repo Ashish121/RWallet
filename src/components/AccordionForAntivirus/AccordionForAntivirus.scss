@@ -1,11 +1,7 @@
-.accordion-wrapper {
+.antivirus-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: none;
-
-  // ion-icon{
-  //  margin-left: 30%;
-  // }
 
   .ionmargin {
     display: flex;
@@ -39,38 +35,37 @@
     width: 100%;
     background-color: #ffffff;
     border-radius: 8px;
-    height: 15%;
     transition: height 0.25s ease-in;
+    overflow: scroll;
+    // height: 450px;
+    height: 225px;
   }
   .is-hidden {
     height: 0px;
-    transition: height 0.25s ease-out;
+    transition: height 0.5s ease-out;
     width: 100%;
   }
-}
-.button-inner {
-  justify-content: none;
-}
-.inputArea {
-  margin-left: 20px;
-  margin-right: 20px;
-  font-size: 12px;
-  background-color: white;
-  font-family: "Montserrat";
-  margin-bottom: "0px";
-  text-align: start;
-}
+  .button-inner {
+    justify-content: none;
+  }
+  .inputArea {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 12px;
+    background-color: white;
+    font-family: "Montserrat";
+    margin-bottom: "0px";
+    text-align: start;
+  }
 
-:host {
-  --inner-border-width: 0 0 1px 0;
-  --inner-border-color: red;
-}
+  :host {
+    --inner-border-width: 0 0 1px 0;
+    --inner-border-color: rgb(255, 255, 255);
+  }
 
-.radioButton {
-  margin: 10px;
-  display: flex;
-  font-weight: 10;
-  font-family: "Montserrat";
-
-  //justify-content: space-between;
+  .radioButton {
+    margin: 10px;
+    font-weight: 10;
+    font-family: "Montserrat";
+  }
 }

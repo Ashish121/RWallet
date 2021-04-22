@@ -29,7 +29,7 @@ const Fund: React.FC = () => {
         <IonPage>
           <HeaderComponent headerLable="common.header" />
           <IonContent>
-            <div className="container">
+            <div className="fund-container">
               <IonText className="fund-text-area">
                 <Translate message="fund.fundpage" />
               </IonText>

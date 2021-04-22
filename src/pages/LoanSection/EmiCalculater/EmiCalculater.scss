@@ -1,4 +1,4 @@
-.container {
+.emi-container {
   display: flex;
   height: 100%;
   padding-left: 28px;
@@ -66,7 +66,7 @@
   }
   .emiCalculater {
     margin-top: 8px;
-    .emi-cal-prinival {
+    .emi-cal-principal {
       margin-top: 10px;
       font-style: normal;
       font-weight: normal;
@@ -89,9 +89,9 @@
       opacity: 0.5;
     }
   }
-  .emiCalculater1 {
+  .emiCalculater-message {
     margin-top: 15px;
-    .emi-cal-prinival1 {
+    .emi-cal-principal-message {
       margin-top: 10px;
       font-style: normal;
       font-weight: normal;
@@ -99,11 +99,11 @@
       line-height: 17px;
       color: #ffffff;
 
-      .emi-interest1 {
+      .emi-interest-message1 {
         margin-top: 10px;
       }
     }
-    .name-message1 {
+    .emi-message {
       margin-top: 2px;
       font-style: normal;
       font-weight: normal;

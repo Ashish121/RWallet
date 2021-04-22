@@ -26,12 +26,9 @@ interface utilitiesProps {
 
 const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
   const history = useHistory();
-  function navigateToUtility(event: any) {
-    console.log('Tab name', event.target.value);
-
-    let tabName = event.target.value;
-    // let tabName = "bus";
-    switch (tabName) {
+  function navigateToUtility(type: string) {
+    console.log('type: ', type);
+    switch (type) {
     case 'flight':
       history.replace({
         pathname: '/tabs/flightOneWay',
@@ -48,7 +45,6 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
           utilityType: 'bus',
         },
       });
-      console.log('inside bus tabe', event.target.name);
       break;
 
     case 'topup':
@@ -133,111 +129,118 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
             <div>
               <button
                 className="iconButtons"
-                onClick={navigateToUtility}
                 value="flight"
-              />
-              <AirPlaneIcon width="30" height="30" />
-
-              <IonText>
-                <Translate message="home.flightText" />
-              </IonText>
+                onClick={() => navigateToUtility('flight')}
+              >
+                <AirPlaneIcon width="30" height="30" />
+                <IonText>
+                  <Translate message="home.flightText" />
+                </IonText>
+              </button>
             </div>
             <div>
               <button
                 className="iconButtons"
-                onClick={navigateToUtility}
+                onClick={() => navigateToUtility('bus')}
                 value="bus"
               >
                 <BusIcon width="30" height="30" onClick={navigateToUtility} />
+                <IonText>
+                  <Translate message="home.busText" />
+                </IonText>
               </button>
-              <IonText>
-                <Translate message="home.busText" />
-              </IonText>
             </div>
             <div>
               <button
                 className="iconButtons"
-                onClick={navigateToUtility}
+                onClick={() => navigateToUtility('topup')}
                 value="topup"
-              />
-              <PowerbankIcon width="50" height="30" />
+              >
+                <PowerbankIcon width="50" height="30" />
 
-              <IonText>
-                <Translate message="home.topupText" />
-              </IonText>
+                <IonText>
+                  <Translate message="home.topupText" />
+                </IonText>
+              </button>
             </div>
             <div>
               <button
                 className="iconButtons"
-                onClick={navigateToUtility}
+                onClick={() => navigateToUtility('electricityAndWater')}
                 value="electricityAndWater"
-              />
-              <LightBulbIcon width="30" height="30" />
+              >
+                <LightBulbIcon width="30" height="30" />
 
-              <IonText>
-                <Translate message="home.electricityAndWaterText" />
-              </IonText>
+                <IonText>
+                  <Translate message="home.electricityAndWaterText" />
+                </IonText>
+              </button>
             </div>
 
             <div>
               <button
                 className="iconButtons"
-                onClick={navigateToUtility}
+                onClick={() => navigateToUtility('televisionPayment')}
                 value="televisionPayment"
-              />
-              <TelevisionIcon width="50" height="30" />
+              >
+                <TelevisionIcon width="50" height="30" />
 
-              <IonText>
-                <Translate message="home.televisionPayment" />
-              </IonText>
+                <IonText>
+                  <Translate message="home.televisionPayment" />
+                </IonText>
+              </button>
             </div>
             <div>
               <button
                 className="iconButtons"
-                onClick={navigateToUtility}
+                onClick={() => navigateToUtility('wifiPayment')}
                 value="wifiPayment"
-              />
-              <WifiIcon width="30" height="30" />
+              >
+                <WifiIcon width="30" height="30" />
 
-              <IonText>
-                <Translate message="home.wifiPayment" />
-              </IonText>
+                <IonText>
+                  <Translate message="home.wifiPayment" />
+                </IonText>
+              </button>
             </div>
             <div>
               <button
                 className="iconButtons"
-                onClick={navigateToUtility}
+                onClick={() => navigateToUtility('creditcard')}
                 value="creditcard"
-              />{' '}
-              <CreditCardIcon width="30" height="30" />
-              <IonText>
-                <Translate message="home.creditcard" />
-              </IonText>
+              >
+                <CreditCardIcon width="30" height="30" />
+                <IonText>
+                  <Translate message="home.creditcard" />
+                </IonText>
+              </button>
             </div>
 
             <div>
               <button
                 className="iconButtons"
-                onClick={navigateToUtility}
+                onClick={() => navigateToUtility('antivirus')}
                 value="antivirus"
-              />
-              <AntivirusIcon width="30" height="30" />
+              >
+                <AntivirusIcon width="30" height="30" />
 
-              <IonText>
-                <Translate message="home.antivirus" />
-              </IonText>
+                <IonText>
+                  <Translate message="home.antivirus" />
+                </IonText>
+              </button>
             </div>
             <div>
               <button
                 className="iconButtons"
-                onClick={navigateToUtility}
+                onClick={() => navigateToUtility('insurance')}
                 value="insurance"
-              />
-              <InsuranceIcon width="30" height="30" />
+              >
+                <InsuranceIcon width="30" height="30" />
 
-              <IonText>
-                <Translate message="home.insurance" />
-              </IonText>
+                <IonText>
+                  <Translate message="home.insurance" />
+                </IonText>
+              </button>
             </div>
           </div>
         </div>

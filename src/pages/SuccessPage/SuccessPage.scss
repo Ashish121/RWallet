@@ -2,8 +2,9 @@
   background-color: #3182b9;
 }
 .confirm-page-wrapper {
-  padding: 10px;
+  //padding: 10px;
   font-family: "Montserrat";
+  padding-top: 25px;
   ion-card {
     width: 100%;
     background-color: #ffffff;
@@ -16,7 +17,8 @@
   }
   .card-wrapper {
     display: flex;
-    margin-top: 10%;
+    // margin-top: 10%;
+    margin-top: 0%;
     justify-content: center;
     height: calc(100% - 98px);
     .icon-wrapper {

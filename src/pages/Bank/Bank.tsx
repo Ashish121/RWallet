@@ -29,6 +29,7 @@ const Bank: React.FC = () => {
   const [message, setLoaderMessage] = useState('');
   const [bankName, setBankName] = useState([{}]);
   const [selectedBankName, setSelectedBankName] = useState('');
+  const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
 
   // function updateDestination(destination: any) {
   //   console.log('destination :', destination);
@@ -40,7 +41,7 @@ const Bank: React.FC = () => {
 
   function updateHolderName(holderName: any) {
     console.log('holderName :', holderName);
-    setHolderName(holderName);
+    if (holderName) setHolderName(holderName);
   }
 
   function updateAccountNumber(accountNumber: any) {
@@ -93,6 +94,14 @@ const Bank: React.FC = () => {
   }
 
   function handleClearButton() {
+    setCurrentSelectedVal(true);
+    console.log('*****Clearing fields');
+    setHolderName('');
+    setAccountNumber('');
+    setMobileNo('');
+    setAmount('');
+    setRemarks('');
+    // setCurrentSelectedVal(false);
     // alert("are you want to clear all field ?");
   }
 
@@ -122,6 +131,7 @@ const Bank: React.FC = () => {
   }
   const handleBank = debounce((val: any) => {
     console.log('Selected bankName: ', val);
+    setCurrentSelectedVal(false);
     setSelectedBankName(val);
   }, 300);
 
@@ -137,24 +147,16 @@ const Bank: React.FC = () => {
               handler={goBack}
             />
             <IonContent>
-              <div className="container">
+              <div className="bank-container">
                 <IonText className="bank-text-area">
                   <Translate message="fund.bankTrasfer" />
                 </IonText>
                 <div className="bank-wrapper">
-                  {/* <InputText
-                    inputType="text"
-                    labelText="bank.destination"
-                    labelType="floating"
-                    color="light"
-                    labelColor="light"
-                    onChange={updateDestination}
-                    clearInput={true}
-                  /> */}
                   <SelectMenu
                     label="bank.destination"
                     array={bankName}
                     onSelect={handleBank}
+                    selectedVal={currentSelectedVal}
                   />
                   <InputText
                     inputType="text"
@@ -164,9 +166,10 @@ const Bank: React.FC = () => {
                     labelColor="light"
                     onChange={updateHolderName}
                     clearInput={true}
+                    value={holderName}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="bank.number"
                     labelType="floating"
                     color="light"
@@ -175,7 +178,7 @@ const Bank: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="bank.mobile"
                     labelType="floating"
                     color="light"
@@ -184,7 +187,7 @@ const Bank: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="bank.amount"
                     labelType="floating"
                     color="light"
@@ -203,7 +206,7 @@ const Bank: React.FC = () => {
                   />
 
                   <div className="bank-proceed-button">
-                    <div className="clear-button">
+                    <div className="clear-button-for-bank">
                       <ButtonConmponent
                         buttonLabel="UtilityCardClear"
                         size="block"

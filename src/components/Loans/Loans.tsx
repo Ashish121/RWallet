@@ -38,34 +38,34 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
           <div>
             <button className="iconButtons" onClick={() => navigateToLoan(1)}>
               <LoanIcon width="30" height="30" />
+              <IonText>
+                <Translate message="home.businessLoan" />
+              </IonText>
             </button>
-            <IonText>
-              <Translate message="home.businessLoan" />
-            </IonText>
           </div>
           <div>
             <button className="iconButtons" onClick={() => navigateToLoan(2)}>
               <PurchaseIcon width="30" height="30" />
+              <IonText>
+                <Translate message="home.puchaseLoan" />
+              </IonText>
             </button>
-            <IonText>
-              <Translate message="home.puchaseLoan" />
-            </IonText>
           </div>
           <div>
             <button className="iconButtons" onClick={() => navigateToLoan(3)}>
               <TearmLoanIcon width="30" height="30" />
+              <IonText>
+                <Translate message="home.termLoan" />
+              </IonText>
             </button>
-            <IonText>
-              <Translate message="home.termLoan" />
-            </IonText>
           </div>
           <div>
             <button className="iconButtons" onClick={() => navigateToLoan(4)}>
               <PersonalLoanIcon width="30" height="30" />
+              <IonText>
+                <Translate message="home.personalLoanText" />
+              </IonText>
             </button>
-            <IonText>
-              <Translate message="home.personalLoanText" />
-            </IonText>
           </div>
           {expanded && (
             <>
@@ -75,10 +75,10 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
                   onClick={() => navigateToLoan(5)}
                 >
                   <EducationIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.educationTedxt" />
+                  </IonText>
                 </button>
-                <IonText>
-                  <Translate message="home.educationTedxt" />
-                </IonText>
               </div>
               <div>
                 <button
@@ -86,10 +86,10 @@ const LoanSection: React.FC<loanProps> = ({ expanded }) => {
                   onClick={() => navigateToLoan(6)}
                 >
                   <Securityicon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.secureText" />
+                  </IonText>
                 </button>
-                <IonText>
-                  <Translate message="home.secureText" />
-                </IonText>
               </div>
             </>
           )}

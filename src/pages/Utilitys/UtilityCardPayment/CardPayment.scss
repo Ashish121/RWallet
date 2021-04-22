@@ -1,4 +1,4 @@
-.container {
+.container-for-card-payment {
   display: flex;
   height: 100%;
   padding-left: 28px;
@@ -18,25 +18,21 @@
   .credit-card-wrapper {
     margin-top: 40px;
   }
+
+  .card-payment-button-property {
+    float: inline;
+    display: flex;
+    margin-top: 240px;
+    .clear-button-for-card-payment {
+      width: 70%;
+    }
+    .procced-button-for-card-payment {
+      margin-left: 10%;
+      width: 70%;
+    }
+  }
 }
 
-.buttonElement {
-  margin-top: 71%;
-  display: flex;
-
-  .btn-elem {
-    width: 120%;
-    font-size: 14px;
-  }
-  .cardClearButton {
-    margin-left: 0%;
-    width: 100px;
-  }
-  .cardSubmitButton {
-    margin-left: 26%;
-    width: 100px;
-  }
-}
 .select-menu-wrapper ion-item {
   --border-color: #ffffff;
   width: 96%;

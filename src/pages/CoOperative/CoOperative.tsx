@@ -164,7 +164,7 @@ const CoOperative: React.FC = () => {
               handler={goBack}
             />
             <IonContent>
-              <div className="container">
+              <div className="coOperative-container">
                 <IonText className="coperative-text-area">
                   <Translate message="coOperative.text" />
                 </IonText>
@@ -203,7 +203,7 @@ const CoOperative: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="bank.number"
                     labelType="floating"
                     color="light"
@@ -212,7 +212,7 @@ const CoOperative: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="bank.mobile"
                     labelType="floating"
                     color="light"
@@ -221,7 +221,7 @@ const CoOperative: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="coOperative.amount"
                     labelType="floating"
                     color="light"
@@ -239,15 +239,15 @@ const CoOperative: React.FC = () => {
                     clearInput={true}
                   />
 
-                  <div className="coperative-proceed-button">
-                    <div className="clear-button">
+                  <div className="coperative-button-property">
+                    <div className="coperative-clear-button">
                       <ButtonConmponent
                         buttonLabel="UtilityCardClear"
                         size="block"
                         clickHandler={handleClearButton}
                       />
                     </div>
-                    <div className="procced-button">
+                    <div className="coperative-procced-button">
                       <ButtonConmponent
                         buttonLabel="bank.proceed"
                         size="block"
