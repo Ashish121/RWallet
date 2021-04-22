@@ -163,7 +163,7 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
                 </IonText>
               </button>
             </div>
-            <div>
+          <div>
               <button
                 className="iconButtons"
                 onClick={() => navigateToUtility('electricityAndWater')}

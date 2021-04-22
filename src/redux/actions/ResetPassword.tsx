@@ -11,9 +11,19 @@ const requestForResetPassword = (payload: any, nextRoute: Function) => {
         payload.newPass
       );
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.success) {
         dispatch({ type: RESETPASSWORD_SUCCESS, data: response.data });
         nextRoute();
+      } else {
+        //nextRoute(false);
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'RESETPASSWORD_FAILED' });
+        dispatch(updateToast(data));
       }
     } catch (error) {
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });

@@ -22,14 +22,21 @@ const requestForFlightOneWayPage = (payload: any, nextRoute: Function) => {
         payload.classForFlight
       );
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.success) {
         dispatch({ type: FLIGHTONEWAY_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
         nextRoute(true);
       } else {
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'FLIGHTONEWAY_FAILED' });
+        dispatch(updateToast(data));
         nextRoute(false);
       }
-      console.log('done', response);
     } catch (error) {
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       nextRoute(false);
@@ -54,8 +61,18 @@ const loadCityNameForFlight = (callback: Function) => {
         dispatch({ type: FLIGHTONEWAY_SUCCESS, data: { status: false } });
         localStorage.setItem('BankNameList', JSON.stringify(response));
         callback(response);
+        console.log('Inside If block', response);
+      } else {
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'FLIGHTONEWAY_FAILED' });
+        dispatch(updateToast(data));
+        console.log('Inside else block', response);
       }
-      console.log('done', response);
     } catch (error) {
       const data = {
         showToast: true,
@@ -78,8 +95,18 @@ const loadCityNameForBus = (callback: Function) => {
         dispatch({ type: FLIGHTONEWAY_SUCCESS, data: { status: false } });
         localStorage.setItem('BankNameList', JSON.stringify(response));
         callback(response);
+        console.log('Inside If block', response);
+      } else {
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'FLIGHTONEWAY_FAILED' });
+        dispatch(updateToast(data));
+        console.log('Inside else block', response);
       }
-      console.log('done', response);
     } catch (error) {
       const data = {
         showToast: true,

@@ -11,14 +11,21 @@ const requestForCurrentAccount = (payload: any, nextRoute: Function) => {
         payload.amount
       );
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.success) {
         dispatch({ type: CURRENT_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
         nextRoute(true);
       } else {
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'CURRENT_FAILED' });
+        dispatch(updateToast(data));
         nextRoute(false);
       }
-      console.log('done', response);
     } catch (error) {
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       nextRoute(false);

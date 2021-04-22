@@ -1,6 +1,7 @@
 import { REGISTRATION_SUCCESS } from '../Contants';
 import { authenticationForRegister } from '../../services/Connect';
 import { toggleLoader } from './Loader';
+import { updateToast } from './index';
 const requestForRegistration = (payload: any, nextRoute: Function) => {
   console.log('payload: ', payload);
 
@@ -15,15 +16,24 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         payload.countryCode
       );
       console.log('res****', response);
-      if (response.status == 200) {
+      if (response.status == 200 && response.data.success) {
         dispatch(toggleLoader(false));
         dispatch({ type: REGISTRATION_SUCCESS, response: response });
         localStorage.setItem('userId', response.data.user.id);
         localStorage.setItem('loginDetails', JSON.stringify(response));
         localStorage.setItem('isMpinCreated', response.data.isMpin);
         nextRoute(true, null);
+      } else {
+        nextRoute(false);
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'BANKTRANSFER_FAILED ' });
+        dispatch(updateToast(data));
       }
-      console.log('done', response);
     } catch (error) {
       dispatch(toggleLoader(false));
       console.log('error: ', error);

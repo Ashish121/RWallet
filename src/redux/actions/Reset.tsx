@@ -9,9 +9,19 @@ const requestForResetPassword = (payload: any, nextRoute: Function) => {
         payload.mobileNo,
         payload.newPass
       );
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.success) {
         dispatch({ type: RESETPASSWORD_SUCCESS, data: response.data });
         nextRoute(true);
+      } else {
+        nextRoute(false);
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'RESETPASSWORD_FAILED' });
+        dispatch(updateToast(data));
       }
     } catch (error) {
       nextRoute(false);

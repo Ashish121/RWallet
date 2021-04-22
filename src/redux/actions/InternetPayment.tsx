@@ -12,11 +12,19 @@ const requestForInternetPayment = (payload: any, nextRoute: Function) => {
         payload.customerId
       );
 
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.success) {
         dispatch({ type: INTERNET_PAYMENT_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
         nextRoute(true);
       } else {
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'INTERNET_PAYMENT_FAILED' });
+        dispatch(updateToast(data));
         nextRoute(false);
       }
     } catch (error) {
