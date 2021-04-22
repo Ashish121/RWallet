@@ -51,7 +51,7 @@ const CurrentAccountPage: React.FC = () => {
     setAmount(amount);
   }
   function backButtonHander() {
-    history.replace('/accountpag');
+    history.replace('/accountpage');
   }
 
   return (
