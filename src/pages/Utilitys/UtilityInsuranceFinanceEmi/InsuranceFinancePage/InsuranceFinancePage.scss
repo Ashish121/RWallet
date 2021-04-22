@@ -1,8 +1,10 @@
-.container {
+.insurance-finance-container {
   display: flex;
   height: 100%;
   flex-direction: column;
   background-color: #3182b9;
+  padding-left: 25px;
+  padding-right: 25px;
   .insuranceEmi-text-area {
     font-style: normal;
     font-weight: 600;

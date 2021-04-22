@@ -1,10 +1,10 @@
-.accountNumber {
+.pos-account-number {
   color: rgb(231, 226, 226);
   margin-left: 5%;
   margin-top: 3%;
   font-size: small;
 }
-.accountHeading {
+.pos-account-heading {
   color: white;
   font-size: medium;
   margin-left: 5%;
@@ -13,10 +13,32 @@
 }
 .PosSection-0 {
   margin-top: 20px;
-  .section-header {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
+}
+
+.map_view_container {
+  height: 200px;
+  position: relative;
+  bottom: 0;
+  top: 79px;
+}
+
+.pos-payment-page-wrapper {
+  ion-card {
+    background: #ffffff;
+    ion-card-content {
+      padding: 0px;
+    }
+  }
+  .page-header-for-pos {
+    padding: 20px;
+    position: relative;
+    top: 15px;
+    ion-text {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      color: #ffffff;
+    }
   }
 }

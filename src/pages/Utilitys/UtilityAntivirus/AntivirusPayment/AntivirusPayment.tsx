@@ -57,7 +57,8 @@ const AntivirusPayment: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      history.replace('/tabs/antivirusPayment');
+      history.replace('/tabs/home');
+      alert('payment successfully completed');
       return;
     }
   }
@@ -106,7 +107,7 @@ const AntivirusPayment: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="antivirus-payment-container">
               <IonText className="antivirus-payment-text-area">
                 <Translate message="AntivirusPaymentOption" />
               </IonText>

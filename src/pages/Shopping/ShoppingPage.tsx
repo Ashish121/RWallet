@@ -124,7 +124,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <SmartphoneIcon width="15" height="15" />
+                      <SmartphoneIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.mobileIconText" />
                       </IonText>
@@ -134,7 +134,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <LaptopIcon width="15" height="15" />
+                      <LaptopIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.laptopIconText" />
                       </IonText>
@@ -144,7 +144,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <FashionIcon width="15" height="15" />
+                      <FashionIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.fashionIconText" />
                       </IonText>
@@ -154,7 +154,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <TelevisionIcon width="15" height="15" />
+                      <TelevisionIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.televisionText" />
                       </IonText>
@@ -164,7 +164,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <StoreIcon width="15" height="15" />
+                      <StoreIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.storeText" />
                       </IonText>
@@ -174,7 +174,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <SparepartIcon width="15" height="15" />
+                      <SparepartIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.sparePartText" />
                       </IonText>
@@ -184,7 +184,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <MotorBikeIcon width="15" height="15" />
+                      <MotorBikeIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.motorbike" />
                       </IonText>
@@ -194,7 +194,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <GroceryIcon width="15" height="15" />
+                      <GroceryIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.grocery" />
                       </IonText>
@@ -204,7 +204,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <WalletIcon width="15" height="15" />
+                      <WalletIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.walletText" />
                       </IonText>
@@ -214,7 +214,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <WatchIcon width="15" height="15" />
+                      <WatchIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.watchText" />
                       </IonText>
@@ -224,7 +224,8 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent>
-                      <SneakersIcon width="15" height="15" />
+                      <SneakersIcon width="24" height="24" />
+
                       <IonText>
                         <Translate message="home.shoesText" />
                       </IonText>

@@ -32,7 +32,7 @@ const CurrentAccountPage: React.FC = () => {
 
   function nextRoute(status: any) {
     if (status) {
-      history.replace('/tabs/confirm');
+      history.replace('/confirm');
       return;
     }
     setIsLoading(false);
@@ -42,7 +42,7 @@ const CurrentAccountPage: React.FC = () => {
   function navigateToConfirm() {
     setIsLoading(true);
     setLoadeMessage('Creating account...');
-    const user_id = localStorage.getItem('registeredUserId');
+    const user_id = localStorage.getItem('userId');
 
     dispatch(requestForCurrentAccount({ user_id, amount }, nextRoute));
   }
@@ -51,7 +51,7 @@ const CurrentAccountPage: React.FC = () => {
     setAmount(amount);
   }
   function backButtonHander() {
-    history.replace('/accountpag');
+    history.replace('/accountpage');
   }
 
   return (
@@ -92,6 +92,7 @@ const CurrentAccountPage: React.FC = () => {
                         showRadioButton={true}
                         label="Rs 5000 per quarter for non-rural"
                         val="5000"
+                        showColor={true}
                       />
                     </div>
                     <div className="options-section1">
@@ -99,6 +100,7 @@ const CurrentAccountPage: React.FC = () => {
                         showRadioButton={true}
                         label="Rs 2500 per quarter for rural"
                         val="2500"
+                        showColor={true}
                       />
                     </div>
                   </IonRadioGroup>

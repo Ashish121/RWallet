@@ -112,7 +112,7 @@ const Agent: React.FC = () => {
               handler={goBack}
             />
             <IonContent>
-              <div className="container">
+              <div className="agent-fund-transfer-container">
                 <IonText className="agent-text-area">
                   <Translate message="agent.text" />
                 </IonText>
@@ -125,7 +125,7 @@ const Agent: React.FC = () => {
                     />
                   </div>
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="agent.code"
                     labelType="floating"
                     color="light"
@@ -143,7 +143,7 @@ const Agent: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="bank.number"
                     labelType="floating"
                     color="light"
@@ -152,7 +152,7 @@ const Agent: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="bank.mobile"
                     labelType="floating"
                     color="light"
@@ -161,7 +161,7 @@ const Agent: React.FC = () => {
                     clearInput={true}
                   />
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="bank.amount"
                     labelType="floating"
                     color="light"
@@ -180,14 +180,14 @@ const Agent: React.FC = () => {
                   />
 
                   <div className="agent-proceed-button">
-                    <div className="clear-button">
+                    <div className="clear-button-for-agent">
                       <ButtonConmponent
                         buttonLabel="UtilityCardClear"
                         size="block"
                         clickHandler={handleClearButton}
                       />
                     </div>
-                    <div className="procced-button">
+                    <div className="procced-button-for-agent">
                       <ButtonConmponent
                         buttonLabel="bank.proceed"
                         size="block"

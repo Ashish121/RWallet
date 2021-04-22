@@ -17,7 +17,7 @@ import { requestForEmiCalculaterPage } from '../../../redux/actions';
 const EmiCalculater: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [loanAmount, setLoanAmount] = useState(Number);
+  const [loanAmount, setLoanAmount] = useState('');
   const [interestRate, setInterestRate] = useState(Number);
   const [loanTenure, setLoanTenure] = useState(Number);
   const [showLoading, setShowLoading] = useState(false);
@@ -54,12 +54,14 @@ const EmiCalculater: React.FC = () => {
   }
 
   function updateInterestRate(interestRate: any) {
-    console.log('interestRate :', interestRate);
+    console.log('interestRate :', interestRate.detail.value);
+    interestRate = interestRate.detail.value;
     setInterestRate(interestRate);
   }
 
   function updateLoanTenure(loanTenure: any) {
-    console.log('loanTenure :', loanTenure);
+    console.log('loanTenure :', loanTenure.detail.value);
+    loanTenure = loanTenure.detail.value;
     setLoanTenure(loanTenure);
   }
   function goBack() {
@@ -82,13 +84,13 @@ const EmiCalculater: React.FC = () => {
           <IonPage>
             <HeaderComponent headerLable="common.header" />
             <IonContent>
-              <div className="container">
+              <div className="emi-container">
                 <IonText className="emi-calcluter-text-area">
                   <Translate message="emiCalculator" />
                 </IonText>
                 <div className="emi-calculater-wrapper">
                   <InputText
-                    inputType="text"
+                    inputType="tel"
                     labelText="emiloanAmount"
                     labelType="floating"
                     color="light"
@@ -147,7 +149,7 @@ const EmiCalculater: React.FC = () => {
                 {showMenu && (
                   <>
                     <div className="emiCalculater">
-                      <IonText className="emi-cal-prinival">
+                      <IonText className="emi-cal-principal">
                         <span className="emi-interest">
                           <Translate message="emiPrinivipalAmount" />
                         </span>
@@ -157,7 +159,7 @@ const EmiCalculater: React.FC = () => {
                       </div>
                     </div>
                     <div className="emiCalculater">
-                      <IonText className="emi-cal-prinival">
+                      <IonText className="emi-cal-principal">
                         <span className="emi-interest">
                           <Translate message="emiInterest" />
                         </span>
@@ -170,7 +172,7 @@ const EmiCalculater: React.FC = () => {
                     </div>
 
                     <div className="emiCalculater">
-                      <IonText className="emi-cal-prinival">
+                      <IonText className="emi-cal-principal">
                         <span className="emi-interest">
                           <Translate message="emiTotal" />
                         </span>
@@ -181,13 +183,13 @@ const EmiCalculater: React.FC = () => {
                         </IonText>
                       </div>
                     </div>
-                    <div className="emiCalculater1">
-                      <IonText className="emi-cal-prinival1">
-                        <span className="emi-interest1">
+                    <div className="emiCalculater-message">
+                      <IonText className="emi-cal-principal-message">
+                        <span className="emi-interest-message">
                           <Translate message="emiAmountMonthely" />
                         </span>
                       </IonText>
-                      <div className="name-message1">
+                      <div className="emi-message">
                         <IonText className="nameMessage">
                           {emiDetails.data.data.emi}
                         </IonText>

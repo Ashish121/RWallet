@@ -15,6 +15,7 @@ import {
 } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import './PosPaymentPage.scss';
+import { MapView } from '..';
 
 const PosPaymentPage: React.FC = () => {
   const history = useHistory();
@@ -47,8 +48,8 @@ const PosPaymentPage: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="cart-page-wrapper">
-              <div className="page-header">
+            <div className="pos-payment-page-wrapper">
+              <div className="page-header-for-pos">
                 <IonText>
                   <Translate message="pos.pageLabel" />
                 </IonText>
@@ -64,18 +65,18 @@ const PosPaymentPage: React.FC = () => {
                   marginRight: '10%',
                 }}
               >
-                <div className="accountHeading md hydrated">
+                <div className="pos-account-heading md hydrated">
                   <IonText>
                     <Translate message="pos.accountLabel" />
                   </IonText>
                 </div>
-                <IonText className="accountNumber">
+                <IonText className="pos-account-number">
                   <Translate message="pos.accountNumber" />
                 </IonText>
               </div>
 
               <div className="PosSection-0">
-                <div className="page-header">
+                <div className="page-header-for-pos">
                   <IonText>
                     <Translate message="pos.radioLabel" />
                   </IonText>
@@ -88,6 +89,7 @@ const PosPaymentPage: React.FC = () => {
                       label="Pick up from nearest POS counter"
                       val="daily"
                       showRadioButton={true}
+                      showColor={true}
                     />
                   </div>
                   <div className="options-section1">
@@ -95,9 +97,13 @@ const PosPaymentPage: React.FC = () => {
                       label="Enter your desired location"
                       val="monthly"
                       showRadioButton={true}
+                      showColor={true}
                     />
                   </div>
                 </IonRadioGroup>
+              </div>
+              <div className="map_view_container">
+                <MapView detailsView={false} />
               </div>
             </div>
           </IonContent>

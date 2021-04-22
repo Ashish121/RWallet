@@ -78,7 +78,8 @@ const InternetPayment: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      history.replace('/tabs/internetPayment');
+      alert('Internet recharge successfully completed');
+      history.replace('/tabs/home');
       return;
     }
   }
@@ -114,7 +115,7 @@ const InternetPayment: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="internet-payment-container">
               <IonText className="InternetPayment-text-area">
                 <Translate message="Internet Payment" />
               </IonText>

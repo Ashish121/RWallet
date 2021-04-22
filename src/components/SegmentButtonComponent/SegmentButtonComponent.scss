@@ -1,36 +1,26 @@
-.segmentWrapper {
-  --background: white;
-}
+.segment-wrapper {
+  ion-segement {
+    --background: #ffffff;
+    --height: 0rem;
+  }
+  ion-segment-button {
+    --background-checked: #004777;
+    --background: #ffffff;
+    --color-checked: #ffffff;
+    --border-color: transparent;
+    --indicator-box-shadow: none;
+    --indicator-color: #004777;
+    // --border-radius: 8px;
+    --height: 0rem;
+    //--indicator-height: 0rem;
+  }
+  .segment-right-button {
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+  }
 
-.oneWay_btn {
-  --background: #004777;
-  color: white;
-  margin-top: -6px;
-}
-.oneWay_btn1 {
-  --background: white;
-  color: black;
-  margin-top: -6px;
-}
-.twoWay_btn {
-  --background: white;
-  color: black;
-  margin-top: -6px;
-}
-.twoWay_btn1 {
-  --background: #004777;
-  color: white;
-  margin-top: -6px;
-}
-
-.common_btn_wrapper {
-  width: 130%;
-  height: 1.9rem;
-  border-radius: 8px;
-  --background: grey;
-  :host(.segment-button-has-label-only) ::slotted(ion-label) {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 12px;
+  .segment-left-button {
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
   }
 }

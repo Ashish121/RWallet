@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { IonButton, IonIcon, IonRow, IonCol } from '@ionic/react';
-import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
+import { chevronUpOutline, chevronDownOutline } from 'ionicons/icons';
 import './Accordion.scss';
 import { useHistory } from 'react-router-dom';
+
 interface accordionProps {
   accordionData: any;
 }
@@ -10,6 +11,7 @@ interface accordionProps {
 const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
   const [toggleAccordion, setToggleAccordion] = useState(false);
   const history = useHistory();
+
   const toggle = (item: any, index: any) => {
     const status = !toggleAccordion;
     accordionData.map((item: any, i: any) => {
@@ -21,7 +23,7 @@ const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
     });
     setToggleAccordion(status);
   };
- 
+
   function handleClickButton(loantype: any) {
     history.replace('/tabs/applyPage', { loantype: loantype });
   }
@@ -35,10 +37,13 @@ const CustomAccordion: React.FC<accordionProps> = ({ accordionData }) => {
               onClick={() => toggle(item, index)}
               className="ion-button"
             >
-              <span style={{ justifyItems: 'right' }}>{item.title} </span>
+              <span style={{ position: 'absolute', left: '10px' }}>
+                {item.title}{' '}
+              </span>
               <IonIcon
                 slot="end"
-                icon={item.showDetails ? caretUpOutline : caretDownOutline}
+                style={{ position: 'absolute', right: '10px' }}
+                icon={item.showDetails ? chevronUpOutline : chevronDownOutline}
               />
             </IonButton>
 

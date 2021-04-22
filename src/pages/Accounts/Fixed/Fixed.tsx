@@ -34,7 +34,7 @@ const FixedAccountPage: React.FC = () => {
 
   function nextRoute(status: any) {
     if (status) {
-      history.replace('/tabs/confirm');
+      history.replace('/confirm');
       return;
     }
     setIsLoading(true);
@@ -44,7 +44,7 @@ const FixedAccountPage: React.FC = () => {
   function navigateToConfirm() {
     setIsLoading(true);
     setLoadeMessage('Creating account...');
-    const user_id = localStorage.getItem('registeredUserId');
+    const user_id = localStorage.getItem('userId');
     dispatch(
       requestForFixedAccount({ investment_period, user_id, amount }, nextRoute)
     );
@@ -98,6 +98,7 @@ const FixedAccountPage: React.FC = () => {
                         label="12 months with 10%"
                         val="12"
                         showRadioButton={true}
+                        showColor={true}
                       />
                     </div>
                     <div className="options-section1">
@@ -105,6 +106,7 @@ const FixedAccountPage: React.FC = () => {
                         label="24 months with 20%"
                         val="24"
                         showRadioButton={true}
+                        showColor={true}
                       />
                     </div>
                     <div className="options-section1">
@@ -112,6 +114,7 @@ const FixedAccountPage: React.FC = () => {
                         label="36 months with 35%"
                         val="36"
                         showRadioButton={true}
+                        showColor={true}
                       />
                     </div>
                     <div className="options-section1">
@@ -119,6 +122,7 @@ const FixedAccountPage: React.FC = () => {
                         label="48 months with 50%"
                         val="48"
                         showRadioButton={true}
+                        showColor={true}
                       />
                     </div>
                     <div className="options-section1">
@@ -126,6 +130,7 @@ const FixedAccountPage: React.FC = () => {
                         label="60 monthss with 100%"
                         val="60"
                         showRadioButton={true}
+                        showColor={true}
                       />
                     </div>
                   </IonRadioGroup>

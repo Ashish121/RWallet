@@ -1,8 +1,10 @@
-.container {
+.container-for-ElectricityWater {
   display: flex;
   height: 100%;
   flex-direction: column;
   background-color: #3182b9;
+  padding-left: 25px;
+  padding-right: 25px;
   .electricity-water-text-area {
     font-style: normal;
     font-weight: 600;
@@ -15,6 +17,6 @@
 
   .btn-elem {
     width: 100%;
-    font-size: 12px;
+    font-size: 15px;
   }
 }

@@ -50,7 +50,7 @@ const SuccessPage: React.FC = () => {
                               alignItems: 'center',
                               color: '#ffffff',
                               fontSize: '18px',
-                              marginTop: '10px',
+                              marginTop: '35px',
                             }}
                           >
                             <IonText>

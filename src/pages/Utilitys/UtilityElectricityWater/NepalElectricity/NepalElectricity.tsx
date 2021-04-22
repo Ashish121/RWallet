@@ -70,7 +70,7 @@ const NepalElectricity: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="nepal-electricity-container">
               <IonText className="nepal-electricity-text-area">
                 <Translate message="UtilityNepalElectricityAuthority" />
               </IonText>
@@ -100,15 +100,14 @@ const NepalElectricity: React.FC = () => {
                   onChange={updateCustomerID}
                 />
 
-                <div className="buttonElement">
-                  <div className="firstButton">
+                <div className="electricity-proceed-button">
+                  <div className="clear-button-for-electricity">
                     <ButtonConmponent
                       buttonLabel="UtilityDiscard"
                       size="block"
                     />
                   </div>
-
-                  <div className="secondButton">
+                  <div className="procced-button-for-electricity">
                     <ButtonConmponent
                       buttonLabel="UtilitySubmit"
                       size="block"

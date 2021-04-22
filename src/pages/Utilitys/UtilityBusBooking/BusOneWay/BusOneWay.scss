@@ -1,131 +1,49 @@
-.container {
-  margin-top: -24px;
-  display: flex;
-  height: 100%;
-  padding-left: 28px;
-  padding-right: 28px;
-  flex-direction: column;
-  background-color: #3182b9;
-  font-family: "Montserrat";
-  margin-top: 4%;
-  .booking-oneWay-text-area {
-    font-style: normal;
+.bus-booking-container {
+  margin-top: 40px;
+  ion-text {
     font-weight: 600;
     font-size: 16px;
-    line-height: 20px;
     color: #ffffff;
-    font-family: "Montserrat";
-    margin-top: 0%;
   }
 
-  .booking-oneWay-wrapper {
-    .booking-section {
-      display: flex;
-      width: 100%;
+  .bus-booking-oneWay-text-area {
+    padding-left: 25px;
+  }
+  .toggle-button {
+    width: 100%;
+    padding: 25px;
+    margin-top: 35px;
+  }
+
+  .bus-booking-oneWay-wrapper {
+    padding: 25px;
+    margin-top: -32px;
+
+    .bus-one-way-button {
+      margin-top: 121px;
     }
-    .booking-from {
-      display: flex;
-      width: 100%;
-    }
-    .flight-icon {
-      display: flex;
-      margin-right: 5px;
-    }
-    .booking-to {
-      display: flex;
-      width: 100%;
+  }
+  .bus-booking-section {
+    display: flex;
+
+    .bus-Booking-icon {
+      margin-top: 40px;
     }
   }
 
-  .departure-area {
-    display: inline-block;
-    width: 100;
-  }
+  .bus-booking-TwoWay-wrapper {
+    padding: 25px;
+    margin-top: -32px;
 
-  .toggelButton {
-    color: white;
-  }
-}
-
-.allwidth {
-  width: "65%";
-}
-
-.toggle-inner {
-  --handle-background: red;
-}
-
-.container .bookingButtonForBus {
-  margin-top: 57%;
-}
-
-.container {
-  display: flex;
-  height: 100%;
-  padding-left: 28px;
-  padding-right: 28px;
-  flex-direction: column;
-  background-color: #3182b9;
-  font-weight: 600;
-  font-family: "Montserrat";
-  .booking-twoWay-text-area {
-    font-style: normal;
-    // font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-    color: #ffffff;
-    margin-top: 30px;
-    margin-top: 0%;
-  }
-  .booking-twoWay-wrapper {
-    margin-top: 60px;
-    .booking-twoWay-section {
-      display: flex;
-      width: 100%;
-    }
-    .booking-twoWay-from {
-      display: flex;
-      width: 100%;
-    }
-    .flight-twoWay-icon {
-      display: flex;
-      margin-right: 5px;
-      margin-top: 25px;
-    }
-    .booking-twoWay-to {
-      display: flex;
-      width: 100%;
-    }
-    .flight-Return {
-      display: flex;
-      width: 100%;
-      .flight-departure {
-        display: flex;
-        width: 100%;
-        margin-right: 20px;
-      }
-      .flight-return {
-        display: flex;
-        margin-left: 20px;
-        width: 100%;
-      }
+    .bus-two-way-button {
+      margin-top: 120px;
     }
   }
-  .departure-twoWay-area {
-    display: inline-block;
-    width: 100;
+
+  .bus-booking-twoWay-section {
+    display: flex;
+    .bus-twoWay-icon {
+      margin-top: 40px;
+    }
   }
-}
-.flightTwoWayButton {
-  margin-top: 35%;
-}
-
-.container .bookingButtonForBusTwoWay {
-  margin-top: 57%;
-}
-
-.container .booking-oneWay-wrapper .flight-icon {
-  display: flex;
-  margin-right: 5px;
-  margin-top: 8%;
 }

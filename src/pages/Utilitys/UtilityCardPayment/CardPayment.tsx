@@ -47,6 +47,7 @@ const CardPayment: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      alert('card payment successfully completed');
       history.replace('/tabs/home');
       return;
     }
@@ -106,7 +107,7 @@ const CardPayment: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="container-for-card-payment">
               <IonText className="credit-card-text-area">
                 <Translate message="UtilityInternetPayment" />
               </IonText>
@@ -118,7 +119,7 @@ const CardPayment: React.FC = () => {
                 />
 
                 <InputText
-                  inputType="text"
+                  inputType="tel"
                   labelText="UtilityCardNumber"
                   labelType="floating"
                   color="light"
@@ -126,22 +127,21 @@ const CardPayment: React.FC = () => {
                   onChange={updateCardNumber}
                 />
                 <InputText
-                  inputType="text"
+                  inputType="tel"
                   labelText="UtilityAmountPayment"
                   labelType="floating"
                   color="light"
                   labelColor="light"
                   onChange={updateAmount}
                 />
-
-                <div className="buttonElement">
-                  <div className="cardClearButton">
+                <div className="card-payment-button-property">
+                  <div className="clear-button-for-card-payment">
                     <ButtonConmponent
                       buttonLabel="UtilityCardClear"
                       size="block"
                     />
                   </div>
-                  <div className="cardSubmitButton">
+                  <div className="procced-button-for-card-payment">
                     <ButtonConmponent
                       buttonLabel="UtilityConfirm"
                       size="block"
@@ -154,7 +154,7 @@ const CardPayment: React.FC = () => {
                       }
                       clickHandler={handleproceed}
                     />
-                  </div>{' '}
+                  </div>
                 </div>
               </div>
             </div>

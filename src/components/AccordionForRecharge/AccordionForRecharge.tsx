@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IonButton, IonIcon, IonItem, IonLabel, IonInput } from '@ionic/react';
-import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
+import { chevronDownOutline, chevronUpOutline } from 'ionicons/icons';
 import './AccordionForRecharge.scss';
 
 interface accordionContainerProps {
@@ -53,23 +53,30 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
     <React.Fragment>
       {accordionData?.map((item: any, index: any) => {
         return (
-          <div className="accordion-wrapper">
+          <div className="accordion-for-recharge-wrapper">
             <IonButton
               expand="block"
               onClick={() => toggle(item, index)}
               className="ion-button"
             >
-              <span style={{ justifyItems: 'right' }}>{item.title} </span>
+              <span style={{ position: 'absolute', left: '10px' }}>
+                {item.title}{' '}
+              </span>
               <IonIcon
                 slot="end"
-                icon={item.showDetails ? caretUpOutline : caretDownOutline}
+                style={{ position: 'absolute', right: '10px' }}
+                icon={item.showDetails ? chevronUpOutline : chevronDownOutline}
               />
             </IonButton>
 
-            <div className={`${item.showDetails ? 'is-shown' : 'is-hidden'}`}>
+            <div
+              className={`${
+                item.showDetails ? 'is-shown-recharge' : 'is-hidden-recharge'
+              }`}
+            >
               {item.showDetails && (
                 <div>
-                  <IonItem className="inputArea" color="white">
+                  <IonItem className="recharge-input-area" color="white">
                     <IonLabel>{item.inputfield1}</IonLabel>
                     <IonInput
                       name="customerId"
@@ -78,7 +85,7 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
                     />
                   </IonItem>
 
-                  <IonItem className="inputArea" color="white">
+                  <IonItem className="recharge-input-area" color="white">
                     <IonLabel>{item.inputfield2}</IonLabel>
                     <IonInput
                       name="amount"

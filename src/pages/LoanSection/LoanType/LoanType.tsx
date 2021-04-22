@@ -97,7 +97,7 @@ const LoanType: React.FC = () => {
             handler={goBack}
           />
           <IonContent>
-            <div className="container">
+            <div className="loan-type-container">
               <IonText className="loan-type-text-area">
                 <Translate message="Loan Types" />
               </IonText>
