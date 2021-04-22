@@ -89,6 +89,7 @@ const PosPaymentPage: React.FC = () => {
                       label="Pick up from nearest POS counter"
                       val="daily"
                       showRadioButton={true}
+                      showColor={true}
                     />
                   </div>
                   <div className="options-section1">
@@ -96,6 +97,7 @@ const PosPaymentPage: React.FC = () => {
                       label="Enter your desired location"
                       val="monthly"
                       showRadioButton={true}
+                      showColor={true}
                     />
                   </div>
                 </IonRadioGroup>

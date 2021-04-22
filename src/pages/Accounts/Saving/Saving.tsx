@@ -112,12 +112,13 @@ const SavingAccountPage: React.FC = () => {
                   <IonText className="section-header">
                     <Translate message="account.savingDeposit" />
                   </IonText>
-                  <IonRadioGroup onIonChange={updateDepositType} value="daily">
+                  <IonRadioGroup onIonChange={updateDepositType}>
                     <div className="options-section1">
                       <RadioComponent
                         label="Daily Rs 100"
                         val="daily"
                         showRadioButton={true}
+                        showColor={true}
                       />
                     </div>
                     <div className="options-section1">
@@ -125,6 +126,7 @@ const SavingAccountPage: React.FC = () => {
                         label="Monthly Rs 1000"
                         val="monthly"
                         showRadioButton={true}
+                        showColor={true}
                       />
                     </div>
                   </IonRadioGroup>
@@ -141,6 +143,7 @@ const SavingAccountPage: React.FC = () => {
                           label="12 months with 3.5%"
                           val="12"
                           showRadioButton={true}
+                          showColor={true}
                         />
                       </div>
                       <div className="options-section1">
@@ -148,6 +151,7 @@ const SavingAccountPage: React.FC = () => {
                           label="24 months with 8%"
                           val="24"
                           showRadioButton={true}
+                          showColor={true}
                         />
                       </div>
                       <div className="options-section1">
@@ -155,6 +159,7 @@ const SavingAccountPage: React.FC = () => {
                           label="36 months with 13%"
                           val="36"
                           showRadioButton={true}
+                          showColor={true}
                         />
                       </div>
                     </IonRadioGroup>
@@ -172,6 +177,7 @@ const SavingAccountPage: React.FC = () => {
                           label="12 months with 5%"
                           val="12"
                           showRadioButton={true}
+                          showColor={true}
                         />
                       </div>
                       <div className="options-section1">
@@ -179,6 +185,7 @@ const SavingAccountPage: React.FC = () => {
                           label="24 months with 6%"
                           val="24"
                           showRadioButton={true}
+                          showColor={true}
                         />
                       </div>
                       <div className="options-section1">
@@ -186,6 +193,7 @@ const SavingAccountPage: React.FC = () => {
                           label="36 months with 12%"
                           val="36"
                           showRadioButton={true}
+                          showColor={true}
                         />
                       </div>
                       <div className="options-section1">
@@ -193,6 +201,7 @@ const SavingAccountPage: React.FC = () => {
                           label="48 months with 15.5%"
                           val="48"
                           showRadioButton={true}
+                          showColor={true}
                         />
                       </div>
                       <div className="options-section1">
@@ -200,6 +209,7 @@ const SavingAccountPage: React.FC = () => {
                           label="60 monthss with 20%"
                           val="60"
                           showRadioButton={true}
+                          showColor={true}
                         />
                       </div>
                     </IonRadioGroup>

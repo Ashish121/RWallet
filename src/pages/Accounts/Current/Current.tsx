@@ -92,6 +92,7 @@ const CurrentAccountPage: React.FC = () => {
                         showRadioButton={true}
                         label="Rs 5000 per quarter for non-rural"
                         val="5000"
+                        showColor={true}
                       />
                     </div>
                     <div className="options-section1">
@@ -99,6 +100,7 @@ const CurrentAccountPage: React.FC = () => {
                         showRadioButton={true}
                         label="Rs 2500 per quarter for rural"
                         val="2500"
+                        showColor={true}
                       />
                     </div>
                   </IonRadioGroup>

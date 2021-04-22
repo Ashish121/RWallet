@@ -86,6 +86,7 @@ const AccordionContainerForAntivirus: React.FC<AccordionContainerForAntivirusPro
                           >
                             <RadioComponent
                               showRadioButton={true}
+                              showColor={false}
                               val={ele.text}
                               label={ele.text}
                             />

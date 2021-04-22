@@ -2,17 +2,18 @@
   ion-text {
     font-family: "Montserrat";
   }
-  ion-radio {
-    --color-checked: #3182b9;
 
-    width: 20px;
-  }
-  .ion-margin-start {
+  .radio-text-color-black {
     color: black;
     font-size: 14px;
     margin-left: 30px;
   }
-  .radio-icon {
+  .radio-text-color-white {
+    color: white;
+    font-size: 14px;
+    margin-left: 30px;
+  }
+  .radio-icon-color-white {
     position: fixed;
     display: flex;
     align-items: center;
@@ -20,5 +21,16 @@
     // width: 6%;
     // height: 45%;
     contain: size layout style;
+    --color-checked: white;
+    width: 20px;
+  }
+  .radio-icon-color-blue {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    contain: size layout style;
+    --color-checked: #3182b9;
+    width: 20px;
   }
 }
