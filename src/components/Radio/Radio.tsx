@@ -22,7 +22,7 @@ const RadioComponent: React.FC<radioTypeProps> = ({
       {showRadioButton && (
         <IonList>
           <IonItem lines="none" color="light">
-            <IonRadio mode="md" value={val} {...props} />
+            <IonRadio mode="md" value={val} {...props} className="radio-icon" />
             <IonText className="ion-margin-start">
               <Translate message={label} />
             </IonText>

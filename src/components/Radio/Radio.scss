@@ -10,5 +10,15 @@
   .ion-margin-start {
     color: black;
     font-size: 14px;
+    margin-left: 30px;
+  }
+  .radio-icon {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // width: 6%;
+    // height: 45%;
+    contain: size layout style;
   }
 }
