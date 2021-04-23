@@ -54,7 +54,7 @@ export const MPIN_FAILED = 'MPIN_FAILED';
 export const SAVING_SUCCESS = 'SAVING_SUCCESS';
 export const SAVING_FAILED = 'SAVING_FAILED';
 
-//for Apply page and loan type 
+//for Apply page and loan type
 export const APPLY_SUCCESS = 'APPLY_SUCCESS';
 export const APPLY_FAILED = 'APPLY_FAILED';
 
@@ -88,17 +88,21 @@ export const CARD_PAYMENT_FAILED = 'CARD_PAYMENT_FAILED';
 
 //for Internet payment page
 export const INTERNET_PAYMENT_SUCCESS = 'INTERNET_PAYMENT_SUCCESS';
-export const  INTERNET_PAYMENT_FAILED = ' INTERNET_PAYMENT_FAILED';
+export const INTERNET_PAYMENT_FAILED = ' INTERNET_PAYMENT_FAILED';
 
 //for To-up recharge payment page
 export const TOP_UP_SUCCESS = 'TOP_UP_SUCCESS';
-export const  TOP_UP_FAILED = ' TOP_UP_FAILED';
+export const TOP_UP_FAILED = ' TOP_UP_FAILED';
 
 //for To-up antivirus payment page
 export const ANTIVIRUS_SUCCESS = 'ANTIVIRUS_SUCCESS';
-export const  ANTIVIRUS_FAILED = '  ANTIVIRUS_FAILED';
+export const ANTIVIRUS_FAILED = '  ANTIVIRUS_FAILED';
 
 //for profile section page
 export const PROFILE_SUCCESS = 'PROFILE_SUCCESS';
-export const  PROFILE_FAILED = 'PROFILE_FAILED';
+export const PROFILE_FAILED = 'PROFILE_FAILED';
 
+//for Transaction history
+
+export const TRANSACTION_SUCCESS = 'TRANSACTION_SUCCESS';
+export const TRANSACTION_FAILED = 'TRANSACTION_FAILED';

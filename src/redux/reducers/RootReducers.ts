@@ -11,6 +11,7 @@ import Loader from './Loader';
 import Saving from './Saving';
 import Current from './Current';
 import Fixed from './Fixed';
+import History from './TransactionHistory';
 const rootReducer = combineReducers({
   login: LoginReducer,
   toast: Toast,
@@ -24,5 +25,6 @@ const rootReducer = combineReducers({
   currentAccount: Current,
   fixedAccount: Fixed,
   loader: Loader,
+  history: History,
 });
 export default rootReducer;

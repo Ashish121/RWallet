@@ -819,3 +819,20 @@ export const getBusPlacesDetails = async (): Promise<any> => {
   console.log('result: ', result);
   return result;
 };
+
+//Authentication For load transaction history details
+export const loadTransactionHistory = async (user_id: string): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/transaction_details',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+    }),
+  });
+  console.log('History result: ', result.data.data);
+  return result;
+};
