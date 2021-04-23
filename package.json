@@ -28,6 +28,7 @@
     "cordova-plugin-firebase-authentication": "^4.0.2",
     "cordova-support-android-plugin": "^1.0.2",
     "firebase": "^8.2.10",
+    "geolib": "^3.3.1",
     "immer": "^7.0.14",
     "ionicons": "^5.0.0",
     "leaflet": "^1.7.1",
