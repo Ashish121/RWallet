@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   ButtonConmponent,
@@ -15,10 +15,21 @@ import {
 } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import './PosPaymentPage.scss';
-import { MapView } from '..';
+import { MapView } from '../Map/MapView';
 
 const PosPaymentPage: React.FC = () => {
   const history = useHistory();
+
+  const [nearestPOS, setNearestPOS] = useState({});
+  const [map, setMapView] = useState(null);
+  const [readyToPan, setReadyToPan] = useState(false);
+
+  useEffect(() => {
+    panMapToNearestPOS();
+    return () => {
+      setReadyToPan(false);
+    };
+  }, [readyToPan && map]);
   //   const [order, setOrder] = useState("");
 
   //   function updateOrderType(event: any) {
@@ -34,6 +45,32 @@ const PosPaymentPage: React.FC = () => {
     history.replace('/tabs');
   }
 
+  function getNearestPOS(data: any) {
+    console.log('Nearest POS is ,', data[0]);
+    setNearestPOS(data[0]);
+    setReadyToPan(true);
+  }
+
+  function panMapToNearestPOS() {
+    console.log('map before: ', map);
+    const posDetails: any = nearestPOS;
+    console.log('nearestPOS: ', nearestPOS);
+    if (map) {
+      const view = map;
+      // @ts-ignore: Object is possibly 'null'.
+      view.flyTo([posDetails.data.latitude, posDetails.data.longitude], 10);
+    }
+  }
+
+  function updatePOSOption(event: any) {
+    console.log('selected: ', event.target.value);
+    console.log(map);
+  }
+
+  function getMapInstance(map: any) {
+    console.log('map instance received: ', map);
+    setMapView(map);
+  }
   return (
     <React.Fragment>
       <IonApp>
@@ -81,27 +118,30 @@ const PosPaymentPage: React.FC = () => {
                     <Translate message="pos.radioLabel" />
                   </IonText>
                 </div>
-                <IonRadioGroup
-                // onIonChange={updateOrderType}
-                >
+                <IonRadioGroup value="nearestPOS" onIonChange={updatePOSOption}>
                   <div className="options-section1">
                     <RadioComponent
                       label="Pick up from nearest POS counter"
-                      val="daily"
+                      val="nearestPOS"
                       showRadioButton={true}
                     />
                   </div>
                   <div className="options-section1">
                     <RadioComponent
                       label="Enter your desired location"
-                      val="monthly"
+                      val="customAddress"
                       showRadioButton={true}
                     />
                   </div>
                 </IonRadioGroup>
               </div>
               <div className="map_view_container">
-                <MapView detailsView={false} />
+                <MapView
+                  detailsView={false}
+                  handleDistance={getNearestPOS}
+                  calculateDistance={true}
+                  handleInstance={getMapInstance}
+                />
               </div>
             </div>
           </IonContent>

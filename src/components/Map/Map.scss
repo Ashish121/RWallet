@@ -25,3 +25,21 @@
 .leaflet-control-attribution {
   display: none;
 }
+.leaflet-popup-content-wrapper {
+  width: 200px;
+  max-width: 300px;
+  padding: 10px;
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+
+  .leaflet-popup-content {
+    width: 100% !important;
+    ion-text {
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+}
+.leaflet-popup-tip {
+  background-color: #1e1e1e !important;
+}

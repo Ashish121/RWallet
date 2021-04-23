@@ -31,19 +31,19 @@ const MapMarker: React.FC<any> = ({ width, height, markerDetails }) => {
               <IonText>
                 <Translate message="map.name" />
               </IonText>
-              <IonText>{markerDetails.pos_name}</IonText>
+              <IonText>: {markerDetails.pos_name}</IonText>
             </div>
             <div>
               <IonText>
                 <Translate message="map.pos_no" />
               </IonText>
-              <IonText>{markerDetails.pos_number}</IonText>
+              <IonText>: {markerDetails.pos_number}</IonText>
             </div>
             <div>
               <IonText>
                 <Translate message="map.dispatchStatus" />
               </IonText>
-              <IonText>{markerDetails.pos_number}</IonText>
+              <IonText>: Yes</IonText>
             </div>
           </div>
         </Popup>

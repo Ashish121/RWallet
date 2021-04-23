@@ -14,23 +14,29 @@ interface MapProps {
   zoomLevel?: any;
   markerDetails?: any;
   hasMany?: any;
+  getMapInstance?: Function;
+  mapBounds?: any;
 }
 
 const RoyallityWalletMap: React.FC<MapProps> = ({
   mapCenter,
   zoomLevel,
   markerDetails,
+  getMapInstance,
+  mapBounds,
 }) => {
   const [map, setMap] = useState(null);
+  console.log('Received: bounds', mapBounds);
+
   function setMapInstance(instance: any) {
     setMap(instance);
+    getMapInstance?.(instance);
   }
 
-  function panMap(mapView: any) {
-    mapView.flyTo(
-      [markerDetails[0].latitude, markerDetails[0].longitude],
-      zoomLevel
-    );
+  function panMap(mapView: any, coords: any) {
+    console.log('coords:************** ', coords);
+
+    mapView.flyTo([coords[0].latitude, coords[0].longitude], zoomLevel);
   }
   /**
    * @param null
@@ -39,7 +45,7 @@ const RoyallityWalletMap: React.FC<MapProps> = ({
    */
   function LocateUserButton() {
     const mapView = map;
-    const onClick = () => panMap(mapView);
+    const onClick = () => panMap(mapView, markerDetails);
 
     return (
       <IonFabButton
@@ -59,8 +65,9 @@ const RoyallityWalletMap: React.FC<MapProps> = ({
     <div className="map-wrapper">
       <MapContainer
         center={mapCenter}
-        zoom={zoomLevel || 12}
         whenCreated={setMapInstance}
+        bounds={mapBounds}
+        zoom={mapBounds ? undefined : 15}
       >
         <TileLayer attribution={osm.mapTiler.attr} url={osm.mapTiler.url} />
         {markerDetails.length > 0 &&
