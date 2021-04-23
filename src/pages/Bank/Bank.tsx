@@ -166,7 +166,6 @@ const Bank: React.FC = () => {
                     labelColor="light"
                     onChange={updateHolderName}
                     clearInput={true}
-                    value={holderName}
                   />
                   <InputText
                     inputType="tel"

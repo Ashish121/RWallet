@@ -51,7 +51,6 @@ const loadBankList = (callback: Function) => {
         dispatch({ type: CARD_PAYMENT_SUCCESS, data: { status: false } });
         localStorage.setItem('BankNameList', JSON.stringify(response));
         callback(response);
-        console.log('Inside If  block bank list', response);
       } else {
         const data = {
           showToast: true,
@@ -61,9 +60,7 @@ const loadBankList = (callback: Function) => {
         };
         dispatch({ type: 'CARD_PAYMENT_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else part', response);
       }
-      console.log('done bank list', response);
     } catch (error) {
       const data = {
         showToast: true,

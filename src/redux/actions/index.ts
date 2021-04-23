@@ -33,3 +33,4 @@ export { requestForAntivirusPayment } from './AntivirusPayment';
 export { requestForProfile } from './Profile';
 export { toggleLoader } from './Loader';
 export { loadPOSDetails } from './Map';
+export { requestForTransactionDetails } from './TransactionHistory';
