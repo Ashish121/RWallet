@@ -60,7 +60,6 @@ const TabViewPage: React.FC = () => {
   const [mapActive, setMapActive] = useState(false);
   const [hisotryActive, setHistoryActive] = useState(false);
   function handleTabClick(event: any) {
-    console.log('Tab clocled', event);
     const tabName = event.detail.tab;
     switch (tabName) {
     case 'home':

@@ -18,7 +18,6 @@ const ResetPassword: React.FC = () => {
   }
 
   function setContact(value: any) {
-    console.log('value', value);
     setConactNo(value);
   }
   function back() {

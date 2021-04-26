@@ -90,15 +90,27 @@ const Agent: React.FC = () => {
         nextRoute
       )
     );
-
-    console.log('Handling registration:');
   }
 
   function goBack() {
     history.replace('/tabs/transfer');
   }
   function handleClearButton() {
-    alert('are you want to clear all field ?');
+    setCountry('');
+    setCountryDetails([{}]);
+    setAgentCode('');
+    setAccountHolderName('');
+    setAccountNo('');
+    setMobileNo('');
+    setAmount('');
+    setRemarks('');
+    setIsLoading(false);
+    setLoaderMessage('');
+    let agentInputFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < agentInputFields.length; ++i) {
+      if (agentInputFields[i].id === 'input-area')
+        agentInputFields[i].value = '';
+    }
   }
   return (
     <>

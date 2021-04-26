@@ -40,12 +40,10 @@ const AccordionContainer: React.FC<accordionContainerProps> = ({
   }
 
   function handleCustomerId(event: any) {
-    console.log('customerId :', event.target.value);
     const customerId = event.target.value;
     setCustomerId(customerId);
   }
   function handleAmount(event: any) {
-    console.log('amount :', event.target.value);
     const amount = event.target.value;
     setAmount(amount);
   }

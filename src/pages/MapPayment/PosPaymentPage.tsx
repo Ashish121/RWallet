@@ -46,15 +46,13 @@ const PosPaymentPage: React.FC = () => {
   }
 
   function getNearestPOS(data: any) {
-    console.log('Nearest POS is ,', data[0]);
     setNearestPOS(data[0]);
     setReadyToPan(true);
   }
 
   function panMapToNearestPOS() {
-    console.log('map before: ', map);
     const posDetails: any = nearestPOS;
-    console.log('nearestPOS: ', nearestPOS);
+
     if (map) {
       const view = map;
       // @ts-ignore: Object is possibly 'null'.
@@ -62,13 +60,15 @@ const PosPaymentPage: React.FC = () => {
     }
   }
 
-  function updatePOSOption(event: any) {
-    console.log('selected: ', event.target.value);
-    console.log(map);
-  }
+  // function updatePOSOption(event: any) {
+  //   /*eslint-disable */
+  //   console.log(
+  //     "🚀 ~ file: PosPaymentPage.tsx ~ line 64 ~ updatePOSOption ~ event",
+  //     event
+  //   );
+  // }
 
   function getMapInstance(map: any) {
-    console.log('map instance received: ', map);
     setMapView(map);
   }
   return (
@@ -118,7 +118,7 @@ const PosPaymentPage: React.FC = () => {
                     <Translate message="pos.radioLabel" />
                   </IonText>
                 </div>
-                <IonRadioGroup value="nearestPOS" onIonChange={updatePOSOption}>
+                <IonRadioGroup value="nearestPOS">
                   <div className="options-section1">
                     <RadioComponent
                       label="Pick up from nearest POS counter"

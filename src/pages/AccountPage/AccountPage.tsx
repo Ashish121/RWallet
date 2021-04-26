@@ -12,17 +12,14 @@ const AccountPage: React.FC = () => {
   const history = useHistory();
 
   function handleSaving() {
-    console.log('Handling registration');
     history.replace('/account/saving');
   }
 
   function handleFixed() {
-    console.log('Handling registration');
     history.replace('/account/fixed');
   }
 
   function handleCurrent() {
-    console.log('Handling registration');
     history.replace('/account/current');
   }
 

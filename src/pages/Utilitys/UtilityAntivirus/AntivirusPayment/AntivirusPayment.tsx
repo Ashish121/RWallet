@@ -63,21 +63,9 @@ const AntivirusPayment: React.FC = () => {
     }
   }
 
-  function handleContinueButton(data: any) {
-    console.log('new payment button value**', data);
+  function handleContinueButton() {
     setShowLoading(true);
     setLoaderMessage('Please Wait...');
-    console.log(
-      'new payment button value**user_id:',
-      user_id,
-      'brandName:',
-      brandName,
-      'planName:',
-      planName,
-      'accountType:',
-      accountType
-    );
-
     dispatch(
       requestForAntivirusPayment(
         { user_id, brandName, planName, accountType },

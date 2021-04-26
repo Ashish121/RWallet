@@ -9,7 +9,7 @@ interface segmentBtnProps {
 const SegmentButtonComponent: React.FC<segmentBtnProps> = ({ handler }) => {
   const [defaultValue, setDefaultValue] = useState('one_way');
   function handleChange(event: any) {
-    // console.log('value is *******', value);]
+    //
     setDefaultValue(event.target.value);
     handler?.(event);
   }

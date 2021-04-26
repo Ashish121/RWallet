@@ -48,7 +48,7 @@ const InputText: React.FC<inputTextProps> = ({
 
   function toggleEye(event: any) {
     event.stopPropagation();
-    console.log('Hello');
+
     setToggleEyeOn(!toggleEyeOn);
   }
 
@@ -68,6 +68,7 @@ const InputText: React.FC<inputTextProps> = ({
           )}
           {!placeholderText && (
             <IonInput
+              id="input-area"
               maxlength={maxLen}
               type={toggleEyeOn ? 'text' : inputType || 'text'}
               color={color}
@@ -79,6 +80,7 @@ const InputText: React.FC<inputTextProps> = ({
 
           {placeholderText && (
             <IonInput
+              id="input-area"
               maxlength={maxLen}
               type={toggleEyeOn ? 'text' : inputType || 'text'}
               color={color}

@@ -27,7 +27,11 @@ const CurrentAccountPage: React.FC = () => {
   const [message, setLoadeMessage] = useState('');
   const [amount, setAmount] = useState('');
   function setToggleTerms(value: boolean) {
-    console.log('value: ', value);
+    //eslint-disable-next-line no-console
+    console.log(
+      '🚀 ~ file: Current.tsx ~ line 30 ~ setToggleTerms ~ value',
+      value
+    );
   }
 
   function nextRoute(status: any) {

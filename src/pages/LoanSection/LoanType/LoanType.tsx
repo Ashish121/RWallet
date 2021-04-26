@@ -14,7 +14,6 @@ const LoanType: React.FC = () => {
   const location = useLocation();
 
   function handleEMIcal() {
-    console.log('Handling registration');
     history.replace('/tabs/emiCalculater');
   }
   const [accordionDetails, setAccordionDetails] = useState([{}]);
@@ -22,8 +21,6 @@ const LoanType: React.FC = () => {
   useEffect(() => {
     const params: any = location.state;
     const loanId = params && params.loanId ? params.loanId : 0;
-    console.log(params);
-    console.log('loanId***** ', loanId);
 
     const data = [
       {

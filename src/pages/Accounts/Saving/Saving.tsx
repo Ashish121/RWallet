@@ -31,7 +31,11 @@ const SavingAccountPage: React.FC = () => {
   const [showDailySection, setShowDailySection] = useState(true);
   const [showMonthlySection, setShowMonthlySection] = useState(false);
   function setToggleTerms(value: boolean) {
-    console.log('value: ', value);
+    // eslint-disable-next-line no-console
+    console.log(
+      '🚀 ~ file: Saving.tsx ~ line 34 ~ setToggleTerms ~ value',
+      value
+    );
   }
 
   function nextRoute(status: any) {
@@ -54,17 +58,14 @@ const SavingAccountPage: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling saving account', amount, investment_period);
   }
 
   function updateInvestmentPeriod(event: any) {
     const investment_period = event.target.value;
     setInvestmentPeriod(investment_period);
-    console.log('investment_period', investment_period);
   }
 
   function updateAmount(amount: any) {
-    console.log('amount', amount);
     setAmount(amount);
   }
 

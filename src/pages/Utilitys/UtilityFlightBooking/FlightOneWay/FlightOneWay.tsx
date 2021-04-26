@@ -107,7 +107,6 @@ const FlightOneWay: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
   }
 
   function goBack() {
@@ -119,10 +118,8 @@ const FlightOneWay: React.FC = () => {
   }
 
   function handleTripDetails(event: any) {
-    console.log('event', event.target.value);
-
     const value = event.target.value;
-    console.log('value: ', value);
+
     if (value === 'one_way') {
       setRoundTrip('0');
       setShowOneWaySection(true);
@@ -137,7 +134,6 @@ const FlightOneWay: React.FC = () => {
   //for selected source  and destination list ................
 
   function setDestinationCityList(res: any) {
-    console.log('setting data: ', res);
     const destinationCitys = res.data.data;
     configureCityList(destinationCitys);
   }
@@ -157,12 +153,10 @@ const FlightOneWay: React.FC = () => {
     setDestinationCity(array);
   }
   const handleSourceCity = debounce((val: any) => {
-    console.log('Selected source city: ', val);
     setSelectedSourceCity(val);
   }, 300);
 
   const handleDestinationCity = debounce((val: any) => {
-    console.log('Selected destination city: ', val);
     setSelectedDestinationPlace(val);
   }, 300);
 

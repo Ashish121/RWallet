@@ -9,12 +9,10 @@ const ElectricityWater: React.FC = () => {
   const history = useHistory();
 
   function handleNepalElectricity() {
-    console.log('Handling registration');
     history.replace('/tabs/nepalElectricity');
   }
 
   function handleKhanepani() {
-    console.log('Handling registration');
     history.replace('/tabs/khanepani');
   }
   function goBack() {

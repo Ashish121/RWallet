@@ -67,18 +67,16 @@ const OtpPage: React.FC = () => {
   function sendOTP() {
     setShowLoading(true);
     setLoaderMessage('Please Wait...');
-    console.log('countryCode: ', countryCode);
 
     FirebaseAuthentication.verifyPhoneNumber(`+${countryCode}${contact}`, 30000)
       .then((verificationId: any) => {
         setShowLoading(false);
-        console.log('Received verificationId: ', verificationId);
+
         setOtpReceived(true);
         setVerificationId(verificationId);
       })
-      .catch(function (err: any) {
+      .catch(function () {
         setShowLoading(false);
-        console.log('phoner number verification failed', err);
         const data = {
           showToast: true,
           toastMessage: 'Couldn\'t send otp.Please try after some time',
@@ -90,22 +88,16 @@ const OtpPage: React.FC = () => {
   }
 
   const handleVerifyOtp = () => {
-    console.log('otp: ', otpText);
-    console.log('verificationId: ', verificationId);
     setShowLoading(true);
     setLoaderMessage('Verifying...');
     FirebaseAuthentication.signInWithVerificationId(
       verificationId,
       otpText
     ).then(
-      (response) => {
+      () => {
         const params: any = location.state;
-        console.log('params: ', params);
-
         setShowLoading(false);
         setLoaderMessage('');
-        console.log('opt verification status: ', response);
-        console.log('params.routeName: ', params.routeName);
         localStorage.setItem('countryCode', countryCode);
         if (params.routeName) {
           history.replace('/' + params.routeName, { mobileNo: contact });
@@ -130,9 +122,8 @@ const OtpPage: React.FC = () => {
           )
         );
       },
-      (error) => {
+      () => {
         setShowLoading(false);
-        console.log('Error: ', error);
         const data = {
           showToast: true,
           toastMessage: 'Invalid OTP.Please check your otp or resend it.',

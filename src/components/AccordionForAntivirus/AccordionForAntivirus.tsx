@@ -32,10 +32,7 @@ const AccordionContainerForAntivirus: React.FC<AccordionContainerForAntivirusPro
     const user_id = localStorage.getItem('userId');
     const brandName = title;
     const accountType = 'Savings';
-    console.log('user_id ...........', user_id);
-    console.log('brandName..........', brandName);
-    console.log('accountType........', accountType);
-    console.log('planName.........', planName);
+
     handler?.({
       user_id,
       brandName,
@@ -45,7 +42,6 @@ const AccordionContainerForAntivirus: React.FC<AccordionContainerForAntivirusPro
   }
 
   function selectRadioButton(event: any) {
-    console.log('RadioButton value***** :', event.detail.value);
     const planName = event.target.value;
     setPlanName(planName);
   }

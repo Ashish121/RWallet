@@ -18,7 +18,6 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
   const [data, setData] = useState('');
   useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log('Hide splash now');
       return () => {
         clearTimeout(timeout);
       };
@@ -159,7 +158,6 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
   }, []);
 
   function handleRearch(data: any) {
-    console.log('new data...........', data);
     handler?.({
       data,
     });

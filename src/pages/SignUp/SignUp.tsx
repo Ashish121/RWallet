@@ -41,10 +41,8 @@ const SignUpPage: React.FC = () => {
   function handleRegistration() {
     let trimmedCountryCode = countryCode.trim();
     if (countryCode.trim().includes('+')) {
-      console.log('Country code includes +');
       trimmedCountryCode = countryCode.trim().substring(1);
     }
-    console.log('trimmedCountryCode: ', trimmedCountryCode);
 
     history.replace('/otp', {
       fullName,
@@ -56,39 +54,31 @@ const SignUpPage: React.FC = () => {
   }
 
   function updateFullName(fullName: any) {
-    console.log('fullName: ', fullName);
     setFullName(fullName);
   }
 
   function onGenderSelect(gender: any) {
-    console.log('Selected value: ', gender);
     setGender(gender);
   }
 
   function updateMobileNo(mobileNo: any) {
-    console.log('MobileNumber: ', mobileNo);
     setMobileNo(mobileNo);
   }
 
   function updatePassword(password: any) {
-    console.log('updatePassword -> password', password);
     setPassword(password);
   }
 
   function updateConfirmPassword(confirmPassword: any) {
-    console.log('confirmPassword', confirmPassword);
     setConfirmPassword(confirmPassword);
   }
 
-  function setToggleTerms(value: boolean) {
-    console.log('value: ', value);
-  }
+  function setToggleTerms() {}
 
   function navigateToLogin() {
     history.replace('/login');
   }
   function updateCountryCode(code: any) {
-    console.log('code', code);
     setCountryCode(code);
   }
 

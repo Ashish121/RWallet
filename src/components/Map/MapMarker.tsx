@@ -5,8 +5,6 @@ import { IonText } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 
 const MapMarker: React.FC<any> = ({ width, height, markerDetails }) => {
-  console.log('^^^^^^^^^^^^^^^', markerDetails);
-
   const iconPath = markerDetails.iconPath
     ? markerDetails.iconPath
     : 'mapMarkerIcon.svg';

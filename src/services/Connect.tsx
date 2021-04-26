@@ -29,7 +29,7 @@ export const authenticate = async (
       password: password,
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -55,10 +55,7 @@ export const authenticationForRegister = async (
       countryCode,
     }),
   });
-  const mobile = localStorage.setItem('mobile_number', mobileNo);
-  console.log('mobile: ', mobile);
-  console.log('result: ', result);
-
+  localStorage.setItem('mobile_number', mobileNo);
   return result;
 };
 
@@ -98,7 +95,7 @@ export const authenticationForCoOperativeBankTransfer = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -123,7 +120,7 @@ export const authenticationForCurrentAc = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 export const authenticationForAgentTransfer = async (
@@ -158,7 +155,6 @@ export const authenticationForAgentTransfer = async (
       ],
     }),
   });
-  console.log('result: ', result);
 
   return result;
 };
@@ -193,7 +189,7 @@ export const authenticationForBankTransfer = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -220,7 +216,7 @@ export const authenticationForFixedAccount = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -239,7 +235,7 @@ export const getProvinces = async (): Promise<any> => {
       'Content-Type': 'application/json',
     },
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -255,7 +251,7 @@ export const getDistrictByProvince = async (id: any): Promise<any> => {
       province: id,
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -271,7 +267,7 @@ export const getLocalLevelName = async (id: any): Promise<any> => {
       district: id,
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -285,7 +281,7 @@ export const updateUserAccountDetails = async (payload: any): Promise<any> => {
     },
     data: JSON.stringify(payload),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -306,7 +302,7 @@ export const authenticationForMpin = async (
       mpin: mpin,
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -335,7 +331,7 @@ export const changeMpin = async (
       current_mpin,
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -384,7 +380,7 @@ export const authenticationForSavingAccount = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -418,7 +414,7 @@ export const authenticationForApplyPage = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -448,7 +444,7 @@ export const authenticationForNepalElectricityPage = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -475,7 +471,7 @@ export const authenticationForKhanepaniPage = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -515,7 +511,7 @@ export const authenticationFlightOneWayPage = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -542,7 +538,7 @@ export const authenticationForEmiCalculation = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -571,7 +567,7 @@ export const authenticationForTvPayment = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -608,7 +604,7 @@ export const authenticationForFinancePaymentCalculation = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -637,7 +633,7 @@ export const authenticationForCardPaymentCalculation = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -666,7 +662,7 @@ export const authenticationForInternetPayment = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -695,7 +691,7 @@ export const authenticationForTopUpRecharge = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -724,7 +720,7 @@ export const authenticationForAntivirusPayment = async (
       ],
     }),
   });
-  console.log('result: ', result);
+
   return result;
 };
 export const fetchPOSDetails = async (): Promise<any> => {
@@ -736,7 +732,7 @@ export const fetchPOSDetails = async (): Promise<any> => {
       'Content-Type': 'application/json',
     },
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -754,7 +750,7 @@ export const loadProfile = async (user_id: string): Promise<any> => {
       user_id: user_id,
     }),
   });
-  console.log('result: ', result.data.user);
+
   return result;
 };
 
@@ -772,7 +768,7 @@ export const logout = async (): Promise<any> => {
       'Content-Type': 'application/json',
     },
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -787,7 +783,7 @@ export const getBankAllNameList = async (): Promise<any> => {
       'Content-Type': 'application/json',
     },
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -802,7 +798,7 @@ export const getFlightPlaceDetails = async (): Promise<any> => {
       'Content-Type': 'application/json',
     },
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -816,7 +812,7 @@ export const getBusPlacesDetails = async (): Promise<any> => {
       'Content-Type': 'application/json',
     },
   });
-  console.log('result: ', result);
+
   return result;
 };
 
@@ -833,6 +829,6 @@ export const loadTransactionHistory = async (user_id: string): Promise<any> => {
       user_id: user_id,
     }),
   });
-  console.log('History result: ', result.data.data);
+
   return result;
 };

@@ -12,7 +12,6 @@ const AgentS: React.FC = () => {
   );
 
   function handleSucess() {
-    console.log('Handling registration');
     history.replace('/tabs/SuccessPage');
   }
   function goBack() {

@@ -12,11 +12,8 @@ const fetchdistrictByProvince = (callback: Function, id: any) => {
     dispatch({ type: INITIAL_DATA_LOADING, data: { status: true } });
     try {
       const response = await getDistrictByProvince(id);
-      console.log('*******', response);
 
       if (response.status === 200 && response.data.success) {
-        console.log('Success');
-
         dispatch({ type: INITIAL_DATA_LOADING, data: { status: false } });
         localStorage.setItem('districts', JSON.stringify(response));
         callback(response);
@@ -30,7 +27,7 @@ const fetchdistrictByProvince = (callback: Function, id: any) => {
         dispatch({ type: 'INITIAL_DATA_FAILED' });
         dispatch(updateToast(data));
       }
-      // console.log('done', response);
+      //
     } catch (error) {
       const data = {
         showToast: true,
@@ -62,7 +59,6 @@ const loadProvince = (callback: Function) => {
         dispatch({ type: 'INITIAL_DATA_FAILED' });
         dispatch(updateToast(data));
       }
-      console.log('done', response);
     } catch (error) {
       const data = {
         showToast: true,
@@ -123,7 +119,7 @@ const updateUserDetails = (payload: any, callback: Function) => {
         dispatch({ type: 'INITIAL_DATA_FAILED' });
         dispatch(updateToast(data));
       }
-      //console.log('done', response);
+      //
     } catch (error) {
       callback(false);
       const data = {

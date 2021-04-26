@@ -40,15 +40,11 @@ const Reset: React.FC = () => {
     setIsLoading(false);
     setLoaderMessage('');
     if (status) {
-      console.log('status: ', status);
-      console.log('History: ', history);
       history.replace('/login');
     }
   }
 
   function handleVerifyReset() {
-    console.log('location', location);
-
     setIsLoading(true);
     setLoaderMessage('Updating...');
     dispatch(

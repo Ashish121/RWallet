@@ -19,8 +19,6 @@ const CartPage: React.FC = () => {
   const history = useHistory();
   const [count, setCount] = useState(1);
   function increaseCount() {
-    console.log('Hello increasing count');
-
     let currentCount = count + 1;
     if (count >= 1) {
       setCount(currentCount);
@@ -28,7 +26,6 @@ const CartPage: React.FC = () => {
     return;
   }
   function decreaseCount() {
-    console.log('Hello decreasing count');
     let currentCount = count - 1;
     if (count > 1) {
       setCount(currentCount);

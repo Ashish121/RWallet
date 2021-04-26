@@ -12,7 +12,6 @@ export const initialState: EmiPageState = {
 // defines this reducers reducer functions ...
 const reducers: any = {
   [EMI_SUCCESS]: (draft: any, data: any) => {
-    console.log('emiDetails', data);
     draft.emiDetails = data;
   },
 };

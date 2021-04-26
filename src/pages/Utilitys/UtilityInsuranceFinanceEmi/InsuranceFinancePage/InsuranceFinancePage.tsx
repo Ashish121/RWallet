@@ -9,12 +9,10 @@ const InsuranceFinancePage: React.FC = () => {
   const history = useHistory();
 
   function handleroyalFinancialServices() {
-    console.log('Handling registration');
     history.replace('/tabs/royalityFinancialServices');
   }
 
   function handleroyalitySavingCredit() {
-    console.log('Handling registration');
     history.replace('/tabs/royalitySavingCredit');
   }
   function goBack() {

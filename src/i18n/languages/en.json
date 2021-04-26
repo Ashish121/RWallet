@@ -3,6 +3,7 @@
   "common.confirmBtnText": "CONFIRM",
   "common.continue": "CONTINUE",
   "common.skip": "SKIP",
+  "common.noData": "No {title} available",
 
   "login.siginPageLabel": "Royality Wallet",
   "login.mobileText": "Mobile number",

@@ -41,7 +41,6 @@ const NepalElectricity: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
   }
 
   function nextRoute(status: any) {

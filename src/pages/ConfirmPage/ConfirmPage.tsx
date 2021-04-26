@@ -25,7 +25,6 @@ const ConfirmPage: React.FC = () => {
       state.currentAccount.accountDetails ||
       state.fixedAccount.accountDetails
   );
-  console.log('account Number ***', newAccountNumber);
 
   function logoutUser() {
     dispatch(requestForLogout(nextRoute));

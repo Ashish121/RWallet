@@ -17,7 +17,6 @@ const TvPayment: React.FC = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log('Hide splash now');
       return () => {
         clearTimeout(timeout);
       };

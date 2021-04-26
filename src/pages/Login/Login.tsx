@@ -28,12 +28,10 @@ const LoginPage: React.FC = () => {
     dispatch(requestForLogin({ contactNo, password }, nextRoute));
   }
   const updateContactNo = (contactNo: any) => {
-    console.log('contactNo -> contactNo', contactNo);
     setContactNo(contactNo);
   };
 
   function updatePassword(password: any) {
-    console.log('updatePassword -> password', password);
     setUserPassword(password);
   }
 

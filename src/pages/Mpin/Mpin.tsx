@@ -27,7 +27,6 @@ const MpinPage: React.FC = () => {
   const [oldMpin, setOldMpin] = useState('');
   const [backNavigationPage, setBackNavigation] = useState(null);
   useEffect(() => {
-    console.log('History: ', history);
     // const isMpinCreated: any = localStorage.getItem("isMpinCreated")
     //   ? localStorage.getItem("isMpinCreated")
     //   : false;
@@ -35,13 +34,12 @@ const MpinPage: React.FC = () => {
     const updateMode: any = history.location?.state?.data.updateMode || false;
     const backNavigation: any =
       history.location?.state?.data.backNavigation || null;
-    console.log('updateMode: ', updateMode);
+
     setBackNavigation(backNavigation);
     setUpdateMode(updateMode);
   }, []);
 
   function updateOldMpin(currentMpin: any) {
-    console.log('currentMpin: ', currentMpin);
     setOldMpin(currentMpin);
   }
   function updateMpin(mpin: any) {
@@ -55,8 +53,6 @@ const MpinPage: React.FC = () => {
 
   function nextRoute(status: any) {
     if (status) {
-      console.log('status******', status, '****updateMode*****', updateMode);
-
       if (updateMode || backNavigationPage) {
         history.replace('/tabs/home', { message: 'Mpin updated successfully' });
         return;
@@ -71,8 +67,6 @@ const MpinPage: React.FC = () => {
     if (!updateMode) {
       dispatch(requestForMpin({ user_id, mpin }, nextRoute));
     } else {
-      console.log('oldMpin: ', oldMpin);
-
       dispatch(
         requestForChangeMpin(
           { user_id, new_mpin: mpin, current_mpin: oldMpin },
@@ -80,8 +74,6 @@ const MpinPage: React.FC = () => {
         )
       );
     }
-
-    console.log('Handling registration');
   }
 
   function skipStep() {
