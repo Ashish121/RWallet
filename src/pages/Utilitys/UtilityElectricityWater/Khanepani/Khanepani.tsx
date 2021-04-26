@@ -33,7 +33,6 @@ const Khanepani: React.FC = () => {
     dispatch(
       requestForKhanepaniPage({ user_id, placeName, customerID }, nextRoute)
     );
-    console.log('Handling registration');
   }
 
   function nextRoute(status: any) {

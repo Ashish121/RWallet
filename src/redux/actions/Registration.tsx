@@ -3,8 +3,6 @@ import { authenticationForRegister } from '../../services/Connect';
 import { toggleLoader } from './Loader';
 import { updateToast } from './index';
 const requestForRegistration = (payload: any, nextRoute: Function) => {
-  console.log('payload: ', payload);
-
   return async (dispatch: any) => {
     dispatch(toggleLoader(true, 'Creating account...'));
     try {
@@ -15,7 +13,7 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         payload.password,
         payload.countryCode
       );
-      console.log('res****', response);
+
       if (response.status == 200 && response.data.success) {
         dispatch(toggleLoader(false));
         dispatch({ type: REGISTRATION_SUCCESS, response: response });
@@ -36,7 +34,7 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
       }
     } catch (error) {
       dispatch(toggleLoader(false));
-      console.log('error: ', error);
+
       let data: any;
       if (error?.errors?.mobile_number) {
         data = {

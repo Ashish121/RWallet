@@ -34,12 +34,10 @@ const CardPayment: React.FC = () => {
   }, []);
 
   function updateAmount(amount: any) {
-    console.log('amount : ', amount);
     setAmount(amount);
   }
 
   function updateCardNumber(cardNumber: any) {
-    console.log('cardNumber : ', cardNumber);
     setCardNumber(cardNumber);
   }
 
@@ -63,14 +61,12 @@ const CardPayment: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
   }
   function goBack() {
     history.replace('/tabs/home');
   }
 
   function setBankNameList(res: any) {
-    console.log('setting data: ', res);
     const bankNames = res.data.data;
     configureBankList(bankNames);
   }
@@ -90,7 +86,6 @@ const CardPayment: React.FC = () => {
     setBankName(array);
   }
   const handleBank = debounce((val: any) => {
-    console.log('Selected bankName: ', val);
     setSelectedBankName(val);
   }, 300);
   return (

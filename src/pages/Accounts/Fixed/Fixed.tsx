@@ -29,7 +29,11 @@ const FixedAccountPage: React.FC = () => {
   const [message, setLoadeMessage] = useState('');
 
   function setToggleTerms(value: boolean) {
-    console.log('value: ', value);
+    // eslint-disable-next-line no-console
+    console.log(
+      '🚀 ~ file: Fixed.tsx ~ line 32 ~ setToggleTerms ~ value',
+      value
+    );
   }
 
   function nextRoute(status: any) {
@@ -48,7 +52,6 @@ const FixedAccountPage: React.FC = () => {
     dispatch(
       requestForFixedAccount({ investment_period, user_id, amount }, nextRoute)
     );
-    console.log('Handling Fixed account', amount, investment_period);
   }
 
   function updateAmount(amount: any) {

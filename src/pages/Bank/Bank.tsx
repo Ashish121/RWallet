@@ -32,7 +32,7 @@ const Bank: React.FC = () => {
   const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
 
   // function updateDestination(destination: any) {
-  //   console.log('destination :', destination);
+  //
   //   setDestination(destination);
   // }
   useEffect(() => {
@@ -40,27 +40,22 @@ const Bank: React.FC = () => {
   }, []);
 
   function updateHolderName(holderName: any) {
-    console.log('holderName :', holderName);
     if (holderName) setHolderName(holderName);
   }
 
   function updateAccountNumber(accountNumber: any) {
-    console.log('accountNumber :', accountNumber);
     setAccountNumber(accountNumber);
   }
 
   function updateMobileNo(mobileNo: any) {
-    console.log('mobileNo :', mobileNo);
     setMobileNo(mobileNo);
   }
 
   function updateAmount(amount: any) {
-    console.log('amount :', amount);
     setAmount(amount);
   }
 
   function updateRemarks(remarks: any) {
-    console.log('remarks :', remarks);
     setRemarks(remarks);
   }
 
@@ -68,8 +63,6 @@ const Bank: React.FC = () => {
     setIsLoading(false);
     setLoaderMessage('');
     if (status) {
-      console.log('status: ', status);
-      console.log('History: ', history);
       history.replace('/tabs/banks');
     }
   }
@@ -90,19 +83,20 @@ const Bank: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
   }
 
   function handleClearButton() {
     setCurrentSelectedVal(true);
-    console.log('*****Clearing fields');
+
     setHolderName('');
     setAccountNumber('');
     setMobileNo('');
     setAmount('');
     setRemarks('');
-    // setCurrentSelectedVal(false);
-    // alert("are you want to clear all field ?");
+    let bankInpuFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < bankInpuFields.length; ++i) {
+      if (bankInpuFields[i].id === 'input-area') bankInpuFields[i].value = '';
+    }
   }
 
   function goBack() {
@@ -110,7 +104,6 @@ const Bank: React.FC = () => {
   }
 
   function setBankNameList(res: any) {
-    console.log('setting data: ', res);
     const bankNames = res.data.data;
     configureBankList(bankNames);
   }
@@ -130,7 +123,6 @@ const Bank: React.FC = () => {
     setBankName(array);
   }
   const handleBank = debounce((val: any) => {
-    console.log('Selected bankName: ', val);
     setCurrentSelectedVal(false);
     setSelectedBankName(val);
   }, 300);

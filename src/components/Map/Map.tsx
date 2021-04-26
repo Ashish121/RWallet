@@ -26,7 +26,6 @@ const RoyallityWalletMap: React.FC<MapProps> = ({
   mapBounds,
 }) => {
   const [map, setMap] = useState(null);
-  console.log('Received: bounds', mapBounds);
 
   function setMapInstance(instance: any) {
     setMap(instance);
@@ -34,8 +33,6 @@ const RoyallityWalletMap: React.FC<MapProps> = ({
   }
 
   function panMap(mapView: any, coords: any) {
-    console.log('coords:************** ', coords);
-
     mapView.flyTo([coords[0].latitude, coords[0].longitude], zoomLevel);
   }
   /**

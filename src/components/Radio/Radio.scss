@@ -4,33 +4,25 @@
   }
 
   .radio-text-color-black {
-    color: black;
+    color: #000;
     font-size: 14px;
-    margin-left: 30px;
+    position: relative;
+    left: 10px;
+    width: 100%;
   }
   .radio-text-color-white {
-    color: white;
+    color: #ffffff;
     font-size: 14px;
-    margin-left: 30px;
+    position: relative;
+    left: 10px;
+    width: 100%;
   }
   .radio-icon-color-white {
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    // width: 6%;
-    // height: 45%;
     contain: size layout style;
     --color-checked: white;
-    width: 20px;
-  }
-  .radio-icon-color-blue {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    contain: size layout style;
-    --color-checked: #3182b9;
     width: 20px;
   }
 }

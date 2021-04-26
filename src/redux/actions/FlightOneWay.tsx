@@ -61,7 +61,6 @@ const loadCityNameForFlight = (callback: Function) => {
         dispatch({ type: FLIGHTONEWAY_SUCCESS, data: { status: false } });
         localStorage.setItem('BankNameList', JSON.stringify(response));
         callback(response);
-        console.log('Inside If block', response);
       } else {
         const data = {
           showToast: true,
@@ -71,7 +70,6 @@ const loadCityNameForFlight = (callback: Function) => {
         };
         dispatch({ type: 'FLIGHTONEWAY_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
     } catch (error) {
       const data = {
@@ -95,7 +93,6 @@ const loadCityNameForBus = (callback: Function) => {
         dispatch({ type: FLIGHTONEWAY_SUCCESS, data: { status: false } });
         localStorage.setItem('BankNameList', JSON.stringify(response));
         callback(response);
-        console.log('Inside If block', response);
       } else {
         const data = {
           showToast: true,
@@ -105,7 +102,6 @@ const loadCityNameForBus = (callback: Function) => {
         };
         dispatch({ type: 'FLIGHTONEWAY_FAILED' });
         dispatch(updateToast(data));
-        console.log('Inside else block', response);
       }
     } catch (error) {
       const data = {

@@ -40,14 +40,11 @@ const HomePage: React.FC = () => {
   const dispatch = useDispatch();
   const [expandOptions, setExpandOptions] = useState(false);
   const [initializing, setInitializing] = useState(false);
-  const { PushNotifications } = Plugins;
-
   const profileInfo = useSelector((state: any) => state.profile.profileDetails);
-  //console.log("profile Info ***", profileInfo);
+  const { PushNotifications } = Plugins;
 
   function nextRoute(status: any) {
     if (status) {
-      // console.log("status: ", status);
       history.replace('/tabs/home');
     }
   }
@@ -59,13 +56,11 @@ const HomePage: React.FC = () => {
   }, []);
 
   const askPushPermission = () => {
-    console.log('Asking for permission for push notification');
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
     // Android will just grant without prompting
     PushNotifications.requestPermission().then((result) => {
       if (result.granted) {
-        console.log('User accepted the permission');
         setInitializing(true);
         PushNotifications.register();
         registerListener();
@@ -77,41 +72,53 @@ const HomePage: React.FC = () => {
           duration: '10000',
         };
         dispatch(updateToast(data));
-        console.log('Declined the permission');
       }
     });
   };
 
   const registerListener = () => {
-    console.log('Registering listner for status of registration');
     // On success, we should be able to receive notifications
     PushNotifications.addListener(
       'registration',
       (token: PushNotificationToken) => {
-        console.log('Push registration success, token: ', token.value);
+        // eslint-disable-next-line no-console
+        console.log(
+          '🚀 ~ file: Home.tsx ~ line 84 ~ registerListener ~ token',
+          token
+        );
       }
     );
     // Some issue with our setup and push will not work
     PushNotifications.addListener('registrationError', (error: any) => {
-      console.log('Error on registration: ', JSON.stringify(error));
+      // eslint-disable-next-line no-console
+      console.log(
+        '🚀 ~ file: Home.tsx ~ line 95 ~ PushNotifications.addListener ~ error',
+        error
+      );
     });
     PushNotifications.addListener(
       'pushNotificationReceived',
       (notification: PushNotification) => {
-        console.log('Push received: ', JSON.stringify(notification));
+        // eslint-disable-next-line no-console
+        console.log(
+          '🚀 ~ file: Home.tsx ~ line 101 ~ registerListener ~ notification',
+          notification
+        );
       }
     );
-    // Method called when tapping on a notification
     PushNotifications.addListener(
       'pushNotificationActionPerformed',
       (notification: PushNotificationActionPerformed) => {
-        console.log('Push action performed: ', JSON.stringify(notification));
+        // eslint-disable-next-line no-console
+        console.log(
+          '🚀 ~ file: Home.tsx ~ line 108 ~ registerListener ~ notification',
+          notification
+        );
       }
     );
     setInitializing(false);
   };
   const toggleExpandOptions = () => {
-    console.log('Hello');
     setExpandOptions(!expandOptions);
   };
 

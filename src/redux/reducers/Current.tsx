@@ -24,7 +24,7 @@ const reducers: any = {
     draft.isAuthenticating = false;
     localStorage.setItem('current account Details', JSON.stringify(data));
     draft.accountDetails = data.data.data[0].current_account_number;
-    //console.log("draft.accountDetails", draft.accountDetails);
+    //
   },
   [CURRENT_FAILED]: (draft: any) => {
     draft.isAuthenticating = false;

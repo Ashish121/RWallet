@@ -9,7 +9,6 @@ const loadPOSDetails = (callback: Function) => {
         // dispatch({ type: 'POS_DATA_RECEIVED', data: response.data });
         callback(response);
       }
-      console.log('done', response);
     } catch (error) {
       const data = {
         showToast: true,

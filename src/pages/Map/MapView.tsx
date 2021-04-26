@@ -46,7 +46,6 @@ const MapView: React.FC<mapViewProps> = ({
   }, []);
 
   useEffect(() => {
-    console.log('Inside useEffect: ', userCurrentPosition);
     if (userCurrentPosition !== null) {
       getPosDetails();
     }
@@ -54,14 +53,10 @@ const MapView: React.FC<mapViewProps> = ({
 
   function getCurrentPosition() {
     Geolocation.getCurrentPosition().then((coordinates) => {
-      console.log('Current', coordinates);
       const coords: any = {
         lat: coordinates.coords?.latitude,
         lng: coordinates.coords?.longitude,
       };
-      console.log('*******: ', coords);
-
-      console.log('Beforw: userCurrentPosition', userCurrentPosition);
 
       setMapCenter({ lat: coords.lat, lng: coords.lng });
       setZoomLevel(17);
@@ -72,21 +67,16 @@ const MapView: React.FC<mapViewProps> = ({
   }
 
   const getPosDetails = debounce(() => {
-    console.log('Getting POS details now.');
     dispatch(loadPOSDetails(handlePOSData));
   }, 200);
 
   const handlePOSData = debounce((res) => {
-    console.log('Received POS data: ', res);
     const posDetails = res.data.data;
     // setPosData(posDetails);
-    console.log('userCurrentPosition: ', userCurrentPosition);
 
     createMarkerDetails(userCurrentPosition, posDetails);
   }, 200);
   function createMarkerDetails(currentPos: any, markers: any) {
-    console.log('markers: ', markers);
-    console.log('currentPos: ', currentPos);
     let coordsForBounds: any = [];
     const array = [
       {
@@ -103,15 +93,14 @@ const MapView: React.FC<mapViewProps> = ({
         longitude: data.longitude,
       });
     });
-    console.log('array: ', array);
+
     setCurrentPositionMarkerDetails(array);
     if (calculateDistance) {
       calculateD(array);
     }
-    console.log('coordsForBounds: ', coordsForBounds);
 
     const mapBoundCoords: any = getBounds(coordsForBounds);
-    console.log('mapBoundCoords: ', mapBoundCoords);
+
     const innerBounds: any = [
       [mapBoundCoords.minLat, mapBoundCoords.minLng],
       [mapBoundCoords.maxLat, mapBoundCoords.maxLng],
@@ -121,7 +110,6 @@ const MapView: React.FC<mapViewProps> = ({
     setMapReady(true);
   }
   function calculateD(array: any) {
-    console.log('ready to calculate distance');
     const userPosition = {
       latitude: array[0].latitude,
       longitude: array[0].longitude,
@@ -135,7 +123,7 @@ const MapView: React.FC<mapViewProps> = ({
           longitude: element.longitude,
         };
         let distance = getPreciseDistance(userPosition, currentCoords);
-        console.log('distance:in kilometer ', (distance / 1000).toFixed(1));
+
         element['distance'] = (distance / 1000).toFixed(1);
 
         calculatedDistanceArray.push({
@@ -149,8 +137,6 @@ const MapView: React.FC<mapViewProps> = ({
     });
     setMapReady(true);
     handleDistance?.(calculatedDistanceArray);
-
-    console.log('calculatedDistanceArray: ', calculatedDistanceArray);
   }
 
   function getMapInstance(map: any) {

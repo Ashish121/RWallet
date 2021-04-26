@@ -48,33 +48,27 @@ const MenuComponent: React.FC<any> = () => {
     dispatch(requestForLogout(nextRoute));
   }
   async function takePicture() {
-    console.log('Taking picture now');
-
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: true,
       resultType: CameraResultType.Uri,
     });
     const imageUrl: any = image.webPath;
-    console.log('imageUrl: ', imageUrl);
+
     setSelectedImage(imageUrl);
     setImagePicked(true);
   }
 
   const requestForChangeMpin = () => {
-    console.log('Request for MPIN change');
     const userDetails: any = localStorage.getItem('loginDetails')
       ? localStorage.getItem('loginDetails')
       : '';
     closeMenu();
-    console.log(JSON.parse(userDetails));
+
     const parsedRes = JSON.parse(userDetails);
     const isMpinCreated: any = localStorage.getItem('isMpinCreated')
       ? localStorage.getItem('isMpinCreated')
       : false;
-    console.log('isMpinCreated: ', isMpinCreated);
-    console.log('******', isMpinCreated === 'false');
-    console.log('***^^^^^***', isMpinCreated == 'false');
 
     history.replace('/otp', {
       updateMode: isMpinCreated === 'false' ? false : true,
@@ -95,9 +89,7 @@ const MenuComponent: React.FC<any> = () => {
             text: 'Cancel',
             role: 'cancel',
             cssClass: 'light',
-            handler: () => {
-              console.log('Confirm Cancel');
-            },
+            handler: () => {},
           },
           {
             text: 'Ok',

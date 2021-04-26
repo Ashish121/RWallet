@@ -28,10 +28,14 @@ const RadioComponent: React.FC<radioTypeProps> = ({
               mode="md"
               value={val}
               {...props}
-              className={showColor ? 'radio-icon-color-white' : 'radio-icon-color-blue'}
+              className={
+                showColor ? 'radio-icon-color-white' : 'radio-icon-color-blue'
+              }
             />
             <IonText
-              className={showColor ? 'radio-text-color-white' : 'radio-text-color-black'}
+              className={
+                showColor ? 'radio-text-color-white' : 'radio-text-color-black'
+              }
             >
               <Translate message={label} />
             </IonText>

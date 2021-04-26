@@ -36,13 +36,13 @@ const CoOperative: React.FC = () => {
   const [district, setDistricts] = useState([{}]);
   const [selectedDistrict, setSelectedDistrict] = useState('');
   const [clearValueDistrict, setClearValueDistrict] = useState(false);
+  const [clearValueProvince, setClearValueProvince] = useState(false);
 
   useEffect(() => {
     dispatch(loadProvince(setProvinceList));
   }, []);
 
   function setProvinceList(res: any) {
-    console.log('setting data: ', res);
     const Newprovince = res.data.data;
     configureProvinceList(Newprovince);
   }
@@ -62,7 +62,7 @@ const CoOperative: React.FC = () => {
     setProvince(array);
   }
   const handleProvince = debounce((val: any) => {
-    console.log('Selected province: ', val);
+    setClearValueProvince(false);
     setSelectedProvince(val);
     setDistricts([{}]);
     setClearValueDistrict(true);
@@ -82,11 +82,10 @@ const CoOperative: React.FC = () => {
 
     setClearValueDistrict(false);
     setDistricts(finalArray);
-    console.log('States: ', finalArray);
   }
 
   const handleDistrict = debounce((val: any) => {
-    console.log('district: ', val);
+    setClearValueDistrict(false);
     setSelectedDistrict(val);
   }, 300);
 
@@ -118,8 +117,6 @@ const CoOperative: React.FC = () => {
     setIsLoading(false);
     setLoaderMessage('');
     if (status) {
-      console.log('status: ', status);
-      console.log('History: ', history);
       history.replace('/tabs/cops');
     }
   }
@@ -143,14 +140,31 @@ const CoOperative: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
   }
 
   function goBack() {
     history.replace('/tabs/transfer');
   }
   function handleClearButton() {
-    alert('are you want to clear all field ?');
+    setClearValueProvince(true);
+    setClearValueDistrict(true);
+    setCopName('');
+    setHolderName('');
+    setAccountNo('');
+    setMobileNo('');
+    setAmount('');
+    setRemarks('');
+    setIsLoading(false);
+    setLoaderMessage('');
+    // setProvince([{}]);
+    setSelectedProvince('');
+    setSelectedDistrict('');
+    // setDistricts([{}]);
+    let coOperativeInpuFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < coOperativeInpuFields.length; ++i) {
+      if (coOperativeInpuFields[i].id === 'input-area')
+        coOperativeInpuFields[i].value = '';
+    }
   }
   return (
     <>
@@ -173,6 +187,7 @@ const CoOperative: React.FC = () => {
                     label="account.province"
                     array={province}
                     onSelect={handleProvince}
+                    selectedVal={clearValueProvince}
                   />
 
                   <div>

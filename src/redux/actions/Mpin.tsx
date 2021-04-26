@@ -43,8 +43,6 @@ const requestForMpin = (payload: any, nextRoute: Function) => {
 
 const requestForChangeMpin = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
-    console.log('payload: ----', payload);
-
     dispatch(toggleLoader(true, 'Updating MPIN...'));
     try {
       const response = await changeMpin(
@@ -52,7 +50,6 @@ const requestForChangeMpin = (payload: any, nextRoute: Function) => {
         payload.current_mpin,
         payload.new_mpin
       );
-      console.log('response*******: ', response);
 
       if (response.status === 200 && response.data.success) {
         dispatch({ type: MPIN_SUCCESS, data: response.data });

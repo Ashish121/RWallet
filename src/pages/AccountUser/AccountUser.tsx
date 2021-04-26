@@ -74,7 +74,6 @@ const AccountUser: React.FC<any> = () => {
   }, []);
 
   function setProvinceList(res: any) {
-    console.log('setting data: ', res);
     const provinces = res.data.data;
     setLoadeStatus(false);
     setLoaderText('');
@@ -93,7 +92,6 @@ const AccountUser: React.FC<any> = () => {
       finalArray.push(tempObj);
     });
     updateProvince(finalArray);
-    console.log('municipalties: ', finalArray);
   }
 
   function loadDistrict(res: any) {
@@ -111,7 +109,6 @@ const AccountUser: React.FC<any> = () => {
     setClearValueLocalLevelName(false);
     setClearValueDistrict(false);
     setDistricts(finalArray);
-    console.log('States: ', finalArray);
   }
 
   function loadLocalLevelName(res: any) {
@@ -128,7 +125,6 @@ const AccountUser: React.FC<any> = () => {
     });
     setLocalLevelName(finalArray);
     setClearValueLocalLevelName(false);
-    console.log('States: ', finalArray);
   }
 
   function nextRoute(status: boolean) {
@@ -142,59 +138,46 @@ const AccountUser: React.FC<any> = () => {
   }
 
   function onGenderSelect(gender: any) {
-    console.log('Selected value: ', gender);
     setGender(gender);
   }
 
   function updateFullName(fullName: string) {
     setFullName(fullName.trim());
-    console.log('fullName: ', fullName);
   }
 
   function updateFatherName(fatherName: string) {
     setFatherName(fatherName.trim());
-    console.log('fatherName: ', fatherName);
   }
 
   function updateMotherName(motherName: string) {
     setMotherName(motherName.trim());
-    console.log('motherName: ', motherName);
   }
 
   function handleDobAD(date: any) {
-    console.log('date: ', date);
-
     setDobAD(date);
     var bs = require('bikram-sambat');
-    console.log('Vikarm samvat english Date : ', bs.toBik_euro(date));
-    console.log('Vikarm samvat Hindi Date : ', bs.toBik_dev(date));
-    console.log('Vikarm samvat Hindi text format : ', bs.toBik_text(date));
+
     date = bs.toBik_text(date);
-    console.log('formated date:********** ', date);
+
     setDobBS(date);
   }
   // function handleDobBS(date: any) {
-  //   console.log("date: ", date);
+  //
   //   setDobBS(date);
 
   // }
 
   function updateCurrentAddress(currentAddress: string) {
     setCurrentAddress(currentAddress);
-    console.log('currentAddress: ', currentAddress);
   }
 
   function updateHouseNo(val: string) {
     setHouseNo(val);
-    console.log('val: ', val);
   }
   function handleCountry(country: any) {
-    console.log('country', country);
-
     setCountry(country);
   }
   const handleDistrict = debounce((val: any) => {
-    console.log('district: ', val);
     setSelectedDistrict(val);
     setClearValueLocalLevelName(true);
     setSelectedMuniciplaty('');
@@ -203,16 +186,13 @@ const AccountUser: React.FC<any> = () => {
   }, 300);
 
   function handleMunicipality(val: any) {
-    console.log('local level name: ', val);
     setSelectedMuniciplaty(val);
   }
 
   function updateProvince(array: any) {
     setProvince(array);
-    console.log('array: ', array);
   }
   const handleProvince = debounce((val: any) => {
-    console.log('Selected province: ', val);
     setSelectedProvince(val);
     setDistricts([{}]);
     setLocalLevelName([{}]);

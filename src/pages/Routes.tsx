@@ -25,9 +25,9 @@ import './Routes.scss';
 const Routes: React.FC = () => {
   const isTabView = true;
   const loggedInUser: any = localStorage.getItem('loginDetails');
-  console.log('loggedInUser: ', JSON.parse(loggedInUser)?.type);
+
   const token = JSON.parse(loggedInUser)?.data?.token;
-  console.log(token);
+
   const isUserFormCompleted = localStorage.getItem('userFilledAccountDetails')
     ? true
     : false;

@@ -25,7 +25,6 @@ const EmiCalculater: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const emiDetails = useSelector((state: any) => state.emi.emiDetails);
-  console.log('emiDetails', emiDetails);
 
   function nextRoute(status: any) {
     setShowLoading(false);
@@ -45,22 +44,18 @@ const EmiCalculater: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
   }
 
   function updateLoanAmount(loanAmount: any) {
-    console.log('loanAmount :', loanAmount);
     setLoanAmount(loanAmount);
   }
 
   function updateInterestRate(interestRate: any) {
-    console.log('interestRate :', interestRate.detail.value);
     interestRate = interestRate.detail.value;
     setInterestRate(interestRate);
   }
 
   function updateLoanTenure(loanTenure: any) {
-    console.log('loanTenure :', loanTenure.detail.value);
     loanTenure = loanTenure.detail.value;
     setLoanTenure(loanTenure);
   }

@@ -27,7 +27,6 @@ interface utilitiesProps {
 const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
   const history = useHistory();
   function navigateToUtility(type: string) {
-    console.log('type: ', type);
     switch (type) {
     case 'flight':
       history.replace({
@@ -163,7 +162,7 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
                 </IonText>
               </button>
             </div>
-          <div>
+            <div>
               <button
                 className="iconButtons"
                 onClick={() => navigateToUtility('electricityAndWater')}

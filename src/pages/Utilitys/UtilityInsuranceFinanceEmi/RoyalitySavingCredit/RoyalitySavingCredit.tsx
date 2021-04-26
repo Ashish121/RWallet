@@ -37,26 +37,21 @@ const RoyalitySavingCredit: React.FC = () => {
   }, []);
 
   function updateAccountNumber(accountNumber: any) {
-    console.log(' accountNumber :', accountNumber);
     setAccountNumber(accountNumber);
   }
 
   function updateMemberName(memberName: any) {
-    console.log(' memberName :', memberName);
     setMemberName(memberName);
   }
 
   function updateMobileNo(mobileNo: any) {
-    console.log(' mobileNo :', mobileNo);
     setMobileNo(mobileNo);
   }
 
   function updateSavingAmount(savingAmount: any) {
-    console.log(' savingAmount :', savingAmount);
     setSavingAmount(savingAmount);
   }
   function updateRemarks(remarks: any) {
-    console.log(' remarks :', remarks);
     setRemarks(remarks);
   }
 
@@ -91,14 +86,12 @@ const RoyalitySavingCredit: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
   }
   function goBack() {
     history.replace('/tabs/insuranceFinancePage');
   }
 
   function selectTransactionType(transType: any) {
-    console.log('Selected transType value: ', transType);
     setTransType(transType);
   }
   return (

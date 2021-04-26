@@ -44,7 +44,6 @@ const ItemDetailsPage: React.FC = () => {
     setDeviceColor(value);
   }
   function addToCart() {
-    console.log('Adding to cart');
     alert('Item added to cart.');
 
     //TODO : // Need to app action which will stor item data to store

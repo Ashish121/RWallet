@@ -27,7 +27,7 @@ const ApplyPage: React.FC = () => {
   useEffect(() => {
     const params: any = location.state;
     const loanType = params.loantype;
-    console.log('loanType : ', loanType);
+
     setLoanType(loanType);
   }, []);
 
@@ -65,7 +65,6 @@ const ApplyPage: React.FC = () => {
         nextRoute
       )
     );
-    console.log('Handling registration');
   }
 
   function goBack() {
