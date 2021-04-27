@@ -46,6 +46,17 @@ const Khanepani: React.FC = () => {
   function goBack() {
     history.replace('/tabs/electricityWater');
   }
+
+  function handleDiscardButtonForKhanepani() {
+    setPlaceName('');
+    setCustomerID('');
+
+    let KhInpuFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < KhInpuFields.length; ++i) {
+      if (KhInpuFields[i].id === 'input-area') KhInpuFields[i].value = '';
+    }
+  }
+
   return (
     <>
       <LoaderComponent
@@ -72,6 +83,7 @@ const Khanepani: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updatePlaceName}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="text"
@@ -80,6 +92,7 @@ const Khanepani: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateCustomerID}
+                  clearInput={true}
                 />
 
                 <div className="Khanepani-button-property">
@@ -87,6 +100,7 @@ const Khanepani: React.FC = () => {
                     <ButtonConmponent
                       buttonLabel="UtilityDiscard"
                       size="block"
+                      clickHandler={handleDiscardButtonForKhanepani}
                     />
                   </div>
                   <div className="procced-button-for-Khanepani">

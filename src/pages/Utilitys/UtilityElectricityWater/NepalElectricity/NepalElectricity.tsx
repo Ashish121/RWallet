@@ -55,6 +55,18 @@ const NepalElectricity: React.FC = () => {
   function goBack() {
     history.replace('/tabs/electricityWater');
   }
+
+  function handleDiscardButtonForElectricity() {
+    setNeaCounter('');
+    setscNumber('');
+    setCustomerID('');
+
+    let electricityInpuFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < electricityInpuFields.length; ++i) {
+      if (electricityInpuFields[i].id === 'input-area')
+        electricityInpuFields[i].value = '';
+    }
+  }
   return (
     <>
       <LoaderComponent
@@ -81,6 +93,7 @@ const NepalElectricity: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateNeaCounter}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="text"
@@ -89,6 +102,7 @@ const NepalElectricity: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateScNumber}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="text"
@@ -97,6 +111,7 @@ const NepalElectricity: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateCustomerID}
+                  clearInput={true}
                 />
 
                 <div className="electricity-proceed-button">
@@ -104,6 +119,7 @@ const NepalElectricity: React.FC = () => {
                     <ButtonConmponent
                       buttonLabel="UtilityDiscard"
                       size="block"
+                      clickHandler={handleDiscardButtonForElectricity}
                     />
                   </div>
                   <div className="procced-button-for-electricity">

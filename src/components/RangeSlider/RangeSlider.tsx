@@ -7,9 +7,15 @@ interface RangeSliderProps {
   min?: any;
   max?: any;
   handler?: Function;
+  value?: any;
 }
 
-const RangeSlider: React.FC<RangeSliderProps> = ({ min, max, handler }) => {
+const RangeSlider: React.FC<RangeSliderProps> = ({
+  min,
+  max,
+  handler,
+  value,
+}) => {
   const handleRangeSlider = debounce((val) => {
     handler?.(val);
   }, 300);
@@ -20,6 +26,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({ min, max, handler }) => {
         pin={true}
         min={min}
         max={max}
+        value={value}
         onIonChange={handleRangeSlider}
       ></IonRange>
     </div>

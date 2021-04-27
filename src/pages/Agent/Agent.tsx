@@ -28,6 +28,7 @@ const Agent: React.FC = () => {
   const [remarks, setRemarks] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoaderMessage] = useState('');
+  const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
 
   useEffect(() => {
     const array = [
@@ -40,6 +41,7 @@ const Agent: React.FC = () => {
   }, []);
 
   function onCounrtySelect(country: any) {
+    setCurrentSelectedVal(false);
     setCountry(country);
   }
 
@@ -96,8 +98,8 @@ const Agent: React.FC = () => {
     history.replace('/tabs/transfer');
   }
   function handleClearButton() {
-    setCountry('');
-    setCountryDetails([{}]);
+    setCurrentSelectedVal(true);
+
     setAgentCode('');
     setAccountHolderName('');
     setAccountNo('');
@@ -134,6 +136,7 @@ const Agent: React.FC = () => {
                       label="agent.country"
                       onSelect={onCounrtySelect}
                       array={countryDetails}
+                      selectedVal={currentSelectedVal}
                     />
                   </div>
                   <InputText
