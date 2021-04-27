@@ -68,10 +68,11 @@ const EmiCalculater: React.FC = () => {
     setInterestRate(0);
     setLoanTenure(0);
 
-    let emiInpuFields: any = document.getElementsByTagName('ion-input');
-    for (var i = 0; i < emiInpuFields.length; ++i) {
-      if (emiInpuFields[i].id === 'input-area') emiInpuFields[i].value = '';
+    let emiInputFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < emiInputFields.length; ++i) {
+      if (emiInputFields[i].id === 'input-area') emiInputFields[i].value = '';
     }
+    setShowMenu(false);
   }
   return (
     <>
