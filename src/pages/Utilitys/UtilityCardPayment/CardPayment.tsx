@@ -28,6 +28,7 @@ const CardPayment: React.FC = () => {
   const [loaderMessage, setLoaderMessage] = useState('');
   const [bankName, setBankName] = useState([{}]);
   const [selectedBankName, setSelectedBankName] = useState('');
+  const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
 
   useEffect(() => {
     dispatch(loadBankList(setBankNameList));
@@ -86,8 +87,22 @@ const CardPayment: React.FC = () => {
     setBankName(array);
   }
   const handleBank = debounce((val: any) => {
+    setCurrentSelectedVal(false);
     setSelectedBankName(val);
   }, 300);
+
+  function handleClearButtonForCard() {
+    setCurrentSelectedVal(true);
+    setAmount('');
+    setCardNumber('');
+    setSelectedBankName('');
+
+    let cardInpuFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < cardInpuFields.length; ++i) {
+      if (cardInpuFields[i].id === 'input-area') cardInpuFields[i].value = '';
+    }
+  }
+
   return (
     <>
       <LoaderComponent
@@ -111,6 +126,7 @@ const CardPayment: React.FC = () => {
                   label="UtilityBankName"
                   array={bankName}
                   onSelect={handleBank}
+                  selectedVal={currentSelectedVal}
                 />
 
                 <InputText
@@ -120,6 +136,7 @@ const CardPayment: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateCardNumber}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="tel"
@@ -128,12 +145,14 @@ const CardPayment: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateAmount}
+                  clearInput={true}
                 />
                 <div className="card-payment-button-property">
                   <div className="clear-button-for-card-payment">
                     <ButtonConmponent
                       buttonLabel="UtilityCardClear"
                       size="block"
+                      clickHandler={handleClearButtonForCard}
                     />
                   </div>
                   <div className="procced-button-for-card-payment">

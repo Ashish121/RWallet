@@ -63,6 +63,16 @@ const EmiCalculater: React.FC = () => {
     history.replace('/tabs/loanType');
   }
 
+  function handleResetButtonForEMI() {
+    setLoanAmount('');
+    setInterestRate(0);
+    setLoanTenure(0);
+
+    let emiInpuFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < emiInpuFields.length; ++i) {
+      if (emiInpuFields[i].id === 'input-area') emiInpuFields[i].value = '';
+    }
+  }
   return (
     <>
       <LoaderComponent
@@ -104,6 +114,7 @@ const EmiCalculater: React.FC = () => {
                         min={1}
                         max={20}
                         handler={updateInterestRate}
+                        value={interestRate}
                       />
                     </div>
                   </div>
@@ -118,13 +129,18 @@ const EmiCalculater: React.FC = () => {
                         min={1}
                         max={10}
                         handler={updateLoanTenure}
+                        value={loanTenure}
                       />
                     </div>
                   </div>
 
                   <div className="button-Section">
                     <div className="emiCalculate-rest">
-                      <ButtonConmponent buttonLabel="emiRest" size="block" />
+                      <ButtonConmponent
+                        buttonLabel="emiRest"
+                        size="block"
+                        clickHandler={handleResetButtonForEMI}
+                      />
                     </div>
                     <div className="emiCalculater-calculate">
                       <ButtonConmponent

@@ -25,6 +25,7 @@ const RoyalitySavingCredit: React.FC = () => {
   const [transactionDetails, setTransactionDetails] = useState([{}]);
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
+  const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
 
   useEffect(() => {
     const array = [
@@ -92,8 +93,24 @@ const RoyalitySavingCredit: React.FC = () => {
   }
 
   function selectTransactionType(transType: any) {
+    setCurrentSelectedVal(false);
     setTransType(transType);
   }
+
+  function handleClearButtonForSaving() {
+    setCurrentSelectedVal(true);
+    setAccountNumber('');
+    setMemberName('');
+    setMobileNo('');
+    setSavingAmount('');
+    setRemarks('');
+    let savingInpuFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < savingInpuFields.length; ++i) {
+      if (savingInpuFields[i].id === 'input-area')
+        savingInpuFields[i].value = '';
+    }
+  }
+
   return (
     <>
       <LoaderComponent
@@ -120,6 +137,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateAccountNumber}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="text"
@@ -128,6 +146,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateMemberName}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="tel"
@@ -136,12 +155,14 @@ const RoyalitySavingCredit: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateMobileNo}
+                  clearInput={true}
                 />
 
                 <SelectMenu
                   label="SelectTransactionType"
                   onSelect={selectTransactionType}
                   array={transactionDetails}
+                  selectedVal={currentSelectedVal}
                 />
                 <InputText
                   inputType="tel"
@@ -150,6 +171,7 @@ const RoyalitySavingCredit: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateSavingAmount}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="text"
@@ -158,12 +180,14 @@ const RoyalitySavingCredit: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateRemarks}
+                  clearInput={true}
                 />
                 <div className="royalitySavingButton">
                   <div className="royalitySavingClear-button">
                     <ButtonConmponent
                       buttonLabel="UtilityCardClear"
                       size="block"
+                      clickHandler={handleClearButtonForSaving}
                     />
                   </div>
 

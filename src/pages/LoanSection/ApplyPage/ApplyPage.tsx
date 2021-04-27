@@ -71,6 +71,18 @@ const ApplyPage: React.FC = () => {
     history.replace('/tabs/loanType');
   }
 
+  function handleDiscardButtonForApply() {
+    setFullName('');
+    setFatherName('');
+    setMobileNo('');
+    setPurposeOfLoan('');
+    setLoanType('');
+    let applyInpuFields: any = document.getElementsByTagName('ion-input');
+    for (var i = 0; i < applyInpuFields.length; ++i) {
+      if (applyInpuFields[i].id === 'input-area') applyInpuFields[i].value = '';
+    }
+  }
+
   return (
     <>
       <LoaderComponent
@@ -97,6 +109,7 @@ const ApplyPage: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateFullName}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="text"
@@ -105,6 +118,7 @@ const ApplyPage: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateFatherName}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="tel"
@@ -113,6 +127,7 @@ const ApplyPage: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updateMobileNo}
+                  clearInput={true}
                 />
                 <InputText
                   inputType="text"
@@ -121,10 +136,15 @@ const ApplyPage: React.FC = () => {
                   color="light"
                   labelColor="light"
                   onChange={updatePurposeOfLoan}
+                  clearInput={true}
                 />
               </div>
               <div className="bottom-btn-wrapper">
-                <ButtonConmponent buttonLabel="ApplyPageDiscard" size="block" />
+                <ButtonConmponent
+                  buttonLabel="ApplyPageDiscard"
+                  size="block"
+                  clickHandler={handleDiscardButtonForApply}
+                />
 
                 <ButtonConmponent
                   buttonLabel="ApplyPageApply"
