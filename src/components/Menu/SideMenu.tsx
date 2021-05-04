@@ -78,6 +78,13 @@ const MenuComponent: React.FC<any> = () => {
     });
   };
 
+  const requestForChangePassword = () => {
+    history.replace('/changePassword', {
+      nextroute: '/login',
+      backNavigation: '/tabs',
+    });
+  };
+
   return (
     <>
       <IonAlert
@@ -205,7 +212,10 @@ const MenuComponent: React.FC<any> = () => {
                     <Translate message="profile.changeMPIN" />
                   </IonText>
                 </button>
-                <button className="action-button">
+                <button
+                  className="action-button"
+                  onClick={requestForChangePassword}
+                >
                   <IonText>
                     <Translate message="profile.changePassword" />
                   </IonText>

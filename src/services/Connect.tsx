@@ -832,3 +832,25 @@ export const loadTransactionHistory = async (user_id: string): Promise<any> => {
 
   return result;
 };
+
+//Authentication For change password
+export const authenticationForChangePassword = async (
+  user_id: string,
+  currentPassword: string,
+  newPass: string
+): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/change_password',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+      current_password: currentPassword,
+      new_password: newPass,
+    }),
+  });
+  return result;
+};

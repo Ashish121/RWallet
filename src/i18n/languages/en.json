@@ -65,6 +65,12 @@
   "rest.new": "New password",
   "rest.newConfirm": "Confirm password",
 
+  "changePassword.pageHeader": "Change Password",
+  "changePassword.newpassword": "Enter your current password and new password",
+  "changePassword.proceed": "PROCEED",
+  "changePassword.current": "Current password",
+  "changePassword.new": "New password",
+
   "otp.pageHeader": "Verification code",
   "otp.sendOtpHeader": "Send OTP to Mobile",
   "otp.pageSubHeader": "Please type the verification code sent to +{countryCode} {contact}",
