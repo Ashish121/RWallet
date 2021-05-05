@@ -45,7 +45,8 @@ import { InternetPayment } from './Utilitys/InternetPayment/InternetPayment';
 import { Antivirus } from './Utilitys/UtilityAntivirus/Antivirus/Antivirus';
 import { SuccessPage } from './SuccessPage/SuccessPage';
 import { CartPage } from './Cart/CartPage';
-import {PosPaymentPage} from './MapPayment/PosPaymentPage';
+import { PosPaymentPage } from './MapPayment/PosPaymentPage';
+import { ChangePassword } from './ChangePass/ChangePassword';
 
 export {
   HomePage,
@@ -95,5 +96,6 @@ export {
   Antivirus,
   SuccessPage,
   CartPage,
-  PosPaymentPage
+  PosPaymentPage,
+  ChangePassword,
 };
