@@ -23,12 +23,13 @@ const ChangePassword: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoaderMessage] = useState('');
   const user_id = localStorage.getItem('userId');
+  const [confirmPass, setConfirmPass] = useState('');
 
   function updateNewPass(currentPassword: any) {
     setCurrentPassword(currentPassword);
   }
 
-  function updateConfirmPassword(newPass: any) {
+  function updateNewPassword(newPass: any) {
     setNewPass(newPass);
   }
 
@@ -47,6 +48,11 @@ const ChangePassword: React.FC = () => {
       requestFoChangePassword({ user_id, currentPassword, newPass }, nextRoute)
     );
   }
+
+  function updateConfirmPassword(confirmPass: any) {
+    setConfirmPass(confirmPass);
+  }
+
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
@@ -84,6 +90,15 @@ const ChangePassword: React.FC = () => {
                 labelType="floating"
                 color="light"
                 labelColor="light"
+                onChange={updateNewPassword}
+                showPasswordMode={true}
+              />
+              <InputText
+                inputType="password"
+                labelText="rest.newConfirm"
+                labelType="floating"
+                color="light"
+                labelColor="light"
                 onChange={updateConfirmPassword}
                 showPasswordMode={true}
               />
@@ -93,7 +108,10 @@ const ChangePassword: React.FC = () => {
                 buttonLabel="changePassword.proceed"
                 size="block"
                 disabled={
-                  currentPassword.trim() && newPass.trim() ? false : true
+                  currentPassword.trim() &&
+                  newPass.trim() === confirmPass.trim()
+                    ? false
+                    : true
                 }
                 clickHandler={handleVerifyReset}
               />
