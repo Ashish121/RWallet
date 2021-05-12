@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   IonMenu,
   IonHeader,
@@ -12,26 +12,26 @@ import {
   IonAvatar,
   IonAlert,
   IonProgressBar,
-} from "@ionic/react";
-import { useHistory } from "react-router-dom";
-import { menuController } from "@ionic/core";
-import { Plugins, CameraResultType } from "@capacitor/core";
+} from '@ionic/react';
+import { useHistory } from 'react-router-dom';
+import { menuController } from '@ionic/core';
+import { Plugins, CameraResultType } from '@capacitor/core';
 
-import { ProfilePictureIcon, CloseIcon, MenuCamera } from "../../assets/Icons";
-import "./SideMenu.scss";
-import { Translate } from "../../i18n/formatMessages";
-import { requestForLogout, reuestUpload } from "../../redux/actions";
+import { ProfilePictureIcon, CloseIcon, MenuCamera } from '../../assets/Icons';
+import './SideMenu.scss';
+import { Translate } from '../../i18n/formatMessages';
+import { requestForLogout, reuestUpload } from '../../redux/actions';
 
 const MenuComponent: React.FC<any> = () => {
   const [imagePicked, setImagePicked] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedImage, setSelectedImage] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const [currentUploadStatus, setCurrentUploadStatus] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
   const { Camera } = Plugins;
   const history = useHistory();
   const dispatch = useDispatch();
-  const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem('userId');
 
   const profileFields = useSelector(
     (state: any) => state.profile.profileDetails
@@ -39,14 +39,14 @@ const MenuComponent: React.FC<any> = () => {
 
   useEffect(() => {
     setSelectedImage(profileFields.profile_image);
-    if (selectedImage) setImagePicked(true);
+    if (selectedImage) setImagePicked(!imagePicked);
   }, [profileFields]);
   const closeMenu = () => {
     menuController.toggle();
   };
 
   function nextRoute() {
-    history.replace("/login");
+    history.replace('/login');
     localStorage.clear();
   }
 
@@ -60,7 +60,7 @@ const MenuComponent: React.FC<any> = () => {
   function handleUploadProgress(event: any) {
     const { loaded, total } = event;
     let percent = Math.floor((loaded * 100) / total);
-    console.log("percent: ", percent);
+    // console.log("percent: ", percent);
     setShowProgress(percent === 100 ? false : true);
     setCurrentUploadStatus(percent / 100);
   }
@@ -70,7 +70,7 @@ const MenuComponent: React.FC<any> = () => {
       allowEditing: true,
       resultType: CameraResultType.DataUrl,
     });
-    console.log("image: ", image);
+    // console.log("image: ", image);
 
     const imageUrl: any = image.dataUrl;
     setSelectedImage(imageUrl);
@@ -79,28 +79,28 @@ const MenuComponent: React.FC<any> = () => {
   }
 
   const requestForChangeMpin = () => {
-    const userDetails: any = localStorage.getItem("loginDetails")
-      ? localStorage.getItem("loginDetails")
-      : "";
+    const userDetails: any = localStorage.getItem('loginDetails')
+      ? localStorage.getItem('loginDetails')
+      : '';
     closeMenu();
 
     const parsedRes = JSON.parse(userDetails);
-    const isMpinCreated: any = localStorage.getItem("isMpinCreated")
-      ? localStorage.getItem("isMpinCreated")
+    const isMpinCreated: any = localStorage.getItem('isMpinCreated')
+      ? localStorage.getItem('isMpinCreated')
       : false;
 
-    history.replace("/otp", {
-      updateMode: isMpinCreated === "false" ? false : true,
-      nextroute: "/mpin",
-      backNavigation: "/tabs",
+    history.replace('/otp', {
+      updateMode: isMpinCreated === 'false' ? false : true,
+      nextroute: '/mpin',
+      backNavigation: '/tabs',
       mobileNo: parsedRes.data.user.mobile_number,
     });
   };
 
   const requestForChangePassword = () => {
-    history.replace("/changePassword", {
-      nextroute: "/login",
-      backNavigation: "/tabs",
+    history.replace('/changePassword', {
+      nextroute: '/login',
+      backNavigation: '/tabs',
     });
   };
 
@@ -109,16 +109,16 @@ const MenuComponent: React.FC<any> = () => {
       <IonAlert
         isOpen={showAlert}
         onDidDismiss={() => setShowAlert(false)}
-        subHeader={"Are you sure ?"}
+        subHeader={'Are you sure ?'}
         buttons={[
           {
-            text: "Cancel",
-            role: "cancel",
-            cssClass: "light",
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'light',
             handler: () => {},
           },
           {
-            text: "Ok",
+            text: 'Ok',
             handler: () => {
               confirmLogout();
             },
@@ -131,11 +131,11 @@ const MenuComponent: React.FC<any> = () => {
           <IonToolbar className="side-menu-toobar">
             <IonButtons
               slot="end"
-              style={{ right: "20px", position: "absolute" }}
+              style={{ right: '20px', position: 'absolute' }}
             >
               <IonButton
                 onClick={closeMenu}
-                style={{ position: "absolute", width: "100%" }}
+                style={{ position: 'absolute', width: '100%' }}
               />
               <CloseIcon />
             </IonButtons>
@@ -147,9 +147,9 @@ const MenuComponent: React.FC<any> = () => {
         <IonContent className="ion-content-wrapper">
           <div
             className="pageheader"
-            style={{ marginLeft: "7%", fontWeight: 600, fontSize: "20px" }}
+            style={{ marginLeft: '7%', fontWeight: 600, fontSize: '20px' }}
           >
-            <IonText style={{ fontSize: "20px", fontWeight: 600 }}>
+            <IonText style={{ fontSize: '20px', fontWeight: 600 }}>
               <Translate message="profile.text" />
             </IonText>
           </div>
@@ -256,7 +256,7 @@ const MenuComponent: React.FC<any> = () => {
                     <Translate message="profile.privacy" />
                   </IonText>
                 </button>
-                <div className="version-wrapper" style={{ display: "grid" }}>
+                <div className="version-wrapper" style={{ display: 'grid' }}>
                   <IonText className="label-text">
                     <Translate message="profile.version" />
                   </IonText>
