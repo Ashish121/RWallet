@@ -5,7 +5,7 @@ import { updateToast, toggleLoader } from './index';
 const loadProductDetailsList = (callback: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: PRODUCTLIST_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'Logging out...'));
+    dispatch(toggleLoader(true, 'loading product...'));
     try {
       const response = await loadProduct();
       if (response.status === 200 && response.data.success) {
