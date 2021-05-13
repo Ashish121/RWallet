@@ -28,11 +28,12 @@ interface shoppingProps {
 
 const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
   const history = useHistory();
-  const navigateToShopping = () => {
+  const navigateToShopping = (id: any) => {
     history.replace({
       pathname: '/tabs/shopping',
       state: {
         shoppingType: 'mobile',
+        id: id,
       },
     });
   };
@@ -47,7 +48,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
 
         <div className="shopping-list-container">
           <div>
-            <button className="iconButtons" onClick={navigateToShopping}>
+            <button
+              className="iconButtons"
+              onClick={() => navigateToShopping(1)}
+            >
               <SmartphoneIcon width="30" height="30" />
               <IonText>
                 <Translate message="home.mobileIconText" />
@@ -55,7 +59,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
             </button>
           </div>
           <div>
-            <button className="iconButtons">
+            <button
+              className="iconButtons"
+              onClick={() => navigateToShopping(0)}
+            >
               <LaptopIcon width="30" height="30" />
               <IonText>
                 <Translate message="home.laptopIconText" />
@@ -63,7 +70,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
             </button>
           </div>
           <div>
-            <button className="iconButtons">
+            <button
+              className="iconButtons"
+              onClick={() => navigateToShopping(2)}
+            >
               <FashionIcon width="30" height="30" />
               <IonText>
                 <Translate message="home.fashionIconText" />
@@ -71,7 +81,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
             </button>
           </div>
           <div>
-            <button className="iconButtons">
+            <button
+              className="iconButtons"
+              onClick={() => navigateToShopping(3)}
+            >
               <TelevisionIcon width="30" height="30" />
               <IonText>
                 <Translate message="home.televisionText" />
@@ -82,7 +95,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
           {expanded && (
             <>
               <div>
-                <button className="iconButtons">
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToShopping(4)}
+                >
                   <StoreIcon width="30" height="30" />
                   <IonText>
                     <Translate message="home.storeText" />
@@ -90,7 +106,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
                 </button>
               </div>
               <div>
-                <button className="iconButtons">
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToShopping(5)}
+                >
                   <SparepartIcon width="30" height="30" />
                   <IonText>
                     <Translate message="home.sparePartText" />
@@ -98,7 +117,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
                 </button>
               </div>
               <div>
-                <button className="iconButtons">
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToShopping(6)}
+                >
                   <MotorBikeIcon width="30" height="30" />
                   <IonText>
                     <Translate message="home.motorbike" />
@@ -106,7 +128,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
                 </button>
               </div>
               <div>
-                <button className="iconButtons">
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToShopping(7)}
+                >
                   <GroceryIcon width="30" height="30" />
                   <IonText>
                     <Translate message="home.grocery" />
@@ -114,7 +139,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
                 </button>
               </div>
               <div>
-                <button className="iconButtons">
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToShopping(8)}
+                >
                   <WalletIcon width="30" height="30" />
                   <IonText>
                     <Translate message="home.walletText" />
@@ -122,7 +150,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
                 </button>
               </div>
               <div>
-                <button className="iconButtons">
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToShopping(9)}
+                >
                   <WatchIcon width="30" height="30" />
                   <IonText>
                     <Translate message="home.watchText" />
@@ -130,7 +161,10 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
                 </button>
               </div>
               <div>
-                <button className="iconButtons">
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToShopping(10)}
+                >
                   <SneakersIcon width="30" height="30" />
                   <IonText>
                     <Translate message="home.shoesText" />

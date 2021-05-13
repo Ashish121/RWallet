@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
   IonPage,
   IonContent,
@@ -33,14 +34,47 @@ import {
   WalletIcon,
   WatchIcon,
 } from '../../assets/Icons';
+import { loadProductDetailsList } from '../../redux/actions/';
+// import { FatalException } from "@ionic/cli/lib/errors";
 
 const ShoppingPage: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const location = useLocation();
   const [shoppingLimitBalance, setshoppingLimitBalance] = useState('');
   const [favSelected, setFavSelected] = useState(false);
+  const [categoryName, setCategoryName] = useState('');
+
+  const [productName, setProductName] = useState([]);
+  const [imagePath, setImagePath] = useState('');
+  let id = 0;
+
+  const [price, setPrice] = useState(Number);
+
+  useEffect(() => {
+    const param: any = location.state;
+    id = param.id;
+    // console.log("ID from home page :", param.id);
+
+    dispatch(loadProductDetailsList(ShowProductList));
+  }, []);
+
   useEffect(() => {
     setshoppingLimitBalance('128445.00');
   }, []);
+
+  function ShowProductList(res: any) {
+    const productName = res.data.message[id].config_product;
+    // console.log("shoping list :", productName);
+    setProductName(productName);
+
+    const singleProduct = res.data.message[id];
+    //console.log("singleProduct :", singleProduct.image_path);
+    setImagePath(singleProduct.image_path);
+    setCategoryName(singleProduct.category_name);
+    setPrice(singleProduct.price);
+  }
+
   function navigateToCart() {
     history.replace('/tabs/shopping/cart');
   }
@@ -54,6 +88,12 @@ const ShoppingPage: React.FC = () => {
   }
   function goBack() {
     history.replace('/tabs');
+  }
+
+  function handleSliderIcons(val: any, newId: any) {
+    id = newId;
+    //console.log("categoryName : ", categoryName, "ID :", newId);
+    dispatch(loadProductDetailsList(ShowProductList));
   }
 
   return (
@@ -123,7 +163,9 @@ const ShoppingPage: React.FC = () => {
               <div className="scroll-items-wrapper">
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('mobile', 1)}
+                    >
                       <SmartphoneIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.mobileIconText" />
@@ -133,7 +175,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('laptop', 0)}
+                    >
                       <LaptopIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.laptopIconText" />
@@ -143,7 +187,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('fashion', 3)}
+                    >
                       <FashionIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.fashionIconText" />
@@ -153,7 +199,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('television', 4)}
+                    >
                       <TelevisionIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.televisionText" />
@@ -163,7 +211,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('store', 5)}
+                    >
                       <StoreIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.storeText" />
@@ -173,7 +223,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('sparePart', 6)}
+                    >
                       <SparepartIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.sparePartText" />
@@ -183,7 +235,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('motorbike', 7)}
+                    >
                       <MotorBikeIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.motorbike" />
@@ -193,7 +247,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('grocery', 8)}
+                    >
                       <GroceryIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.grocery" />
@@ -203,7 +259,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('wallet', 9)}
+                    >
                       <WalletIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.walletText" />
@@ -213,7 +271,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('watch', 10)}
+                    >
                       <WatchIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.watchText" />
@@ -223,7 +283,9 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent>
+                    <IonCardContent
+                      onClick={() => handleSliderIcons('shoes', 11)}
+                    >
                       <SneakersIcon width="24" height="24" />
 
                       <IonText>
@@ -252,197 +314,86 @@ const ShoppingPage: React.FC = () => {
                   </button>
                 </IonInput>
               </div>
-              <div className="mobile-items-wrapper">
-                <IonGrid>
-                  <IonRow>
-                    <IonCol>
-                      <IonCard onClick={showItemDetails}>
-                        <IonCardHeader>
-                          {favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonEnabled width="16" height="16" />
-                            </button>
-                          )}
-                          {!favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonDisabled width="16" height="16" />
-                            </button>
-                          )}
 
-                          <div className="image-wrapper"></div>
-                        </IonCardHeader>
+              {productName.length > 0 ? (
+                <div className="mobile-items-wrapper">
+                  <IonGrid>
+                    <IonRow>
+                      {productName.map((item: any) => {
+                        return (
+                          <IonCol key={item.product_id} size="6">
+                            <IonCard onClick={showItemDetails}>
+                              <IonCardHeader>
+                                {favSelected && (
+                                  <button onClick={toggleFav}>
+                                    <FavButtonEnabled width="16" height="16" />
+                                  </button>
+                                )}
+                                {!favSelected && (
+                                  <button onClick={toggleFav}>
+                                    <FavButtonDisabled width="16" height="16" />
+                                  </button>
+                                )}
 
-                        <IonCardContent>
-                          <div className="device-name-label">
-                            <IonText>Redmi Note 9</IonText>
-                          </div>
-                          <div className="device-price-label">
-                            <IonText>Rs 8599</IonText>
-                          </div>
-                        </IonCardContent>
-                      </IonCard>
-                    </IonCol>
-                    <IonCol>
-                      <IonCard>
-                        <IonCardHeader>
-                          {favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonEnabled width="16" height="16" />
-                            </button>
-                          )}
-                          {!favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonDisabled width="16" height="16" />
-                            </button>
-                          )}
-                          <div className="image-wrapper">
-                            <IonImg
-                              src={require('../../assets/Icons/phone2.png')}
-                            />
-                          </div>
-                        </IonCardHeader>
+                                <div className="image-wrapper">
+                                  <IonImg src={imagePath} />
+                                </div>
+                              </IonCardHeader>
 
-                        <IonCardContent>
-                          <div className="device-name-label">
-                            <IonText>Redmi Note 9</IonText>
-                          </div>
-                          <div className="device-price-label">
-                            <IonText>Rs 8599</IonText>
-                          </div>
-                        </IonCardContent>
-                      </IonCard>
-                    </IonCol>
-                  </IonRow>
-                  <IonRow>
-                    <IonCol>
-                      {' '}
-                      <IonCard>
-                        <IonCardHeader>
-                          {favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonEnabled width="16" height="16" />
-                            </button>
-                          )}
-                          {!favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonDisabled width="16" height="16" />
-                            </button>
-                          )}
-                          <div className="image-wrapper">
-                            <IonImg
-                              src={require('../../assets/Icons/phone3.png')}
-                            />
-                          </div>
-                        </IonCardHeader>
+                              <IonCardContent>
+                                <div className="device-name-label">
+                                  <IonText>{categoryName}</IonText>
+                                </div>
 
-                        <IonCardContent>
-                          <div className="device-name-label">
-                            <IonText>Redmi Note 9</IonText>
-                          </div>
-                          <div className="device-price-label">
-                            <IonText>Rs 8599</IonText>
-                          </div>
-                        </IonCardContent>
-                      </IonCard>
-                    </IonCol>
-                    <IonCol>
-                      {' '}
-                      <IonCard>
-                        <IonCardHeader>
-                          {favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonEnabled width="16" height="16" />
-                            </button>
-                          )}
-                          {!favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonDisabled width="16" height="16" />
-                            </button>
-                          )}
-                          <div className="image-wrapper">
-                            <IonImg
-                              src={require('../../assets/Icons/phone4.png')}
-                            />
-                          </div>
-                        </IonCardHeader>
+                                <div className="device-price-label">
+                                  <IonText>{item.price}</IonText>
+                                </div>
+                              </IonCardContent>
+                            </IonCard>
+                          </IonCol>
+                        );
+                      })}
+                    </IonRow>
+                  </IonGrid>
+                </div>
+              ) : (
+                <div className="mobile-items-wrapper">
+                  <IonGrid>
+                    <IonRow>
+                      <IonCol size="6">
+                        <IonCard onClick={showItemDetails}>
+                          <IonCardHeader>
+                            {favSelected && (
+                              <button onClick={toggleFav}>
+                                <FavButtonEnabled width="16" height="16" />
+                              </button>
+                            )}
+                            {!favSelected && (
+                              <button onClick={toggleFav}>
+                                <FavButtonDisabled width="16" height="16" />
+                              </button>
+                            )}
 
-                        <IonCardContent>
-                          <div className="device-name-label">
-                            <IonText>Redmi Note 9</IonText>
-                          </div>
-                          <div className="device-price-label">
-                            <IonText>Rs 8599</IonText>
-                          </div>
-                        </IonCardContent>
-                      </IonCard>
-                    </IonCol>
-                  </IonRow>
-                  <IonRow>
-                    <IonCol>
-                      {' '}
-                      <IonCard>
-                        <IonCardHeader>
-                          {favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonEnabled width="16" height="16" />
-                            </button>
-                          )}
-                          {!favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonDisabled width="16" height="16" />
-                            </button>
-                          )}
-                          <div className="image-wrapper">
-                            <IonImg
-                              src={require('../../assets/Icons/phone1.png')}
-                            />
-                          </div>
-                        </IonCardHeader>
+                            <div className="image-wrapper">
+                              <IonImg src={imagePath} />
+                            </div>
+                          </IonCardHeader>
 
-                        <IonCardContent>
-                          <div className="device-name-label">
-                            <IonText>Redmi Note 9</IonText>
-                          </div>
-                          <div className="device-price-label">
-                            <IonText>Rs 8599</IonText>
-                          </div>
-                        </IonCardContent>
-                      </IonCard>
-                    </IonCol>
-                    <IonCol>
-                      {' '}
-                      <IonCard>
-                        <IonCardHeader>
-                          {favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonEnabled width="16" height="16" />
-                            </button>
-                          )}
-                          {!favSelected && (
-                            <button onClick={toggleFav}>
-                              <FavButtonDisabled width="16" height="16" />
-                            </button>
-                          )}
-                          <div className="image-wrapper">
-                            <IonImg
-                              src={require('../../assets/Icons/phone3.png')}
-                            />
-                          </div>
-                        </IonCardHeader>
+                          <IonCardContent>
+                            <div className="device-name-label">
+                              <IonText>{categoryName}</IonText>
+                            </div>
 
-                        <IonCardContent>
-                          <div className="device-name-label">
-                            <IonText>Redmi Note 9</IonText>
-                          </div>
-                          <div className="device-price-label">
-                            <IonText>Rs 8599</IonText>
-                          </div>
-                        </IonCardContent>
-                      </IonCard>
-                    </IonCol>
-                  </IonRow>
-                </IonGrid>
-              </div>
+                            <div className="device-price-label">
+                              <IonText>{price}</IonText>
+                            </div>
+                          </IonCardContent>
+                        </IonCard>
+                      </IonCol>
+                    </IonRow>
+                  </IonGrid>
+                </div>
+              )}
             </div>
           </IonContent>
         </IonPage>

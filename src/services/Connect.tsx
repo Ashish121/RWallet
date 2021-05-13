@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 /**
  * Adding token to all request if token is
@@ -6,7 +6,7 @@ import axios from "axios";
  */
 axios.interceptors.request.use(function (config) {
   let userToken;
-  const userData: any = localStorage.getItem("loginDetails");
+  const userData: any = localStorage.getItem('loginDetails');
   if (userData) {
     userToken = JSON.parse(userData).data.token;
   }
@@ -19,10 +19,10 @@ export const authenticate = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/login",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/login',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       mobile_number: contactNo,
@@ -42,10 +42,10 @@ export const authenticationForRegister = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/register",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/register',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       name: name,
@@ -55,7 +55,7 @@ export const authenticationForRegister = async (
       countryCode,
     }),
   });
-  localStorage.setItem("mobile_number", mobileNo);
+  localStorage.setItem('mobile_number', mobileNo);
   return result;
 };
 
@@ -74,10 +74,10 @@ export const authenticationForCoOperativeBankTransfer = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/cooperative_bank_transfer",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/cooperative_bank_transfer',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       cooperative_transfer: [
@@ -106,10 +106,10 @@ export const authenticationForCurrentAc = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/current_account_create",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/current_account_create',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       current_account: [
@@ -135,10 +135,10 @@ export const authenticationForAgentTransfer = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/agent_bank_transfer",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/agent_bank_transfer',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       agent_transfer: [
@@ -170,10 +170,10 @@ export const authenticationForBankTransfer = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bank_transfer",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bank_transfer',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       bank_transfer: [
@@ -201,10 +201,10 @@ export const authenticationForFixedAccount = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/fixed_account_create",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/fixed_account_create',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       fixed_account: [
@@ -229,10 +229,10 @@ export const authenticationForFixedAccount = async (
 export const getProvinces = async (): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/province_fetch",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/province_fetch',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
@@ -242,10 +242,10 @@ export const getProvinces = async (): Promise<any> => {
 export const getDistrictByProvince = async (id: any): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/district_fetch",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/district_fetch',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       province: id,
@@ -258,10 +258,10 @@ export const getDistrictByProvince = async (id: any): Promise<any> => {
 export const getLocalLevelName = async (id: any): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/local_level_name_fetch",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/local_level_name_fetch',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       district: id,
@@ -274,10 +274,10 @@ export const getLocalLevelName = async (id: any): Promise<any> => {
 export const updateUserAccountDetails = async (payload: any): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/update_user",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/update_user',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify(payload),
   });
@@ -292,10 +292,10 @@ export const authenticationForMpin = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/create_mpin",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/create_mpin',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       user_id: user_id,
@@ -320,10 +320,10 @@ export const changeMpin = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/change_mpin",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/change_mpin',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       user_id,
@@ -342,10 +342,10 @@ export const authenticationForResetPassword = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/forgot_password",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/forgot_password',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       mobile_number: mobileNo,
@@ -364,10 +364,10 @@ export const authenticationForSavingAccount = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/saving_account_create",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/saving_account_create',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       saving_account: [
@@ -395,11 +395,11 @@ export const authenticationForApplyPage = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/loan_type",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/loan_type',
 
-    method: "post",
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       loan_type: [
@@ -428,10 +428,10 @@ export const authenticationForNepalElectricityPage = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/electricity_bill",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/electricity_bill',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       electricity_bill: [
@@ -456,10 +456,10 @@ export const authenticationForKhanepaniPage = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/water_bill",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/water_bill',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       water_bill: [
@@ -490,10 +490,10 @@ export const authenticationFlightOneWayPage = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/ticket_booking",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/ticket_booking',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       ticket_booking: [
@@ -523,10 +523,10 @@ export const authenticationForEmiCalculation = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/emi_calculate",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/emi_calculate',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       emi_calculate: [
@@ -551,10 +551,10 @@ export const authenticationForTvPayment = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/television_payment",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/television_payment',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       television_payment: [
@@ -584,10 +584,10 @@ export const authenticationForFinancePaymentCalculation = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/finance_payment",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/finance_payment',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       finance_payment: [
@@ -617,10 +617,10 @@ export const authenticationForCardPaymentCalculation = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/card_payment",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/card_payment',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       card_payment: [
@@ -646,10 +646,10 @@ export const authenticationForInternetPayment = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/internet_payment",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/internet_payment',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       internet_payment: [
@@ -675,10 +675,10 @@ export const authenticationForTopUpRecharge = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/mobile_recharge",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/mobile_recharge',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       mobile_recharge: [
@@ -704,10 +704,10 @@ export const authenticationForAntivirusPayment = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/antivirus_payment",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/antivirus_payment',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       antivirus_payment: [
@@ -726,10 +726,10 @@ export const authenticationForAntivirusPayment = async (
 export const fetchPOSDetails = async (): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/pos_data",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/pos_data',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
@@ -741,10 +741,10 @@ export const fetchPOSDetails = async (): Promise<any> => {
 export const loadProfile = async (user_id: string): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/profile_fetch",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/profile_fetch',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       user_id: user_id,
@@ -762,10 +762,10 @@ export const loadProfile = async (user_id: string): Promise<any> => {
 export const logout = async (): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/logout",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/logout',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
@@ -776,11 +776,11 @@ export const logout = async (): Promise<any> => {
 export const getBankAllNameList = async (): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bank_detail",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bank_detail',
 
-    method: "post",
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
@@ -791,11 +791,11 @@ export const getBankAllNameList = async (): Promise<any> => {
 export const getFlightPlaceDetails = async (): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/flight_details",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/flight_details',
 
-    method: "post",
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
@@ -806,10 +806,10 @@ export const getFlightPlaceDetails = async (): Promise<any> => {
 export const getBusPlacesDetails = async (): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bus_details",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bus_details',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
@@ -820,10 +820,10 @@ export const getBusPlacesDetails = async (): Promise<any> => {
 export const loadTransactionHistory = async (user_id: string): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/transaction_details",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/transaction_details',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       user_id: user_id,
@@ -841,10 +841,10 @@ export const authenticationForChangePassword = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/change_password",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/change_password',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       user_id: user_id,
@@ -869,10 +869,10 @@ export const uploadImage = async (
 ): Promise<any> => {
   const result = await axios({
     url:
-      "http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/profile_pic",
-    method: "post",
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/profile_pic',
+    method: 'post',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     data: JSON.stringify({
       user_id: user_id,
@@ -880,5 +880,20 @@ export const uploadImage = async (
     }),
     onUploadProgress: (progressEvent) => updateProgressCallback(progressEvent),
   });
+  return result;
+};
+
+/** loading all Product Details for shopping section */
+export const loadProduct = async (): Promise<any> => {
+  const result = await axios({
+    url:
+      'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/product_details',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  // console.log("product result : ", result);
   return result;
 };

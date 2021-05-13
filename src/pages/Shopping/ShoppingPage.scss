@@ -76,6 +76,10 @@
   .mobile-items-wrapper {
     padding: 20px;
     margin-top: -38px;
+
+    // display: flex;
+    // flex-flow: "row-rap";
+
     .item-wrapper {
       display: flex;
       justify-content: center;

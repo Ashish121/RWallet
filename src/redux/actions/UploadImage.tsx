@@ -1,6 +1,5 @@
-import { AUTHENTICATION_INPROGRESS, TVPAYMENT_SUCCESS } from "../Contants";
-import { uploadImage } from "../../services/Connect";
-import { updateToast, toggleLoader } from "./index";
+import { uploadImage } from '../../services/Connect';
+import { updateToast, toggleLoader } from './index';
 
 const reuestUpload = (userId: any, imageString: any, callback: Function) => {
   return async (dispatch: any) => {
@@ -13,19 +12,19 @@ const reuestUpload = (userId: any, imageString: any, callback: Function) => {
         const data = {
           showToast: true,
           toastMessage: response.data.message,
-          position: "top",
-          duration: "10000",
+          position: 'top',
+          duration: '10000',
         };
         dispatch(updateToast(data));
       }
     } catch (error) {
       const data = {
         showToast: true,
-        toastMessage: "API failed",
-        position: "top",
-        duration: "10000",
+        toastMessage: 'API failed',
+        position: 'top',
+        duration: '10000',
       };
-      dispatch({ type: "TVPAYMENT_FAILED" });
+      dispatch({ type: 'TVPAYMENT_FAILED' });
       dispatch(updateToast(data));
     }
   };
