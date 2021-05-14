@@ -32,7 +32,7 @@ const CartPage: React.FC = () => {
   const [cardItemList, setCardItemList] = useState([]);
   const [cartTotal, setCartTotal] = useState([]);
   const [deleteStatus, setDeleteStatus] = useState(false);
-  const [cartItemIdToDelete, setCartItemIdToDelete] = useState(0);
+  const [cartItemIdToDelete, setCartItemIdToDelete] = useState(Number);
 
   useEffect(() => {
     dispatch(loadCartDetails({ user_id }, ShowProductList));
@@ -61,9 +61,10 @@ const CartPage: React.FC = () => {
     if (quantity >= 1) {
       dispatch(requestForUpdateCartItem({ cartItemID: id, quantity }));
       return;
+    } else {
+      setCartItemIdToDelete(id);
+      setDeleteStatus(true);
     }
-    setDeleteStatus(true);
-    setCartItemIdToDelete(id);
   }, 200);
 
   function goBack() {
