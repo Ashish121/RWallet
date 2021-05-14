@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
   IonPage,
   IonContent,
@@ -13,8 +15,6 @@ import {
   IonSelect,
   IonButton,
 } from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-
 import { HeaderComponent, SlidesComponent } from '../../components';
 import {
   FavButtonDisabled,
@@ -24,12 +24,26 @@ import {
 
 import './ItemDetailsPage.scss';
 import { Translate } from '../../i18n/formatMessages';
+import { requestForAddItemToCart } from '../../redux/actions/';
 
 const ItemDetailsPage: React.FC = () => {
   const history = useHistory();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const user_id = localStorage.getItem('userId');
   const [expandOptions, setExpandOptions] = useState(false);
   const [favSelected, setFavSelected] = useState(false);
   const [color, setDeviceColor] = useState<string>();
+  const [price, setPrice] = useState(Number);
+  const [productName, setProductName] = useState(Number);
+  // const [imageUrl, setImageUrl] = useState("");
+
+  useEffect(() => {
+    const paramsItem: any = location.state;
+    setPrice(paramsItem.price);
+    setProductName(paramsItem.productName);
+    // setImageUrl(paramsItem.imagePath);
+  }, []);
 
   const toggleExpandOptions = () => {
     setExpandOptions(!expandOptions);
@@ -44,15 +58,30 @@ const ItemDetailsPage: React.FC = () => {
     setDeviceColor(value);
   }
   function addToCart() {
-    alert('Item added to cart.');
+    const paramsItem: any = location.state;
+    const configId = paramsItem.configId;
+    const productId = paramsItem.productId;
+    const quantity = paramsItem.quantity;
 
-    //TODO : // Need to app action which will stor item data to store
+    dispatch(
+      requestForAddItemToCart(
+        { user_id, productId, configId, quantity },
+        nextRoute
+      )
+    );
   }
+
+  function nextRoute(status: any) {
+    if (status) {
+      history.replace('/tabs/shopping/cart');
+    }
+  }
+
   function showCartItems() {
     history.replace('/tabs/shopping/cart');
   }
-  function goBack() {
-    history.replace('/tabs/shopping');
+  function goBack(id: any) {
+    history.replace('/tabs/shopping', { id: id });
   }
 
   return (
@@ -65,7 +94,7 @@ const ItemDetailsPage: React.FC = () => {
           showCart={true}
           cartHandler={showCartItems}
           showBackButton={true}
-          handler={goBack}
+          handler={() => goBack(1)}
         />
         <IonContent>
           <SlidesComponent />
@@ -92,7 +121,7 @@ const ItemDetailsPage: React.FC = () => {
                   </button>
                 </div>
                 <div className="details-header-wrapper">
-                  <IonText className="item-name-label">Redmi Note 9</IonText>
+                  <IonText className="item-name-label">{productName}</IonText>
                   {favSelected && (
                     <button
                       onClick={toggleFav}
@@ -164,7 +193,7 @@ const ItemDetailsPage: React.FC = () => {
                       color: '#000000',
                     }}
                   >
-                    Rs 2,400
+                    {price}
                   </IonText>
                 </div>
                 {expandOptions && (

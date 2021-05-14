@@ -925,3 +925,34 @@ export const removeCartItem = async (cartItemID: Number): Promise<any> => {
 
   return result;
 };
+
+/**
+ * add new Item to cart
+ * @param user_id
+ * @param productId
+ * @param configId
+ * @param quantity
+ * @returns
+ */
+export const addNewItemToCart = async (
+  user_id: String,
+  productId: Number,
+  configId: Number,
+  quantity: Number
+): Promise<any> => {
+  const result = await axios({
+    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/add_to_cart',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+      product_id: productId,
+      config_product_id: configId,
+      quantity: quantity,
+    }),
+  });
+
+  return result;
+};
