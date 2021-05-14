@@ -3,6 +3,7 @@ import {
   loadCartItemsDetails,
   updateCartItem,
   removeCartItem,
+  addNewItemToCart,
 } from '../../services/Connect';
 import { updateToast, toggleLoader } from './index';
 
@@ -124,4 +125,57 @@ const requestForRemoveCartItem = (payload: any) => {
     }
   };
 };
-export { loadCartDetails, requestForUpdateCartItem, requestForRemoveCartItem };
+
+/**
+ * add new Item to cart
+ * @param payload
+ * @returns
+ */
+const requestForAddItemToCart = (payload: any, nextRoute: Function) => {
+  return async (dispatch: any) => {
+    dispatch({ type: CARTDETAILS_SUCCESS, data: { status: true } });
+    dispatch(toggleLoader(true, 'adding your item to cart...'));
+    try {
+      const response = await addNewItemToCart(
+        payload.user_id,
+        payload.productId,
+        payload.configId,
+        payload.quantity
+      );
+      if (response.status === 200 && response.data.success) {
+        dispatch({ type: CARTDETAILS_SUCCESS, data: { status: false } });
+        localStorage.setItem('CartDetailsList', JSON.stringify(response));
+        dispatch(toggleLoader(false));
+        nextRoute(true);
+      } else {
+        dispatch(toggleLoader(false));
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'CARTDETAILS_FAILED ' });
+        dispatch(updateToast(data));
+        nextRoute(false);
+      }
+    } catch (error) {
+      nextRoute(false);
+      dispatch(toggleLoader(false));
+      const data = {
+        showToast: true,
+        toastMessage: 'API failed',
+        position: 'top',
+        duration: '10000',
+      };
+      dispatch({ type: CARTDETAILS_SUCCESS, data: { status: false } });
+      dispatch(updateToast(data));
+    }
+  };
+};
+export {
+  loadCartDetails,
+  requestForUpdateCartItem,
+  requestForRemoveCartItem,
+  requestForAddItemToCart,
+};

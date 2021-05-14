@@ -40,10 +40,8 @@ const CartPage: React.FC = () => {
 
   function ShowProductList(res: any) {
     const cardItemList = res.data.data.cart_items;
-    // console.log("cardItem list :", cardItemList);
     setCardItemList(cardItemList);
     const cartTotal = res.data.data.cart_total;
-    // console.log("cartTotal  :", cartTotal);
     setCartTotal(cartTotal);
   }
 
@@ -67,8 +65,8 @@ const CartPage: React.FC = () => {
     }
   }, 200);
 
-  function goBack() {
-    history.replace('/tabs/shopping/itemdetails');
+  function goBack(id: any) {
+    history.replace('/tabs/shopping', { id: id });
   }
   function handleCheckout() {
     history.replace('/tabs/posPayment');
@@ -101,7 +99,7 @@ const CartPage: React.FC = () => {
             showNotification={false}
             showCart={true}
             showBackButton={true}
-            handler={goBack}
+            handler={() => goBack(1)}
           />
 
           <IonContent>

@@ -37,4 +37,9 @@ export { requestForTransactionDetails } from './TransactionHistory';
 export { requestFoChangePassword } from './ChangePassword';
 export { reuestUpload } from './UploadImage';
 export { loadProductDetailsList } from './ProductDetails';
-export { loadCartDetails, requestForUpdateCartItem,requestForRemoveCartItem } from './CartDetails';
+export {
+  loadCartDetails,
+  requestForUpdateCartItem,
+  requestForRemoveCartItem,
+  requestForAddItemToCart,
+} from './CartDetails';

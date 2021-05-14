@@ -45,8 +45,11 @@ const ShoppingPage: React.FC = () => {
   const [favSelected, setFavSelected] = useState(false);
   const [categoryName, setCategoryName] = useState('');
 
-  const [productName, setProductName] = useState([]);
+  const [productList, setProductList] = useState([]);
   const [imagePath, setImagePath] = useState('');
+  const [productID, setProductID] = useState(Number);
+  const [qty, setQty] = useState(Number);
+  const [productName, setProductName] = useState('');
   let id = 0;
 
   const [price, setPrice] = useState(Number);
@@ -54,8 +57,6 @@ const ShoppingPage: React.FC = () => {
   useEffect(() => {
     const param: any = location.state;
     id = param.id;
-    // console.log("ID from home page :", param.id);
-
     dispatch(loadProductDetailsList(ShowProductList));
   }, []);
 
@@ -64,15 +65,16 @@ const ShoppingPage: React.FC = () => {
   }, []);
 
   function ShowProductList(res: any) {
-    const productName = res.data.message[id].config_product;
-    // console.log("shoping list :", productName);
-    setProductName(productName);
+    const productList = res.data.message[id].config_product;
+    setProductList(productList);
 
     const singleProduct = res.data.message[id];
-    //console.log("singleProduct :", singleProduct.image_path);
     setImagePath(singleProduct.image_path);
     setCategoryName(singleProduct.category_name);
     setPrice(singleProduct.price);
+    setProductID(singleProduct.product_id);
+    setQty(singleProduct.quantity);
+    setProductName(singleProduct.product_name);
   }
 
   function navigateToCart() {
@@ -83,8 +85,21 @@ const ShoppingPage: React.FC = () => {
     const selectedStatus = !favSelected;
     setFavSelected(selectedStatus);
   }
-  function showItemDetails() {
-    history.replace('/tabs/shopping/itemdetails');
+  function showItemDetails(
+    productId: any,
+    configId: any,
+    price: any,
+    quantity: any,
+    productName: any
+  ) {
+    history.replace('/tabs/shopping/itemdetails', {
+      productId,
+      configId,
+      price,
+      quantity,
+      productName,
+      imagePath,
+    });
   }
   function goBack() {
     history.replace('/tabs');
@@ -315,14 +330,24 @@ const ShoppingPage: React.FC = () => {
                 </IonInput>
               </div>
 
-              {productName.length > 0 ? (
+              {productList.length > 0 ? (
                 <div className="mobile-items-wrapper">
                   <IonGrid>
                     <IonRow>
-                      {productName.map((item: any) => {
+                      {productList.map((item: any) => {
                         return (
                           <IonCol key={item.product_id} size="6">
-                            <IonCard onClick={showItemDetails}>
+                            <IonCard
+                              onClick={() =>
+                                showItemDetails(
+                                  item.product_id,
+                                  item.config_product_id,
+                                  item.price,
+                                  qty,
+                                  productName
+                                )
+                              }
+                            >
                               <IonCardHeader>
                                 {favSelected && (
                                   <button onClick={toggleFav}>
@@ -361,7 +386,17 @@ const ShoppingPage: React.FC = () => {
                   <IonGrid>
                     <IonRow>
                       <IonCol size="6">
-                        <IonCard onClick={showItemDetails}>
+                        <IonCard
+                          onClick={() =>
+                            showItemDetails(
+                              productID,
+                              0,
+                              price,
+                              qty,
+                              productName
+                            )
+                          }
+                        >
                           <IonCardHeader>
                             {favSelected && (
                               <button onClick={toggleFav}>
