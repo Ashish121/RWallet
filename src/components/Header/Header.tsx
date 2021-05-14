@@ -7,6 +7,7 @@ import {
   IonText,
   IonIcon,
   IonButton,
+  IonBadge,
 } from '@ionic/react';
 import { chevronBackOutline } from 'ionicons/icons';
 
@@ -72,13 +73,26 @@ const HeaderComponent: React.FC<headerProps> = ({
             </IonButtons>
           )}
           {showCart && (
-            <IonButtons
-              slot="end"
-              style={{ position: 'absolute', right: '15px' }}
-              onClick={cartHandler}
-            >
-              <CartIcon width="20" height="20" />
-            </IonButtons>
+            <div>
+              <IonButtons
+                slot="end"
+                style={{ position: 'absolute', right: '15px' }}
+                onClick={cartHandler}
+              >
+                <CartIcon width="20" height="20" />
+              </IonButtons>
+              <IonBadge
+                color="primary"
+                style={{
+                  position: 'absolute',
+                  right: '0px',
+                  fontSize: '10px',
+                  backgroundColor: '#077193',
+                }}
+              >
+                11
+              </IonBadge>
+            </div>
           )}
           {showMenu && (
             <IonButtons
