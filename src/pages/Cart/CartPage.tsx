@@ -33,6 +33,7 @@ const CartPage: React.FC = () => {
   const [cartTotal, setCartTotal] = useState([]);
   const [deleteStatus, setDeleteStatus] = useState(false);
   const [cartItemIdToDelete, setCartItemIdToDelete] = useState(Number);
+  const [count, setCount] = useState(Number);
 
   useEffect(() => {
     dispatch(loadCartDetails({ user_id }, ShowProductList));
@@ -43,6 +44,9 @@ const CartPage: React.FC = () => {
     setCardItemList(cardItemList);
     const cartTotal = res.data.data.cart_total;
     setCartTotal(cartTotal);
+    const count = res.data.data.count;
+    setCount(count);
+   
   }
 
   const increaseCount = debounce((id: Number, quantity: Number) => {
@@ -100,6 +104,7 @@ const CartPage: React.FC = () => {
             showCart={true}
             showBackButton={true}
             handler={() => goBack(1)}
+            value={count}
           />
 
           <IonContent>

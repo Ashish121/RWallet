@@ -27,6 +27,7 @@ interface headerProps {
   cartHandler?: any;
   handler?: Function;
   showBackButton?: boolean;
+  value?: any;
 }
 
 const HeaderComponent: React.FC<headerProps> = ({
@@ -38,6 +39,7 @@ const HeaderComponent: React.FC<headerProps> = ({
   cartHandler,
   handler,
   showBackButton = false,
+  value,
 }) => {
   const toggleSideMenu = () => {
     menuController.toggle();
@@ -66,7 +68,7 @@ const HeaderComponent: React.FC<headerProps> = ({
           {showNotification && (
             <IonButtons
               slot="end"
-              style={{ position: 'absolute', right: '15px' }}
+              style={{ position: 'absolute', right: '20px' }}
               onClick={notificationHandler}
             >
               <NotificationBell width="20" height="20" />
@@ -76,7 +78,11 @@ const HeaderComponent: React.FC<headerProps> = ({
             <div>
               <IonButtons
                 slot="end"
-                style={{ position: 'absolute', right: '15px' }}
+                style={{
+                  position: 'absolute',
+                  right: '15px',
+                  marginTop: '10px',
+                }}
                 onClick={cartHandler}
               >
                 <CartIcon width="20" height="20" />
@@ -85,12 +91,16 @@ const HeaderComponent: React.FC<headerProps> = ({
                 color="primary"
                 style={{
                   position: 'absolute',
-                  right: '0px',
-                  fontSize: '10px',
-                  backgroundColor: '#077193',
+                  right: '5px',
+                  fontSize: '9px',
+                  borderRadius: '10px',
+                  marginTop: '5px',
+                  backgroundColor: 'rgb(217 13 38)',
+                  padding: '5px',
                 }}
               >
-                11
+                {' '}
+                {value}
               </IonBadge>
             </div>
           )}

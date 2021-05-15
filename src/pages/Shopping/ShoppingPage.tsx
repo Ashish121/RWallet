@@ -34,13 +34,14 @@ import {
   WalletIcon,
   WatchIcon,
 } from '../../assets/Icons';
-import { loadProductDetailsList } from '../../redux/actions/';
+import { loadProductDetailsList, loadCartDetails } from '../../redux/actions/';
 // import { FatalException } from "@ionic/cli/lib/errors";
 
 const ShoppingPage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
+  const user_id = localStorage.getItem('userId');
   const [shoppingLimitBalance, setshoppingLimitBalance] = useState('');
   const [favSelected, setFavSelected] = useState(false);
   const [categoryName, setCategoryName] = useState('');
@@ -50,6 +51,7 @@ const ShoppingPage: React.FC = () => {
   const [productID, setProductID] = useState(Number);
   const [qty, setQty] = useState(Number);
   const [productName, setProductName] = useState('');
+  const [count, setCount] = useState(Number);
   let id = 0;
 
   const [price, setPrice] = useState(Number);
@@ -61,8 +63,16 @@ const ShoppingPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    dispatch(loadCartDetails({ user_id }, ShowCartBadgeValue));
+  }, []);
+
+  useEffect(() => {
     setshoppingLimitBalance('128445.00');
   }, []);
+  function ShowCartBadgeValue(res: any) {
+    const count = res.data.data.count;
+    setCount(count);
+  }
 
   function ShowProductList(res: any) {
     const productList = res.data.message[id].config_product;
@@ -99,6 +109,7 @@ const ShoppingPage: React.FC = () => {
       quantity,
       productName,
       imagePath,
+      count,
     });
   }
   function goBack() {
@@ -123,6 +134,7 @@ const ShoppingPage: React.FC = () => {
             cartHandler={navigateToCart}
             showBackButton={true}
             handler={goBack}
+            value={count}
           />
           <IonContent>
             <div className="shopping-page-wrapper">
@@ -215,7 +227,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('television', 4)}
+                      onClick={() => handleSliderIcons('television', 8)}
                     >
                       <TelevisionIcon width="24" height="24" />
                       <IonText>
@@ -227,7 +239,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('store', 5)}
+                      onClick={() => handleSliderIcons('store', 4)}
                     >
                       <StoreIcon width="24" height="24" />
                       <IonText>
@@ -239,7 +251,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('sparePart', 6)}
+                      onClick={() => handleSliderIcons('sparePart', 5)}
                     >
                       <SparepartIcon width="24" height="24" />
                       <IonText>
@@ -251,7 +263,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('motorbike', 7)}
+                      onClick={() => handleSliderIcons('motorbike', 6)}
                     >
                       <MotorBikeIcon width="24" height="24" />
                       <IonText>
@@ -263,7 +275,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('grocery', 8)}
+                      onClick={() => handleSliderIcons('grocery', 7)}
                     >
                       <GroceryIcon width="24" height="24" />
                       <IonText>

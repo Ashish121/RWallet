@@ -36,12 +36,14 @@ const ItemDetailsPage: React.FC = () => {
   const [color, setDeviceColor] = useState<string>();
   const [price, setPrice] = useState(Number);
   const [productName, setProductName] = useState(Number);
+  const [count, setCount] = useState(Number);
   // const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     const paramsItem: any = location.state;
     setPrice(paramsItem.price);
     setProductName(paramsItem.productName);
+    setCount(paramsItem.count);
     // setImageUrl(paramsItem.imagePath);
   }, []);
 
@@ -95,6 +97,7 @@ const ItemDetailsPage: React.FC = () => {
           cartHandler={showCartItems}
           showBackButton={true}
           handler={() => goBack(1)}
+          value={count}
         />
         <IonContent>
           <SlidesComponent />
