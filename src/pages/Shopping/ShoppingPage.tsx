@@ -20,8 +20,6 @@ import './ShoppingPage.scss';
 import { HeaderComponent } from '../../components';
 import {
   FashionIcon,
-  FavButtonDisabled,
-  FavButtonEnabled,
   GroceryIcon,
   LaptopIcon,
   MotorBikeIcon,
@@ -35,7 +33,6 @@ import {
   WatchIcon,
 } from '../../assets/Icons';
 import { loadProductDetailsList, loadCartDetails } from '../../redux/actions/';
-// import { FatalException } from "@ionic/cli/lib/errors";
 
 const ShoppingPage: React.FC = () => {
   const history = useHistory();
@@ -43,7 +40,6 @@ const ShoppingPage: React.FC = () => {
   const location = useLocation();
   const user_id = localStorage.getItem('userId');
   const [shoppingLimitBalance, setshoppingLimitBalance] = useState('');
-  const [favSelected, setFavSelected] = useState(false);
   const [categoryName, setCategoryName] = useState('');
 
   const [productList, setProductList] = useState([]);
@@ -52,13 +48,18 @@ const ShoppingPage: React.FC = () => {
   const [qty, setQty] = useState(Number);
   const [productName, setProductName] = useState('');
   const [count, setCount] = useState(Number);
+  const [description, setDescription] = useState('');
+
   let id = 0;
+  let category = 'mobile';
 
   const [price, setPrice] = useState(Number);
 
   useEffect(() => {
     const param: any = location.state;
-    id = param.id;
+    id = 1;
+    category = param.categoryName;
+
     dispatch(loadProductDetailsList(ShowProductList));
   }, []);
 
@@ -75,32 +76,39 @@ const ShoppingPage: React.FC = () => {
   }
 
   function ShowProductList(res: any) {
-    const productList = res.data.message[id].config_product;
-    setProductList(productList);
+    res.data.message.forEach((element: any, index: any) => {
+      if (category === element.category_name) {
+        id = index;
 
-    const singleProduct = res.data.message[id];
-    setImagePath(singleProduct.image_path);
-    setCategoryName(singleProduct.category_name);
-    setPrice(singleProduct.price);
-    setProductID(singleProduct.product_id);
-    setQty(singleProduct.quantity);
-    setProductName(singleProduct.product_name);
+        const productList = res.data.message[id].config_product;
+        setProductList(productList);
+
+        const singleProduct = res.data.message[id];
+
+        setImagePath(singleProduct.image_path);
+        setCategoryName(singleProduct.category_name);
+        setPrice(singleProduct.price);
+        setProductID(singleProduct.product_id);
+        setQty(singleProduct.quantity);
+        setProductName(singleProduct.product_name);
+        setDescription(singleProduct.description);
+      }
+    });
   }
 
   function navigateToCart() {
     history.replace('/tabs/shopping/cart');
   }
   function search() {}
-  function toggleFav() {
-    const selectedStatus = !favSelected;
-    setFavSelected(selectedStatus);
-  }
+
   function showItemDetails(
     productId: any,
     configId: any,
     price: any,
     quantity: any,
-    productName: any
+    productName: any,
+    ram: any,
+    memory: any
   ) {
     history.replace('/tabs/shopping/itemdetails', {
       productId,
@@ -108,17 +116,21 @@ const ShoppingPage: React.FC = () => {
       price,
       quantity,
       productName,
+      ram,
+      memory,
       imagePath,
       count,
+      description,
+      category,
     });
   }
   function goBack() {
     history.replace('/tabs');
   }
 
-  function handleSliderIcons(val: any, newId: any) {
-    id = newId;
-    //console.log("categoryName : ", categoryName, "ID :", newId);
+  function handleSliderIcons(val: any) {
+    //id = 1;
+    category = val;
     dispatch(loadProductDetailsList(ShowProductList));
   }
 
@@ -190,9 +202,7 @@ const ShoppingPage: React.FC = () => {
               <div className="scroll-items-wrapper">
                 <div>
                   <IonCard>
-                    <IonCardContent
-                      onClick={() => handleSliderIcons('mobile', 1)}
-                    >
+                    <IonCardContent onClick={() => handleSliderIcons('mobile')}>
                       <SmartphoneIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.mobileIconText" />
@@ -202,9 +212,7 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent
-                      onClick={() => handleSliderIcons('laptop', 0)}
-                    >
+                    <IonCardContent onClick={() => handleSliderIcons('laptop')}>
                       <LaptopIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.laptopIconText" />
@@ -215,7 +223,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('fashion', 3)}
+                      onClick={() => handleSliderIcons('fashion')}
                     >
                       <FashionIcon width="24" height="24" />
                       <IonText>
@@ -227,7 +235,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('television', 8)}
+                      onClick={() => handleSliderIcons('home-appliances')}
                     >
                       <TelevisionIcon width="24" height="24" />
                       <IonText>
@@ -239,7 +247,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('store', 4)}
+                      onClick={() => handleSliderIcons('electronics')}
                     >
                       <StoreIcon width="24" height="24" />
                       <IonText>
@@ -250,9 +258,7 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent
-                      onClick={() => handleSliderIcons('sparePart', 5)}
-                    >
+                    <IonCardContent onClick={() => handleSliderIcons('spares')}>
                       <SparepartIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.sparePartText" />
@@ -263,7 +269,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('motorbike', 6)}
+                      onClick={() => handleSliderIcons('automobiles')}
                     >
                       <MotorBikeIcon width="24" height="24" />
                       <IonText>
@@ -275,7 +281,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('grocery', 7)}
+                      onClick={() => handleSliderIcons('grocery')}
                     >
                       <GroceryIcon width="24" height="24" />
                       <IonText>
@@ -286,9 +292,7 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent
-                      onClick={() => handleSliderIcons('wallet', 9)}
-                    >
+                    <IonCardContent onClick={() => handleSliderIcons('wallet')}>
                       <WalletIcon width="24" height="24" />
                       <IonText>
                         <Translate message="home.walletText" />
@@ -299,7 +303,7 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent
-                      onClick={() => handleSliderIcons('watch', 10)}
+                      onClick={() => handleSliderIcons('watches')}
                     >
                       <WatchIcon width="24" height="24" />
                       <IonText>
@@ -310,9 +314,7 @@ const ShoppingPage: React.FC = () => {
                 </div>
                 <div>
                   <IonCard>
-                    <IonCardContent
-                      onClick={() => handleSliderIcons('shoes', 11)}
-                    >
+                    <IonCardContent onClick={() => handleSliderIcons('shoes')}>
                       <SneakersIcon width="24" height="24" />
 
                       <IonText>
@@ -356,22 +358,13 @@ const ShoppingPage: React.FC = () => {
                                   item.config_product_id,
                                   item.price,
                                   qty,
-                                  productName
+                                  productName,
+                                  item.ram,
+                                  item.memory
                                 )
                               }
                             >
                               <IonCardHeader>
-                                {favSelected && (
-                                  <button onClick={toggleFav}>
-                                    <FavButtonEnabled width="16" height="16" />
-                                  </button>
-                                )}
-                                {!favSelected && (
-                                  <button onClick={toggleFav}>
-                                    <FavButtonDisabled width="16" height="16" />
-                                  </button>
-                                )}
-
                                 <div className="image-wrapper">
                                   <IonImg src={imagePath} />
                                 </div>
@@ -405,22 +398,13 @@ const ShoppingPage: React.FC = () => {
                               0,
                               price,
                               qty,
-                              productName
+                              productName,
+                              null,
+                              null
                             )
                           }
                         >
                           <IonCardHeader>
-                            {favSelected && (
-                              <button onClick={toggleFav}>
-                                <FavButtonEnabled width="16" height="16" />
-                              </button>
-                            )}
-                            {!favSelected && (
-                              <button onClick={toggleFav}>
-                                <FavButtonDisabled width="16" height="16" />
-                              </button>
-                            )}
-
                             <div className="image-wrapper">
                               <IonImg src={imagePath} />
                             </div>

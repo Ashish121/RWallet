@@ -46,7 +46,6 @@ const CartPage: React.FC = () => {
     setCartTotal(cartTotal);
     const count = res.data.data.count;
     setCount(count);
-   
   }
 
   const increaseCount = debounce((id: Number, quantity: Number) => {
@@ -79,7 +78,9 @@ const CartPage: React.FC = () => {
     <>
       <IonAlert
         isOpen={deleteStatus}
-        subHeader={'Are you sure ?'}
+        subHeader={
+          'Are you sure, you want to remove this item from the cart list ?'
+        }
         buttons={[
           {
             text: 'Cancel',

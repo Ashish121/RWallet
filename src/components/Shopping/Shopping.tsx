@@ -21,19 +21,13 @@ interface shoppingProps {
   expanded?: boolean;
 }
 
-/**
- *
- * <InputText labelText="Type your mail" onChange="callbackFn" ...otherProps/>
- */
-
 const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
   const history = useHistory();
-  const navigateToShopping = (id: any) => {
+  const navigateToShopping = (name: any) => {
     history.replace({
       pathname: '/tabs/shopping',
       state: {
-        shoppingType: 'mobile',
-        id: id,
+        categoryName: name,
       },
     });
   };
@@ -50,7 +44,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
           <div>
             <button
               className="iconButtons"
-              onClick={() => navigateToShopping(1)}
+              onClick={() => navigateToShopping('mobile')}
             >
               <SmartphoneIcon width="30" height="30" />
               <IonText>
@@ -61,7 +55,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
           <div>
             <button
               className="iconButtons"
-              onClick={() => navigateToShopping(0)}
+              onClick={() => navigateToShopping('laptop')}
             >
               <LaptopIcon width="30" height="30" />
               <IonText>
@@ -72,7 +66,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
           <div>
             <button
               className="iconButtons"
-              onClick={() => navigateToShopping(2)}
+              onClick={() => navigateToShopping('fashion')}
             >
               <FashionIcon width="30" height="30" />
               <IonText>
@@ -83,7 +77,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
           <div>
             <button
               className="iconButtons"
-              onClick={() => navigateToShopping(8)}
+              onClick={() => navigateToShopping('home-appliances')}
             >
               <TelevisionIcon width="30" height="30" />
               <IonText>
@@ -97,7 +91,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
               <div>
                 <button
                   className="iconButtons"
-                  onClick={() => navigateToShopping(4)}
+                  onClick={() => navigateToShopping('electronics')}
                 >
                   <StoreIcon width="30" height="30" />
                   <IonText>
@@ -108,7 +102,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
               <div>
                 <button
                   className="iconButtons"
-                  onClick={() => navigateToShopping(5)}
+                  onClick={() => navigateToShopping('spares')}
                 >
                   <SparepartIcon width="30" height="30" />
                   <IonText>
@@ -119,7 +113,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
               <div>
                 <button
                   className="iconButtons"
-                  onClick={() => navigateToShopping(6)}
+                  onClick={() => navigateToShopping('automobiles')}
                 >
                   <MotorBikeIcon width="30" height="30" />
                   <IonText>
@@ -130,7 +124,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
               <div>
                 <button
                   className="iconButtons"
-                  onClick={() => navigateToShopping(7)}
+                  onClick={() => navigateToShopping('grocery')}
                 >
                   <GroceryIcon width="30" height="30" />
                   <IonText>
@@ -141,7 +135,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
               <div>
                 <button
                   className="iconButtons"
-                  onClick={() => navigateToShopping(9)}
+                  onClick={() => navigateToShopping('wallet')}
                 >
                   <WalletIcon width="30" height="30" />
                   <IonText>
@@ -152,7 +146,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
               <div>
                 <button
                   className="iconButtons"
-                  onClick={() => navigateToShopping(10)}
+                  onClick={() => navigateToShopping('watches')}
                 >
                   <WatchIcon width="30" height="30" />
                   <IonText>
@@ -163,7 +157,7 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
               <div>
                 <button
                   className="iconButtons"
-                  onClick={() => navigateToShopping(11)}
+                  onClick={() => navigateToShopping('shoes')}
                 >
                   <SneakersIcon width="30" height="30" />
                   <IonText>

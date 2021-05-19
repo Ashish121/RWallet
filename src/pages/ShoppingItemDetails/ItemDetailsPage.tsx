@@ -16,11 +16,7 @@ import {
   IonButton,
 } from '@ionic/react';
 import { HeaderComponent, SlidesComponent } from '../../components';
-import {
-  FavButtonDisabled,
-  FavButtonEnabled,
-  CloseBarIcon,
-} from '../../assets/Icons';
+import { CloseBarIcon } from '../../assets/Icons';
 
 import './ItemDetailsPage.scss';
 import { Translate } from '../../i18n/formatMessages';
@@ -32,29 +28,33 @@ const ItemDetailsPage: React.FC = () => {
   const dispatch = useDispatch();
   const user_id = localStorage.getItem('userId');
   const [expandOptions, setExpandOptions] = useState(false);
-  const [favSelected, setFavSelected] = useState(false);
   const [color, setDeviceColor] = useState<string>();
   const [price, setPrice] = useState(Number);
   const [productName, setProductName] = useState(Number);
   const [count, setCount] = useState(Number);
-  // const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState('');
+  const [ram, setRam] = useState('');
+  const [memory, setMemory] = useState('');
+  const [description, setDescription] = useState('');
+
+  const [category, setCategory] = useState('');
 
   useEffect(() => {
     const paramsItem: any = location.state;
+
+    setCategory(paramsItem.category);
     setPrice(paramsItem.price);
     setProductName(paramsItem.productName);
     setCount(paramsItem.count);
-    // setImageUrl(paramsItem.imagePath);
+    setImageUrl(paramsItem.imagePath);
+    setRam(paramsItem.ram);
+    setMemory(paramsItem.memory);
+    setDescription(paramsItem.description);
   }, []);
 
   const toggleExpandOptions = () => {
     setExpandOptions(!expandOptions);
   };
-
-  function toggleFav() {
-    const selectedStatus = !favSelected;
-    setFavSelected(selectedStatus);
-  }
 
   function setColor(value: any) {
     setDeviceColor(value);
@@ -82,9 +82,15 @@ const ItemDetailsPage: React.FC = () => {
   function showCartItems() {
     history.replace('/tabs/shopping/cart');
   }
-  function goBack(id: any) {
-    history.replace('/tabs/shopping', { id: id });
-  }
+
+  const goBack = (name: any) => {
+    history.replace({
+      pathname: '/tabs/shopping',
+      state: {
+        categoryName: name,
+      },
+    });
+  };
 
   return (
     <IonApp className="item-details-wrapper">
@@ -96,11 +102,11 @@ const ItemDetailsPage: React.FC = () => {
           showCart={true}
           cartHandler={showCartItems}
           showBackButton={true}
-          handler={() => goBack(1)}
+          handler={() => goBack(category)}
           value={count}
         />
         <IonContent>
-          <SlidesComponent />
+          <SlidesComponent value={imageUrl} />
 
           <div
             className={
@@ -125,36 +131,14 @@ const ItemDetailsPage: React.FC = () => {
                 </div>
                 <div className="details-header-wrapper">
                   <IonText className="item-name-label">{productName}</IonText>
-                  {favSelected && (
-                    <button
-                      onClick={toggleFav}
-                      style={{
-                        backgroundColor: '#ffffff',
-                        border: 'none',
-                        outline: 'none',
-                        float: 'right',
-                      }}
-                    >
-                      <FavButtonEnabled width="18" height="18" />
-                    </button>
-                  )}
-                  {!favSelected && (
-                    <button
-                      style={{
-                        backgroundColor: '#ffffff',
-                        border: 'none',
-                        outline: 'none',
-                        float: 'right',
-                      }}
-                      onClick={toggleFav}
-                    >
-                      <FavButtonDisabled width="18" height="18" />
-                    </button>
-                  )}
                 </div>
                 <div className="storage-details-wrapper">
-                  <button className="btn-64gb">4GB RAM + 64GB Storage</button>
-                  <button className="btn-128gb">4GB RAM + 128GB Storage</button>
+                  <button className="btn-64gb">
+                    {ram ? ram + ' Ram ' + memory + ' Storage ' : description}
+                  </button>
+                  <button className="btn-128gb">
+                    {ram ? ram + ' Ram ' + memory + ' Storage ' : description}
+                  </button>
                 </div>
                 <div className="item-color-wrapper">
                   <IonList>
