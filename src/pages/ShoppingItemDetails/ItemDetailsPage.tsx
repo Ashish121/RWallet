@@ -63,7 +63,8 @@ const ItemDetailsPage: React.FC = () => {
     const paramsItem: any = location.state;
     const configId = paramsItem.configId;
     const productId = paramsItem.productId;
-    const quantity = paramsItem.quantity;
+    //const quantity = paramsItem.quantity;
+    const quantity = 1;
 
     dispatch(
       requestForAddItemToCart(

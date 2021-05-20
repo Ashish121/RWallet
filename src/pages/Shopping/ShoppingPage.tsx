@@ -395,7 +395,7 @@ const ShoppingPage: React.FC = () => {
                           onClick={() =>
                             showItemDetails(
                               productID,
-                              0,
+                              null,
                               price,
                               qty,
                               productName,
