@@ -121,92 +121,111 @@ const CartPage: React.FC = () => {
                   <Translate message="cart.pageLabel" />
                 </IonText>
               </div>
-
-              {cardItemList.map((item: any) => {
-                return (
-                  <div>
-                    {item.product_detail.map((element: any) => {
-                      return (
-                        <IonCard>
-                          <IonCardContent>
-                            <div
-                              className="cart-inner-body"
-                              style={{ display: 'flex' }}
-                            >
-                              <div className="item-image-wrapper">
+              {cardItemList.length > 0 ? (
+                <div>
+                  {cardItemList.map((item: any) => {
+                    return (
+                      <div>
+                        {item.product_detail.map((element: any) => {
+                          return (
+                            <IonCard>
+                              <IonCardContent>
                                 <div
-                                  style={{ padding: '5px', marginTop: '5px' }}
+                                  className="cart-inner-body"
+                                  style={{ display: 'flex' }}
                                 >
-                                  <IonImg src={element.image_path} />
+                                  <div className="item-image-wrapper">
+                                    <div
+                                      style={{
+                                        padding: '5px',
+                                        marginTop: '5px',
+                                      }}
+                                    >
+                                      <IonImg src={element.image_path} />
+                                    </div>
+                                  </div>
+                                  <div className="details-wrapper">
+                                    <div className="item-name">
+                                      <IonText>{element.product_name}</IonText>
+                                    </div>
+                                    <div className="item-varient">
+                                      <IonText>
+                                        {element.ram
+                                          ? element.ram +
+                                            ' Ram ' +
+                                            element.memory +
+                                            ' Storage '
+                                          : element.description}
+                                      </IonText>
+                                    </div>
+                                    <div className="item-price">
+                                      <IonText>RS {element.price}</IonText>
+                                    </div>
+                                  </div>
+                                  <div className="button-wrapper">
+                                    <div className="plus-btn">
+                                      <IonFabButton
+                                        className="fab-btn"
+                                        size="small"
+                                        onClick={() => {
+                                          item['quantity'] = item.quantity + 1;
+                                          increaseCount(
+                                            item.cart_item_id,
+                                            item.quantity
+                                          );
+                                        }}
+                                      >
+                                        <IonIcon
+                                          ios={addOutline}
+                                          md={addOutline}
+                                        />
+                                      </IonFabButton>
+                                    </div>
+                                    <div
+                                      className="count"
+                                      style={{ marginLeft: '13px' }}
+                                    >
+                                      {item.quantity}
+                                    </div>
+                                    <div className="minus-btn">
+                                      <IonFabButton
+                                        className="fab-btn"
+                                        size="small"
+                                        onClick={() => {
+                                          item['quantity'] = item.quantity - 1;
+                                          decreaseCount(
+                                            item.cart_item_id,
+                                            item.quantity
+                                          );
+                                        }}
+                                      >
+                                        <IonIcon
+                                          ios={removeOutline}
+                                          md={removeOutline}
+                                        />
+                                      </IonFabButton>
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="details-wrapper">
-                                <div className="item-name">
-                                  <IonText>{element.product_name}</IonText>
-                                </div>
-                                <div className="item-varient">
-                                  <IonText>
-                                    {element.ram
-                                      ? element.ram +
-                                        ' Ram ' +
-                                        element.memory +
-                                        ' Storage '
-                                      : element.description}
-                                  </IonText>
-                                </div>
-                                <div className="item-price">
-                                  <IonText>RS {element.price}</IonText>
-                                </div>
-                              </div>
-                              <div className="button-wrapper">
-                                <div className="plus-btn">
-                                  <IonFabButton
-                                    className="fab-btn"
-                                    size="small"
-                                    onClick={() => {
-                                      item['quantity'] = item.quantity + 1;
-                                      increaseCount(
-                                        item.cart_item_id,
-                                        item.quantity
-                                      );
-                                    }}
-                                  >
-                                    <IonIcon ios={addOutline} md={addOutline} />
-                                  </IonFabButton>
-                                </div>
-                                <div
-                                  className="count"
-                                  style={{ marginLeft: '13px' }}
-                                >
-                                  {item.quantity}
-                                </div>
-                                <div className="minus-btn">
-                                  <IonFabButton
-                                    className="fab-btn"
-                                    size="small"
-                                    onClick={() => {
-                                      item['quantity'] = item.quantity - 1;
-                                      decreaseCount(
-                                        item.cart_item_id,
-                                        item.quantity
-                                      );
-                                    }}
-                                  >
-                                    <IonIcon
-                                      ios={removeOutline}
-                                      md={removeOutline}
-                                    />
-                                  </IonFabButton>
-                                </div>
-                              </div>
-                            </div>
-                          </IonCardContent>
-                        </IonCard>
-                      );
-                    })}
-                  </div>
-                );
-              })}
+                              </IonCardContent>
+                            </IonCard>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <IonCard style={{ marginTop: '30px' }}>
+                  <IonCardContent>
+                    <div className="empty-cart-section">
+                      <IonText className="empty-cart">
+                        <Translate message="cart.empty" />
+                      </IonText>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+              )}
             </div>
           </IonContent>
           <IonFooter style={{ height: '50px' }}>
