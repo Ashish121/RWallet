@@ -56,6 +56,7 @@ const CartPage: React.FC = () => {
 
   const deleteCartItem = (cartItemID: any) => {
     dispatch(requestForRemoveCartItem({ cartItemID }));
+    dispatch(loadCartDetails({ user_id }, ShowProductList));
   };
 
   const decreaseCount = debounce((id: number, quantity: number) => {
@@ -68,9 +69,14 @@ const CartPage: React.FC = () => {
     }
   }, 200);
 
-  function goBack(id: any) {
-    history.replace('/tabs/shopping', { id: id });
-  }
+  const goBack = (name: any) => {
+    history.replace({
+      pathname: '/tabs/shopping',
+      state: {
+        categoryName: name,
+      },
+    });
+  };
   function handleCheckout() {
     history.replace('/tabs/posPayment');
   }
@@ -104,7 +110,7 @@ const CartPage: React.FC = () => {
             showNotification={false}
             showCart={true}
             showBackButton={true}
-            handler={() => goBack(1)}
+            handler={() => goBack('mobile')}
             value={count}
           />
 
