@@ -265,6 +265,7 @@
   "cart.pageLabel": "My Cart",
   "cart.total": "Total",
   "cart.checkout": "CHECKOUT",
+  "cart.empty": "Cart is Empty because No product item is added.Please add some product item",
   "pos.pageLabel": "Payment option",
   "pos.confirm": "Confirm",
   "pos.radioLabel": "Delivery of your order",

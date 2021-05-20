@@ -14,6 +14,18 @@ const loadCartDetails = (payload: any, callback: Function) => {
     try {
       const response = await loadCartItemsDetails(payload.user_id);
       if (response.status === 200 && response.data.success) {
+        if (response.data.data === null) {
+          dispatch(toggleLoader(false));
+          const data = {
+            showToast: true,
+            toastMessage: response.data.message,
+            position: 'top',
+            duration: '10000',
+          };
+          dispatch({ type: 'CARTDETAILS_FAILED ' });
+          dispatch(updateToast(data));
+        }
+
         dispatch({ type: CARTDETAILS_SUCCESS, data: { status: false } });
         localStorage.setItem('CartDetailsList', JSON.stringify(response));
         dispatch(toggleLoader(false));
@@ -37,6 +49,7 @@ const loadCartDetails = (payload: any, callback: Function) => {
         position: 'top',
         duration: '10000',
       };
+
       dispatch({ type: CARTDETAILS_SUCCESS, data: { status: false } });
       dispatch(updateToast(data));
     }

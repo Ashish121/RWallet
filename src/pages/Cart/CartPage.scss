@@ -83,6 +83,7 @@
 
       color: #ffffff;
     }
+
     .price-text {
       font-style: normal;
       font-weight: bold;
@@ -104,5 +105,20 @@
       line-height: 17px;
       color: #ffffff;
     }
+  }
+}
+
+.empty-cart-section {
+  display: grid;
+  margin-left: 30px;
+
+  .empty-cart {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #141313;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
