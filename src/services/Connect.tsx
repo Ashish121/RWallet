@@ -973,3 +973,25 @@ export const loadCountryNameList = async (): Promise<any> => {
 
   return result;
 };
+
+/**
+ *
+ * @param searchString
+ * @returns
+ */
+export const loadSearchItemDetails = async (
+  searchString: string
+): Promise<any> => {
+  const result = await axios({
+    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/search',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      search_string: searchString,
+    }),
+  });
+
+  return result;
+};

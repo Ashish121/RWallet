@@ -36,7 +36,7 @@ export { loadPOSDetails } from './Map';
 export { requestForTransactionDetails } from './TransactionHistory';
 export { requestFoChangePassword } from './ChangePassword';
 export { reuestUpload } from './UploadImage';
-export { loadProductDetailsList } from './ProductDetails';
+export { loadProductDetailsList,requestForSearchItem } from './ProductDetails';
 export {
   loadCartDetails,
   requestForUpdateCartItem,
