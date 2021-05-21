@@ -10,16 +10,14 @@ import {
   SelectMenu,
 } from '../../components';
 import './Agent.scss';
-import { requestForAgentTransfer } from '../../redux/actions';
+import { requestForAgentTransfer, loadCountryList } from '../../redux/actions';
 import LoaderComponent from '../../components/Spinner/Spinner';
+import debounce from 'lodash.debounce';
 
 const Agent: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user_id = localStorage.getItem('userId');
-
-  const [country, setCountry] = useState('');
-  const [countryDetails, setCountryDetails] = useState([{}]);
   const [agentCode, setAgentCode] = useState('');
   const [accountHolderName, setAccountHolderName] = useState('');
   const [accountNo, setAccountNo] = useState('');
@@ -30,20 +28,12 @@ const Agent: React.FC = () => {
   const [message, setLoaderMessage] = useState('');
   const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
 
-  useEffect(() => {
-    const array = [
-      {
-        value: 'nepal',
-        label: 'Nepal',
-      },
-    ];
-    setCountryDetails(array);
-  }, []);
+  const [country, setCountry] = useState([{}]);
+  const [selectedCountryName, setSelectedCountryName] = useState('');
 
-  function onCounrtySelect(country: any) {
-    setCurrentSelectedVal(false);
-    setCountry(country);
-  }
+  useEffect(() => {
+    dispatch(loadCountryList(setCountryNameList));
+  }, []);
 
   function updateAgentCode(agentCode: any) {
     setAgentCode(agentCode);
@@ -81,7 +71,7 @@ const Agent: React.FC = () => {
       requestForAgentTransfer(
         {
           user_id,
-          country,
+          country: selectedCountryName,
           agentCode,
           accountHolderName,
           accountNo,
@@ -114,6 +104,32 @@ const Agent: React.FC = () => {
         agentInputFields[i].value = '';
     }
   }
+
+  //country list api
+  function setCountryNameList(res: any) {
+    const bankNames = res.data.data;
+    configureCounrtyList(bankNames);
+  }
+  function configureCounrtyList(array: any) {
+    let finalArray: any = [];
+    array.forEach((element: any) => {
+      let tempObj = {
+        value: element,
+        label: element,
+      };
+      finalArray.push(tempObj);
+    });
+    updateCountry(finalArray);
+  }
+
+  function updateCountry(array: any) {
+    setCountry(array);
+  }
+  const handleCounrty = debounce((val: any) => {
+    setCurrentSelectedVal(false);
+    setSelectedCountryName(val);
+  }, 300);
+
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
@@ -134,8 +150,8 @@ const Agent: React.FC = () => {
                   <div>
                     <SelectMenu
                       label="agent.country"
-                      onSelect={onCounrtySelect}
-                      array={countryDetails}
+                      array={country}
+                      onSelect={handleCounrty}
                       selectedVal={currentSelectedVal}
                     />
                   </div>
@@ -207,7 +223,7 @@ const Agent: React.FC = () => {
                         buttonLabel="bank.proceed"
                         size="block"
                         disabled={
-                          country.trim() &&
+                          selectedCountryName.trim() &&
                           agentCode.trim() &&
                           accountHolderName.trim() &&
                           accountNo.trim() &&

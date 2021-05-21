@@ -956,3 +956,20 @@ export const addNewItemToCart = async (
 
   return result;
 };
+
+/**
+ * load counrty name list
+ * @returns
+ */
+export const loadCountryNameList = async (): Promise<any> => {
+  const result = await axios({
+    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/country_list',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  return result;
+};
