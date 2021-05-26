@@ -10,7 +10,7 @@ const loadProductDetailsList = (callback: Function) => {
       const response = await loadProduct();
       if (response.status === 200 && response.data.success) {
         dispatch({ type: PRODUCTLIST_SUCCESS, data: { status: false } });
-        localStorage.setItem('BankNameList', JSON.stringify(response));
+        localStorage.setItem('productDetailsList', JSON.stringify(response));
         dispatch(toggleLoader(false));
         callback(response);
       } else {
@@ -41,7 +41,7 @@ const loadProductDetailsList = (callback: Function) => {
 const requestForSearchItem = (payload: any, callback: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: PRODUCTLIST_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'loading cart items...'));
+    dispatch(toggleLoader(true, 'searching items...'));
     try {
       const response = await loadSearchItemDetails(payload.searchString);
       if (response.status === 200 && response.data.success) {
@@ -53,7 +53,8 @@ const requestForSearchItem = (payload: any, callback: Function) => {
         dispatch(toggleLoader(false));
         const data = {
           showToast: true,
-          toastMessage: response.data.message,
+          toastMessage:
+            'This product is not available now, please enter another product name.',
           position: 'top',
           duration: '10000',
         };

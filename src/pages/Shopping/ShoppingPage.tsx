@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import debounce from 'lodash.debounce';
 import {
   IonPage,
   IonContent,
@@ -44,21 +45,22 @@ const ShoppingPage: React.FC = () => {
   const location = useLocation();
   const user_id = localStorage.getItem('userId');
   const [shoppingLimitBalance, setshoppingLimitBalance] = useState('');
-  const [categoryName, setCategoryName] = useState('');
-
-  const [productList, setProductList] = useState([]);
-  const [imagePath, setImagePath] = useState('');
-  const [productID, setProductID] = useState(Number);
-  const [qty, setQty] = useState(Number);
-  const [productName, setProductName] = useState('');
   const [count, setCount] = useState(Number);
-  const [description, setDescription] = useState('');
   const [searchString, setSearchString] = useState('');
   const [searchList, setSearchList] = useState([]);
   const [showSearchData, setShowSearchData] = useState(false);
+
+  const [productId, setProductId] = useState('');
+  const [imageURL, setImageURL] = useState('');
+  const [price, setPrice] = useState('');
+  const [qty, setQty] = useState('');
+  const [productName, setProductName] = useState('');
+  const [configProduct, setConfigProduct] = useState('');
+  const [categoryName, setCategoryName] = useState('');
+  const [description, setDiscription] = useState('');
+
   let id = 0;
   let category = 'mobile';
-  const [price, setPrice] = useState(Number);
 
   useEffect(() => {
     const param: any = location.state;
@@ -83,33 +85,21 @@ const ShoppingPage: React.FC = () => {
   function ShowSearchItemList(res: any) {
     const searchList = res.data.data;
     setSearchList(searchList);
-
-    searchList.forEach((element: any) => {
-      setImagePath(element.image_path);
-      setCategoryName(element.category_name);
-      setPrice(element.price);
-      setProductID(element.product_id);
-      setQty(element.quantity);
-      setProductName(element.product_name);
-      setDescription(element.description);
-    });
   }
 
   function ShowProductList(res: any) {
     res.data.message.forEach((element: any, index: any) => {
       if (category === element.category_name) {
         id = index;
-        const productList = res.data.message[id].config_product;
-        setProductList(productList);
-
-        const singleProduct = res.data.message[id];
-        setImagePath(singleProduct.image_path);
-        setCategoryName(singleProduct.category_name);
-        setPrice(singleProduct.price);
-        setProductID(singleProduct.product_id);
-        setQty(singleProduct.quantity);
-        setProductName(singleProduct.product_name);
-        setDescription(singleProduct.description);
+        const productList = res.data.message[id];
+        setProductId(productList.product_id);
+        setImageURL(productList.image_path);
+        setPrice(productList.price);
+        setQty(productList.quantity);
+        setProductName(productList.product_name);
+        setConfigProduct(productList.config_product);
+        setCategoryName(element.category_name);
+        setDiscription(productList.description);
       }
     });
   }
@@ -118,33 +108,31 @@ const ShoppingPage: React.FC = () => {
     history.replace('/tabs/shopping/cart');
   }
 
-  function handleSearchItem(e: any) {
+  const handleSearchItem = debounce((e: any) => {
     setShowSearchData(true);
     setSearchString(e.detail.value);
-    dispatch(requestForSearchItem({ searchString }, ShowSearchItemList));
-  }
+    if (searchString.length > 0) {
+      dispatch(requestForSearchItem({ searchString }, ShowSearchItemList));
+    }
+  }, 500);
 
   function showItemDetails(
     productId: any,
-    configId: any,
+    imageUrl: any,
     price: any,
     quantity: any,
     productName: any,
-    ram: any,
-    memory: any
+    configProduct: any
   ) {
     history.replace('/tabs/shopping/itemdetails', {
       productId,
-      configId,
+      imageUrl,
       price,
       quantity,
       productName,
-      ram,
-      memory,
-      imagePath,
-      count,
+      configProduct,
       description,
-      category,
+      categoryName,
     });
   }
   function goBack() {
@@ -349,8 +337,10 @@ const ShoppingPage: React.FC = () => {
               </div>
               <div className="search-area-wrapper">
                 <IonInput
+                  style={{ marginLeft: '5px' }}
                   placeholder="Search"
                   value={searchString}
+                  clearInput={true}
                   onIonChange={(e) => handleSearchItem(e)}
                 >
                   <button
@@ -365,93 +355,52 @@ const ShoppingPage: React.FC = () => {
                       right: '10px',
                     }}
                   >
-                    <SearchIcon width="16" height="16" />
+                    {searchString.length > 0 ? (
+                      ''
+                    ) : (
+                      <SearchIcon width="16" height="16" />
+                    )}
                   </button>
                 </IonInput>
               </div>
               {!showSearchData ? (
                 <div>
-                  {productList.length > 0 ? (
-                    <div className="mobile-items-wrapper">
-                      <IonGrid>
-                        <IonRow>
-                          {productList.map((item: any) => {
-                            return (
-                              <IonCol key={item.product_id} size="6">
-                                <IonCard
-                                  onClick={() =>
-                                    showItemDetails(
-                                      item.product_id,
-                                      item.config_product_id,
-                                      item.price,
-                                      qty,
-                                      productName,
-                                      item.ram,
-                                      item.memory
-                                    )
-                                  }
-                                >
-                                  <IonCardHeader>
-                                    <div className="image-wrapper">
-                                      <IonImg src={imagePath} />
-                                    </div>
-                                  </IonCardHeader>
+                  <div className="mobile-items-wrapper">
+                    <IonGrid>
+                      <IonRow>
+                        <IonCol size="6">
+                          <IonCard
+                            onClick={() =>
+                              showItemDetails(
+                                productId,
+                                imageURL,
+                                price,
+                                qty,
+                                productName,
+                                configProduct
+                              )
+                            }
+                          >
+                            <IonCardHeader>
+                              <div className="image-wrapper">
+                                <IonImg src={imageURL} />
+                              </div>
+                            </IonCardHeader>
 
-                                  <IonCardContent>
-                                    <div className="device-name-label">
-                                      <IonText>{categoryName}</IonText>
-                                    </div>
+                            <IonCardContent>
+                              <div className="device-name-label">
+                                <IonText>{categoryName}</IonText>
+                              </div>
 
-                                    <div className="device-price-label">
-                                      <IonText>{item.price}</IonText>
-                                    </div>
-                                  </IonCardContent>
-                                </IonCard>
-                              </IonCol>
-                            );
-                          })}
-                        </IonRow>
-                      </IonGrid>
-                    </div>
-                  ) : (
-                    <div className="mobile-items-wrapper">
-                      <IonGrid>
-                        <IonRow>
-                          <IonCol size="6">
-                            <IonCard
-                              onClick={() =>
-                                showItemDetails(
-                                  productID,
-                                  null,
-                                  price,
-                                  qty,
-                                  productName,
-                                  null,
-                                  null
-                                )
-                              }
-                            >
-                              <IonCardHeader>
-                                <div className="image-wrapper">
-                                  <IonImg src={imagePath} />
-                                </div>
-                              </IonCardHeader>
-
-                              <IonCardContent>
-                                <div className="device-name-label">
-                                  <IonText>{categoryName}</IonText>
-                                </div>
-
-                                <div className="device-price-label">
-                                  <IonText>{price}</IonText>
-                                </div>
-                              </IonCardContent>
-                            </IonCard>
-                          </IonCol>
-                        </IonRow>
-                      </IonGrid>
-                    </div>
-                  )}
+                              <div className="device-price-label">
+                                <IonText>{price}</IonText>
+                              </div>
+                            </IonCardContent>
+                          </IonCard>
+                        </IonCol>
+                      </IonRow>
+                    </IonGrid>
+                  </div>
                 </div>
               ) : (
                 <div>
@@ -465,12 +414,11 @@ const ShoppingPage: React.FC = () => {
                                 onClick={() =>
                                   showItemDetails(
                                     listVal.product_id,
-                                    null,
+                                    listVal.image_path,
                                     listVal.price,
-                                    qty,
-                                    productName,
-                                    null,
-                                    null
+                                    listVal.quantity,
+                                    listVal.product_name,
+                                    listVal.config_product
                                   )
                                 }
                               >

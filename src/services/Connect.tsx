@@ -995,3 +995,20 @@ export const loadSearchItemDetails = async (
 
   return result;
 };
+
+/**
+ * loading images
+ * @returns
+ */
+export const loadImageSlider = async (): Promise<any> => {
+  const result = await axios({
+    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/slider_data',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  return result;
+};

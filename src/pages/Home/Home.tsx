@@ -29,7 +29,7 @@ import {
   UtilitiesSection,
   LoaderComponent,
 } from '../../components';
-import { requestForProfile } from '../../redux/actions/';
+import { requestForProfile, requestForImageSlider } from '../../redux/actions/';
 import './Home.scss';
 import { Translate } from '../../i18n/formatMessages';
 
@@ -40,6 +40,7 @@ const HomePage: React.FC = () => {
   const dispatch = useDispatch();
   const [expandOptions, setExpandOptions] = useState(false);
   const [initializing, setInitializing] = useState(false);
+  const [slider, setSlider] = useState([]);
   const profileInfo = useSelector((state: any) => state.profile.profileDetails);
   const { PushNotifications } = Plugins;
 
@@ -48,6 +49,10 @@ const HomePage: React.FC = () => {
       history.replace('/tabs/home');
     }
   }
+
+  useEffect(() => {
+    dispatch(requestForImageSlider(showImageSliderList));
+  }, []);
 
   useEffect(() => {
     const user_id = localStorage.getItem('userId');
@@ -126,6 +131,11 @@ const HomePage: React.FC = () => {
     history.replace('/tabs/notification');
   };
 
+  function showImageSliderList(res: any) {
+    const imgUrl = res.data.data;
+    setSlider(imgUrl);
+  }
+
   return (
     <>
       <LoaderComponent
@@ -181,7 +191,7 @@ const HomePage: React.FC = () => {
                   </IonText>
                 </div>
               </div>
-              <SlidesComponent />
+              <SlidesComponent value={slider} showSlider={true} />
             </div>
 
             <div

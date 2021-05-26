@@ -34,6 +34,7 @@ const CartPage: React.FC = () => {
   const [deleteStatus, setDeleteStatus] = useState(false);
   const [cartItemIdToDelete, setCartItemIdToDelete] = useState(Number);
   const [count, setCount] = useState(Number);
+  const [viewCart, setViewCart] = useState(false);
 
   useEffect(() => {
     dispatch(loadCartDetails({ user_id }, ShowProductList));
@@ -46,18 +47,22 @@ const CartPage: React.FC = () => {
     setCartTotal(cartTotal);
     const count = res.data.data.count;
     setCount(count);
+    if (res.data.data.cart_items.length === 0) {
+      setViewCart(true);
+    }
   }
 
   const increaseCount = debounce((id: Number, quantity: Number) => {
-    if (quantity > 0) {
+    if (quantity >= 0) {
       dispatch(requestForUpdateCartItem({ cartItemID: id, quantity }));
     }
   }, 200);
 
-  const deleteCartItem = (cartItemID: any) => {
+  const deleteCartItem = debounce((cartItemID: any) => {
     dispatch(requestForRemoveCartItem({ cartItemID }));
+    setDeleteStatus(false);
     dispatch(loadCartDetails({ user_id }, ShowProductList));
-  };
+  }, 200);
 
   const decreaseCount = debounce((id: number, quantity: number) => {
     if (quantity >= 1) {
@@ -121,7 +126,17 @@ const CartPage: React.FC = () => {
                   <Translate message="cart.pageLabel" />
                 </IonText>
               </div>
-              {cardItemList.length > 0 ? (
+              {viewCart ? (
+                <IonCard style={{ marginTop: '30px' }}>
+                  <IonCardContent>
+                    <div className="empty-cart-section">
+                      <IonText className="empty-cart">
+                        <Translate message="cart.empty" />
+                      </IonText>
+                    </div>
+                  </IonCardContent>
+                </IonCard>
+              ) : (
                 <div>
                   {cardItemList.map((item: any) => {
                     return (
@@ -154,7 +169,7 @@ const CartPage: React.FC = () => {
                                           ? element.ram +
                                             ' Ram ' +
                                             element.memory +
-                                            ' Storage '
+                                            ' Memory '
                                           : element.description}
                                       </IonText>
                                     </div>
@@ -191,6 +206,9 @@ const CartPage: React.FC = () => {
                                       <IonFabButton
                                         className="fab-btn"
                                         size="small"
+                                        disabled={
+                                          item.quantity < 0 ? true : false
+                                        }
                                         onClick={() => {
                                           item['quantity'] = item.quantity - 1;
                                           decreaseCount(
@@ -215,16 +233,6 @@ const CartPage: React.FC = () => {
                     );
                   })}
                 </div>
-              ) : (
-                <IonCard style={{ marginTop: '30px' }}>
-                  <IonCardContent>
-                    <div className="empty-cart-section">
-                      <IonText className="empty-cart">
-                        <Translate message="cart.empty" />
-                      </IonText>
-                    </div>
-                  </IonCardContent>
-                </IonCard>
               )}
             </div>
           </IonContent>
