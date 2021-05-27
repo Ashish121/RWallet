@@ -2,12 +2,12 @@ import { PRODUCTLIST_SUCCESS } from '../Contants';
 import { loadProduct, loadSearchItemDetails } from '../../services/Connect';
 import { updateToast, toggleLoader } from './index';
 
-const loadProductDetailsList = (callback: Function) => {
+const loadProductDetailsList = (payload: any, callback: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: PRODUCTLIST_SUCCESS, data: { status: true } });
     dispatch(toggleLoader(true, 'loading product...'));
     try {
-      const response = await loadProduct();
+      const response = await loadProduct(payload.user_id);
       if (response.status === 200 && response.data.success) {
         dispatch({ type: PRODUCTLIST_SUCCESS, data: { status: false } });
         localStorage.setItem('productDetailsList', JSON.stringify(response));

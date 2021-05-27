@@ -849,7 +849,7 @@ export const uploadImage = async (
 };
 
 /** loading all Product Details for shopping section */
-export const loadProduct = async (): Promise<any> => {
+export const loadProduct = async (user_id: string): Promise<any> => {
   const result = await axios({
     url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/product_details',
 
@@ -857,6 +857,9 @@ export const loadProduct = async (): Promise<any> => {
     headers: {
       'Content-Type': 'application/json',
     },
+    data: JSON.stringify({
+      user_id: user_id,
+    }),
   });
 
   return result;

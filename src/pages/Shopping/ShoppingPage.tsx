@@ -66,15 +66,11 @@ const ShoppingPage: React.FC = () => {
     const param: any = location.state;
     id = 1;
     category = param.categoryName;
-    dispatch(loadProductDetailsList(ShowProductList));
+    dispatch(loadProductDetailsList({ user_id }, ShowProductList));
   }, []);
 
   useEffect(() => {
     dispatch(loadCartDetails({ user_id }, ShowCartBadgeValue));
-  }, []);
-
-  useEffect(() => {
-    setshoppingLimitBalance('128445.00');
   }, []);
 
   function ShowCartBadgeValue(res: any) {
@@ -88,10 +84,12 @@ const ShoppingPage: React.FC = () => {
   }
 
   function ShowProductList(res: any) {
-    res.data.message.forEach((element: any, index: any) => {
+    const limit = res.data.shopping_limit;
+    setshoppingLimitBalance(limit);
+    res.data.data.forEach((element: any, index: any) => {
       if (category === element.category_name) {
         id = index;
-        const productList = res.data.message[id];
+        const productList = res.data.data[id];
         setProductId(productList.product_id);
         setImageURL(productList.image_path);
         setPrice(productList.price);
@@ -142,7 +140,7 @@ const ShoppingPage: React.FC = () => {
   function handleSliderIcons(val: any) {
     setShowSearchData(false);
     category = val;
-    dispatch(loadProductDetailsList(ShowProductList));
+    dispatch(loadProductDetailsList({ user_id }, ShowProductList));
   }
 
   return (
