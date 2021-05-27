@@ -30,13 +30,13 @@ export { requestForCreditCardPayment, loadBankList } from './CardPayment';
 export { requestForInternetPayment } from './InternetPayment';
 export { requestForTopUpRecharge } from './TopUpRecharge';
 export { requestForAntivirusPayment } from './AntivirusPayment';
-export { requestForProfile } from './Profile';
+export { requestForProfile, requestForImageSlider } from './Profile';
 export { toggleLoader } from './Loader';
 export { loadPOSDetails } from './Map';
 export { requestForTransactionDetails } from './TransactionHistory';
 export { requestFoChangePassword } from './ChangePassword';
 export { reuestUpload } from './UploadImage';
-export { loadProductDetailsList,requestForSearchItem } from './ProductDetails';
+export { loadProductDetailsList, requestForSearchItem } from './ProductDetails';
 export {
   loadCartDetails,
   requestForUpdateCartItem,
