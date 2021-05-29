@@ -1015,3 +1015,26 @@ export const loadImageSlider = async (): Promise<any> => {
 
   return result;
 };
+
+//payload.user_id,payload.productId,payload.rating
+
+export const addRatingForProduct = async (
+  user_id: String,
+  productId: Number,
+  rating: Number
+): Promise<any> => {
+  const result = await axios({
+    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/review_create',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+      product_id: productId,
+      rating: rating,
+    }),
+  });
+
+  return result;
+};
