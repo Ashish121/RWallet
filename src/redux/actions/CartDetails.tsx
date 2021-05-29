@@ -4,6 +4,7 @@ import {
   updateCartItem,
   removeCartItem,
   addNewItemToCart,
+  addRatingForProduct,
 } from '../../services/Connect';
 import { updateToast, toggleLoader } from './index';
 
@@ -186,9 +187,63 @@ const requestForAddItemToCart = (payload: any, nextRoute: Function) => {
     }
   };
 };
+
+const requestForRating = (payload: any) => {
+  return async (dispatch: any) => {
+    dispatch({ type: CARTDETAILS_SUCCESS, data: { status: true } });
+    dispatch(toggleLoader(true, 'loading cart items...'));
+    try {
+      const response = await addRatingForProduct(
+        payload.user_id,
+        payload.productId,
+        payload.rating
+      );
+      if (response.status === 200 && response.data.success) {
+        if (response.data.data === null) {
+          dispatch(toggleLoader(false));
+          const data = {
+            showToast: true,
+            toastMessage: response.data.message,
+            position: 'top',
+            duration: '10000',
+          };
+          dispatch({ type: 'CARTDETAILS_FAILED ' });
+          dispatch(updateToast(data));
+        }
+
+        dispatch({ type: CARTDETAILS_SUCCESS, data: { status: false } });
+        localStorage.setItem('CartDetailsList', JSON.stringify(response));
+        dispatch(toggleLoader(false));
+      } else {
+        dispatch(toggleLoader(false));
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'CARTDETAILS_FAILED ' });
+        dispatch(updateToast(data));
+      }
+    } catch (error) {
+      dispatch(toggleLoader(false));
+      const data = {
+        showToast: true,
+        toastMessage: 'API failed',
+        position: 'top',
+        duration: '10000',
+      };
+
+      dispatch({ type: CARTDETAILS_SUCCESS, data: { status: false } });
+      dispatch(updateToast(data));
+    }
+  };
+};
+
 export {
   loadCartDetails,
   requestForUpdateCartItem,
   requestForRemoveCartItem,
   requestForAddItemToCart,
+  requestForRating,
 };

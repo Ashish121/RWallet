@@ -42,4 +42,5 @@ export {
   requestForUpdateCartItem,
   requestForRemoveCartItem,
   requestForAddItemToCart,
+  requestForRating,
 } from './CartDetails';

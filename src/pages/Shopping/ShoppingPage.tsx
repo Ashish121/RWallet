@@ -361,7 +361,7 @@ const ShoppingPage: React.FC = () => {
                   </button>
                 </IonInput>
               </div>
-              {!showSearchData ? (
+              {!showSearchData && imageURL.length > 0 ? (
                 <div>
                   <div className="mobile-items-wrapper">
                     <IonGrid>

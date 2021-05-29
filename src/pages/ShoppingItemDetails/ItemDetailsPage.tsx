@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
 import {
   IonPage,
   IonContent,
@@ -15,7 +16,7 @@ import {
   IonSelect,
   IonButton,
 } from '@ionic/react';
-import { HeaderComponent, SlidesComponent } from '../../components';
+import { HeaderComponent, SlidesComponent, Rating } from '../../components';
 import { CloseBarIcon } from '../../assets/Icons';
 
 import './ItemDetailsPage.scss';
@@ -39,8 +40,11 @@ const ItemDetailsPage: React.FC = () => {
   const [category, setCategory] = useState('');
   const [ConfigProductList, setConfigProductList] = useState([]);
 
+  const [productId, setProductId] = useState(Number);
+
   useEffect(() => {
     const paramsItem: any = location.state;
+    setProductId(paramsItem.productId);
     setCategory(paramsItem.categoryName);
     setPrice(paramsItem.price);
     setProductName(paramsItem.productName);
@@ -86,8 +90,6 @@ const ItemDetailsPage: React.FC = () => {
   }
 
   function addToCart() {
-    const paramsItem: any = location.state;
-    const productId = paramsItem.productId;
     const quantity = 1;
     dispatch(
       requestForAddItemToCart(
@@ -278,7 +280,7 @@ const ItemDetailsPage: React.FC = () => {
                     </div>
                   </div>
                 )}
-                ,
+
                 {expandOptions && (
                   <div className="features-wapper">
                     <IonText className="features-label">
@@ -300,6 +302,10 @@ const ItemDetailsPage: React.FC = () => {
                     </div>
                   </div>
                 )}
+                <div>
+                  <Rating productId={productId} />
+                </div>
+
                 <div className="add-to-cart-button-wrapper">
                   <IonButton
                     className="add-cart-button"
