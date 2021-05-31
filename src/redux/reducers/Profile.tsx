@@ -23,6 +23,7 @@ const reducers: any = {
     localStorage.setItem('profile_Details', JSON.stringify(data));
     draft.profileDetails = data;
     draft.profileDetails = draft.profileDetails.data;
+    localStorage.setItem('accountNumber', draft.profileDetails.account_number);
   },
 
   [PROFILE_FAILED]: (draft: any, data: any) => {

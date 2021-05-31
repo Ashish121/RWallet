@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
   ButtonConmponent,
   HeaderComponent,
@@ -19,10 +19,12 @@ import { MapView } from '../Map/MapView';
 
 const PosPaymentPage: React.FC = () => {
   const history = useHistory();
-
+  const location = useLocation();
   const [nearestPOS, setNearestPOS] = useState({});
   const [map, setMapView] = useState(null);
   const [readyToPan, setReadyToPan] = useState(false);
+  const accountNumber = localStorage.getItem('accountNumber');
+  const paramsItem: any = location.state;
 
   useEffect(() => {
     panMapToNearestPOS();
@@ -71,6 +73,10 @@ const PosPaymentPage: React.FC = () => {
   function getMapInstance(map: any) {
     setMapView(map);
   }
+
+  function confirmButtonHandler() {
+    history.replace('/tabs/SuccessPage');
+  }
   return (
     <React.Fragment>
       <IonApp>
@@ -108,7 +114,7 @@ const PosPaymentPage: React.FC = () => {
                   </IonText>
                 </div>
                 <IonText className="pos-account-number">
-                  <Translate message="pos.accountNumber" />
+                  {accountNumber}
                 </IonText>
               </div>
 
@@ -153,10 +159,15 @@ const PosPaymentPage: React.FC = () => {
                 <IonText className="price-label">
                   <Translate message="cart.total" />
                 </IonText>
-                <IonText className="price-text">Rs 129445.00</IonText>
+                <IonText className="price-text">
+                  Rs {paramsItem.cartTotal}
+                </IonText>
               </div>
               <div className="checkout-btn-wrapper">
-                <ButtonConmponent buttonLabel="pos.confirm" />
+                <ButtonConmponent
+                  buttonLabel="pos.confirm"
+                  clickHandler={confirmButtonHandler}
+                />
               </div>
             </div>
           </IonFooter>

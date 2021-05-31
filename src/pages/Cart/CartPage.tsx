@@ -83,7 +83,7 @@ const CartPage: React.FC = () => {
     });
   };
   function handleCheckout() {
-    history.replace('/tabs/posPayment');
+    history.replace('/tabs/posPayment', { cartTotal });
   }
   return (
     <>
