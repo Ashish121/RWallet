@@ -191,7 +191,7 @@ const requestForAddItemToCart = (payload: any, nextRoute: Function) => {
 const requestForRating = (payload: any) => {
   return async (dispatch: any) => {
     dispatch({ type: CARTDETAILS_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'loading cart items...'));
+    // dispatch(toggleLoader(true, 'loading cart items...'));
     try {
       const response = await addRatingForProduct(
         payload.user_id,

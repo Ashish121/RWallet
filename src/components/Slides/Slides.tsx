@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  IonSlides,
-  IonSlide,
-  IonCard,
-  IonCardContent,
-  IonImg,
-} from '@ionic/react';
+import { IonSlides, IonSlide, IonCard, IonCardContent } from '@ionic/react';
 
 // Optional parameters to pass to the swiper instance.
 // See http://idangero.us/swiper/api/ for valid options.
@@ -30,30 +24,22 @@ const SlidesComponent: React.FC<sliderProps> = ({ value, showSlider }) => {
   });
 
   return (
-    <div>
+    <div className="slider-component-wrapper">
       {showSlider ? (
         <IonSlides pager={true} options={slideOpts}>
-          {slider.map((item: any) => {
+          {slider.map((item: any, index: any) => {
             return (
-              <IonSlide>
+              <IonSlide key={index}>
                 <IonCard>
-                  <IonCardContent>
-                    <div
-                      style={{
-                        backgroundColor: 'white',
-                        borderRadius: '7px',
-                      }}
-                    >
-                      <IonImg
-                        src={item.image_path}
-                        style={{
-                          padding: '5px',
-                          width: '150px',
-                          marginLeft: '50px',
-                        }}
-                      />
-                    </div>
-                  </IonCardContent>
+                  <IonCardContent
+                    className="background_image_cover"
+                    style={{
+                      backgroundImage: 'url(' + item.image_path + ')',
+                      width: '100%',
+                      height: '100%',
+                      backgroundSize: 'cover',
+                    }}
+                  ></IonCardContent>
                 </IonCard>
               </IonSlide>
             );
@@ -63,20 +49,15 @@ const SlidesComponent: React.FC<sliderProps> = ({ value, showSlider }) => {
         <div>
           <IonSlides pager={true} options={slideOpts}>
             <IonSlide>
-              <IonCard>
-                <IonCardContent>
-                  <div
-                    style={{
-                      backgroundColor: 'white',
-                      borderRadius: '7px',
-                    }}
-                  >
-                    <IonImg
-                      src={value}
-                      style={{ padding: '30px', margin: '10px' }}
-                    />
-                  </div>
-                </IonCardContent>
+              <IonCard style={{ width: '100%', height: '250px' }}>
+                <IonCardContent
+                  style={{
+                    backgroundImage: 'url(' + value + ')',
+                    width: '100%',
+                    height: '100%',
+                    backgroundSize: '100% 100%',
+                  }}
+                ></IonCardContent>
               </IonCard>
             </IonSlide>
           </IonSlides>

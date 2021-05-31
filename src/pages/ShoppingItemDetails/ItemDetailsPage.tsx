@@ -41,9 +41,8 @@ const ItemDetailsPage: React.FC = () => {
   const [ConfigProductList, setConfigProductList] = useState([]);
 
   const [productId, setProductId] = useState(Number);
-
+  const paramsItem: any = location.state;
   useEffect(() => {
-    const paramsItem: any = location.state;
     setProductId(paramsItem.productId);
     setCategory(paramsItem.categoryName);
     setPrice(paramsItem.price);
@@ -303,7 +302,7 @@ const ItemDetailsPage: React.FC = () => {
                   </div>
                 )}
                 <div>
-                  <Rating productId={productId} />
+                  <Rating productId={productId} ratings={paramsItem.ratings} />
                 </div>
 
                 <div className="add-to-cart-button-wrapper">
