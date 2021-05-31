@@ -35,7 +35,7 @@ const ItemDetailsPage: React.FC = () => {
   const [count, setCount] = useState(Number);
   const [imageUrl, setImageUrl] = useState('');
   const [ramActivate, setRamActivate] = useState(false);
-  const [configId, setConfigId] = useState(Number);
+  const [configId, setConfigId] = useState(null);
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [ConfigProductList, setConfigProductList] = useState([]);
@@ -229,9 +229,8 @@ const ItemDetailsPage: React.FC = () => {
                   </div>
                 ) : (
                   <div>
-                    <div className="storage-details-wrapper">
-                      <button className="btn-64gb">{description}</button>
-                      <button className="btn-128gb">{description}</button>
+                    <div className="storage-discription-wrapper">
+                      {description}
                     </div>
                     <div className="item-color-wrapper">
                       <IonList>
