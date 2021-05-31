@@ -191,7 +191,9 @@ const HomePage: React.FC = () => {
                   </IonText>
                 </div>
               </div>
-              <SlidesComponent value={slider} showSlider={true} />
+              {slider.length > 0 && (
+                <SlidesComponent value={slider} showSlider={true} />
+              )}
             </div>
 
             <div

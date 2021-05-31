@@ -58,6 +58,7 @@ const ShoppingPage: React.FC = () => {
   const [configProduct, setConfigProduct] = useState('');
   const [categoryName, setCategoryName] = useState('');
   const [description, setDiscription] = useState('');
+  const [ratings, setRatings] = useState(0);
 
   let id = 0;
   let category = 'mobile';
@@ -98,6 +99,7 @@ const ShoppingPage: React.FC = () => {
         setConfigProduct(productList.config_product);
         setCategoryName(element.category_name);
         setDiscription(productList.description);
+        setRatings(productList.review_rating);
       }
     });
   }
@@ -131,6 +133,7 @@ const ShoppingPage: React.FC = () => {
       configProduct,
       description,
       categoryName,
+      ratings,
     });
   }
   function goBack() {

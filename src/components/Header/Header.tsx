@@ -87,19 +87,7 @@ const HeaderComponent: React.FC<headerProps> = ({
               >
                 <CartIcon width="20" height="20" />
               </IonButtons>
-              <IonBadge
-                color="primary"
-                style={{
-                  position: 'absolute',
-                  right: '5px',
-                  fontSize: '9px',
-                  borderRadius: '10px',
-                  marginTop: '5px',
-                  backgroundColor: 'rgb(217 13 38)',
-                  padding: '5px',
-                }}
-              >
-                {' '}
+              <IonBadge color="primary" className="cart-count-badge">
                 {value}
               </IonBadge>
             </div>

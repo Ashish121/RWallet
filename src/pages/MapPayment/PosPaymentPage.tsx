@@ -42,7 +42,7 @@ const PosPaymentPage: React.FC = () => {
   }
 
   function goBack() {
-    history.replace('/tabs');
+    history.replace('/tabs/shopping/cart');
   }
 
   function getNearestPOS(data: any) {
@@ -79,7 +79,7 @@ const PosPaymentPage: React.FC = () => {
             headerLable={'common.header'}
             showMenu={false}
             showNotification={false}
-            showCart={true}
+            showCart={false}
             cartHandler={navigateToCart}
             showBackButton={true}
             handler={goBack}
