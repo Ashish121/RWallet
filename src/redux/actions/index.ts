@@ -32,7 +32,7 @@ export { requestForTopUpRecharge } from './TopUpRecharge';
 export { requestForAntivirusPayment } from './AntivirusPayment';
 export { requestForProfile, requestForImageSlider } from './Profile';
 export { toggleLoader } from './Loader';
-export { loadPOSDetails } from './Map';
+export { loadPOSDetails, requestForPosOrder } from './Map';
 export { requestForTransactionDetails } from './TransactionHistory';
 export { requestFoChangePassword } from './ChangePassword';
 export { reuestUpload } from './UploadImage';

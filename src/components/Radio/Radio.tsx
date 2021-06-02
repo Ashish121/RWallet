@@ -5,7 +5,7 @@ import './Radio.scss';
 
 interface radioTypeProps {
   label?: any;
-  clickHandler?: Function;
+  //clickHandler?: Function;
   color?: any;
   val?: string;
   showRadioButton?: Boolean;
@@ -17,8 +17,12 @@ const RadioComponent: React.FC<radioTypeProps> = ({
   val,
   showRadioButton = false,
   showColor = false,
+  //clickHandler,
   ...props
 }) => {
+  // function handleButtonClick() {
+  //   clickHandler?.();
+  // }
   return (
     <div className="radio-wrapper">
       {showRadioButton && (
@@ -31,6 +35,7 @@ const RadioComponent: React.FC<radioTypeProps> = ({
               className={
                 showColor ? 'radio-icon-color-white' : 'radio-icon-color-blue'
               }
+              //onClick={() => handleButtonClick()}
             />
             <IonText
               className={
