@@ -35,6 +35,7 @@ const CartPage: React.FC = () => {
   const [cartItemIdToDelete, setCartItemIdToDelete] = useState(Number);
   const [count, setCount] = useState(Number);
   const [viewCart, setViewCart] = useState(false);
+  const [cartId, setcartId] = useState([]);
 
   useEffect(() => {
     dispatch(loadCartDetails({ user_id }, ShowProductList));
@@ -45,6 +46,8 @@ const CartPage: React.FC = () => {
     setCardItemList(cardItemList);
     const cartTotal = res.data.data.cart_total;
     setCartTotal(cartTotal);
+    const cartID = res.data.data.cart_id;
+    setcartId(cartID);
     const count = res.data.data.count;
     setCount(count);
     if (res.data.data.cart_items.length === 0) {
@@ -83,7 +86,7 @@ const CartPage: React.FC = () => {
     });
   };
   function handleCheckout() {
-    history.replace('/tabs/posPayment', { cartTotal });
+    history.replace('/tabs/posPayment', { cartTotal, cartId });
   }
   return (
     <>

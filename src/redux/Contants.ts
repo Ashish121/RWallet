@@ -122,3 +122,8 @@ export const PRODUCTLIST_FAILED = 'PRODUCTLIST_FAILED';
 
 export const CARTDETAILS_SUCCESS = 'CARTDETAILS_SUCCESS';
 export const CARTDETAILS_FAILED = 'CARTDETAILS_FAILED';
+
+//for Product Details List
+
+export const POS_SUCCESS = 'POS_SUCCESS';
+export const POS_FAILED = 'POS_FAILED';

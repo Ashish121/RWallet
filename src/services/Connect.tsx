@@ -1016,8 +1016,13 @@ export const loadImageSlider = async (): Promise<any> => {
   return result;
 };
 
-//payload.user_id,payload.productId,payload.rating
-
+/**
+ *
+ * @param user_id
+ * @param productId
+ * @param rating
+ * @returns
+ */
 export const addRatingForProduct = async (
   user_id: String,
   productId: Number,
@@ -1033,6 +1038,46 @@ export const addRatingForProduct = async (
       user_id: user_id,
       product_id: productId,
       rating: rating,
+    }),
+  });
+
+  return result;
+};
+
+/**
+ * request for create POS Order
+ * @param user_id
+ * @param cartId
+ * @param posId
+ * @param country
+ * @param province
+ * @param district
+ * @param houseNo
+ * @returns
+ */
+export const createPOSOrder = async (
+  user_id: String,
+  cartId: Number,
+  posId: Number,
+  country: String,
+  province: String,
+  district: String,
+  houseNo: String
+): Promise<any> => {
+  const result = await axios({
+    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/order_create',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+      cart_id: cartId,
+      pos_id: posId,
+      country: country,
+      province: province,
+      district: district,
+      house_no: houseNo,
     }),
   });
 
