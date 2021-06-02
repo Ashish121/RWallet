@@ -108,7 +108,7 @@ const PosPaymentPage: React.FC = () => {
         {
           user_id,
           cartId: paramsItem.cartId,
-          posId: 0,
+          posId: null,
           country: selectedCountry,
           province: selectedProvince,
           district: selectedDistrict,
@@ -158,7 +158,7 @@ const PosPaymentPage: React.FC = () => {
     setDistricts(finalArray);
   }
 
-  function updateDepositType(event: any) {
+  function handleSelectedPOS(event: any) {
     const locationType = event.target.value;
     if (locationType === 'nearestPOS') {
       setShowMap(true);
@@ -218,7 +218,7 @@ const PosPaymentPage: React.FC = () => {
                 </div>
                 <IonRadioGroup
                   // value="nearestPOS"
-                  onIonChange={updateDepositType}
+                  onIonChange={handleSelectedPOS}
                 >
                   <div className="options-section1">
                     <RadioComponent
