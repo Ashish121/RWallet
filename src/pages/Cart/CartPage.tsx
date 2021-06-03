@@ -50,7 +50,7 @@ const CartPage: React.FC = () => {
     setcartId(cartID);
     const count = res.data.data.count;
     setCount(count);
-    if (res.data.data.cart_items.length === 0) {
+    if (res.data.data.cart_items.length === 0 || null) {
       setViewCart(true);
     }
   }
