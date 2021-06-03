@@ -1,0 +1,45 @@
+.header-page {
+  padding: 8px;
+  margin: 20px;
+}
+.header-close-button {
+  right: 20px;
+  position: absolute;
+  margin-top: 20px;
+  .close-icons {
+    position: absolute;
+    width: 100%;
+  }
+}
+.policy-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #ddd;
+
+  .nav-button {
+    display: flex;
+    background-color: #004777;
+  }
+  .subnav-button {
+    display: flex;
+  }
+
+  .btn-elem {
+    --line-height: 17px;
+    --font-style: normal;
+    --color: #ffffff;
+    --font-weight: 500;
+    height: 30px;
+  }
+  .page-title {
+    --font-weight: 500;
+    font-size: 30px;
+    margin: 10px 5px 5px 5px;
+  }
+  .page-paragraph {
+    font-size: 13px;
+    margin: 10px;
+    text-align: justify;
+    font-family: "Montserrat";
+  }
+}
