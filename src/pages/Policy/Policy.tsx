@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
   IonPage,
   IonContent,
@@ -9,13 +9,15 @@ import {
   IonTabBar,
   IonTabButton,
   IonLabel,
-} from '@ionic/react';
-import { CloseIcon } from '../../assets/Icons';
-import { ButtonConmponent } from '../../components';
-import { requestForPrivacyAndPolicy } from '../../redux/actions/';
-import './Policy.scss';
+  IonSegment,
+  IonSegmentButton,
+} from "@ionic/react";
+import { CloseIcon } from "../../assets/Icons";
+import { ButtonConmponent } from "../../components";
+import { requestForPrivacyAndPolicy } from "../../redux/actions/";
+import "./Policy.scss";
 
-const Policy: React.FC = () => {
+const Policy: React.FC<{ closeHandler: Function }> = ({ closeHandler }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showPrivacy, setShowPrivacy] = useState(true);
@@ -34,7 +36,7 @@ const Policy: React.FC = () => {
 
   function closeMenu(status: any) {
     if (status) {
-      history.replace('/tabs/home');
+      history.replace("/tabs/home");
     }
   }
 
@@ -62,19 +64,40 @@ const Policy: React.FC = () => {
   };
   return (
     <>
-      <IonPage>
-        <div className="header-page"></div>
-        <IonButtons slot="end" className="header-close-button">
-          <IonButton onClick={closeMenu} className="close-icons" />
-          <CloseIcon color="white" />
-        </IonButtons>
+      <IonPage class="policy_wrapper">
+        <div style={{ width: "100%", textAlign: "end", background: "white" }}>
+          <IonButton
+            class="close-btn"
+            onClick={() => closeHandler}
+            className="close-icons"
+            style={{
+              background: "transparent",
+              outline: "none",
+              border: "none",
+            }}
+          >
+            <CloseIcon />
+          </IonButton>
+        </div>
+        <div>
+          <IonSegment
+            onIonChange={(e) => console.log("Segment selected", e.detail.value)}
+          >
+            <IonSegmentButton value="friends">
+              <IonLabel>Privacy policy</IonLabel>
+            </IonSegmentButton>
+            <IonSegmentButton value="enemies">
+              <IonLabel>Terms and Conditions</IonLabel>
+            </IonSegmentButton>
+          </IonSegment>
+        </div>
 
-        <IonTabBar slot="bottom">
+        {/* <IonTabBar slot="bottom">
           <IonTabButton
             tab="home"
             href="#"
             onClick={privacyAndPolicy}
-            style={{ color: showPrivacy ? '' : '#747272' }}
+            style={{ color: showPrivacy ? "" : "#747272" }}
           >
             <IonLabel>Privacy policy</IonLabel>
           </IonTabButton>
@@ -83,11 +106,11 @@ const Policy: React.FC = () => {
             tab="transfer"
             href="/termAndCondition"
             onClick={termAndCondition}
-            style={{ color: showPrivacy ? '#747272' : '' }}
+            style={{ color: showPrivacy ? "#747272" : "" }}
           >
             <IonLabel>Terms and Conditions</IonLabel>
           </IonTabButton>
-        </IonTabBar>
+        </IonTabBar> */}
 
         <IonContent>
           <div className="policy-container">
@@ -110,21 +133,21 @@ const Policy: React.FC = () => {
 
                 {subType ? (
                   <>
-                    {' '}
+                    {" "}
                     {policyData.map((element: any) => {
                       return (
                         <>
                           {element.class ===
-                          'Privacy policy and Confidentiality' ? (
-                              <>
-                                <div className="page-title">{element.class}</div>
-                                <p className="page-paragraph">
-                                  {element.description}
-                                </p>
-                              </>
-                            ) : (
-                              <></>
-                            )}
+                          "Privacy policy and Confidentiality" ? (
+                            <>
+                              <div className="page-title">{element.class}</div>
+                              <p className="page-paragraph">
+                                {element.description}
+                              </p>
+                            </>
+                          ) : (
+                            <></>
+                          )}
                         </>
                       );
                     })}
@@ -136,7 +159,7 @@ const Policy: React.FC = () => {
                         {policyData.map((element: any) => {
                           return (
                             <>
-                              {element.class === 'Refund Policy' ? (
+                              {element.class === "Refund Policy" ? (
                                 <>
                                   <div className="page-title">
                                     {element.class}
@@ -157,7 +180,7 @@ const Policy: React.FC = () => {
                         {policyData.map((element: any) => {
                           return (
                             <>
-                              {element.class === 'Return & Exchange Policy' ? (
+                              {element.class === "Return & Exchange Policy" ? (
                                 <>
                                   <div className="page-title">
                                     {element.class}
