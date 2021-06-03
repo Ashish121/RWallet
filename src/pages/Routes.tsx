@@ -20,6 +20,8 @@ import {
   TransactionHistory,
   ConfirmPage,
   ChangePassword,
+  Policy,
+  TermAndCondition,
 } from './index';
 import './Routes.scss';
 
@@ -49,6 +51,8 @@ const Routes: React.FC = () => {
             <Route path="/account/saving" exact component={SavingAccountPage} />
             <Route path="/confirm" exact component={ConfirmPage} />
             <Route path="/changePassword" exact component={ChangePassword} />
+            <Route path="/policy" exact component={Policy} />
+            <Route path="/termAndCondition" exact component={TermAndCondition} />
 
             <Route
               path="/account/current"

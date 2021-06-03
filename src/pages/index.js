@@ -47,6 +47,8 @@ import { SuccessPage } from './SuccessPage/SuccessPage';
 import { CartPage } from './Cart/CartPage';
 import { PosPaymentPage } from './MapPayment/PosPaymentPage';
 import { ChangePassword } from './ChangePass/ChangePassword';
+import { Policy } from './Policy/Policy';
+import { TermAndCondition } from './Policy/TermAndCondition';
 
 export {
   HomePage,
@@ -98,4 +100,6 @@ export {
   CartPage,
   PosPaymentPage,
   ChangePassword,
+  Policy,
+  TermAndCondition,
 };

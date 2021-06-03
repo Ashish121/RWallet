@@ -30,7 +30,11 @@ export { requestForCreditCardPayment, loadBankList } from './CardPayment';
 export { requestForInternetPayment } from './InternetPayment';
 export { requestForTopUpRecharge } from './TopUpRecharge';
 export { requestForAntivirusPayment } from './AntivirusPayment';
-export { requestForProfile, requestForImageSlider } from './Profile';
+export {
+  requestForProfile,
+  requestForImageSlider,
+  requestForPrivacyAndPolicy,
+} from './Profile';
 export { toggleLoader } from './Loader';
 export { loadPOSDetails, requestForPosOrder } from './Map';
 export { requestForTransactionDetails } from './TransactionHistory';

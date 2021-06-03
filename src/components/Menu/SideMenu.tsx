@@ -104,6 +104,10 @@ const MenuComponent: React.FC<any> = () => {
     });
   };
 
+  const privacyPolicy = () => {
+    history.replace('/policy');
+  };
+
   return (
     <>
       <IonAlert
@@ -251,7 +255,7 @@ const MenuComponent: React.FC<any> = () => {
               </div>
               <hr />
               <div className="footer-wrapper">
-                <button className="action-button">
+                <button className="action-button" onClick={privacyPolicy}>
                   <IonText>
                     <Translate message="profile.privacy" />
                   </IonText>
