@@ -12,6 +12,33 @@
       width: 100%;
     }
   }
+
+  ion-segment {
+    color: #777;
+    background-color: #004777;
+    padding: 17px;
+
+    // ion-segment-button {
+    //   --background-checked: #004777;
+    //   --color-checked: #070707;
+    //   height: 2rem;
+    // }
+
+    ion-segment-button {
+      --background-checked: #004777;
+      --color-checked: rgb(255, 255, 255);
+
+      --indicator-color: transparent;
+      height: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  .segment-button-indicator-background {
+    border-radius: var(--border-radius);
+    background: rgb(0, 71, 119);
+  }
+
   .policy-container {
     display: flex;
     flex-direction: column;
@@ -29,6 +56,7 @@
       --line-height: 17px;
       --font-style: normal;
       --color: #ffffff;
+      background-color: #004777;
       --font-weight: 500;
       height: 30px;
     }
@@ -46,6 +74,7 @@
   }
   ion-button {
     --background: transparent;
+
     border: none;
     --box-shadow: none;
     outline: none;

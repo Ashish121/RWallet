@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import React, { useEffect } from "react";
+import { useDispatch } from 'react-redux';
 import {
   Plugins,
   PushNotification,
   PushNotificationToken,
   PushNotificationActionPerformed,
-} from "@capacitor/core";
-import { updateToast } from "../redux/actions";
+} from '@capacitor/core';
+import { updateToast } from '../redux/actions';
 
 function useNotificationService() {
   const { PushNotifications } = Plugins;
@@ -23,9 +23,9 @@ function useNotificationService() {
       } else {
         const data = {
           showToast: true,
-          toastMessage: "Access deneid",
-          position: "top",
-          duration: "10000",
+          toastMessage: 'Access deneid',
+          position: 'top',
+          duration: '10000',
         };
         dispatch(updateToast(data));
       }
@@ -35,41 +35,41 @@ function useNotificationService() {
   const registerListener = () => {
     // On success, we should be able to receive notifications
     PushNotifications.addListener(
-      "registration",
+      'registration',
       (token: PushNotificationToken) => {
         //pass token to notification token API
 
         // eslint-disable-next-line no-console
         console.log(
-          "🚀 ~ file: Home.tsx ~ line 84 ~ registerListener ~ token",
+          '🚀 ~ file: Home.tsx ~ line 84 ~ registerListener ~ token',
           token
         );
       }
     );
     // Some issue with our setup and push will not work
-    PushNotifications.addListener("registrationError", (error: any) => {
+    PushNotifications.addListener('registrationError', (error: any) => {
       // eslint-disable-next-line no-console
       console.log(
-        "🚀 ~ file: Home.tsx ~ line 95 ~ PushNotifications.addListener ~ error",
+        '🚀 ~ file: Home.tsx ~ line 95 ~ PushNotifications.addListener ~ error',
         error
       );
     });
     PushNotifications.addListener(
-      "pushNotificationReceived",
+      'pushNotificationReceived',
       (notification: PushNotification) => {
         // eslint-disable-next-line no-console
         console.log(
-          "🚀 ~ file: Home.tsx ~ line 101 ~ registerListener ~ notification",
+          '🚀 ~ file: Home.tsx ~ line 101 ~ registerListener ~ notification',
           notification
         );
       }
     );
     PushNotifications.addListener(
-      "pushNotificationActionPerformed",
+      'pushNotificationActionPerformed',
       (notification: PushNotificationActionPerformed) => {
         // eslint-disable-next-line no-console
         console.log(
-          "🚀 ~ file: Home.tsx ~ line 108 ~ registerListener ~ notification",
+          '🚀 ~ file: Home.tsx ~ line 108 ~ registerListener ~ notification',
           notification
         );
       }
