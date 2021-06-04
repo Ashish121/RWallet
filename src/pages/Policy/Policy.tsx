@@ -4,24 +4,24 @@ import { useHistory } from 'react-router-dom';
 import {
   IonPage,
   IonContent,
-  IonButtons,
   IonButton,
-  IonTabBar,
-  IonTabButton,
   IonLabel,
+  IonSegment,
+  IonSegmentButton,
 } from '@ionic/react';
 import { CloseIcon } from '../../assets/Icons';
 import { ButtonConmponent } from '../../components';
 import { requestForPrivacyAndPolicy } from '../../redux/actions/';
 import './Policy.scss';
 
-const Policy: React.FC = () => {
+const Policy: React.FC<{ closeHandler: Function }> = ({ closeHandler }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showPrivacy, setShowPrivacy] = useState(true);
   const [policyData, setPolicyData] = useState([]);
   const [refundPolicy, setRefundPolicy] = useState(true);
   const [subType, setSubType] = useState(false);
+  const [defaultColor, setDefaultColor] = useState(true);
 
   useEffect(() => {
     dispatch(requestForPrivacyAndPolicy(showImageSliderList));
@@ -34,16 +34,18 @@ const Policy: React.FC = () => {
 
   function closeMenu(status: any) {
     if (status) {
-      history.replace('/tabs/home');
+      history.replace('/tabs/');
     }
   }
 
   const termAndCondition = () => {
+    setDefaultColor(false);
     setShowPrivacy(false);
     setSubType(false);
   };
 
   const privacyAndPolicy = () => {
+    setDefaultColor(false);
     setShowPrivacy(true);
   };
 
@@ -60,34 +62,41 @@ const Policy: React.FC = () => {
   const confidentialityButton = () => {
     setSubType(true);
   };
+
   return (
     <>
-      <IonPage>
-        <div className="header-page"></div>
-        <IonButtons slot="end" className="header-close-button">
-          <IonButton onClick={closeMenu} className="close-icons" />
-          <CloseIcon color="white" />
-        </IonButtons>
-
-        <IonTabBar slot="bottom">
-          <IonTabButton
-            tab="home"
-            href="#"
-            onClick={privacyAndPolicy}
-            style={{ color: showPrivacy ? '' : '#747272' }}
+      <IonPage class="policy_wrapper">
+        <div style={{ width: '100%', textAlign: 'end', background: 'white' }}>
+          <IonButton
+            class="close-btn"
+            // onClick={() => closeHandler}
+            className="close-icons"
+            style={{
+              background: 'transparent',
+              outline: 'none',
+              border: 'none',
+            }}
+            onClick={closeMenu}
           >
-            <IonLabel>Privacy policy</IonLabel>
-          </IonTabButton>
-
-          <IonTabButton
-            tab="transfer"
-            href="/termAndCondition"
-            onClick={termAndCondition}
-            style={{ color: showPrivacy ? '#747272' : '' }}
+            <CloseIcon onClick={() => closeHandler} />
+          </IonButton>
+        </div>
+        <div>
+          <IonSegment
+          //onIonChange={(e) => console.log("Segment selected", e.detail.value)}
           >
-            <IonLabel>Terms and Conditions</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
+            <IonSegmentButton
+              value="friends"
+              onClick={privacyAndPolicy}
+              style={{ color: defaultColor ? 'white' : '' }}
+            >
+              <IonLabel>Privacy policy</IonLabel>
+            </IonSegmentButton>
+            <IonSegmentButton value="enemies" onClick={termAndCondition}>
+              <IonLabel>Terms and Conditions</IonLabel>
+            </IonSegmentButton>
+          </IonSegment>
+        </div>
 
         <IonContent>
           <div className="policy-container">
@@ -178,7 +187,24 @@ const Policy: React.FC = () => {
                 )}
               </>
             ) : (
-              <></>
+              <>
+                {policyData.map((element: any) => {
+                  return (
+                    <>
+                      {element.class === 'Terms and Conditions' ? (
+                        <>
+                          <div className="page-title">{element.class}</div>
+                          <p className="page-paragraph">
+                            {element.description}
+                          </p>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  );
+                })}
+              </>
             )}
           </div>
         </IonContent>

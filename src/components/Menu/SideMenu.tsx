@@ -12,6 +12,7 @@ import {
   IonAvatar,
   IonAlert,
   IonProgressBar,
+  IonModal,
 } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { menuController } from '@ionic/core';
@@ -21,6 +22,7 @@ import { ProfilePictureIcon, CloseIcon, MenuCamera } from '../../assets/Icons';
 import './SideMenu.scss';
 import { Translate } from '../../i18n/formatMessages';
 import { requestForLogout, reuestUpload } from '../../redux/actions';
+import { Policy } from '../../pages';
 
 const MenuComponent: React.FC<any> = () => {
   const [imagePicked, setImagePicked] = useState(false);
@@ -28,6 +30,7 @@ const MenuComponent: React.FC<any> = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [currentUploadStatus, setCurrentUploadStatus] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { Camera } = Plugins;
   const history = useHistory();
   const dispatch = useDispatch();
@@ -104,12 +107,11 @@ const MenuComponent: React.FC<any> = () => {
     });
   };
 
-  const privacyPolicy = () => {
-    history.replace('/policy');
-  };
-
   return (
     <>
+      <IonModal isOpen={showModal} cssClass="my-custom-class">
+        <Policy closeHandler={() => setShowModal(false)} />
+      </IonModal>
       <IonAlert
         isOpen={showAlert}
         onDidDismiss={() => setShowAlert(false)}
@@ -255,7 +257,10 @@ const MenuComponent: React.FC<any> = () => {
               </div>
               <hr />
               <div className="footer-wrapper">
-                <button className="action-button" onClick={privacyPolicy}>
+                <button
+                  className="action-button"
+                  onClick={() => setShowModal(true)}
+                >
                   <IonText>
                     <Translate message="profile.privacy" />
                   </IonText>
