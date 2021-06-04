@@ -21,6 +21,7 @@ const Policy: React.FC<{ closeHandler: Function }> = ({ closeHandler }) => {
   const [policyData, setPolicyData] = useState([]);
   const [refundPolicy, setRefundPolicy] = useState(true);
   const [subType, setSubType] = useState(false);
+  const [defaultColor, setDefaultColor] = useState(true);
 
   useEffect(() => {
     dispatch(requestForPrivacyAndPolicy(showImageSliderList));
@@ -38,11 +39,13 @@ const Policy: React.FC<{ closeHandler: Function }> = ({ closeHandler }) => {
   }
 
   const termAndCondition = () => {
+    setDefaultColor(false);
     setShowPrivacy(false);
     setSubType(false);
   };
 
   const privacyAndPolicy = () => {
+    setDefaultColor(false);
     setShowPrivacy(true);
   };
 
@@ -82,7 +85,11 @@ const Policy: React.FC<{ closeHandler: Function }> = ({ closeHandler }) => {
           <IonSegment
           //onIonChange={(e) => console.log("Segment selected", e.detail.value)}
           >
-            <IonSegmentButton value="friends" onClick={privacyAndPolicy}>
+            <IonSegmentButton
+              value="friends"
+              onClick={privacyAndPolicy}
+              style={{ color: defaultColor ? 'white' : '' }}
+            >
               <IonLabel>Privacy policy</IonLabel>
             </IonSegmentButton>
             <IonSegmentButton value="enemies" onClick={termAndCondition}>
