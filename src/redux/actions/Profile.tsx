@@ -11,6 +11,11 @@ const requestForProfile = (payload: any, nextRoute: Function) => {
       const response = await loadProfile(payload.user_id);
       if (response.status === 200 && response.data.success) {
         dispatch({ type: PROFILE_SUCCESS, data: response.data.user });
+        localStorage.setItem(
+          'createdAccountType',
+          response.data.user.account_type
+        );
+
         nextRoute(true);
       } else {
         nextRoute(false);

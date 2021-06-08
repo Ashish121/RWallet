@@ -113,6 +113,21 @@
     border-right: 50px solid #555;
     border-bottom: 25px solid transparent;
   }
+
+  .cart-ristricted-section {
+    display: grid;
+    margin-left: 30px;
+
+    .ristricted-cart {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 15px;
+      color: #ffffff;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
 }
 
 .home-wrapper

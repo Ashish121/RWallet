@@ -48,3 +48,4 @@ export {
   requestForAddItemToCart,
   requestForRating,
 } from './CartDetails';
+export { RequestForUpdateDeviceToken } from './Notification';
