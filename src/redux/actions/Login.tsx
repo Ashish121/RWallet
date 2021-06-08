@@ -13,6 +13,12 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
         localStorage.setItem('loginDetails', JSON.stringify(response));
         localStorage.setItem('userId', response.data.user.id);
         localStorage.setItem('isMpinCreated', response.data.isMpin);
+        
+        localStorage.setItem('accountType', response.data.is_account_type);
+        localStorage.setItem('userDetail', response.data.is_user_detail);
+
+        //localStorage.setItem("token", response.data.token);
+
         nextRoute();
       } else {
         const data = {

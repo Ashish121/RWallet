@@ -21,9 +21,21 @@ const LoginPage: React.FC = () => {
   useEffect(() => {
     localStorage.clear();
   }, []);
+
+  //checking flag condition............
   function nextRoute() {
-    history.replace('tabs/home');
+    const getAccountType = localStorage.getItem('accountType');
+    const getUser = localStorage.getItem('userDetail');
+
+    if (getUser === 'false') {
+      history.replace('/accountuser');
+    } else if (getAccountType === 'false') {
+      history.replace('/accountpage');
+    } else {
+      history.replace('/tabs/home');
+    }
   }
+
   function loginHandler() {
     dispatch(requestForLogin({ contactNo, password }, nextRoute));
   }

@@ -278,6 +278,8 @@
   "pos.accountLabel": "Account number",
   "pos.accountNumber": "1234567890112",
 
+  "fixedAccount.type": "you have selected fixed account,you can't use Rwallet App Services.",
+
   "map.name": "Name",
   "map.pos_no": "Phone no",
   "map.dispatchStatus": "Dispatch status",

@@ -93,7 +93,7 @@ const Policy: React.FC<{ closeHandler: Function }> = ({ closeHandler }) => {
               <IonLabel>Privacy policy</IonLabel>
             </IonSegmentButton>
             <IonSegmentButton value="enemies" onClick={termAndCondition}>
-              <IonLabel>Terms and Conditions</IonLabel>
+              <IonLabel>Terms {'&'} Conditions</IonLabel>
             </IonSegmentButton>
           </IonSegment>
         </div>

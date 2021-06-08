@@ -6,11 +6,13 @@ import {
   PushNotificationToken,
   PushNotificationActionPerformed,
 } from '@capacitor/core';
-import { updateToast } from '../redux/actions';
+import { updateToast, RequestForUpdateDeviceToken } from '../redux/actions';
 
 function useNotificationService() {
   const { PushNotifications } = Plugins;
   const dispatch = useDispatch();
+  const user_id = localStorage.getItem('userId');
+
   const askPushPermission = () => {
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
@@ -39,6 +41,8 @@ function useNotificationService() {
       (token: PushNotificationToken) => {
         //pass token to notification token API
 
+        // const token = localStorage.getItem("token");
+        dispatch(RequestForUpdateDeviceToken({ user_id, pushToken: token }));
         // eslint-disable-next-line no-console
         console.log(
           '🚀 ~ file: Home.tsx ~ line 84 ~ registerListener ~ token',

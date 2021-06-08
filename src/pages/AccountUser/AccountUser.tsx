@@ -49,9 +49,8 @@ const AccountUser: React.FC<any> = () => {
   const [localLevelNameArray, setLocalLevelName] = useState([{}]);
   const [selectedCountry, setCountry] = useState('');
   const [clearValueDistrict, setClearValueDistrict] = useState(false);
-  const [clearValueLocalLevelName, setClearValueLocalLevelName] = useState(
-    false
-  );
+  const [clearValueLocalLevelName, setClearValueLocalLevelName] =
+    useState(false);
   const country = 'Nepal';
   useEffect(() => {
     const array = [
@@ -78,9 +77,6 @@ const AccountUser: React.FC<any> = () => {
     setLoadeStatus(false);
     setLoaderText('');
     configureProvince(provinces);
-    // loadCountries(initialData.country);
-    // loadStates(initialData.states);
-    // loadMunicipality(initialData.municipality);
   }
   function configureProvince(array: any) {
     let finalArray: any = [];
@@ -130,10 +126,17 @@ const AccountUser: React.FC<any> = () => {
   function nextRoute(status: boolean) {
     setLoadeStatus(false);
     setLoaderText('');
+    const getAccountType = localStorage.getItem('accountType');
     if (status) {
       localStorage.setItem('userFilledAccountDetails', 'true');
-      history.replace('/accountpage');
-      return;
+
+      if (getAccountType === 'false') {
+        history.replace('/accountpage');
+        return;
+      } else {
+        history.replace('/tabs/home');
+        return;
+      }
     }
   }
 
@@ -161,11 +164,6 @@ const AccountUser: React.FC<any> = () => {
 
     setDobBS(date);
   }
-  // function handleDobBS(date: any) {
-  //
-  //   setDobBS(date);
-
-  // }
 
   function updateCurrentAddress(currentAddress: string) {
     setCurrentAddress(currentAddress);

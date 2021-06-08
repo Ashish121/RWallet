@@ -1084,6 +1084,10 @@ export const createPOSOrder = async (
   return result;
 };
 
+/**
+ * loading policy data
+ * @returns
+ */
 export const loadingPolicyData = async (): Promise<any> => {
   const result = await axios({
     url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/policy_data',
@@ -1094,5 +1098,29 @@ export const loadingPolicyData = async (): Promise<any> => {
     },
   });
 
+  return result;
+};
+
+/**
+ * update device token
+ * @param user_id
+ * @param pushToken
+ * @returns
+ */
+export const updateDeviceToken = async (
+  user_id: String,
+  pushToken: Number
+): Promise<any> => {
+  const result = await axios({
+    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/device_token',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+      push_token: pushToken,
+    }),
+  });
   return result;
 };
