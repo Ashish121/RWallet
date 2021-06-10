@@ -41,6 +41,8 @@ const PosPaymentPage: React.FC = () => {
   const [showMap, setShowMap] = useState(true);
   const [showDesiredLocation, setShowDesiredLocation] = useState(false);
   const accountNumber = localStorage.getItem('accountNumber');
+  const [selectedPos, setSelectedPos] = useState('nearestPOS');
+  const [posId, setPostId] = useState('');
   const paramsItem: any = location.state;
   const country = 'Nepal';
 
@@ -86,6 +88,7 @@ const PosPaymentPage: React.FC = () => {
   function getNearestPOS(data: any) {
     setNearestPOS(data[0]);
     setReadyToPan(true);
+    setPostId(data[0].data.pos_id);
   }
 
   function panMapToNearestPOS() {
@@ -101,22 +104,40 @@ const PosPaymentPage: React.FC = () => {
     setMapView(map);
   }
 
-  function confirmButtonHandler() {
+  function confirmButtonHandler(val: any) {
     const paramsItem: any = location.state;
-    dispatch(
-      requestForPosOrder(
-        {
-          user_id,
-          cartId: paramsItem.cartId,
-          posId: null,
-          country: selectedCountry,
-          province: selectedProvince,
-          district: selectedDistrict,
-          houseNo,
-        },
-        nextRoute
-      )
-    );
+    const posValue = val;
+    if (posValue === 'nearestPOS') {
+      dispatch(
+        requestForPosOrder(
+          {
+            user_id,
+            cartId: paramsItem.cartId,
+            posId: posId,
+            country: null,
+            province: null,
+            district: null,
+            houseNo: null,
+          },
+          nextRoute
+        )
+      );
+    } else {
+      dispatch(
+        requestForPosOrder(
+          {
+            user_id,
+            cartId: paramsItem.cartId,
+            posId: null,
+            country: selectedCountry,
+            province: selectedProvince,
+            district: selectedDistrict,
+            houseNo,
+          },
+          nextRoute
+        )
+      );
+    }
   }
 
   function nextRoute(status: any) {
@@ -163,9 +184,11 @@ const PosPaymentPage: React.FC = () => {
     if (locationType === 'nearestPOS') {
       setShowMap(true);
       setShowDesiredLocation(false);
+      setSelectedPos('nearestPOS');
     } else {
       setShowMap(false);
       setShowDesiredLocation(true);
+      setSelectedPos('customAddress');
     }
   }
 
@@ -217,7 +240,7 @@ const PosPaymentPage: React.FC = () => {
                   </IonText>
                 </div>
                 <IonRadioGroup
-                  // value="nearestPOS"
+                  value={selectedPos}
                   onIonChange={updatedPosLocation}
                 >
                   <div className="options-section1">
@@ -301,14 +324,15 @@ const PosPaymentPage: React.FC = () => {
                 <ButtonConmponent
                   buttonLabel="pos.confirm"
                   disabled={
-                    houseNo.trim() &&
-                    selectedProvince.trim() &&
-                    country &&
-                    selectedDistrict.trim()
+                    selectedPos === 'nearestPOS' ||
+                    (houseNo.trim() &&
+                      selectedProvince.trim() &&
+                      country &&
+                      selectedDistrict.trim())
                       ? false
                       : true
                   }
-                  clickHandler={confirmButtonHandler}
+                  clickHandler={() => confirmButtonHandler(selectedPos)}
                 />
               </div>
             </div>

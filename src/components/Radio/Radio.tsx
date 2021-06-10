@@ -1,11 +1,10 @@
 import React from 'react';
-import { IonItem, IonRadio, IonList, IonText } from '@ionic/react';
+import { IonItem, IonRadio, IonList, IonLabel } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import './Radio.scss';
 
 interface radioTypeProps {
   label?: any;
-  //clickHandler?: Function;
   color?: any;
   val?: string;
   showRadioButton?: Boolean;
@@ -17,37 +16,30 @@ const RadioComponent: React.FC<radioTypeProps> = ({
   val,
   showRadioButton = false,
   showColor = false,
-  //clickHandler,
-  ...props
 }) => {
-  // function handleButtonClick() {
-  //   clickHandler?.();
-  // }
   return (
-    <div className="radio-wrapper">
+    <React.Fragment>
       {showRadioButton && (
-        <IonList>
+        <IonList className="radio-wrapper">
           <IonItem lines="none" color={showColor ? '' : 'light'}>
             <IonRadio
               mode="md"
               value={val}
-              {...props}
               className={
                 showColor ? 'radio-icon-color-white' : 'radio-icon-color-blue'
               }
-              //onClick={() => handleButtonClick()}
             />
-            <IonText
+            <IonLabel
               className={
                 showColor ? 'radio-text-color-white' : 'radio-text-color-black'
               }
             >
               <Translate message={label} />
-            </IonText>
+            </IonLabel>
           </IonItem>
         </IonList>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 
