@@ -30,6 +30,7 @@ const SavingAccountPage: React.FC = () => {
   const [message, setLoadeMessage] = useState('');
   const [showDailySection, setShowDailySection] = useState(true);
   const [showMonthlySection, setShowMonthlySection] = useState(false);
+  const [selectedAccount, setSelectedAccount] = useState('daily');
   function setToggleTerms(value: boolean) {
     // eslint-disable-next-line no-console
     console.log(
@@ -75,9 +76,11 @@ const SavingAccountPage: React.FC = () => {
     if (depositType === 'daily') {
       setShowDailySection(true);
       setShowMonthlySection(false);
+      setSelectedAccount('daily');
     } else {
       setShowDailySection(false);
       setShowMonthlySection(true);
+      setSelectedAccount('monthly');
     }
   }
 
@@ -113,7 +116,10 @@ const SavingAccountPage: React.FC = () => {
                   <IonText className="section-header">
                     <Translate message="account.savingDeposit" />
                   </IonText>
-                  <IonRadioGroup onIonChange={updateDepositType}>
+                  <IonRadioGroup
+                    value={selectedAccount}
+                    onIonChange={updateDepositType}
+                  >
                     <div className="options-section1">
                       <RadioComponent
                         label="Daily Rs 100"
