@@ -45,7 +45,7 @@ const requestForProfile = (payload: any, nextRoute: Function) => {
 const requestForImageSlider = (callback: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: PROFILE_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'hold on...'));
+    dispatch(toggleLoader(true, 'Fetching details...'));
     try {
       const response = await loadImageSlider();
       if (response.status === 200 && response.data.success) {

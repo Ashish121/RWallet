@@ -6,7 +6,7 @@ import { updateToast } from './index';
 const requestForRegistration = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: REGISTRATION_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'Hold on...'));
+    dispatch(toggleLoader(true, 'Creating account...'));
     try {
       const response = await authenticationForRegister(
         payload.name,
@@ -34,6 +34,7 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         dispatch({ type: 'REGISTRATION_FAILED ' });
         dispatch(updateToast(data));
       }
+      nextRoute(true, null);
     } catch (error) {
       dispatch(toggleLoader(false));
       const data = {
