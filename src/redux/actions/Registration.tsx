@@ -3,10 +3,10 @@ import { authenticationForRegister } from '../../services/Connect';
 import { toggleLoader } from './Loader';
 import { updateToast } from './index';
 
-const requestForRegistration = (payload: any, callback: Function) => {
+const requestForRegistration = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: REGISTRATION_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'Hold on...'));
+    dispatch(toggleLoader(true, 'Creating account...'));
     try {
       const response = await authenticationForRegister(
         payload.name,
@@ -21,8 +21,9 @@ const requestForRegistration = (payload: any, callback: Function) => {
         localStorage.setItem('userId', response.data.user.id);
         localStorage.setItem('isMpinCreated', response.data.isMpin);
         dispatch(toggleLoader(false));
-        callback(response);
+        nextRoute(true, null);
       } else {
+        nextRoute(false);
         dispatch(toggleLoader(false));
         const data = {
           showToast: true,
@@ -33,6 +34,7 @@ const requestForRegistration = (payload: any, callback: Function) => {
         dispatch({ type: 'REGISTRATION_FAILED ' });
         dispatch(updateToast(data));
       }
+      nextRoute(true, null);
     } catch (error) {
       dispatch(toggleLoader(false));
       const data = {
@@ -43,6 +45,7 @@ const requestForRegistration = (payload: any, callback: Function) => {
       };
       dispatch({ type: REGISTRATION_SUCCESS, data: { status: false } });
       dispatch(updateToast(data));
+      nextRoute(false, data);
     }
   };
 };

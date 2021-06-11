@@ -211,31 +211,28 @@ const Agent: React.FC = () => {
                   />
 
                   <div className="agent-proceed-button">
-                    <div className="clear-button-for-agent">
-                      <ButtonConmponent
-                        buttonLabel="UtilityCardClear"
-                        size="block"
-                        clickHandler={handleClearButton}
-                      />
-                    </div>
-                    <div className="procced-button-for-agent">
-                      <ButtonConmponent
-                        buttonLabel="bank.proceed"
-                        size="block"
-                        disabled={
-                          selectedCountryName.trim() &&
-                          agentCode.trim() &&
-                          accountHolderName.trim() &&
-                          accountNo.trim() &&
-                          mobileNo.trim() &&
-                          amount.trim() &&
-                          remarks.trim()
-                            ? false
-                            : true
-                        }
-                        clickHandler={handleproceed}
-                      />
-                    </div>
+                    <ButtonConmponent
+                      buttonLabel="UtilityCardClear"
+                      size="block"
+                      clickHandler={handleClearButton}
+                    />
+
+                    <ButtonConmponent
+                      buttonLabel="bank.proceed"
+                      size="block"
+                      disabled={
+                        selectedCountryName.trim() &&
+                        agentCode.trim() &&
+                        accountHolderName.trim() &&
+                        accountNo.trim() &&
+                        mobileNo.trim() &&
+                        amount.trim() &&
+                        remarks.trim()
+                          ? false
+                          : true
+                      }
+                      clickHandler={handleproceed}
+                    />
                   </div>
                 </div>
               </div>

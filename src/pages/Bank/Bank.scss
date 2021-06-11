@@ -20,15 +20,16 @@
   }
 
   .bank-proceed-button {
-    float: inline;
     display: flex;
-    margin-top: 100px;
-    .clear-button-for-bank {
-      width: 70%;
-    }
-    .procced-button {
-      margin-left: 10%;
-      width: 70%;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    ion-button {
+      width: 120px;
     }
   }
 }
+

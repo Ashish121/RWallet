@@ -20,15 +20,15 @@
   }
 
   .card-payment-button-property {
-    float: inline;
     display: flex;
-    margin-top: 240px;
-    .clear-button-for-card-payment {
-      width: 70%;
-    }
-    .procced-button-for-card-payment {
-      margin-left: 10%;
-      width: 70%;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    ion-button {
+      width: 120px;
     }
   }
 }

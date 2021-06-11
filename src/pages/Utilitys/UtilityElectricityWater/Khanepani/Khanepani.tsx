@@ -96,23 +96,20 @@ const Khanepani: React.FC = () => {
                 />
 
                 <div className="Khanepani-button-property">
-                  <div className="clear-button-for-Khanepani">
-                    <ButtonConmponent
-                      buttonLabel="UtilityDiscard"
-                      size="block"
-                      clickHandler={handleDiscardButtonForKhanepani}
-                    />
-                  </div>
-                  <div className="procced-button-for-Khanepani">
-                    <ButtonConmponent
-                      buttonLabel="UtilitySubmit"
-                      size="block"
-                      disabled={
-                        customerID.trim() && placeName.trim() ? false : true
-                      }
-                      clickHandler={handleproceed}
-                    />
-                  </div>
+                  <ButtonConmponent
+                    buttonLabel="UtilityDiscard"
+                    size="block"
+                    clickHandler={handleDiscardButtonForKhanepani}
+                  />
+
+                  <ButtonConmponent
+                    buttonLabel="UtilitySubmit"
+                    size="block"
+                    disabled={
+                      customerID.trim() && placeName.trim() ? false : true
+                    }
+                    clickHandler={handleproceed}
+                  />
                 </div>
               </div>
             </div>

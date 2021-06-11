@@ -20,21 +20,15 @@
     margin-top: 60px;
 
     .royalityFinancialButton {
-      margin-top: 40px;
       display: flex;
-      .btn-elem {
-        width: 100%;
-        font-size: 14px;
-        font-weight: 500;
-        font-family: "Montserrat";
-      }
-      .royalityFinancialClearbutton {
-        float: left;
-        width: 40%;
-      }
-      .royalityFinancialSubmit {
-        margin-left: 26%;
-        width: 40%;
+      justify-content: space-around;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      right: 0;
+      ion-button {
+        width: 120px;
       }
     }
   }
