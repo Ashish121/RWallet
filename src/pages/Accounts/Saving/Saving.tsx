@@ -25,7 +25,7 @@ const SavingAccountPage: React.FC = () => {
   const dispatch = useDispatch();
   const [investment_period, setInvestmentPeriod] = useState('');
   const [amount, setAmount] = useState('');
-  const [depositType, setDepositType] = useState('');
+  const [depositType, setDepositType] = useState('daily');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoadeMessage] = useState('');
   const [showDailySection, setShowDailySection] = useState(true);

@@ -11,7 +11,7 @@ import { updateToast, toggleLoader } from './index';
 const loadCartDetails = (payload: any, callback: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: CARTDETAILS_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'loading cart items...'));
+    dispatch(toggleLoader(true, 'Loading  items...'));
     try {
       const response = await loadCartItemsDetails(payload.user_id);
       if (response.status === 200 && response.data.success) {
@@ -65,7 +65,7 @@ const loadCartDetails = (payload: any, callback: Function) => {
 const requestForUpdateCartItem = (payload: any) => {
   return async (dispatch: any) => {
     dispatch({ type: CARTDETAILS_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'updating cart item...'));
+    dispatch(toggleLoader(true, 'Updating cart item...'));
     try {
       const response = await updateCartItem(
         payload.cartItemID,
@@ -148,7 +148,7 @@ const requestForRemoveCartItem = (payload: any) => {
 const requestForAddItemToCart = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: CARTDETAILS_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'adding your item to cart...'));
+    dispatch(toggleLoader(true, 'Adding your item to cart...'));
     try {
       const response = await addNewItemToCart(
         payload.user_id,
