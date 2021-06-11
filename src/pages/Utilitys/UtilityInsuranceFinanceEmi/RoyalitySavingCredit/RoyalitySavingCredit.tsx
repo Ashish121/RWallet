@@ -183,31 +183,27 @@ const RoyalitySavingCredit: React.FC = () => {
                   clearInput={true}
                 />
                 <div className="royalitySavingButton">
-                  <div className="royalitySavingClear-button">
-                    <ButtonConmponent
-                      buttonLabel="UtilityCardClear"
-                      size="block"
-                      clickHandler={handleClearButtonForSaving}
-                    />
-                  </div>
+                  <ButtonConmponent
+                    buttonLabel="UtilityCardClear"
+                    size="block"
+                    clickHandler={handleClearButtonForSaving}
+                  />
 
-                  <div className="royalitySaving-submit">
-                    <ButtonConmponent
-                      buttonLabel="UtilityConfirm"
-                      size="block"
-                      disabled={
-                        accountNumber.trim() &&
-                        memberName.trim() &&
-                        mobileNo.trim() &&
-                        transType.trim() &&
-                        savingAmount.trim() &&
-                        remarks.trim()
-                          ? false
-                          : true
-                      }
-                      clickHandler={handleproceed}
-                    />
-                  </div>
+                  <ButtonConmponent
+                    buttonLabel="UtilityConfirm"
+                    size="block"
+                    disabled={
+                      accountNumber.trim() &&
+                      memberName.trim() &&
+                      mobileNo.trim() &&
+                      transType.trim() &&
+                      savingAmount.trim() &&
+                      remarks.trim()
+                        ? false
+                        : true
+                    }
+                    clickHandler={handleproceed}
+                  />
                 </div>
               </div>
             </div>

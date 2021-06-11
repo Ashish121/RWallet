@@ -197,30 +197,27 @@ const Bank: React.FC = () => {
                   />
 
                   <div className="bank-proceed-button">
-                    <div className="clear-button-for-bank">
-                      <ButtonConmponent
-                        buttonLabel="UtilityCardClear"
-                        size="block"
-                        clickHandler={handleClearButton}
-                      />
-                    </div>
-                    <div className="procced-button">
-                      <ButtonConmponent
-                        buttonLabel="bank.proceed"
-                        size="block"
-                        disabled={
-                          selectedBankName.trim() &&
-                          holderName.trim() &&
-                          accountNumber.trim() &&
-                          mobileNo.trim() &&
-                          amount.trim() &&
-                          remarks.trim()
-                            ? false
-                            : true
-                        }
-                        clickHandler={handleproceed}
-                      />
-                    </div>
+                    <ButtonConmponent
+                      buttonLabel="UtilityCardClear"
+                      size="block"
+                      clickHandler={handleClearButton}
+                    />
+
+                    <ButtonConmponent
+                      buttonLabel="bank.proceed"
+                      size="block"
+                      disabled={
+                        selectedBankName.trim() &&
+                        holderName.trim() &&
+                        accountNumber.trim() &&
+                        mobileNo.trim() &&
+                        amount.trim() &&
+                        remarks.trim()
+                          ? false
+                          : true
+                      }
+                      clickHandler={handleproceed}
+                    />
                   </div>
                 </div>
               </div>

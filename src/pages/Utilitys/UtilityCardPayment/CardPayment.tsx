@@ -148,27 +148,24 @@ const CardPayment: React.FC = () => {
                   clearInput={true}
                 />
                 <div className="card-payment-button-property">
-                  <div className="clear-button-for-card-payment">
-                    <ButtonConmponent
-                      buttonLabel="UtilityCardClear"
-                      size="block"
-                      clickHandler={handleClearButtonForCard}
-                    />
-                  </div>
-                  <div className="procced-button-for-card-payment">
-                    <ButtonConmponent
-                      buttonLabel="UtilityConfirm"
-                      size="block"
-                      disabled={
-                        amount.trim() &&
-                        selectedBankName.trim() &&
-                        cardNumber.trim()
-                          ? false
-                          : true
-                      }
-                      clickHandler={handleproceed}
-                    />
-                  </div>
+                  <ButtonConmponent
+                    buttonLabel="UtilityCardClear"
+                    size="block"
+                    clickHandler={handleClearButtonForCard}
+                  />
+
+                  <ButtonConmponent
+                    buttonLabel="UtilityConfirm"
+                    size="block"
+                    disabled={
+                      amount.trim() &&
+                      selectedBankName.trim() &&
+                      cardNumber.trim()
+                        ? false
+                        : true
+                    }
+                    clickHandler={handleproceed}
+                  />
                 </div>
               </div>
             </div>

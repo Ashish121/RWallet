@@ -180,30 +180,27 @@ const RoyalityFinancialServices: React.FC = () => {
                   clearInput={true}
                 />
                 <div className="royalityFinancialButton">
-                  <div className="royalityFinancialClearbutton">
-                    <ButtonConmponent
-                      buttonLabel="ClearSaving"
-                      size="block"
-                      clickHandler={handleClearButtonForFinance}
-                    />
-                  </div>
-                  <div className="royalityFinancialSubmit">
-                    <ButtonConmponent
-                      buttonLabel="ConfirmSaving"
-                      size="block"
-                      disabled={
-                        accountNumber.trim() &&
-                        memberName.trim() &&
-                        mobileNo.trim() &&
-                        transType.trim() &&
-                        savingAmount.trim() &&
-                        remarks.trim()
-                          ? false
-                          : true
-                      }
-                      clickHandler={handleproceed}
-                    />
-                  </div>
+                  <ButtonConmponent
+                    buttonLabel="ClearSaving"
+                    size="block"
+                    clickHandler={handleClearButtonForFinance}
+                  />
+
+                  <ButtonConmponent
+                    buttonLabel="ConfirmSaving"
+                    size="block"
+                    disabled={
+                      accountNumber.trim() &&
+                      memberName.trim() &&
+                      mobileNo.trim() &&
+                      transType.trim() &&
+                      savingAmount.trim() &&
+                      remarks.trim()
+                        ? false
+                        : true
+                    }
+                    clickHandler={handleproceed}
+                  />
                 </div>
               </div>
             </div>

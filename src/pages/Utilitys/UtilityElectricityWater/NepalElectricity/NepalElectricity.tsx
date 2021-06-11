@@ -115,27 +115,21 @@ const NepalElectricity: React.FC = () => {
                 />
 
                 <div className="electricity-proceed-button">
-                  <div className="clear-button-for-electricity">
-                    <ButtonConmponent
-                      buttonLabel="UtilityDiscard"
-                      size="block"
-                      clickHandler={handleDiscardButtonForElectricity}
-                    />
-                  </div>
-                  <div className="procced-button-for-electricity">
-                    <ButtonConmponent
-                      buttonLabel="UtilitySubmit"
-                      size="block"
-                      disabled={
-                        neaCounter.trim() &&
-                        scNumber.trim() &&
-                        customerID.trim()
-                          ? false
-                          : true
-                      }
-                      clickHandler={handleproceed}
-                    />
-                  </div>
+                  <ButtonConmponent
+                    buttonLabel="UtilityDiscard"
+                    size="block"
+                    clickHandler={handleDiscardButtonForElectricity}
+                  />
+                  <ButtonConmponent
+                    buttonLabel="UtilitySubmit"
+                    size="block"
+                    disabled={
+                      neaCounter.trim() && scNumber.trim() && customerID.trim()
+                        ? false
+                        : true
+                    }
+                    clickHandler={handleproceed}
+                  />
                 </div>
               </div>
             </div>
