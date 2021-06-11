@@ -25,7 +25,7 @@ const RadioComponent: React.FC<radioTypeProps> = ({
             <IonRadio
               mode="md"
               value={val}
-              color={showColor ? 'light' : 'primary'}
+              color={showColor ? 'light' : 'dark'}
             />
             <IonLabel
               color={showColor ? 'light' : 'dark'}
