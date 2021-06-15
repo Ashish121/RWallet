@@ -25,14 +25,11 @@ const RadioComponent: React.FC<radioTypeProps> = ({
             <IonRadio
               mode="md"
               value={val}
-              className={
-                showColor ? 'radio-icon-color-white' : 'radio-icon-color-blue'
-              }
+              color={showColor ? 'light' : 'dark'}
             />
             <IonLabel
-              className={
-                showColor ? 'radio-text-color-white' : 'radio-text-color-black'
-              }
+              color={showColor ? 'light' : 'dark'}
+              style={{ marginLeft: '10px' }}
             >
               <Translate message={label} />
             </IonLabel>

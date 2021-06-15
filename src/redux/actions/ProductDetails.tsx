@@ -41,7 +41,7 @@ const loadProductDetailsList = (payload: any, callback: Function) => {
 const requestForSearchItem = (payload: any, callback: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: PRODUCTLIST_SUCCESS, data: { status: true } });
-    dispatch(toggleLoader(true, 'searching items...'));
+    dispatch(toggleLoader(true, 'Searching items...'));
     try {
       const response = await loadSearchItemDetails(payload.searchString);
       if (response.status === 200 && response.data.success) {

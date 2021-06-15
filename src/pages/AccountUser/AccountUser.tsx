@@ -127,10 +127,11 @@ const AccountUser: React.FC<any> = () => {
     setLoadeStatus(false);
     setLoaderText('');
     const getAccountType = localStorage.getItem('accountType');
+    const isAccountTypes = localStorage.getItem('isAccountType');
     if (status) {
       localStorage.setItem('userFilledAccountDetails', 'true');
 
-      if (getAccountType === 'false') {
+      if (getAccountType === 'false' || isAccountTypes === 'false') {
         history.replace('/accountpage');
         return;
       } else {

@@ -20,6 +20,7 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         localStorage.setItem('loginDetails', JSON.stringify(response));
         localStorage.setItem('userId', response.data.user.id);
         localStorage.setItem('isMpinCreated', response.data.isMpin);
+        localStorage.setItem('isAccountType', response.data.is_account_type);
         dispatch(toggleLoader(false));
         nextRoute(true, null);
       } else {

@@ -102,13 +102,13 @@ const localLevelName = (callback: Function, id: any) => {
     }
   };
 };
-const updateUserDetails = (payload: any, callback: Function) => {
+const updateUserDetails = (payload: any, nextRoute: Function) => {
   return async (dispatch: any) => {
     try {
       const response = await updateUserAccountDetails(payload);
       if (response.status === 200 && response.data.success) {
         localStorage.setItem('userUpdated', JSON.stringify(response));
-        callback(true);
+        nextRoute(true);
       } else {
         const data = {
           showToast: true,
@@ -118,10 +118,11 @@ const updateUserDetails = (payload: any, callback: Function) => {
         };
         dispatch({ type: 'INITIAL_DATA_FAILED' });
         dispatch(updateToast(data));
+        nextRoute(false);
       }
-      //
     } catch (error) {
-      callback(false);
+      nextRoute(false);
+
       const data = {
         showToast: true,
         toastMessage: 'API failed',
