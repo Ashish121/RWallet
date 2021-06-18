@@ -46,7 +46,7 @@ const loadCartDetails = (payload: any, callback: Function) => {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -90,7 +90,7 @@ const requestForUpdateCartItem = (payload: any) => {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -130,7 +130,7 @@ const requestForRemoveCartItem = (payload: any) => {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -178,7 +178,7 @@ const requestForAddItemToCart = (payload: any, nextRoute: Function) => {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -229,7 +229,7 @@ const requestForRating = (payload: any) => {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };

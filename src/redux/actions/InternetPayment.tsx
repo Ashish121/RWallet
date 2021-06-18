@@ -31,7 +31,7 @@ const requestForInternetPayment = (payload: any, nextRoute: Function) => {
       nextRoute(false);
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };

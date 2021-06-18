@@ -6,7 +6,11 @@
   "webDir": "build",
   "plugins": {
     "PushNotifications": {
-      "PresentationOptions": ["badge", "sound", "alert"]
+      "PresentationOptions": [
+        "badge",
+        "sound",
+        "alert"
+      ]
     },
     "cordova": {}
   }

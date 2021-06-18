@@ -36,7 +36,6 @@ const HomePage: React.FC = () => {
   const [showHomePage, setShowHomePage] = useState(true);
   const [slider, setSlider] = useState([]);
   const profileInfo = useSelector((state: any) => state.profile.profileDetails);
-
   function nextRoute(status: any) {
     if (status) {
       const getAccountType = localStorage.getItem('createdAccountType');
@@ -52,12 +51,9 @@ const HomePage: React.FC = () => {
   }
 
   useEffect(() => {
-    dispatch(requestForImageSlider(showImageSliderList));
-  }, []);
-
-  useEffect(() => {
     const user_id = localStorage.getItem('userId');
     dispatch(requestForProfile({ user_id }, nextRoute));
+    dispatch(requestForImageSlider(showImageSliderList));
   }, []);
 
   const toggleExpandOptions = () => {
@@ -65,14 +61,13 @@ const HomePage: React.FC = () => {
   };
 
   const showNotifications = () => {
-    history.replace('/tabs/notification');
+    history.push('/tabs/notification');
   };
 
   function showImageSliderList(res: any) {
     const imgUrl = res.data.data;
     setSlider(imgUrl);
   }
-
   return (
     <>
       <LoaderComponent

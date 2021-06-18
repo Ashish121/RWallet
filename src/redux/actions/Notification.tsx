@@ -4,8 +4,8 @@ import { updateToast, toggleLoader } from './index';
 
 const RequestForUpdateDeviceToken = (payload: any) => {
   return async (dispatch: any) => {
-    dispatch({ type: NOTIFICATION_SUCCESS, data: { status: true } });
-    //dispatch(toggleLoader(true, "updating token..."));
+    // dispatch({ type: NOTIFICATION_SUCCESS, data: { status: true } });
+    // dispatch(toggleLoader(true, "Hold"));
     try {
       const response = await updateDeviceToken(
         payload.user_id,
@@ -16,20 +16,20 @@ const RequestForUpdateDeviceToken = (payload: any) => {
         dispatch(toggleLoader(false));
       } else {
         dispatch(toggleLoader(false));
-        const data = {
-          showToast: true,
-          toastMessage: '',
-          position: 'top',
-          duration: '10000',
-        };
-        dispatch({ type: 'NOTIFICATION_FAILED' });
-        dispatch(updateToast(data));
+        // const data = {
+        //   showToast: true,
+        //   toastMessage: '',
+        //   position: 'top',
+        //   duration: '10000',
+        // };
+        // dispatch({ type: 'NOTIFICATION_FAILED' });
+        // dispatch(updateToast(data));
       }
     } catch (error) {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };

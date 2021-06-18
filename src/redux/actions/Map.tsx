@@ -13,7 +13,7 @@ const loadPOSDetails = (callback: Function) => {
     } catch (error) {
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -58,7 +58,7 @@ const requestForPosOrder = (payload: any, nextRoute: Function) => {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };

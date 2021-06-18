@@ -29,7 +29,7 @@ const requestForResetPassword = (payload: any, nextRoute: Function) => {
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };

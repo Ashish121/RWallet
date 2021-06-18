@@ -31,7 +31,7 @@ const fetchdistrictByProvince = (callback: Function, id: any) => {
     } catch (error) {
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -62,7 +62,7 @@ const loadProvince = (callback: Function) => {
     } catch (error) {
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -93,7 +93,7 @@ const localLevelName = (callback: Function, id: any) => {
     } catch (error) {
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -125,7 +125,7 @@ const updateUserDetails = (payload: any, nextRoute: Function) => {
 
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
