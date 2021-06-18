@@ -30,7 +30,7 @@ const ConfirmPage: React.FC = () => {
     dispatch(requestForLogout(nextRoute));
   }
   function nextRoute() {
-    history.replace('/');
+    history.replace('/login');
     localStorage.clear();
   }
   return (
