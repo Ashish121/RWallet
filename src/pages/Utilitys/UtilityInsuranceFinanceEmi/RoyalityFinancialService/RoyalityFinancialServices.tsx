@@ -64,7 +64,9 @@ const RoyalityFinancialServices: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      alert('finance payment successfully completed');
+      alert(
+        'Your payment successfully completed for Royality financial services and investment Pvt.Ltd.'
+      );
       history.replace('/tabs/home');
       return;
     }

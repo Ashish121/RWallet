@@ -111,8 +111,11 @@ const ShoppingPage: React.FC = () => {
   const handleSearchItem = debounce((e: any) => {
     setShowSearchData(true);
     setSearchString(e.detail.value);
-    if (searchString.length > 0) {
-      dispatch(requestForSearchItem({ searchString }, ShowSearchItemList));
+    const searchItem = e.detail.value;
+    const val = searchItem.trim();
+
+    if (val.length > 0 && val !== null) {
+      dispatch(requestForSearchItem({ searchString: val }, ShowSearchItemList));
     }
   }, 500);
 

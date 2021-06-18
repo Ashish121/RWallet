@@ -80,6 +80,20 @@ const BusOneWay: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      if (Number(travelers) === 1) {
+        alert(
+          'Congratulations! Your Bus booking is successfully done for ' +
+            travelers +
+            ' member.'
+        );
+      } else {
+        alert(
+          'Congratulations! Your Bus booking is successfully done for ' +
+            travelers +
+            ' member\'s.'
+        );
+      }
+
       history.replace('/tabs/home');
       return;
     }

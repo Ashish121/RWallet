@@ -60,7 +60,9 @@ const RoyalitySavingCredit: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      alert('finance payment successfully completed');
+      alert(
+        'Your payment successfully completed for Royality saving and credit co-operative Ltd'
+      );
       history.replace('/tabs/home');
       return;
     }

@@ -1085,23 +1085,6 @@ export const createPOSOrder = async (
 };
 
 /**
- * loading policy data
- * @returns
- */
-export const loadingPolicyData = async (): Promise<any> => {
-  const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/policy_data',
-
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  return result;
-};
-
-/**
  * update device token
  * @param user_id
  * @param pushToken

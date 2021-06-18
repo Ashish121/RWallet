@@ -16,7 +16,7 @@ const requestForCreditCardPayment = (payload: any, nextRoute: Function) => {
       );
       if (response.status === 200 && response.data.success) {
         dispatch({ type: CARD_PAYMENT_SUCCESS, data: response.data });
-        nextRoute(true);
+        nextRoute(true, response.data);
       } else {
         const data = {
           showToast: true,

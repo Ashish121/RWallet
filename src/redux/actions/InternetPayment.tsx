@@ -15,7 +15,7 @@ const requestForInternetPayment = (payload: any, nextRoute: Function) => {
       if (response.status === 200 && response.data.success) {
         dispatch({ type: INTERNET_PAYMENT_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
-        nextRoute(true);
+        nextRoute(true, response.data);
       } else {
         const data = {
           showToast: true,

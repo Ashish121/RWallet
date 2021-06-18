@@ -39,6 +39,7 @@ const Khanepani: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      alert('The water bill has been successfully submitted.');
       history.replace('/tabs/home');
       return;
     }
