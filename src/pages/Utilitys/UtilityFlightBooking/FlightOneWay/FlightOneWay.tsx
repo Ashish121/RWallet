@@ -79,6 +79,11 @@ const FlightOneWay: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      alert(
+        'Congratulations! Your flight booking is successfully done for a ' +
+          classForFlight +
+          ' class.'
+      );
       history.replace('/tabs/home');
       return;
     }

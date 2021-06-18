@@ -15,7 +15,7 @@ const requestForTopUpRecharge = (payload: any, nextRoute: Function) => {
       if (response.status === 200 && response.data.success) {
         dispatch({ type: TOP_UP_SUCCESS, data: response.data });
         localStorage.setItem('userCreatedAccount', 'true');
-        nextRoute(true);
+        nextRoute(true, response.data);
       } else {
         nextRoute(false);
         const data = {

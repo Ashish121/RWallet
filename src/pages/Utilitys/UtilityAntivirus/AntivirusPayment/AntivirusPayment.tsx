@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../../i18n/formatMessages';
 import { requestForAntivirusPayment } from '../../../../redux/actions';
@@ -8,7 +8,6 @@ import {
   ButtonConmponent,
   HeaderComponent,
   LoaderComponent,
-  SelectMenu,
 } from '../../../../components';
 import './AntivirusPayment.scss';
 
@@ -21,8 +20,10 @@ const AntivirusPayment: React.FC = () => {
   const [user_id, setUser_id] = useState('');
   const [brandName, setBrandName] = useState('');
   const [planName, setPlanName] = useState('');
-  const [accountType, setAccountType] = useState('');
-  const [accountDetails, setAccountTypeDetails] = useState([{}]);
+
+  const profileFields = useSelector(
+    (state: any) => state.profile.profileDetails
+  );
 
   useEffect(() => {
     const params: any = location.state;
@@ -34,31 +35,19 @@ const AntivirusPayment: React.FC = () => {
     setPlanName(planName);
   }, []);
 
-  useEffect(() => {
-    const array = [
-      {
-        value: 'saving',
-        label: 'Saving Account',
-      },
-      {
-        value: 'current',
-        label: 'Current Account',
-      },
-      {
-        value: 'fixed',
-        label: 'Fixed Account',
-      },
-    ];
-
-    setAccountTypeDetails(array);
-  }, []);
-
-  function nextRoute(status: any) {
+  function nextRoute(status: any, data: any) {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      alert(
+        'Congratulations! Your Antivirus plan is successfully completed for ' +
+          data.data.brand_name +
+          ' brand.'
+      );
+
       history.replace('/tabs/home');
-      alert('payment successfully completed');
+      // alert("Antivirus payment successfully completed ");
+
       return;
     }
   }
@@ -68,7 +57,12 @@ const AntivirusPayment: React.FC = () => {
     setLoaderMessage('Please Wait...');
     dispatch(
       requestForAntivirusPayment(
-        { user_id, brandName, planName, accountType },
+        {
+          user_id,
+          brandName,
+          planName,
+          accountType: profileFields.account_type,
+        },
         nextRoute
       )
     );
@@ -78,9 +72,6 @@ const AntivirusPayment: React.FC = () => {
     history.replace('/tabs/antivirus');
   }
 
-  function updateAccountType(accountType: any) {
-    setAccountType(accountType);
-  }
   return (
     <>
       <LoaderComponent
@@ -100,11 +91,13 @@ const AntivirusPayment: React.FC = () => {
                 <Translate message="AntivirusPaymentOption" />
               </IonText>
               <div className="antivirus-payment-wrapper">
-                <SelectMenu
-                  label="AntivirusSelectBank"
-                  onSelect={updateAccountType}
-                  array={accountDetails}
-                />
+                <div className="AntivirusPayment-account">
+                  <IonText className="antivirus-payment-spersky">
+                    {profileFields.account_type}
+                    <Translate message=" Account" />
+                  </IonText>
+                </div>
+
                 <div className="AntivirusPayment-OrderDetails">
                   <IonText className="antivirus-payment-spersky">
                     <Translate message="AntivirusOrderDetails" />

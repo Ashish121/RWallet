@@ -42,11 +42,15 @@ const CardPayment: React.FC = () => {
     setCardNumber(cardNumber);
   }
 
-  function nextRoute(status: any) {
+  function nextRoute(status: any, data: any) {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      alert('card payment successfully completed');
+      alert(
+        'Your card payment is successfully completed for ' +
+          data.data.bank_name +
+          '.'
+      );
       history.replace('/tabs/home');
       return;
     }

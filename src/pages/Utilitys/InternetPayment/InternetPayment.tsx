@@ -73,11 +73,15 @@ const InternetPayment: React.FC = () => {
     setAccordionDetails(data);
   }, []);
 
-  function nextRoute(status: any) {
+  function nextRoute(status: any, data: any) {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
-      alert('Internet recharge successfully completed');
+      alert(
+        'Congratulations! Your Internet recharge plan is successfully completed for ' +
+          data.data.company_name +
+          '.'
+      );
       history.replace('/tabs/home');
       return;
     }

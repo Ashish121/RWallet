@@ -13,7 +13,6 @@ const TopUpRecharge: React.FC = () => {
   const dispatch = useDispatch();
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
-
   const [accordionDetails, setAccordionDetails] = useState([{}]);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -123,15 +122,20 @@ const TopUpRecharge: React.FC = () => {
     setAccordionDetails(data);
   }, []);
 
-  function nextRoute(status: any) {
+  function nextRoute(status: any, data: any) {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      alert(
+        'Congratulations! Your ' +
+          data.data.company_name +
+          ' recharge plan is successfully completed.'
+      );
       history.replace('/tabs/home');
-      alert('recharge successfully completed');
       return;
     }
   }
+
   function getReachargeDetails(data: any) {
     setShowLoading(true);
     setLoaderMessage('Please Wait...');

@@ -25,6 +25,13 @@
       color: #ffffff;
       margin-left: 0%;
     }
+
+    .AntivirusPayment-account {
+      width: 320px;
+      border: 2px solid white;
+      padding: 15px;
+      color: #ffffff;
+    }
   }
   .AntivirusPayment-spersky {
     font-style: normal;
@@ -33,10 +40,12 @@
     margin-left: 0px;
     font-size: 12px;
     line-height: 15px;
-    /* identical to box height */
     color: #ffffff;
   }
   .antivirus-confirm-button {
-    margin-top: 240px;
+    bottom: 0;
+    position: absolute;
+    right: 10px;
+    left: 10px;
   }
 }

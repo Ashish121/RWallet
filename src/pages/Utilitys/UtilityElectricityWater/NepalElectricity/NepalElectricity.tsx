@@ -47,6 +47,7 @@ const NepalElectricity: React.FC = () => {
     setShowLoading(false);
     setLoaderMessage('');
     if (status) {
+      alert('The electricity bill has been successfully submitted.');
       history.replace('/tabs/home');
       return;
     }

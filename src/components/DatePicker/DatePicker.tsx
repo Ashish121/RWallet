@@ -10,6 +10,7 @@ const DatePickerComponent: React.FC<{
   handler?: Function;
 }> = ({ placeholder, handler }) => {
   const [selectedDate, setSelectedDate] = useState<string>('');
+  const lastDateString = new Date().toISOString();
 
   function handleDate(date: any) {
     setSelectedDate(date);
@@ -24,9 +25,9 @@ const DatePickerComponent: React.FC<{
           </IonLabel>
           <IonDatetime
             style={{ color: '#ffffff' }}
-            //displayFormat="MMM DD YYYY"
             displayFormat="MM/DD/YYYY"
-            min="1970-06-04"
+            //min="1970-06-04"
+            min={lastDateString}
             value={selectedDate}
             onIonChange={(e) => handleDate(e.detail.value!)}
           ></IonDatetime>
