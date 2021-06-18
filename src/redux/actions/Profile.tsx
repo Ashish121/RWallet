@@ -32,7 +32,7 @@ const requestForProfile = (payload: any, nextRoute: Function) => {
       nextRoute(false);
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -68,7 +68,7 @@ const requestForImageSlider = (callback: Function) => {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -104,7 +104,7 @@ const requestForPrivacyAndPolicy = (callback: Function) => {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };

@@ -1,19 +1,15 @@
-// import React, { useEffect } from "react";
-import { useDispatch } from 'react-redux';
 import {
   Plugins,
   PushNotification,
   PushNotificationToken,
   PushNotificationActionPerformed,
 } from '@capacitor/core';
-import { updateToast, RequestForUpdateDeviceToken } from '../redux/actions';
+import { useHistory } from 'react-router-dom';
 
 function useNotificationService() {
-  const { PushNotifications } = Plugins;
-  const dispatch = useDispatch();
-  const user_id = localStorage.getItem('userId');
-
-  const askPushPermission = () => {
+  const { PushNotifications, LocalNotifications } = Plugins;
+  const history = useHistory();
+  const askPushPermission = (callback: Function) => {
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
     // Android will just grant without prompting
@@ -21,65 +17,55 @@ function useNotificationService() {
       if (result.granted) {
         // setInitializing(true);
         PushNotifications.register();
-        registerListener();
-      } else {
-        const data = {
-          showToast: true,
-          toastMessage: 'Access deneid',
-          position: 'top',
-          duration: '10000',
-        };
-        dispatch(updateToast(data));
+        registerListener(callback);
       }
     });
   };
 
-  const registerListener = () => {
+  const registerListener = (callback: Function) => {
     // On success, we should be able to receive notifications
     PushNotifications.addListener(
       'registration',
       (token: PushNotificationToken) => {
         //pass token to notification token API
-
-        // const token = localStorage.getItem("token");
-        dispatch(RequestForUpdateDeviceToken({ user_id, pushToken: token }));
-        // eslint-disable-next-line no-console
-        console.log(
-          '🚀 ~ file: Home.tsx ~ line 84 ~ registerListener ~ token',
-          token
-        );
+        callback?.(JSON.stringify(token));
       }
     );
     // Some issue with our setup and push will not work
     PushNotifications.addListener('registrationError', (error: any) => {
       // eslint-disable-next-line no-console
-      console.log(
-        '🚀 ~ file: Home.tsx ~ line 95 ~ PushNotifications.addListener ~ error',
-        error
-      );
+      console.log(error);
+      alert('Notification registration is failed');
     });
     PushNotifications.addListener(
       'pushNotificationReceived',
       (notification: PushNotification) => {
-        // eslint-disable-next-line no-console
-        console.log(
-          '🚀 ~ file: Home.tsx ~ line 101 ~ registerListener ~ notification',
-          notification
-        );
+        scheduleLocalNotification(notification);
       }
     );
     PushNotifications.addListener(
       'pushNotificationActionPerformed',
       (notification: PushNotificationActionPerformed) => {
         // eslint-disable-next-line no-console
-        console.log(
-          '🚀 ~ file: Home.tsx ~ line 108 ~ registerListener ~ notification',
-          notification
-        );
+        console.log(notification);
+        history.replace('/tabs/notification');
       }
     );
-    // setInitializing(false);
   };
+
+  async function scheduleLocalNotification(notification: any) {
+    const data = notification.data?.aps.alert;
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          title: data.title,
+          body: data.body,
+          id: 1,
+          extra: null,
+        },
+      ],
+    });
+  }
   return {
     askPushPermission,
     registerListener,

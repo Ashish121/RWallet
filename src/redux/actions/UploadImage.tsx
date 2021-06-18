@@ -20,7 +20,7 @@ const reuestUpload = (userId: any, imageString: any, callback: Function) => {
     } catch (error) {
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };

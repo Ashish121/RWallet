@@ -13,7 +13,7 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
         localStorage.setItem('loginDetails', JSON.stringify(response));
         localStorage.setItem('userId', response.data.user.id);
         localStorage.setItem('isMpinCreated', response.data.isMpin);
-        
+
         localStorage.setItem('accountType', response.data.is_account_type);
         localStorage.setItem('userDetail', response.data.is_user_detail);
 
@@ -34,7 +34,7 @@ const requestForLogin = (payload: any, nextRoute: Function) => {
       dispatch({ type: 'AUTHENTICATION_COMPLETED' });
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };
@@ -65,7 +65,7 @@ const requestForLogout = (nextRoute: Function) => {
       dispatch(toggleLoader(false));
       const data = {
         showToast: true,
-        toastMessage: 'API failed',
+        toastMessage: 'Network error',
         position: 'top',
         duration: '10000',
       };

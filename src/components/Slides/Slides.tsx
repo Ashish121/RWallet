@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { IonSlides, IonSlide, IonCard, IonCardContent } from '@ionic/react';
 
 // Optional parameters to pass to the swiper instance.
@@ -16,18 +16,11 @@ const slideOpts = {
 };
 
 const SlidesComponent: React.FC<sliderProps> = ({ value, showSlider }) => {
-  const [slider, setSlider] = useState([{}]);
-
-  useEffect(() => {
-    const param = value;
-    setSlider(param);
-  });
-
   return (
     <div className="slider-component-wrapper">
       {showSlider ? (
         <IonSlides pager={true} options={slideOpts}>
-          {slider.map((item: any, index: any) => {
+          {value.map((item: any, index: any) => {
             return (
               <IonSlide key={index}>
                 <IonCard>
