@@ -36,6 +36,9 @@ const OtpPage: React.FC = () => {
   const [backNavigationPage, setBackNavigation] = useState(null);
   const notification = useNotificationService();
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/reset');
+  }, []);
+  useEffect(() => {
     let userDetails: any;
     const params: any = location.state;
     const backNavigation = params.backNavigation || null;
