@@ -713,7 +713,7 @@ export const fetchPOSDetails = async (): Promise<any> => {
 
 export const loadProfile = async (user_id: string): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/profile_fetch',
+    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/home_page',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -994,23 +994,6 @@ export const loadSearchItemDetails = async (
     data: JSON.stringify({
       search_string: searchString,
     }),
-  });
-
-  return result;
-};
-
-/**
- * loading images
- * @returns
- */
-export const loadImageSlider = async (): Promise<any> => {
-  const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/slider_data',
-
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json',
-    },
   });
 
   return result;
