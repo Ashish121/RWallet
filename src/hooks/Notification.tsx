@@ -4,11 +4,11 @@ import {
   PushNotificationToken,
   PushNotificationActionPerformed,
 } from '@capacitor/core';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from "react-router-dom";
 
 function useNotificationService() {
   const { PushNotifications, LocalNotifications } = Plugins;
-  const history = useHistory();
+  // const history = useHistory();
   const askPushPermission = (callback: Function) => {
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
@@ -35,7 +35,6 @@ function useNotificationService() {
     PushNotifications.addListener('registrationError', (error: any) => {
       // eslint-disable-next-line no-console
       console.log(error);
-      alert('Notification registration is failed');
     });
     PushNotifications.addListener(
       'pushNotificationReceived',
@@ -48,7 +47,7 @@ function useNotificationService() {
       (notification: PushNotificationActionPerformed) => {
         // eslint-disable-next-line no-console
         console.log(notification);
-        history.replace('/tabs/notification');
+        // history.replace('/tabs/notification');
       }
     );
   };
