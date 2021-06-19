@@ -240,7 +240,9 @@ const SavingAccountPage: React.FC = () => {
                   <ButtonConmponent
                     buttonLabel="account.openAccount"
                     size="block"
-                    disabled={amount.trim() ? false : true}
+                    disabled={
+                      amount.trim() && investment_period.trim() ? false : true
+                    }
                     clickHandler={navigateToConfirm}
                   />
                 </div>

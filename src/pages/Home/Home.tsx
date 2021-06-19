@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { CloseBarIcon } from '../../assets/Icons';
 
 import {
@@ -24,7 +24,7 @@ import {
   UtilitiesSection,
   LoaderComponent,
 } from '../../components';
-import { requestForProfile, requestForImageSlider } from '../../redux/actions/';
+import { requestForProfile } from '../../redux/actions/';
 import './Home.scss';
 import { Translate } from '../../i18n/formatMessages';
 
@@ -32,14 +32,16 @@ const HomePage: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [expandOptions, setExpandOptions] = useState(false);
-  // const [initializing, setInitializing] = useState(false);
   const [showHomePage, setShowHomePage] = useState(true);
   const [slider, setSlider] = useState([]);
-  const profileInfo = useSelector((state: any) => state.profile.profileDetails);
-  function nextRoute(status: any) {
-    if (status) {
-      const getAccountType = localStorage.getItem('createdAccountType');
+  const balance = localStorage.getItem('balance');
 
+  function nextRoute(status: any, data: any) {
+    const imgUrl = data.user.slider_detail;
+    setSlider(imgUrl);
+
+    const getAccountType = localStorage.getItem('createdAccountType');
+    if (status) {
       if (getAccountType === 'Fixed') {
         setShowHomePage(false);
         return;
@@ -53,7 +55,6 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const user_id = localStorage.getItem('userId');
     dispatch(requestForProfile({ user_id }, nextRoute));
-    dispatch(requestForImageSlider(showImageSliderList));
   }, []);
 
   const toggleExpandOptions = () => {
@@ -64,17 +65,9 @@ const HomePage: React.FC = () => {
     history.push('/tabs/notification');
   };
 
-  function showImageSliderList(res: any) {
-    const imgUrl = res.data.data;
-    setSlider(imgUrl);
-  }
   return (
     <>
-      <LoaderComponent
-        //showLoading={initializing}
-        showLoading={false}
-        loaderMessage={'Preparing...'}
-      />
+      <LoaderComponent showLoading={false} loaderMessage={'Preparing...'} />
       <IonApp className="home-wrapper">
         <IonPage>
           <HeaderComponent
@@ -121,7 +114,7 @@ const HomePage: React.FC = () => {
                       className="balance-wrapper-text"
                       style={{ color: '#ffffff' }}
                     >
-                      {profileInfo.balance}
+                      {balance}
                     </IonText>
                   </div>
                 </div>
