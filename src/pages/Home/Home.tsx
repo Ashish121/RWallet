@@ -36,6 +36,11 @@ const HomePage: React.FC = () => {
   const [slider, setSlider] = useState([]);
   const balance = localStorage.getItem('balance');
 
+  //if we click back button on device it will reach login page
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/login');
+  }, []);
+
   function nextRoute(status: any, data: any) {
     const imgUrl = data.user.slider_detail;
     setSlider(imgUrl);

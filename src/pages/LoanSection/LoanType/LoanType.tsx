@@ -12,11 +12,15 @@ import {
 const LoanType: React.FC = () => {
   const history = useHistory();
   const location = useLocation();
+  const [accordionDetails, setAccordionDetails] = useState([{}]);
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs');
+  }, []);
 
   function handleEMIcal() {
     history.replace('/tabs/emiCalculater');
   }
-  const [accordionDetails, setAccordionDetails] = useState([{}]);
 
   useEffect(() => {
     const params: any = location.state;

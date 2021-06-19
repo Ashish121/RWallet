@@ -26,6 +26,10 @@ const AntivirusPayment: React.FC = () => {
   );
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/antivirus');
+  }, []);
+
+  useEffect(() => {
     const params: any = location.state;
     const user_id = params.data.user_id;
     setUser_id(user_id);

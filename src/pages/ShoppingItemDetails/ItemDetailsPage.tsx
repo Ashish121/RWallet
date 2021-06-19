@@ -54,6 +54,10 @@ const ItemDetailsPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/shopping');
+  }, []);
+
+  useEffect(() => {
     dispatch(loadCartDetails({ user_id }, ShowCartBadgeValue));
   }, []);
 

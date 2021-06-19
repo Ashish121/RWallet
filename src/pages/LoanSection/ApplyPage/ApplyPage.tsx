@@ -25,6 +25,10 @@ const ApplyPage: React.FC = () => {
   const [loanType, setLoanType] = useState('');
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/loanType');
+  }, []);
+
+  useEffect(() => {
     const params: any = location.state;
     const loanType = params.loantype;
 

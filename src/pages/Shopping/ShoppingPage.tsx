@@ -64,6 +64,10 @@ const ShoppingPage: React.FC = () => {
   let category = 'mobile';
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs');
+  }, []);
+
+  useEffect(() => {
     const param: any = location.state;
     id = 1;
     category = param.categoryName;

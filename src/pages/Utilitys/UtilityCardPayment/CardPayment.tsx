@@ -31,6 +31,10 @@ const CardPayment: React.FC = () => {
   const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/home');
+  }, []);
+
+  useEffect(() => {
     dispatch(loadBankList(setBankNameList));
   }, []);
 

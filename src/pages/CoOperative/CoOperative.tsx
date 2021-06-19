@@ -39,6 +39,10 @@ const CoOperative: React.FC = () => {
   const [clearValueProvince, setClearValueProvince] = useState(false);
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/transfer');
+  }, []);
+
+  useEffect(() => {
     dispatch(loadProvince(setProvinceList));
   }, []);
 

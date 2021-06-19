@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../../i18n/formatMessages';
@@ -7,6 +7,10 @@ import './InsuranceFinancePage.scss';
 
 const InsuranceFinancePage: React.FC = () => {
   const history = useHistory();
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/home');
+  }, []);
 
   function handleroyalFinancialServices() {
     history.replace('/tabs/royalityFinancialServices');

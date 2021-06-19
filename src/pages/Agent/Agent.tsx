@@ -32,6 +32,10 @@ const Agent: React.FC = () => {
   const [selectedCountryName, setSelectedCountryName] = useState('');
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/transfer');
+  }, []);
+
+  useEffect(() => {
     dispatch(loadCountryList(setCountryNameList));
   }, []);
 

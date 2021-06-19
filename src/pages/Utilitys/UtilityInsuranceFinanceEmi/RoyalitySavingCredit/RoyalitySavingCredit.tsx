@@ -28,6 +28,10 @@ const RoyalitySavingCredit: React.FC = () => {
   const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/insuranceFinancePage');
+  }, []);
+
+  useEffect(() => {
     const array = [
       {
         value: 'saving loan',

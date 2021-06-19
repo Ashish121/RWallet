@@ -31,10 +31,10 @@ const Bank: React.FC = () => {
   const [selectedBankName, setSelectedBankName] = useState('');
   const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
 
-  // function updateDestination(destination: any) {
-  //
-  //   setDestination(destination);
-  // }
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/transfer');
+  }, []);
+
   useEffect(() => {
     dispatch(loadBankList(setBankNameList));
   }, []);

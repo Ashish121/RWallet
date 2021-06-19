@@ -14,6 +14,11 @@ const InternetPayment: React.FC = () => {
   const [showLoading, setShowLoading] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState('');
   const [accordionDetails, setAccordionDetails] = useState([{}]);
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/home');
+  }, []);
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       return () => {

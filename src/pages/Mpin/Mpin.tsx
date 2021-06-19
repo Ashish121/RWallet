@@ -26,6 +26,11 @@ const MpinPage: React.FC = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const [oldMpin, setOldMpin] = useState('');
   const [backNavigationPage, setBackNavigation] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs');
+  }, []);
+
   useEffect(() => {
     // const isMpinCreated: any = localStorage.getItem("isMpinCreated")
     //   ? localStorage.getItem("isMpinCreated")

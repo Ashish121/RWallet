@@ -38,6 +38,10 @@ const CartPage: React.FC = () => {
   const [cartId, setcartId] = useState([]);
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/shopping');
+  }, []);
+
+  useEffect(() => {
     dispatch(loadCartDetails({ user_id }, ShowProductList));
   }, []);
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +10,10 @@ const CoOperativeS: React.FC = () => {
   const coOperativeDetails = useSelector(
     (state: any) => state.co_operative.coOperativeDetails.data.data
   );
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/cop');
+  }, []);
 
   function handleSucess() {
     history.replace('/tabs/SuccessPage');

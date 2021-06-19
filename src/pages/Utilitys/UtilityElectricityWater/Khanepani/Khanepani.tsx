@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../../i18n/formatMessages';
@@ -19,6 +19,10 @@ const Khanepani: React.FC = () => {
   const [loaderMessage, setLoaderMessage] = useState('');
   const [placeName, setPlaceName] = useState('');
   const [customerID, setCustomerID] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/electricityWater');
+  }, []);
 
   function updatePlaceName(placeName: any) {
     setPlaceName(placeName);

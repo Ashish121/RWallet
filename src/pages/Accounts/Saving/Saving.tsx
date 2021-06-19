@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IonPage,
   IonContent,
@@ -31,6 +31,11 @@ const SavingAccountPage: React.FC = () => {
   const [showDailySection, setShowDailySection] = useState(true);
   const [showMonthlySection, setShowMonthlySection] = useState(false);
   const [selectedAccount, setSelectedAccount] = useState('daily');
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/accountpage');
+  }, []);
+
   function setToggleTerms(value: boolean) {
     // eslint-disable-next-line no-console
     console.log(

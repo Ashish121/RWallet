@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../../i18n/formatMessages';
@@ -25,6 +25,10 @@ const EmiCalculater: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const emiDetails = useSelector((state: any) => state.emi.emiDetails);
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/loanType');
+  }, []);
 
   function nextRoute(status: any) {
     setShowLoading(false);

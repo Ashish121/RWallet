@@ -40,6 +40,10 @@ const BusOneWay: React.FC = () => {
   const [selectedDestinationPlace, setSelectedDestinationPlace] = useState('');
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/home');
+  }, []);
+
+  useEffect(() => {
     dispatch(loadCityNameForBus(setDestinationCityList));
   }, []);
 

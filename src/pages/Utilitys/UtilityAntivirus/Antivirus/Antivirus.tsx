@@ -16,6 +16,11 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
   const history = useHistory();
   const [accordionDetails, setAccordionDetails] = useState([{}]);
   const [data, setData] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/home');
+  }, []);
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       return () => {
@@ -127,12 +132,10 @@ const Antivirus: React.FC<AntivirusProps> = ({ handler }) => {
         showDetails: false,
         details: [
           {
-            text:
-              'Dr.Web security space 1 PC 1 Year + 1 Android mobile device security',
+            text: 'Dr.Web security space 1 PC 1 Year + 1 Android mobile device security',
           },
           {
-            text:
-              'Dr.Web security space 3 PC 1 Year + 3 Android mobile device security',
+            text: 'Dr.Web security space 3 PC 1 Year + 3 Android mobile device security',
           },
           { text: 'Dr.Web server security suite 1 server 1 year' },
         ],

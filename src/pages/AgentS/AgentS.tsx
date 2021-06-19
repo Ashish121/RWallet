@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IonPage, IonContent, IonText, IonApp } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +10,10 @@ const AgentS: React.FC = () => {
   const agentsDetails = useSelector(
     (state: any) => state.agent.agentDetails.data.data
   );
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/Agent');
+  }, []);
 
   function handleSucess() {
     history.replace('/tabs/SuccessPage');

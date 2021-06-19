@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   IonPage,
@@ -26,6 +26,11 @@ const CurrentAccountPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoadeMessage] = useState('');
   const [amount, setAmount] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/accountpage');
+  }, []);
+
   function setToggleTerms(value: boolean) {
     //eslint-disable-next-line no-console
     console.log(

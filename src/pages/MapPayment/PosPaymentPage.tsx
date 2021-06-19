@@ -47,6 +47,10 @@ const PosPaymentPage: React.FC = () => {
   const country = 'Nepal';
 
   useEffect(() => {
+    localStorage.setItem('previousRoute', '/tabs/shopping/cart');
+  }, []);
+
+  useEffect(() => {
     panMapToNearestPOS();
     return () => {
       setReadyToPan(false);
