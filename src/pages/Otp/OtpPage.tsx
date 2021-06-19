@@ -62,7 +62,12 @@ const OtpPage: React.FC = () => {
   };
   function savePushToken(token: any) {
     const user_id = localStorage.getItem('userId');
-    dispatch(RequestForUpdateDeviceToken({ user_id, pushToken: token.value }));
+    dispatch(
+      RequestForUpdateDeviceToken({
+        user_id,
+        pushToken: JSON.parse(token).value,
+      })
+    );
   }
   function nextRoute(status: any, data: any) {
     setShowLoading(false);
@@ -169,30 +174,30 @@ const OtpPage: React.FC = () => {
 
       <IonPage>
         <BackButton clickHandler={back} />
-        <IonContent className="otp-content">
-          <div className="otp-container">
+        <IonContent className='otp-content'>
+          <div className='otp-container'>
             {!otpReceived && (
               <>
-                <div className="page-header">
+                <div className='page-header'>
                   <IonText>
-                    <Translate message="otp.sendOtpHeader" />
+                    <Translate message='otp.sendOtpHeader' />
                   </IonText>
                 </div>
-                <div className="innercontainer" style={{ marginTop: '10px' }}>
+                <div className='innercontainer' style={{ marginTop: '10px' }}>
                   <IonText style={{ color: '#ffffff' }}>
                     <Translate
-                      message="otp.sendOtpInfo"
+                      message='otp.sendOtpInfo'
                       value={{ contact, countryCode }}
                     />
                   </IonText>
                 </div>
                 <div
-                  className="confirm-btn-wrapper"
+                  className='confirm-btn-wrapper'
                   style={{ display: 'flex', justifyContent: 'center' }}
                 >
                   <ButtonConmponent
-                    buttonLabel="otp.send"
-                    size="block"
+                    buttonLabel='otp.send'
+                    size='block'
                     clickHandler={sendOTP}
                   />
                 </div>
@@ -200,44 +205,44 @@ const OtpPage: React.FC = () => {
             )}
             {otpReceived && (
               <>
-                <div className="page-header">
+                <div className='page-header'>
                   <IonText>
-                    <Translate message="otp.pageHeader" />
+                    <Translate message='otp.pageHeader' />
                   </IonText>
                 </div>
-                <div className="page-sub-header">
-                  <div className="innercontainer">
+                <div className='page-sub-header'>
+                  <div className='innercontainer'>
                     <IonText>
                       <Translate
-                        message="otp.pageSubHeader"
+                        message='otp.pageSubHeader'
                         value={{ contact, countryCode }}
                       />
                     </IonText>
                   </div>
                 </div>
 
-                <div className="field-container">
+                <div className='field-container'>
                   <OtpInput
                     value={otpText}
                     onChange={onOtpEnter}
                     numInputs={6}
-                    containerStyle="otp-field-wrapper"
+                    containerStyle='otp-field-wrapper'
                     isInputNum={true}
-                    inputStyle="otp-field-input"
+                    inputStyle='otp-field-input'
                   />
                 </div>
-                <div className="resend-link-container">
+                <div className='resend-link-container'>
                   <IonText>
-                    <Translate message="otp.resendText" />
+                    <Translate message='otp.resendText' />
                     <a onClick={sendOTP}>
-                      <Translate message="otp.resendLinkText" />
+                      <Translate message='otp.resendLinkText' />
                     </a>
                   </IonText>
                 </div>
-                <div className="confirm-btn-wrapper">
+                <div className='confirm-btn-wrapper'>
                   <ButtonConmponent
-                    buttonLabel="common.continue"
-                    size="block"
+                    buttonLabel='common.continue'
+                    size='block'
                     clickHandler={handleVerifyOtp}
                   />
                 </div>
