@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonPage, IonContent, IonText } from '@ionic/react';
 import { Translate } from '../../i18n/formatMessages';
@@ -9,6 +9,11 @@ const ResetPassword: React.FC = () => {
   const history = useHistory();
   const [contactNo, setConactNo] = useState('');
   const [countryCode, setCountryCode] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('previousRoute', '/login');
+  }, []);
+
   function handleVerifyReset() {
     history.replace('/otp', {
       mobileNo: contactNo,
@@ -31,41 +36,41 @@ const ResetPassword: React.FC = () => {
       <IonPage>
         <BackButton clickHandler={back} />
         <IonContent>
-          <div className="password-container">
-            <div className="page-header">
+          <div className='password-container'>
+            <div className='page-header'>
               <IonText>
-                <Translate message="reset.pageHeader" />
+                <Translate message='reset.pageHeader' />
               </IonText>
             </div>
-            <div className="page-sub-header">
-              <div className="innercontainer">
+            <div className='page-sub-header'>
+              <div className='innercontainer'>
                 <IonText>
-                  <Translate message="reset.pageSubHeader" />
+                  <Translate message='reset.pageSubHeader' />
                 </IonText>
               </div>
             </div>
-            <div className="input-container">
+            <div className='input-container'>
               <InputText
-                inputType="tel"
-                labelText="signup.countryCode"
-                labelType="floating"
-                color="light"
-                labelColor="light"
+                inputType='tel'
+                labelText='signup.countryCode'
+                labelType='floating'
+                color='light'
+                labelColor='light'
                 onChange={updateCountryCode}
               />
               <InputText
-                inputType="tel"
-                labelText="signup.mobileNo"
-                labelType="floating"
-                color="light"
-                labelColor="light"
+                inputType='tel'
+                labelText='signup.mobileNo'
+                labelType='floating'
+                color='light'
+                labelColor='light'
                 onChange={setContact}
               />
             </div>
-            <div className="confirm-btn-wrapper">
+            <div className='confirm-btn-wrapper'>
               <ButtonConmponent
-                buttonLabel="reset.continue"
-                size="block"
+                buttonLabel='reset.continue'
+                size='block'
                 clickHandler={handleVerifyReset}
                 disabled={contactNo ? false : true}
               />
