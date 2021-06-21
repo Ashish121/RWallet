@@ -32,21 +32,21 @@ const SelectMenu: React.FC<SelectGenderProps> = ({
   }, 100);
 
   return (
-    <div className="select-menu-wrapper">
-      <IonList className="list-wrapper">
-        <IonItem className="ion-no-padding">
-          <IonLabel className="gender-label" position="floating">
+    <div className='select-menu-wrapper'>
+      <IonList className='list-wrapper'>
+        <IonItem className='ion-no-padding'>
+          <IonLabel className='gender-label' position='floating'>
             <Translate message={label} />
           </IonLabel>
           <IonSelect
-            interface="action-sheet"
+            interface='action-sheet'
             placeholder={placeholderLabel}
             onIonChange={(e) => handleSelect(e.detail.value)}
             value={!selectedVal ? currentSelectedVal : ''}
           >
             {array.map((element: any) => {
               return (
-                <IonSelectOption value={element.value}>
+                <IonSelectOption key={element.value} value={element.value}>
                   {element.label}
                 </IonSelectOption>
               );

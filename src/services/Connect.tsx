@@ -18,7 +18,7 @@ export const authenticate = async (
   password: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/login',
+    url: 'https://dashboard.royalitywallet.com/api/v1/login',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export const authenticationForRegister = async (
   countryCode: any
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/register',
+    url: 'https://dashboard.royalitywallet.com/api/v1/register',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export const authenticationForCoOperativeBankTransfer = async (
   remarks: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/cooperative_bank_transfer',
+    url: 'https://dashboard.royalitywallet.com/api/v1/cooperative_bank_transfer',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ export const authenticationForCurrentAc = async (
   amount: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/current_account_create',
+    url: 'https://dashboard.royalitywallet.com/api/v1/current_account_create',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ export const authenticationForAgentTransfer = async (
   remarks: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/agent_bank_transfer',
+    url: 'https://dashboard.royalitywallet.com/api/v1/agent_bank_transfer',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ export const authenticationForBankTransfer = async (
   remarks: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bank_transfer',
+    url: 'https://dashboard.royalitywallet.com/api/v1/bank_transfer',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -194,7 +194,7 @@ export const authenticationForFixedAccount = async (
   amount: number
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/fixed_account_create',
+    url: 'https://dashboard.royalitywallet.com/api/v1/fixed_account_create',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -221,7 +221,7 @@ export const authenticationForFixedAccount = async (
 
 export const getProvinces = async (): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/province_fetch',
+    url: 'https://dashboard.royalitywallet.com/api/v1/province_fetch',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -233,7 +233,7 @@ export const getProvinces = async (): Promise<any> => {
 
 export const getDistrictByProvince = async (id: any): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/district_fetch',
+    url: 'https://dashboard.royalitywallet.com/api/v1/district_fetch',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -248,7 +248,7 @@ export const getDistrictByProvince = async (id: any): Promise<any> => {
 
 export const getLocalLevelName = async (id: any): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/local_level_name_fetch',
+    url: 'https://dashboard.royalitywallet.com/api/v1/local_level_name_fetch',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -263,7 +263,7 @@ export const getLocalLevelName = async (id: any): Promise<any> => {
 
 export const updateUserAccountDetails = async (payload: any): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/update_user',
+    url: 'https://dashboard.royalitywallet.com/api/v1/update_user',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -280,7 +280,7 @@ export const authenticationForMpin = async (
   mpin: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/create_mpin',
+    url: 'https://dashboard.royalitywallet.com/api/v1/create_mpin',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -307,7 +307,7 @@ export const changeMpin = async (
   new_mpin: any
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/change_mpin',
+    url: 'https://dashboard.royalitywallet.com/api/v1/change_mpin',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -328,7 +328,7 @@ export const authenticationForResetPassword = async (
   newPass: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/forgot_password',
+    url: 'https://dashboard.royalitywallet.com/api/v1/forgot_password',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -349,7 +349,7 @@ export const authenticationForSavingAccount = async (
   depositType: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/saving_account_create',
+    url: 'https://dashboard.royalitywallet.com/api/v1/saving_account_create',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -379,7 +379,7 @@ export const authenticationForApplyPage = async (
   purposeOfLoan: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/loan_type',
+    url: 'https://dashboard.royalitywallet.com/api/v1/loan_type',
 
     method: 'post',
     headers: {
@@ -411,7 +411,7 @@ export const authenticationForNepalElectricityPage = async (
   customerID: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/electricity_bill',
+    url: 'https://dashboard.royalitywallet.com/api/v1/electricity_bill',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -438,7 +438,7 @@ export const authenticationForKhanepaniPage = async (
   customerID: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/water_bill',
+    url: 'https://dashboard.royalitywallet.com/api/v1/water_bill',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -471,7 +471,7 @@ export const authenticationFlightOneWayPage = async (
   classForFlight: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/ticket_booking',
+    url: 'https://dashboard.royalitywallet.com/api/v1/ticket_booking',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -503,7 +503,7 @@ export const authenticationForEmiCalculation = async (
   loanTenure: number
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/emi_calculate',
+    url: 'https://dashboard.royalitywallet.com/api/v1/emi_calculate',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -530,7 +530,7 @@ export const authenticationForTvPayment = async (
   customerId: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/television_payment',
+    url: 'https://dashboard.royalitywallet.com/api/v1/television_payment',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -562,7 +562,7 @@ export const authenticationForFinancePaymentCalculation = async (
   financeName: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/finance_payment',
+    url: 'https://dashboard.royalitywallet.com/api/v1/finance_payment',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -594,7 +594,7 @@ export const authenticationForCardPaymentCalculation = async (
   cardNumber: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/card_payment',
+    url: 'https://dashboard.royalitywallet.com/api/v1/card_payment',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -622,7 +622,7 @@ export const authenticationForInternetPayment = async (
   customerId: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/internet_payment',
+    url: 'https://dashboard.royalitywallet.com/api/v1/internet_payment',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -650,7 +650,7 @@ export const authenticationForTopUpRecharge = async (
   mobileNumber: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/mobile_recharge',
+    url: 'https://dashboard.royalitywallet.com/api/v1/mobile_recharge',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -678,7 +678,7 @@ export const authenticationForAntivirusPayment = async (
   accountType: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/antivirus_payment',
+    url: 'https://dashboard.royalitywallet.com/api/v1/antivirus_payment',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -699,7 +699,7 @@ export const authenticationForAntivirusPayment = async (
 };
 export const fetchPOSDetails = async (): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/pos_data',
+    url: 'https://dashboard.royalitywallet.com/api/v1/pos_data',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -713,7 +713,7 @@ export const fetchPOSDetails = async (): Promise<any> => {
 
 export const loadProfile = async (user_id: string): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/home_page',
+    url: 'https://dashboard.royalitywallet.com/api/v1/home_page',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -733,7 +733,7 @@ export const loadProfile = async (user_id: string): Promise<any> => {
 
 export const logout = async (): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/logout',
+    url: 'https://dashboard.royalitywallet.com/api/v1/logout',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -746,7 +746,7 @@ export const logout = async (): Promise<any> => {
 //Destination bank name list
 export const getBankAllNameList = async (): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bank_detail',
+    url: 'https://dashboard.royalitywallet.com/api/v1/bank_detail',
 
     method: 'post',
     headers: {
@@ -760,7 +760,7 @@ export const getBankAllNameList = async (): Promise<any> => {
 //Destination and source place city name list for flight
 export const getFlightPlaceDetails = async (): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/flight_details',
+    url: 'https://dashboard.royalitywallet.com/api/v1/flight_details',
 
     method: 'post',
     headers: {
@@ -774,7 +774,7 @@ export const getFlightPlaceDetails = async (): Promise<any> => {
 //Destination and source place city name list for Bus
 export const getBusPlacesDetails = async (): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/bus_details',
+    url: 'https://dashboard.royalitywallet.com/api/v1/bus_details',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -787,7 +787,7 @@ export const getBusPlacesDetails = async (): Promise<any> => {
 //Authentication For load transaction history details
 export const loadTransactionHistory = async (user_id: string): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/transaction_details',
+    url: 'https://dashboard.royalitywallet.com/api/v1/transaction_details',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -807,7 +807,7 @@ export const authenticationForChangePassword = async (
   newPass: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/change_password',
+    url: 'https://dashboard.royalitywallet.com/api/v1/change_password',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -834,7 +834,7 @@ export const uploadImage = async (
   updateProgressCallback: Function
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/profile_pic',
+    url: 'https://dashboard.royalitywallet.com/api/v1/profile_pic',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -851,7 +851,7 @@ export const uploadImage = async (
 /** loading all Product Details for shopping section */
 export const loadProduct = async (user_id: string): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/product_details',
+    url: 'https://dashboard.royalitywallet.com/api/v1/product_details',
 
     method: 'post',
     headers: {
@@ -872,7 +872,7 @@ export const loadProduct = async (user_id: string): Promise<any> => {
  */
 export const loadCartItemsDetails = async (user_id: string): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/cart_details',
+    url: 'https://dashboard.royalitywallet.com/api/v1/cart_details',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -895,7 +895,7 @@ export const updateCartItem = async (
   quantity: Number
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/update_cart_item',
+    url: 'https://dashboard.royalitywallet.com/api/v1/update_cart_item',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -916,7 +916,7 @@ export const updateCartItem = async (
  */
 export const removeCartItem = async (cartItemID: Number): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/remove_cart_item',
+    url: 'https://dashboard.royalitywallet.com/api/v1/remove_cart_item',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -944,7 +944,7 @@ export const addNewItemToCart = async (
   quantity: Number
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/add_to_cart',
+    url: 'https://dashboard.royalitywallet.com/api/v1/add_to_cart',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -966,7 +966,7 @@ export const addNewItemToCart = async (
  */
 export const loadCountryNameList = async (): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/country_list',
+    url: 'https://dashboard.royalitywallet.com/api/v1/country_list',
 
     method: 'post',
     headers: {
@@ -986,7 +986,7 @@ export const loadSearchItemDetails = async (
   searchString: string
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/search',
+    url: 'https://dashboard.royalitywallet.com/api/v1/search',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -1012,7 +1012,7 @@ export const addRatingForProduct = async (
   rating: Number
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/review_create',
+    url: 'https://dashboard.royalitywallet.com/api/v1/review_create',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -1048,7 +1048,7 @@ export const createPOSOrder = async (
   houseNo: String
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/order_create',
+    url: 'https://dashboard.royalitywallet.com/api/v1/order_create',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -1078,7 +1078,7 @@ export const updateDeviceToken = async (
   pushToken: Number
 ): Promise<any> => {
   const result = await axios({
-    url: 'http://ec2-65-1-95-227.ap-south-1.compute.amazonaws.com:8000/api/v1/device_token',
+    url: 'https://dashboard.royalitywallet.com/api/v1/device_token',
     method: 'post',
     headers: {
       'Content-Type': 'application/json',

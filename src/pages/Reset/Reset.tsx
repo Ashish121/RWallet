@@ -56,46 +56,46 @@ const Reset: React.FC = () => {
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
 
       <IonPage>
-        <BackButton clickHandler={() => history.goBack()} />
+        <BackButton clickHandler={() => history.replace('/reset')} />
         <IonContent>
-          <div className="password-container">
-            <div className="page-header">
+          <div className='password-container'>
+            <div className='page-header'>
               <IonText>
-                <Translate message="reset.pageHeader" />
+                <Translate message='reset.pageHeader' />
               </IonText>
             </div>
-            <div className="page-sub-header">
-              <div className="innercontainer">
+            <div className='page-sub-header'>
+              <div className='innercontainer'>
                 <IonText>
-                  <Translate message="reset.newpassword" />
+                  <Translate message='reset.newpassword' />
                 </IonText>
               </div>
             </div>
 
-            <div className="input-container">
+            <div className='input-container'>
               <InputText
-                inputType="password"
-                labelText="rest.new"
-                labelType="floating"
-                color="light"
-                labelColor="light"
+                inputType='password'
+                labelText='rest.new'
+                labelType='floating'
+                color='light'
+                labelColor='light'
                 onChange={updateNewPass}
                 showPasswordMode={true}
               />
               <InputText
-                inputType="password"
-                labelText="rest.newConfirm"
-                labelType="floating"
-                color="light"
-                labelColor="light"
+                inputType='password'
+                labelText='rest.newConfirm'
+                labelType='floating'
+                color='light'
+                labelColor='light'
                 onChange={updateConfirmPassword}
                 showPasswordMode={true}
               />
             </div>
-            <div className="confirm-btn-wrapper">
+            <div className='confirm-btn-wrapper'>
               <ButtonConmponent
-                buttonLabel="reset.continue"
-                size="block"
+                buttonLabel='reset.continue'
+                size='block'
                 disabled={newPass.trim() === confirmPass.trim() ? false : true}
                 clickHandler={handleVerifyReset}
               />
