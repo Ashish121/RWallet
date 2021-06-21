@@ -39,20 +39,25 @@ const OtpPage: React.FC = () => {
     localStorage.setItem('previousRoute', '/reset');
   }, []);
   useEffect(() => {
+    let isMounted = true;
     let userDetails: any;
     const params: any = location.state;
     const backNavigation = params.backNavigation || null;
-    setBackNavigation(backNavigation);
-    setContact(params.mobileNo);
-    if (localStorage.getItem('loginDetails') !== undefined) {
-      userDetails = localStorage.getItem('loginDetails');
+    if (isMounted) {
+      setBackNavigation(backNavigation);
+      setContact(params.mobileNo);
+      if (localStorage.getItem('loginDetails') !== undefined) {
+        userDetails = localStorage.getItem('loginDetails');
+      }
+      const countryCode: any = userDetails
+        ? JSON.parse(userDetails).data.user.country_code
+        : params.countryCode;
+
+      setCountryCode(countryCode);
     }
-
-    const countryCode: any = userDetails
-      ? JSON.parse(userDetails).data.user.country_code
-      : params.countryCode;
-
-    setCountryCode(countryCode);
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const onOtpEnter = (otp: any) => {

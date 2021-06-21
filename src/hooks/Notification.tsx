@@ -8,7 +8,6 @@ import {
 
 function useNotificationService() {
   const { PushNotifications, LocalNotifications } = Plugins;
-  // const history = useHistory();
   const askPushPermission = (callback: Function) => {
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
@@ -47,6 +46,7 @@ function useNotificationService() {
       (notification: PushNotificationActionPerformed) => {
         // eslint-disable-next-line no-console
         console.log(notification);
+        notification.notification.badge = 0;
         // history.replace('/tabs/notification');
       }
     );

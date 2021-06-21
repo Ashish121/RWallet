@@ -19,7 +19,7 @@ const LoginPage: React.FC = () => {
     (state: any) => state.login.isAuthenticating
   );
   useEffect(() => {
-    localStorage.setItem('previousRoute', '/login');
+    localStorage.setItem('previousRoute', '/');
   }, []);
   useEffect(() => {
     localStorage.clear();
