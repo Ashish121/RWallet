@@ -8,7 +8,8 @@ import './DatePicker.scss';
 const DatePickerComponent: React.FC<{
   placeholder: any;
   handler?: Function;
-}> = ({ placeholder, handler }) => {
+  previousDate?: Boolean;
+}> = ({ placeholder, handler, previousDate }) => {
   const [selectedDate, setSelectedDate] = useState<string>('');
   const lastDateString = new Date().toISOString();
 
@@ -27,10 +28,11 @@ const DatePickerComponent: React.FC<{
             style={{ color: '#ffffff' }}
             displayFormat="MM/DD/YYYY"
             //min="1970-06-04"
-            min={lastDateString}
+            min={previousDate ? '1950-06-04' : lastDateString}
             value={selectedDate}
             onIonChange={(e) => handleDate(e.detail.value!)}
           ></IonDatetime>
+
           <div
             className="calendericon"
             style={{
