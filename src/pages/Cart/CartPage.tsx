@@ -190,7 +190,8 @@ const CartPage: React.FC = () => {
                                         className="fab-btn"
                                         size="small"
                                         onClick={() => {
-                                          item['quantity'] = item.quantity + 1;
+                                          item['quantity'] =
+                                            parseInt(item.quantity) + 1;
                                           increaseCount(
                                             item.cart_item_id,
                                             item.quantity

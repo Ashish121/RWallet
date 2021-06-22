@@ -262,6 +262,7 @@ const AccountUser: React.FC<any> = () => {
                 <div className="date-picker-wrapper">
                   <DatePickerComponent
                     placeholder="account.dateofBirth"
+                    previousDate={true}
                     handler={handleDobAD}
                   />
                 </div>

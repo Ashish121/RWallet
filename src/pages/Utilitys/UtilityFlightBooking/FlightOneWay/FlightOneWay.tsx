@@ -221,6 +221,7 @@ const FlightOneWay: React.FC = () => {
                   <div>
                     <div style={{ width: '45%' }}>
                       <DatePickerComponent
+                        previousDate={false}
                         placeholder="UtilityDeparture"
                         handler={handleDate}
                       />
@@ -287,12 +288,14 @@ const FlightOneWay: React.FC = () => {
                     <div style={{ width: '45%' }}>
                       <DatePickerComponent
                         placeholder="UtilityDeparture"
+                        previousDate={false}
                         handler={handleDate}
                       />
                     </div>
                     <div style={{ width: '45%', marginLeft: '40px' }}>
                       <DatePickerComponent
                         placeholder="UtilityReturn"
+                        previousDate={false}
                         handler={handleReturnDate}
                       />
                     </div>{' '}
