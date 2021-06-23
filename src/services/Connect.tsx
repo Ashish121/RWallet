@@ -1090,3 +1090,45 @@ export const updateDeviceToken = async (
   });
   return result;
 };
+
+/**
+ * load Notification
+ * @param user_id
+ * @returns
+ */
+export const loadNotificationList = async (user_id: String): Promise<any> => {
+  const result = await axios({
+    url: 'https://dashboard.royalitywallet.com/api/v1/notification_list',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      user_id: user_id,
+    }),
+  });
+
+  return result;
+};
+
+/**
+ * update Notification
+ * @param notificationId
+ * @returns
+ */
+export const updateNotification = async (
+  notificationId: String
+): Promise<any> => {
+  const result = await axios({
+    url: 'https://dashboard.royalitywallet.com/api/v1/update_notification',
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+      notification_id: notificationId,
+    }),
+  });
+
+  return result;
+};

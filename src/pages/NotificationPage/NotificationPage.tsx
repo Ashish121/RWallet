@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useDispatch } from 'react-redux';
 import {
   IonCard,
   IonCardContent,
@@ -17,14 +17,55 @@ import { CloseIcon } from '../../assets/Icons';
 
 import './NotificationPage.scss';
 import { Translate } from '../../i18n/formatMessages';
+import {
+  requestForNotification,
+  // requestForUpdateNotification,
+} from '../../redux/actions/';
+
 const NotificationPage: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [color, setcolor] = useState('');
+  const user_id = localStorage.getItem('userId');
+  const [notificationList, setNotificationList] = useState([]);
+
+  useEffect(() => {
+    dispatch(requestForNotification({ user_id }, showNotificationList));
+    // dispatch(requestForUpdateNotification({ notificationId: 3 }));
+  }, []);
+
   useEffect(() => {
     setcolor('#004777');
   }, []);
+
+  function showNotificationList(res: any) {
+    setNotificationList(res.data.data);
+    //console.log("notification :", res.data.data);
+  }
+
   const closeNotificationPanel = () => {
     history.replace('/tabs');
+  };
+
+  const dateconverter = (item: any) => {
+    const dateString = item.created_at;
+    const ab2 = new Date(dateString);
+    const month = ab2.getMonth() + 1;
+
+    const newDate =
+      ab2.getDate() +
+      '-' +
+      month +
+      '-' +
+      ab2.getFullYear() +
+      ' ' +
+      ab2.getHours() +
+      ':' +
+      ab2.getMinutes() +
+      ':' +
+      ab2.getSeconds();
+
+    return newDate;
   };
   return (
     <>
@@ -49,116 +90,27 @@ const NotificationPage: React.FC = () => {
                     <Translate message="NotificationPage.text" />
                   </IonText>
                 </div>
-                <IonCard>
-                  <IonCardContent>
-                    <div
-                      className="card-body-wrapper"
-                      style={{ borderLeftColor: color }}
-                    >
-                      <div className="notification-text">
-                        <IonText>
-                          <span>Date: 20-12-2020 17:44:02</span>
-                        </IonText>
-                        <IonText>
-                          <p>
-                            Your loan account (A/C no.) is due with interest for
-                            the month of June 2020
-                          </p>
-                        </IonText>
-                      </div>
-                    </div>
-                  </IonCardContent>
-                </IonCard>
-                <IonCard>
-                  <IonCardContent>
-                    <div className="card-body-wrapper">
-                      <div className="bar"></div>
-                      <div className="notification-text">
-                        <IonText>
-                          <span>Date: 20-12-2020 17:44:02</span>
-                        </IonText>
-                        <IonText>
-                          <p>
-                            Your loan account (A/C no.) is due with interest for
-                            the month of June 2020
-                          </p>
-                        </IonText>
-                      </div>
-                    </div>
-                  </IonCardContent>
-                </IonCard>
-                <IonCard>
-                  <IonCardContent>
-                    <div className="card-body-wrapper">
-                      <div className="bar"></div>
-                      <div className="notification-text">
-                        <IonText>
-                          <span>Date: 20-12-2020 17:44:02</span>
-                        </IonText>
-                        <IonText>
-                          <p>
-                            Your loan account (A/C no.) is due with interest for
-                            the month of June 2020
-                          </p>
-                        </IonText>
-                      </div>
-                    </div>
-                  </IonCardContent>
-                </IonCard>
-                <IonCard>
-                  <IonCardContent>
-                    <div className="card-body-wrapper">
-                      <div className="bar"></div>
-                      <div className="notification-text">
-                        <IonText>
-                          <span>Date: 20-12-2020 17:44:02</span>
-                        </IonText>
-                        <IonText>
-                          <p>
-                            Your loan account (A/C no.) is due with interest for
-                            the month of June 2020
-                          </p>
-                        </IonText>
-                      </div>
-                    </div>
-                  </IonCardContent>
-                </IonCard>
-                <IonCard>
-                  <IonCardContent>
-                    <div className="card-body-wrapper">
-                      <div className="bar"></div>
-                      <div className="notification-text">
-                        <IonText>
-                          <span>Date: 20-12-2020 17:44:02</span>
-                        </IonText>
-                        <IonText>
-                          <p>
-                            Your loan account (A/C no.) is due with interest for
-                            the month of June 2020
-                          </p>
-                        </IonText>
-                      </div>
-                    </div>
-                  </IonCardContent>
-                </IonCard>
-                <IonCard>
-                  <IonCardContent>
-                    <div className="card-body-wrapper">
-                      <div className="bar"></div>
-                      <div className="notification-text">
-                        <IonText>
-                          <span>Date: 20-12-2020 17:44:02</span>
-                        </IonText>
-                        <IonText>
-                          <p>
-                            Your loan account (A/C no.) is due with interest for
-                            the month of June 2020
-                          </p>
-                        </IonText>
-                      </div>
-                    </div>
-                  </IonCardContent>
-                </IonCard>
+                {notificationList.map((item: any) => {
+                  return (
+                    <IonCard>
+                      <IonCardContent>
+                        <div
+                          className="card-body-wrapper"
+                          style={{ borderLeftColor: color }}
+                        >
+                          <div className="notification-text">
+                            <IonText>
+                              <span>Date: {dateconverter(item)}</span>
+                            </IonText>
+                            <IonText>
+                              <p>{item.body}</p>
+                            </IonText>
+                          </div>
+                        </div>
+                      </IonCardContent>
+                    </IonCard>
+                  );
+                })}
               </div>
             </div>
           </IonContent>

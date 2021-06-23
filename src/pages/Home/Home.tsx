@@ -34,6 +34,7 @@ const HomePage: React.FC = () => {
   const [expandOptions, setExpandOptions] = useState(false);
   const [showHomePage, setShowHomePage] = useState(true);
   const [slider, setSlider] = useState([]);
+  const [nCount, setNcount] = useState(Number);
   const balance = localStorage.getItem('balance');
   //if we click back button on device it will reach login page
   useEffect(() => {
@@ -43,6 +44,7 @@ const HomePage: React.FC = () => {
   function nextRoute(status: any, data: any) {
     const imgUrl = data?.user?.slider_detail;
     setSlider(imgUrl);
+    setNcount(data.user.notification_count);
 
     const getAccountType = localStorage.getItem('createdAccountType');
     if (status) {
@@ -72,39 +74,40 @@ const HomePage: React.FC = () => {
   return (
     <>
       <LoaderComponent showLoading={false} loaderMessage={'Preparing...'} />
-      <IonApp className='home-wrapper'>
+      <IonApp className="home-wrapper">
         <IonPage>
           <HeaderComponent
             headerLable={'common.header'}
             showMenu={true}
             showNotification={true}
             notificationHandler={showNotifications}
+            value={nCount}
           />
           {showHomePage ? (
-            <IonContent className='home-wrapper'>
-              <div className='section-1'>
-                <div className='balance-check-section'>
+            <IonContent className="home-wrapper">
+              <div className="section-1">
+                <div className="balance-check-section">
                   <div
-                    className='common-ion-text'
+                    className="common-ion-text"
                     style={{
                       backgroundColor: '#ffffff',
                       borderRadius: '7px 0px 0px 7px',
                     }}
                   >
                     <IonText
-                      className='balance-wrapper-text'
+                      className="balance-wrapper-text"
                       style={{
                         color: '#000000',
                         fontWeight: '500',
                         fontSize: '13px',
                       }}
                     >
-                      <Translate message='home.balanceLabel' />
+                      <Translate message="home.balanceLabel" />
                     </IonText>
                   </div>
-                  <div className='arrow_box'></div>
+                  <div className="arrow_box"></div>
                   <div
-                    className='common-ion-text'
+                    className="common-ion-text"
                     style={{
                       backgroundColor: '#004777',
                       borderRadius: '0px 7px 7px 0px',
@@ -115,7 +118,7 @@ const HomePage: React.FC = () => {
                       src={require('../../assets/Icons/Rupay.svg')}
                     />
                     <IonText
-                      className='balance-wrapper-text'
+                      className="balance-wrapper-text"
                       style={{ color: '#ffffff' }}
                     >
                       {balance}
@@ -135,7 +138,7 @@ const HomePage: React.FC = () => {
                 }
               >
                 <IonCard
-                  className='service-card-wrapper'
+                  className="service-card-wrapper"
                   style={
                     expandOptions
                       ? { overflow: 'scroll' }
@@ -146,7 +149,7 @@ const HomePage: React.FC = () => {
                     style={{ paddingBottom: '0px', paddingTop: '0px' }}
                   >
                     {expandOptions && (
-                      <div className='close-bar-icon'>
+                      <div className="close-bar-icon">
                         <button onClick={toggleExpandOptions}>
                           <CloseBarIcon />
                         </button>
@@ -157,10 +160,10 @@ const HomePage: React.FC = () => {
 
                     <LoanSection expanded={expandOptions} />
                     <UtilitiesSection expanded={expandOptions} />
-                    <div className='see-more-section'>
+                    <div className="see-more-section">
                       <IonButton
                         onClick={toggleExpandOptions}
-                        className='ion-padding'
+                        className="ion-padding"
                         style={{
                           width: '220px',
                           '--background': 'rgb(0, 71, 119)',
@@ -169,15 +172,15 @@ const HomePage: React.FC = () => {
                         }}
                       >
                         <IonIcon
-                          slot='end'
+                          slot="end"
                           icon={
                             expandOptions ? caretDownOutline : caretUpOutline
                           }
                         />
                         {!expandOptions ? (
-                          <Translate message='home.seeAll' />
+                          <Translate message="home.seeAll" />
                         ) : (
-                          <Translate message='home.collapse' />
+                          <Translate message="home.collapse" />
                         )}
                       </IonButton>
                     </div>
@@ -189,9 +192,9 @@ const HomePage: React.FC = () => {
             <IonContent>
               <IonCard style={{ marginTop: '30px' }}>
                 <IonCardContent>
-                  <div className='cart-ristricted-section'>
-                    <IonText className='ristricted-cart'>
-                      <Translate message='fixedAccount.type' />
+                  <div className="cart-ristricted-section">
+                    <IonText className="ristricted-cart">
+                      <Translate message="fixedAccount.type" />
                     </IonText>
                   </div>
                 </IonCardContent>
