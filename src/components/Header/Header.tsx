@@ -72,6 +72,13 @@ const HeaderComponent: React.FC<headerProps> = ({
               onClick={notificationHandler}
             >
               <NotificationBell width="20" height="20" />
+              {value > 0 ? (
+                <IonBadge color="primary" className="notification-count-badge">
+                  {value}
+                </IonBadge>
+              ) : (
+                ''
+              )}
             </IonButtons>
           )}
           {showCart && (

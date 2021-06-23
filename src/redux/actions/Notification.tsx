@@ -72,7 +72,7 @@ const requestForNotification = (payload: any, callback: Function) => {
   };
 };
 
-const requestForUpdateNotification = (payload: any, callback: Function) => {
+const requestForUpdateNotification = (payload: any) => {
   return async (dispatch: any) => {
     // dispatch({ type: NOTIFICATION_SUCCESS, data: { status: true } });
     // dispatch(toggleLoader(true, "Hold"));
@@ -81,7 +81,7 @@ const requestForUpdateNotification = (payload: any, callback: Function) => {
       if (response.status === 200 && response.data.success) {
         dispatch({ type: NOTIFICATION_SUCCESS, data: { status: false } });
         dispatch(toggleLoader(false));
-        callback(response);
+        // callback(response);
       } else {
         dispatch(toggleLoader(false));
       }

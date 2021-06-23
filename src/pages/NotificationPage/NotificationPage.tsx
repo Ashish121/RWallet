@@ -19,7 +19,7 @@ import './NotificationPage.scss';
 import { Translate } from '../../i18n/formatMessages';
 import {
   requestForNotification,
-  requestForUpdateNotification,
+  // requestForUpdateNotification,
 } from '../../redux/actions/';
 
 const NotificationPage: React.FC = () => {
@@ -31,12 +31,7 @@ const NotificationPage: React.FC = () => {
 
   useEffect(() => {
     dispatch(requestForNotification({ user_id }, showNotificationList));
-    dispatch(
-      requestForUpdateNotification(
-        { notificationId: 3 },
-        UpdatedNotificationList
-      )
-    );
+    // dispatch(requestForUpdateNotification({ notificationId: 3 }));
   }, []);
 
   useEffect(() => {
@@ -46,12 +41,6 @@ const NotificationPage: React.FC = () => {
   function showNotificationList(res: any) {
     setNotificationList(res.data.data);
     //console.log("notification :", res.data.data);
-  }
-
-  function UpdatedNotificationList(res: any) {
-    const ab = res;
-    history.replace('/tabs', ab);
-    // console.log("updated notification :", res.data.data);
   }
 
   const closeNotificationPanel = () => {
