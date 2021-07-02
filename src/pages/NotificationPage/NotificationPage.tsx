@@ -29,6 +29,8 @@ const NotificationPage: React.FC = () => {
   const user_id = localStorage.getItem('userId');
   const [notificationList, setNotificationList] = useState([]);
 
+  // let notificationList = useState([]);
+
   useEffect(() => {
     dispatch(requestForNotification({ user_id }, showNotificationList));
     // dispatch(requestForUpdateNotification({ notificationId: 3 }));
@@ -39,8 +41,8 @@ const NotificationPage: React.FC = () => {
   }, []);
 
   function showNotificationList(res: any) {
-    setNotificationList(res.data.data);
-    //console.log("notification :", res.data.data);
+    // console.log("notification :", res.data.data);
+    setNotificationList(res.data.data.reverse());
   }
 
   const closeNotificationPanel = () => {

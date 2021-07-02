@@ -237,7 +237,7 @@ const PosPaymentPage: React.FC = () => {
                 </IonText>
               </div>
 
-              <div className="PosSection-0">
+              <div className="PosSection-0" Z-Index={2}>
                 <div className="page-header-for-pos">
                   <IonText>
                     <Translate message="pos.radioLabel" />
@@ -275,7 +275,11 @@ const PosPaymentPage: React.FC = () => {
                   />
                 </div>
               ) : (
-                <div className="user-details-container ">
+                <div
+                  className="user-details-container "
+                  style={{ marginTop: '-10px' }}
+                  Z-Index={-1}
+                >
                   <div>
                     <SelectMenu
                       label="account.country"
