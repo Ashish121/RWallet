@@ -12,7 +12,6 @@ import {
   IonAvatar,
   IonAlert,
   IonProgressBar,
- 
 } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { menuController } from '@ionic/core';
@@ -255,7 +254,7 @@ const MenuComponent: React.FC<any> = () => {
                 <button className="action-button">
                   <IonText>
                     <a
-                      href="https://privacy.royalitywallet.com"
+                      href="https://policy.royalitywallet.com/"
                       target="_blank"
                     >
                       <Translate message="profile.privacy" />

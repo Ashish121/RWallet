@@ -5,7 +5,6 @@
   background-color: #3182b9;
   --ion-font-family: "Montserrat" !important;
   font-family: "Montserrat";
-  
 
   .logoContainer {
     flex: 1;
@@ -19,13 +18,14 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    margin-top: 5px;
   }
   .body-header-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: 50px; 
+    margin-top: 50px;
     width: 100%;
     .body-header-text-wrapper {
       color: #ffffff;

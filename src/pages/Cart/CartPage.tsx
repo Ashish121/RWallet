@@ -170,16 +170,16 @@ const CartPage: React.FC = () => {
                                     <div className="item-name">
                                       <IonText>{element.product_name}</IonText>
                                     </div>
-                                    <div className="item-varient">
+                                    {/* <div className="item-varient">
                                       <IonText>
                                         {element.ram
                                           ? element.ram +
-                                            ' Ram ' +
+                                            " Ram " +
                                             element.memory +
-                                            ' Memory '
+                                            " Memory "
                                           : element.description}
                                       </IonText>
-                                    </div>
+                                    </div> */}
                                     <div className="item-price">
                                       <IonText>RS {element.price}</IonText>
                                     </div>
