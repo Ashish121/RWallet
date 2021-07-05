@@ -233,7 +233,14 @@ const ItemDetailsPage: React.FC = () => {
                   </div>
                 ) : (
                   <div>
-                    <div className="storage-discription-wrapper">
+                    {/* <div className="storage-discription-wrapper"> */}
+                    <div
+                      className={
+                        expandOptions
+                          ? 'storage-discription-expand'
+                          : 'storage-discription-wrapper'
+                      }
+                    >
                       {description}
                     </div>
                     <div className="item-color-wrapper">

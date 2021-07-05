@@ -4,13 +4,10 @@
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
+  "linuxAndroidStudioPath": "/home/tedroox/android-studio/bin/studio.sh",
   "plugins": {
     "PushNotifications": {
-      "PresentationOptions": [
-        "badge",
-        "sound",
-        "alert"
-      ]
+      "PresentationOptions": ["badge", "sound", "alert"]
     },
     "cordova": {}
   }
