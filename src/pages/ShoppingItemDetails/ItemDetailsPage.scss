@@ -120,6 +120,11 @@
       margin-top: 12px;
     }
     .add-to-cart-button-wrapper {
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+      left: 0;
+      padding: 0px 30px;
       .add-cart-button {
         margin-top: -15px;
         // margin-top: 0px;

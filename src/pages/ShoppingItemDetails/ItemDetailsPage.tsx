@@ -122,7 +122,7 @@ const ItemDetailsPage: React.FC = () => {
   };
 
   return (
-    <IonApp className="item-details-wrapper">
+    <IonApp className='item-details-wrapper'>
       <IonPage>
         <HeaderComponent
           headerLable={'common.header'}
@@ -145,7 +145,7 @@ const ItemDetailsPage: React.FC = () => {
             }
           >
             <IonCard
-              className="service-card-wrapper"
+              className='service-card-wrapper'
               style={
                 expandOptions ? { overflow: 'scroll' } : { overflow: 'hidden' }
               }
@@ -153,19 +153,19 @@ const ItemDetailsPage: React.FC = () => {
               <IonCardContent
                 style={{ paddingBottom: '0px', paddingTop: '0px' }}
               >
-                <div className="close-bar-icon">
+                <div className='close-bar-icon'>
                   <button onClick={toggleExpandOptions}>
                     <CloseBarIcon />
                   </button>
                 </div>
-                <div className="details-header-wrapper">
-                  <IonText className="item-name-label">{productName}</IonText>
+                <div className='details-header-wrapper'>
+                  <IonText className='item-name-label'>{productName}</IonText>
                 </div>
                 {ConfigProductList.length > 0 ? (
                   <div>
-                    <div className="storage-details-wrapper">
+                    <div className='storage-details-wrapper'>
                       <button
-                        className="btn-64gb"
+                        className='btn-64gb'
                         style={{
                           backgroundColor: ramActivate ? '' : '#004777',
                           color: ramActivate ? '' : 'white',
@@ -175,7 +175,7 @@ const ItemDetailsPage: React.FC = () => {
                         {'4GB Ram ' + '32GB Storage '}
                       </button>
                       <button
-                        className="btn-128gb"
+                        className='btn-128gb'
                         style={{
                           backgroundColor: ramActivate ? '#004777' : '',
                           color: ramActivate ? 'white' : '',
@@ -185,7 +185,7 @@ const ItemDetailsPage: React.FC = () => {
                         {'6GB Ram ' + '64GB Storage '}
                       </button>
                     </div>
-                    <div className="item-color-wrapper">
+                    <div className='item-color-wrapper'>
                       <IonList>
                         <IonItem>
                           <IonLabel style={{ color: '#000000' }}>
@@ -195,17 +195,17 @@ const ItemDetailsPage: React.FC = () => {
                             value={color}
                             onIonChange={(e) => setColor(e.detail.value)}
                           >
-                            <IonSelectOption value="red">
+                            <IonSelectOption value='red'>
                               Product red
                             </IonSelectOption>
-                            <IonSelectOption value="blue">
+                            <IonSelectOption value='blue'>
                               Pacific blue
                             </IonSelectOption>
                           </IonSelect>
                         </IonItem>
                       </IonList>
                     </div>
-                    <div className="price-details-wrapper">
+                    <div className='price-details-wrapper'>
                       <IonText
                         style={{
                           fontStyle: 'normal',
@@ -215,7 +215,7 @@ const ItemDetailsPage: React.FC = () => {
                           color: '#000000',
                         }}
                       >
-                        <Translate message="itemDetails.dealPrice" />
+                        <Translate message='itemDetails.dealPrice' />
                       </IonText>
 
                       <IonText
@@ -233,17 +233,10 @@ const ItemDetailsPage: React.FC = () => {
                   </div>
                 ) : (
                   <div>
-                    {/* <div className="storage-discription-wrapper"> */}
-                    <div
-                      className={
-                        expandOptions
-                          ? 'storage-discription-expand'
-                          : 'storage-discription-wrapper'
-                      }
-                    >
+                    <div className='storage-discription-wrapper'>
                       {description}
                     </div>
-                    <div className="item-color-wrapper">
+                    <div className='item-color-wrapper'>
                       <IonList>
                         <IonItem>
                           <IonLabel style={{ color: '#000000' }}>
@@ -253,17 +246,17 @@ const ItemDetailsPage: React.FC = () => {
                             value={color}
                             onIonChange={(e) => setColor(e.detail.value)}
                           >
-                            <IonSelectOption value="red">
+                            <IonSelectOption value='red'>
                               Product red
                             </IonSelectOption>
-                            <IonSelectOption value="blue">
+                            <IonSelectOption value='blue'>
                               Product blue
                             </IonSelectOption>
                           </IonSelect>
                         </IonItem>
                       </IonList>
                     </div>
-                    <div className="price-details-wrapper">
+                    <div className='price-details-wrapper'>
                       <IonText
                         style={{
                           fontStyle: 'normal',
@@ -273,7 +266,7 @@ const ItemDetailsPage: React.FC = () => {
                           color: '#000000',
                         }}
                       >
-                        <Translate message="itemDetails.dealPrice" />
+                        <Translate message='itemDetails.dealPrice' />
                       </IonText>
                       <IonText
                         style={{
@@ -291,12 +284,12 @@ const ItemDetailsPage: React.FC = () => {
                 )}
 
                 {expandOptions && (
-                  <div className="features-wapper">
-                    <IonText className="features-label">
-                      <Translate message="itemDetails.feature" />
+                  <div className='features-wapper'>
+                    <IonText className='features-label'>
+                      <Translate message='itemDetails.feature' />
                     </IonText>
-                    <div className="features-text-wrapper">
-                      <IonText className="features-text">
+                    <div className='features-text-wrapper'>
+                      <IonText className='features-text'>
                         Country Of Origin - India, China 48MP rear camera with
                         ultra-wide, super macro, portrait, night mode, 960fps
                         slowmotion, AI scene recognition, pro color, HDR, pro
@@ -311,17 +304,20 @@ const ItemDetailsPage: React.FC = () => {
                     </div>
                   </div>
                 )}
-                <div>
-                  <Rating productId={productId} ratings={paramsItem.ratings} />
-                </div>
 
-                <div className="add-to-cart-button-wrapper">
+                <div className='add-to-cart-button-wrapper'>
+                  <div style={{ padding: '0px 0px 10px 0px' }}>
+                    <Rating
+                      productId={productId}
+                      ratings={paramsItem.ratings}
+                    />
+                  </div>
                   <IonButton
-                    className="add-cart-button"
-                    expand="block"
+                    className='add-cart-button'
+                    expand='block'
                     onClick={addToCart}
                   >
-                    <Translate message="itemDetails.addToCart" />
+                    <Translate message='itemDetails.addToCart' />
                   </IonButton>
                 </div>
               </IonCardContent>
