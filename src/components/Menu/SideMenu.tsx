@@ -16,6 +16,7 @@ import {
 import { useHistory } from 'react-router-dom';
 import { menuController } from '@ionic/core';
 import { Plugins, CameraResultType } from '@capacitor/core';
+import { AppVersion } from '@ionic-native/app-version';
 
 import { ProfilePictureIcon, CloseIcon, MenuCamera } from '../../assets/Icons';
 import './SideMenu.scss';
@@ -28,6 +29,7 @@ const MenuComponent: React.FC<any> = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [currentUploadStatus, setCurrentUploadStatus] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
+  const [appVersion, setAppVersion] = useState('');
   const { Camera } = Plugins;
   const history = useHistory();
   const dispatch = useDispatch();
@@ -38,12 +40,21 @@ const MenuComponent: React.FC<any> = () => {
   );
 
   useEffect(() => {
+    getCurrentAppVersion();
+  }, []);
+
+  useEffect(() => {
     setSelectedImage(profileFields.profile_image);
     if (selectedImage) setImagePicked(!imagePicked);
   }, [profileFields]);
   const closeMenu = () => {
     menuController.toggle();
   };
+
+  async function getCurrentAppVersion() {
+    const version = await AppVersion.getVersionNumber();
+    setAppVersion(version);
+  }
 
   function nextRoute() {
     history.replace('/login');
@@ -60,18 +71,15 @@ const MenuComponent: React.FC<any> = () => {
   function handleUploadProgress(event: any) {
     const { loaded, total } = event;
     let percent = Math.floor((loaded * 100) / total);
-    // console.log("percent: ", percent);
     setShowProgress(percent === 100 ? false : true);
     setCurrentUploadStatus(percent / 100);
   }
   async function takePicture() {
     const image = await Camera.getPhoto({
       quality: 90,
-      allowEditing: true,
+      allowEditing: false,
       resultType: CameraResultType.DataUrl,
     });
-    // console.log("image: ", image);
-
     const imageUrl: any = image.dataUrl;
     setSelectedImage(imageUrl);
     setImagePicked(true);
@@ -126,11 +134,11 @@ const MenuComponent: React.FC<any> = () => {
         ]}
       />
 
-      <IonMenu side="start" menuId="menu" contentId="menu">
+      <IonMenu side='start' menuId='menu' contentId='menu'>
         <IonHeader>
-          <IonToolbar className="side-menu-toobar">
+          <IonToolbar className='side-menu-toobar'>
             <IonButtons
-              slot="end"
+              slot='end'
               style={{ right: '20px', position: 'absolute' }}
             >
               <IonButton
@@ -144,128 +152,128 @@ const MenuComponent: React.FC<any> = () => {
             )}
           </IonToolbar>
         </IonHeader>
-        <IonContent className="ion-content-wrapper">
+        <IonContent className='ion-content-wrapper'>
           <div
-            className="pageheader"
+            className='pageheader'
             style={{ marginLeft: '7%', fontWeight: 600, fontSize: '20px' }}
           >
             <IonText style={{ fontSize: '20px', fontWeight: 600 }}>
-              <Translate message="profile.text" />
+              <Translate message='profile.text' />
             </IonText>
           </div>
-          <div className="menu-content-wrapper">
-            <div className="page-wrapper">
-              <div className="profile-icon-wrapper">
+          <div className='menu-content-wrapper'>
+            <div className='page-wrapper'>
+              <div className='profile-icon-wrapper'>
                 {selectedImage && (
                   <IonAvatar>
                     <img src={selectedImage} />
                   </IonAvatar>
                 )}
-                <div className="camera-icon-wrapper">
-                  <IonButton onClick={takePicture} className="camera-btn">
+                <div className='camera-icon-wrapper'>
+                  <IonButton onClick={takePicture} className='camera-btn'>
                     <MenuCamera
-                      width="50px"
-                      height="50"
-                      className="camera-icon"
+                      width='50px'
+                      height='50'
+                      className='camera-icon'
                     />
                   </IonButton>
                 </div>
 
                 {!selectedImage && (
-                  <ProfilePictureIcon width="140" height="140" />
+                  <ProfilePictureIcon width='140' height='140' />
                 )}
               </div>
-              <div className="field-wrapper-outer">
-                <div className="fields-wrapper">
-                  <IonText className="label-text">
-                    <Translate message="profile.fullName" />
+              <div className='field-wrapper-outer'>
+                <div className='fields-wrapper'>
+                  <IonText className='label-text'>
+                    <Translate message='profile.fullName' />
                   </IonText>
-                  <IonText className="label-value">
+                  <IonText className='label-value'>
                     {profileFields.full_name}
                   </IonText>
                 </div>
-                <div className="fields-wrapper">
-                  <IonText className="label-text">
-                    <Translate message="profile.accountNumber" />
+                <div className='fields-wrapper'>
+                  <IonText className='label-text'>
+                    <Translate message='profile.accountNumber' />
                   </IonText>
-                  <IonText className="label-value">
+                  <IonText className='label-value'>
                     {profileFields.account_number}
                   </IonText>
                 </div>
-                <div className="fields-wrapper">
-                  <IonText className="label-text">
-                    <Translate message="profile.accountType" />
+                <div className='fields-wrapper'>
+                  <IonText className='label-text'>
+                    <Translate message='profile.accountType' />
                   </IonText>
-                  <IonText className="label-value">
+                  <IonText className='label-value'>
                     {profileFields.account_type}
                   </IonText>
                 </div>
-                <div className="fields-wrapper">
-                  <IonText className="label-text">
-                    <Translate message="profile.accountCurrency" />
+                <div className='fields-wrapper'>
+                  <IonText className='label-text'>
+                    <Translate message='profile.accountCurrency' />
                   </IonText>
-                  <IonText className="label-value">
+                  <IonText className='label-value'>
                     {profileFields.account_currency}
                   </IonText>
                 </div>
-                <div className="fields-wrapper">
-                  <IonText className="label-text">
-                    <Translate message="profile.accountInterest" />
+                <div className='fields-wrapper'>
+                  <IonText className='label-text'>
+                    <Translate message='profile.accountInterest' />
                   </IonText>
-                  <IonText className="label-value">
+                  <IonText className='label-value'>
                     {profileFields.account_interest}
                   </IonText>
                 </div>
               </div>
             </div>
 
-            <div className="bottom-wrapper">
+            <div className='bottom-wrapper'>
               <hr />
-              <div className="action-items-wrapper">
-                <button className="action-button">
+              <div className='action-items-wrapper'>
+                <button className='action-button'>
                   <IonText>
-                    <Translate message="profile.changeLanguage" />
+                    <Translate message='profile.changeLanguage' />
                   </IonText>
                 </button>
                 <button
-                  className="action-button"
+                  className='action-button'
                   onClick={requestForChangeMpin}
                 >
                   <IonText>
-                    <Translate message="profile.changeMPIN" />
+                    <Translate message='profile.changeMPIN' />
                   </IonText>
                 </button>
                 <button
-                  className="action-button"
+                  className='action-button'
                   onClick={requestForChangePassword}
                 >
                   <IonText>
-                    <Translate message="profile.changePassword" />
+                    <Translate message='profile.changePassword' />
                   </IonText>
                 </button>
-                <button className="action-button" onClick={logOut}>
+                <button className='action-button' onClick={logOut}>
                   <IonText>
-                    <Translate message="profile.logout" />
+                    <Translate message='profile.logout' />
                   </IonText>
                 </button>
               </div>
               <hr />
-              <div className="footer-wrapper">
-                <button className="action-button">
+              <div className='footer-wrapper'>
+                <button className='action-button'>
                   <IonText>
                     <a
-                      href="https://policy.royalitywallet.com/"
-                      target="_blank"
+                      href='https://policy.royalitywallet.com/'
+                      target='_blank'
                     >
-                      <Translate message="profile.privacy" />
+                      <Translate message='profile.privacy' />
                     </a>
                   </IonText>
                 </button>
-                <div className="version-wrapper" style={{ display: 'grid' }}>
-                  <IonText className="label-text">
-                    <Translate message="profile.version" />
+                <div className='version-wrapper' style={{ display: 'grid' }}>
+                  <IonText className='label-text'>
+                    <Translate message='profile.version' />
                   </IonText>
-                  <IonText className="label-value">v1.01.02</IonText>
+                  <IonText className='label-value'>v{appVersion}</IonText>
                 </div>
               </div>
             </div>
@@ -273,7 +281,7 @@ const MenuComponent: React.FC<any> = () => {
         </IonContent>
       </IonMenu>
 
-      <IonRouterOutlet id="menu"></IonRouterOutlet>
+      <IonRouterOutlet id='menu'></IonRouterOutlet>
     </>
   );
 };

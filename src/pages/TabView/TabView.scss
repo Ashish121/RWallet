@@ -2,6 +2,7 @@ ion-tab-bar {
   --background: #004777;
 }
 ion-tab-button {
+  --background-focused: transparent;
   --color: #ffffff;
   font-size: 15px;
   --color-selected: #ffffff;

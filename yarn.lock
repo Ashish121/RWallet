@@ -2317,6 +2317,13 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@ionic-native/app-version@^5.34.0":
+  version "5.34.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/app-version/-/app-version-5.34.0.tgz#8edf1c6bc11b1980dd628e04bd54c8ce8cbc5871"
+  integrity sha512-5+tF8mm26s8oQjqbtlDTWYv/Y3QV7XXLCwVNAQ1InY8mqJ8Y2aJExhFkVlllfASnTwIMdwsMIUQGUXQe2tiUuA==
+  dependencies:
+    "@types/cordova" latest
+
 "@ionic-native/core@^5.31.1":
   version "5.31.1"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-5.31.1.tgz#189d67f20b46cfe7930091fa382539efafa8d03b"
@@ -5585,6 +5592,11 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
+
+cordova-plugin-app-version@^0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-app-version/-/cordova-plugin-app-version-0.1.12.tgz#08798f6edf870e42dc655a8f1028894428eb72a6"
+  integrity sha512-P+0d9+h9HasanKuMd8tcEpuJJlsVmClie3Mbq16v3TV/VroDrgYB6Ea8Imkc/WjjMVSBCjWB+pji1LoupWlddA==
 
 cordova-plugin-firebase-authentication@^4.0.2:
   version "4.0.2"

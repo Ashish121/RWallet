@@ -51,14 +51,14 @@ const HeaderComponent: React.FC<headerProps> = ({
     <>
       {showMenu && <MenuComponent />}
 
-      <IonHeader className="header-wrapper" style={{ backgroundImage: 'none' }}>
-        <IonToolbar className="header">
+      <IonHeader className='header-wrapper' style={{ backgroundImage: 'none' }}>
+        <IonToolbar className='header'>
           {!showMenu && showBackButton && (
-            <IonButtons slot="start" style={{ position: 'absolute' }}>
-              <IonButton color="secondary" onClick={backButtonHandler}>
+            <IonButtons slot='start' style={{ position: 'absolute' }}>
+              <IonButton color='secondary' onClick={backButtonHandler}>
                 <IonIcon
                   style={{ color: '#ffffff', fontSize: '24px' }}
-                  slot="icon-only"
+                  slot='icon-only'
                   ios={chevronBackOutline}
                   md={chevronBackOutline}
                 />
@@ -67,13 +67,13 @@ const HeaderComponent: React.FC<headerProps> = ({
           )}
           {showNotification && (
             <IonButtons
-              slot="end"
+              slot='end'
               style={{ position: 'absolute', right: '20px' }}
               onClick={notificationHandler}
             >
-              <NotificationBell width="20" height="20" />
+              <NotificationBell width='20' height='20' />
               {value > 0 ? (
-                <IonBadge color="primary" className="notification-count-badge">
+                <IonBadge color='primary' className='notification-count-badge'>
                   {value}
                 </IonBadge>
               ) : (
@@ -84,31 +84,30 @@ const HeaderComponent: React.FC<headerProps> = ({
           {showCart && (
             <div>
               <IonButtons
-                slot="end"
+                slot='end'
                 style={{
                   position: 'absolute',
                   right: '15px',
-                  marginTop: '10px',
                 }}
                 onClick={cartHandler}
               >
-                <CartIcon width="20" height="20" />
+                <CartIcon width='20' height='20' />
               </IonButtons>
-              <IonBadge color="primary" className="cart-count-badge">
+              <IonBadge color='primary' className='cart-count-badge'>
                 {value}
               </IonBadge>
             </div>
           )}
           {showMenu && (
             <IonButtons
-              slot="start"
+              slot='start'
               onClick={toggleSideMenu}
               style={{ position: 'absolute', left: '15px' }}
             >
-              <SideMenuIcon width="20" height="20" />
+              <SideMenuIcon width='20' height='20' />
             </IonButtons>
           )}
-          <IonTitle size="small" class="ion-text-center" style={{ top: '5px' }}>
+          <IonTitle size='small' class='ion-text-center' style={{ top: '5px' }}>
             <IonText>
               <Translate message={headerLable} />
             </IonText>
