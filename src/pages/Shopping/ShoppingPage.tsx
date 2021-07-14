@@ -118,7 +118,7 @@ const ShoppingPage: React.FC = () => {
     const searchItem = e.detail.value;
     const val = searchItem.trim();
 
-    if (val.length > 0 && val !== null) {
+    if ((val.length > 0 && val !== null) || val.length === 0) {
       dispatch(requestForSearchItem({ searchString: val }, ShowSearchItemList));
     }
   }, 500);

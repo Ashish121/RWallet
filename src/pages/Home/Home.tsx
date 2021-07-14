@@ -27,6 +27,8 @@ import {
 import { requestForProfile } from '../../redux/actions/';
 import './Home.scss';
 import { Translate } from '../../i18n/formatMessages';
+import { useNotificationService } from '../../hooks/Notification';
+import { RequestForUpdateDeviceToken } from '../../redux/actions';
 
 const HomePage: React.FC = () => {
   const history = useHistory();
@@ -36,10 +38,27 @@ const HomePage: React.FC = () => {
   const [slider, setSlider] = useState([]);
   const [nCount, setNcount] = useState(Number);
   const balance = localStorage.getItem('balance');
+  const notificationService = useNotificationService();
   //if we click back button on device it will reach login page
+
   useEffect(() => {
     localStorage.setItem('previousRoute', '/');
+    const pushToken = localStorage.getItem('device-token');
+    if (!pushToken || !JSON.parse(pushToken).value) {
+      notificationService.askPushPermission(savePushToken);
+    }
+    // console.log("pushToken***", pushToken);
   }, []);
+
+  function savePushToken(token: any) {
+    const user_id = localStorage.getItem('userId');
+    dispatch(
+      RequestForUpdateDeviceToken({
+        user_id,
+        pushToken: JSON.parse(token).value,
+      })
+    );
+  }
 
   function nextRoute(status: any, data: any) {
     const imgUrl = data?.user?.slider_detail;
