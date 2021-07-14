@@ -26,6 +26,8 @@ function useNotificationService() {
     PushNotifications.addListener(
       'registration',
       (token: PushNotificationToken) => {
+        //set token in local-storage for notification,if device change
+        localStorage.setItem('device-token', JSON.stringify(token));
         //pass token to notification token API
         callback?.(JSON.stringify(token));
       }
