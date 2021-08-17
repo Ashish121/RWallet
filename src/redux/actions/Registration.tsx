@@ -24,7 +24,7 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         dispatch(toggleLoader(false));
         nextRoute(true, null);
       } else {
-        nextRoute(false);
+        // nextRoute(false);
         dispatch(toggleLoader(false));
         const data = {
           showToast: true,

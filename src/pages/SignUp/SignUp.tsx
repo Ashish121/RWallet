@@ -164,7 +164,7 @@ const SignUpPage: React.FC = () => {
                       mobileNo.trim() &&
                       password.trim() &&
                       password.trim().length > 5 &&
-                      gender.length > 0 &&
+                      // gender.length > 0 &&
                       confirmPassword.trim() &&
                       countryCode.trim() &&
                       password.trim() === confirmPassword.trim()
