@@ -59,6 +59,7 @@ const ShoppingPage: React.FC = () => {
   const [categoryName, setCategoryName] = useState('');
   const [description, setDiscription] = useState('');
   const [ratings, setRatings] = useState(0);
+  const [productList,setProductList]=useState([]);
 
   let id = 0;
   let category = 'mobile';
@@ -91,6 +92,8 @@ const ShoppingPage: React.FC = () => {
   function ShowProductList(res: any) {
     const limit = res.data.shopping_limit;
     setshoppingLimitBalance(limit);
+    let finalArray: any = [];
+
     res.data.data.forEach((element: any, index: any) => {
       if (category === element.category_name) {
         id = index;
@@ -104,8 +107,15 @@ const ShoppingPage: React.FC = () => {
         setCategoryName(element.category_name);
         setDiscription(productList.description);
         setRatings(productList.review_rating);
+
+        let tempObj = {
+          value: element,
+        };
+        finalArray.push(tempObj);
       }
     });
+
+    setProductList(finalArray);
   }
 
   function navigateToCart() {
@@ -371,45 +381,54 @@ const ShoppingPage: React.FC = () => {
                   </button>
                 </IonInput>
               </div>
+
               {!showSearchData && imageURL.length > 0 ? (
                 <div>
                   <div className="mobile-items-wrapper">
                     <IonGrid>
                       <IonRow>
-                        <IonCol size="6">
-                          <IonCard
-                            onClick={() =>
-                              showItemDetails(
-                                productId,
-                                imageURL,
-                                price,
-                                qty,
-                                productName,
-                                configProduct
-                              )
-                            }
-                          >
-                            <IonCardHeader>
-                              <div className="image-wrapper">
-                                <IonImg src={imageURL} />
-                              </div>
-                            </IonCardHeader>
+                        {productList.map((element:any)=>{
+                          return(
+                            <IonCol size="6">
+                              <IonCard
+                                onClick={() =>
+                                  showItemDetails(
+                                    productId,
+                                    imageURL,
+                                    price,
+                                    qty,
+                                    productName,
+                                    configProduct
+                                  )
+                                }
+                              >
+                                <IonCardHeader>
+                                  <div className="image-wrapper">
+                                    <IonImg src={element.value.image_path} />
+                                  </div>
+                                </IonCardHeader>
 
-                            <IonCardContent>
-                              <div className="device-name-label">
-                                <IonText>{categoryName}</IonText>
-                              </div>
+                                <IonCardContent>
+                                  <div className="device-name-label-for-product ">
+                                    <IonText>{element.value.category_name}</IonText>
+                                  </div>
+                                  <div className="device-name-label-for-product " >
+                                    <IonText style={{fontSize:'13px'}}>{element.value.product_name}</IonText>
+                                  </div>
+                                  <div className="device-price-label">
+                                    <IonText>{element.value.price}</IonText>
+                                  </div>
+                                </IonCardContent>
+                              </IonCard>
+                            </IonCol>
+                          ); })
 
-                              <div className="device-price-label">
-                                <IonText>{price}</IonText>
-                              </div>
-                            </IonCardContent>
-                          </IonCard>
-                        </IonCol>
+                        }
                       </IonRow>
                     </IonGrid>
                   </div>
                 </div>
+                
               ) : (
                 <div>
                   <div className="mobile-items-wrapper">
@@ -440,7 +459,7 @@ const ShoppingPage: React.FC = () => {
                                   <div className="device-name-label">
                                     <IonText>{listVal.category_name}</IonText>
                                   </div>
-
+                                
                                   <div className="device-price-label">
                                     <IonText>{listVal.price}</IonText>
                                   </div>

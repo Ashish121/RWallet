@@ -290,16 +290,7 @@ const ItemDetailsPage: React.FC = () => {
                     </IonText>
                     <div className='features-text-wrapper'>
                       <IonText className='features-text'>
-                        Country Of Origin - India, China 48MP rear camera with
-                        ultra-wide, super macro, portrait, night mode, 960fps
-                        slowmotion, AI scene recognition, pro color, HDR, pro
-                        mode | 16MP facing camera. 16.9418 centimeters
-                        (6.67-inch) FHD+ full screen dot display LCD multi-touch
-                        capacitive touchscreen with 2400 x 1080 pixels
-                        resolution, 400 ppi pixel density and 20:9 aspect ratio
-                        | 2.5D curved glass The all-new Interstellar Black
-                        colour combines different hues of grey and blue together
-                        to deliver a shade that mesmerizes you.
+                        {description}
                       </IonText>
                     </div>
                   </div>
