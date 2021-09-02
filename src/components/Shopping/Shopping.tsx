@@ -165,6 +165,17 @@ const ShoppingSection: React.FC<shoppingProps> = ({ expanded }) => {
                   </IonText>
                 </button>
               </div>
+              {/* <div>
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToShopping('kids')}
+                >
+                  <SneakersIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.kidsText" />
+                  </IonText>
+                </button>
+              </div> */}
             </>
           )}
         </div>

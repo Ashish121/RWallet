@@ -66,13 +66,16 @@
       }
     }
   }
+
+
+
+
+
+
   .mobile-items-wrapper {
     padding: 20px;
     margin-top: -38px;
-
-    // display: flex;
-    // flex-flow: "row-rap";
-
+  
     .item-wrapper {
       display: flex;
       justify-content: center;
@@ -96,6 +99,18 @@
         color: #000000;
         text-align: center;
       }
+
+      .device-name-label-for-product {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0px;
+        line-height: 14px;
+        color: #000000;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        width:100px;
+      }
       .device-price-label {
         font-style: normal;
         font-weight: 600;
@@ -116,6 +131,8 @@
       right: 0px;
     }
   }
+
+ 
 }
 
 .shopping-heading-text-area {
