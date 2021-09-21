@@ -171,6 +171,7 @@
 
   "profile.text": "Profile",
   "profile.fullName": "Full name",
+  "profile.gender": "Gender",
   "profile.accountNumber": "Account number",
   "profile.accountType": "Account type",
   "profile.accountCurrency": "Account currency",
