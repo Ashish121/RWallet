@@ -20,7 +20,7 @@ import {
   HeaderComponent,
   SlidesComponent,
   ShoppingSection,
-  LoanSection,
+  //LoanSection,
   UtilitiesSection,
   LoaderComponent,
 } from '../../components';
@@ -176,8 +176,8 @@ const HomePage: React.FC = () => {
                     )}
 
                     <ShoppingSection expanded={expandOptions} />
-
-                    <LoanSection expanded={expandOptions} />
+                    
+                    {/* <LoanSection expanded={expandOptions} /> */}
                     <UtilitiesSection expanded={expandOptions} />
                     <div className="see-more-section">
                       <IonButton

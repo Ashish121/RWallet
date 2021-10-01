@@ -116,134 +116,139 @@ const UtilitiesSection: React.FC<utilitiesProps> = ({ expanded }) => {
 
   return (
     <>
-      {expanded && (
-        <div className="utility-section">
-          <div style={{ textAlign: 'center' }}>
-            <IonText text-center style={{ fontWeight: '600' }}>
-              <Translate message="home.utility" />
-            </IonText>
-          </div>
 
-          <div className="utility-section-wrapper">
-            <div>
-              <button
-                className="iconButtons"
-                value="flight"
-                onClick={() => navigateToUtility('flight')}
-              >
-                <AirPlaneIcon width="30" height="30" />
-                <IonText>
-                  <Translate message="home.flightText" />
-                </IonText>
-              </button>
-            </div>
-            <div>
-              <button
-                className="iconButtons"
-                onClick={() => navigateToUtility('bus')}
-                value="bus"
-              >
-                <BusIcon width="30" height="30" onClick={navigateToUtility} />
-                <IonText>
-                  <Translate message="home.busText" />
-                </IonText>
-              </button>
-            </div>
-            <div>
-              <button
-                className="iconButtons"
-                onClick={() => navigateToUtility('topup')}
-                value="topup"
-              >
-                <PowerbankIcon width="50" height="30" />
-
-                <IonText>
-                  <Translate message="home.topupText" />
-                </IonText>
-              </button>
-            </div>
-            <div>
-              <button
-                className="iconButtons"
-                onClick={() => navigateToUtility('electricityAndWater')}
-                value="electricityAndWater"
-              >
-                <LightBulbIcon width="30" height="30" />
-
-                <IonText>
-                  <Translate message="home.electricityAndWaterText" />
-                </IonText>
-              </button>
-            </div>
-
-            <div>
-              <button
-                className="iconButtons"
-                onClick={() => navigateToUtility('televisionPayment')}
-                value="televisionPayment"
-              >
-                <TelevisionIcon width="50" height="30" />
-
-                <IonText>
-                  <Translate message="home.televisionPayment" />
-                </IonText>
-              </button>
-            </div>
-            <div>
-              <button
-                className="iconButtons"
-                onClick={() => navigateToUtility('wifiPayment')}
-                value="wifiPayment"
-              >
-                <WifiIcon width="30" height="30" />
-
-                <IonText>
-                  <Translate message="home.wifiPayment" />
-                </IonText>
-              </button>
-            </div>
-            <div>
-              <button
-                className="iconButtons"
-                onClick={() => navigateToUtility('creditcard')}
-                value="creditcard"
-              >
-                <CreditCardIcon width="30" height="30" />
-                <IonText>
-                  <Translate message="home.creditcard" />
-                </IonText>
-              </button>
-            </div>
-
-            <div>
-              <button
-                className="iconButtons"
-                onClick={() => navigateToUtility('antivirus')}
-                value="antivirus"
-              >
-                <AntivirusIcon width="30" height="30" />
-
-                <IonText>
-                  <Translate message="home.antivirus" />
-                </IonText>
-              </button>
-            </div>
-            <div>
-              <button
-                className="iconButtons"
-                onClick={() => navigateToUtility('insurance')}
-                value="insurance"
-              >
-                <InsuranceIcon width="30" height="30" />
-
-                <IonText>
-                  <Translate message="home.insurance" />
-                </IonText>
-              </button>
-            </div>
-          </div>
+      <div className="utility-section">
+        <div style={{ textAlign: 'center' }}>
+          <IonText text-center style={{ fontWeight: '600' }}>
+            <Translate message="home.utility" />
+          </IonText>
         </div>
-      )}
+
+        <div className="utility-section-wrapper">
+          <div>
+            <button
+              className="iconButtons"
+              value="flight"
+              onClick={() => navigateToUtility('flight')}
+            >
+              <AirPlaneIcon width="30" height="30" />
+              <IonText>
+                <Translate message="home.flightText" />
+              </IonText>
+            </button>
+          </div>
+          <div>
+            <button
+              className="iconButtons"
+              onClick={() => navigateToUtility('bus')}
+              value="bus"
+            >
+              <BusIcon width="30" height="30" onClick={navigateToUtility} />
+              <IonText>
+                <Translate message="home.busText" />
+              </IonText>
+            </button>
+          </div>
+          <div>
+            <button
+              className="iconButtons"
+              onClick={() => navigateToUtility('topup')}
+              value="topup"
+            >
+              <PowerbankIcon width="50" height="30" />
+
+              <IonText>
+                <Translate message="home.topupText" />
+              </IonText>
+            </button>
+          </div>
+          <div>
+            <button
+              className="iconButtons"
+              onClick={() => navigateToUtility('electricityAndWater')}
+              value="electricityAndWater"
+            >
+              <LightBulbIcon width="30" height="30" />
+
+              <IonText>
+                <Translate message="home.electricityAndWaterText" />
+              </IonText>
+            </button>
+          </div>
+
+          {expanded && (
+            <>
+
+              <div>
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToUtility('televisionPayment')}
+                  value="televisionPayment"
+                >
+                  <TelevisionIcon width="50" height="30" />
+
+                  <IonText>
+                    <Translate message="home.televisionPayment" />
+                  </IonText>
+                </button>
+              </div>
+              <div>
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToUtility('wifiPayment')}
+                  value="wifiPayment"
+                >
+                  <WifiIcon width="30" height="30" />
+
+                  <IonText>
+                    <Translate message="home.wifiPayment" />
+                  </IonText>
+                </button>
+              </div>
+              <div>
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToUtility('creditcard')}
+                  value="creditcard"
+                >
+                  <CreditCardIcon width="30" height="30" />
+                  <IonText>
+                    <Translate message="home.creditcard" />
+                  </IonText>
+                </button>
+              </div>
+
+              <div>
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToUtility('antivirus')}
+                  value="antivirus"
+                >
+                  <AntivirusIcon width="30" height="30" />
+
+                  <IonText>
+                    <Translate message="home.antivirus" />
+                  </IonText>
+                </button>
+              </div>
+              <div>
+                <button
+                  className="iconButtons"
+                  onClick={() => navigateToUtility('insurance')}
+                  value="insurance"
+                >
+                  <InsuranceIcon width="30" height="30" />
+
+                  <IonText>
+                    <Translate message="home.insurance" />
+                  </IonText>
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+     
     </>
   );
 };
