@@ -31,9 +31,9 @@
     }
     .storage-discription-wrapper {
       display: flex;
-      font-size: 10px;
+      font-size: 13px;
       font-weight: 300;
-      margin-top: 10px;
+      margin-top: 25px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -117,7 +117,8 @@
     .price-details-wrapper {
       display: flex;
       justify-content: space-between;
-      margin-top: 12px;
+      //margin-top: 12px;
+      margin-top: 20px;
     }
     .add-to-cart-button-wrapper {
       position: fixed;

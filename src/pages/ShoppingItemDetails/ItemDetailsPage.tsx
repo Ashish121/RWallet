@@ -9,11 +9,6 @@ import {
   IonCard,
   IonCardContent,
   IonText,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonSelectOption,
-  IonSelect,
   IonButton,
 } from '@ionic/react';
 import { HeaderComponent, SlidesComponent, Rating } from '../../components';
@@ -29,7 +24,7 @@ const ItemDetailsPage: React.FC = () => {
   const dispatch = useDispatch();
   const user_id = localStorage.getItem('userId');
   const [expandOptions, setExpandOptions] = useState(false);
-  const [color, setDeviceColor] = useState<string>();
+  // const [color, setDeviceColor] = useState<string>();
   const [price, setPrice] = useState(Number);
   const [productName, setProductName] = useState(Number);
   const [count, setCount] = useState(Number);
@@ -49,6 +44,8 @@ const ItemDetailsPage: React.FC = () => {
     setProductName(paramsItem.productName);
     setCount(paramsItem.count);
     setImageUrl(paramsItem.imageUrl);
+
+    // console.log("productName **",paramsItem.productName);
     setDescription(paramsItem.description);
     setConfigProductList(paramsItem.configProduct);
   }, []);
@@ -88,9 +85,9 @@ const ItemDetailsPage: React.FC = () => {
     }
   };
 
-  function setColor(value: any) {
-    setDeviceColor(value);
-  }
+  // function setColor(value: any) {
+  //   setDeviceColor(value);
+  // }
 
   function addToCart() {
     const quantity = 1;
@@ -161,6 +158,7 @@ const ItemDetailsPage: React.FC = () => {
                 <div className='details-header-wrapper'>
                   <IonText className='item-name-label'>{productName}</IonText>
                 </div>
+                
                 {ConfigProductList.length > 0 ? (
                   <div>
                     <div className='storage-details-wrapper'>
@@ -185,7 +183,7 @@ const ItemDetailsPage: React.FC = () => {
                         {'6GB Ram ' + '64GB Storage '}
                       </button>
                     </div>
-                    <div className='item-color-wrapper'>
+                    {/* <div className='item-color-wrapper'>
                       <IonList>
                         <IonItem>
                           <IonLabel style={{ color: '#000000' }}>
@@ -204,7 +202,7 @@ const ItemDetailsPage: React.FC = () => {
                           </IonSelect>
                         </IonItem>
                       </IonList>
-                    </div>
+                    </div> */}
                     <div className='price-details-wrapper'>
                       <IonText
                         style={{
@@ -236,7 +234,7 @@ const ItemDetailsPage: React.FC = () => {
                     <div className='storage-discription-wrapper'>
                       {description}
                     </div>
-                    <div className='item-color-wrapper'>
+                    {/* <div className='item-color-wrapper'>
                       <IonList>
                         <IonItem>
                           <IonLabel style={{ color: '#000000' }}>
@@ -255,7 +253,7 @@ const ItemDetailsPage: React.FC = () => {
                           </IonSelect>
                         </IonItem>
                       </IonList>
-                    </div>
+                    </div> */}
                     <div className='price-details-wrapper'>
                       <IonText
                         style={{

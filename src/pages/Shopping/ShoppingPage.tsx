@@ -50,12 +50,12 @@ const ShoppingPage: React.FC = () => {
   const [searchList, setSearchList] = useState([]);
   const [showSearchData, setShowSearchData] = useState(false);
 
-  const [productId, setProductId] = useState('');
+  // const [productId, setProductId] = useState('');
   const [imageURL, setImageURL] = useState('');
-  const [price, setPrice] = useState('');
-  const [qty, setQty] = useState('');
-  const [productName, setProductName] = useState('');
-  const [configProduct, setConfigProduct] = useState('');
+  // const [price, setPrice] = useState('');
+  // const [qty, setQty] = useState('');
+  // const [productName, setProductName] = useState('');
+  // const [configProduct, setConfigProduct] = useState('');
   const [categoryName, setCategoryName] = useState('');
   const [description, setDiscription] = useState('');
   const [ratings, setRatings] = useState(0);
@@ -98,12 +98,12 @@ const ShoppingPage: React.FC = () => {
       if (category === element.category_name) {
         id = index;
         const productList = res.data.data[id];
-        setProductId(productList.product_id);
+        // setProductId(productList.product_id);
         setImageURL(productList.image_path);
-        setPrice(productList.price);
-        setQty(productList.quantity);
-        setProductName(productList.product_name);
-        setConfigProduct(productList.config_product);
+        // setPrice(productList.price);
+        // setQty(productList.quantity);
+        // setProductName(productList.product_name);
+        // setConfigProduct(productList.config_product);
         setCategoryName(element.category_name);
         setDiscription(productList.description);
         setRatings(productList.review_rating);
@@ -141,6 +141,11 @@ const ShoppingPage: React.FC = () => {
     productName: any,
     configProduct: any
   ) {
+
+    if(configProduct==undefined){
+      configProduct=0;
+    }
+
     history.replace('/tabs/shopping/itemdetails', {
       productId,
       imageUrl,
@@ -152,6 +157,15 @@ const ShoppingPage: React.FC = () => {
       categoryName,
       ratings,
     });
+
+    // console.log("productId",productId);
+    // console.log("imageUrl",imageUrl);
+    // console.log("price",price);
+    // console.log("quantity",quantity);
+    // console.log("productName",productName);
+    // console.log("configProduct",configProduct);
+    // console.log("description",description);
+    // console.log("categoryName",categoryName);
   }
   function goBack() {
     history.replace('/tabs');
@@ -389,16 +403,16 @@ const ShoppingPage: React.FC = () => {
                       <IonRow>
                         {productList.map((element:any)=>{
                           return(
-                            <IonCol size="6">
+                            <IonCol size="6" key={element.product_id}>
                               <IonCard
                                 onClick={() =>
                                   showItemDetails(
-                                    productId,
-                                    imageURL,
-                                    price,
-                                    qty,
-                                    productName,
-                                    configProduct
+                                    element.value.product_id,
+                                    element.value.image_path,
+                                    element.value.price,
+                                    element.value.quantity,
+                                    element.value.product_name,
+                                    element.value.config_product
                                   )
                                 }
                               >
