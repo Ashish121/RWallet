@@ -81,7 +81,9 @@ ion-menu {
         color: #000000;
         opacity: 0.5;
         margin-top: 10px;
+        text-transform: capitalize;
       }
+   
     }
   }
   .action-items-wrapper {
@@ -147,3 +149,4 @@ ion-menu {
 .menu-content-wrapper .page-wrapper {
   margin-bottom: 15px;
 }
+

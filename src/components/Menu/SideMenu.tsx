@@ -194,6 +194,15 @@ const MenuComponent: React.FC<any> = () => {
                 </div>
                 <div className='fields-wrapper'>
                   <IonText className='label-text'>
+                    <Translate message='profile.gender' />
+                  </IonText>
+                  <IonText className='label-value'>
+                   
+                    {profileFields.gender}
+                  </IonText>
+                </div>
+                <div className='fields-wrapper'>
+                  <IonText className='label-text'>
                     <Translate message='profile.accountNumber' />
                   </IonText>
                   <IonText className='label-value'>
@@ -286,3 +295,5 @@ const MenuComponent: React.FC<any> = () => {
   );
 };
 export default MenuComponent;
+
+
