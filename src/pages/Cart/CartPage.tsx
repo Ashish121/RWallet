@@ -167,7 +167,7 @@ const CartPage: React.FC = () => {
                                     </div>
                                   </div>
                                   <div className="details-wrapper">
-                                    <div className="item-name">
+                                    <div className="item-name product-name-alignment">
                                       <IonText>{element.product_name}</IonText>
                                     </div>
                                     {/* <div className="item-varient">
