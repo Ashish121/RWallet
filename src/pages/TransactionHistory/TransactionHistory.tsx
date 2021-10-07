@@ -84,18 +84,30 @@ const TransactionHistory: React.FC = () => {
                   <IonText className="transaction-text-area">
                     <Translate message="TransactionHistory.text" />
                   </IonText>
-                  <IonCard>
-                    <IonCardContent style={{ width: '100%' }}>
-                      {transactionFields.map((item: any) => {
-                        return (
+                 
+                  {transactionFields.map((item: any) => {
+                    return (
+                      <IonCard>
+                        <IonCardContent style={{ width: '100%' }}>
                           <div
                             className="card-body-wrapper"
-                            style={{ borderLeftColor: 'red', width: '100%' }}
+                            style={{ borderLeftColor:(item.status === 'deposit' ? 'green' : 'red') , width: '100%' }}
                           >
                             <div className="card-inner-header">
-                              <IonText className="transaction-type">
+                            
+                              { item.status === 'deposit' ?
+                                (<IonText className="transaction-type">
+                              Received from
+                                </IonText>
+                                ):(
+                                  <IonText className="transaction-type">
                                 Payment To
-                              </IonText>
+                                  </IonText>
+                                )
+                              }
+                             
+
+                              
 
                               <div
                                 className="common-ion-text"
@@ -132,10 +144,11 @@ const TransactionHistory: React.FC = () => {
                               </IonText>
                             </div>
                           </div>
-                        );
-                      })}
-                    </IonCardContent>
-                  </IonCard>
+                        </IonCardContent>
+                      </IonCard>
+                    );
+                  })}
+                   
                 </React.Fragment>
               )}
             </div>

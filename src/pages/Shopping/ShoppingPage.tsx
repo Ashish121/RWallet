@@ -57,7 +57,7 @@ const ShoppingPage: React.FC = () => {
   // const [productName, setProductName] = useState('');
   // const [configProduct, setConfigProduct] = useState('');
   const [categoryName, setCategoryName] = useState('');
-  const [description, setDiscription] = useState('');
+  // const [description, setDiscription] = useState('');
   const [ratings, setRatings] = useState(0);
   const [productList,setProductList]=useState([]);
 
@@ -105,7 +105,8 @@ const ShoppingPage: React.FC = () => {
         // setProductName(productList.product_name);
         // setConfigProduct(productList.config_product);
         setCategoryName(element.category_name);
-        setDiscription(productList.description);
+        //setDiscription(productList.description);
+       
         setRatings(productList.review_rating);
 
         let tempObj = {
@@ -139,7 +140,8 @@ const ShoppingPage: React.FC = () => {
     price: any,
     quantity: any,
     productName: any,
-    configProduct: any
+    configProduct: any,
+    description:any
   ) {
 
     if(configProduct==undefined){
@@ -412,7 +414,8 @@ const ShoppingPage: React.FC = () => {
                                     element.value.price,
                                     element.value.quantity,
                                     element.value.product_name,
-                                    element.value.config_product
+                                    element.value.config_product,
+                                    element.value.description
                                   )
                                 }
                               >
@@ -459,7 +462,8 @@ const ShoppingPage: React.FC = () => {
                                     listVal.price,
                                     listVal.quantity,
                                     listVal.product_name,
-                                    listVal.config_product
+                                    listVal.config_product,
+                                    listVal.description
                                   )
                                 }
                               >

@@ -44,9 +44,9 @@ const ItemDetailsPage: React.FC = () => {
     setProductName(paramsItem.productName);
     setCount(paramsItem.count);
     setImageUrl(paramsItem.imageUrl);
-
-    // console.log("productName **",paramsItem.productName);
     setDescription(paramsItem.description);
+
+    // console.log("description****************",paramsItem.description);
     setConfigProductList(paramsItem.configProduct);
   }, []);
 
