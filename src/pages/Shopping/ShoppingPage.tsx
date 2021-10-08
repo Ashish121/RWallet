@@ -49,16 +49,8 @@ const ShoppingPage: React.FC = () => {
   const [searchString, setSearchString] = useState('');
   const [searchList, setSearchList] = useState([]);
   const [showSearchData, setShowSearchData] = useState(false);
-
-  // const [productId, setProductId] = useState('');
   const [imageURL, setImageURL] = useState('');
-  // const [price, setPrice] = useState('');
-  // const [qty, setQty] = useState('');
-  // const [productName, setProductName] = useState('');
-  // const [configProduct, setConfigProduct] = useState('');
   const [categoryName, setCategoryName] = useState('');
-  // const [description, setDiscription] = useState('');
-  const [ratings, setRatings] = useState(0);
   const [productList,setProductList]=useState([]);
 
   let id = 0;
@@ -98,17 +90,8 @@ const ShoppingPage: React.FC = () => {
       if (category === element.category_name) {
         id = index;
         const productList = res.data.data[id];
-        // setProductId(productList.product_id);
         setImageURL(productList.image_path);
-        // setPrice(productList.price);
-        // setQty(productList.quantity);
-        // setProductName(productList.product_name);
-        // setConfigProduct(productList.config_product);
         setCategoryName(element.category_name);
-        //setDiscription(productList.description);
-       
-        setRatings(productList.review_rating);
-
         let tempObj = {
           value: element,
         };
@@ -141,7 +124,8 @@ const ShoppingPage: React.FC = () => {
     quantity: any,
     productName: any,
     configProduct: any,
-    description:any
+    description:any,
+    ratings:any,
   ) {
 
     if(configProduct==undefined){
@@ -159,15 +143,6 @@ const ShoppingPage: React.FC = () => {
       categoryName,
       ratings,
     });
-
-    // console.log("productId",productId);
-    // console.log("imageUrl",imageUrl);
-    // console.log("price",price);
-    // console.log("quantity",quantity);
-    // console.log("productName",productName);
-    // console.log("configProduct",configProduct);
-    // console.log("description",description);
-    // console.log("categoryName",categoryName);
   }
   function goBack() {
     history.replace('/tabs');
@@ -415,7 +390,8 @@ const ShoppingPage: React.FC = () => {
                                     element.value.quantity,
                                     element.value.product_name,
                                     element.value.config_product,
-                                    element.value.description
+                                    element.value.description,
+                                    element.value.review_rating,
                                   )
                                 }
                               >
@@ -463,7 +439,8 @@ const ShoppingPage: React.FC = () => {
                                     listVal.quantity,
                                     listVal.product_name,
                                     listVal.config_product,
-                                    listVal.description
+                                    listVal.description,
+                                    listVal.review_rating,
                                   )
                                 }
                               >

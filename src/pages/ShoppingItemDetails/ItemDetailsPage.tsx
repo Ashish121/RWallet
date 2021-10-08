@@ -34,7 +34,6 @@ const ItemDetailsPage: React.FC = () => {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [ConfigProductList, setConfigProductList] = useState([]);
-
   const [productId, setProductId] = useState(Number);
   const paramsItem: any = location.state;
   useEffect(() => {
@@ -45,8 +44,6 @@ const ItemDetailsPage: React.FC = () => {
     setCount(paramsItem.count);
     setImageUrl(paramsItem.imageUrl);
     setDescription(paramsItem.description);
-
-    // console.log("description****************",paramsItem.description);
     setConfigProductList(paramsItem.configProduct);
   }, []);
 
@@ -132,7 +129,9 @@ const ItemDetailsPage: React.FC = () => {
           value={count}
         />
         <IonContent>
-          <SlidesComponent value={imageUrl} showSlider={false} />
+          <div className="slider-img-swipper">
+            <SlidesComponent value={imageUrl} showSlider={false} />
+          </div>
 
           <div
             className={
@@ -231,7 +230,12 @@ const ItemDetailsPage: React.FC = () => {
                   </div>
                 ) : (
                   <div>
-                    <div className='storage-discription-wrapper'>
+                    <div
+                      className='storage-discription-wrapper'
+                      style={
+                        expandOptions ? { visibility:'hidden' } : { visibility: 'visible'}
+                      }
+                    >
                       {description}
                     </div>
                     {/* <div className='item-color-wrapper'>
@@ -254,7 +258,12 @@ const ItemDetailsPage: React.FC = () => {
                         </IonItem>
                       </IonList>
                     </div> */}
-                    <div className='price-details-wrapper'>
+                    <div
+                      className='price-details-wrapper'
+                      style={
+                        expandOptions ? { marginTop: '-10px' } : { marginTop: '15px'}
+                      }
+                    >
                       <IonText
                         style={{
                           fontStyle: 'normal',
