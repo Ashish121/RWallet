@@ -78,9 +78,9 @@ const MenuComponent: React.FC<any> = () => {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
-      resultType: CameraResultType.DataUrl,
+      resultType: CameraResultType.Uri,
     });
-    const imageUrl: any = image.dataUrl;
+    const imageUrl: any = image.webPath;
     setSelectedImage(imageUrl);
     setImagePicked(true);
     dispatch(reuestUpload(userId, imageUrl, handleUploadProgress));
@@ -197,7 +197,6 @@ const MenuComponent: React.FC<any> = () => {
                     <Translate message='profile.gender' />
                   </IonText>
                   <IonText className='label-value'>
-                   
                     {profileFields.gender}
                   </IonText>
                 </div>
@@ -295,5 +294,3 @@ const MenuComponent: React.FC<any> = () => {
   );
 };
 export default MenuComponent;
-
-

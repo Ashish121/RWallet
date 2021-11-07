@@ -89,6 +89,15 @@ const OtpPage: React.FC = () => {
   function sendOTP() {
     setShowLoading(true);
     setLoaderMessage('Please Wait...');
+    // if (!isPlatformIOS) {
+    //   console.log("isPlatformIOS", isPlatformIOS);
+    //   FirebaseAuthentication.onAuthStateChanged().subscribe((userInfo: any) => {
+    //     if (userInfo) {
+    //       console.log("UserInfo after auto verify", userInfo);
+    //       setAutoVerified(true);
+    //     }
+    //   });
+    // }
 
     FirebaseAuthentication.verifyPhoneNumber(`+${countryCode}${contact}`, 30000)
       .then((verificationId: any) => {
@@ -96,15 +105,15 @@ const OtpPage: React.FC = () => {
         setOtpReceived(true);
         setVerificationId(verificationId);
       })
-      .catch(function (error: any) {
+      .catch(function () {
         // eslint-disable-next-line no-console
-        console.log(error);
         setShowLoading(false);
         const data = {
           showToast: true,
-          toastMessage: 'Couldn\'t send otp.Please try after some time',
+          toastMessage:
+            'Couldn\'t send otp.This usually occurs if you try to send too many OTP within a sort period of time.Please try after some time.',
           position: 'top',
-          duration: '10000',
+          duration: '200000',
         };
         dispatch(updateToast(data));
       });
@@ -113,37 +122,21 @@ const OtpPage: React.FC = () => {
   const handleVerifyOtp = () => {
     setShowLoading(true);
     setLoaderMessage('Verifying...');
+    if (
+      verificationId == null ||
+      verificationId == '' ||
+      verificationId == undefined
+    ) {
+      setShowLoading(false);
+      handleOTPverified();
+      return;
+    }
     FirebaseAuthentication.signInWithVerificationId(
       verificationId,
       otpText
     ).then(
       () => {
-        const params: any = location.state;
-        setShowLoading(false);
-        setLoaderMessage('');
-        localStorage.setItem('countryCode', countryCode);
-        if (params.routeName) {
-          history.replace('/' + params.routeName, { mobileNo: contact });
-          return;
-        }
-        if (params.updateMode || params.backNavigation) {
-          history.replace('/mpin', { data: params });
-          return;
-        }
-        setShowLoading(true);
-        setLoaderMessage('Registration in progress...');
-        dispatch(
-          requestForRegistration(
-            {
-              name: params.fullName,
-              gender: params.gender,
-              mobileNo: params.mobileNo,
-              password: params.password,
-              countryCode,
-            },
-            nextRoute
-          )
-        );
+        handleOTPverified();
       },
       () => {
         setShowLoading(false);
@@ -151,7 +144,7 @@ const OtpPage: React.FC = () => {
           showToast: true,
           toastMessage: 'Invalid OTP.Please check your otp or resend it.',
           position: 'top',
-          duration: '10000',
+          duration: '12000',
         };
         dispatch(updateToast(data));
         setOtpText('');
@@ -169,6 +162,35 @@ const OtpPage: React.FC = () => {
       return;
     }
     history.replace('/register');
+  }
+
+  function handleOTPverified() {
+    const params: any = location.state;
+    setShowLoading(false);
+    setLoaderMessage('');
+    localStorage.setItem('countryCode', countryCode);
+    if (params.routeName) {
+      history.replace('/' + params.routeName, { mobileNo: contact });
+      return;
+    }
+    if (params.updateMode || params.backNavigation) {
+      history.replace('/mpin', { data: params });
+      return;
+    }
+    setShowLoading(true);
+    setLoaderMessage('Registration in progress...');
+    dispatch(
+      requestForRegistration(
+        {
+          name: params.fullName,
+          gender: params.gender,
+          mobileNo: params.mobileNo,
+          password: params.password,
+          countryCode,
+        },
+        nextRoute
+      )
+    );
   }
   return (
     <>
