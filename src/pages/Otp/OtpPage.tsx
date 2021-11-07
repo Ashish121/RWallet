@@ -1,45 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { isPlatform } from "@ionic/react";
-import { useHistory, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { IonPage, IonContent, IonText } from "@ionic/react";
-import { FirebaseAuthentication } from "@ionic-native/firebase-authentication";
-import "firebase/auth";
-import OtpInput from "react-otp-input";
-import { Translate } from "../../i18n/formatMessages";
-import { useNotificationService } from "../../hooks/Notification";
+import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { IonPage, IonContent, IonText } from '@ionic/react';
+import { FirebaseAuthentication } from '@ionic-native/firebase-authentication';
+import 'firebase/auth';
+import OtpInput from 'react-otp-input';
+import { Translate } from '../../i18n/formatMessages';
+import { useNotificationService } from '../../hooks/Notification';
 import {
   BackButton,
   ButtonConmponent,
   LoaderComponent,
-} from "../../components";
+} from '../../components';
 import {
   updateToast,
   requestForRegistration,
   RequestForUpdateDeviceToken,
-} from "../../redux/actions";
+} from '../../redux/actions';
 
-import "./OtpPage.scss";
+import './OtpPage.scss';
 
 const OtpPage: React.FC = () => {
-  const isPlatformIOS = isPlatform("ios");
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
   // const notification = useNotificationService();
-  const [otpText, setOtpText] = useState("");
-  const [verificationId, setVerificationId] = useState("");
-  const [otpValue, setOtpValue] = useState("");
+  const [otpText, setOtpText] = useState('');
+  const [verificationId, setVerificationId] = useState('');
+  const [otpValue, setOtpValue] = useState('');
   const [otpReceived, setOtpReceived] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
-  const [contact, setContact] = useState("");
-  const [loaderMessage, setLoaderMessage] = useState("");
-  const [countryCode, setCountryCode] = useState("");
+  const [contact, setContact] = useState('');
+  const [loaderMessage, setLoaderMessage] = useState('');
+  const [countryCode, setCountryCode] = useState('');
   const [backNavigationPage, setBackNavigation] = useState(null);
-  const [autoVerified, setAutoVerified] = useState(false);
   const notification = useNotificationService();
   useEffect(() => {
-    localStorage.setItem("previousRoute", "/reset");
+    localStorage.setItem('previousRoute', '/reset');
   }, []);
   useEffect(() => {
     let isMounted = true;
@@ -49,8 +46,8 @@ const OtpPage: React.FC = () => {
     if (isMounted) {
       setBackNavigation(backNavigation);
       setContact(params.mobileNo);
-      if (localStorage.getItem("loginDetails") !== undefined) {
-        userDetails = localStorage.getItem("loginDetails");
+      if (localStorage.getItem('loginDetails') !== undefined) {
+        userDetails = localStorage.getItem('loginDetails');
       }
       const countryCode: any = userDetails
         ? JSON.parse(userDetails).data.user.country_code
@@ -69,7 +66,7 @@ const OtpPage: React.FC = () => {
     setOtpValue(finalOtp);
   };
   function savePushToken(token: any) {
-    const user_id = localStorage.getItem("userId");
+    const user_id = localStorage.getItem('userId');
     dispatch(
       RequestForUpdateDeviceToken({
         user_id,
@@ -79,20 +76,19 @@ const OtpPage: React.FC = () => {
   }
   function nextRoute(status: any, data: any) {
     setShowLoading(false);
-    setLoaderMessage("");
+    setLoaderMessage('');
     if (status == true) {
       notification.askPushPermission(savePushToken);
-      history.replace("/mpin");
+      history.replace('/mpin');
     } else {
-      history.replace("/register");
+      history.replace('/register');
       dispatch(updateToast(data));
     }
   }
 
   function sendOTP() {
     setShowLoading(true);
-    setLoaderMessage("Please Wait...");
-    alert("Platform is IOS " + isPlatformIOS);
+    setLoaderMessage('Please Wait...');
     // if (!isPlatformIOS) {
     //   console.log("isPlatformIOS", isPlatformIOS);
     //   FirebaseAuthentication.onAuthStateChanged().subscribe((userInfo: any) => {
@@ -105,20 +101,19 @@ const OtpPage: React.FC = () => {
 
     FirebaseAuthentication.verifyPhoneNumber(`+${countryCode}${contact}`, 30000)
       .then((verificationId: any) => {
-        alert(verificationId);
         setShowLoading(false);
         setOtpReceived(true);
         setVerificationId(verificationId);
       })
-      .catch(function (error: any) {
+      .catch(function () {
         // eslint-disable-next-line no-console
         setShowLoading(false);
         const data = {
           showToast: true,
           toastMessage:
-            "Couldn't send otp.This usually occurs if you try to send too many OTP within a sort period of time.Please try after some time",
-          position: "top",
-          duration: "100000",
+            'Couldn\'t send otp.This usually occurs if you try to send too many OTP within a sort period of time.Please try after some time.',
+          position: 'top',
+          duration: '200000',
         };
         dispatch(updateToast(data));
       });
@@ -126,19 +121,16 @@ const OtpPage: React.FC = () => {
 
   const handleVerifyOtp = () => {
     setShowLoading(true);
-    setLoaderMessage("Verifying...");
+    setLoaderMessage('Verifying...');
     if (
       verificationId == null ||
-      verificationId == "" ||
+      verificationId == '' ||
       verificationId == undefined
     ) {
-      console.log("User is auto verified");
-      alert("Auto Verified by firebase");
-      setAutoVerified(false);
+      setShowLoading(false);
       handleOTPverified();
       return;
     }
-    alert("-> " + verificationId);
     FirebaseAuthentication.signInWithVerificationId(
       verificationId,
       otpText
@@ -150,43 +142,43 @@ const OtpPage: React.FC = () => {
         setShowLoading(false);
         const data = {
           showToast: true,
-          toastMessage: "Invalid OTP.Please check your otp or resend it.",
-          position: "top",
-          duration: "12000",
+          toastMessage: 'Invalid OTP.Please check your otp or resend it.',
+          position: 'top',
+          duration: '12000',
         };
         dispatch(updateToast(data));
-        setOtpText("");
+        setOtpText('');
       }
     );
   };
   function back() {
     const params: any = location.state;
     if (params.routeName) {
-      history.replace("/reset");
+      history.replace('/reset');
       return;
     }
     if (params.updateMode || backNavigationPage) {
-      history.replace("/tabs");
+      history.replace('/tabs');
       return;
     }
-    history.replace("/register");
+    history.replace('/register');
   }
 
   function handleOTPverified() {
     const params: any = location.state;
     setShowLoading(false);
-    setLoaderMessage("");
-    localStorage.setItem("countryCode", countryCode);
+    setLoaderMessage('');
+    localStorage.setItem('countryCode', countryCode);
     if (params.routeName) {
-      history.replace("/" + params.routeName, { mobileNo: contact });
+      history.replace('/' + params.routeName, { mobileNo: contact });
       return;
     }
     if (params.updateMode || params.backNavigation) {
-      history.replace("/mpin", { data: params });
+      history.replace('/mpin', { data: params });
       return;
     }
     setShowLoading(true);
-    setLoaderMessage("Registration in progress...");
+    setLoaderMessage('Registration in progress...');
     dispatch(
       requestForRegistration(
         {
@@ -218,8 +210,8 @@ const OtpPage: React.FC = () => {
                     <Translate message='otp.sendOtpHeader' />
                   </IonText>
                 </div>
-                <div className='innercontainer' style={{ marginTop: "10px" }}>
-                  <IonText style={{ color: "#ffffff" }}>
+                <div className='innercontainer' style={{ marginTop: '10px' }}>
+                  <IonText style={{ color: '#ffffff' }}>
                     <Translate
                       message='otp.sendOtpInfo'
                       value={{ contact, countryCode }}
@@ -228,7 +220,7 @@ const OtpPage: React.FC = () => {
                 </div>
                 <div
                   className='confirm-btn-wrapper'
-                  style={{ display: "flex", justifyContent: "center" }}
+                  style={{ display: 'flex', justifyContent: 'center' }}
                 >
                   <ButtonConmponent
                     buttonLabel='otp.send'
