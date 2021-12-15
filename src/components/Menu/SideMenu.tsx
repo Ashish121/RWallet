@@ -145,7 +145,7 @@ const MenuComponent: React.FC<any> = () => {
                 onClick={closeMenu}
                 style={{ position: 'absolute', width: '100%' }}
               />
-              <CloseIcon />
+              <CloseIcon iconColor='black' />
             </IonButtons>
             {showProgress && (
               <IonProgressBar value={currentUploadStatus}></IonProgressBar>
@@ -197,7 +197,6 @@ const MenuComponent: React.FC<any> = () => {
                     <Translate message='profile.gender' />
                   </IonText>
                   <IonText className='label-value'>
-                   
                     {profileFields.gender}
                   </IonText>
                 </div>
@@ -295,5 +294,3 @@ const MenuComponent: React.FC<any> = () => {
   );
 };
 export default MenuComponent;
-
-

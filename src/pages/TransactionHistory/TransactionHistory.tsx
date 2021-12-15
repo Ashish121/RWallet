@@ -30,7 +30,7 @@ const TransactionHistory: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    setLoaderMessage('loading history...');
+    setLoaderMessage('Loading history...');
     dispatch(
       requestForTransactionDetails(
         {
@@ -58,12 +58,12 @@ const TransactionHistory: React.FC = () => {
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
-          <HeaderComponent headerLable="common.header" />
+          <HeaderComponent headerLable='common.header' />
           <IonContent>
-            <div className="transaction-wrapper">
+            <div className='transaction-wrapper'>
               {!isLoading && transactionFields.length == 0 && (
                 <div
-                  className="no_data_text"
+                  className='no_data_text'
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -72,7 +72,7 @@ const TransactionHistory: React.FC = () => {
                 >
                   <IonText>
                     <Translate
-                      message="common.noData"
+                      message='common.noData'
                       value={{ title: 'transaction history' }}
                     />
                     .
@@ -81,34 +81,35 @@ const TransactionHistory: React.FC = () => {
               )}
               {transactionFields.length > 0 && (
                 <React.Fragment>
-                  <IonText className="transaction-text-area">
-                    <Translate message="TransactionHistory.text" />
+                  <IonText className='transaction-text-area'>
+                    <Translate message='TransactionHistory.text' />
                   </IonText>
-                  
-                
+
                   {transactionFields.map((item: any) => {
                     return (
                       <IonCard>
                         <IonCardContent style={{ width: '100%' }}>
                           <div
-                            className="card-body-wrapper"
-                            style={item.status == 'deposit'  ? { borderLeftColor:'green'} : {borderLeftColor : 'red'}}
+                            className='card-body-wrapper'
+                            style={
+                              item.status == 'deposit'
+                                ? { borderLeftColor: 'green' }
+                                : { borderLeftColor: 'red' }
+                            }
                           >
-                            <div className="card-inner-header">
-                              {item.status == 'deposit' ?
-                                (
-                                  <IonText className="transaction-type">
-                                Received From
-                                  </IonText>
-                                ):(
-                                  <IonText className="transaction-type">
-                                Payment To
-                                  </IonText>
-                                ) }
-                              
+                            <div className='card-inner-header'>
+                              {item.status == 'deposit' ? (
+                                <IonText className='transaction-type'>
+                                  Received From
+                                </IonText>
+                              ) : (
+                                <IonText className='transaction-type'>
+                                  Payment To
+                                </IonText>
+                              )}
 
                               <div
-                                className="common-ion-text"
+                                className='common-ion-text'
                                 style={{
                                   borderRadius: '0px 7px 7px 0px',
                                   backgroundColor: '#ffffff',
@@ -123,15 +124,15 @@ const TransactionHistory: React.FC = () => {
                                   src={require('../../assets/Icons/RupayBlack.svg')}
                                 />
                                 <IonText
-                                  className="transaction-type"
+                                  className='transaction-type'
                                   style={{ color: '#222428' }}
                                 >
                                   {item.amount}
                                 </IonText>
                               </div>
                             </div>
-                            <div className="card-inner-body">
-                              <IonText className="transaction-type">
+                            <div className='card-inner-body'>
+                              <IonText className='transaction-type'>
                                 {item.remarks}
                               </IonText>
                               {/* <IonText
@@ -141,25 +142,20 @@ const TransactionHistory: React.FC = () => {
                                 {historyUpdatedDate(item.updated_at)}
                               </IonText> */}
                             </div>
-                            <div className="card-inner-body">
-                              <IonText className="transaction-type">
-                               
-                              </IonText>
+                            <div className='card-inner-body'>
+                              <IonText className='transaction-type'></IonText>
                               <IonText
-                                className="transaction-type"
+                                className='transaction-type'
                                 style={{ fontSize: '10px' }}
                               >
                                 {historyUpdatedDate(item.updated_at)}
                               </IonText>
                             </div>
-                           
                           </div>
                         </IonCardContent>
                       </IonCard>
                     );
                   })}
-                    
-                  
                 </React.Fragment>
               )}
             </div>

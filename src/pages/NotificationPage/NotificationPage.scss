@@ -1,6 +1,17 @@
-.transaction-wrapper {
-  margin-top: 50px;
+.notification-wrapper {
   padding-bottom: 5px;
+  padding-top: 20px;
+
+  .close-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    right: 20px;
+    position: relative;
+    button {
+      background-color: transparent;
+      outline: none;
+    }
+  }
   .transaction-text-area {
     margin-left: 15px;
     color: #ffffff;
@@ -21,7 +32,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     .card-body-wrapper {
       display: inline-flex;
       font-style: normal;
@@ -55,6 +66,13 @@
           opacity: 0.5;
         }
       }
+    }
+  }
+  .header-close-button {
+    ion-toolbar {
+      --background: #004777;
+      border: none;
+      padding: 0px;
     }
   }
 }

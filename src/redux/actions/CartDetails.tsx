@@ -195,8 +195,7 @@ const requestForRating = (payload: any) => {
     try {
       const response = await addRatingForProduct(
         payload.user_id,
-        payload.productId,
-        payload.rating
+        payload.productId
       );
       if (response.status === 200 && response.data.success) {
         if (response.data.data === null) {

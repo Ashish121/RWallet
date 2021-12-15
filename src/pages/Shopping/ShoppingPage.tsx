@@ -58,8 +58,8 @@ const ShoppingPage: React.FC = () => {
   // const [configProduct, setConfigProduct] = useState('');
   const [categoryName, setCategoryName] = useState('');
   const [description, setDiscription] = useState('');
-  const [ratings, setRatings] = useState(0);
-  const [productList,setProductList]=useState([]);
+  // const [ratings, setRatings] = useState(0);
+  const [productList, setProductList] = useState([]);
 
   let id = 0;
   let category = 'mobile';
@@ -106,7 +106,7 @@ const ShoppingPage: React.FC = () => {
         // setConfigProduct(productList.config_product);
         setCategoryName(element.category_name);
         setDiscription(productList.description);
-        setRatings(productList.review_rating);
+        // setRatings(productList.review_rating);
 
         let tempObj = {
           value: element,
@@ -141,9 +141,8 @@ const ShoppingPage: React.FC = () => {
     productName: any,
     configProduct: any
   ) {
-
-    if(configProduct==undefined){
-      configProduct=0;
+    if (configProduct == undefined) {
+      configProduct = 0;
     }
 
     history.replace('/tabs/shopping/itemdetails', {
@@ -155,7 +154,6 @@ const ShoppingPage: React.FC = () => {
       configProduct,
       description,
       categoryName,
-      ratings,
     });
 
     // console.log("productId",productId);
@@ -192,30 +190,30 @@ const ShoppingPage: React.FC = () => {
             value={count}
           />
           <IonContent>
-            <div className="shopping-page-wrapper">
-              <div className="balance-check-section">
+            <div className='shopping-page-wrapper'>
+              <div className='balance-check-section'>
                 <div
-                  className="common-ion-text"
+                  className='common-ion-text'
                   style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '7px 0px 0px 7px',
                   }}
                 >
                   <IonText
-                    className="balance-wrapper-text"
+                    className='balance-wrapper-text'
                     style={{
                       color: '#000000',
                       fontWeight: '500',
                       fontSize: '12px',
                     }}
                   >
-                    <Translate message="shoppingPage.shoppoingLevelText" />
+                    <Translate message='shoppingPage.shoppoingLevelText' />
                   </IonText>
                 </div>
-                <div className="arrow_box"></div>
+                <div className='arrow_box'></div>
 
                 <div
-                  className="common-ion-text"
+                  className='common-ion-text'
                   style={{
                     backgroundColor: '#004777',
                     borderRadius: '0px 7px 7px 0px',
@@ -226,7 +224,7 @@ const ShoppingPage: React.FC = () => {
                     src={require('../../assets/Icons/Rupay.svg')}
                   />
                   <IonText
-                    className="balance-wrapper-text"
+                    className='balance-wrapper-text'
                     style={{
                       color: '#ffffff',
                       fontWeight: '500',
@@ -238,17 +236,17 @@ const ShoppingPage: React.FC = () => {
                 </div>
               </div>
 
-              <IonText className="shopping-heading-text-area">
-                <Translate message="shopping.categories" />
+              <IonText className='shopping-heading-text-area'>
+                <Translate message='shopping.categories' />
               </IonText>
 
-              <div className="scroll-items-wrapper">
+              <div className='scroll-items-wrapper'>
                 <div>
                   <IonCard>
                     <IonCardContent onClick={() => handleSliderIcons('mobile')}>
-                      <SmartphoneIcon width="24" height="24" />
+                      <SmartphoneIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.mobileIconText" />
+                        <Translate message='home.mobileIconText' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -256,9 +254,9 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent onClick={() => handleSliderIcons('laptop')}>
-                      <LaptopIcon width="24" height="24" />
+                      <LaptopIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.laptopIconText" />
+                        <Translate message='home.laptopIconText' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -268,9 +266,9 @@ const ShoppingPage: React.FC = () => {
                     <IonCardContent
                       onClick={() => handleSliderIcons('fashion')}
                     >
-                      <FashionIcon width="24" height="24" />
+                      <FashionIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.fashionIconText" />
+                        <Translate message='home.fashionIconText' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -280,9 +278,9 @@ const ShoppingPage: React.FC = () => {
                     <IonCardContent
                       onClick={() => handleSliderIcons('home-appliances')}
                     >
-                      <TelevisionIcon width="24" height="24" />
+                      <TelevisionIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.televisionText" />
+                        <Translate message='home.televisionText' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -292,9 +290,9 @@ const ShoppingPage: React.FC = () => {
                     <IonCardContent
                       onClick={() => handleSliderIcons('electronics')}
                     >
-                      <StoreIcon width="24" height="24" />
+                      <StoreIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.storeText" />
+                        <Translate message='home.storeText' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -302,9 +300,9 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent onClick={() => handleSliderIcons('spares')}>
-                      <SparepartIcon width="24" height="24" />
+                      <SparepartIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.sparePartText" />
+                        <Translate message='home.sparePartText' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -314,9 +312,9 @@ const ShoppingPage: React.FC = () => {
                     <IonCardContent
                       onClick={() => handleSliderIcons('automobiles')}
                     >
-                      <MotorBikeIcon width="24" height="24" />
+                      <MotorBikeIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.motorbike" />
+                        <Translate message='home.motorbike' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -326,9 +324,9 @@ const ShoppingPage: React.FC = () => {
                     <IonCardContent
                       onClick={() => handleSliderIcons('grocery')}
                     >
-                      <GroceryIcon width="24" height="24" />
+                      <GroceryIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.grocery" />
+                        <Translate message='home.grocery' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -336,9 +334,9 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent onClick={() => handleSliderIcons('wallet')}>
-                      <WalletIcon width="24" height="24" />
+                      <WalletIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.walletText" />
+                        <Translate message='home.walletText' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -348,9 +346,9 @@ const ShoppingPage: React.FC = () => {
                     <IonCardContent
                       onClick={() => handleSliderIcons('watches')}
                     >
-                      <WatchIcon width="24" height="24" />
+                      <WatchIcon width='24' height='24' />
                       <IonText>
-                        <Translate message="home.watchText" />
+                        <Translate message='home.watchText' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
@@ -358,27 +356,26 @@ const ShoppingPage: React.FC = () => {
                 <div>
                   <IonCard>
                     <IonCardContent onClick={() => handleSliderIcons('shoes')}>
-                      <SneakersIcon width="24" height="24" />
+                      <SneakersIcon width='24' height='24' />
 
                       <IonText>
-                        <Translate message="home.shoesText" />
+                        <Translate message='home.shoesText' />
                       </IonText>
                     </IonCardContent>
                   </IonCard>
                 </div>
               </div>
-              <div className="search-area-wrapper">
+              <div className='search-area-wrapper'>
                 <IonInput
                   style={{ marginLeft: '5px' }}
-                  placeholder="Search"
-                  value={searchString}
+                  placeholder='Search'
                   clearInput={true}
                   onIonChange={(e) => handleSearchItem(e)}
                 >
                   <button
-                    type="button"
-                    className="eye-btn"
-                    slot="end"
+                    type='button'
+                    className='eye-btn'
+                    slot='end'
                     style={{
                       backgroundColor: 'transparent',
                       border: 'none',
@@ -390,7 +387,7 @@ const ShoppingPage: React.FC = () => {
                     {searchString.length > 0 ? (
                       ''
                     ) : (
-                      <SearchIcon width="16" height="16" />
+                      <SearchIcon width='16' height='16' />
                     )}
                   </button>
                 </IonInput>
@@ -398,12 +395,12 @@ const ShoppingPage: React.FC = () => {
 
               {!showSearchData && imageURL.length > 0 ? (
                 <div>
-                  <div className="mobile-items-wrapper">
+                  <div className='mobile-items-wrapper'>
                     <IonGrid>
                       <IonRow>
-                        {productList.map((element:any)=>{
-                          return(
-                            <IonCol size="6" key={element.product_id}>
+                        {productList.map((element: any) => {
+                          return (
+                            <IonCol size='6' key={element.product_id}>
                               <IonCard
                                 onClick={() =>
                                   showItemDetails(
@@ -417,45 +414,69 @@ const ShoppingPage: React.FC = () => {
                                 }
                               >
                                 <IonCardHeader>
-                                  <div className="image-wrapper">
+                                  <div className='image-wrapper'>
                                     <IonImg src={element.value.image_path} />
                                   </div>
                                 </IonCardHeader>
 
                                 <IonCardContent>
-                                  <div className="device-name-label-for-product ">
-                                    <IonText>{element.value.category_name}</IonText>
+                                  <div className='device-name-label-for-product '>
+                                    <IonText>
+                                      {element.value.category_name}
+                                    </IonText>
                                   </div>
-                                  <div className="device-name-label-for-product " >
-                                    <IonText style={{fontSize:'13px'}}>{element.value.product_name}</IonText>
+                                  <div className='device-name-label-for-product '>
+                                    <p
+                                      style={{
+                                        fontSize: '13px',
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                      }}
+                                    >
+                                      {element.value.product_name}
+                                    </p>
                                   </div>
-                                  
-                                  <div className="device-price-label">
-                                    <IonImg
-                                      className="rupay-img"
-                                      src={require('../../assets/Icons/RupayBlack.svg')}
-                                    />
-                                    <IonText>{element.value.price}</IonText>
+
+                                  <div className='device-price-label'>
+                                    {element.value.price && (
+                                      <IonImg
+                                        className='rupay-img'
+                                        src={require('../../assets/Icons/RupayBlack.svg')}
+                                      />
+                                    )}
+                                    <IonText>
+                                      {element.value.price
+                                        ? parseFloat(
+                                          element.value.price
+                                        ).toLocaleString()
+                                        : 'Not available'}
+                                    </IonText>
                                   </div>
                                 </IonCardContent>
                               </IonCard>
                             </IonCol>
-                          ); })
-
-                        }
+                          );
+                        })}
                       </IonRow>
                     </IonGrid>
                   </div>
                 </div>
-                
               ) : (
                 <div>
-                  <div className="mobile-items-wrapper">
+                  <div className='mobile-items-wrapper'>
                     <IonGrid>
                       <IonRow>
+                        {/* {searchList.length === 0 && (
+                          <IonCol>
+                            <IonText ion-text-center>
+                              No data available for this search.{" "}
+                            </IonText>
+                          </IonCol>
+                        )} */}
                         {searchList.map((listVal: any) => {
                           return (
-                            <IonCol key={listVal.product_id} size="6">
+                            <IonCol key={listVal.product_id} size='6'>
                               <IonCard
                                 onClick={() =>
                                   showItemDetails(
@@ -469,20 +490,25 @@ const ShoppingPage: React.FC = () => {
                                 }
                               >
                                 <IonCardHeader>
-                                  <div className="image-wrapper">
+                                  <div className='image-wrapper'>
                                     <IonImg src={listVal.image_path} />
                                   </div>
                                 </IonCardHeader>
 
                                 <IonCardContent>
-                                  <div className="device-name-label">
+                                  <div className='device-name-label'>
                                     <IonText>{listVal.category_name}</IonText>
                                   </div>
-                                  <div className="device-price-label">
-                                    <IonImg  className="rupay-img"
+                                  <div className='device-price-label'>
+                                    <IonImg
+                                      className='rupay-img'
                                       src={require('../../assets/Icons/RupayBlack.svg')}
                                     />
-                                    <IonText>{listVal.price}</IonText>
+                                    <IonText>
+                                      {parseFloat(
+                                        listVal.price
+                                      ).toLocaleString()}
+                                    </IonText>
                                   </div>
                                 </IonCardContent>
                               </IonCard>
