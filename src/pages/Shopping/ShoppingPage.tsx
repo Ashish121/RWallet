@@ -429,7 +429,12 @@ const ShoppingPage: React.FC = () => {
                                   <div className="device-name-label-for-product " >
                                     <IonText style={{fontSize:'13px'}}>{element.value.product_name}</IonText>
                                   </div>
+                                  
                                   <div className="device-price-label">
+                                    <IonImg
+                                      className="rupay-img"
+                                      src={require('../../assets/Icons/RupayBlack.svg')}
+                                    />
                                     <IonText>{element.value.price}</IonText>
                                   </div>
                                 </IonCardContent>
@@ -473,8 +478,10 @@ const ShoppingPage: React.FC = () => {
                                   <div className="device-name-label">
                                     <IonText>{listVal.category_name}</IonText>
                                   </div>
-                                
                                   <div className="device-price-label">
+                                    <IonImg  className="rupay-img"
+                                      src={require('../../assets/Icons/RupayBlack.svg')}
+                                    />
                                     <IonText>{listVal.price}</IonText>
                                   </div>
                                 </IonCardContent>

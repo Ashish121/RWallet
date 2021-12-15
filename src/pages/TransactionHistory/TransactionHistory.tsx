@@ -84,18 +84,28 @@ const TransactionHistory: React.FC = () => {
                   <IonText className="transaction-text-area">
                     <Translate message="TransactionHistory.text" />
                   </IonText>
-                  <IonCard>
-                    <IonCardContent style={{ width: '100%' }}>
-                      {transactionFields.map((item: any) => {
-                        return (
+                  
+                
+                  {transactionFields.map((item: any) => {
+                    return (
+                      <IonCard>
+                        <IonCardContent style={{ width: '100%' }}>
                           <div
                             className="card-body-wrapper"
-                            style={{ borderLeftColor: 'red', width: '100%' }}
+                            style={item.status == 'deposit'  ? { borderLeftColor:'green'} : {borderLeftColor : 'red'}}
                           >
                             <div className="card-inner-header">
-                              <IonText className="transaction-type">
+                              {item.status == 'deposit' ?
+                                (
+                                  <IonText className="transaction-type">
+                                Received From
+                                  </IonText>
+                                ):(
+                                  <IonText className="transaction-type">
                                 Payment To
-                              </IonText>
+                                  </IonText>
+                                ) }
+                              
 
                               <div
                                 className="common-ion-text"
@@ -124,18 +134,32 @@ const TransactionHistory: React.FC = () => {
                               <IonText className="transaction-type">
                                 {item.remarks}
                               </IonText>
-                              <IonText
+                              {/* <IonText
                                 className="transaction-type"
                                 style={{ fontSize: '8px' }}
                               >
                                 {historyUpdatedDate(item.updated_at)}
+                              </IonText> */}
+                            </div>
+                            <div className="card-inner-body">
+                              <IonText className="transaction-type">
+                               
+                              </IonText>
+                              <IonText
+                                className="transaction-type"
+                                style={{ fontSize: '10px' }}
+                              >
+                                {historyUpdatedDate(item.updated_at)}
                               </IonText>
                             </div>
+                           
                           </div>
-                        );
-                      })}
-                    </IonCardContent>
-                  </IonCard>
+                        </IonCardContent>
+                      </IonCard>
+                    );
+                  })}
+                    
+                  
                 </React.Fragment>
               )}
             </div>
