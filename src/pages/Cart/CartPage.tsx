@@ -176,19 +176,26 @@ const CartPage: React.FC = () => {
                                   style={{ display: 'flex' }}
                                 >
                                   <div className='item-image-wrapper'>
-                                    <div
-                                      style={{
-                                        padding: '5px',
-                                        marginTop: '5px',
-                                      }}
-                                    >
-                                      <IonImg src={element.image_path} />
+                                    <div style={{ height: '100%' }}>
+                                      <IonImg
+                                        src={element.image_path}
+                                        style={{ height: '100%' }}
+                                      />
                                     </div>
                                   </div>
-                                  <div className='details-wrapper'>
-                                    <div className='item-name product-name-alignment'>
-                                      <IonText>{element.product_name}</IonText>
-                                    </div>
+                                  <div
+                                    className='details-wrapper'
+                                    style={{ width: 'calc(100% - 100px)' }}
+                                  >
+                                    <p
+                                      style={{
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                      }}
+                                    >
+                                      {element.product_name}
+                                    </p>
                                     {/* <div className="item-varient">
                                       <IonText>
                                         {element.ram
@@ -201,7 +208,7 @@ const CartPage: React.FC = () => {
                                     </div> */}
                                     <div className='item-price'>
                                       <IonText>
-                                        <b>Rs :</b>
+                                        <b>Rs : </b>
                                         {parseFloat(
                                           element.price
                                         ).toLocaleString()}
