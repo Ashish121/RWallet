@@ -53,6 +53,15 @@ const TransactionHistory: React.FC = () => {
     var d = new Date(item);
     return d.toDateString();
   }
+
+  function getBackgroundColor(status: any) {
+    if (status === 'deposit') {
+      return 'green';
+    } else {
+      return 'red';
+    }
+  }
+
   return (
     <>
       <LoaderComponent showLoading={isLoading} loaderMessage={message} />
@@ -91,11 +100,9 @@ const TransactionHistory: React.FC = () => {
                         <IonCardContent style={{ width: '100%' }}>
                           <div
                             className='card-body-wrapper'
-                            style={
-                              item.status == 'deposit'
-                                ? { borderLeftColor: 'green' }
-                                : { borderLeftColor: 'red' }
-                            }
+                            style={{
+                              borderLeftColor: getBackgroundColor(item.status),
+                            }}
                           >
                             <div className='card-inner-header'>
                               {item.status == 'deposit' ? (
