@@ -19,7 +19,7 @@ import RangeSlider from './RangeSlider/RangeSlider';
 import BackButton from './BackButton/BackButton';
 import RoyallityWalletMap from './Map/Map';
 import SegmentButtonComponent from './SegmentButtonComponent/SegmentButtonComponent';
-import Rating from './Rating/Rating';
+// import Rating from './Rating/Rating';
 
 export {
   InputText,
@@ -43,5 +43,4 @@ export {
   BackButton,
   RoyallityWalletMap,
   SegmentButtonComponent,
-  Rating,
 };

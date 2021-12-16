@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
   const [showHomePage, setShowHomePage] = useState(true);
   const [slider, setSlider] = useState([]);
   const [nCount, setNcount] = useState(Number);
-  const balance = localStorage.getItem('balance');
+  const balance=localStorage.getItem('balance');
   const notificationService = useNotificationService();
   //if we click back button on device it will reach login page
 
@@ -140,7 +140,10 @@ const HomePage: React.FC = () => {
                       className="balance-wrapper-text"
                       style={{ color: '#ffffff' }}
                     >
-                      {balance}
+                     
+                      {balance!= null? parseFloat(balance).toLocaleString() : 'NA'}
+               
+                      
                     </IonText>
                   </div>
                 </div>

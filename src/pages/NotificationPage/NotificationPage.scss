@@ -1,57 +1,82 @@
 .notification-wrapper {
-  background-color: #ffffff;
-  height: 100%;
-  padding: 5px;
-  font-family: "Montserrat";
-  .page-header-text {
-    margin-top: 15px;
-    margin-left: 13px;
-    font-weight: 600;
-  }
-  .notification-cards-wrapper {
-    margin-top: 50px;
-    padding-bottom: 5px;
-    ion-card {
-      background: #ffffff;
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-      border-radius: 5px;
-      font-size: 16px;
-      line-height: 1.4;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      .card-body-wrapper {
-        display: inline-flex;
-        margin-top: 5px;
-        margin-left: 10px;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 15px;
-        color: #000000;
-        border-left: 3px solid #004777;
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
+  padding-bottom: 5px;
+  padding-top: 20px;
 
-        .notification-text {
-          margin-left: 10px;
-          font-style: normal;
-          font-weight: 600;
+  .close-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    right: 20px;
+    position: relative;
+    button {
+      background-color: transparent;
+      outline: none;
+    }
+  }
+  .transaction-text-area {
+    margin-left: 15px;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  ion-card {
+    background: #ffffff;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .card-body-wrapper {
+      display: inline-flex;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #000000;
+      border-left: 3px solid red;
+      display: block;
+      .card-inner-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5px;
+        ion-text {
+          font-weight: bold;
           font-size: 12px;
-          line-height: 15px;
           color: #000000;
-          p {
-            font-style: normal;
-            font-weight: 500;
-            font-size: 13px;
-            line-height: 15px;
-            color: #000000;
-            opacity: 0.5;
-            margin-top: 5px;
-          }
+        }
+      }
+      .card-inner-body {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        padding-left: 5px;
+        padding-top: 5px;
+        ion-text {
+          font-weight: 500;
+          font-size: 12px;
+          opacity: 0.5;
         }
       }
     }
   }
+  .header-close-button {
+    ion-toolbar {
+      --background: #004777;
+      border: none;
+      padding: 0px;
+    }
+  }
+}
+
+.common-ion-text {
+  display: flex;
 }

@@ -13,10 +13,11 @@ ion-content {
   .royality-text-header {
     display: flex;
     position: relative;
+    justify-content: center;
 
     .body-header-text-wrapper {
       display: flex;
-     align-items: center;
+      align-items: center;
       justify-content: center;
       margin-top: 50px;
       color: #ffffff;

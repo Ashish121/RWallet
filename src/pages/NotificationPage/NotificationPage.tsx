@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
+import { HeaderComponent, LoaderComponent } from '../../components';
 import { useDispatch } from 'react-redux';
+
 import {
   IonCard,
   IonCardContent,
@@ -7,113 +10,120 @@ import {
   IonContent,
   IonApp,
   IonText,
-  IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonButton,
 } from '@ionic/react';
-import { useHistory } from 'react-router-dom';
-import { CloseIcon } from '../../assets/Icons';
-
 import './NotificationPage.scss';
 import { Translate } from '../../i18n/formatMessages';
-import {
-  requestForNotification,
-  // requestForUpdateNotification,
-} from '../../redux/actions/';
+import { requestForNotification } from '../../redux/actions/';
+import { CloseIcon } from '../../assets/Icons';
 
 const NotificationPage: React.FC = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
-  const [color, setcolor] = useState('');
+  const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false);
   const user_id = localStorage.getItem('userId');
   const [notificationList, setNotificationList] = useState([]);
-
-  // let notificationList = useState([]);
+  const [message, setLoaderMessage] = useState('');
 
   useEffect(() => {
+    setIsLoading(true);
+    setLoaderMessage('Loading notifications...');
     dispatch(requestForNotification({ user_id }, showNotificationList));
-    // dispatch(requestForUpdateNotification({ notificationId: 3 }));
-  }, []);
-
-  useEffect(() => {
-    setcolor('#004777');
   }, []);
 
   function showNotificationList(res: any) {
-    // console.log("notification :", res.data.data);
+    setIsLoading(false);
     setNotificationList(res.data.data.reverse());
+  }
+
+  function historyUpdatedDate(item: Date) {
+    var d = new Date(item);
+    return d.toDateString();
+  }
+
+  function getBackgroundColor(status: any) {
+    if (status === 'Approved') {
+      return 'green';
+    } else if (status === 'pending') {
+      return 'black';
+    } else {
+      return 'red';
+    }
   }
 
   const closeNotificationPanel = () => {
     history.replace('/tabs');
   };
 
-  const dateconverter = (item: any) => {
-    const dateString = item.created_at;
-    const ab2 = new Date(dateString);
-    const month = ab2.getMonth() + 1;
-
-    const newDate =
-      ab2.getDate() +
-      '-' +
-      month +
-      '-' +
-      ab2.getFullYear() +
-      ' ' +
-      ab2.getHours() +
-      ':' +
-      ab2.getMinutes() +
-      ':' +
-      ab2.getSeconds();
-
-    return newDate;
-  };
   return (
     <>
+      <LoaderComponent showLoading={isLoading} loaderMessage={message} />
       <IonApp>
         <IonPage>
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot="end">
-                <IonButton
-                  onClick={closeNotificationPanel}
-                  style={{ position: 'absolute', width: '100%' }}
-                />
-                <CloseIcon />
-              </IonButtons>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent style={{ '--ion-background-color': '#ffffff' }}>
-            <div className="notification-wrapper">
-              <div className="notification-cards-wrapper">
-                <div className="page-header-text">
-                  <IonText>
-                    <Translate message="NotificationPage.text" />
+          <HeaderComponent headerLable='common.header' />
+
+          <IonContent>
+            <div className='notification-wrapper'>
+              {/* <IonButton
+                slot='end'
+                onClick={closeNotificationPanel}
+                style={{ position: "absolute", width: "100%" }}
+              /> */}
+              {notificationList.length > 0 && (
+                <React.Fragment>
+                  <div className='close-btn-wrapper'>
+                    <button onClick={closeNotificationPanel}>
+                      <CloseIcon iconColor='white' />
+                    </button>
+                  </div>
+                  <IonText className='transaction-text-area'>
+                    <Translate message='NotificationPage.text' />
                   </IonText>
-                </div>
-                {notificationList.map((item: any) => {
-                  return (
-                    <IonCard>
-                      <IonCardContent>
-                        <div
-                          className="card-body-wrapper"
-                          style={{ borderLeftColor: color }}
-                        >
-                          <div className="notification-text">
-                            <IonText>
-                              <span>Date: {dateconverter(item)}</span>
-                            </IonText>
-                            <IonText>
-                              <p>{item.body}</p>
-                            </IonText>
+
+                  {notificationList.map((item: any) => {
+                    return (
+                      <IonCard>
+                        <IonCardContent style={{ width: '100%' }}>
+                          <div
+                            className='card-body-wrapper'
+                            style={{
+                              borderLeftColor: getBackgroundColor(item.status),
+                            }}
+                          >
+                            <div className='card-inner-header'>
+                              <IonText className='transaction-type'>
+                                {item.subject}
+                              </IonText>
+
+                              <div
+                                className='common-ion-text'
+                                style={{
+                                  borderRadius: '0px 7px 7px 0px',
+                                  backgroundColor: '#ffffff',
+                                  color: '#222428',
+                                }}
+                              ></div>
+                            </div>
+                            <div className='card-inner-body'>
+                              <IonText className='transaction-type'>
+                                {item.body}
+                              </IonText>
+                            </div>
+                            <div className='card-inner-body'>
+                              <IonText className='transaction-type'></IonText>
+                              <IonText
+                                className='transaction-type'
+                                style={{ fontSize: '10px' }}
+                              >
+                                {historyUpdatedDate(item.updated_at)}
+                              </IonText>
+                            </div>
                           </div>
-                        </div>
-                      </IonCardContent>
-                    </IonCard>
-                  );
-                })}
-              </div>
+                        </IonCardContent>
+                      </IonCard>
+                    );
+                  })}
+                </React.Fragment>
+              )}
             </div>
           </IonContent>
         </IonPage>

@@ -11,7 +11,7 @@ import {
   IonText,
   IonButton,
 } from '@ionic/react';
-import { HeaderComponent, SlidesComponent, Rating } from '../../components';
+import { HeaderComponent, SlidesComponent } from '../../components';
 import { CloseBarIcon } from '../../assets/Icons';
 
 import './ItemDetailsPage.scss';
@@ -118,6 +118,10 @@ const ItemDetailsPage: React.FC = () => {
     });
   };
 
+  const numberWithCommas = (x: any) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
   return (
     <IonApp className='item-details-wrapper'>
       <IonPage>
@@ -158,7 +162,7 @@ const ItemDetailsPage: React.FC = () => {
                 <div className='details-header-wrapper'>
                   <IonText className='item-name-label'>{productName}</IonText>
                 </div>
-                
+
                 {ConfigProductList.length > 0 ? (
                   <div>
                     <div className='storage-details-wrapper'>
@@ -225,7 +229,7 @@ const ItemDetailsPage: React.FC = () => {
                           color: '#000000',
                         }}
                       >
-                        {price}
+                        {numberWithCommas(price)}
                       </IonText>
                     </div>
                   </div>
@@ -275,7 +279,8 @@ const ItemDetailsPage: React.FC = () => {
                           color: '#000000',
                         }}
                       >
-                        {price}
+                        {/* {price.toLocaleString()} */}
+                        {numberWithCommas(price)}
                       </IonText>
                     </div>
                   </div>
@@ -286,21 +291,22 @@ const ItemDetailsPage: React.FC = () => {
                     <IonText className='features-label'>
                       <Translate message='itemDetails.feature' />
                     </IonText>
-                    <div className='features-text-wrapper'>
-                      <IonText className='features-text'>
-                        {description}
-                      </IonText>
+                    <div
+                      className='features-text-wrapper'
+                      style={{ maxHeight: '350px', overflow: 'scroll' }}
+                    >
+                      <IonText className='features-text'>{description}</IonText>
                     </div>
                   </div>
                 )}
 
                 <div className='add-to-cart-button-wrapper'>
-                  <div style={{ padding: '0px 0px 10px 0px' }}>
+                  {/* <div style={{ padding: '0px 0px 10px 0px' }}>
                     <Rating
                       productId={productId}
                       ratings={paramsItem.ratings}
                     />
-                  </div>
+                  </div> */}
                   <IonButton
                     className='add-cart-button'
                     expand='block'

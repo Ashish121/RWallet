@@ -1008,8 +1008,7 @@ export const loadSearchItemDetails = async (
  */
 export const addRatingForProduct = async (
   user_id: String,
-  productId: Number,
-  rating: Number
+  productId: Number
 ): Promise<any> => {
   const result = await axios({
     url: 'https://dashboard.royalitywallet.com/api/v1/review_create',
@@ -1020,7 +1019,7 @@ export const addRatingForProduct = async (
     data: JSON.stringify({
       user_id: user_id,
       product_id: productId,
-      rating: rating,
+      rating: 0,
     }),
   });
 

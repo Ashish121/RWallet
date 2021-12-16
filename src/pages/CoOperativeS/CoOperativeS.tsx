@@ -104,7 +104,8 @@ const CoOperativeS: React.FC = () => {
                   </IonText>
                   <div className="coOperativeDetails-message">
                     <IonText className="nameMessage">
-                      {coOperativeDetails.amount}
+                 
+                      {parseFloat(coOperativeDetails.amount).toLocaleString()}
                     </IonText>
                   </div>
                   <IonText className="coOperativeDetails-header-text">

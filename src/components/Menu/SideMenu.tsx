@@ -145,7 +145,7 @@ const MenuComponent: React.FC<any> = () => {
                 onClick={closeMenu}
                 style={{ position: 'absolute', width: '100%' }}
               />
-              <CloseIcon />
+              <CloseIcon iconColor='black' />
             </IonButtons>
             {showProgress && (
               <IonProgressBar value={currentUploadStatus}></IonProgressBar>

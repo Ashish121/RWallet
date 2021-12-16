@@ -82,7 +82,7 @@ const HeaderComponent: React.FC<headerProps> = ({
             </IonButtons>
           )}
           {showCart && (
-            <div>
+            <>
               <IonButtons
                 slot='end'
                 style={{
@@ -96,7 +96,7 @@ const HeaderComponent: React.FC<headerProps> = ({
               <IonBadge color='primary' className='cart-count-badge'>
                 {value}
               </IonBadge>
-            </div>
+            </>
           )}
           {showMenu && (
             <IonButtons
