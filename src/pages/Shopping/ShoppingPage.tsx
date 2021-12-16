@@ -47,15 +47,6 @@ const ShoppingPage: React.FC = () => {
   const [shoppingLimitBalance, setshoppingLimitBalance] = useState('');
   const [count, setCount] = useState(Number);
   const [searchString, setSearchString] = useState('');
-  const [searchList, setSearchList] = useState([]);
-  const [showSearchData, setShowSearchData] = useState(false);
-
-  // const [productId, setProductId] = useState('');
-  const [imageURL, setImageURL] = useState('');
-  // const [price, setPrice] = useState('');
-  // const [qty, setQty] = useState('');
-  // const [productName, setProductName] = useState('');
-  // const [configProduct, setConfigProduct] = useState('');
   const [categoryName, setCategoryName] = useState('');
   const [description, setDiscription] = useState('');
   // const [ratings, setRatings] = useState(0);
@@ -86,7 +77,7 @@ const ShoppingPage: React.FC = () => {
 
   function ShowSearchItemList(res: any) {
     const searchList = res.data.data;
-    setSearchList(searchList);
+    setProductList(searchList);
   }
 
   function ShowProductList(res: any) {
@@ -98,20 +89,10 @@ const ShoppingPage: React.FC = () => {
       if (category === element.category_name) {
         id = index;
         const productList = res.data.data[id];
-        // setProductId(productList.product_id);
-        setImageURL(productList.image_path);
-        // setPrice(productList.price);
-        // setQty(productList.quantity);
-        // setProductName(productList.product_name);
-        // setConfigProduct(productList.config_product);
         setCategoryName(element.category_name);
         setDiscription(productList.description);
         // setRatings(productList.review_rating);
-
-        let tempObj = {
-          value: element,
-        };
-        finalArray.push(tempObj);
+        finalArray.push(element);
       }
     });
 
@@ -123,7 +104,6 @@ const ShoppingPage: React.FC = () => {
   }
 
   const handleSearchItem = debounce((e: any) => {
-    setShowSearchData(true);
     setSearchString(e.detail.value);
     const searchItem = e.detail.value;
     const val = searchItem.trim();
@@ -155,22 +135,12 @@ const ShoppingPage: React.FC = () => {
       description,
       categoryName,
     });
-
-    // console.log("productId",productId);
-    // console.log("imageUrl",imageUrl);
-    // console.log("price",price);
-    // console.log("quantity",quantity);
-    // console.log("productName",productName);
-    // console.log("configProduct",configProduct);
-    // console.log("description",description);
-    // console.log("categoryName",categoryName);
   }
   function goBack() {
     history.replace('/tabs');
   }
 
   function handleSliderIcons(val: any) {
-    setShowSearchData(false);
     category = val;
     dispatch(loadProductDetailsList({ user_id }, ShowProductList));
   }
@@ -231,9 +201,7 @@ const ShoppingPage: React.FC = () => {
                       fontSize: '12px',
                     }}
                   >
-                   
                     {shoppingLimitBalance.toLocaleString()}
-                    
                   </IonText>
                 </div>
               </div>
@@ -394,134 +362,68 @@ const ShoppingPage: React.FC = () => {
                   </button>
                 </IonInput>
               </div>
+              <div className='mobile-items-wrapper'>
+                <IonGrid>
+                  <IonRow>
+                    {productList.map((element: any) => {
+                      return (
+                        <IonCol size='6' key={element.product_id}>
+                          <IonCard
+                            onClick={() =>
+                              showItemDetails(
+                                element.product_id,
+                                element.image_path,
+                                element.price,
+                                element.quantity,
+                                element.product_name,
+                                element.config_product
+                              )
+                            }
+                          >
+                            <IonCardHeader>
+                              <div className='image-wrapper'>
+                                <IonImg src={element.image_path} />
+                              </div>
+                            </IonCardHeader>
 
-              {!showSearchData && imageURL.length > 0 ? (
-                <div>
-                  <div className='mobile-items-wrapper'>
-                    <IonGrid>
-                      <IonRow>
-                        {productList.map((element: any) => {
-                          return (
-                            <IonCol size='6' key={element.product_id}>
-                              <IonCard
-                                onClick={() =>
-                                  showItemDetails(
-                                    element.value.product_id,
-                                    element.value.image_path,
-                                    element.value.price,
-                                    element.value.quantity,
-                                    element.value.product_name,
-                                    element.value.config_product
-                                  )
-                                }
-                              >
-                                <IonCardHeader>
-                                  <div className='image-wrapper'>
-                                    <IonImg src={element.value.image_path} />
-                                  </div>
-                                </IonCardHeader>
+                            <IonCardContent>
+                              <div className='device-name-label-for-product '>
+                                <IonText>{element.category_name}</IonText>
+                              </div>
+                              <div className='device-name-label-for-product '>
+                                <p
+                                  style={{
+                                    fontSize: '13px',
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                  }}
+                                >
+                                  {element.product_name}
+                                </p>
+                              </div>
 
-                                <IonCardContent>
-                                  <div className='device-name-label-for-product '>
-                                    <IonText>
-                                      {element.value.category_name}
-                                    </IonText>
-                                  </div>
-                                  <div className='device-name-label-for-product '>
-                                    <p
-                                      style={{
-                                        fontSize: '13px',
-                                        whiteSpace: 'nowrap',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis',
-                                      }}
-                                    >
-                                      {element.value.product_name}
-                                    </p>
-                                  </div>
-
-                                  <div className='device-price-label'>
-                                    {element.value.price && (
-                                      <IonImg
-                                        className='rupay-img'
-                                        src={require('../../assets/Icons/RupayBlack.svg')}
-                                      />
-                                    )}
-                                    <IonText>
-                                      {element.value.price
-                                        ? parseFloat(
-                                          element.value.price
-                                        ).toLocaleString()
-                                        : 'Not available'}
-                                    </IonText>
-                                  </div>
-                                </IonCardContent>
-                              </IonCard>
-                            </IonCol>
-                          );
-                        })}
-                      </IonRow>
-                    </IonGrid>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <div className='mobile-items-wrapper'>
-                    <IonGrid>
-                      <IonRow>
-                        {/* {searchList.length === 0 && (
-                          <IonCol>
-                            <IonText ion-text-center>
-                              No data available for this search.{" "}
-                            </IonText>
-                          </IonCol>
-                        )} */}
-                        {searchList.map((listVal: any) => {
-                          return (
-                            <IonCol key={listVal.product_id} size='6'>
-                              <IonCard
-                                onClick={() =>
-                                  showItemDetails(
-                                    listVal.product_id,
-                                    listVal.image_path,
-                                    listVal.price,
-                                    listVal.quantity,
-                                    listVal.product_name,
-                                    listVal.config_product
-                                  )
-                                }
-                              >
-                                <IonCardHeader>
-                                  <div className='image-wrapper'>
-                                    <IonImg src={listVal.image_path} />
-                                  </div>
-                                </IonCardHeader>
-
-                                <IonCardContent>
-                                  <div className='device-name-label'>
-                                    <IonText>{listVal.category_name}</IonText>
-                                  </div>
-                                  <div className='device-price-label'>
-                                    <IonImg
-                                      className='rupay-img'
-                                      src={require('../../assets/Icons/RupayBlack.svg')}
-                                    />
-                                    <IonText>
-                                      {parseFloat(
-                                        listVal.price
-                                      ).toLocaleString()}
-                                    </IonText>
-                                  </div>
-                                </IonCardContent>
-                              </IonCard>
-                            </IonCol>
-                          );
-                        })}
-                      </IonRow>
-                    </IonGrid>
-                  </div>
-                </div>
-              )}
+                              <div className='device-price-label'>
+                                {element.price && (
+                                  <IonImg
+                                    className='rupay-img'
+                                    src={require('../../assets/Icons/RupayBlack.svg')}
+                                  />
+                                )}
+                                <IonText>
+                                  {element.price
+                                    ? parseFloat(element.price).toLocaleString()
+                                    : 'Not available'}
+                                </IonText>
+                              </div>
+                            </IonCardContent>
+                          </IonCard>
+                        </IonCol>
+                      );
+                    })}
+                  </IonRow>
+                </IonGrid>
+              </div>
             </div>
           </IonContent>
         </IonPage>

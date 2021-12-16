@@ -178,41 +178,41 @@ const FlightOneWay: React.FC = () => {
       <IonApp>
         <IonPage>
           <HeaderComponent
-            headerLable="common.header"
+            headerLable='common.header'
             showBackButton={true}
             handler={goBack}
           />
           <IonContent>
-            <div className="flight-booking-container">
-              <IonText className="flight-booking-oneWay-text-area">
-                <Translate message="UtilityFlightBooking" />
+            <div className='flight-booking-container'>
+              <IonText className='flight-booking-oneWay-text-area'>
+                <Translate message='UtilityFlightBooking' />
               </IonText>
-              <div className="toggle-button-for-flight">
+              <div className='toggle-button-for-flight'>
                 <SegmentButtonComponent
                   handler={handleTripDetails}
                   //swipeGesture={true}
                 />
               </div>
               {showOneWaySection && (
-                <div className="flight-booking-oneWay-wrapper">
-                  <div className="flight-booking-section ">
+                <div className='flight-booking-oneWay-wrapper'>
+                  <div className='flight-booking-section '>
                     <div style={{ width: '45%', marginLeft: '0px' }}>
                       <SelectMenu
-                        label="UtilityFlightFrom"
+                        label='UtilityFlightFrom'
                         array={destinationCity}
                         onSelect={handleSourceCity}
                       />
                     </div>
 
-                    <div className="flight-Booking-icon">
+                    <div className='flight-Booking-icon'>
                       <IonText>
-                        <FlightIcon width="140" height="140" />
+                        <FlightIcon width='140' height='140' />
                       </IonText>
                     </div>
 
                     <div style={{ width: '45%', marginLeft: '0px' }}>
                       <SelectMenu
-                        label="UtilityFlightTo"
+                        label='UtilityFlightTo'
                         array={destinationCity}
                         onSelect={handleDestinationCity}
                       />
@@ -222,12 +222,12 @@ const FlightOneWay: React.FC = () => {
                     <div style={{ width: '45%' }}>
                       <DatePickerComponent
                         previousDate={false}
-                        placeholder="UtilityDeparture"
+                        placeholder='UtilityDeparture'
                         handler={handleDate}
                       />
 
                       <SelectMenu
-                        label="UtilityTravellers"
+                        label='UtilityTravellers'
                         array={[
                           {
                             value: '1',
@@ -242,42 +242,42 @@ const FlightOneWay: React.FC = () => {
                       />
 
                       <SelectMenu
-                        label="UtilityClass"
+                        label='UtilityClass'
                         onSelect={onClassSelect}
                         array={classDetails}
                       />
                     </div>
                   </div>
 
-                  <div className="flight-one-way-button ">
+                  <div className='flight-one-way-button '>
                     <ButtonConmponent
-                      buttonLabel="UtilityBookFlight"
-                      size="block"
+                      buttonLabel='UtilityBookFlight'
+                      size='block'
                       clickHandler={handleflightBook}
                     />
                   </div>
                 </div>
               )}
               {showTwoWaySection && (
-                <div className="flight-booking-TwoWay-wrapper">
-                  <div className="flight-booking-twoWay-section ">
+                <div className='flight-booking-TwoWay-wrapper'>
+                  <div className='flight-booking-twoWay-section '>
                     <div style={{ width: '45%', marginLeft: '0px' }}>
                       <SelectMenu
-                        label="UtilityFlightFrom"
+                        label='UtilityFlightFrom'
                         array={destinationCity}
                         onSelect={handleSourceCity}
                       />
                     </div>
 
-                    <div className="flight-twoWay-icon">
+                    <div className='flight-twoWay-icon'>
                       <IonText>
-                        <FlightIcon width="140" height="140" />
+                        <FlightIcon width='140' height='140' />
                       </IonText>
                     </div>
 
                     <div style={{ width: '45%', marginLeft: '0px' }}>
                       <SelectMenu
-                        label="UtilityFlightTo"
+                        label='UtilityFlightTo'
                         array={destinationCity}
                         onSelect={handleDestinationCity}
                       />
@@ -287,14 +287,14 @@ const FlightOneWay: React.FC = () => {
                   <div style={{ display: 'flex' }}>
                     <div style={{ width: '45%' }}>
                       <DatePickerComponent
-                        placeholder="UtilityDeparture"
+                        placeholder='UtilityDeparture'
                         previousDate={false}
                         handler={handleDate}
                       />
                     </div>
                     <div style={{ width: '45%', marginLeft: '40px' }}>
                       <DatePickerComponent
-                        placeholder="UtilityReturn"
+                        placeholder='UtilityReturn'
                         previousDate={false}
                         handler={handleReturnDate}
                       />
@@ -303,7 +303,7 @@ const FlightOneWay: React.FC = () => {
 
                   <div style={{ width: '45%' }}>
                     <SelectMenu
-                      label="UtilityTravellers"
+                      label='UtilityTravellers'
                       array={[
                         {
                           value: '1',
@@ -317,15 +317,15 @@ const FlightOneWay: React.FC = () => {
                       onSelect={handleTravelersValue}
                     />
                     <SelectMenu
-                      label="UtilityClass"
+                      label='UtilityClass'
                       onSelect={onClassSelect}
                       array={classDetails}
                     />
                   </div>
-                  <div className="flight-two-way-button ">
+                  <div className='flight-two-way-button '>
                     <ButtonConmponent
-                      buttonLabel="UtilityBookFlight"
-                      size="block"
+                      buttonLabel='UtilityBookFlight'
+                      size='block'
                       clickHandler={handleflightBook}
                     />
                   </div>

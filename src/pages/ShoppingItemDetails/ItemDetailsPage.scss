@@ -2,7 +2,7 @@
   .services-options-wrapper {
     position: absolute;
     bottom: 0px;
-    height: 265px;
+    height: auto;
     transition: height 0.25s ease-in;
     width: 100%;
     max-height: 600px;
@@ -121,11 +121,11 @@
       margin-top: 20px;
     }
     .add-to-cart-button-wrapper {
-      position: fixed;
+      position: sticky;
       bottom: 0px;
       width: 100%;
       left: 0;
-      padding: 0px 30px;
+      padding: 25px 0px 0px 0px;
       .add-cart-button {
         margin-top: -15px;
         // margin-top: 0px;
@@ -140,7 +140,7 @@
     }
   }
   .fullHeight {
-    height: 100%;
+    height: auto;
   }
   .features-wapper {
     margin-top: 15px;

@@ -61,7 +61,12 @@ const CartPage: React.FC = () => {
 
   const increaseCount = debounce((id: Number, quantity: Number) => {
     if (quantity >= 0) {
-      dispatch(requestForUpdateCartItem({ cartItemID: id, quantity }));
+      dispatch(
+        requestForUpdateCartItem(
+          { cartItemID: id, quantity },
+          updateCartResponse
+        )
+      );
     }
   }, 200);
 
@@ -73,13 +78,22 @@ const CartPage: React.FC = () => {
 
   const decreaseCount = debounce((id: number, quantity: number) => {
     if (quantity >= 1) {
-      dispatch(requestForUpdateCartItem({ cartItemID: id, quantity }));
+      dispatch(
+        requestForUpdateCartItem(
+          { cartItemID: id, quantity },
+          updateCartResponse
+        )
+      );
       return;
     } else {
       setCartItemIdToDelete(id);
       setDeleteStatus(true);
     }
   }, 200);
+
+  const updateCartResponse = (res: any) => {
+    ShowProductList(res);
+  };
 
   const goBack = (name: any) => {
     history.replace({
@@ -93,7 +107,7 @@ const CartPage: React.FC = () => {
     history.replace('/tabs/posPayment', { cartTotal, cartId });
   }
 
-  const numberChangeWithCommas = (x:any) => {
+  const numberChangeWithCommas = (x: any) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
@@ -132,18 +146,18 @@ const CartPage: React.FC = () => {
           />
 
           <IonContent>
-            <div className="cart-page-wrapper">
-              <div className="page-header">
+            <div className='cart-page-wrapper'>
+              <div className='page-header'>
                 <IonText>
-                  <Translate message="cart.pageLabel" />
+                  <Translate message='cart.pageLabel' />
                 </IonText>
               </div>
               {viewCart ? (
                 <IonCard style={{ marginTop: '30px' }}>
                   <IonCardContent>
-                    <div className="empty-cart-section">
-                      <IonText className="empty-cart">
-                        <Translate message="cart.empty" />
+                    <div className='empty-cart-section'>
+                      <IonText className='empty-cart'>
+                        <Translate message='cart.empty' />
                       </IonText>
                     </div>
                   </IonCardContent>
@@ -158,10 +172,10 @@ const CartPage: React.FC = () => {
                             <IonCard>
                               <IonCardContent>
                                 <div
-                                  className="cart-inner-body"
+                                  className='cart-inner-body'
                                   style={{ display: 'flex' }}
                                 >
-                                  <div className="item-image-wrapper">
+                                  <div className='item-image-wrapper'>
                                     <div
                                       style={{
                                         padding: '5px',
@@ -171,8 +185,8 @@ const CartPage: React.FC = () => {
                                       <IonImg src={element.image_path} />
                                     </div>
                                   </div>
-                                  <div className="details-wrapper">
-                                    <div className="item-name product-name-alignment">
+                                  <div className='details-wrapper'>
+                                    <div className='item-name product-name-alignment'>
                                       <IonText>{element.product_name}</IonText>
                                     </div>
                                     {/* <div className="item-varient">
@@ -185,17 +199,20 @@ const CartPage: React.FC = () => {
                                           : element.description}
                                       </IonText>
                                     </div> */}
-                                    <div className="item-price">
-                                      <IonText><b>Rs :</b>
-                                        {parseFloat(element.price).toLocaleString()}
+                                    <div className='item-price'>
+                                      <IonText>
+                                        <b>Rs :</b>
+                                        {parseFloat(
+                                          element.price
+                                        ).toLocaleString()}
                                       </IonText>
                                     </div>
                                   </div>
-                                  <div className="button-wrapper">
-                                    <div className="plus-btn">
+                                  <div className='button-wrapper'>
+                                    <div className='plus-btn'>
                                       <IonFabButton
-                                        className="fab-btn"
-                                        size="small"
+                                        className='fab-btn'
+                                        size='small'
                                         onClick={() => {
                                           item['quantity'] =
                                             parseInt(item.quantity) + 1;
@@ -212,15 +229,15 @@ const CartPage: React.FC = () => {
                                       </IonFabButton>
                                     </div>
                                     <div
-                                      className="count"
+                                      className='count'
                                       style={{ marginLeft: '13px' }}
                                     >
                                       {item.quantity}
                                     </div>
-                                    <div className="minus-btn">
+                                    <div className='minus-btn'>
                                       <IonFabButton
-                                        className="fab-btn"
-                                        size="small"
+                                        className='fab-btn'
+                                        size='small'
                                         disabled={
                                           item.quantity < 0 ? true : false
                                         }
@@ -252,18 +269,19 @@ const CartPage: React.FC = () => {
             </div>
           </IonContent>
           <IonFooter style={{ height: '50px' }}>
-            <div className="footer-wrapper">
-              <div className="price-section">
-                <IonText className="price-label">
-                  <Translate message="cart.total" />
+            <div className='footer-wrapper'>
+              <div className='price-section'>
+                <IonText className='price-label'>
+                  <Translate message='cart.total' />
                 </IonText>
-                <IonText className="price-text"><b>Rs :</b> { numberChangeWithCommas(cartTotal)}
+                <IonText className='price-text'>
+                  <b>Rs :</b> {numberChangeWithCommas(cartTotal)}
                   {/* {cartTotal} */}
                 </IonText>
               </div>
-              <div className="checkout-btn-wrapper">
+              <div className='checkout-btn-wrapper'>
                 <ButtonConmponent
-                  buttonLabel="cart.checkout"
+                  buttonLabel='cart.checkout'
                   clickHandler={handleCheckout}
                 />
               </div>

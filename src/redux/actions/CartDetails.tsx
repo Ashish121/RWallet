@@ -62,7 +62,7 @@ const loadCartDetails = (payload: any, callback: Function) => {
  * @param payload Payload to update cart
  * @returns null
  */
-const requestForUpdateCartItem = (payload: any) => {
+const requestForUpdateCartItem = (payload: any, callback: Function) => {
   return async (dispatch: any) => {
     dispatch({ type: CARTDETAILS_SUCCESS, data: { status: true } });
     dispatch(toggleLoader(true, 'Updating cart item...'));
@@ -75,6 +75,7 @@ const requestForUpdateCartItem = (payload: any) => {
         dispatch({ type: CARTDETAILS_SUCCESS, data: { status: false } });
         localStorage.setItem('CartDetailsList', JSON.stringify(response));
         dispatch(toggleLoader(false));
+        callback(response);
       } else {
         dispatch(toggleLoader(false));
         const data = {

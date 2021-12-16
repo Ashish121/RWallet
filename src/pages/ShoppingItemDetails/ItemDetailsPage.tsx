@@ -118,7 +118,7 @@ const ItemDetailsPage: React.FC = () => {
     });
   };
 
-  const numberWithCommas = (x:any) => {
+  const numberWithCommas = (x: any) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
@@ -229,8 +229,7 @@ const ItemDetailsPage: React.FC = () => {
                           color: '#000000',
                         }}
                       >
-                        
-                        { numberWithCommas(price)}
+                        {numberWithCommas(price)}
                       </IonText>
                     </div>
                   </div>
@@ -281,7 +280,7 @@ const ItemDetailsPage: React.FC = () => {
                         }}
                       >
                         {/* {price.toLocaleString()} */}
-                        { numberWithCommas(price)}
+                        {numberWithCommas(price)}
                       </IonText>
                     </div>
                   </div>
@@ -292,7 +291,10 @@ const ItemDetailsPage: React.FC = () => {
                     <IonText className='features-label'>
                       <Translate message='itemDetails.feature' />
                     </IonText>
-                    <div className='features-text-wrapper'>
+                    <div
+                      className='features-text-wrapper'
+                      style={{ maxHeight: '350px', overflow: 'scroll' }}
+                    >
                       <IonText className='features-text'>{description}</IonText>
                     </div>
                   </div>

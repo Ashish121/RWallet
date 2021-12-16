@@ -30,15 +30,13 @@
 
       .product-name-alignment {
         font-style: normal;
-        /* font-weight: 500; */
-        font-size: 0px;
+        font-size: 0;
         line-height: 22px;
-        color: #000000;
-        /* text-align: center; */
+        color: #000;
         white-space: nowrap;
         overflow: hidden;
-        width: 150px;
-    }
+        text-overflow: ellipsis;
+      }
       .item-varient {
         font-style: normal;
         font-weight: 500;
@@ -54,7 +52,6 @@
         line-height: 17px;
         color: #000000;
         position: absolute;
-      
       }
     }
     .button-wrapper {
