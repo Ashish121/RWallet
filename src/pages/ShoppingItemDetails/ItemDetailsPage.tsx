@@ -118,6 +118,10 @@ const ItemDetailsPage: React.FC = () => {
     });
   };
 
+  const numberWithCommas = (x:any) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
   return (
     <IonApp className='item-details-wrapper'>
       <IonPage>
@@ -225,7 +229,8 @@ const ItemDetailsPage: React.FC = () => {
                           color: '#000000',
                         }}
                       >
-                        {price}
+                        
+                        { numberWithCommas(price)}
                       </IonText>
                     </div>
                   </div>
@@ -275,7 +280,8 @@ const ItemDetailsPage: React.FC = () => {
                           color: '#000000',
                         }}
                       >
-                        {price}
+                        {/* {price.toLocaleString()} */}
+                        { numberWithCommas(price)}
                       </IonText>
                     </div>
                   </div>

@@ -231,7 +231,9 @@ const ShoppingPage: React.FC = () => {
                       fontSize: '12px',
                     }}
                   >
-                    {shoppingLimitBalance}
+                   
+                    {shoppingLimitBalance.toLocaleString()}
+                    
                   </IonText>
                 </div>
               </div>

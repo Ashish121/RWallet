@@ -196,6 +196,10 @@ const PosPaymentPage: React.FC = () => {
     }
   }
 
+  const numberChangeWithCommas = (x:any) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
   return (
     <React.Fragment>
       <IonApp>
@@ -325,7 +329,7 @@ const PosPaymentPage: React.FC = () => {
                   <Translate message="cart.total" />
                 </IonText>
                 <IonText className="price-text">
-                  Rs {paramsItem.cartTotal}
+                  <b>Rs :</b> { numberChangeWithCommas(paramsItem.cartTotal)}
                 </IonText>
               </div>
               <div className="checkout-btn-wrapper">

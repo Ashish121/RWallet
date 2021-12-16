@@ -134,7 +134,8 @@ const TransactionHistory: React.FC = () => {
                                   className='transaction-type'
                                   style={{ color: '#222428' }}
                                 >
-                                  {item.amount}
+                             
+                                  {parseFloat(item.amount).toLocaleString()}
                                 </IonText>
                               </div>
                             </div>

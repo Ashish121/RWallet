@@ -94,7 +94,8 @@ const AgentS: React.FC = () => {
                   </IonText>
                   <div className="agentDetails-message">
                     <IonText className="nameMessage">
-                      {agentsDetails.amount}
+                    
+                      {parseFloat(agentsDetails.amount).toLocaleString()}
                     </IonText>
                   </div>
                   <IonText className="agentDetails-header-text">

@@ -92,6 +92,11 @@ const CartPage: React.FC = () => {
   function handleCheckout() {
     history.replace('/tabs/posPayment', { cartTotal, cartId });
   }
+
+  const numberChangeWithCommas = (x:any) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
   return (
     <>
       <IonAlert
@@ -181,7 +186,9 @@ const CartPage: React.FC = () => {
                                       </IonText>
                                     </div> */}
                                     <div className="item-price">
-                                      <IonText>RS {element.price}</IonText>
+                                      <IonText><b>Rs :</b>
+                                        {parseFloat(element.price).toLocaleString()}
+                                      </IonText>
                                     </div>
                                   </div>
                                   <div className="button-wrapper">
@@ -250,7 +257,9 @@ const CartPage: React.FC = () => {
                 <IonText className="price-label">
                   <Translate message="cart.total" />
                 </IonText>
-                <IonText className="price-text">Rs {cartTotal}</IonText>
+                <IonText className="price-text"><b>Rs :</b> { numberChangeWithCommas(cartTotal)}
+                  {/* {cartTotal} */}
+                </IonText>
               </div>
               <div className="checkout-btn-wrapper">
                 <ButtonConmponent

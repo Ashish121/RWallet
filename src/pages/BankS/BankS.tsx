@@ -85,7 +85,8 @@ const BankS: React.FC = () => {
                   </IonText>
                   <div className="bankDetails-message">
                     <IonText className="nameMessage">
-                      {bankDetails.amount}
+                     
+                      {parseFloat(bankDetails.amount).toLocaleString()}
                     </IonText>
                   </div>
                   <IonText className="bankDetails-header-text">
