@@ -92,10 +92,15 @@ const HeaderComponent: React.FC<headerProps> = ({
                 onClick={cartHandler}
               >
                 <CartIcon width='20' height='20' />
+                {value > 0 && (
+                  <IonBadge
+                    color='primary'
+                    className='notification-count-badge'
+                  >
+                    {value}
+                  </IonBadge>
+                )}
               </IonButtons>
-              <IonBadge color='primary' className='cart-count-badge'>
-                {value}
-              </IonBadge>
             </>
           )}
           {showMenu && (
