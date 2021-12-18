@@ -18,7 +18,6 @@ const Agent: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user_id = localStorage.getItem('userId');
-  // const [agentCode, setAgentCode] = useState('');
   const [accountHolderName, setAccountHolderName] = useState('');
   const [accountNo, setAccountNo] = useState('');
   const [mobileNo, setMobileNo] = useState('');
@@ -42,10 +41,6 @@ const Agent: React.FC = () => {
     dispatch(loadCountryList(setCountryNameList));
     dispatch(loadAgentCodeList(setAgentCodeList));
   }, []);
-
-  // function updateAgentCode(agentCode: any) {
-  //   setAgentCode(agentCode);
-  // }
 
   function updateAccountHolderName(accountHolderName: any) {
     setAccountHolderName(accountHolderName);
@@ -140,9 +135,6 @@ const Agent: React.FC = () => {
     setSelectedCountryName(val);
   }, 300);
 
-  //setAgentCode
-
-  //country list api
   function setAgentCodeList(res: any) {
     const bankNames = res.data.data;
     configureAgentList(bankNames);
