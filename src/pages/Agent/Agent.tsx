@@ -10,7 +10,7 @@ import {
   SelectMenu,
 } from '../../components';
 import './Agent.scss';
-import { requestForAgentTransfer, loadCountryList } from '../../redux/actions';
+import { requestForAgentTransfer, loadCountryList,loadAgentCodeList } from '../../redux/actions';
 import LoaderComponent from '../../components/Spinner/Spinner';
 import debounce from 'lodash.debounce';
 
@@ -18,7 +18,7 @@ const Agent: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user_id = localStorage.getItem('userId');
-  const [agentCode, setAgentCode] = useState('');
+  // const [agentCode, setAgentCode] = useState('');
   const [accountHolderName, setAccountHolderName] = useState('');
   const [accountNo, setAccountNo] = useState('');
   const [mobileNo, setMobileNo] = useState('');
@@ -27,9 +27,12 @@ const Agent: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setLoaderMessage] = useState('');
   const [currentSelectedVal, setCurrentSelectedVal] = useState(false);
+  const [currentSelectedValueForAgent,setCurrentSelectedValueForAgent]=useState(false);
 
   const [country, setCountry] = useState([{}]);
+  const [agentCode, setAgentCode] = useState([{}]);
   const [selectedCountryName, setSelectedCountryName] = useState('');
+  const [selectedAgentCode, setSelectedAgentCode] = useState('');
 
   useEffect(() => {
     localStorage.setItem('previousRoute', '/tabs/transfer');
@@ -37,11 +40,12 @@ const Agent: React.FC = () => {
 
   useEffect(() => {
     dispatch(loadCountryList(setCountryNameList));
+    dispatch(loadAgentCodeList(setAgentCodeList));
   }, []);
 
-  function updateAgentCode(agentCode: any) {
-    setAgentCode(agentCode);
-  }
+  // function updateAgentCode(agentCode: any) {
+  //   setAgentCode(agentCode);
+  // }
 
   function updateAccountHolderName(accountHolderName: any) {
     setAccountHolderName(accountHolderName);
@@ -76,7 +80,7 @@ const Agent: React.FC = () => {
         {
           user_id,
           country: selectedCountryName,
-          agentCode,
+          agentCode:selectedAgentCode,
           accountHolderName,
           accountNo,
           mobileNo,
@@ -93,8 +97,9 @@ const Agent: React.FC = () => {
   }
   function handleClearButton() {
     setCurrentSelectedVal(true);
+    setCurrentSelectedValueForAgent(true);
 
-    setAgentCode('');
+    // setAgentCode('');
     setAccountHolderName('');
     setAccountNo('');
     setMobileNo('');
@@ -129,9 +134,42 @@ const Agent: React.FC = () => {
   function updateCountry(array: any) {
     setCountry(array);
   }
+
   const handleCounrty = debounce((val: any) => {
     setCurrentSelectedVal(false);
     setSelectedCountryName(val);
+  }, 300);
+
+  //setAgentCode
+
+  //country list api
+  function setAgentCodeList(res: any) {
+    const bankNames = res.data.data;
+    configureAgentList(bankNames);
+  }
+  function configureAgentList(array: any) {
+    let finalArray: any = [];
+    array.forEach((element: any) => {
+      let tempObj = {
+        value: element,
+        label: element,
+      };
+      finalArray.push(tempObj);
+    });
+    updateAgentCode(finalArray);
+  }
+
+
+  function updateAgentCode(array: any) {
+    setAgentCode(array);
+  }
+  const handleAgentCode = debounce((val: any) => {
+    // setCurrentSelectedVal(false);
+    // setSelectedCountryName(val);
+
+    setCurrentSelectedValueForAgent(false);
+    setSelectedAgentCode(val);
+
   }, 300);
 
   return (
@@ -159,7 +197,15 @@ const Agent: React.FC = () => {
                       selectedVal={currentSelectedVal}
                     />
                   </div>
-                  <InputText
+                  <div>
+                    <SelectMenu
+                      label="agent.code"
+                      array={agentCode}
+                      onSelect={handleAgentCode}
+                      selectedVal={currentSelectedValueForAgent}
+                    />
+                  </div>
+                  {/* <InputText
                     inputType="tel"
                     labelText="agent.code"
                     labelType="floating"
@@ -167,7 +213,7 @@ const Agent: React.FC = () => {
                     labelColor="light"
                     onChange={updateAgentCode}
                     clearInput={true}
-                  />
+                  /> */}
                   <InputText
                     inputType="text"
                     labelText="bank.holderName"
@@ -226,7 +272,7 @@ const Agent: React.FC = () => {
                       size="block"
                       disabled={
                         selectedCountryName.trim() &&
-                        agentCode.trim() &&
+                        selectedAgentCode.trim() &&
                         accountHolderName.trim() &&
                         accountNo.trim() &&
                         mobileNo.trim() &&

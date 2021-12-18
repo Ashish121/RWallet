@@ -1,7 +1,7 @@
 import { AGETTRANSFER_SUCCESS } from '../Contants';
 import {
   authenticationForAgentTransfer,
-  loadCountryNameList,
+  loadCountryNameList,loadAgentCodeApi,
 } from '../../services/Connect';
 import { updateToast } from './index';
 
@@ -62,7 +62,7 @@ const loadCountryList = (callback: Function) => {
           position: 'top',
           duration: '10000',
         };
-        dispatch({ type: 'CARD_PAYMENT_FAILED' });
+        dispatch({ type: 'AGETTRANSFER_FAILED' });
         dispatch(updateToast(data));
       }
     } catch (error) {
@@ -77,4 +77,36 @@ const loadCountryList = (callback: Function) => {
     }
   };
 };
-export { requestForAgentTransfer, loadCountryList };
+
+const loadAgentCodeList = (callback: Function) => {
+  return async (dispatch: any) => {
+    dispatch({ type: AGETTRANSFER_SUCCESS, data: { status: true } });
+    try {
+      const response = await loadAgentCodeApi();
+      if (response.status === 200 && response.data.success) {
+        dispatch({ type: AGETTRANSFER_SUCCESS, data: { status: false } });
+        localStorage.setItem('CountryNameList', JSON.stringify(response));
+        callback(response);
+      } else {
+        const data = {
+          showToast: true,
+          toastMessage: response.data.message,
+          position: 'top',
+          duration: '10000',
+        };
+        dispatch({ type: 'AGETTRANSFER_FAILED' });
+        dispatch(updateToast(data));
+      }
+    } catch (error) {
+      const data = {
+        showToast: true,
+        toastMessage: 'Network error',
+        position: 'top',
+        duration: '10000',
+      };
+      dispatch({ type: AGETTRANSFER_SUCCESS, data: { status: false } });
+      dispatch(updateToast(data));
+    }
+  };
+};
+export { requestForAgentTransfer, loadCountryList,loadAgentCodeList };

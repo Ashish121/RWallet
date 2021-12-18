@@ -1,6 +1,6 @@
 export { requestForLogin, requestForLogout } from './Login';
 export { updateToast } from './Toast';
-export { requestForAgentTransfer, loadCountryList } from './Agent';
+export { requestForAgentTransfer, loadCountryList ,loadAgentCodeList} from './Agent';
 export { requestForBankTransfer, loadDestinationBankList } from './Bank';
 export { requestForFixedAccount } from './Fixed';
 export { requestForCurrentAccount } from './Current';
