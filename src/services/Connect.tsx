@@ -1131,3 +1131,25 @@ export const updateNotification = async (
 
   return result;
 };
+
+
+/**
+ * load Agent Code Api name list
+ * @returns
+ */
+export const loadAgentCodeApi = async (): Promise<any> => {
+  const result = await axios({
+    url: 'https://dashboard.royalitywallet.com/api/v1/agent_code_fetch',
+
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  // console.log("result ******",result);
+  return result;
+  
+};
+
+
+
