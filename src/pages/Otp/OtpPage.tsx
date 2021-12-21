@@ -79,7 +79,7 @@ const OtpPage: React.FC = () => {
     setLoaderMessage('');
     if (status == true) {
       notification.askPushPermission(savePushToken);
-      history.replace('/mpin');
+      history.replace('/login');
     } else {
       history.replace('/register');
       dispatch(updateToast(data));

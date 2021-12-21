@@ -25,7 +25,7 @@ const ItemDetailsPage: React.FC = () => {
   const user_id = localStorage.getItem('userId');
   const [expandOptions, setExpandOptions] = useState(false);
   // const [color, setDeviceColor] = useState<string>();
-  const [price, setPrice] = useState(Number);
+  const [price, setPrice] = useState(String);
   const [productName, setProductName] = useState(Number);
   const [count, setCount] = useState(Number);
   const [imageUrl, setImageUrl] = useState('');
@@ -119,7 +119,7 @@ const ItemDetailsPage: React.FC = () => {
   };
 
   const numberWithCommas = (x: any) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parseInt(x).toLocaleString();
   };
 
   return (
@@ -229,7 +229,7 @@ const ItemDetailsPage: React.FC = () => {
                           color: '#000000',
                         }}
                       >
-                        {numberWithCommas(price)}
+                        Rs {numberWithCommas(price !== null ? price : '0')}
                       </IonText>
                     </div>
                   </div>
@@ -280,7 +280,7 @@ const ItemDetailsPage: React.FC = () => {
                         }}
                       >
                         {/* {price.toLocaleString()} */}
-                        {numberWithCommas(price)}
+                        Rs {numberWithCommas(price !== null ? price : '0')}
                       </IonText>
                     </div>
                   </div>

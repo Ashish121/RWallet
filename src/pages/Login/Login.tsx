@@ -21,9 +21,9 @@ const LoginPage: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('previousRoute', '/');
   }, []);
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
+  // useEffect(() => {
+  //   localStorage.clear();
+  // }, []);
 
   //checking flag condition............
   function nextRoute() {
@@ -68,64 +68,64 @@ const LoginPage: React.FC = () => {
 
       <IonPage>
         <IonContent>
-          <div className="loginContainer">
-            <div className="body-header-wrapper ion-margin-top">
-              <IonText className="body-header-text-wrapper">
-                <span className="welcome_text">
-                  <Translate message="login.welcomeText" />
+          <div className='loginContainer'>
+            <div className='body-header-wrapper ion-margin-top'>
+              <IonText className='body-header-text-wrapper'>
+                <span className='welcome_text'>
+                  <Translate message='login.welcomeText' />
                 </span>
                 <span
                   style={{ marginLeft: '5px' }}
-                  className="header-bold ion-text-uppercase"
+                  className='header-bold ion-text-uppercase'
                 >
-                  <Translate message="login.siginPageLabel" />
+                  <Translate message='login.siginPageLabel' />
                 </span>
               </IonText>
             </div>
-            <div className="loginPageWrapper">
+            <div className='loginPageWrapper'>
               <InputText
-                inputType="number"
-                labelText="login.mobileText"
-                labelType="floating"
-                color="light"
-                labelColor="light"
+                inputType='number'
+                labelText='login.mobileText'
+                labelType='floating'
+                color='light'
+                labelColor='light'
                 onChange={updateContactNo}
               />
               <InputText
-                inputType="password"
-                labelText="Password"
-                labelType="floating"
-                color="light"
-                labelColor="light"
+                inputType='password'
+                labelText='Password'
+                labelType='floating'
+                color='light'
+                labelColor='light'
                 showPasswordMode={true}
                 onChange={updatePassword}
               />
-              <div className="ion-padding-top" style={{ marginTop: '40px' }}>
+              <div className='ion-padding-top' style={{ marginTop: '40px' }}>
                 <ButtonConmponent
-                  buttonLabel="login.signInLabel"
-                  size="block"
+                  buttonLabel='login.signInLabel'
+                  size='block'
                   disabled={
                     contactNo?.trim() && password?.trim() ? false : true
                   }
                   clickHandler={loginHandler}
                 />
               </div>
-              <div className="link-text-wrapper">
+              <div className='link-text-wrapper'>
                 <a
-                  ion-text="true"
-                  color="light"
+                  ion-text='true'
+                  color='light'
                   onClick={navigateToRegister}
-                  className="linkText"
+                  className='linkText'
                 >
-                  <Translate message="login.linkTextRegister" />
+                  <Translate message='login.linkTextRegister' />
                 </a>
                 <a
-                  ion-text="true"
-                  color="light"
+                  ion-text='true'
+                  color='light'
                   onClick={navigateToResetPassword}
-                  className="linkText"
+                  className='linkText'
                 >
-                  <Translate message="login.linkText" />
+                  <Translate message='login.linkText' />
                 </a>
               </div>
             </div>
