@@ -34,8 +34,8 @@ const requestForRegistration = (payload: any, nextRoute: Function) => {
         };
         dispatch({ type: 'REGISTRATION_FAILED ' });
         dispatch(updateToast(data));
+        nextRoute(false, null);
       }
-      nextRoute(true, null);
     } catch (error) {
       dispatch(toggleLoader(false));
       const data = {

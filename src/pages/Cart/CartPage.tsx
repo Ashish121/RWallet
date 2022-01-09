@@ -209,9 +209,11 @@ const CartPage: React.FC = () => {
                                     <div className='item-price'>
                                       <IonText>
                                         <b>Rs : </b>
-                                        {parseFloat(
-                                          element.price
-                                        ).toLocaleString()}
+                                        {element.price
+                                          ? parseInt(
+                                            element.price
+                                          ).toLocaleString()
+                                          : 0}
                                       </IonText>
                                     </div>
                                   </div>

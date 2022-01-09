@@ -68,6 +68,31 @@ const NotificationPage: React.FC = () => {
                 onClick={closeNotificationPanel}
                 style={{ position: "absolute", width: "100%" }}
               /> */}
+              {!isLoading && notificationList.length == 0 && (
+                <>
+                  <div className='close-btn-wrapper'>
+                    <button onClick={closeNotificationPanel}>
+                      <CloseIcon iconColor='white' />
+                    </button>
+                  </div>
+                  <div
+                    className='no_data_text'
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      color: '#ffffff',
+                    }}
+                  >
+                    <IonText>
+                      <Translate
+                        message='common.noData'
+                        value={{ title: 'Notification' }}
+                      />
+                      .
+                    </IonText>
+                  </div>
+                </>
+              )}
               {notificationList.length > 0 && (
                 <React.Fragment>
                   <div className='close-btn-wrapper'>
